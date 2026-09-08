@@ -1,5 +1,7 @@
 # 邕城 · Nanning City Atlas
 
+**[在线体验 · GitHub Pages](https://wcqqq1214.github.io/nanning-city-atlas/)** · [部署记录](https://github.com/wcqqq1214/nanning-city-atlas/actions/workflows/pages.yml)
+
 以真实公开地理数据为骨架，用 **Three.js + Blender** 复现广西南宁中心城区的山、水与城市空间。青绿色邕江贯穿浅色城市体块，保留南湖、青秀山、路网、滨江绿地与主要地标的地理关系。
 
 项目范围约 **20.5 × 15.6 km**：`108.265°–108.465° E / 22.735°–22.875° N`。这是中心城区的艺术化地理重建，不是全市行政区域的精密数字孪生。
@@ -26,7 +28,26 @@ npm run build
 npm start
 ```
 
-生产构建使用 Vinext / Vite，服务端适配 Cloudflare Workers。GitHub 中保留完整项目、锁文件、地图数据、Blender 源文件与生成脚本。
+生产构建使用 Vinext / Vite。`npm run build` 保留 Cloudflare Workers 适配；`npm run build:pages` 导出 GitHub Pages 所需的纯静态文件。GitHub 中保留完整项目、锁文件、地图数据、Blender 源文件与生成脚本。
+
+## GitHub Pages 部署
+
+公开访问地址：**https://wcqqq1214.github.io/nanning-city-atlas/**
+
+仓库使用 [.github/workflows/pages.yml](.github/workflows/pages.yml) 自动部署。推送到 `main` 后，GitHub Actions 安装锁定依赖、执行类型与 lint 检查、静态导出并发布 `out/`。无需后端、地图密钥或额外部署 token，模型与 Draco 解码器随站点一同托管。
+
+Fork 后，在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**，再运行 `Deploy GitHub Pages` 工作流。部署路径由 Pages 配置自动传入，支持项目子目录和站点根目录。
+
+```bash
+# 生成当前仓库对应子目录的静态包
+npm run build:pages
+
+# 在本地按根目录预览静态导出
+PAGES_BASE_PATH='' npm run build:pages
+python3 -m http.server --directory out 8080
+```
+
+第二种方式访问 `http://localhost:8080`。`out/` 是生成产物，不提交到源代码分支。
 
 ## 可以做什么
 
@@ -59,6 +80,10 @@ npm start
 - 地标轮廓由 Blender 简化建模；部分地标相对于真实尺寸适当放大，便于沙盘辨识。
 
 不能用于测绘、导航、洪水模拟或建筑尺寸量测。完整数据说明与归属见 [数据来源](docs/DATA_SOURCES.md) 和 [ATTRIBUTION.md](ATTRIBUTION.md)。
+
+### 高德数据是否更合适？
+
+若要加入在线底图、地点搜索与路线规划，高德是值得接入的方向；若目标是保留可编辑 Blender 场景并公开分发地理数据，当前开放数据更贴合项目需求。建议以后增加独立的“高德在线地图”模式，再叠加自建地标模型。当前版本尚未接入高德，建筑高度与轮廓的精度限制仍然存在。依据、授权与坐标处理说明见 [地图数据方案](docs/MAP_PROVIDERS.md)。
 
 ## Blender 重建流程
 

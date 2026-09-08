@@ -9,6 +9,7 @@ import type {
   SceneOptions,
 } from './types';
 import { DEFAULT_LAYERS } from './types';
+import { assetUrl } from './assets';
 
 export async function createCityScene(
   host: HTMLElement,
@@ -123,7 +124,9 @@ export async function createCityScene(
   }[] = [];
   const meshes: THREE.Mesh[] = [];
   const materialDefaults = new Map<THREE.MeshStandardMaterial, THREE.Color>();
-  const draco = new DRACOLoader().setDecoderPath('/draco/').setWorkerLimit(2);
+  const draco = new DRACOLoader()
+    .setDecoderPath(assetUrl('/draco/'))
+    .setWorkerLimit(2);
   const selectedRing = new THREE.Mesh(
     new THREE.RingGeometry(0.85, 0.94, 64),
     new THREE.MeshBasicMaterial({
@@ -414,13 +417,13 @@ export async function createCityScene(
       return response.json();
     };
     [places, overview] = await Promise.all([
-      getJson<Landmark[]>('/data/landmarks.json'),
-      getJson<Overview>('/data/overview.json'),
+      getJson<Landmark[]>(assetUrl('/data/landmarks.json')),
+      getJson<Overview>(assetUrl('/data/overview.json')),
     ]);
     callbacks.progress('载入南宁城市模型', 24);
     const model = await new GLTFLoader()
       .setDRACOLoader(draco)
-      .loadAsync('/models/nanning-city.glb', (event) => {
+      .loadAsync(assetUrl('/models/nanning-city.glb'), (event) => {
         if (!signal.aborted)
           callbacks.progress(
             '载入南宁城市模型',

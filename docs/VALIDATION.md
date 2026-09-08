@@ -8,6 +8,8 @@
 - authored code 的 Oxlint 检查。预装 UI 组件、随组件附带的移动端 hook 和第三方 Draco 解码器保持上游源码，不纳入项目代码 lint。
 - npm 依赖安全审计；修复了初始模板中的已知依赖问题。
 - 生产构建与本地 HTTP 路由/模型响应检查。
+- GitHub Pages 子目录静态导出通过；本地 HTTP 检查首页以及 21 个脚本、样式、模型、元数据、图标、RSC 与解码器资源，确认响应成功，WASM MIME 类型正确。
+- 根目录静态导出通过；原有 Cloudflare Workers 生产构建继续通过。构建脚本会检查首页资源前缀及对应文件，防止 Pages 项目子目录下的资源路径遗漏。
 - Blender 后台生成 `.blend` 和 Draco 压缩 GLB。
 - Blender 重新导入压缩 GLB，验证解码与 13 个具名网格对象可读。
 - Blender 场景离线渲染，检查河道形态、丘陵、植被、建筑和场景范围。
