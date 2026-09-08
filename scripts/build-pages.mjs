@@ -66,6 +66,7 @@ for (const [, url] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
 }
 for (const asset of [
   'models/nanning-city.glb',
+  'models/nanning-city-mobile.glb',
   'data/landmarks.json',
   'data/overview.json',
   'draco/draco_wasm_wrapper.js',

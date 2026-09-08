@@ -81,7 +81,13 @@ def main():
     snapshot = json.loads((ROOT / "work/geodata/osm.json").read_text())
     elements = snapshot["elements"]
     waters, parks, roads, mapped, urban = [], [], [], [], []
-    relation_members = {m["ref"] for el in elements if el["type"] == "relation" for m in el.get("members", []) if m["type"] == "way"}
+    def feature_kind(t):
+        if t.get('natural') == 'water' or t.get('waterway') == 'riverbank': return 'water'
+        if t.get('leisure') == 'park' or t.get('natural') == 'wood' or t.get('landuse') == 'forest': return 'park'
+        if t.get('building') and t['building'] != 'no': return 'building'
+        if t.get('landuse') in ['residential', 'commercial', 'retail', 'industrial']: return 'urban'
+        return None
+    relation_members = {(feature_kind(el.get('tags', {})), m['ref']) for el in elements if el['type'] == 'relation' for m in el.get('members', []) if m['type'] == 'way'}
     for el in elements:
         t = el.get("tags", {})
         name = t.get("name", "")
@@ -94,16 +100,8 @@ def main():
                     line = line.simplify(.06)
                     roads.append({"points": [[round(x, 3), round(y, 3)] for x, y in line.coords], "class": t["highway"], "bridge": t.get("bridge", "no") != "no", "name": name})
             continue
-        kind = None
-        if t.get("natural") == "water" or t.get("waterway") == "riverbank":
-            kind = "water"
-        elif t.get("leisure") == "park" or t.get("natural") == "wood" or t.get("landuse") == "forest":
-            kind = "park"
-        elif t.get("building") and t["building"] != "no":
-            kind = "building"
-        elif t.get("landuse") in ["residential", "commercial", "retail", "industrial"]:
-            kind = "urban"
-        if not kind or (el["type"] == "way" and el["id"] in relation_members and kind in ["water", "park"]):
+        kind = feature_kind(t)
+        if not kind or (el['type'] == 'way' and (kind, el['id']) in relation_members):
             continue
         g = geom_for(el)
         if g is None:
@@ -144,7 +142,8 @@ def main():
                 bw, bd = rng.uniform(.24, .5), rng.uniform(.35, .68)
                 footprint = box(px - bw / 2, py - bd / 2, px + bw / 2, py + bd / 2)
                 if poly.contains(footprint) and rng.random() > .09:
-                    cbd = math.exp(-((px - 12) ** 2 + (py - 10) ** 2) / 430)
+                    cbd_x, cbd_y = xy(108.377, 22.814)
+                    cbd = math.exp(-((px - cbd_x) ** 2 + (py - cbd_y) ** 2) / 430)
                     height = rng.uniform(9, 34) + cbd * rng.uniform(10, 52)
                     infill.append({"rings": coords(footprint), "height": round(height, 1), "mappedHeight": False, "source": "procedural"})
                 y += 1.05
@@ -162,7 +161,7 @@ def main():
     tree_roads = prep(road_mask)
     tree_buildings = prep(set_precision(mapped_union, 0).buffer(.1))
     attempts = 0
-    while len(trees) < 4700 and attempts < 90000:
+    while len(trees) < 11000 and attempts < 220000:
         attempts += 1
         x, y = rng.uniform(minx, maxx), rng.uniform(miny, maxy)
         point = Point(x, y)

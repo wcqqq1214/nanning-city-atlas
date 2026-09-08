@@ -1,5 +1,77 @@
 [
   {
+    "id": "meili",
+    "name": "石埠 · 美丽南方",
+    "lon": 108.1873367,
+    "lat": 22.845064,
+    "category": "城西 · 田园",
+    "description": "邕江上游的石埠片区。沿江田园、村落与城西路网在这里相接，适合从城区观察到郊野。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 32,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/911702595"
+  },
+  {
+    "id": "luowen",
+    "name": "罗文 · 广西艺术学院",
+    "lon": 108.2186957,
+    "lat": 22.8595848,
+    "category": "城西 · 校园",
+    "description": "罗文大道与大学西路一带的校园片区。以广西艺术学院相思湖校区为观察点，浏览城西的道路和校园布局。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 25,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/839607484"
+  },
+  {
+    "id": "gxmzu",
+    "name": "广西民族大学 · 相思湖校区",
+    "lon": 108.2317606,
+    "lat": 22.8459906,
+    "category": "城西 · 校园",
+    "description": "大学东路沿线的校园地标。校园、水面与周边街区串起城西的大学片区；建筑使用公开轮廓简化表达。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 23,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/1011595714"
+  },
+  {
+    "id": "xiangsi",
+    "name": "相思湖公园",
+    "lon": 108.2395786,
+    "lat": 22.8380645,
+    "category": "城西 · 湖泊",
+    "description": "相思湖水系与沿岸绿地组成城西的一段开敞空间。从湖边可以观察大学路片区和向南延伸的城市纹理。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 23,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/1465268029"
+  },
+  {
+    "id": "zoo",
+    "name": "南宁动物园",
+    "lon": 108.2646164,
+    "lat": 22.8378459,
+    "category": "城西 · 林地",
+    "description": "大学东路旁的大块林地与水面。沙盘保留园区的公开绿地、水系和建筑轮廓，呈现它在城西的空间位置。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 25,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/relation/20998616"
+  },
+  {
+    "id": "mingyue",
+    "name": "明月湖",
+    "lon": 108.2716687,
+    "lat": 22.8469301,
+    "category": "城西 · 湖泊",
+    "description": "校园与高新区之间的湖泊空间。沿周边道路向北，可继续浏览本次扩展的北部城区。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 20,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/relation/6695830"
+  },
+  {
     "id": "changyou",
     "name": "三街两巷 · 畅游阁",
     "lon": 108.314502,
@@ -8,7 +80,8 @@
     "description": "在邕江北岸回望老城。以层叠屋檐表现畅游阁，与低矮的街坊体块形成滨江历史城区的轮廓。",
     "anchorHeight": 2.7,
     "cameraDistance": 10,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 3.6
   },
   {
     "id": "zhenning",
@@ -20,8 +93,12 @@
     "anchorHeight": 1.5,
     "cameraDistance": 11,
     "modelled": true,
-    "clearExtent": [1.8, 1.8],
-    "sourceUrl": "https://www.openstreetmap.org/way/991635905"
+    "clearExtent": [
+      1.8,
+      1.8
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/991635905",
+    "closeDistance": 3.0
   },
   {
     "id": "gxu",
@@ -33,8 +110,12 @@
     "anchorHeight": 1.9,
     "cameraDistance": 18,
     "modelled": true,
-    "clearExtent": [2.6, 2.4],
-    "sourceUrl": "https://www.openstreetmap.org/way/822812173"
+    "clearExtent": [
+      2.6,
+      2.4
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/822812173",
+    "closeDistance": 4.0
   },
   {
     "id": "gx-museum",
@@ -46,8 +127,12 @@
     "anchorHeight": 1.8,
     "cameraDistance": 12,
     "modelled": true,
-    "clearExtent": [2.6, 2.2],
-    "sourceUrl": "https://www.openstreetmap.org/way/476559327"
+    "clearExtent": [
+      2.6,
+      2.2
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/476559327",
+    "closeDistance": 4.2
   },
   {
     "id": "nanhu",
@@ -69,7 +154,8 @@
     "description": "金湖片区的城市地标，以简化的塔身与顶部结构呈现。周围的街区保留公开地图中的道路关系。",
     "anchorHeight": 5.8,
     "cameraDistance": 12,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 4.7
   },
   {
     "id": "expo",
@@ -80,7 +166,12 @@
     "description": "朱槿花意象的会展建筑。以放射状花瓣屋顶和展厅体块，呈现南宁具有辨识度的建筑轮廓。",
     "anchorHeight": 2.6,
     "cameraDistance": 12,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 4.3,
+    "clearExtent": [
+      4.0,
+      3.8
+    ]
   },
   {
     "id": "cr",
@@ -91,7 +182,8 @@
     "description": "东盟商务区的高层地标。模型以收分塔身、竖向线条与顶部轮廓表达建筑特征。",
     "anchorHeight": 7.6,
     "cameraDistance": 13,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 5.8
   },
   {
     "id": "east-station",
@@ -103,8 +195,12 @@
     "anchorHeight": 2.0,
     "cameraDistance": 21,
     "modelled": true,
-    "clearExtent": [6.4, 3.6],
-    "sourceUrl": "https://www.openstreetmap.org/relation/11576286"
+    "clearExtent": [
+      6.4,
+      3.6
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/relation/11576286",
+    "closeDistance": 6.8
   },
   {
     "id": "ethnic-museum",
@@ -116,8 +212,12 @@
     "anchorHeight": 2.3,
     "cameraDistance": 15,
     "modelled": true,
-    "clearExtent": [4.0, 3.2],
-    "sourceUrl": "https://www.openstreetmap.org/way/1006681820"
+    "clearExtent": [
+      4.0,
+      3.2
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/1006681820",
+    "closeDistance": 4.5
   },
   {
     "id": "confucius",
@@ -129,8 +229,12 @@
     "anchorHeight": 2.0,
     "cameraDistance": 13,
     "modelled": true,
-    "clearExtent": [3.4, 3.8],
-    "sourceUrl": "https://www.openstreetmap.org/node/9292176827"
+    "clearExtent": [
+      3.4,
+      3.8
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/node/9292176827",
+    "closeDistance": 4.5
   },
   {
     "id": "qingxiu",
@@ -141,7 +245,8 @@
     "description": "沿邕江展开的低山森林，龙象塔立于山脊。青秀山是这片城区中清晰可辨的绿色高地。",
     "anchorHeight": 3.4,
     "cameraDistance": 20,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 3.4
   },
   {
     "id": "bridge",
@@ -152,7 +257,8 @@
     "description": "跨越邕江的非对称拱桥，在青秀山西侧连接两岸。朱红色拱肋成为青绿河面上的视觉焦点。",
     "anchorHeight": 2.5,
     "cameraDistance": 14,
-    "modelled": true
+    "modelled": true,
+    "closeDistance": 6.2
   },
   {
     "id": "arts-center",
@@ -164,8 +270,12 @@
     "anchorHeight": 2.7,
     "cameraDistance": 16,
     "modelled": true,
-    "clearExtent": [5.2, 3.4],
-    "sourceUrl": "https://www.openstreetmap.org/way/819620330"
+    "clearExtent": [
+      5.2,
+      3.4
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/819620330",
+    "closeDistance": 4.2
   },
   {
     "id": "tingzi",
@@ -177,7 +287,11 @@
     "anchorHeight": 2.3,
     "cameraDistance": 14,
     "modelled": true,
-    "clearExtent": [3.4, 2.4],
-    "sourceUrl": "https://www.openstreetmap.org/way/1423783186"
+    "clearExtent": [
+      3.4,
+      2.4
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/1423783186",
+    "closeDistance": 3.8
   }
 ]

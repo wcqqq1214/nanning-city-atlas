@@ -1,5 +1,6 @@
 """Low-poly landmark silhouettes; all dimensions are illustrative scene units."""
 import math
+from landmark_details import build_arts
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -33,7 +34,7 @@ def mountain_shell(b, x, y, z, width, depth, height):
     for lower,upper in zip(rings,rings[1:]):
         for i in range(24):
             j=(i+1)%24
-            b.face([lower[i],lower[j],upper[j],upper[i]],'roof')
+            b.face([lower[i],lower[j],upper[j],upper[i]],'roof' if i%2==0 else 'building')
     b.face(rings[-1],'roof')
 
 
@@ -121,11 +122,7 @@ def build_extra_landmarks(landmark):
     b.finish()
 
     b,x,y,z=landmark('arts-center')
-    b.box(x,y,z,4.8,3.0,.18,'building','roof')
-    b.box(x,y,z+.80,4.85,3.05,.09,'roof')
-    for dx,dy,width,depth,hh in [(-1.48,0,1.45,2.0,1.56),(.05,.16,1.35,2.25,1.95),(1.46,-.12,1.1,1.65,1.35)]:
-        b.box(x+dx,y+dy,z+.18,width*.8,depth*.8,.58,'landmark')
-        mountain_shell(b,x+dx,y+dy,z+.23,width,depth,hh)
+    build_arts(b,x,y,z,mountain_shell)
     b.finish()
 
     b,x,y,z=landmark('tingzi')

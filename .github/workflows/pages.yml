@@ -29,6 +29,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      - run: node --experimental-strip-types --test scripts/test-tap-gesture.mjs
       - run: npm run build:pages
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
