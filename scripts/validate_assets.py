@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
+catalog = json.loads((ROOT/'data/landmarks.json').read_text())
 assert len(t['heights']) == t['cols'] * t['rows']
 assert all(math.isfinite(h) and -500 < h < 9000 for h in t['heights'])
 assert t['minElevation'] == min(t['heights']) and t['maxElevation'] == max(t['heights'])
@@ -23,7 +24,14 @@ excluded = prep(water.union(unary_union([Polygon(p[0], p[1:]) for p in g['parks'
 for b in g['buildings']:
     if b['source'] == 'procedural':
         assert not excluded.intersects(Polygon(b['rings'][0])), 'Procedural building on water/park'
-assert len({p['id'] for p in places}) == 7
+assert len({p['id'] for p in places}) == len(places), 'Duplicate landmark IDs'
+assert [p['id'] for p in places] == [p['id'] for p in catalog], 'Landmark list and tour catalog differ'
+for place, source in zip(places, catalog):
+    assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
+    assert 5 <= place['cameraDistance'] <= 60
+    x=(place['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+    z=-(place['lat']-g['center'][1])*1113.2
+    assert abs(place['position'][0]-x)<.001 and abs(place['position'][2]-z)<.001, 'Landmark projection mismatch'
 w,s,e,n = g['bbox']
 assert all(w < p['lon'] < e and s < p['lat'] < n for p in places)
 raw = (ROOT/'public/models/nanning-city.glb').read_bytes()
@@ -35,6 +43,6 @@ model = json.loads(raw[20:20+json_len])
 assert 'KHR_draco_mesh_compression' in model['extensionsRequired']
 names = {node.get('name') for node in model['nodes']}
 assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth'} <= names
-assert all('Landmark_'+p['id'] in names for p in places if p['id'] != 'nanhu')
+assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
 assert len(raw) < 8_000_000, 'Model exceeds 8 MB loading budget'
-print(f'PASS: {len(g["buildings"])} building features; no infill on water or park; water coverage {coverage:.5%}; seven geolocated landmarks; valid Draco GLB {len(raw):,} bytes.')
+print(f'PASS: {len(g["buildings"])} building features; no infill on water or park; water coverage {coverage:.5%}; {len(places)} geolocated landmarks; valid Draco GLB {len(raw):,} bytes.')

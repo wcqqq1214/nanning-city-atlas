@@ -7,13 +7,18 @@ import bpy
 import json
 import math
 import random
+import sys
 from pathlib import Path
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'blender'))
+from extra_landmarks import build_extra_landmarks
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
+CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
+PLACE_BY_ID = {place['id']: place for place in CATALOG}
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 COLS, ROWS = DEM['cols'], DEM['rows']
 HEIGHTS = DEM.get('sceneHeights', DEM['heights'])
@@ -71,6 +76,19 @@ def height(x, y):
     a, b = i - ix, j - jy
     h = (HEIGHTS[jy*COLS+ix]*(1-a)+HEIGHTS[jy*COLS+ix+1]*a)*(1-b) + (HEIGHTS[(jy+1)*COLS+ix]*(1-a)+HEIGHTS[(jy+1)*COLS+ix+1]*a)*b
     return max(-.08, (h - 55) / 100 * SCALE_Z)
+
+
+def pos(lon,lat):
+    x=(lon-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
+    y=(lat-GEO['center'][1])*1113.2
+    return x,y,height(x,y)+.1
+
+
+CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
+
+
+def inside_landmark(x, y):
+    return any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS)
 
 
 class Batch:
@@ -175,6 +193,7 @@ for b in GEO['buildings']:
     ring=b['rings'][0][:-1]
     if len(ring)<3: continue
     x=sum(p[0] for p in ring)/len(ring); y=sum(p[1] for p in ring)/len(ring)
+    if inside_landmark(x,y): continue
     z=max(.4,height(x,y))+.07
     hh=b['height']/100*1.55
     key=RNG.choice(['building','building','building','building2','building3'])
@@ -188,7 +207,8 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-for x,y,r in GEO['trees']:
+visible_trees = [(x,y,r) for x,y,r in GEO['trees'] if not inside_landmark(x,y)]
+for x,y,r in visible_trees:
     z=max(.32,height(x,y))
     trees.cone(x,y,z,.045,.03,.3,'trunk',5)
     col=RNG.choice(['leaf','leaf','leaf2','leaf3'])
@@ -197,42 +217,40 @@ for x,y,r in GEO['trees']:
 trees.finish()
 
 
-def pos(lon,lat):
-    x=(lon-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
-    y=(lat-GEO['center'][1])*1113.2
-    return x,y,height(x,y)+.1
 
 
 landmarks=[]
-def landmark(id,lon,lat,title,kind,desc):
-    x,y,z=pos(lon,lat)
+def landmark(id):
+    place = PLACE_BY_ID[id]
+    x,y,z=pos(place['lon'],place['lat'])
     batch=Batch('Landmark_'+id,['roof','landmark','accent','bridge','building'])
-    landmarks.append({'id':id,'name':title,'lon':lon,'lat':lat,'position':[round(x,3),round(z,3),round(-y,3)],'category':kind,'description':desc})
+    landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
+    landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
     return batch,x,y,z
 
-b,x,y,z=landmark('qingxiu',108.385824,22.783102,'青秀山 · 龙象塔','山林','沿邕江展开的低山森林，龙象塔立于山脊。青秀山是这片城区中清晰可辨的绿色高地。')
+b,x,y,z=landmark('qingxiu')
 for i in range(9):
     r=.37-i*.026
     b.cone(x,y,z+i*.26,r,r*.96,.24,'roof',8)
     b.cone(x,y,z+i*.26+.21,r*1.35,r*.68,.095,'accent',8)
 b.cone(x,y,z+2.5,.15,0,.52,'accent',8)
-b.finish();landmarks[-1]['anchorHeight']=3.4
+b.finish()
 
-b,x,y,z=landmark('cr',108.391122,22.81491,'华润大厦','城市天际线','东盟商务区的高层地标。模型以收分塔身、竖向线条与顶部轮廓表达建筑特征。')
+b,x,y,z=landmark('cr')
 for i in range(8):
     size=.77-i*.055
     b.box(x,y,z+i*.78,size,size,.8,'landmark','roof')
     b.box(x,y,z+i*.78,size+.018,size+.018,.034,'accent')
 b.cone(x,y,z+6.3,.23,.08,.6,'landmark',4)
-b.finish();landmarks[-1]['anchorHeight']=7.6
+b.finish()
 
-b,x,y,z=landmark('diwang',108.365618,22.818635,'地王大厦','城市天际线','金湖片区的城市地标，以简化的塔身与顶部结构呈现。周围的街区保留公开地图中的道路关系。')
+b,x,y,z=landmark('diwang')
 b.box(x,y,z,.64,.64,4.25,'landmark','roof')
 b.box(x,y,z+3.8,.42,.42,.8,'landmark','roof')
 b.cone(x,y,z+4.6,.28,0,.46,'accent',4)
-b.finish();landmarks[-1]['anchorHeight']=5.8
+b.finish()
 
-b,x,y,z=landmark('expo',108.375595,22.811472,'国际会展中心','城市地标','朱槿花意象的会展建筑。以放射状花瓣屋顶和展厅体块，呈现南宁具有辨识度的建筑轮廓。')
+b,x,y,z=landmark('expo')
 b.box(x,y,z,3.2,2.3,.44,'building','roof')
 b.cone(x,y,z+.44,.63,.51,.72,'landmark',12)
 for i in range(12):
@@ -242,16 +260,16 @@ for i in range(12):
     p2=(x+math.cos(a)*1.04,y+math.sin(a)*1.04,z+.60)
     p3=(x+math.cos(a+.15)*.8,y+math.sin(a+.15)*.8,z+.72)
     b.face([p0,p1,p2,p3],'roof')
-b.finish();landmarks[-1]['anchorHeight']=2.6
+b.finish()
 
-b,x,y,z=landmark('changyou',108.314502,22.815407,'三街两巷 · 畅游阁','老城','在邕江北岸回望老城。以层叠屋檐表现畅游阁，与低矮的街坊体块形成滨江历史城区的轮廓。')
+b,x,y,z=landmark('changyou')
 for i in range(4):
     size=1.05-i*.14
     b.box(x,y,z+i*.33,size,size*.62,.3,'building')
     b.cone(x,y,z+i*.33+.3,size*.8,size*.39,.23,'accent',4)
-b.finish();landmarks[-1]['anchorHeight']=2.7
+b.finish()
 
-b,x,y,z=landmark('bridge',108.36768,22.78615,'南宁大桥','邕江桥梁','跨越邕江的非对称拱桥，在青秀山西侧连接两岸。朱红色拱肋成为青绿河面上的视觉焦点。')
+b,x,y,z=landmark('bridge')
 z=1.20
 # Use the surveyed OSM bridge direction.
 bridge_roads=[r for r in GEO['roads'] if r['name']=='南宁大桥']
@@ -268,14 +286,20 @@ for side in [-1,1]:
         b.face([(p[0]-nx*.065,p[1]-ny*.065,p[2]),(q[0]-nx*.065,q[1]-ny*.065,q[2]),(q[0]+nx*.065,q[1]+ny*.065,q[2]+.06),(p[0]+nx*.065,p[1]+ny*.065,p[2]+.06)],'bridge')
         if i%3==0:
             b.box(p[0],p[1],z,.028,.028,max(.03,p[2]-z),'roof')
-b.finish();landmarks[-1]['anchorHeight']=2.5
+b.finish()
 
-x,y,z=pos(108.3484,22.8132)
-landmarks.append({'id':'nanhu','name':'南湖公园','lon':108.3484,'lat':22.8132,'position':[round(x,3),.3,round(-y,3)],'anchorHeight':.8,'category':'城市湖泊','description':'狭长的南湖嵌在城市街区之间。湖面与环湖绿带共同构成一条由西南向东北延伸的城市开放空间。'})
+lake = PLACE_BY_ID['nanhu']
+x,y,z=pos(lake['lon'],lake['lat'])
+landmarks.append({**lake,'position':[round(x,3),.3,round(-y,3)]})
+
+# Additional cultural, campus, riverside and transport landmarks.
+build_extra_landmarks(landmark)
+landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']==place['id']))
 
 (ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
 # Minimal overview data avoids downloading the geometry database at runtime.
-summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','stats','osmTimestamp']}
+summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
+summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
 summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':3,'buildingExaggeration':1.55})
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 
@@ -302,4 +326,4 @@ bpy.context.scene.render.resolution_y=1100
 bpy.context.scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'blender/nanning-city.blend'))
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
-print('City complete:',len(GEO['buildings']),'buildings,',len(GEO['trees']),'trees.',flush=True)
+print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'trees,',len(landmarks),'landmarks.',flush=True)

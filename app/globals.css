@@ -962,7 +962,7 @@ button {
   color: #7c9075;
   margin-bottom: 8px;
 }
-.minimap svg {
+.minimap > svg {
   width: 100%;
   height: 105px;
   border-radius: 3px;
@@ -1288,7 +1288,7 @@ button {
     width: 127px;
     height: 128px;
   }
-  .minimap svg {
+  .minimap > svg {
     height: 87px;
   }
   .place-detail {
@@ -1395,11 +1395,13 @@ button {
   .sidebar {
     top: 67px;
     width: 302px;
+    visibility: hidden;
     transform: translateX(-100%);
     transition: transform 0.25s;
     z-index: 35;
   }
   .sidebar.mobile-open {
+    visibility: visible;
     transform: translateX(0);
   }
   .mobile-scrim {
@@ -1486,7 +1488,7 @@ button {
     font-size: 8px;
     margin-bottom: 4px;
   }
-  .minimap svg {
+  .minimap > svg {
     height: 63px;
   }
   .mini-north {

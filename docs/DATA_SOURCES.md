@@ -22,6 +22,26 @@
 7. 树木在绿地和滨水缓冲区示意分布，不代表真实树种和树位。
 8. 原始高程保留为 `heights`；显示高程另存为 `sceneHeights`，水下采样设为 53 m，岸上显示地形最低取 62 m，水面统一绘制于显示高度。该处理仅用于可视化，不构成水文模型。
 9. 初始地形高差比例为 3，初始建筑高度比例为 1.55。菜单中的竖向比例会进一步作用于整个模型。
+10. 自建地标范围内不重复绘制常规建筑中心和树位，避免简化模型穿插。地理数据库保留原始要素；这是渲染替换，不代表原建筑被删除。4,700 个候选树位最终显示 4,670 个。
+
+## 地标位置与造型
+
+`data/landmarks.json` 是地标顺序、文字和镜头配置的唯一源目录；Blender 生成 `public/data/landmarks.json` 时补上场景坐标，前端按同一目录展示。
+
+新增点位使用 OSM 的 WGS84 坐标：面要素取包围盒中心，孔庙使用场所节点，东站使用站区关系中心。因此它们是浏览用的代表点，不是建筑测量控制点。每条新增记录保留对应的 `sourceUrl`。
+
+| 新增探索点 | 坐标来源 |
+| --- | --- |
+| 广西大学 · 汇学堂 | [OSM way 822812173](https://www.openstreetmap.org/way/822812173) |
+| 人民公园 · 镇宁炮台 | [OSM way 991635905](https://www.openstreetmap.org/way/991635905) |
+| 广西博物馆 | [OSM way 476559327](https://www.openstreetmap.org/way/476559327) |
+| 南宁东站 | [OSM relation 11576286](https://www.openstreetmap.org/relation/11576286) |
+| 广西民族博物馆 | [OSM way 1006681820](https://www.openstreetmap.org/way/1006681820) |
+| 南宁孔庙 | [OSM node 9292176827](https://www.openstreetmap.org/node/9292176827) |
+| 广西文化艺术中心 | [OSM way 819620330](https://www.openstreetmap.org/way/819620330) |
+| 亭子码头 | [OSM way 1423783186](https://www.openstreetmap.org/way/1423783186) |
+
+造型按公开建筑特征自行简化：艺术中心的山体与云棚参考 [gmp 项目介绍](https://www.gmp.de/en/projects/3231/guangxi-culture-arts-center)，汇学堂的坡屋顶与柱廊参考 [广西大学校园介绍](https://tmjz.gxu.edu.cn/info/1452/5053.htm)，镇宁炮台的环形堡垒参考 [南宁市融媒体中心报道](https://silkroadonthecloud.cn/f/view-A1002001002-2054792774516322304.html)。模型不包含测量尺寸、实景贴图或原建筑设计图，比例为沙盘展示做了调整。
 
 ## 范围限制
 

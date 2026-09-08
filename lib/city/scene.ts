@@ -35,10 +35,10 @@ export async function createCityScene(
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.23;
+  renderer.toneMappingExposure = 0.96;
   renderer.domElement.className = 'city-canvas';
   renderer.domElement.tabIndex = 0;
   renderer.domElement.setAttribute(
@@ -65,9 +65,9 @@ export async function createCityScene(
   controls.target.set(0, 0, 0);
   controls.update();
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hemi = new THREE.HemisphereLight('#f4f8eb', '#668f84', 2.5);
+  const hemi = new THREE.HemisphereLight('#f4f8eb', '#668f84', 1.5);
   scene.add(hemi);
-  const sun = new THREE.DirectionalLight('#fff3d7', 3.4);
+  const sun = new THREE.DirectionalLight('#fff3d7', 2.7);
   sun.position.set(-90, 130, 40);
   sun.castShadow = true;
   Object.assign(sun.shadow.camera, {
@@ -121,6 +121,7 @@ export async function createCityScene(
     el: HTMLButtonElement;
     point: THREE.Vector3;
     place: Landmark;
+    width: number;
   }[] = [];
   const meshes: THREE.Mesh[] = [];
   const materialDefaults = new Map<THREE.MeshStandardMaterial, THREE.Color>();
@@ -158,6 +159,12 @@ export async function createCityScene(
     const width = Math.max(1, host.clientWidth);
     const height = Math.max(1, host.clientHeight);
     renderer.setSize(width, height);
+    for (const label of labels) {
+      const display = label.el.style.display;
+      label.el.style.display = 'flex';
+      label.width = label.el.offsetWidth;
+      label.el.style.display = display;
+    }
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     controls.maxDistance = Math.max(360, overviewPosition().length() * 1.15);
@@ -195,8 +202,7 @@ export async function createCityScene(
     }
     const target = new THREE.Vector3(...place.position);
     target.y *= option.heightScale;
-    const distance =
-      place.id === 'nanhu' ? 40 : place.id === 'qingxiu' ? 33 : 21;
+    const distance = place.cameraDistance * Math.max(1, 1.05 / camera.aspect);
     const offset = option.topDown
       ? new THREE.Vector3(0, distance * 2, 0.1)
       : new THREE.Vector3(distance, distance * 1.15, distance * 1.35);
@@ -326,7 +332,7 @@ export async function createCityScene(
       waterMaterial.uniforms.uTime.value = reduced ? 0 : now / 1000;
     renderer.render(scene, camera);
     camera.getWorldDirection(viewDirection);
-    const occupied: { x: number; y: number }[] = [];
+    const occupied: { x: number; y: number; width: number }[] = [];
     const ordered = [...labels].sort(
       (a, b) =>
         Number(b.place.id === option.selected) -
@@ -341,21 +347,23 @@ export async function createCityScene(
       const x = (projected.x * 0.5 + 0.5) * host.clientWidth;
       const y = (-projected.y * 0.5 + 0.5) * host.clientHeight;
       const collision = occupied.some(
-        (p) => Math.abs(p.x - x) < 125 && Math.abs(p.y - y) < 44,
+        (p) =>
+          Math.abs(p.x - x) < (p.width + label.width) / 2 + 12 &&
+          Math.abs(p.y - y) < 48,
       );
       const show =
         option.layers.labels &&
         inFront &&
         projected.z < 1 &&
-        x > 40 &&
-        x < host.clientWidth - 40 &&
+        x > label.width / 2 + 12 &&
+        x < host.clientWidth - label.width / 2 - 12 &&
         y > 60 &&
         y < host.clientHeight - 74 &&
         !collision;
       label.el.style.display = show ? 'flex' : 'none';
       if (show) {
         label.el.style.transform = `translate(${x}px,${y}px) translate(-50%,-100%)`;
-        occupied.push({ x, y });
+        occupied.push({ x, y, width: label.width });
       }
     }
     if (now - lastTelemetry > 180) {
@@ -486,7 +494,10 @@ export async function createCityScene(
       labelLayer.appendChild(el);
       const point = new THREE.Vector3(...place.position);
       point.y += place.anchorHeight;
-      labels.push({ el, point, place });
+      el.style.display = 'flex';
+      const width = el.offsetWidth;
+      el.style.display = 'none';
+      labels.push({ el, point, place, width });
     }
     const apply = (next: SceneOptions) => {
       const wasTop = option.topDown;
@@ -503,8 +514,8 @@ export async function createCityScene(
       scene.background = background;
       (scene.fog as THREE.FogExp2).color.copy(background);
       (floor.material as THREE.MeshStandardMaterial).color.copy(background);
-      hemi.intensity = 2.5 - night * 1.5;
-      sun.intensity = 3.4 - night * 2.5;
+      hemi.intensity = 1.5 - night * 0.65;
+      sun.intensity = 2.7 - night * 1.95;
       hemi.color.set(night > 0.5 ? '#89b9ce' : '#f4f8eb');
       sun.color
         .set('#fff3d7')
@@ -516,7 +527,7 @@ export async function createCityScene(
         35 + Math.max(0.1, Math.sin(sunAngle)) * 130,
         45,
       );
-      renderer.toneMappingExposure = 1.23 - night * 0.16;
+      renderer.toneMappingExposure = 0.96 + night * 0.04;
       if (waterMaterial) waterMaterial.uniforms.uNight.value = night;
       city.scale.y = next.heightScale;
       const names: Partial<Record<string, boolean>> = {

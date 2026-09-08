@@ -6,6 +6,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   Building2,
+  GraduationCap,
+  Landmark as LandmarkIcon,
   Check,
   ChevronRight,
   CircleHelp,
@@ -32,6 +34,7 @@ import {
   Sun,
   Sunset,
   Trees,
+  TrainFront,
   Waves,
   X,
 } from 'lucide-react';
@@ -54,16 +57,9 @@ import {
   type SceneOptions,
 } from '@/lib/city/types';
 import { registerAtlasTools } from '@/lib/city/webmcp';
+import landmarkCatalog from '@/data/landmarks.json';
 
-const ORDER = [
-  'changyou',
-  'nanhu',
-  'diwang',
-  'expo',
-  'cr',
-  'qingxiu',
-  'bridge',
-];
+const ORDER = landmarkCatalog.map((place) => place.id);
 const LAYER_INFO: {
   key: LayerKey;
   name: string;
@@ -91,12 +87,16 @@ const LAYER_INFO: {
   },
   { key: 'labels', name: '地名标注', detail: '可点击的城市地标', icon: MapPin },
 ];
-const iconFor = (id: string) =>
-  id === 'qingxiu'
-    ? Mountain
-    : id === 'nanhu' || id === 'bridge'
-      ? Waves
-      : Building2;
+const iconFor = (id: string) => {
+  if (id === 'qingxiu') return Mountain;
+  if (id === 'zhenning') return Trees;
+  if (id === 'gxu') return GraduationCap;
+  if (id === 'east-station') return TrainFront;
+  if (['nanhu', 'bridge', 'tingzi'].includes(id)) return Waves;
+  if (['gx-museum', 'ethnic-museum', 'confucius'].includes(id))
+    return LandmarkIcon;
+  return Building2;
+};
 
 function MiniMap({
   overview,
@@ -453,7 +453,9 @@ export default function Home() {
           <TabsContent value="explore" className="tab-body">
             <div className="section-caption">
               <span>城市探索点</span>
-              <span>07 个地标</span>
+              <span>
+                {String(landmarkCatalog.length).padStart(2, '0')} 个地标
+              </span>
             </div>
             <button
               className={`overview-place ${!selected ? 'active' : ''}`}
@@ -470,24 +472,7 @@ export default function Home() {
               <ArrowUpRight size={18} />
             </button>
             <div className="place-list">
-              {(ready
-                ? ordered
-                : ORDER.map((id) => ({
-                    id,
-                    name: (
-                      {
-                        changyou: '三街两巷 · 畅游阁',
-                        nanhu: '南湖公园',
-                        diwang: '地王大厦',
-                        expo: '国际会展中心',
-                        cr: '华润大厦',
-                        qingxiu: '青秀山 · 龙象塔',
-                        bridge: '南宁大桥',
-                      } as Record<string, string>
-                    )[id],
-                    category: '',
-                  }))
-              ).map((place, index) => {
+              {(ready ? ordered : landmarkCatalog).map((place, index) => {
                 const Icon = iconFor(place.id);
                 return (
                   <button
@@ -701,7 +686,9 @@ export default function Home() {
             )}
             <span>{tour ? '暂停城市漫游' : '开始城市漫游'}</span>
             <span className="tour-duration">
-              {tour ? `${ORDER.indexOf(selected ?? '') + 1} / 7` : '7 站'}
+              {tour
+                ? `${ORDER.indexOf(selected ?? '') + 1} / ${ORDER.length}`
+                : `${ORDER.length} 站`}
             </span>
           </button>
           <button className="help-button" onClick={() => setInfoOpen(true)}>
