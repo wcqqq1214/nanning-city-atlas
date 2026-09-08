@@ -1,0 +1,58 @@
+export type LayerKey =
+  | 'buildings'
+  | 'vegetation'
+  | 'roads'
+  | 'water'
+  | 'labels';
+export type Layers = Record<LayerKey, boolean>;
+export type Landmark = {
+  id: string;
+  name: string;
+  lon: number;
+  lat: number;
+  position: [number, number, number];
+  anchorHeight: number;
+  category: string;
+  description: string;
+};
+export type Overview = {
+  bbox: number[];
+  center: number[];
+  bounds: number[];
+  metersPerUnit: number;
+  water: number[][][][];
+  minElevation: number;
+  maxElevation: number;
+  terrainExaggeration: number;
+  buildingExaggeration: number;
+  osmTimestamp: string;
+  stats: {
+    mappedBuildings: number;
+    infillBuildings: number;
+    roadSegments: number;
+    trees: number;
+  };
+};
+export type SceneOptions = {
+  layers: Layers;
+  hour: number;
+  heightScale: number;
+  autoRotate: boolean;
+  topDown: boolean;
+  selected: string | null;
+};
+export type SceneController = {
+  apply: (options: SceneOptions) => void;
+  focus: (id: string | null) => void;
+  zoom: (factor: number) => void;
+  north: () => void;
+  capture: () => Promise<void>;
+  dispose: () => void;
+};
+export const DEFAULT_LAYERS: Layers = {
+  buildings: true,
+  vegetation: true,
+  roads: true,
+  water: true,
+  labels: true,
+};
