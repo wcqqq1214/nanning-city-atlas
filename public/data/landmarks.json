@@ -1,5 +1,107 @@
 [
   {
+    "id": "meili",
+    "name": "石埠 · 美丽南方",
+    "lon": 108.1873367,
+    "lat": 22.845064,
+    "category": "城西 · 田园",
+    "description": "邕江上游的石埠片区。沿江田园、村落与城西路网在这里相接，适合从城区观察到郊野。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 32,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/911702595",
+    "position": [
+      -115.596,
+      1.074,
+      -22.335
+    ]
+  },
+  {
+    "id": "luowen",
+    "name": "罗文 · 广西艺术学院",
+    "lon": 108.2186957,
+    "lat": 22.8595848,
+    "category": "城西 · 校园",
+    "description": "罗文大道与大学西路一带的校园片区。以广西艺术学院相思湖校区为观察点，浏览城西的道路和校园布局。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 25,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/839607484",
+    "position": [
+      -83.421,
+      1.038,
+      -38.5
+    ]
+  },
+  {
+    "id": "gxmzu",
+    "name": "广西民族大学 · 相思湖校区",
+    "lon": 108.2317606,
+    "lat": 22.8459906,
+    "category": "城西 · 校园",
+    "description": "大学东路沿线的校园地标。校园、水面与周边街区串起城西的大学片区；建筑使用公开轮廓简化表达。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 23,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/1011595714",
+    "position": [
+      -70.016,
+      0.343,
+      -23.367
+    ]
+  },
+  {
+    "id": "xiangsi",
+    "name": "相思湖公园",
+    "lon": 108.2395786,
+    "lat": 22.8380645,
+    "category": "城西 · 湖泊",
+    "description": "相思湖水系与沿岸绿地组成城西的一段开敞空间。从湖边可以观察大学路片区和向南延伸的城市纹理。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 23,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/way/1465268029",
+    "position": [
+      -61.994,
+      0.3,
+      -14.543
+    ]
+  },
+  {
+    "id": "zoo",
+    "name": "南宁动物园",
+    "lon": 108.2646164,
+    "lat": 22.8378459,
+    "category": "城西 · 林地",
+    "description": "大学东路旁的大块林地与水面。沙盘保留园区的公开绿地、水系和建筑轮廓，呈现它在城西的空间位置。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 25,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/relation/20998616",
+    "position": [
+      -36.305,
+      0.864,
+      -14.3
+    ]
+  },
+  {
+    "id": "mingyue",
+    "name": "明月湖",
+    "lon": 108.2716687,
+    "lat": 22.8469301,
+    "category": "城西 · 湖泊",
+    "description": "校园与高新区之间的湖泊空间。沿周边道路向北，可继续浏览本次扩展的北部城区。",
+    "anchorHeight": 0.65,
+    "cameraDistance": 20,
+    "modelled": false,
+    "sourceUrl": "https://www.openstreetmap.org/relation/6695830",
+    "position": [
+      -29.069,
+      0.931,
+      -24.413
+    ]
+  },
+  {
     "id": "changyou",
     "name": "三街两巷 · 畅游阁",
     "lon": 108.314502,
@@ -9,10 +111,11 @@
     "anchorHeight": 2.7,
     "cameraDistance": 10,
     "modelled": true,
+    "closeDistance": 3.6,
     "position": [
-      -51.82,
-      0.646,
-      -11.585
+      14.879,
+      0.702,
+      10.679
     ]
   },
   {
@@ -26,10 +129,11 @@
     "cameraDistance": 11,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/991635905",
+    "closeDistance": 3.0,
     "position": [
-      -41.635,
-      1.848,
-      -28.278
+      25.063,
+      1.85,
+      -6.014
     ]
   },
   {
@@ -43,10 +147,11 @@
     "cameraDistance": 18,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/822812173",
+    "closeDistance": 4.0,
     "position": [
-      -81.128,
-      0.962,
-      -41.814
+      -14.424,
+      0.977,
+      -19.55
     ]
   },
   {
@@ -60,10 +165,11 @@
     "cameraDistance": 12,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/476559327",
+    "closeDistance": 4.2,
     "position": [
-      -34.629,
-      0.805,
-      -11.089
+      32.068,
+      0.842,
+      11.175
     ]
   },
   {
@@ -77,9 +183,9 @@
     "cameraDistance": 32,
     "modelled": false,
     "position": [
-      -17.035,
-      0.3,
-      -9.128
+      49.66,
+      1.055,
+      13.136
     ]
   },
   {
@@ -92,10 +198,11 @@
     "anchorHeight": 5.8,
     "cameraDistance": 12,
     "modelled": true,
+    "closeDistance": 4.7,
     "position": [
-      0.634,
-      0.985,
-      -15.178
+      67.326,
+      0.888,
+      7.086
     ]
   },
   {
@@ -108,10 +215,11 @@
     "anchorHeight": 2.6,
     "cameraDistance": 12,
     "modelled": true,
+    "closeDistance": 4.3,
     "position": [
-      10.872,
-      1.818,
-      -7.205
+      77.563,
+      1.82,
+      15.059
     ]
   },
   {
@@ -124,10 +232,11 @@
     "anchorHeight": 7.6,
     "cameraDistance": 13,
     "modelled": true,
+    "closeDistance": 5.8,
     "position": [
-      26.806,
-      1.888,
-      -11.032
+      93.494,
+      1.8,
+      11.232
     ]
   },
   {
@@ -141,10 +250,11 @@
     "cameraDistance": 21,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/relation/11576286",
+    "closeDistance": 6.8,
     "position": [
-      46.099,
-      1.242,
-      -44.234
+      112.784,
+      1.207,
+      -21.97
     ]
   },
   {
@@ -158,10 +268,11 @@
     "cameraDistance": 15,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/1006681820",
+    "closeDistance": 4.5,
     "position": [
-      33.478,
-      0.981,
-      30.986
+      100.165,
+      0.535,
+      53.25
     ]
   },
   {
@@ -175,10 +286,11 @@
     "cameraDistance": 13,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/node/9292176827",
+    "closeDistance": 4.5,
     "position": [
-      24.92,
-      0.922,
-      26.903
+      91.608,
+      0.863,
+      49.167
     ]
   },
   {
@@ -191,10 +303,11 @@
     "anchorHeight": 3.4,
     "cameraDistance": 20,
     "modelled": true,
+    "closeDistance": 3.4,
     "position": [
-      21.369,
-      4.362,
-      24.377
+      88.058,
+      4.269,
+      46.641
     ]
   },
   {
@@ -207,10 +320,11 @@
     "anchorHeight": 2.5,
     "cameraDistance": 14,
     "modelled": true,
+    "closeDistance": 6.2,
     "position": [
-      2.75,
-      0.04,
-      20.984
+      69.442,
+      1.23,
+      43.248
     ]
   },
   {
@@ -224,10 +338,11 @@
     "cameraDistance": 16,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/819620330",
+    "closeDistance": 4.2,
     "position": [
-      0.876,
-      0.802,
-      27.535
+      67.568,
+      0.786,
+      49.799
     ]
   },
   {
@@ -241,10 +356,11 @@
     "cameraDistance": 14,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/1423783186",
+    "closeDistance": 3.8,
     "position": [
-      -47.869,
-      0.662,
-      11.657
+      18.83,
+      0.661,
+      33.921
     ]
   }
 ]

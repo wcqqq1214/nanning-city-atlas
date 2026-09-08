@@ -18,7 +18,8 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "work" / "geodata"
 OUT = ROOT / "public" / "data"
-BBOX = [108.265, 22.735, 108.465, 22.875]  # west, south, east, north; WGS84
+REGION = json.loads((ROOT / 'data/region.json').read_text())
+BBOX = REGION['bbox']  # west, south, east, north; WGS84
 CENTER = [(BBOX[0] + BBOX[2]) / 2, (BBOX[1] + BBOX[3]) / 2]
 ZOOM = 12
 
@@ -36,11 +37,12 @@ def tile_xy(lon, lat):
 
 def fetch_osm():
     path = CACHE / "osm.json"
-    if path.exists():
+    meta = CACHE / 'osm-region.json'
+    if path.exists() and meta.exists() and json.loads(meta.read_text()) == BBOX:
         return path
     w, s, e, n = BBOX
     bbox = f"({s},{w},{n},{e})"
-    query = f'''[out:json][timeout:100];(
+    query = f'''[out:json][timeout:140];(
       way["highway"~"^(motorway|trunk|primary|secondary|tertiary|residential|unclassified)(_link)?$"]{bbox};
       way["waterway"="river"]{bbox};
       way["natural"="water"]{bbox}; relation["natural"="water"]{bbox};
@@ -50,6 +52,10 @@ def fetch_osm():
       way["landuse"~"^(forest|residential|commercial|retail|industrial)$"]{bbox};
       relation["landuse"="forest"]{bbox};
       way["building"]{bbox};
+      relation["building"]{bbox};
+      relation["landuse"~"^(residential|commercial|retail|industrial)$"]{bbox};
+      way["amenity"="university"]{bbox}; relation["amenity"="university"]{bbox};
+      way["tourism"="zoo"]{bbox}; relation["tourism"="zoo"]{bbox};
     );out geom;'''
     (CACHE / "query.overpassql").write_text(query)
     endpoints = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
@@ -60,6 +66,7 @@ def fetch_osm():
             if "remark" in payload or not payload.get("elements"):
                 raise RuntimeError(payload.get("remark", "Empty Overpass result"))
             path.write_bytes(raw)
+            meta.write_text(json.dumps(BBOX))
             print(f"OSM: {len(payload['elements'])} elements from {endpoint}", flush=True)
             return path
         except Exception as error:
@@ -84,7 +91,10 @@ def fetch_terrain():
     keys = [(x, y) for x in range(int(x0), int(x1) + 1) for y in range(int(y0), int(y1) + 1)]
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         tiles.update(pool.map(fetch_tile, keys))
-    cols, rows = 225, 173
+    # Preserve approximately the old sampling density when the city grows.
+    spacing = REGION['terrainSpacingMeters']
+    cols = math.ceil((e-w)*111320*math.cos(math.radians(CENTER[1]))/spacing)+1
+    rows = math.ceil((n-s)*111320/spacing)+1
     heights = []
     for j in range(rows):
         lat = n - (n - s) * j / (rows - 1)

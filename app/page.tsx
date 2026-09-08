@@ -40,10 +40,13 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useCompactLayout } from '@/lib/city/display';
 import { Slider } from '@/components/ui/slider';
 import {
   Sheet,
   SheetContent,
+  SheetClose,
   SheetDescription,
   SheetHeader,
   SheetTitle,
@@ -55,9 +58,12 @@ import {
   type Overview,
   type SceneController,
   type SceneOptions,
+  type QualityPreference,
+  type SceneMetrics,
 } from '@/lib/city/types';
 import { registerAtlasTools } from '@/lib/city/webmcp';
 import landmarkCatalog from '@/data/landmarks.json';
+import region from '@/data/region.json';
 
 const ORDER = landmarkCatalog.map((place) => place.id);
 const LAYER_INFO: {
@@ -90,7 +96,7 @@ const LAYER_INFO: {
 const iconFor = (id: string) => {
   if (id === 'qingxiu') return Mountain;
   if (id === 'zhenning') return Trees;
-  if (id === 'gxu') return GraduationCap;
+  if (['gxu', 'gxmzu', 'luowen'].includes(id)) return GraduationCap;
   if (id === 'east-station') return TrainFront;
   if (['nanhu', 'bridge', 'tingzi'].includes(id)) return Waves;
   if (['gx-museum', 'ethnic-museum', 'confucius'].includes(id))
@@ -156,6 +162,14 @@ function MiniMap({
 
 export default function Home() {
   const host = useRef<HTMLDivElement>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const isMobile = useCompactLayout();
+  const [quality, setQuality] = useState<QualityPreference>('auto');
+  const [metrics, setMetrics] = useState<SceneMetrics | null>(null);
+  const showStats =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search).has('stats');
+  const [detailExpanded, setDetailExpanded] = useState(false);
   const controller = useRef<SceneController | null>(null);
   const [places, setPlaces] = useState<Landmark[]>([]);
   const [overview, setOverview] = useState<Overview | null>(null);
@@ -203,6 +217,7 @@ export default function Home() {
 
   const choose = useCallback((id: string | null) => {
     setSelected(id);
+    setDetailExpanded(false);
     setTour(false);
     setAutoRotate(false);
     setMobileOpen(false);
@@ -252,6 +267,7 @@ export default function Home() {
     const container = host.current;
     setReady(false);
     setError('');
+    setMetrics(null);
     setProgress({ message: '准备南宁地理图景', value: 0 });
     import('@/lib/city/scene')
       .then(({ createCityScene }) => {
@@ -267,6 +283,7 @@ export default function Home() {
             },
             select: (id) => selectRef.current(id),
             heading: setHeading,
+            metrics: setMetrics,
             view: (lon, lat) => setCoordinates([lon, lat]),
             interaction: () => interactionRef.current(),
             error: (message) => {
@@ -275,6 +292,7 @@ export default function Home() {
             },
           },
           abort.signal,
+          quality,
         );
       })
       .then((scene) => {
@@ -285,6 +303,7 @@ export default function Home() {
         }
         controller.current = scene;
         scene.apply(options.current);
+        if (options.current.selected) scene.focus(options.current.selected);
       })
       .catch((err: unknown) => {
         if (!abort.signal.aborted) {
@@ -297,7 +316,7 @@ export default function Home() {
       controller.current?.dispose();
       controller.current = null;
     };
-  }, [reload]);
+  }, [reload, quality]);
 
   useEffect(() => {
     if (!tour || !ready) return;
@@ -363,8 +382,324 @@ export default function Home() {
     setLayers((current) => ({ ...current, [key]: value }));
   const timeLabel = `${Math.floor(hour).toString().padStart(2, '0')}:${hour % 1 ? '30' : '00'}`;
 
+  const sidebar = (
+    <>
+      <div className="sidebar-intro">
+        <span className="eyebrow">EXPLORE THE GREEN CITY</span>
+        <h1>
+          探索南宁<span>01 / 广西</span>
+        </h1>
+        <p>沿着邕江，读懂一座城。</p>
+      </div>
+      <Tabs
+        value={tab}
+        onValueChange={(value) => setTab(String(value))}
+        className="sidebar-tabs"
+      >
+        <TabsList className="panel-tabs" aria-label="城市菜单">
+          <TabsTrigger value="explore">
+            <Compass size={15} />
+            探索
+          </TabsTrigger>
+          <TabsTrigger value="layers">
+            <Layers3 size={15} />
+            图层
+          </TabsTrigger>
+          <TabsTrigger value="scene">
+            <SlidersHorizontal size={15} />
+            环境
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="explore" className="tab-body">
+          <div className="section-caption">
+            <span>城市探索点</span>
+            <span>
+              {String(landmarkCatalog.length).padStart(2, '0')} 个地标
+            </span>
+          </div>
+          <button
+            className={`overview-place ${!selected ? 'active' : ''}`}
+            disabled={!ready}
+            onClick={() => choose(null)}
+          >
+            <div className="place-icon overview-icon">
+              <Navigation size={21} />
+            </div>
+            <div>
+              <strong>邕江两岸</strong>
+              <span>石埠至凤岭 · 全景鸟瞰</span>
+            </div>
+            <ArrowUpRight size={18} />
+          </button>
+          <div className="place-list">
+            {(ready ? ordered : landmarkCatalog).map((place, index) => {
+              const Icon = iconFor(place.id);
+              return (
+                <button
+                  key={place.id}
+                  className={`place-item ${selected === place.id ? 'active' : ''}`}
+                  disabled={!ready}
+                  onClick={() => choose(place.id)}
+                  aria-pressed={selected === place.id}
+                >
+                  <span className="place-number">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className={`place-icon place-${place.id}`}>
+                    <Icon size={19} strokeWidth={1.6} />
+                  </span>
+                  <span className="place-text">
+                    <strong>{place.name}</strong>
+                    <small>{place.category || '城市探索点'}</small>
+                  </span>
+                  <ChevronRight size={15} />
+                </button>
+              );
+            })}
+          </div>
+          <div className="explore-note">
+            <Waves size={18} />
+            <p>
+              一江穿城，青山入城。
+              <br />
+              <span>从老城街巷，走向绿城天际线。</span>
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="layers" className="tab-body">
+          <div className="section-caption">
+            <span>地图内容</span>
+            <button onClick={() => setLayers({ ...DEFAULT_LAYERS })}>
+              全部显示
+            </button>
+          </div>
+          <p className="panel-description">
+            选择要观察的城市要素，读清山水与街区的关系。
+          </p>
+          <div className="layer-list">
+            {LAYER_INFO.map(({ key, name, detail, icon: Icon }) => (
+              <div className="layer-row" key={key}>
+                <Icon size={20} />
+                <label htmlFor={`layer-${key}`}>
+                  <strong>{name}</strong>
+                  <span>{detail}</span>
+                </label>
+                <Switch
+                  id={`layer-${key}`}
+                  checked={layers[key]}
+                  onCheckedChange={(value) => updateLayer(key, value)}
+                  aria-label={name}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="data-card">
+            <span className="eyebrow">GEOGRAPHIC SNAPSHOT</span>
+            <h3>看得见的城市脉络</h3>
+            <dl>
+              <div>
+                <dt>地图建筑</dt>
+                <dd>
+                  {overview?.stats.mappedBuildings.toLocaleString() ?? '—'}
+                  <small>栋</small>
+                </dd>
+              </div>
+              <div>
+                <dt>简化补充</dt>
+                <dd>
+                  {overview?.stats.infillBuildings.toLocaleString() ?? '—'}
+                  <small>栋</small>
+                </dd>
+              </div>
+              <div>
+                <dt>道路片段</dt>
+                <dd>
+                  {overview?.stats.roadSegments.toLocaleString() ?? '—'}
+                  <small>段</small>
+                </dd>
+              </div>
+            </dl>
+            <p>补充建筑用于表达街区密度，位置与高度均为示意。</p>
+          </div>
+        </TabsContent>
+        <TabsContent value="scene" className="tab-body">
+          <div className="section-caption">
+            <span>光照与视角</span>
+            <Sun size={15} />
+          </div>
+          <p className="panel-description">把一天的光，留在城市里。</p>
+          <div className="time-display">
+            <span>{timeLabel}</span>
+            <div>
+              {hour < 10
+                ? '晨光'
+                : hour < 17
+                  ? '日间'
+                  : hour < 19
+                    ? '落日'
+                    : '夜色'}
+              <small>场景模拟时间</small>
+            </div>
+          </div>
+          <Slider
+            className="time-slider"
+            value={[hour]}
+            onValueChange={(value) =>
+              setHour(Array.isArray(value) ? value[0] : value)
+            }
+            min={6}
+            max={22}
+            step={0.5}
+            aria-label="场景时间"
+          />
+          <div className="slider-ends">
+            <span>06:00</span>
+            <span>22:00</span>
+          </div>
+          <div className="time-presets">
+            {[
+              { hour: 8, text: '晨光', icon: Sun },
+              { hour: 14, text: '日间', icon: Sun },
+              { hour: 18, text: '日落', icon: Sunset },
+              { hour: 21, text: '夜色', icon: Moon },
+            ].map(({ hour: h, text, icon: Icon }) => (
+              <button
+                key={h}
+                className={hour === h ? 'active' : ''}
+                onClick={() => setHour(h)}
+                aria-pressed={hour === h}
+              >
+                <Icon size={18} />
+                {text}
+              </button>
+            ))}
+          </div>
+          <div className="setting-divider" />
+          <div className="section-caption">
+            <span id="quality-label">画面偏好</span>
+          </div>
+          <RadioGroup
+            className="quality-options"
+            aria-labelledby="quality-label"
+            value={quality}
+            onValueChange={(value) => {
+              setTour(false);
+              setAutoRotate(false);
+              setQuality(value as QualityPreference);
+            }}
+          >
+            {(
+              [
+                ['auto', '自动'],
+                ['smooth', '流畅'],
+                ['detail', '精细'],
+              ] as const
+            ).map(([value, label]) => (
+              <label key={value} className={quality === value ? 'active' : ''}>
+                <RadioGroupItem value={value} />
+                {label}
+              </label>
+            ))}
+          </RadioGroup>
+          <p className="quality-note">
+            自动模式为手机选择轻量画面。流畅更省电，精细保留更多树木和阴影；切换后会重新载入。
+          </p>
+          <div className="setting-divider" />
+          <div className="setting-row">
+            <label htmlFor="height-scale">
+              高度夸张<small>同时调整地形与建筑的竖向比例</small>
+            </label>
+            <strong>{heightScale.toFixed(1)}×</strong>
+          </div>
+          <Slider
+            id="height-scale"
+            value={[heightScale]}
+            onValueChange={(value) =>
+              setHeightScale(Array.isArray(value) ? value[0] : value)
+            }
+            min={0.5}
+            max={2}
+            step={0.1}
+            aria-label="高度夸张"
+          />
+          <div className="slider-ends">
+            <span>平缓 0.5×</span>
+            <span>突出 2.0×</span>
+          </div>
+          <div className="setting-divider" />
+          <div className="setting-row">
+            <label htmlFor="top-down">
+              俯视地图<small>从正上方观察地理布局</small>
+            </label>
+            <Switch
+              id="top-down"
+              checked={topDown}
+              onCheckedChange={setTopDown}
+            />
+          </div>
+          <div className="setting-row">
+            <label htmlFor="auto-orbit">
+              环绕观察<small>镜头缓慢围绕当前中心旋转</small>
+            </label>
+            <Switch
+              id="auto-orbit"
+              checked={autoRotate}
+              onCheckedChange={(value) => {
+                setAutoRotate(value);
+                setTour(false);
+              }}
+            />
+          </div>
+          <button
+            className="restore-settings"
+            onClick={() => {
+              setHour(14);
+              setHeightScale(1);
+              setTopDown(false);
+              setAutoRotate(false);
+            }}
+          >
+            恢复默认环境 <RotateCcw size={14} />
+          </button>
+        </TabsContent>
+      </Tabs>
+      <div className="sidebar-bottom">
+        <button
+          className={`tour-button ${tour ? 'tour-playing' : ''}`}
+          disabled={!ready}
+          onClick={startTour}
+        >
+          {tour ? (
+            <Pause size={16} fill="currentColor" />
+          ) : (
+            <Play size={16} fill="currentColor" />
+          )}
+          <span>{tour ? '暂停城市漫游' : '开始城市漫游'}</span>
+          <span className="tour-duration">
+            {tour
+              ? `${ORDER.indexOf(selected ?? '') + 1} / ${ORDER.length}`
+              : `${ORDER.length} 站`}
+          </span>
+        </button>
+        <button
+          className="help-button"
+          onClick={() => {
+            setMobileOpen(false);
+            setInfoOpen(true);
+          }}
+        >
+          <CircleHelp size={14} />
+          操作指南与数据来源
+          <ArrowUpRight size={13} />
+        </button>
+      </div>
+    </>
+  );
+
   return (
-    <main className={`atlas ${night ? 'is-night' : ''}`}>
+    <main
+      className={`atlas ${night ? 'is-night' : ''} ${active ? 'has-selection' : ''}`}
+    >
       <header className="app-header">
         <div className="identity">
           <div className="brand-mark">
@@ -385,7 +720,10 @@ export default function Home() {
         <div className="header-actions">
           <button
             className="text-button about-button"
-            onClick={() => setInfoOpen(true)}
+            onClick={() => {
+              setMobileOpen(false);
+              setInfoOpen(true);
+            }}
           >
             <Info size={16} />
             项目说明
@@ -406,6 +744,7 @@ export default function Home() {
       </header>
 
       <button
+        ref={menuButton}
         className="mobile-menu-button"
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-expanded={mobileOpen}
@@ -413,291 +752,33 @@ export default function Home() {
       >
         {mobileOpen ? <X size={19} /> : <Menu size={19} />}城市菜单
       </button>
-      {mobileOpen && (
-        <button
-          className="mobile-scrim"
-          onClick={() => setMobileOpen(false)}
-          aria-label="关闭城市菜单"
-        />
-      )}
-      <aside
-        id="explorer-sidebar"
-        className={`sidebar ${mobileOpen ? 'mobile-open' : ''}`}
-      >
-        <div className="sidebar-intro">
-          <span className="eyebrow">EXPLORE THE GREEN CITY</span>
-          <h1>
-            探索南宁<span>01 / 广西</span>
-          </h1>
-          <p>沿着邕江，读懂一座城。</p>
-        </div>
-        <Tabs
-          value={tab}
-          onValueChange={(value) => setTab(String(value))}
-          className="sidebar-tabs"
-        >
-          <TabsList className="panel-tabs" aria-label="城市菜单">
-            <TabsTrigger value="explore">
-              <Compass size={15} />
-              探索
-            </TabsTrigger>
-            <TabsTrigger value="layers">
-              <Layers3 size={15} />
-              图层
-            </TabsTrigger>
-            <TabsTrigger value="scene">
-              <SlidersHorizontal size={15} />
-              环境
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="explore" className="tab-body">
-            <div className="section-caption">
-              <span>城市探索点</span>
-              <span>
-                {String(landmarkCatalog.length).padStart(2, '0')} 个地标
-              </span>
-            </div>
-            <button
-              className={`overview-place ${!selected ? 'active' : ''}`}
-              disabled={!ready}
-              onClick={() => choose(null)}
-            >
-              <div className="place-icon overview-icon">
-                <Navigation size={21} />
-              </div>
-              <div>
-                <strong>邕江两岸</strong>
-                <span>中心城区 · 全景鸟瞰</span>
-              </div>
-              <ArrowUpRight size={18} />
-            </button>
-            <div className="place-list">
-              {(ready ? ordered : landmarkCatalog).map((place, index) => {
-                const Icon = iconFor(place.id);
-                return (
-                  <button
-                    key={place.id}
-                    className={`place-item ${selected === place.id ? 'active' : ''}`}
-                    disabled={!ready}
-                    onClick={() => choose(place.id)}
-                    aria-pressed={selected === place.id}
-                  >
-                    <span className="place-number">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className={`place-icon place-${place.id}`}>
-                      <Icon size={19} strokeWidth={1.6} />
-                    </span>
-                    <span className="place-text">
-                      <strong>{place.name}</strong>
-                      <small>{place.category || '城市探索点'}</small>
-                    </span>
-                    <ChevronRight size={15} />
-                  </button>
-                );
-              })}
-            </div>
-            <div className="explore-note">
-              <Waves size={18} />
-              <p>
-                一江穿城，青山入城。
-                <br />
-                <span>从老城街巷，走向绿城天际线。</span>
-              </p>
-            </div>
-          </TabsContent>
-          <TabsContent value="layers" className="tab-body">
-            <div className="section-caption">
-              <span>地图内容</span>
-              <button onClick={() => setLayers({ ...DEFAULT_LAYERS })}>
-                全部显示
-              </button>
-            </div>
-            <p className="panel-description">
-              选择要观察的城市要素，读清山水与街区的关系。
-            </p>
-            <div className="layer-list">
-              {LAYER_INFO.map(({ key, name, detail, icon: Icon }) => (
-                <div className="layer-row" key={key}>
-                  <Icon size={20} />
-                  <label htmlFor={`layer-${key}`}>
-                    <strong>{name}</strong>
-                    <span>{detail}</span>
-                  </label>
-                  <Switch
-                    id={`layer-${key}`}
-                    checked={layers[key]}
-                    onCheckedChange={(value) => updateLayer(key, value)}
-                    aria-label={name}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="data-card">
-              <span className="eyebrow">GEOGRAPHIC SNAPSHOT</span>
-              <h3>看得见的城市脉络</h3>
-              <dl>
-                <div>
-                  <dt>地图建筑</dt>
-                  <dd>
-                    {overview?.stats.mappedBuildings.toLocaleString() ?? '—'}
-                    <small>栋</small>
-                  </dd>
-                </div>
-                <div>
-                  <dt>简化补充</dt>
-                  <dd>
-                    {overview?.stats.infillBuildings.toLocaleString() ?? '—'}
-                    <small>栋</small>
-                  </dd>
-                </div>
-                <div>
-                  <dt>道路片段</dt>
-                  <dd>
-                    {overview?.stats.roadSegments.toLocaleString() ?? '—'}
-                    <small>段</small>
-                  </dd>
-                </div>
-              </dl>
-              <p>补充建筑用于表达街区密度，位置与高度均为示意。</p>
-            </div>
-          </TabsContent>
-          <TabsContent value="scene" className="tab-body">
-            <div className="section-caption">
-              <span>光照与视角</span>
-              <Sun size={15} />
-            </div>
-            <p className="panel-description">把一天的光，留在城市里。</p>
-            <div className="time-display">
-              <span>{timeLabel}</span>
-              <div>
-                {hour < 10
-                  ? '晨光'
-                  : hour < 17
-                    ? '日间'
-                    : hour < 19
-                      ? '落日'
-                      : '夜色'}
-                <small>场景模拟时间</small>
-              </div>
-            </div>
-            <Slider
-              className="time-slider"
-              value={[hour]}
-              onValueChange={(value) =>
-                setHour(Array.isArray(value) ? value[0] : value)
-              }
-              min={6}
-              max={22}
-              step={0.5}
-              aria-label="场景时间"
-            />
-            <div className="slider-ends">
-              <span>06:00</span>
-              <span>22:00</span>
-            </div>
-            <div className="time-presets">
-              {[
-                { hour: 8, text: '晨光', icon: Sun },
-                { hour: 14, text: '日间', icon: Sun },
-                { hour: 18, text: '日落', icon: Sunset },
-                { hour: 21, text: '夜色', icon: Moon },
-              ].map(({ hour: h, text, icon: Icon }) => (
-                <button
-                  key={h}
-                  className={hour === h ? 'active' : ''}
-                  onClick={() => setHour(h)}
-                  aria-pressed={hour === h}
-                >
-                  <Icon size={18} />
-                  {text}
-                </button>
-              ))}
-            </div>
-            <div className="setting-divider" />
-            <div className="setting-row">
-              <label htmlFor="height-scale">
-                高度夸张<small>同时调整地形与建筑的竖向比例</small>
-              </label>
-              <strong>{heightScale.toFixed(1)}×</strong>
-            </div>
-            <Slider
-              id="height-scale"
-              value={[heightScale]}
-              onValueChange={(value) =>
-                setHeightScale(Array.isArray(value) ? value[0] : value)
-              }
-              min={0.5}
-              max={2}
-              step={0.1}
-              aria-label="高度夸张"
-            />
-            <div className="slider-ends">
-              <span>平缓 0.5×</span>
-              <span>突出 2.0×</span>
-            </div>
-            <div className="setting-divider" />
-            <div className="setting-row">
-              <label htmlFor="top-down">
-                俯视地图<small>从正上方观察地理布局</small>
-              </label>
-              <Switch
-                id="top-down"
-                checked={topDown}
-                onCheckedChange={setTopDown}
-              />
-            </div>
-            <div className="setting-row">
-              <label htmlFor="auto-orbit">
-                环绕观察<small>镜头缓慢围绕当前中心旋转</small>
-              </label>
-              <Switch
-                id="auto-orbit"
-                checked={autoRotate}
-                onCheckedChange={(value) => {
-                  setAutoRotate(value);
-                  setTour(false);
-                }}
-              />
-            </div>
-            <button
-              className="restore-settings"
-              onClick={() => {
-                setHour(14);
-                setHeightScale(1);
-                setTopDown(false);
-                setAutoRotate(false);
-              }}
-            >
-              恢复默认环境 <RotateCcw size={14} />
-            </button>
-          </TabsContent>
-        </Tabs>
-        <div className="sidebar-bottom">
-          <button
-            className={`tour-button ${tour ? 'tour-playing' : ''}`}
-            disabled={!ready}
-            onClick={startTour}
+      {isMobile ? (
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetContent
+            id="explorer-sidebar"
+            side="left"
+            className="mobile-explorer"
+            showCloseButton={false}
+            finalFocus={menuButton}
           >
-            {tour ? (
-              <Pause size={16} fill="currentColor" />
-            ) : (
-              <Play size={16} fill="currentColor" />
-            )}
-            <span>{tour ? '暂停城市漫游' : '开始城市漫游'}</span>
-            <span className="tour-duration">
-              {tour
-                ? `${ORDER.indexOf(selected ?? '') + 1} / ${ORDER.length}`
-                : `${ORDER.length} 站`}
-            </span>
-          </button>
-          <button className="help-button" onClick={() => setInfoOpen(true)}>
-            <CircleHelp size={14} />
-            操作指南与数据来源
-            <ArrowUpRight size={13} />
-          </button>
-        </div>
-      </aside>
+            <SheetTitle className="sr-only">城市菜单</SheetTitle>
+            <SheetDescription className="sr-only">
+              选择地标、图层与画面偏好
+            </SheetDescription>
+            <SheetClose
+              className="mobile-sheet-close"
+              aria-label="关闭城市菜单"
+            >
+              <X size={20} />
+            </SheetClose>
+            {sidebar}
+          </SheetContent>
+        </Sheet>
+      ) : (
+        <aside id="explorer-sidebar" className="sidebar">
+          {sidebar}
+        </aside>
+      )}
 
       <section className="map-stage" aria-label="三维地理沙盘">
         <div className="scene-host" ref={host} />
@@ -706,7 +787,7 @@ export default function Home() {
             <span className="tiny-square" />
             广西 · 南宁<span className="map-version">3D ATLAS / 01</span>
           </div>
-          <h2>{active ? active.name : '邕江河谷 · 中心城区'}</h2>
+          <h2>{active ? active.name : '南宁城区 · 邕江两岸'}</h2>
           <p>
             {active
               ? `${active.lon.toFixed(4)}° E  /  ${active.lat.toFixed(4)}° N`
@@ -811,8 +892,10 @@ export default function Home() {
             </button>
           </div>
         </div>
-        {active && (
-          <article className="place-detail">
+        {active && ready && (
+          <article
+            className={`place-detail ${detailExpanded ? 'expanded' : 'collapsed'}`}
+          >
             <div className="detail-heading">
               <span>{active.category}</span>
               <button onClick={() => choose(null)} aria-label="关闭地标详情">
@@ -820,12 +903,29 @@ export default function Home() {
               </button>
             </div>
             <h3>{active.name}</h3>
-            <p>{active.description}</p>
+            <p id="landmark-description">{active.description}</p>
             <div className="detail-footer">
-              <span>
-                <MapPin size={13} />
-                {active.lon.toFixed(4)}° E · {active.lat.toFixed(4)}° N
-              </span>
+              <button
+                className="detail-expand"
+                aria-expanded={detailExpanded}
+                aria-controls="landmark-description"
+                onClick={() => setDetailExpanded(!detailExpanded)}
+              >
+                {detailExpanded ? '收起介绍' : '查看介绍'}
+              </button>
+              {active.closeDistance && (
+                <button
+                  onClick={() => {
+                    setTour(false);
+                    setAutoRotate(false);
+                    controller.current?.focus(active.id, true);
+                  }}
+                >
+                  <Focus size={15} />
+                  近景
+                </button>
+              )}
+
               <button
                 onClick={() =>
                   choose(ORDER[(ORDER.indexOf(active.id) + 1) % ORDER.length])
@@ -852,6 +952,7 @@ export default function Home() {
               建成区
             </span>
           </div>
+          <div className="touch-hint">单指旋转 · 双指缩放 / 平移</div>
           <div className="interaction-hint">
             <MousePointer2 size={14} />
             <span>拖动旋转</span>
@@ -873,11 +974,26 @@ export default function Home() {
             <span className="status-divider">/</span>{' '}
             {coordinates[1].toFixed(4)}° N
           </span>
-          <button onClick={() => setInfoOpen(true)}>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              setInfoOpen(true);
+            }}
+          >
             艺术化地理重建 <span className="status-divider">·</span> ©
             OpenStreetMap / Mapzen
           </button>
         </footer>
+        {showStats && metrics && (
+          <output className="performance-stats" aria-label="场景性能统计">
+            {metrics.profile === 'smooth' ? '流畅' : '精细'} ·{' '}
+            {metrics.fps ? `${metrics.fps} fps` : '静止省电'} ·{' '}
+            {(metrics.modelBytes / 1e6).toFixed(2)} MB ·{' '}
+            {(metrics.loadMs / 1000).toFixed(2)} s<br />
+            {metrics.triangles.toLocaleString()} 三角形 · {metrics.calls} 次绘制
+            · {metrics.pixelRatio.toFixed(2)} 像素比例
+          </output>
+        )}
         {toast && (
           <output className="toast">
             <Check size={16} />
@@ -894,7 +1010,7 @@ export default function Home() {
           </SheetHeader>
           <div className="info-content">
             <p>
-              这是覆盖南宁中心城区的可交互地理沙盘。以真实河道、路网、建筑轮廓与公开高程数据为基础，用青绿山水与浅色建筑表达城市结构。
+              这是覆盖石埠、相思湖、老城、青秀与部分五象片区的可交互地理沙盘。以真实河道、路网、建筑轮廓与公开高程数据为基础，用青绿山水与浅色建筑表达城市结构。
             </p>
             <h3>怎样探索</h3>
             <ul className="guide-list">
@@ -939,8 +1055,9 @@ export default function Home() {
             </ul>
             <h3>范围与精度</h3>
             <p>
-              范围：108.265°–108.465° E，22.735°–22.875° N，约 20.5 × 15.6
-              km。表现南宁中心城区，未覆盖南宁全市行政范围。
+              范围：{region.bbox[0]}°–{region.bbox[2]}° E，{region.bbox[1]}°–
+              {region.bbox[3]}° N，约 37 × 28
+              km。城西扩展至石埠，未覆盖南宁全市行政范围。
             </p>
             <p>
               地形使用公开 DEM 网格，初始高程起伏放大 3 倍；建筑高度初始放大

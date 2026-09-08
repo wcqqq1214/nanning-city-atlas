@@ -5,6 +5,16 @@ export type LayerKey =
   | 'water'
   | 'labels';
 export type Layers = Record<LayerKey, boolean>;
+export type QualityPreference = 'auto' | 'smooth' | 'detail';
+export type SceneMetrics = {
+  profile: 'smooth' | 'detail';
+  loadMs: number;
+  modelBytes: number;
+  fps: number;
+  triangles: number;
+  calls: number;
+  pixelRatio: number;
+};
 export type Landmark = {
   id: string;
   name: string;
@@ -13,12 +23,14 @@ export type Landmark = {
   position: [number, number, number];
   anchorHeight: number;
   cameraDistance: number;
+  closeDistance?: number;
   modelled: boolean;
   category: string;
   description: string;
 };
 export type Overview = {
   bbox: number[];
+  previousBbox: number[];
   center: number[];
   bounds: number[];
   metersPerUnit: number;
@@ -28,6 +40,8 @@ export type Overview = {
   terrainExaggeration: number;
   buildingExaggeration: number;
   osmTimestamp: string;
+  mobileTrees: number;
+  models: Record<'smooth' | 'detail', { file: string; bytes: number }>;
   stats: {
     mappedBuildings: number;
     infillBuildings: number;
@@ -45,7 +59,7 @@ export type SceneOptions = {
 };
 export type SceneController = {
   apply: (options: SceneOptions) => void;
-  focus: (id: string | null) => void;
+  focus: (id: string | null, close?: boolean) => void;
   zoom: (factor: number) => void;
   north: () => void;
   capture: () => Promise<void>;

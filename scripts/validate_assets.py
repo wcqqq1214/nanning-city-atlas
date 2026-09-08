@@ -12,6 +12,10 @@ g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
 catalog = json.loads((ROOT/'data/landmarks.json').read_text())
+region = json.loads((ROOT/'data/region.json').read_text())
+assert g['bbox'] == t['bbox'] == region['bbox']
+assert g['bbox'][0] < region['previousBbox'][0] - .1
+assert len(g['buildings']) > 9000, 'Expanded city unexpectedly lost its building coverage'
 assert len(t['heights']) == t['cols'] * t['rows']
 assert all(math.isfinite(h) and -500 < h < 9000 for h in t['heights'])
 assert t['minElevation'] == min(t['heights']) and t['maxElevation'] == max(t['heights'])
@@ -29,20 +33,39 @@ assert [p['id'] for p in places] == [p['id'] for p in catalog], 'Landmark list a
 for place, source in zip(places, catalog):
     assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
     assert 5 <= place['cameraDistance'] <= 60
+    if place.get('closeDistance'): assert 2 <= place['closeDistance'] <= place['cameraDistance']
     x=(place['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
     z=-(place['lat']-g['center'][1])*1113.2
     assert abs(place['position'][0]-x)<.001 and abs(place['position'][2]-z)<.001, 'Landmark projection mismatch'
 w,s,e,n = g['bbox']
 assert all(w < p['lon'] < e and s < p['lat'] < n for p in places)
-raw = (ROOT/'public/models/nanning-city.glb').read_bytes()
-magic,version,length = struct.unpack_from('<III',raw)
-assert magic == 0x46546C67 and version == 2 and length == len(raw)
-json_len,json_kind = struct.unpack_from('<II',raw,12)
-assert json_kind == 0x4E4F534A
-model = json.loads(raw[20:20+json_len])
-assert 'KHR_draco_mesh_compression' in model['extensionsRequired']
-names = {node.get('name') for node in model['nodes']}
-assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth'} <= names
-assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
-assert len(raw) < 8_000_000, 'Model exceeds 8 MB loading budget'
-print(f'PASS: {len(g["buildings"])} building features; no infill on water or park; water coverage {coverage:.5%}; {len(places)} geolocated landmarks; valid Draco GLB {len(raw):,} bytes.')
+def inspect_model(filename, budget):
+    raw=(ROOT/'public/models'/filename).read_bytes()
+    magic,version,length=struct.unpack_from('<III',raw)
+    assert magic==0x46546C67 and version==2 and length==len(raw)
+    json_len,json_kind=struct.unpack_from('<II',raw,12)
+    assert json_kind==0x4E4F534A
+    model=json.loads(raw[20:20+json_len])
+    assert 'KHR_draco_mesh_compression' in model['extensionsRequired']
+    names={node.get('name') for node in model['nodes']}
+    assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth'} <= names
+    assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
+    assert len(raw) < budget, f'{filename} exceeds loading budget'
+    counts={}
+    for mesh in model['meshes']:
+        counts[mesh['name']]=sum(model['accessors'][p['indices']]['count']//3 for p in mesh['primitives'])
+    return len(raw),counts
+full_bytes,full=inspect_model('nanning-city.glb',8_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',4_000_000)
+assert mobile_bytes < full_bytes*.6
+assert sum(mobile.values()) < sum(full.values())*.5
+for name, count in full.items():
+    if not name.startswith(('Terrain','Vegetation')):
+        assert mobile[name]==count, f'Mobile lost geometry in {name}'
+# Validate measurable content west of the previous boundary, not merely a wider base.
+old_w=region['previousBbox'][0]
+west_x=(old_w-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+western=sum(1 for b in g['buildings'] if max(p[0] for p in b['rings'][0])<west_x)
+assert western>1000, f'Western coverage unexpectedly sparse: {western}'
+print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); no infill on water/park; water coverage {coverage:.5%}; {len(places)} geolocated points.')
+print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')

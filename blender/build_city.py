@@ -15,6 +15,7 @@ from mathutils.geometry import tessellate_polygon
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
+from landmark_details import build_expo, build_bridge
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -116,18 +117,44 @@ class Batch:
             k = (i+1)%segments
             self.face([lower[i],lower[k],upper[k],upper[i]],key)
         self.face(upper,key)
+    def beam(self, a, b, radius, key):
+        axis=Vector(b)-Vector(a)
+        if axis.length < .00001: return
+        axis.normalize()
+        side=axis.cross(Vector((0,0,1)) if abs(axis.z)<.95 else Vector((0,1,0))).normalized()*radius
+        up=axis.cross(side).normalized()*radius
+        rings=[[tuple(Vector(p)+side*u+up*v) for u,v in [(-1,-1),(1,-1),(1,1),(-1,1)]] for p in [a,b]]
+        for i in range(4):
+            j=(i+1)%4
+            self.face([rings[0][i],rings[0][j],rings[1][j],rings[1][i]],key)
+        self.face(rings[0],key);self.face(rings[1],key)
     def finish(self):
-        mesh = bpy.data.meshes.new(self.name)
-        mesh.from_pydata(self.v, [], self.f)
-        mesh.materials.clear()
-        for key in self.keys:
-            mesh.materials.append(MATS[key])
-        for p, index in zip(mesh.polygons, self.mi):
-            p.material_index = index
-        mesh.update()
-        obj = bpy.data.objects.new(self.name, mesh)
-        bpy.context.collection.objects.link(obj)
-        return obj
+        def make_object(name, vertices, faces, materials, parent=None):
+            mesh=bpy.data.meshes.new(name)
+            mesh.from_pydata(vertices, [], faces)
+            for key in self.keys: mesh.materials.append(MATS[key])
+            for polygon,index in zip(mesh.polygons,materials): polygon.material_index=index
+            mesh.update()
+            obj=bpy.data.objects.new(name,mesh)
+            bpy.context.collection.objects.link(obj)
+            obj.parent=parent
+            return obj
+        # Spatial batches permit Three.js frustum culling in close views.
+        if self.name not in ['Terrain','Buildings','Vegetation','Roads','Bridges']:
+            return make_object(self.name,self.v,self.f,self.mi)
+        parent=bpy.data.objects.new(self.name,None)
+        bpy.context.collection.objects.link(parent)
+        groups={}
+        for face,index in zip(self.f,self.mi):
+            verts=[self.v[i] for i in face]
+            cx=sum(v[0] for v in verts)/len(verts);cy=sum(v[1] for v in verts)/len(verts)
+            cell=(math.floor((cx-MINX)/80),math.floor((cy-MINY)/80))
+            vertices,faces,materials=groups.setdefault(cell,([],[],[]))
+            offset=len(vertices);vertices.extend(verts)
+            faces.append(tuple(range(offset,offset+len(verts))));materials.append(index)
+        for (i,j),(vertices,faces,materials) in sorted(groups.items()):
+            make_object(f'{self.name}_{i}_{j}',vertices,faces,materials,parent)
+        return parent
 
 
 print('Building terrain...', flush=True)
@@ -251,15 +278,7 @@ b.cone(x,y,z+4.6,.28,0,.46,'accent',4)
 b.finish()
 
 b,x,y,z=landmark('expo')
-b.box(x,y,z,3.2,2.3,.44,'building','roof')
-b.cone(x,y,z+.44,.63,.51,.72,'landmark',12)
-for i in range(12):
-    a=i/12*math.tau
-    p0=(x+math.cos(a)*.15,y+math.sin(a)*.15,z+1.65)
-    p1=(x+math.cos(a-.15)*.8,y+math.sin(a-.15)*.8,z+.72)
-    p2=(x+math.cos(a)*1.04,y+math.sin(a)*1.04,z+.60)
-    p3=(x+math.cos(a+.15)*.8,y+math.sin(a+.15)*.8,z+.72)
-    b.face([p0,p1,p2,p3],'roof')
+build_expo(b,x,y,z)
 b.finish()
 
 b,x,y,z=landmark('changyou')
@@ -270,27 +289,15 @@ for i in range(4):
 b.finish()
 
 b,x,y,z=landmark('bridge')
-z=1.20
-# Use the surveyed OSM bridge direction.
-bridge_roads=[r for r in GEO['roads'] if r['name']=='南宁大桥']
-if bridge_roads:
-    pts=max(bridge_roads,key=lambda r:len(r['points']))['points'];a,c=pts[0],pts[-1]
-else:
-    a,c=(x-1,y-2),(x+1,y+2)
-dx,dy=c[0]-a[0],c[1]-a[1];length=math.hypot(dx,dy);nx,ny=-dy/length,dx/length
-for side in [-1,1]:
-    for i in range(32):
-        t=i/32;u=(i+1)/32
-        p=(a[0]+dx*t+nx*.19*side,a[1]+dy*t+ny*.19*side,z+math.sin(t*math.pi)*1.65)
-        q=(a[0]+dx*u+nx*.19*side,a[1]+dy*u+ny*.19*side,z+math.sin(u*math.pi)*1.65)
-        b.face([(p[0]-nx*.065,p[1]-ny*.065,p[2]),(q[0]-nx*.065,q[1]-ny*.065,q[2]),(q[0]+nx*.065,q[1]+ny*.065,q[2]+.06),(p[0]+nx*.065,p[1]+ny*.065,p[2]+.06)],'bridge')
-        if i%3==0:
-            b.box(p[0],p[1],z,.028,.028,max(.03,p[2]-z),'roof')
+bridge_center=build_bridge(b,GEO['roads'],height)
+# Keep the geographic catalog point, and anchor the label at deck height.
+landmarks[-1]['position'][1]=round(bridge_center[2],3)
 b.finish()
 
-lake = PLACE_BY_ID['nanhu']
-x,y,z=pos(lake['lon'],lake['lat'])
-landmarks.append({**lake,'position':[round(x,3),.3,round(-y,3)]})
+for place in CATALOG:
+    if not place['modelled']:
+        x,y,z=pos(place['lon'],place['lat'])
+        landmarks.append({**place,'position':[round(x,3),round(max(.3,z),3),round(-y,3)]})
 
 # Additional cultural, campus, riverside and transport landmarks.
 build_extra_landmarks(landmark)
@@ -300,16 +307,17 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['previousBbox']=json.loads((ROOT/'data/region.json').read_text())['previousBbox']
 summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':3,'buildingExaggeration':1.55})
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 
 print('Saving Blender source and glTF...', flush=True)
-bpy.ops.object.camera_add(location=(130,-170,165))
+bpy.ops.object.camera_add(location=(220,-290,280))
 camera=bpy.context.object
 camera.name='OverviewCamera'
 direction=Vector((0,0,0))-camera.location
 camera.rotation_euler=direction.to_track_quat('-Z','Y').to_euler()
-camera.data.type='ORTHO';camera.data.ortho_scale=310
+camera.data.type='ORTHO';camera.data.ortho_scale=max(MAXX-MINX,MAXY-MINY)*1.42
 bpy.context.scene.camera=camera
 bpy.ops.object.light_add(type='AREA',location=(-60,-30,160))
 bpy.context.object.data.energy=80000
@@ -327,3 +335,34 @@ bpy.context.scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'blender/nanning-city.blend'))
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
 print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'trees,',len(landmarks),'landmarks.',flush=True)
+
+# Keep the editable .blend at full detail; export a separate lightweight model.
+# Mapped buildings, roads, water and every landmark retain their full geometry.
+for name in ['Terrain','Vegetation']:
+    obj=bpy.data.objects.get(name)
+    for child in list(obj.children_recursive): bpy.data.objects.remove(child,do_unlink=True)
+    bpy.data.objects.remove(obj,do_unlink=True)
+mobile_ground=Batch('Terrain',['ground','hill','hillLight','bank'])
+ix=sorted(set(range(0,COLS,2))|{COLS-1});jy=sorted(set(range(0,ROWS,2))|{ROWS-1})
+for j,jj in zip(jy,jy[1:]):
+    for i,ii in zip(ix,ix[1:]):
+        verts=[]
+        for col,row in [(i,j),(ii,j),(ii,jj),(i,jj)]:
+            x=MINX+(MAXX-MINX)*col/(COLS-1);y=MAXY-(MAXY-MINY)*row/(ROWS-1)
+            verts.append((x,y,height(x,y)))
+        lc=DEM['landcover'][j*COLS+i]
+        key='hill' if lc==1 or sum(v[2] for v in verts)/4>2.6 else ('bank' if lc==2 else 'ground')
+        mobile_ground.face([verts[0],verts[2],verts[1]],key)
+        mobile_ground.face([verts[0],verts[3],verts[2]],key)
+mobile_ground.finish()
+mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
+for i,(x,y,r) in enumerate(visible_trees[::4]):
+    mobile_trees.cone(x,y,max(.32,height(x,y)),r,0,.78,['leaf','leaf2','leaf3'][i%3],6)
+mobile_trees.finish()
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city-mobile.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
+summary['mobileTrees']=len(visible_trees[::4])
+summary['models']={}
+for key,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
+    summary['models'][key]={'file':filename,'bytes':(ROOT/'public/models'/filename).stat().st_size}
+(ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
+print('Desktop and mobile model variants complete.',flush=True)
