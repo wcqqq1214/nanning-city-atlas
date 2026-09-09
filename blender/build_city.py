@@ -27,10 +27,14 @@ from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED
 from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, CANOPY_MATERIALS
 from vegetation import build_tree
+from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as STATION_MATERIALS
+from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
+assert STATION_PLAN['sceneCenter'] == GEO['center'], 'Rebuild the station plan for the scene origin'
+assert STATION_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/stations-source.json').read_bytes()).hexdigest(), 'Rebuild the station plan after changing railway data'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
 for path, fingerprint in FOREST_PLAN['inputHashes'].items():
@@ -138,6 +142,17 @@ MATS = {
     'nanhu_leaf_light': material('Nanhu sunlit foliage', '91aa6e', .92),
     'nanhu_leaf_dark': material('Nanhu shaded foliage', '477958', .91),
     'nanhu_metal': material('Nanhu garden fittings', '52675c', .62, .18),
+    'station_stone': material('Station pale limestone', 'e2ddcb', .76),
+    'station_paving': material('Station platform paving', 'c7cdc4', .86),
+    'station_roof': material('Station silver roof panels', 'e9eeea', .43, .24),
+    'station_soffit': material('Station shaded steel soffits', '9eafa6', .68, .16),
+    'station_glass': material('Station sage curtain wall', '5a8d85', .26, .26),
+    'station_frame': material('Station aluminium mullions', 'a3b5ae', .40, .35),
+    'station_rail': material('Station rails and clock hands', '526461', .43, .36),
+    'station_ballast': material('Station track ballast', '89938a', .96),
+    'station_red': material('Station vermilion lettering', 'b7473b', .65),
+    'station_line': material('Station clock face and safety lines', 'e7dcb0', .77),
+    'station_blue': material('Nanning entrance shelter', '4d96a4', .53, .16),
 }
 
 
@@ -160,6 +175,12 @@ SPORTS_Y = (SPORTS['lat']-GEO['center'][1])*1113.2
 SPORTS_LEVELS = [terrain_height(SPORTS_X+pad[0], SPORTS_Y+pad[1]) for pad in SITE_PADS]
 NANHU_X = (PLACE_BY_ID['nanhu']['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
 NANHU_Y = (PLACE_BY_ID['nanhu']['lat']-GEO['center'][1])*1113.2
+STATION_SITES = {}
+for identity, station in STATIONS.items():
+    assert [PLACE_BY_ID[identity]['lon'], PLACE_BY_ID[identity]['lat']] == station['center']
+    sx = (station['center'][0]-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
+    sy = (station['center'][1]-GEO['center'][1])*1113.2
+    STATION_SITES[identity] = (sx, sy, terrain_height(sx, sy))
 
 
 def height(x, y):
@@ -181,6 +202,10 @@ def height(x, y):
             t = max(0, distance/.65)
             blend = t*t*(3-2*t)
             h = level*(1-blend) + h*blend
+    for identity, (sx, sy, level) in STATION_SITES.items():
+        if abs(x-sx) < 10 and abs(y-sy) < 10:
+            blend = station_ground_blend(identity, x-sx, y-sy)
+            h = level*(1-blend) + h*blend
     return h
 
 
@@ -199,6 +224,8 @@ def inside_landmark(x, y):
     return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
             inside_tingzi(x-TINGZI_X, y-TINGZI_Y) or
             inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y) or
+            any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy)
+                for identity,(sx,sy,_) in STATION_SITES.items()) or
             any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS))
 
 
@@ -396,6 +423,8 @@ buildings.finish()
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
 original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if not inside_landmark(x,y)
+                 and not any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy,margin=r+.03)
+                             for identity,(sx,sy,_) in STATION_SITES.items())
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
                  and not inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y, margin=r*.6+.02)
                  and not inside_nanhu(x-NANHU_X, y-NANHU_Y)]
@@ -417,7 +446,7 @@ landmarks=[]
 def landmark(id):
     place = PLACE_BY_ID[id]
     x,y,z=pos(place['lon'],place['lat'])
-    if id in ['sports-center', 'changyou']:
+    if id in ['sports-center', 'changyou', *STATIONS]:
         # Open fields and colonnade feet start at their local ground level.
         z = height(x, y)
     if id == 'tingzi': z = terrace_level(x, y, z, height)
@@ -429,6 +458,7 @@ def landmark(id):
     if id == 'bridge': keys += BRIDGE_MATERIALS
     if id == 'changyou': keys += CHANGYOU_MATERIALS
     if id == 'nanhu': keys += NANHU_MATERIALS
+    if id in STATIONS: keys += STATION_MATERIALS
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]

@@ -74,6 +74,20 @@
     "sourceUrl": "https://www.openstreetmap.org/way/808502329"
   },
   {
+    "id": "nanning-station",
+    "name": "南宁站",
+    "lon": 108.311330948,
+    "lat": 22.829339531,
+    "category": "交通枢纽 · 老城",
+    "description": "朝阳路尽头的老城铁路门户。中央大钟与红色站名立于玻璃站房前，双弧屋顶、入口雨棚和后方七座站台组成熟悉的火车站轮廓。",
+    "anchorHeight": 0.48,
+    "cameraDistance": 6.5,
+    "modelled": true,
+    "sourceUrl": "https://www.openstreetmap.org/way/286249877",
+    "closeDistance": 2.0,
+    "cameraBearing": 133
+  },
+  {
     "id": "zhenning",
     "name": "人民公园 · 镇宁炮台",
     "lon": 108.3244272,
@@ -181,19 +195,16 @@
   {
     "id": "east-station",
     "name": "南宁东站",
-    "lon": 108.4099228,
-    "lat": 22.8447356,
+    "lon": 108.409923857,
+    "lat": 22.844765252,
     "category": "交通枢纽",
-    "description": "城区东北部的铁路枢纽。宽阔站房、连续起伏的屋盖与平行站台，展现铁路进入城市的尺度。",
-    "anchorHeight": 2.0,
-    "cameraDistance": 21,
+    "description": "三层银白屋檐由两翼向中央抬升，门式入口与分叉柱廊面向南北广场。高架候车厅跨越东西向轨道，十三座站台雨棚在两侧展开。",
+    "anchorHeight": 0.86,
+    "cameraDistance": 11,
     "modelled": true,
-    "clearExtent": [
-      6.4,
-      3.6
-    ],
-    "sourceUrl": "https://www.openstreetmap.org/relation/11576286",
-    "closeDistance": 6.8
+    "sourceUrl": "https://www.openstreetmap.org/relation/11968494",
+    "closeDistance": 3.3,
+    "cameraBearing": 205
   },
   {
     "id": "ethnic-museum",

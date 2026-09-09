@@ -3,6 +3,7 @@ import math
 from arts_landmark import build_arts
 from sports_landmark import build_sports
 from tingzi_landmark import build_tingzi
+from station_landmarks import build_nanning_station, build_east_station
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -61,21 +62,11 @@ def build_extra_landmarks(landmark, ground=None):
     b.finish()
 
     b,x,y,z=landmark('east-station')
-    b.box(x,y,z,5.8,2.8,.16,'building','roof')
-    b.box(x,y,z+.16,5.3,2.4,.53,'landmark')
-    for i in range(6):
-        sx=x-2.5+i
-        for j in range(10):
-            a,c=j/10,(j+1)/10
-            za=z+.68+.25*math.sin(a*math.pi)
-            zc=z+.68+.25*math.sin(c*math.pi)
-            b.face([(sx+a-.5,y-1.37,za),(sx+c-.5,y-1.37,zc),
-                    (sx+c-.5,y+1.37,zc),(sx+a-.5,y+1.37,za)],'roof')
-    for i in range(9):
-        py=y-1.25+i*.31
-        b.box(x,py,z+.16,7,.10,.08,'building','roof')
-        b.box(x,py-.08,z+.17,7,.018,.025,'landmark')
-    b.box(x,y-1.42,z+.29,4.8,.08,.32,'landmark')
+    build_east_station(b,x,y,z)
+    b.finish()
+
+    b,x,y,z=landmark('nanning-station')
+    build_nanning_station(b,x,y,z)
     b.finish()
 
     b,x,y,z=landmark('ethnic-museum')

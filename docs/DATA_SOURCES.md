@@ -24,20 +24,21 @@
 7. 树木在绿地和滨水缓冲区示意分布，不代表真实树种和树位。
 8. 原始高程保留为 `heights`；显示高程另存为 `sceneHeights`，水下采样设为 53 m，岸上显示地形最低取 62 m，水面统一绘制于显示高度。该处理仅用于可视化，不构成水文模型。
 9. 初始地形高差比例为 3，初始建筑高度比例为 1.55。菜单中的竖向比例会进一步作用于整个模型。
-10. 自建地标范围内不重复绘制常规建筑中心和树位，避免简化模型穿插。地理数据库保留原始要素；这是渲染替换，不代表原建筑被删除。当前常规单树在精细版显示 3,361 棵，流畅版显示 865 棵；7,600 个林内树位改为连续林冠，南湖另有独立园林植被。
+10. 自建地标范围内不重复绘制常规建筑中心和树位，避免简化模型穿插。地理数据库保留原始要素；这是渲染替换，不代表原建筑被删除。当前常规单树在精细版显示 3,359 棵，流畅版显示 860 棵；7,600 个林内树位改为连续林冠，南湖另有独立园林植被。
 
 ## 地标位置与造型
 
 `data/landmarks.json` 是地标顺序、文字和镜头配置的唯一源目录；Blender 生成 `public/data/landmarks.json` 时补上场景坐标，前端按同一目录展示。
 
-新增点位使用 OSM 的 WGS84 坐标：面要素取包围盒中心，孔庙使用场所节点，东站使用站区关系中心。因此它们是浏览用的代表点，不是建筑测量控制点。每条新增记录保留对应的 `sourceUrl`。
+新增点位使用 OSM 的 WGS84 坐标：面要素取包围盒中心，孔庙使用场所节点，两座铁路车站使用站房最小旋转矩形中心。因此它们是浏览用的代表点，不是建筑测量控制点。每条新增记录保留对应的 `sourceUrl`。
 
 | 新增探索点 | 坐标来源 |
 | --- | --- |
 | 广西大学 · 汇学堂 | [OSM way 822812173](https://www.openstreetmap.org/way/822812173) |
 | 人民公园 · 镇宁炮台 | [OSM way 991635905](https://www.openstreetmap.org/way/991635905) |
 | 广西博物馆 | [OSM way 476559327](https://www.openstreetmap.org/way/476559327) |
-| 南宁东站 | [OSM relation 11576286](https://www.openstreetmap.org/relation/11576286) |
+| 南宁站 | [OSM way 286249877](https://www.openstreetmap.org/way/286249877) |
+| 南宁东站 | [OSM relation 11968494](https://www.openstreetmap.org/relation/11968494) |
 | 广西民族博物馆 | [OSM way 1006681820](https://www.openstreetmap.org/way/1006681820) |
 | 南宁孔庙 | [OSM node 9292176827](https://www.openstreetmap.org/node/9292176827) |
 | 广西体育中心 | 主体育场屋顶总体中心：[OSM 西叶屋顶](https://www.openstreetmap.org/way/631235849)、[东叶屋顶](https://www.openstreetmap.org/way/631235848) |
@@ -75,3 +76,5 @@ Terrain Tiles 的完整上游说明见 [Tilezen attribution](https://github.com/
 这些观察点展示原有地理要素，没有另行伪造一座代表整个校园或公园的建筑。公开地图存在覆盖差异，未测绘地区不等于真实空地。
 
 会展中心的花冠、入口台阶与展厅组合参考 [gmp 建筑介绍](https://www.gmp.de/de/projekte/403/internationales-messe-und-kongresszentrum-nanning)；大桥的水平弯曲桥面、双倾斜拱肋与吊杆参考原设计单位 [OPAC 项目介绍](https://www.opacengineers.com/projects/Nanning)；艺术中心格栅与三座体量继续参考 [gmp 项目介绍](https://www.gmp.de/en/projects/3231/guangxi-culture-arts-center)。模型自主简化，不使用原建筑设计图或实景贴图。
+
+两站的站房、站台及轨道使用独立公开快照 `data/stations-source.json`，时间为 2026-09-09T16:44:27Z；派生计划为 `data/stations-plan.json`。站房水平朝向来自地图，屋盖、幕墙、大钟、站名和柱廊根据公开实景近似建模，来源与显示地面修正见 [两座车站建模](STATIONS.md)。

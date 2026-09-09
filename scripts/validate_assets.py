@@ -19,6 +19,7 @@ from bridge_landmark import BridgePath, MAIN_SPAN, NORTH_APPROACH
 from changyou_landmark import ANGLE as CHANGYOU_ANGLE, WIDTH as CHANGYOU_WIDTH, DEPTH as CHANGYOU_DEPTH
 from nanhu_landmark import PLAN as NANHU_PLAN, BRIDGE_LENGTH as NANHU_BRIDGE_LENGTH
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, build_canopy, terrain_surface
+from station_landmarks import PLAN as STATION_PLAN, STATIONS, inside_site as inside_station, ground_blend as station_ground_blend
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -149,7 +150,32 @@ assert patch_land.intersection(water.buffer(-.00002)).area < 1e-8, 'Nanhu displa
 west, south, east, north = patch['bounds']
 expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
 assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
-assert sum(p['modelled'] for p in places) == 16, 'Detailed Nanhu landmark missing from the scene catalog'
+assert sum(p['modelled'] for p in places) == 17, 'Station landmark missing from the scene catalog'
+
+# Verify mapped station placement, platform coverage, and reproducible sources.
+assert STATION_PLAN['sceneCenter'] == g['center']
+assert STATION_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/stations-source.json').read_bytes()).hexdigest(), 'Stale railway plan'
+station_sites = {}
+for identity, station in STATIONS.items():
+    place = next(p for p in catalog if p['id'] == identity)
+    assert [place['lon'],place['lat']] == station['center']
+    assert place['modelled'] and place.get('cameraBearing') is not None
+    sx=(place['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+    sy=(place['lat']-g['center'][1])*1113.2
+    c,s=math.cos(station['angle']),math.sin(station['angle'])
+    local_site=Polygon(station['site'])
+    site=Polygon([(sx+u*c-v*s,sy+u*s+v*c) for u,v in station['site']])
+    assert local_site.is_valid and not site.intersects(water), 'Station apron overlaps water'
+    assert local_site.covers(Polygon(station['footprint']))
+    assert len(station['platforms']) == (7 if identity=='nanning-station' else 13)
+    for platform in station['platforms']:
+        ring=Polygon(platform['ring'])
+        triangulated=unary_union([Polygon([platform['points'][i] for i in tri]) for tri in platform['triangles']])
+        assert ring.symmetric_difference(triangulated).area < .00001, 'Rail platform coverage mismatch'
+        assert local_site.covers(ring), 'Platform extends outside station replacement area'
+        assert all(inside_station(identity,u*c-v*s,u*s+v*c,.00001) for u,v in platform['ring'])
+    assert all(local_site.buffer(.00001).covers(LineString(rail['points'])) for rail in station['rails'])
+    station_sites[identity]=(sx,sy,site)
 
 # Validate the rendered canopy footprint and terrain clearance in both profiles.
 # This catches fills across mapped holes, hidden roads/buildings, and the coarse
@@ -181,7 +207,7 @@ for region, area in zip(FOREST_REGIONS,canopy_regions):
     for x,y,r,aspect,angle,color in region['crownClusters']:
         assert buffered.contains(Point(x,y).buffer(r)), 'Crown cluster crosses a woodland clearing'
 
-def raw_ground(x, y):
+def terrain_ground(x, y):
     west, south, east, north = g['bounds']
     u = max(0, min(t['cols']-1.000001, (x-west)/(east-west)*(t['cols']-1)))
     v = max(0, min(t['rows']-1.000001, (north-y)/(north-south)*(t['rows']-1)))
@@ -191,6 +217,25 @@ def raw_ground(x, y):
     h = ((1-a)*hs[j*t['cols']+i]+a*hs[j*t['cols']+i+1])*(1-b)
     h += ((1-a)*hs[(j+1)*t['cols']+i]+a*hs[(j+1)*t['cols']+i+1])*b
     return max(-.08,(h-55)/100*3)
+
+def raw_ground(x, y):
+    h=terrain_ground(x,y)
+    for identity,(sx,sy,_) in station_sites.items():
+        if abs(x-sx)<10 and abs(y-sy)<10:
+            blend=station_ground_blend(identity,x-sx,y-sy)
+            h=terrain_ground(sx,sy)*(1-blend)+h*blend
+    return h
+
+for identity,(sx,sy,site) in station_sites.items():
+    level=terrain_ground(sx,sy)
+    x0,y0,x1,y1=site.bounds
+    for i in range(25):
+        for j in range(25):
+            x,y=x0+(x1-x0)*i/24,y0+(y1-y0)*j/24
+            if not site.covers(Point(x,y)): continue
+            for mobile_profile in [False,True]:
+                floor=terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],mobile_profile)
+                assert abs(floor-level)<.00001, f'{identity} terrace intersects displayed terrain'
 
 class CanopyProbe:
     def __init__(self, lightweight):
@@ -258,17 +303,19 @@ def inspect_model(filename, budget):
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
 full_bytes,full=inspect_model('nanning-city.glb',10_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_800_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',6_200_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
 assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and colonnade missing or over budget'
 assert 15_000 < full['Landmark_nanhu'] < 22_000, 'Nanhu bridge and garden geometry missing or over budget'
+assert 6_000 < full['Landmark_nanning-station'] < 20_000, 'Nanning station geometry missing or over budget'
+assert 15_000 < full['Landmark_east-station'] < 45_000, 'East station geometry missing or over budget'
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
-# Both qualities retain independent download and geometry budgets.
+# Two detailed stations share a bounded 0.4 MB allowance in the mobile asset.
 assert sum(full.values()) < 1_300_000
-assert sum(mobile.values()) < 810_000
+assert sum(mobile.values()) < 865_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
 overview = json.loads((ROOT/'public/data/overview.json').read_text())
 for counts, profile, tree_count, triangles_per_tree in [
