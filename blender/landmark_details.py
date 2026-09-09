@@ -3,11 +3,6 @@ import math
 from expo_landmark import build_expo
 
 
-def steps(b, x, y, z, width, count=6, run=.1, rise=.035):
-    for i in range(count):
-        b.box(x, y-i*run, z, width, run+.01, (count-i)*rise, 'roof')
-
-
 def build_bridge(b, roads, height):
     candidates=[r for r in roads if r['name']=='南宁大桥' and r['bridge']]
     assert candidates, 'Nanning Bridge requires its mapped centerline'
@@ -48,22 +43,3 @@ def build_bridge(b, roads, height):
         lower=min(deck-.12,max(.26,height(x,y)))
         b.box(x,y,lower,.18,.30,max(.08,deck-lower),'building')
     return at(.5)
-
-
-def build_arts(b, x, y, z, shell):
-    b.box(x,y,z,4.9,3.2,.16,'building','roof')
-    # A broad canopy of parallel slats, with open passages and glazed entrances.
-    for i in range(49):
-        b.box(x-2.4+i*.1,y,z+.80,.038,3.06,.11,'roof')
-    for side in [-1,1]:
-        b.box(x,y+side*1.5,z+.79,4.84,.045,.14,'roof')
-    for dx,dy,width,depth,hh in [(-1.48,0,1.45,2.0,1.56),(.05,.16,1.35,2.25,1.95),(1.46,-.12,1.1,1.65,1.35)]:
-        b.box(x+dx,y+dy,z+.16,width*.78,depth*.78,.54,'landmark')
-        shell(b,x+dx,y+dy,z+.27,width,depth,hh)
-        for i in range(8):
-            xx=x+dx-width*.37+i*width*.105
-            b.box(xx,y+dy-depth*.40,z+.16,.015,.022,.54,'roof')
-    steps(b,x,y-1.64,z,3.8,7,.09,.023)
-    for side in [-1,1]:
-        for j in range(8):
-            b.box(x+side*2.28,y-1.15+j*.31,z+.17,.12,.065,.045,'accent')

@@ -1,6 +1,6 @@
 """Low-poly landmark silhouettes; all dimensions are illustrative scene units."""
 import math
-from landmark_details import build_arts
+from arts_landmark import build_arts
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -21,24 +21,7 @@ def hall(b, x, y, z, width, depth, height, roof='accent'):
         b.box(x-width*.45+i*width*.15,y-depth*.6,z,.045,.045,height,'bridge')
 
 
-def mountain_shell(b, x, y, z, width, depth, height):
-    rings=[]
-    for level, scale in [(0,.7),(.26,1),(.64,.94),(.90,.62),(1,.08)]:
-        ring=[]
-        for i in range(24):
-            a=i/24*math.tau
-            cx,sy=math.cos(a),math.sin(a)
-            ring.append((x+math.copysign(abs(cx)**.72,cx)*width*scale/2,
-                         y+math.copysign(abs(sy)**.72,sy)*depth*scale/2,z+level*height))
-        rings.append(ring)
-    for lower,upper in zip(rings,rings[1:]):
-        for i in range(24):
-            j=(i+1)%24
-            b.face([lower[i],lower[j],upper[j],upper[i]],'roof' if i%2==0 else 'building')
-    b.face(rings[-1],'roof')
-
-
-def build_extra_landmarks(landmark):
+def build_extra_landmarks(landmark, ground=None):
     b,x,y,z=landmark('gxu')
     b.box(x,y,z,2.4,1.9,.12,'building','roof')
     hall(b,x,y,z+.12,1.9,1.35,.65,roof='bridge')
@@ -122,7 +105,7 @@ def build_extra_landmarks(landmark):
     b.finish()
 
     b,x,y,z=landmark('arts-center')
-    build_arts(b,x,y,z,mountain_shell)
+    build_arts(b,x,y,z,ground=ground)
     b.finish()
 
     b,x,y,z=landmark('tingzi')

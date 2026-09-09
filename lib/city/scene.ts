@@ -185,7 +185,9 @@ export async function createCityScene(
       transparent: true,
       opacity: 0.9,
       side: THREE.DoubleSide,
-      depthTest: false,
+      // The ground marker must be occluded by the building above it.
+      depthTest: true,
+      depthWrite: false,
     }),
   );
   selectedRing.rotation.x = -Math.PI / 2;
@@ -729,7 +731,7 @@ export async function createCityScene(
       if (selected) {
         selectedRing.position.set(
           selected.position[0],
-          (selected.position[1] + 0.1) * next.heightScale,
+          (selected.position[1] + 0.015) * next.heightScale,
           selected.position[2],
         );
       }

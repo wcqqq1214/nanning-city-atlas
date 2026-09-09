@@ -67,7 +67,7 @@ python3 -m http.server --directory out 8080
 
 ## 手机体验
 
-自动模式会为手机与节省流量偏好选择轻量模型；也可在“环境 → 画面偏好”手动切换。轻量版文件减少 50.8%，三角形减少 54.3%，保留全部建筑、道路、水面和地标。场景按空间分组，近景时剔除视野外的组。
+自动模式会为手机与节省流量偏好选择轻量模型；也可在“环境 → 画面偏好”手动切换。轻量版文件减少 48.4%，三角形减少 52.0%，保留全部建筑、道路、水面和地标。场景按空间分组，近景时剔除视野外的组。
 
 流畅模式关闭实时阴影、限制动画最高 30 fps，并在画面静止时停止重复绘制。自动模式在持续低帧率时降低渲染像素比例；精细模式保留用户选择。手机提供 44 px 主要触控按钮、焦点受控的菜单抽屉、可收起的地标介绍与横屏布局。
 
@@ -77,7 +77,7 @@ python3 -m http.server --directory out 8080
 
 **青绿城市沙盘**：纸瓷白建筑、青玉色水面、深浅绿色低面数山林，黄铜色屋顶与朱红色桥拱作为局部识别色。镜头采用可旋转的倾斜鸟瞰，底座以切片方式呈现地形，界面保持清晰、安静的地图工作台结构。
 
-详细设计与功能说明见 [设计说明](docs/DESIGN.md)。会展中心造型、参考资料与验证记录见 [重建说明](docs/EXPO_REMODEL.md)。
+详细设计与功能说明见 [设计说明](docs/DESIGN.md)。会展中心和广西文化艺术中心的造型、参考资料与验证记录分别见 [会展中心重建](docs/EXPO_REMODEL.md)、[艺术中心重建](docs/ARTS_REMODEL.md)。
 
 ## 20 个城市探索点
 
@@ -125,8 +125,8 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：8.31 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：4.09 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标。
+- `public/models/nanning-city.glb`：8.71 MB 的 Draco 精细模型。
+- `public/models/nanning-city-mobile.glb`：4.49 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标。
 - `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
 
