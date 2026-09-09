@@ -1,163 +1,142 @@
+<div align="center">
+
 # 邕城 · Nanning City Atlas
 
-**[在线体验 · GitHub Pages](https://wcqqq1214.github.io/nanning-city-atlas/)** · [部署记录](https://github.com/wcqqq1214/nanning-city-atlas/actions/workflows/pages.yml)
+**在浏览器里，走近南宁的山水与街区。**
 
-以真实公开地理数据为骨架，用 **Three.js + Blender** 复现广西南宁城区的山、水与城市空间。青绿色邕江贯穿浅色城市体块，保留南湖、青秀山、路网、滨江绿地与主要地标的地理关系。
+基于公开地理数据与 Blender 建模的三维城市沙盘，支持地标探索、城市漫游与昼夜切换。
 
-项目范围约 **37 × 28 km**：`108.12°–108.48° E / 22.70°–22.95° N`。城西扩至石埠，包含相思湖、罗文、北部高新区与更多南部城区。面积约为原范围的 3.2 倍；这是城区的艺术化地理重建，不是全市行政区域的精密数字孪生。
+[在线游览](https://wcqqq1214.github.io/nanning-city-atlas/) · [数据来源](docs/DATA_SOURCES.md) · [设计说明](docs/DESIGN.md) · [验收记录](docs/VALIDATION.md)
 
-![Blender 场景概览](docs/scene-overview.png)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white)
+![Blender](https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-387C44?style=for-the-badge&logo=openstreetmap&logoColor=white)
+
+</div>
+
+![南宁三维城市沙盘全景，Blender 离线场景渲染](docs/scene-overview.png)
 
 *Blender 离线场景渲染；网页另含交互菜单与地图标注。*
 
+## 一座可以探索的三维邕城
+
+项目覆盖南宁约 **37 × 28 km** 的城区与周边，西至石埠，包含相思湖、老城、青秀山和五象新区。青绿色邕江贯穿纸瓷白建筑与深浅绿色山林，打开网页即可游览，无需地图密钥或后端服务。
+
+| OSM 建筑轮廓 | 程序化补充建筑 | 城市探索点 | 独立地标模型 |
+| :---: | :---: | :---: | :---: |
+| **6,035 个** | **13,882 栋** | **22 处** | **17 个** |
+
+> 基于 2026-09-08 的 OpenStreetMap 快照。项目为艺术化地理重建，补充建筑的位置与高度为示意。
+
+## 游览体验
+
+| 功能 | 可以做什么 |
+| --- | --- |
+| **地标探索** | 通过菜单与地图标记访问 22 个探索点，15 个建筑地标提供近景入口。 |
+| **城市漫游** | 自动在地标间切换，手动操作地图或选择地标会暂停。 |
+| **自由视角** | 旋转、平移、缩放，切换俯视、倾斜、正北和全景视角，支持缓慢环绕与全屏。 |
+| **光照与画质** | 选择晨光、日间、日落、夜色及自动、流畅、精细画质。 |
+| **图层与高度** | 分别开关建筑、树木、道路桥梁、水面和地名标注，调整整体竖向比例。 |
+| **截图与移动端** | 导出当前城市画面为 PNG（不含菜单与 HTML 标注）；手机提供菜单抽屉与可收起的地标介绍。 |
+
+鼠标左键旋转、右键平移、滚轮缩放；触屏单指旋转、双指平移／缩放。手机自动选择轻量模型，也可手动切换画质。
+
+探索点涵盖相思湖、三街两巷、南湖、青秀山、国际会展中心、南宁大桥、广西文化艺术中心与两座铁路车站等。完整名单见 [地标目录](data/landmarks.json)。
+
+<details>
+<summary>查看更多场景预览</summary>
+
+以下为仓库中的建模预览，网页效果以在线游览为准。
+
+| 广西文化艺术中心 | 广西体育中心 |
+| --- | --- |
+| ![广西文化艺术中心建模预览](docs/arts-center-preview.png) | ![广西体育中心建模预览](docs/sports-center-preview.png) |
+
+| 南宁站 | 南宁东站 |
+| --- | --- |
+| ![南宁站建模预览](docs/nanning-station-preview.png) | ![南宁东站建模预览](docs/east-station-preview.png) |
+
+</details>
+
+## 技术与资源
+
+| 技术 | 用途 |
+| --- | --- |
+| **Three.js** | 浏览器三维场景、相机交互、光照与地图标记。 |
+| **Blender** | 城市与地标建模，保留可编辑源文件。 |
+| **React + TypeScript** | 中文地图界面、响应式菜单与交互状态。 |
+| **vinext + Vite** | 本地开发、生产构建与静态导出。 |
+| **OpenStreetMap + Mapzen Terrarium** | 建筑轮廓、道路、水系、林地与地形的数据基础。 |
+| **GLB + Draco** | 压缩精细与轻量两档模型，解码器随站点托管。 |
+
+- [Blender 源文件](blender/nanning-city.blend)：可编辑的城市场景与地标模型。
+- [模型资源](public/models/)：约 8.53 MB 的精细模型与 6.01 MB 的轻量模型。
+- [场景数据](public/data/)：高程、裁剪后的地理数据库、地标与地图元数据。
+
+网页运行时只向自己的站点请求数据和模型。
+
 ## 本地运行
 
-需要 Node.js 22.13+，已提交预生成模型，浏览项目无需安装 Blender，也无需地图 API key。
+建议使用 **Node.js 24**，与仓库 CI 保持一致。仓库已包含预生成模型，浏览项目无需安装 Blender。
 
-```bash
+```sh
+git clone https://github.com/wcqqq1214/nanning-city-atlas.git
+cd nanning-city-atlas
 npm ci
 npm run dev
 ```
 
-打开终端打印的本地地址，默认是 `http://localhost:3000`。
+打开终端输出的 Local 地址，默认是 `http://localhost:3000`。
 
-```bash
+### 检查与静态构建
+
+```sh
 npm run typecheck
 npm run lint
 node --experimental-strip-types --test scripts/test-tap-gesture.mjs
-npm run build
-npm start
+npm run build:pages
 ```
 
-生产构建使用 Vinext / Vite。`npm run build` 保留 Cloudflare Workers 适配；`npm run build:pages` 导出 GitHub Pages 所需的纯静态文件。GitHub 中保留完整项目、锁文件、地图数据、Blender 源文件与生成脚本。
+静态构建产物生成于 `out/`，默认使用当前仓库的项目子路径。本地按根目录预览：
 
-## GitHub Pages 部署
-
-公开访问地址：**https://wcqqq1214.github.io/nanning-city-atlas/**
-
-仓库使用 [.github/workflows/pages.yml](.github/workflows/pages.yml) 自动部署。推送到 `main` 后，GitHub Actions 安装锁定依赖、执行类型、lint 与点触交互测试、静态导出并发布 `out/`。无需后端、地图密钥或额外部署 token，模型与 Draco 解码器随站点一同托管。
-
-Fork 后，在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**，再运行 `Deploy GitHub Pages` 工作流。部署路径由 Pages 配置自动传入，支持项目子目录和站点根目录。
-
-```bash
-# 生成当前仓库对应子目录的静态包
-npm run build:pages
-
-# 在本地按根目录预览静态导出
+```sh
 PAGES_BASE_PATH='' npm run build:pages
 python3 -m http.server --directory out 8080
 ```
 
-第二种方式访问 `http://localhost:8080`。`out/` 是生成产物，不提交到源代码分支。
+访问 `http://localhost:8080`。`out/` 是生成产物，不提交到源代码分支。
 
-## 可以做什么
+推送到 `main` 后，[GitHub Actions](.github/workflows/pages.yml) 自动检查、构建并部署。Fork 后需在 **Settings → Pages → Source** 选择 **GitHub Actions**。
 
-| 菜单 | 行为 |
+模型重建流程见 [建模说明](docs/MODELING.md)。
+
+## 数据来源与精度
+
+- **建筑与地标**：缺失高度采用估算值，程序化建筑用于补充街区；地标经过简化，部分适当放大以便辨识。
+- **地形与水面**：Mapzen Terrarium 高程经过重采样、竖向夸张及岸线局部处理，不代表工程高程。
+- **植被与光照**：树位与连片树冠为示意，模拟光照不对应实时天气或严格天文日照。
+
+不能用于测绘、导航、洪水模拟或建筑尺寸量测。详细依据见 [数据来源](docs/DATA_SOURCES.md)。
+
+## 文档导航
+
+| 文档 | 内容 |
 | --- | --- |
-| 探索 | 全景鸟瞰；访问 22 个探索点，覆盖石埠、相思湖、老城、校园、文化场馆、天际线、山林、桥梁与交通枢纽 |
-| 图层 | 独立开关建筑、树木、道路桥梁、水面、地名标注 |
-| 环境 | 06:00–22:00 模拟光照、晨光/日间/日落/夜色预设、0.5–2.0 倍整体竖向调整、自动/流畅/精细画面选择 |
-| 视角 | 俯视/倾斜视角、缓慢环绕、正北朝向、放大缩小、全景复位、全屏 |
-| 地标近景 | 15 个建筑地标配置近景入口；重点细化会展中心花瓣与台阶、大桥斜拱与吊杆、艺术中心格栅云棚和体育中心双叶屋顶、看台与跑道 |
-| 城市漫游 | 每 6.5 秒切换一站；手动操作地图或选择地标会暂停 |
-| 导出视图 | 导出当前 WebGL 城市画面为 PNG（不含页面菜单与 HTML 标注） |
-| 项目说明 | 操作指南、范围、精度说明、来源及许可 |
+| [数据来源](docs/DATA_SOURCES.md) | 地理数据、坐标来源、补充建筑与精度边界。 |
+| [设计说明](docs/DESIGN.md) | 界面、交互、视觉风格与功能设计。 |
+| [手机体验](docs/MOBILE.md) | 轻量模型、渲染策略、测试方法与诊断入口。 |
+| [建模说明](docs/MODELING.md) | 数据准备、Blender 重建流程与项目结构。 |
+| [验收记录](docs/VALIDATION.md) · [打磨建议](docs/POLISH.md) | 验证结果、已知限制与后续取舍。 |
 
-鼠标左键旋转、右键平移、滚轮缩放；触屏单指旋转、双指平移/缩放。聚焦地图后可用方向键平移、`+` / `−` 缩放、`Home` 复位。菜单与地标支持键盘访问；系统减少动态效果偏好会关闭环绕和水面动画。
+## 许可与署名
 
-## 手机体验
+| 内容 | 许可／署名 |
+| --- | --- |
+| 代码 | [MIT](LICENSE) |
+| 地理数据库及衍生数据库 | ODbL 1.0，**© OpenStreetMap contributors** |
+| 高程数据及衍生模型 | 保留上游归属要求，见 [第三方署名](ATTRIBUTION.md) |
+| Draco 解码器 | [Apache 2.0](public/draco/LICENSE.txt) |
 
-自动模式会为手机与节省流量偏好选择轻量模型；也可在“环境 → 画面偏好”手动切换。轻量版约 6.01 MB，相对精细版文件减少 29.5%，三角形减少 26.8%，保留全部建筑、道路、水面和地标。场景按空间分组，近景时剔除视野外的组。
-
-流畅模式关闭实时阴影、限制动画最高 30 fps，并在画面静止时停止重复绘制。自动模式在持续低帧率时降低渲染像素比例；精细模式保留用户选择。手机提供 44 px 主要触控按钮、焦点受控的菜单抽屉、可收起的地标介绍与横屏布局。
-
-实际手机 GPU、发热与蜂窝网络表现仍需真机验证；桌面窄屏模拟不代表手机性能测试。测试方法与诊断入口见 [手机体验说明](docs/MOBILE.md)。
-
-## 视觉风格
-
-**青绿城市沙盘**：纸瓷白建筑、青玉色水面、深浅绿色低面数山林，黄铜色屋顶与朱红色桥拱作为局部识别色。镜头采用可旋转的倾斜鸟瞰，底座以切片方式呈现地形，界面保持清晰、安静的地图工作台结构。
-
-全市普通树采用统一的简化阔叶冠，青秀山的连片树冠已推广到当前地图范围内约 213.88 km² 的已标注林地，林缘保留单树。两档画质分别贴合各自的地形网格；普通树、连续森林和南湖园林植被均响应林木图层开关。范围分批生成，方法和取舍见 [城市树木与郊区树林](docs/FOREST_CANOPY.md)。
-
-详细设计与功能说明见 [设计说明](docs/DESIGN.md)。会展中心和广西文化艺术中心的造型、参考资料与验证记录分别见 [会展中心重建](docs/EXPO_REMODEL.md)、[艺术中心重建](docs/ARTS_REMODEL.md)。
-
-## 22 个城市探索点
-
-城西：石埠 · 美丽南方、广西民族大学 · 相思湖校区、相思湖公园、南宁动物园、明月湖。
-
-城区及五象新区：三街两巷 · 畅游阁、南宁站、人民公园 · 镇宁炮台、广西大学 · 汇学堂、广西博物馆、南湖公园、地王大厦、国际会展中心、华润大厦、南宁东站、广西民族博物馆、南宁孔庙、青秀山 · 龙象塔、南宁大桥、广西文化艺术中心、广西体育中心、亭子码头。
-
-其中 17 个点有独立地标模型，其余 5 个以公开地图中的校园、湖泊、绿地和周边街区为主体。每个点配置独立的镜头距离；探索菜单、地图标记和漫游使用同一份 [地标目录](data/landmarks.json)。目录中的坐标来源及近似方式见 [数据说明](docs/DATA_SOURCES.md)。
-
-南宁站与南宁东站使用精细站房、站台和轨道模型，造型、数据与重建方法见 [两座车站建模](docs/STATIONS.md)。
-
-广西体育中心新增主体育场、体育馆和游泳跳水馆，造型来源与细节见 [体育中心建模](docs/SPORTS_CENTER.md)。
-
-近景细节、城西扩区与手机轻量模式已完成；后续取舍见 [打磨建议](docs/POLISH.md)。
-
-## 数据与精度
-
-- 6,035 个 OSM 建筑轮廓；缺少建筑高度时采用估算值。
-- 13,882 栋程序化补充建筑只在地图建设用地和符合条件的封闭城区街区内生成，并避让水面、公园、道路和已有建筑；位置与高度为示意，推断街区的依据见 [数据说明](docs/DATA_SOURCES.md)。
-- 10,398 个道路片段；精细版保留 3,359 棵常规单树，流畅版保留 860 棵。另以约 213.88 km² 连片树冠代替 7,600 棵林内示意树，两档均保留南湖的 83 棵阔叶树和 36 棵棕榈。
-- 390 × 294 高程网格，来自 20 张 z12 Mapzen Terrarium 瓦片；原始瓦片采样尺度约 35 m，显示采样约 95 m。流畅版地形沿两个网格方向各降低一半采样密度。
-- 地形初始高差放大 3 倍，建筑高度初始放大 1.55 倍。环境面板的高度滑杆在此基础上缩放整个场景的竖向比例。
-- 水面被统一到显示高度，水下地形与低位岸线做了可视化处理。模拟光照不对应实时天气或严格天文日照。
-- 地标轮廓由 Blender 简化建模；部分地标相对于真实尺寸适当放大，便于沙盘辨识。
-
-不能用于测绘、导航、洪水模拟或建筑尺寸量测。完整数据说明与归属见 [数据来源](docs/DATA_SOURCES.md) 和 [ATTRIBUTION.md](ATTRIBUTION.md)。
-
-## Blender 重建流程
-
-需要 Blender 4.5+（本项目使用 Blender 5.2.1）与 Python 3.9+。
-
-```bash
-python3 -m venv work/venv
-source work/venv/bin/activate
-pip install -r scripts/requirements.txt
-python3 scripts/fetch_geodata.py
-python3 scripts/prepare_geodata.py
-python3 scripts/prepare_stations.py
-python3 scripts/prepare_forest_canopy.py
-npm run models:build
-```
-
-`data/region.json` 统一定义范围。`fetch_geodata.py` 按范围检查 OSM 缓存，范围变化后自动重新获取；高程瓦片按编号复用。重新获取 OSM 时请在 `work/geodata/` 中有针对性地删除对应缓存，勿在调试时高频请求公共 Overpass 服务。
-
-数据与模型检查：
-
-```bash
-python3 scripts/validate_assets.py
-```
-
-输出：
-
-- `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：8.53 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：6.01 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标。
-- `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
-- `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
-
-坐标约定：准备阶段 X 向东、Y 向北，每单位 100 m；Blender Z 向上；glTF 导出后 Three.js X 向东、Y 向上、Z 向南。使用城区中心处的局部等距近似投影，输入坐标统一为 WGS84。
-
-## 项目结构
-
-```text
-app/                 中文地图界面与响应式样式
-data/region.json      范围配置
-data/landmarks.json   地标目录、来源与镜头配置
-lib/city/scene.ts     Three.js 渲染、光照、镜头、标记与资源清理
-lib/city/webmcp.ts    可选 WebMCP 地标与环境工具
-blender/             可编辑 .blend、场景生成与地标造型脚本
-scripts/             数据下载、裁剪、补充建筑与模型检查
-public/data/         可再利用的地理数据与地图元数据
-public/models/       压缩 GLB
-public/draco/        随项目提供的 Draco 解码器，无第三方运行时请求
-docs/               设计、数据与验证说明
-```
-
-网页运行时只向自己的站点请求数据和模型。地图数据来源服务只在离线重建时使用。
-
-## 许可
-
-代码采用 [MIT](LICENSE)。地图数据库为 © OpenStreetMap contributors，遵循 [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)。高程数据与衍生模型保留上游归属要求；代码许可不覆盖第三方地理数据。Draco 解码器采用 Apache 2.0，见 `public/draco/LICENSE.txt`。
+代码许可不覆盖第三方地理数据。重新分发模型、Blender 场景、渲染图或地理数据时，请保留 [OSM 与高程数据署名](ATTRIBUTION.md)。
