@@ -1,43 +1,11 @@
 """Recognizable near-view structures, deliberately simplified rather than surveyed."""
 import math
+from expo_landmark import build_expo
 
 
 def steps(b, x, y, z, width, count=6, run=.1, rise=.035):
     for i in range(count):
         b.box(x, y-i*run, z, width, run+.01, (count-i)*rise, 'roof')
-
-
-def build_expo(b, x, y, z):
-    b.box(x, y, z, 3.6, 3.0, .14, 'building', 'roof')
-    for side in [-1, 1]:
-        b.box(x+side*1.25, y+.42, z+.14, .95, 1.65, .43, 'building', 'roof')
-        for j in range(9):
-            b.box(x+side*1.25, y-.35+j*.18, z+.58, 1.01, .035, .045, 'roof')
-    b.cone(x, y-.15, z+.14, .8, .8, .61, 'landmark', 48)
-    for i in range(32):
-        a=i/32*math.tau
-        b.beam((x+math.cos(a)*.805,y-.15+math.sin(a)*.805,z+.2),
-               (x+math.cos(a)*.805,y-.15+math.sin(a)*.805,z+.75), .014, 'roof')
-    # Curved, folded petals have depth and radial ribs, rather than flat triangles.
-    for i in range(12):
-        angle=i/12*math.tau
-        for j in range(10):
-            points=[]
-            for t,side in [(j/10,-1),((j+1)/10,-1),((j+1)/10,1),(j/10,1)]:
-                radius=.13+t*1.04
-                aa=angle+side*(.065+.13*math.sin(t*math.pi))
-                zz=z+.70+1.08*(1-t)**.7+.11*math.sin(t*math.pi)
-                points.append((x+math.cos(aa)*radius,y-.15+math.sin(aa)*radius,zz))
-            b.face(points, 'roof')
-            t,u=j/10,(j+1)/10
-            def rib(v):
-                r=.13+v*1.04
-                return (x+math.cos(angle)*r,y-.15+math.sin(angle)*r,z+.73+1.08*(1-v)**.7+.11*math.sin(v*math.pi))
-            b.beam(rib(t),rib(u),.016,'building')
-    steps(b,x,y-1.52,z,2.8,8,.09,.027)
-    for side in [-1,1]:
-        for j in range(5):
-            b.box(x+side*1.63,y-.7+j*.38,z+.15,.065,.065,.42,'roof')
 
 
 def build_bridge(b, roads, height):

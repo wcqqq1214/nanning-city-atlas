@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
 from landmark_details import build_expo, build_bridge
+from expo_landmark import site_distance as expo_site_distance
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -67,16 +68,39 @@ MATS = {
     'landmark': material('Landmark jade glass', '568f87', .28, .35),
     'accent': material('Brass accent', 'd3ae6b', .4, .2),
     'bridge': material('Bridge vermilion', 'b9654c', .65),
+    'expo_membrane': material('Expo ivory membrane', 'f8f7ef', .64),
+    'expo_glass': material('Expo silver sage glazing', '91b0aa', .24, .18),
+    'expo_frame': material('Expo aluminium frames', 'b5bfb9', .42, .3),
+    'expo_stone': material('Expo limestone terraces', 'd2d5ca'),
 }
 
 
-def height(x, y):
+def terrain_height(x, y):
     i = max(0, min(COLS - 1.001, (x - MINX) / (MAXX - MINX) * (COLS - 1)))
     j = max(0, min(ROWS - 1.001, (MAXY - y) / (MAXY - MINY) * (ROWS - 1)))
     ix, jy = int(i), int(j)
     a, b = i - ix, j - jy
     h = (HEIGHTS[jy*COLS+ix]*(1-a)+HEIGHTS[jy*COLS+ix+1]*a)*(1-b) + (HEIGHTS[(jy+1)*COLS+ix]*(1-a)+HEIGHTS[(jy+1)*COLS+ix+1]*a)*b
     return max(-.08, (h - 55) / 100 * SCALE_Z)
+
+
+EXPO = PLACE_BY_ID['expo']
+EXPO_X = (EXPO['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
+EXPO_Y = (EXPO['lat']-GEO['center'][1])*1113.2
+EXPO_GROUND = terrain_height(EXPO_X, EXPO_Y)
+
+
+def height(x, y):
+    h = terrain_height(x, y)
+    # The ~95 m display DEM cannot resolve the building's graded terrace. Level
+    # its visual support, with a soft apron, so coarse hillside triangles do not
+    # pass through the lobby or stairs. Raw DEM data remains unchanged.
+    distance = expo_site_distance(x-EXPO_X, y-EXPO_Y)
+    if distance < 1.3:
+        t = max(0, min(1, (distance - .45) / .85))
+        blend = t*t*(3-2*t)
+        h = EXPO_GROUND*(1-blend) + h*blend
+    return h
 
 
 def pos(lon,lat):
@@ -95,11 +119,13 @@ def inside_landmark(x, y):
 class Batch:
     def __init__(self, name, keys):
         self.name, self.keys, self.v, self.f, self.mi = name, keys, [], [], []
-    def face(self, vertices, key):
+        self.normals = []
+    def face(self, vertices, key, normals=None):
         start = len(self.v)
         self.v.extend(vertices)
         self.f.append(tuple(range(start, start + len(vertices))))
         self.mi.append(self.keys.index(key))
+        self.normals.append(normals)
     def box(self, x, y, z, w, d, h, key, roof=None, angle=0):
         verts = []
         for zz in [z, z+h]:
@@ -129,19 +155,26 @@ class Batch:
             self.face([rings[0][i],rings[0][j],rings[1][j],rings[1][i]],key)
         self.face(rings[0],key);self.face(rings[1],key)
     def finish(self):
-        def make_object(name, vertices, faces, materials, parent=None):
+        def make_object(name, vertices, faces, materials, parent=None, normals=None):
             mesh=bpy.data.meshes.new(name)
             mesh.from_pydata(vertices, [], faces)
             for key in self.keys: mesh.materials.append(MATS[key])
             for polygon,index in zip(mesh.polygons,materials): polygon.material_index=index
             mesh.update()
+            if normals and any(n is not None for n in normals):
+                # Smooth along a membrane panel while keeping its fold creases.
+                # Zero vectors retain Blender's geometric normals on other faces.
+                mesh.normals_split_custom_set([
+                    normal for face, custom in zip(faces, normals)
+                    for normal in (custom if custom is not None else [(0, 0, 0)] * len(face))
+                ])
             obj=bpy.data.objects.new(name,mesh)
             bpy.context.collection.objects.link(obj)
             obj.parent=parent
             return obj
         # Spatial batches permit Three.js frustum culling in close views.
         if self.name not in ['Terrain','Buildings','Vegetation','Roads','Bridges']:
-            return make_object(self.name,self.v,self.f,self.mi)
+            return make_object(self.name,self.v,self.f,self.mi,normals=self.normals)
         parent=bpy.data.objects.new(self.name,None)
         bpy.context.collection.objects.link(parent)
         groups={}
@@ -250,7 +283,9 @@ landmarks=[]
 def landmark(id):
     place = PLACE_BY_ID[id]
     x,y,z=pos(place['lon'],place['lat'])
-    batch=Batch('Landmark_'+id,['roof','landmark','accent','bridge','building'])
+    keys=['roof','landmark','accent','bridge','building']
+    if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
+    batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
     return batch,x,y,z
