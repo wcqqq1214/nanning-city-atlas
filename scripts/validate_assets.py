@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'blender'))
 from arts_landmark import outline as arts_outline, DISPLAY_SCALE, SITE_ANGLE
 from sports_landmark import PLAN as SPORTS_PLAN, SITE_PADS, inside_site
+from tingzi_landmark import SITE as TINGZI_SITE, site_xy as tingzi_xy, inside_site as inside_tingzi
+from bridge_landmark import BridgePath, MAIN_SPAN, NORTH_APPROACH
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -57,6 +59,9 @@ for place, source in zip(places, catalog):
     assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
     assert 5 <= place['cameraDistance'] <= 60
     if place.get('closeDistance'): assert 2 <= place['closeDistance'] <= place['cameraDistance']
+    assert place.get('cameraBearing') == source.get('cameraBearing')
+    if place.get('cameraBearing') is not None:
+        assert math.isfinite(place['cameraBearing']) and 0 <= place['cameraBearing'] < 360
     x=(place['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
     z=-(place['lat']-g['center'][1])*1113.2
     assert abs(place['position'][0]-x)<.001 and abs(place['position'][2]-z)<.001, 'Landmark projection mismatch'
@@ -87,6 +92,21 @@ for cx, cy, rx, ry in SITE_PADS:
     pad = Polygon([(sx+cx+rx*math.cos(i/96*math.tau), sy+cy+ry*math.sin(i/96*math.tau))
                    for i in range(96)])
     assert not pad.intersects(water), 'Sports ground correction overlaps mapped water'
+tingzi = next(p for p in catalog if p['id'] == 'tingzi')
+tx = (tingzi['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+ty = (tingzi['lat']-g['center'][1])*1113.2
+terrace = Polygon([(tx+tingzi_xy(u, v)[0], ty+tingzi_xy(u, v)[1]) for u, v in TINGZI_SITE])
+assert terrace.is_valid and not terrace.intersects(water), 'Tingzi terrace extends into the river'
+for building in g['buildings']:
+    if building.get('name') == '广西民族剧院':
+        footprint = Polygon(building['rings'][0])
+        center = footprint.centroid
+        assert not inside_tingzi(center.x-tx, center.y-ty), 'Tingzi replacement removes the neighbouring theatre'
+        assert not footprint.intersects(terrace), 'Tingzi terrace intersects the neighbouring theatre'
+bridge_path = BridgePath(g['roads'])
+bridge = next(p for p in places if p['id'] == 'bridge')
+span_center = bridge_path.at(NORTH_APPROACH+MAIN_SPAN/2)
+assert math.dist([bridge['position'][0], -bridge['position'][2]], span_center[:2]) < .002, 'Bridge label is away from its main span'
 def inspect_model(filename, budget):
     raw=(ROOT/'public/models'/filename).read_bytes()
     magic,version,length=struct.unpack_from('<III',raw)
@@ -107,15 +127,18 @@ def inspect_model(filename, budget):
                          if model['materials'][p['material']]['name'] == 'Sports terracotta track')
             floor = model['accessors'][track['attributes']['POSITION']]['min'][1]
             marker = next(p for p in places if p['id'] == 'sports-center')['position'][1]
-            assert marker+.015 < floor, 'Selection ring projects over the running track'
+            assert marker < floor, 'Stadium ground anchor is above the running track'
     return len(raw),counts
-# The three sports venues add ~0.34 MB to each quality. Keep a bounded 0.5 MB
-# increase while retaining the existing byte ratio and half-geometry requirement.
+# Fine landmarks are identical in both qualities. Allow their shared geometry
+# within bounded file sizes, while requiring substantial terrain/tree savings.
 full_bytes,full=inspect_model('nanning-city.glb',9_500_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_300_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
+assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
+assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
 assert mobile_bytes < full_bytes*.6
-assert sum(mobile.values()) < sum(full.values())*.5
+assert sum(mobile.values()) < sum(full.values())*.52
+assert sum(full.values())-sum(mobile.values()) > 680_000
 for name, count in full.items():
     if not name.startswith(('Terrain','Vegetation')):
         assert mobile[name]==count, f'Mobile lost geometry in {name}'

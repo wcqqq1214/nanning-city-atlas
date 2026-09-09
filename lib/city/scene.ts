@@ -178,22 +178,6 @@ export async function createCityScene(
   const draco = new DRACOLoader()
     .setDecoderPath(assetUrl('/draco/'))
     .setWorkerLimit(lightweight ? 1 : 2);
-  const selectedRing = new THREE.Mesh(
-    new THREE.RingGeometry(0.85, 0.94, 64),
-    new THREE.MeshBasicMaterial({
-      color: '#c69844',
-      transparent: true,
-      opacity: 0.9,
-      side: THREE.DoubleSide,
-      // The ground marker must be occluded by the building above it.
-      depthTest: true,
-      depthWrite: false,
-    }),
-  );
-  selectedRing.rotation.x = -Math.PI / 2;
-  selectedRing.visible = false;
-  selectedRing.renderOrder = 3;
-  scene.add(selectedRing);
   let waterMaterial: THREE.ShaderMaterial | null = null;
   let lastFrameTime = 0;
   let lastTelemetry = 0;
@@ -276,6 +260,12 @@ export async function createCityScene(
           distance * (close ? 0.72 : 1.15),
           distance * 1.35,
         );
+    if (!option.topDown && place.cameraBearing !== undefined) {
+      const bearing = THREE.MathUtils.degToRad(place.cameraBearing);
+      const radius = Math.hypot(offset.x, offset.z);
+      offset.x = Math.sin(bearing) * radius;
+      offset.z = -Math.cos(bearing) * radius;
+    }
     fly(target, target.clone().add(offset));
   };
   const keyDown = (event: KeyboardEvent) => {
@@ -726,15 +716,6 @@ export async function createCityScene(
       labels.forEach((label) =>
         label.el.classList.toggle('selected', label.place.id === next.selected),
       );
-      const selected = places.find((p) => p.id === next.selected);
-      selectedRing.visible = Boolean(selected);
-      if (selected) {
-        selectedRing.position.set(
-          selected.position[0],
-          (selected.position[1] + 0.015) * next.heightScale,
-          selected.position[2],
-        );
-      }
       if (next.topDown !== wasTop) {
         const distance = camera.position.distanceTo(controls.target);
         fly(

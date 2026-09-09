@@ -18,6 +18,8 @@ from extra_landmarks import build_extra_landmarks
 from landmark_details import build_expo, build_bridge
 from expo_landmark import site_distance as expo_site_distance
 from sports_landmark import SITE_PADS, MATERIAL_KEYS as SPORTS_MATERIALS, pad_distance, inside_site
+from tingzi_landmark import MATERIAL_KEYS as TINGZI_MATERIALS, inside_site as inside_tingzi, terrace_level
+from bridge_landmark import MATERIAL_KEYS as BRIDGE_MATERIALS
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -91,6 +93,19 @@ MATS = {
     'sports_seat_red': material('Sports terracotta seating', 'b76c51', .70),
     'sports_seat_gold': material('Sports amber seating', 'd3af68', .70),
     'sports_screen': material('Sports scoreboard', '233f3c', .40),
+    'tingzi_wall': material('Tingzi warm ivory facade', 'e6decb', .82),
+    'tingzi_trim': material('Tingzi white limestone mouldings', 'f8f2e5', .73),
+    'tingzi_glass': material('Tingzi recessed arched glazing', '526563', .28, .12),
+    'tingzi_roof': material('Tingzi terracotta spires', 'a65b42', .70),
+    'tingzi_dome': material('Tingzi blue grey dome', '64848b', .46, .18),
+    'tingzi_paving': material('Tingzi terrace stone', 'c9c9b9', .88),
+    'tingzi_deck': material('Tingzi passenger pier decking', '918672', .85),
+    'nbridge_steel': material('Nanning Bridge vermilion steel box ribs', 'b95139', .47, .28),
+    'nbridge_edge': material('Nanning Bridge pale edge beams', 'd4d8cf', .75),
+    'nbridge_road': material('Nanning Bridge asphalt deck', '727e78', .92),
+    'nbridge_concrete': material('Nanning Bridge concrete supports', 'c3c8bc', .86),
+    'nbridge_cable': material('Nanning Bridge steel cables and rails', '7b8981', .45, .42),
+    'nbridge_line': material('Nanning Bridge road markings', 'eee9cf', .80),
 }
 
 
@@ -141,10 +156,12 @@ def pos(lon,lat):
 
 
 CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
+TINGZI_X, TINGZI_Y, _ = pos(PLACE_BY_ID['tingzi']['lon'], PLACE_BY_ID['tingzi']['lat'])
 
 
 def inside_landmark(x, y):
     return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
+            inside_tingzi(x-TINGZI_X, y-TINGZI_Y) or
             any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS))
 
 
@@ -259,6 +276,9 @@ print('Building road network...', flush=True)
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
 for road in GEO['roads']:
+    if road['name'] == '南宁大桥' and road['bridge']:
+        # The detailed deck replaces both generic carriageway strips.
+        continue
     major = road['class'] in ['trunk','primary','motorway']
     width = .26 if major else (.17 if road['class']=='secondary' else .095)
     target = bridgebatch if road['bridge'] else roadbatch
@@ -299,7 +319,8 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-visible_trees = [(x,y,r) for x,y,r in GEO['trees'] if not inside_landmark(x,y)]
+visible_trees = [(x,y,r) for x,y,r in GEO['trees'] if not inside_landmark(x,y)
+                 and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)]
 for x,y,r in visible_trees:
     z=max(.32,height(x,y))
     trees.cone(x,y,z,.045,.03,.3,'trunk',5)
@@ -316,13 +337,15 @@ def landmark(id):
     place = PLACE_BY_ID[id]
     x,y,z=pos(place['lon'],place['lat'])
     if id == 'sports-center':
-        # The stadium's open field starts at its graded ground, unlike a closed
-        # building on a raised plinth. Keep the selection ring below the pitch.
+        # The stadium's open field starts at its graded ground.
         z = height(x, y)
+    if id == 'tingzi': z = terrace_level(x, y, z, height)
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
     if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
     if id == 'sports-center': keys += SPORTS_MATERIALS
+    if id == 'tingzi': keys += TINGZI_MATERIALS
+    if id == 'bridge': keys += BRIDGE_MATERIALS
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
