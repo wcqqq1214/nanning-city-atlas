@@ -24,6 +24,7 @@ export type Landmark = {
   anchorHeight: number;
   cameraDistance: number;
   closeDistance?: number;
+  cameraBearing?: number;
   modelled: boolean;
   category: string;
   description: string;

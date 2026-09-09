@@ -2,6 +2,7 @@
 import math
 from arts_landmark import build_arts
 from sports_landmark import build_sports
+from tingzi_landmark import build_tingzi
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -114,13 +115,5 @@ def build_extra_landmarks(landmark, ground=None):
     b.finish()
 
     b,x,y,z=landmark('tingzi')
-    b.box(x,y,z,3.1,1.6,.15,'building','roof')
-    for level in range(3):
-        size=1.25-level*.18
-        hall(b,x,y,z+.15+level*.39,size,size*.7,.34,roof='bridge')
-    for side in [-1,1]:
-        hall(b,x+side*1.10,y,z+.15,.6,.7,.4,roof='bridge')
-    b.box(x,y-.95,z+.08,2.5,.2,.12,'accent')
-    for i in range(13):
-        b.box(x-1.2+i*.2,y-1.03,z+.2,.025,.025,.17,'roof')
+    build_tingzi(b,x,y,z,ground=ground)
     b.finish()

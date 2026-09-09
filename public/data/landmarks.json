@@ -296,18 +296,18 @@
   {
     "id": "bridge",
     "name": "南宁大桥",
-    "lon": 108.36768,
-    "lat": 22.78615,
+    "lon": 108.3679007,
+    "lat": 22.7860185,
     "category": "邕江桥梁",
-    "description": "跨越邕江的非对称拱桥，在青秀山西侧连接两岸。朱红色拱肋成为青绿河面上的视觉焦点。",
-    "anchorHeight": 2.5,
+    "description": "跨越邕江的曲线梁非对称外倾拱桥。两道独立的朱红色钢箱拱肋通过斜吊杆连接弯曲桥面，主跨约 300 米。",
+    "anchorHeight": 1.9,
     "cameraDistance": 14,
     "modelled": true,
-    "closeDistance": 6.2,
+    "closeDistance": 4.4,
     "position": [
-      69.442,
-      1.23,
-      43.248
+      69.668,
+      1.16,
+      43.394
     ]
   },
   {
@@ -349,19 +349,20 @@
   {
     "id": "tingzi",
     "name": "亭子码头",
-    "lon": 108.3183526,
-    "lat": 22.794528,
+    "lon": 108.3184306,
+    "lat": 22.7939861,
     "category": "滨江",
-    "description": "邕江沿岸的游憩节点。码头平台与层叠屋檐构成滨水轮廓，可以沿江回望老城与两岸街区。",
-    "anchorHeight": 2.3,
-    "cameraDistance": 14,
+    "description": "邕江南岸的欧式滨水街区。三座红色尖塔、白色拱窗长廊与蓝灰色穹顶沿步行街展开，北侧为游船码头。",
+    "anchorHeight": 1.45,
+    "cameraDistance": 8,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/1423783186",
-    "closeDistance": 3.8,
+    "closeDistance": 2.2,
+    "cameraBearing": 222.1,
     "position": [
-      18.83,
-      0.661,
-      33.921
+      18.91,
+      0.866,
+      34.525
     ]
   }
 ]
