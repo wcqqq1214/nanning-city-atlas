@@ -2,6 +2,7 @@
 import json
 import math
 import struct
+import sys
 from pathlib import Path
 from shapely.geometry import Polygon, LineString
 from shapely.ops import unary_union
@@ -9,6 +10,8 @@ from shapely.prepared import prep
 from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT/'blender'))
+from arts_landmark import outline as arts_outline, DISPLAY_SCALE, SITE_ANGLE
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -58,6 +61,17 @@ for place, source in zip(places, catalog):
     assert abs(place['position'][0]-x)<.001 and abs(place['position'][2]-z)<.001, 'Landmark projection mismatch'
 w,s,e,n = g['bbox']
 assert all(w < p['lon'] < e and s < p['lat'] < n for p in places)
+# Check the enlarged arts-center podium against the actual water database and
+# the scene's replacement boundary, not just the abstract source-model bounds.
+arts = next(p for p in catalog if p['id'] == 'arts-center')
+ax = (arts['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+ay = (arts['lat']-g['center'][1])*1113.2
+c, s = math.cos(SITE_ANGLE), math.sin(SITE_ANGLE)
+podium = Polygon([(ax+DISPLAY_SCALE*1.12*(u*c-v*s), ay+DISPLAY_SCALE*1.12*(u*s+v*c))
+                  for u, v in arts_outline()])
+assert podium.is_valid and not podium.intersects(water), 'Arts-center podium extends into mapped water'
+assert all(abs(x-ax) < arts['clearExtent'][0]/2 and abs(y-ay) < arts['clearExtent'][1]/2
+           for x, y in podium.exterior.coords), 'Arts-center podium exceeds its replacement area'
 def inspect_model(filename, budget):
     raw=(ROOT/'public/models'/filename).read_bytes()
     magic,version,length=struct.unpack_from('<III',raw)

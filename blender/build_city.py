@@ -72,6 +72,12 @@ MATS = {
     'expo_glass': material('Expo silver sage glazing', '91b0aa', .24, .18),
     'expo_frame': material('Expo aluminium frames', 'b5bfb9', .42, .3),
     'expo_stone': material('Expo limestone terraces', 'd2d5ca'),
+    'arts_white': material('Arts folded white aluminium', 'f4f5ee', .48, .08),
+    'arts_shell': material('Arts recessed silver roof', 'b9c4be', .57, .10),
+    'arts_soffit': material('Arts pearl canopy soffit', 'dfe4dc', .72),
+    'arts_glass': material('Arts grey green foyer glazing', '68857f', .22, .23),
+    'arts_frame': material('Arts brushed aluminium frames', 'a9b8b0', .36, .35),
+    'arts_stone': material('Arts pale stone podium', 'd8dacc', .9),
 }
 
 
@@ -285,6 +291,7 @@ def landmark(id):
     x,y,z=pos(place['lon'],place['lat'])
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
+    if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
@@ -335,7 +342,7 @@ for place in CATALOG:
         landmarks.append({**place,'position':[round(x,3),round(max(.3,z),3),round(-y,3)]})
 
 # Additional cultural, campus, riverside and transport landmarks.
-build_extra_landmarks(landmark)
+build_extra_landmarks(landmark, height)
 landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']==place['id']))
 
 (ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
