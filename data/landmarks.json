@@ -163,14 +163,14 @@
     "lon": 108.375595,
     "lat": 22.811472,
     "category": "城市地标",
-    "description": "朱槿花意象的会展建筑。以放射状花瓣屋顶和展厅体块，呈现南宁具有辨识度的建筑轮廓。",
+    "description": "十二片连续折面构成朱槿花厅的白色花冠，下缘舒展、中段内收，尖角向上展开。圆形玻璃大厅与低矮展厅相连。",
     "anchorHeight": 2.6,
     "cameraDistance": 12,
     "modelled": true,
     "closeDistance": 4.3,
     "clearExtent": [
-      4.0,
-      3.8
+      6.6,
+      5.8
     ]
   },
   {
