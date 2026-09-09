@@ -76,16 +76,16 @@ const LAYER_INFO: {
   {
     key: 'buildings',
     name: '城市建筑',
-    detail: '街区体块与标志性建筑',
+    detail: '普通建筑和城市地标',
     icon: Building2,
   },
   {
     key: 'vegetation',
     name: '林木植被',
-    detail: '山林、滨江与公园树冠',
+    detail: '山林、江边和公园里的树木',
     icon: Trees,
   },
-  { key: 'roads', name: '道路桥梁', detail: '城市路网与跨江连接', icon: Route },
+  { key: 'roads', name: '道路桥梁', detail: '道路和跨江大桥', icon: Route },
   {
     key: 'water',
     name: '河流湖泊',
@@ -176,7 +176,7 @@ export default function Home() {
   const [places, setPlaces] = useState<Landmark[]>([]);
   const [overview, setOverview] = useState<Overview | null>(null);
   const [progress, setProgress] = useState({
-    message: '准备南宁地理图景',
+    message: '正在加载地图',
     value: 0,
   });
   const [ready, setReady] = useState(false);
@@ -270,7 +270,7 @@ export default function Home() {
     setReady(false);
     setError('');
     setMetrics(null);
-    setProgress({ message: '准备南宁地理图景', value: 0 });
+    setProgress({ message: '正在加载地图', value: 0 });
     import('@/lib/city/scene')
       .then(({ createCityScene }) => {
         if (abort.signal.aborted) return null;
@@ -387,11 +387,11 @@ export default function Home() {
   const sidebar = (
     <>
       <div className="sidebar-intro">
-        <span className="eyebrow">EXPLORE THE GREEN CITY</span>
+        <span className="eyebrow">NANNING CITY MAP</span>
         <h1>
           探索南宁<span>01 / 广西</span>
         </h1>
-        <p>沿着邕江，读懂一座城。</p>
+        <p>选一个地标，看看附近。</p>
       </div>
       <Tabs
         value={tab}
@@ -462,9 +462,9 @@ export default function Home() {
           <div className="explore-note">
             <Waves size={18} />
             <p>
-              一江穿城，青山入城。
+              可以自己拖动地图，
               <br />
-              <span>从老城街巷，走向绿城天际线。</span>
+              <span>也可以点击下方按钮自动游览。</span>
             </p>
           </div>
         </TabsContent>
@@ -476,7 +476,7 @@ export default function Home() {
             </button>
           </div>
           <p className="panel-description">
-            选择要观察的城市要素，读清山水与街区的关系。
+            选择地图上要显示的内容。
           </p>
           <div className="layer-list">
             {LAYER_INFO.map(({ key, name, detail, icon: Icon }) => (
@@ -497,7 +497,7 @@ export default function Home() {
           </div>
           <div className="data-card">
             <span className="eyebrow">GEOGRAPHIC SNAPSHOT</span>
-            <h3>看得见的城市脉络</h3>
+            <h3>地图数据</h3>
             <dl>
               <div>
                 <dt>地图建筑</dt>
@@ -521,7 +521,7 @@ export default function Home() {
                 </dd>
               </div>
             </dl>
-            <p>补充建筑用于表达街区密度，位置与高度均为示意。</p>
+            <p>部分建筑由程序补充，位置和高度不代表实景。</p>
           </div>
         </TabsContent>
         <TabsContent value="scene" className="tab-body">
@@ -529,7 +529,7 @@ export default function Home() {
             <span>光照与视角</span>
             <Sun size={15} />
           </div>
-          <p className="panel-description">把一天的光，留在城市里。</p>
+          <p className="panel-description">调整时间，查看不同光照下的地图。</p>
           <div className="time-display">
             <span>{timeLabel}</span>
             <div>
@@ -578,7 +578,7 @@ export default function Home() {
           </div>
           <div className="setting-divider" />
           <div className="section-caption">
-            <span id="quality-label">画面偏好</span>
+            <span id="quality-label">画质</span>
           </div>
           <RadioGroup
             className="quality-options"
@@ -604,12 +604,12 @@ export default function Home() {
             ))}
           </RadioGroup>
           <p className="quality-note">
-            自动模式为手机选择轻量画面。流畅更省电，精细保留更多树木和阴影；切换后会重新载入。
+            手机默认使用轻量模型。流畅模式减少渲染负担，精细模式保留更多树木和阴影。切换画质会重新加载地图。
           </p>
           <div className="setting-divider" />
           <div className="setting-row">
             <label htmlFor="height-scale">
-              高度夸张<small>同时调整地形与建筑的竖向比例</small>
+              高度比例<small>同时拉高或压低山地和建筑</small>
             </label>
             <strong>{heightScale.toFixed(1)}×</strong>
           </div>
@@ -622,7 +622,7 @@ export default function Home() {
             min={0.5}
             max={2}
             step={0.1}
-            aria-label="高度夸张"
+            aria-label="高度比例"
           />
           <div className="slider-ends">
             <span>平缓 0.5×</span>
@@ -712,7 +712,7 @@ export default function Home() {
           </div>
           <span className="brand-divider" />
           <p>
-            南宁地理图景<span>山 · 水 · 城</span>
+            南宁三维地图<span>山 · 水 · 城</span>
           </p>
         </div>
         <div className="header-center">
@@ -765,7 +765,7 @@ export default function Home() {
           >
             <SheetTitle className="sr-only">城市菜单</SheetTitle>
             <SheetDescription className="sr-only">
-              选择地标、图层与画面偏好
+              选择地标、图层与画质
             </SheetDescription>
             <SheetClose
               className="mobile-sheet-close"
@@ -793,7 +793,7 @@ export default function Home() {
           <p>
             {active
               ? `${active.lon.toFixed(4)}° E  /  ${active.lat.toFixed(4)}° N`
-              : '一条邕江，连接山水与城市。'}
+              : '石埠、相思湖、老城、青秀山及部分五象片区'}
           </p>
         </div>
         <div className="view-badges">
@@ -835,7 +835,7 @@ export default function Home() {
             ) : (
               <>
                 <Mountain size={30} strokeWidth={1.25} />
-                <h3>正在展开南宁</h3>
+                <h3>正在加载地图</h3>
                 <p>{progress.message}</p>
                 <div className="loading-track">
                   <span style={{ width: `${progress.value}%` }} />
@@ -982,7 +982,7 @@ export default function Home() {
               setInfoOpen(true);
             }}
           >
-            艺术化地理重建 <span className="status-divider">·</span> ©
+            简化三维地图 <span className="status-divider">·</span> ©
             OpenStreetMap / Mapzen
           </button>
         </footer>
@@ -1007,14 +1007,14 @@ export default function Home() {
         <SheetContent className="info-sheet">
           <SheetHeader>
             <span className="eyebrow">ABOUT THIS ATLAS</span>
-            <SheetTitle>山水为骨，城市为景。</SheetTitle>
-            <SheetDescription>邕城 · 南宁地理图景</SheetDescription>
+            <SheetTitle>关于这张地图</SheetTitle>
+            <SheetDescription>邕城 · 南宁三维地图</SheetDescription>
           </SheetHeader>
           <div className="info-content">
             <p>
-              这是覆盖石埠、相思湖、老城、青秀与部分五象片区的可交互地理沙盘。以真实河道、路网、建筑轮廓与公开高程数据为基础，用青绿山水与浅色建筑表达城市结构。
+              这是一张可以旋转、缩放的南宁三维地图，覆盖石埠、相思湖、老城、青秀和部分五象片区。河道、道路和建筑轮廓来自 OpenStreetMap，地形来自公开高程数据，主要地标用 Blender 建模。
             </p>
-            <h3>怎样探索</h3>
+            <h3>怎么操作</h3>
             <ul className="guide-list">
               <li>
                 <MousePointer2 size={18} />
@@ -1030,7 +1030,7 @@ export default function Home() {
                 <div>
                   <strong>地标与漫游</strong>
                   <p>
-                    点击地图标记或左侧探索点，镜头会飞往地标。城市漫游每 6.5
+                    点击地图标记或左侧探索点，地图会定位到那里。城市漫游每 6.5
                     秒切换一站，手动拖动会暂停。
                   </p>
                 </div>
@@ -1040,7 +1040,7 @@ export default function Home() {
                 <div>
                   <strong>图层与环境</strong>
                   <p>
-                    开关建筑、水面、树木、道路和标注；调整光照、竖向比例与俯视角度。
+                    显示或隐藏建筑、水面、树木、道路和标注，也可以调整光照、建筑与山地的高度、地图角度。
                   </p>
                 </div>
               </li>
@@ -1049,8 +1049,8 @@ export default function Home() {
                 <div>
                   <strong>键盘操作</strong>
                   <p>
-                    聚焦地图后使用方向键平移，+ / − 缩放，Home 复位。Tab
-                    可访问菜单与地标。
+                    先选中地图，再用方向键平移，+ / − 缩放，Home 返回全景。Tab
+                    可以切换菜单和地标。
                   </p>
                 </div>
               </li>
@@ -1059,17 +1059,15 @@ export default function Home() {
             <p>
               范围：{region.bbox[0]}°–{region.bbox[2]}° E，{region.bbox[1]}°–
               {region.bbox[3]}° N，约 37 × 28
-              km。城西扩展至石埠，未覆盖南宁全市行政范围。
+              km，并未覆盖整个南宁市。
             </p>
             <p>
-              地形使用公开 DEM 网格，初始高程起伏放大 3 倍；建筑高度初始放大
-              1.55
-              倍。水面经统一显示高度处理。地图缺少高度的建筑采用估算值，补充街区和地标造型为程序化示意。
+              为了看清高低差，山地起伏放大了 3 倍，建筑高度放大了 1.55 倍，水面也做了平整处理。缺少高度数据的建筑采用估算值，程序补充的建筑位置为示意，地标外形做了简化。
             </p>
             <p>
-              该沙盘用于空间浏览与视觉表达，不提供测绘、导航或洪水分析精度。模拟光照不是实时天气，也不对应精确天文日照。
+              这张地图供浏览使用，不能用于测绘、导航或洪水分析。光照是模拟效果，不代表实时天气或准确的日照情况。
             </p>
-            <h3>公开数据与制作</h3>
+            <h3>数据来源与源码</h3>
             <div className="source-list">
               <a
                 href="https://www.openstreetmap.org/copyright"
