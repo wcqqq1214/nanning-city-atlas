@@ -1,6 +1,7 @@
 """Low-poly landmark silhouettes; all dimensions are illustrative scene units."""
 import math
 from arts_landmark import build_arts
+from sports_landmark import build_sports
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -106,6 +107,10 @@ def build_extra_landmarks(landmark, ground=None):
 
     b,x,y,z=landmark('arts-center')
     build_arts(b,x,y,z,ground=ground)
+    b.finish()
+
+    b,x,y,z=landmark('sports-center')
+    build_sports(b,x,y,z,ground=ground)
     b.finish()
 
     b,x,y,z=landmark('tingzi')

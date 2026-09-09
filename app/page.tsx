@@ -32,6 +32,7 @@ import {
   Route,
   SlidersHorizontal,
   Sun,
+  Trophy,
   Sunset,
   Trees,
   TrainFront,
@@ -96,8 +97,9 @@ const LAYER_INFO: {
 const iconFor = (id: string) => {
   if (id === 'qingxiu') return Mountain;
   if (id === 'zhenning') return Trees;
-  if (['gxu', 'gxmzu', 'luowen'].includes(id)) return GraduationCap;
+  if (['gxu', 'gxmzu'].includes(id)) return GraduationCap;
   if (id === 'east-station') return TrainFront;
+  if (id === 'sports-center') return Trophy;
   if (['nanhu', 'bridge', 'tingzi'].includes(id)) return Waves;
   if (['gx-museum', 'ethnic-museum', 'confucius'].includes(id))
     return LandmarkIcon;
