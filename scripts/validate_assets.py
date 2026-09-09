@@ -66,6 +66,7 @@ for place, source in zip(places, catalog):
     assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
     assert 5 <= place['cameraDistance'] <= 60
     if place.get('closeDistance'): assert 2 <= place['closeDistance'] <= place['cameraDistance']
+    assert place.get('closeDistance') == source.get('closeDistance')
     assert place.get('cameraBearing') == source.get('cameraBearing')
     if place.get('cameraBearing') is not None:
         assert math.isfinite(place['cameraBearing']) and 0 <= place['cameraBearing'] < 360

@@ -384,6 +384,7 @@ for tri in GEO['waterTriangles']:
 water.finish()
 
 print('Building road network...', flush=True)
+viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
 rendered_roads=[]
@@ -408,11 +409,12 @@ for road in rendered_roads:
             x1,y1=a[0]+dx*k/steps,a[1]+dy*k/steps
             x2,y2=a[0]+dx*(k+1)/steps,a[1]+dy*(k+1)/steps
             ox,oy=-dy/length*width/2,dx/length*width/2
-            h1,h2=height(x1,y1)+.065,height(x2,y2)+.065
-            if road['bridge']: h1,h2=max(1.1,h1),max(1.1,h2)
+            if road['bridge']:
+                h1,h2=max(1.1,height(x1,y1)+.065),max(1.1,height(x2,y2)+.065)
+            else:
+                h1,h2=viaduct.road_level(x1,y1),viaduct.road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
 roadbatch.finish(); bridge_group=bridgebatch.finish()
-viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
 viaduct_batch=Batch('Landmark_qingxiang-viaduct',VIADUCT_MATERIALS)
 build_viaduct_structure(viaduct_batch,viaduct)
 viaduct_object=viaduct_batch.finish()
@@ -538,7 +540,7 @@ build_extra_landmarks(landmark, height)
 place=PLACE_BY_ID['qingxiang-viaduct']
 x,y,_=pos(place['lon'],place['lat'])
 distance=viaduct.main.nearest(x,y)[1]
-landmarks.append({**place,'position':[round(x,3),round(viaduct.level('main',distance),3),round(-y,3)]})
+landmarks.append({**place,'position':[round(x,3),round(viaduct.render_level('main',distance),3),round(-y,3)]})
 landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']==place['id']))
 
 (ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))

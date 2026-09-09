@@ -246,6 +246,7 @@ export async function createCityScene(
       );
       return;
     }
+    close = close && place.closeDistance !== undefined;
     const target = new THREE.Vector3(...place.position);
     target.y *= option.heightScale;
     if (close) target.y += place.anchorHeight * 0.25 * option.heightScale;

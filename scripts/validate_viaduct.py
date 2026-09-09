@@ -13,8 +13,9 @@ def validate_viaduct(network, geo, catalog, root):
     for name, digest in PLAN['inputHashes'].items():
         assert hashlib.sha256((root / name).read_bytes()).hexdigest() == digest, f'Stale viaduct plan: {name}'
     assert PLAN['sceneCenter'] == geo['center']
-    assert 1800 < PLAN['main']['lengthMeters'] < 2100
-    assert len(PLAN['ramps']) == 4
+    assert 6600 < PLAN['main']['lengthMeters'] < 6800
+    assert PLAN['main']['lonBounds'] == [108.285, 108.339]
+    assert len(PLAN['ramps']) == 8
     source = json.loads((root / 'data/viaduct-source.json').read_text())
     ways = {e['id']: e for e in source['elements']}
     main_nodes = {n for i in PLAN['main']['osmIds'] for n in ways[i]['nodes']}
@@ -23,11 +24,12 @@ def validate_viaduct(network, geo, catalog, root):
     floor_min, slope_max = float('inf'), 0
     for identity, path in network.paths.items():
         for a, b in zip(path.lengths, path.lengths[1:]):
-            za, zb = network.level(identity, a), network.level(identity, b)
+            za, zb = network.render_level(identity, a), network.render_level(identity, b)
             assert all(math.isfinite(value) for value in [za, zb])
             slope_max = max(slope_max, abs(za - zb) / (b - a))
         for s in path.lengths:
-            z, w = network.level(identity, s), network.width(identity, s)
+            z, w = network.render_level(identity, s), network.width(identity, s)
+            assert abs(z - network.level(identity, s)) <= PLAN['assumptions']['geometryToleranceMeters'] / 100 + 1e-8
             for offset in [-w, 0, w]:
                 x, y, _ = path.at(s, offset)
                 floor = max(network.surface(x, y, False), network.surface(x, y, True))
@@ -49,14 +51,14 @@ def validate_viaduct(network, geo, catalog, root):
         assert math.dist(expected, path.points[-1]) < .00001, 'Ramp misses its actual mapped landing'
         mapped_line = LineString([((p['lon'] - cx) * kx, (p['lat'] - cy) * 1113.2) for p in original['geometry']])
         assert mapped_line.hausdorff_distance(LineString(path.points)) * 100 <= PLAN['assumptions']['rampPlanAdjustmentMaxMeters'], 'Ramp moved outside its bounded display adjustment'
-        assert abs(network.level(identity, 0) - network.level('main', ramp['joinDistance'])) < .001
-        assert abs(network.level(identity, path.length) - network.height(*path.points[-1]) - .065) < .00001
+        assert abs(network.render_level(identity, 0) - network.render_level('main', ramp['joinDistance'])) < .001
+        assert abs(network.render_level(identity, path.length) - network.road_level(*path.points[-1])) < .00001
         assert any(network.barrier_open(ramp['joinDistance'] + delta, ramp['side'])
                    for delta in [-.5, -.25, 0, .25, .5]), 'A guardrail blocks the ramp merge'
         for s in path.lengths:
             distance, main_s = network.main.nearest(*path.at(s)[:2])
             if s > ramp['departure'] + .12 and distance < network.width('main', main_s) + network.width(identity, s):
-                assert network.level('main', main_s) - network.level(identity, s) > .055, 'Ramp cuts through the side of the box girder'
+                assert network.render_level('main', main_s) - network.render_level(identity, s) > .055, 'Ramp cuts through the side of the box girder'
 
     # Verify the retained generic parts are exactly the original line outside
     # the pilot. In particular, no full 10 km carriageway can disappear.
@@ -71,10 +73,12 @@ def validate_viaduct(network, geo, catalog, root):
             assert abs(original.length - remaining.length) < .00001
         else:
             assert road['bridge'] and road['class'] == 'trunk_link' and not pieces
-    assert len(network.piers) >= 35, 'Missing structural supports'
+    assert len(network.piers) >= 100, 'Missing structural supports'
     buildings = unary_union([Polygon(b['rings'][0], b['rings'][1:]) for b in geo['buildings']])
-    deck_footprints = unary_union([LineString(network.main.points).buffer(.145)] +
-                                 [LineString(path.points).buffer(.0475) for _, path in network.ramps.values()])
+    deck_footprints = unary_union([Polygon([path.at(s, side * network.width(identity, s))[:2]
+                                           for s, side in [(a, -1), (b, -1), (b, 1), (a, 1)]])
+        for identity, path in network.paths.items()
+        for a, b in zip(network.sections[identity], network.sections[identity][1:])])
     assert not deck_footprints.intersects(buildings), 'Elevated deck cuts through a mapped or infill building'
     crossing = unary_union([LineString(geo['roads'][i]['points']).buffer(
         .13 if geo['roads'][i]['class'] in ['trunk', 'primary', 'motorway'] else
@@ -88,13 +92,14 @@ def validate_viaduct(network, geo, catalog, root):
         assert pier['top'] > pier['bottom'] + .075
     place = next(p for p in catalog if p['id'] == PLAN['id'])
     assert place['modelled'] and place['layer'] == 'roads'
+    assert 'closeDistance' not in place, 'Urban viaducts should not expose a close-up view'
     point = ((place['lon'] - cx) * kx, (place['lat'] - cy) * 1113.2)
     assert network.main.nearest(*point)[0] < .001, 'Viaduct label is away from its bridge deck'
-    print(f'Viaduct: {PLAN["main"]["lengthMeters"]} m, four connected ramps, {len(network.piers)} piers; '
+    print(f'Viaduct: {PLAN["main"]["lengthMeters"]} m, {len(PLAN["ramps"])} connected ramps, {len(network.piers)} piers; '
           f'main terrain clearance >= {floor_min * 100:.2f} display metres; max display slope {slope_max:.1%}.', flush=True)
 
 
-if __name__ == '__main__':
+def load_network():
     import sys
     root = Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(root / 'blender'))
@@ -128,4 +133,9 @@ if __name__ == '__main__':
         return z
 
     network = Viaduct(height, lambda x, y, mobile: terrain_surface(x, y, height, geo['bounds'], cols, rows, lightweight=mobile))
-    validate_viaduct(network, geo, json.loads((root / 'data/landmarks.json').read_text()), root)
+    return network, geo, json.loads((root / 'data/landmarks.json').read_text()), root
+
+
+if __name__ == '__main__':
+    network, geo, catalog, root = load_network()
+    validate_viaduct(network, geo, catalog, root)
