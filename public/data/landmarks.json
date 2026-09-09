@@ -90,14 +90,16 @@
     "lon": 108.314502,
     "lat": 22.815407,
     "category": "老城",
-    "description": "在邕江北岸回望老城。以层叠屋檐表现畅游阁，与低矮的街坊体块形成滨江历史城区的轮廓。",
-    "anchorHeight": 2.7,
+    "description": "邕江北岸的五层楼阁。灰瓦五重檐逐层收分，朱红柱廊与栏杆环绕楼身，白色架空台基连接滨江步道。",
+    "anchorHeight": 0.92,
     "cameraDistance": 10,
     "modelled": true,
-    "closeDistance": 3.6,
+    "closeDistance": 2.0,
+    "cameraBearing": 215,
+    "sourceUrl": "https://www.openstreetmap.org/way/808502329",
     "position": [
       14.879,
-      0.702,
+      0.602,
       10.679
     ]
   },
@@ -158,17 +160,20 @@
   {
     "id": "nanhu",
     "name": "南湖公园",
-    "lon": 108.3484,
-    "lat": 22.8132,
-    "anchorHeight": 0.8,
+    "lon": 108.34524139999999,
+    "lat": 22.8081083,
+    "anchorHeight": 0.65,
     "category": "城市湖泊",
-    "description": "狭长的南湖嵌在城市街区之间。湖面与环湖绿带共同构成一条由西南向东北延伸的城市开放空间。",
+    "description": "九拱桥连起湖中的两段棕榈桥堤，桥孔由两侧向中央逐渐升高。环湖步道、滨水栈道与名树博览园广场沿岸展开。",
     "cameraDistance": 32,
-    "modelled": false,
+    "modelled": true,
+    "closeDistance": 2.0,
+    "cameraBearing": 232.5,
+    "sourceUrl": "https://www.openstreetmap.org/way/243076845",
     "position": [
-      49.66,
-      1.055,
-      13.136
+      46.419,
+      0.398,
+      18.804
     ]
   },
   {

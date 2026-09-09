@@ -20,6 +20,9 @@ from expo_landmark import site_distance as expo_site_distance
 from sports_landmark import SITE_PADS, MATERIAL_KEYS as SPORTS_MATERIALS, pad_distance, inside_site
 from tingzi_landmark import MATERIAL_KEYS as TINGZI_MATERIALS, inside_site as inside_tingzi, terrace_level
 from bridge_landmark import MATERIAL_KEYS as BRIDGE_MATERIALS
+from changyou_landmark import build_changyou, MATERIAL_KEYS as CHANGYOU_MATERIALS, inside_site as inside_changyou
+from nanhu_landmark import build_nanhu, MATERIAL_KEYS as NANHU_MATERIALS, inside_park as inside_nanhu
+from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_cell, build_park_terrain
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -106,6 +109,25 @@ MATS = {
     'nbridge_concrete': material('Nanning Bridge concrete supports', 'c3c8bc', .86),
     'nbridge_cable': material('Nanning Bridge steel cables and rails', '7b8981', .45, .42),
     'nbridge_line': material('Nanning Bridge road markings', 'eee9cf', .80),
+    'changyou_tile': material('Changyou grey curved roof tiles', '69716a', .82),
+    'changyou_tile_rib': material('Changyou raised tile ridges', '899187', .80),
+    'changyou_eave': material('Changyou ochre eave trim', 'bc9f6d', .78),
+    'changyou_wood': material('Changyou vermilion timber', '8c493a', .77),
+    'changyou_dark': material('Changyou recessed timber walls', '514b3d', .83),
+    'changyou_stone': material('Changyou pale stone colonnade', 'dfdccb', .86),
+    'changyou_window': material('Changyou shaded glazing', '4c6960', .32, .12),
+    'nanhu_stone': material('Nanhu white concrete arches', 'd9dcd2', .86),
+    'nanhu_cap': material('Nanhu pale balustrade', 'f0eee1', .80),
+    'nanhu_paving': material('Nanhu warm stone paths', 'cbbfaa', .88),
+    'nanhu_edge': material('Nanhu grey stone edging', 'a4afa1', .90),
+    'nanhu_grass': material('Nanhu causeway grass', '8ba674', .95),
+    'nanhu_wood': material('Nanhu boardwalk timber', '927c59', .89),
+    'nanhu_trunk': material('Nanhu tree trunks', '7c7158', .92),
+    'nanhu_palm': material('Nanhu palm fronds', '507c47', .88),
+    'nanhu_leaf': material('Nanhu broadleaf canopy', '62895a', .90),
+    'nanhu_leaf_light': material('Nanhu sunlit foliage', '91aa6e', .92),
+    'nanhu_leaf_dark': material('Nanhu shaded foliage', '477958', .91),
+    'nanhu_metal': material('Nanhu garden fittings', '52675c', .62, .18),
 }
 
 
@@ -126,10 +148,13 @@ SPORTS = PLACE_BY_ID['sports-center']
 SPORTS_X = (SPORTS['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
 SPORTS_Y = (SPORTS['lat']-GEO['center'][1])*1113.2
 SPORTS_LEVELS = [terrain_height(SPORTS_X+pad[0], SPORTS_Y+pad[1]) for pad in SITE_PADS]
+NANHU_X = (PLACE_BY_ID['nanhu']['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
+NANHU_Y = (PLACE_BY_ID['nanhu']['lat']-GEO['center'][1])*1113.2
 
 
 def height(x, y):
     h = terrain_height(x, y)
+    h = nanhu_shore_height(x-NANHU_X, y-NANHU_Y, h)
     # The ~95 m display DEM cannot resolve the building's graded terrace. Level
     # its visual support, with a soft apron, so coarse hillside triangles do not
     # pass through the lobby or stairs. Raw DEM data remains unchanged.
@@ -157,11 +182,13 @@ def pos(lon,lat):
 
 CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
 TINGZI_X, TINGZI_Y, _ = pos(PLACE_BY_ID['tingzi']['lon'], PLACE_BY_ID['tingzi']['lat'])
+CHANGYOU_X, CHANGYOU_Y, _ = pos(PLACE_BY_ID['changyou']['lon'], PLACE_BY_ID['changyou']['lat'])
 
 
 def inside_landmark(x, y):
     return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
             inside_tingzi(x-TINGZI_X, y-TINGZI_Y) or
+            inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y) or
             any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS))
 
 
@@ -243,6 +270,8 @@ print('Building terrain...', flush=True)
 ground = Batch('Terrain', ['ground','hill','hillLight','bank'])
 for j in range(ROWS-1):
     for i in range(COLS-1):
+        if replaces_terrain_cell(i, j):
+            continue
         verts = []
         for ii, jj in [(i,j),(i+1,j),(i+1,j+1),(i,j+1)]:
             x=MINX+(MAXX-MINX)*ii/(COLS-1)
@@ -253,6 +282,7 @@ for j in range(ROWS-1):
         key = ('hill' if RNG.random() > .22 else 'hillLight') if lc == 1 or avg > 2.6 else ('bank' if lc == 2 else 'ground')
         ground.face([verts[0],verts[2],verts[1]],key)
         ground.face([verts[0],verts[3],verts[2]],key)
+build_park_terrain(ground, NANHU_X, NANHU_Y, height)
 ground.finish()
 base = Batch('Plinth', ['base'])
 base.box(0,0,-2.6,MAXX-MINX,MAXY-MINY,2.45,'base')
@@ -307,6 +337,8 @@ for b in GEO['buildings']:
     x=sum(p[0] for p in ring)/len(ring); y=sum(p[1] for p in ring)/len(ring)
     if inside_landmark(x,y): continue
     z=max(.4,height(x,y))+.07
+    if inside_nanhu(x-NANHU_X, y-NANHU_Y):
+        z=height(x,y)+.018
     hh=b['height']/100*1.55
     key=RNG.choice(['building','building','building','building2','building3'])
     for a,c in zip(ring,ring[1:]+ring[:1]):
@@ -320,7 +352,9 @@ buildings.finish()
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
 visible_trees = [(x,y,r) for x,y,r in GEO['trees'] if not inside_landmark(x,y)
-                 and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)]
+                 and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
+                 and not inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y, margin=r*.6+.02)
+                 and not inside_nanhu(x-NANHU_X, y-NANHU_Y)]
 for x,y,r in visible_trees:
     z=max(.32,height(x,y))
     trees.cone(x,y,z,.045,.03,.3,'trunk',5)
@@ -336,8 +370,8 @@ landmarks=[]
 def landmark(id):
     place = PLACE_BY_ID[id]
     x,y,z=pos(place['lon'],place['lat'])
-    if id == 'sports-center':
-        # The stadium's open field starts at its graded ground.
+    if id in ['sports-center', 'changyou']:
+        # Open fields and colonnade feet start at their local ground level.
         z = height(x, y)
     if id == 'tingzi': z = terrace_level(x, y, z, height)
     keys=['roof','landmark','accent','bridge','building']
@@ -346,6 +380,8 @@ def landmark(id):
     if id == 'sports-center': keys += SPORTS_MATERIALS
     if id == 'tingzi': keys += TINGZI_MATERIALS
     if id == 'bridge': keys += BRIDGE_MATERIALS
+    if id == 'changyou': keys += CHANGYOU_MATERIALS
+    if id == 'nanhu': keys += NANHU_MATERIALS
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
@@ -378,10 +414,11 @@ build_expo(b,x,y,z)
 b.finish()
 
 b,x,y,z=landmark('changyou')
-for i in range(4):
-    size=1.05-i*.14
-    b.box(x,y,z+i*.33,size,size*.62,.3,'building')
-    b.cone(x,y,z+i*.33+.3,size*.8,size*.39,.23,'accent',4)
+build_changyou(b,x,y,z,height)
+b.finish()
+
+b,x,y,z=landmark('nanhu')
+landmarks[-1]['position'][1]=round(build_nanhu(b,x,y,height),3)
 b.finish()
 
 b,x,y,z=landmark('bridge')
@@ -442,6 +479,8 @@ mobile_ground=Batch('Terrain',['ground','hill','hillLight','bank'])
 ix=sorted(set(range(0,COLS,2))|{COLS-1});jy=sorted(set(range(0,ROWS,2))|{ROWS-1})
 for j,jj in zip(jy,jy[1:]):
     for i,ii in zip(ix,ix[1:]):
+        if replaces_terrain_cell(i, j):
+            continue
         verts=[]
         for col,row in [(i,j),(ii,j),(ii,jj),(i,jj)]:
             x=MINX+(MAXX-MINX)*col/(COLS-1);y=MAXY-(MAXY-MINY)*row/(ROWS-1)
@@ -450,6 +489,7 @@ for j,jj in zip(jy,jy[1:]):
         key='hill' if lc==1 or sum(v[2] for v in verts)/4>2.6 else ('bank' if lc==2 else 'ground')
         mobile_ground.face([verts[0],verts[2],verts[1]],key)
         mobile_ground.face([verts[0],verts[3],verts[2]],key)
+build_park_terrain(mobile_ground, NANHU_X, NANHU_Y, height)
 mobile_ground.finish()
 mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
 for i,(x,y,r) in enumerate(visible_trees[::4]):

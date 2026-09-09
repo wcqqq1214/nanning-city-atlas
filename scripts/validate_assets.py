@@ -4,7 +4,7 @@ import math
 import struct
 import sys
 from pathlib import Path
-from shapely.geometry import Polygon, LineString
+from shapely.geometry import Polygon, LineString, Point, box
 from shapely.ops import unary_union
 from shapely.prepared import prep
 from shapely.strtree import STRtree
@@ -15,6 +15,8 @@ from arts_landmark import outline as arts_outline, DISPLAY_SCALE, SITE_ANGLE
 from sports_landmark import PLAN as SPORTS_PLAN, SITE_PADS, inside_site
 from tingzi_landmark import SITE as TINGZI_SITE, site_xy as tingzi_xy, inside_site as inside_tingzi
 from bridge_landmark import BridgePath, MAIN_SPAN, NORTH_APPROACH
+from changyou_landmark import ANGLE as CHANGYOU_ANGLE, WIDTH as CHANGYOU_WIDTH, DEPTH as CHANGYOU_DEPTH
+from nanhu_landmark import PLAN as NANHU_PLAN, BRIDGE_LENGTH as NANHU_BRIDGE_LENGTH
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -107,6 +109,45 @@ bridge_path = BridgePath(g['roads'])
 bridge = next(p for p in places if p['id'] == 'bridge')
 span_center = bridge_path.at(NORTH_APPROACH+MAIN_SPAN/2)
 assert math.dist([bridge['position'][0], -bridge['position'][2]], span_center[:2]) < .002, 'Bridge label is away from its main span'
+changyou = next(p for p in places if p['id'] == 'changyou')
+cx, cy = changyou['position'][0], -changyou['position'][2]
+c, s = math.cos(CHANGYOU_ANGLE), math.sin(CHANGYOU_ANGLE)
+changyou_site = Polygon([(cx+u*c-v*s, cy+u*s+v*c) for u, v in [
+    (-CHANGYOU_WIDTH/2, -CHANGYOU_DEPTH/2), (CHANGYOU_WIDTH/2, -CHANGYOU_DEPTH/2),
+    (CHANGYOU_WIDTH/2, CHANGYOU_DEPTH/2+.14), (-CHANGYOU_WIDTH/2, CHANGYOU_DEPTH/2+.14)]])
+assert not changyou_site.intersects(water), 'Changyou platform or inland stairs extend into the river'
+nanhu = next(p for p in places if p['id'] == 'nanhu')
+assert nanhu['modelled'] and [nanhu['lon'], nanhu['lat']] == NANHU_PLAN['center']
+assert .60 < NANHU_BRIDGE_LENGTH < .66, 'Nine-arch bridge was stretched across its approach embankments'
+nx = (nanhu['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+ny = (nanhu['lat']-g['center'][1])*1113.2
+nanhu_park = Polygon([(nx+u, ny+v) for u, v in NANHU_PLAN['park']])
+nanhu_paving = []
+for kind in ['paths', 'square']:
+    for mesh in NANHU_PLAN[kind]:
+        for tri in mesh['triangles']:
+            shape = Polygon([(nx+mesh['points'][i][0], ny+mesh['points'][i][1]) for i in tri])
+            assert shape.is_valid and shape.area > 1e-10, 'Invalid park paving triangle'
+            nanhu_paving.append(shape)
+nanhu_paving = unary_union(nanhu_paving)
+assert nanhu_paving.intersection(water).area < 1e-7, 'Garden paving covers the existing lake water'
+assert nanhu_paving.difference(nanhu_park.buffer(.0001)).area < 1e-7, 'Garden paths leave the mapped park'
+for u, v, radius in NANHU_PLAN['trees']:
+    assert nanhu_park.contains(Point(nx+u, ny+v)) and not water.contains(Point(nx+u, ny+v)), 'Park tree trunk placed outside garden land'
+patch = NANHU_PLAN['terrainPatch']
+assert all(v % 2 == 0 for key in ['columnRange', 'rowRange'] for v in patch[key]), 'Park terrain patch does not align with the mobile terrain grid'
+patch_triangles = []
+for mesh in patch['meshes']:
+    for tri in mesh['triangles']:
+        shape = Polygon([(nx+mesh['points'][i][0], ny+mesh['points'][i][1]) for i in tri])
+        assert shape.is_valid and shape.area > 1e-10, 'Invalid Nanhu terrain triangle'
+        patch_triangles.append(shape)
+patch_land = unary_union(patch_triangles)
+assert patch_land.intersection(water.buffer(-.00002)).area < 1e-8, 'Nanhu display terrain still covers the lake'
+west, south, east, north = patch['bounds']
+expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
+assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
+assert sum(p['modelled'] for p in places) == 16, 'Detailed Nanhu landmark missing from the scene catalog'
 def inspect_model(filename, budget):
     raw=(ROOT/'public/models'/filename).read_bytes()
     magic,version,length=struct.unpack_from('<III',raw)
@@ -131,13 +172,15 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',9_500_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_300_000)
+full_bytes,full=inspect_model('nanning-city.glb',10_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_800_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
+assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and colonnade missing or over budget'
+assert 25_000 < full['Landmark_nanhu'] < 45_000, 'Nanhu bridge and garden geometry missing or over budget'
 assert mobile_bytes < full_bytes*.6
-assert sum(mobile.values()) < sum(full.values())*.52
+assert sum(mobile.values()) < sum(full.values())*.55
 assert sum(full.values())-sum(mobile.values()) > 680_000
 for name, count in full.items():
     if not name.startswith(('Terrain','Vegetation')):
