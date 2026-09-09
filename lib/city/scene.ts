@@ -703,8 +703,7 @@ export async function createCityScene(
       places.forEach((place) => {
         const object = city!.getObjectByName(`Landmark_${place.id}`);
         if (object)
-          object.visible =
-            place.id === 'bridge' ? next.layers.roads : next.layers.buildings;
+          object.visible = next.layers[place.layer ?? 'buildings'];
       });
       materialDefaults.forEach((base, mat) => {
         mat.color.copy(base);

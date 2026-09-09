@@ -29,10 +29,15 @@ from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, C
 from vegetation import build_tree
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as STATION_MATERIALS
 from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
+from viaduct import PLAN as VIADUCT_PLAN, MATERIAL_KEYS as VIADUCT_MATERIALS, REMOVED_TREES as VIADUCT_TREES
+from viaduct import Viaduct, build_structure as build_viaduct_structure, build_details as build_viaduct_details
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
+assert VIADUCT_PLAN['sceneCenter'] == GEO['center']
+for path, fingerprint in VIADUCT_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the viaduct plan after changing {path}'
 assert STATION_PLAN['sceneCenter'] == GEO['center'], 'Rebuild the station plan for the scene origin'
 assert STATION_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/stations-source.json').read_bytes()).hexdigest(), 'Rebuild the station plan after changing railway data'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
@@ -153,6 +158,11 @@ MATS = {
     'station_red': material('Station vermilion lettering', 'b7473b', .65),
     'station_line': material('Station clock face and safety lines', 'e7dcb0', .77),
     'station_blue': material('Nanning entrance shelter', '4d96a4', .53, .16),
+    'viaduct_concrete': material('Qingxiang warm concrete', 'd8dbcf', .87),
+    'viaduct_soffit': material('Qingxiang shaded box girders', 'a6b5a9', .88),
+    'viaduct_asphalt': material('Qingxiang sage asphalt', '71837b', .95),
+    'viaduct_line': material('Qingxiang lane markings', 'f1ead3', .90),
+    'viaduct_metal': material('Qingxiang lamp columns', '7d9690', .53, .20),
 }
 
 
@@ -376,7 +386,11 @@ water.finish()
 print('Building road network...', flush=True)
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
-for road in GEO['roads']:
+rendered_roads=[]
+for index, road in enumerate(GEO['roads']):
+    for points in VIADUCT_PLAN['roadOverrides'].get(str(index), [road['points']]):
+        rendered_roads.append({**road, 'points': points})
+for road in rendered_roads:
     if road['name'] == '南宁大桥' and road['bridge']:
         # The detailed deck replaces both generic carriageway strips.
         continue
@@ -397,7 +411,15 @@ for road in GEO['roads']:
             h1,h2=height(x1,y1)+.065,height(x2,y2)+.065
             if road['bridge']: h1,h2=max(1.1,h1),max(1.1,h2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
-roadbatch.finish(); bridgebatch.finish()
+roadbatch.finish(); bridge_group=bridgebatch.finish()
+viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
+viaduct_batch=Batch('Landmark_qingxiang-viaduct',VIADUCT_MATERIALS)
+build_viaduct_structure(viaduct_batch,viaduct)
+viaduct_object=viaduct_batch.finish()
+viaduct_object.parent=bridge_group
+viaduct_details=Batch('QingxiangViaduct_Details',VIADUCT_MATERIALS)
+build_viaduct_details(viaduct_details,viaduct)
+viaduct_details.finish().parent=viaduct_object
 
 print('Building simplified city blocks...', flush=True)
 buildings=Batch('Buildings',['building','building2','building3','roof'])
@@ -422,7 +444,7 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if not inside_landmark(x,y)
+original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and not inside_landmark(x,y)
                  and not any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy,margin=r+.03)
                              for identity,(sx,sy,_) in STATION_SITES.items())
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
@@ -513,12 +535,18 @@ for place in CATALOG:
 
 # Additional cultural, campus, riverside and transport landmarks.
 build_extra_landmarks(landmark, height)
+place=PLACE_BY_ID['qingxiang-viaduct']
+x,y,_=pos(place['lon'],place['lat'])
+distance=viaduct.main.nearest(x,y)[1]
+landmarks.append({**place,'position':[round(x,3),round(viaduct.level('main',distance),3),round(-y,3)]})
 landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']==place['id']))
 
 (ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['viaduct']={'id':VIADUCT_PLAN['id'],'mainLengthMeters':VIADUCT_PLAN['main']['lengthMeters'],
+    'ramps':len(VIADUCT_PLAN['ramps']),'piers':len(viaduct.piers),'osmTimestamp':VIADUCT_PLAN['osmTimestamp']}
 summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['stage'],
     'source':'OSM natural=wood / landuse=forest','sourceCount':len(FOREST_PLAN['sources']),
     'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
@@ -553,7 +581,14 @@ bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city.glb'),ex
 print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'trees,',len(landmarks),'landmarks.',flush=True)
 
 # Keep the editable .blend at full detail; export a separate lightweight model.
-# Mapped buildings, roads, water and every landmark retain their full geometry.
+# Structural roads and landmarks remain complete; viaduct fittings are reduced.
+detail_object=bpy.data.objects['QingxiangViaduct_Details']
+detail_mesh=detail_object.data
+bpy.data.objects.remove(detail_object,do_unlink=True)
+bpy.data.meshes.remove(detail_mesh)
+mobile_viaduct_details=Batch('QingxiangViaduct_Details',VIADUCT_MATERIALS)
+build_viaduct_details(mobile_viaduct_details,viaduct,lightweight=True)
+mobile_viaduct_details.finish().parent=viaduct_object
 for name in ['Terrain','Vegetation']:
     obj=bpy.data.objects.get(name)
     for child in list(obj.children_recursive): bpy.data.objects.remove(child,do_unlink=True)

@@ -20,6 +20,8 @@ from changyou_landmark import ANGLE as CHANGYOU_ANGLE, WIDTH as CHANGYOU_WIDTH, 
 from nanhu_landmark import PLAN as NANHU_PLAN, BRIDGE_LENGTH as NANHU_BRIDGE_LENGTH
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, build_canopy, terrain_surface
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, inside_site as inside_station, ground_blend as station_ground_blend
+from viaduct import Viaduct
+from validate_viaduct import validate_viaduct
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -150,7 +152,7 @@ assert patch_land.intersection(water.buffer(-.00002)).area < 1e-8, 'Nanhu displa
 west, south, east, north = patch['bounds']
 expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
 assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
-assert sum(p['modelled'] for p in places) == 17, 'Station landmark missing from the scene catalog'
+assert sum(p['modelled'] for p in places) == 18, 'A detailed landmark is missing from the scene catalog'
 
 # Verify mapped station placement, platform coverage, and reproducible sources.
 assert STATION_PLAN['sceneCenter'] == g['center']
@@ -225,6 +227,9 @@ def raw_ground(x, y):
             blend=station_ground_blend(identity,x-sx,y-sy)
             h=terrain_ground(sx,sy)*(1-blend)+h*blend
     return h
+
+viaduct=Viaduct(raw_ground, lambda x,y,mobile: terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],lightweight=mobile))
+validate_viaduct(viaduct,g,catalog,ROOT)
 
 for identity,(sx,sy,site) in station_sites.items():
     level=terrain_ground(sx,sy)
@@ -311,6 +316,8 @@ assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and 
 assert 15_000 < full['Landmark_nanhu'] < 22_000, 'Nanhu bridge and garden geometry missing or over budget'
 assert 6_000 < full['Landmark_nanning-station'] < 20_000, 'Nanning station geometry missing or over budget'
 assert 15_000 < full['Landmark_east-station'] < 45_000, 'East station geometry missing or over budget'
+assert 5_000 < full['Landmark_qingxiang-viaduct'] < 20_000, 'Viaduct structure missing or over budget'
+assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details'] < 8_000
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # Two detailed stations share a bounded 0.4 MB allowance in the mobile asset.
@@ -329,7 +336,7 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation')):
+    if not name.startswith(('Terrain','Vegetation')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]

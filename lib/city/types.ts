@@ -26,6 +26,7 @@ export type Landmark = {
   closeDistance?: number;
   cameraBearing?: number;
   modelled: boolean;
+  layer?: 'buildings' | 'roads';
   category: string;
   description: string;
 };
