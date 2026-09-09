@@ -9,9 +9,11 @@ import math
 import random
 from pathlib import Path
 from shapely.geometry import Polygon, LineString, Point, box
+from shapely.affinity import rotate
 from shapely.ops import unary_union, polygonize
 from shapely import make_valid, set_precision
 from shapely.prepared import prep
+from shapely.strtree import STRtree
 import mapbox_earcut
 import numpy as np
 
@@ -76,6 +78,74 @@ def triangulate_water(poly):
     return [[[round(float(points[i][0]), 3), round(float(points[i][1]), 3)] for i in tri] for tri in indices]
 
 
+def infer_urban_blocks(roads, mapped, known):
+    """Fill land-use gaps only in bounded streets near mapped city buildings.
+
+    These blocks are inferred display areas, not additional surveyed land use.
+    Water, parks, roads and existing buildings are excluded by the caller.
+    """
+    classes = {"primary", "secondary", "tertiary", "residential",
+               "living_street", "unclassified", "service"}
+    lines = [LineString(r["points"]) for r in roads
+             if not r["bridge"] and r["class"] in classes]
+    centers = STRtree([Polygon(b["rings"][0]).centroid for b in mapped])
+    known_prepared = prep(known)
+    accepted = []
+    for block in polygonize(unary_union(lines)):
+        # Units are 100 m: accept 0.3–30 ha blocks, within 100 m of known
+        # urban land and anchored by at least three buildings within 60 m.
+        if not .3 < block.area < 30 or known_prepared.covers(block):
+            continue
+        if block.distance(known) > 1:
+            continue
+        if len(centers.query(block.buffer(.6), predicate="intersects")) < 3:
+            continue
+        accepted.append(block)
+    return set_precision(unary_union(accepted), .001).difference(known)
+
+
+def generate_infill(area):
+    """Pack varied, non-overlapping blocks along each buildable parcel's axes."""
+    rng = random.Random(771)
+    cbd_x, cbd_y = xy(108.377, 22.814)
+    buildings = []
+    for poly in parts(area, "Polygon"):
+        if poly.area < .18:
+            continue
+        envelope = list(poly.minimum_rotated_rectangle.exterior.coords)
+        a, b = max(zip(envelope, envelope[1:]),
+                   key=lambda edge: math.dist(*edge))
+        angle = (math.atan2(b[1] - a[1], b[0] - a[0]) + math.pi / 4) % (math.pi / 2) - math.pi / 4
+        origin = (poly.centroid.x, poly.centroid.y)
+        local = rotate(poly, -angle, origin=origin, use_radians=True)
+        permitted = prep(local.buffer(-.003))
+        minx, miny, maxx, maxy = local.bounds
+        x = minx + .31
+        while x < maxx:
+            y = miny + .37
+            while y < maxy:
+                px, py = x + rng.uniform(-.035, .035), y + rng.uniform(-.035, .035)
+                # A 62 x 74 m cell preserves a gap even for the largest blocks
+                # after jitter. Rotation applies to the whole parcel grid.
+                width, depth = rng.uniform(.24, .50), rng.uniform(.32, .60)
+                footprint = box(px - width / 2, py - depth / 2,
+                                px + width / 2, py + depth / 2)
+                if permitted.contains(footprint) and rng.random() > .025:
+                    footprint = rotate(footprint, angle, origin=origin, use_radians=True)
+                    center = footprint.centroid
+                    cbd = math.exp(-((center.x - cbd_x) ** 2 + (center.y - cbd_y) ** 2) / 430)
+                    tier = rng.random()
+                    height = rng.uniform(9, 17) if tier < .22 else rng.uniform(18, 38)
+                    if tier > .9:
+                        height = rng.uniform(40, 60)
+                    height += cbd * rng.uniform(5, 30)
+                    buildings.append({"rings": coords(footprint), "height": round(height, 1),
+                                      "mappedHeight": False, "source": "procedural"})
+                y += .74
+            x += .62
+    return buildings
+
+
 def main():
     print('Clipping OSM features...', flush=True)
     snapshot = json.loads((ROOT / "work/geodata/osm.json").read_text())
@@ -125,31 +195,28 @@ def main():
     water = set_precision(unary_union(waters).buffer(0), .001)
     park = set_precision(unary_union(parks).difference(water).buffer(0), .001)
     mapped_union = unary_union([Polygon(item["rings"][0]) for item in mapped])
-    road_mask = unary_union([LineString(r["points"]).buffer(.16 if r["class"] in ["primary", "trunk"] else .10) for r in roads])
-    infill_area = unary_union(urban).difference(water.buffer(.25)).difference(park).difference(mapped_union.buffer(.20)).difference(road_mask)
-    rng = random.Random(771)
-    infill = []
+    road_mask = unary_union([LineString(r["points"]).buffer(
+        .19 if r["class"] in ["primary", "trunk", "motorway"] else
+        (.135 if r["class"] == "secondary" else .10)) for r in roads])
+    # Snap both land-use sources before overlay so serialized shared boundaries
+    # remain coincident instead of opening narrow gaps after JSON rounding.
+    urban_area = set_precision(unary_union(urban), .001)
+    inferred_urban = infer_urban_blocks(roads, mapped, urban_area)
+    buildable = urban_area.union(inferred_urban)
+    infill_area = buildable.difference(water.buffer(.25)).difference(park).difference(mapped_union.buffer(.12)).difference(road_mask)
+    urban_rings = [coords(p) for p in parts(urban_area, "Polygon")]
+    inferred_rings = [coords(p) for p in parts(inferred_urban, "Polygon")]
+    # Check the actual serialized boundaries as well: overlay/rounding can leave
+    # sub-meter seams where an inferred street block meets mapped land use.
+    serialized_land = prep(unary_union([Polygon(p[0], p[1:])
+                                       for p in urban_rings + inferred_rings]))
     print('Generating infill...', flush=True)
-    for poly in parts(infill_area, "Polygon"):
-        minx, miny, maxx, maxy = poly.bounds
-        if poly.area < .5:
-            continue
-        x = minx + .4
-        while x < maxx:
-            y = miny + .4
-            while y < maxy:
-                px, py = x + rng.uniform(-.16, .16), y + rng.uniform(-.16, .16)
-                bw, bd = rng.uniform(.24, .5), rng.uniform(.35, .68)
-                footprint = box(px - bw / 2, py - bd / 2, px + bw / 2, py + bd / 2)
-                if poly.contains(footprint) and rng.random() > .09:
-                    cbd_x, cbd_y = xy(108.377, 22.814)
-                    cbd = math.exp(-((px - cbd_x) ** 2 + (py - cbd_y) ** 2) / 430)
-                    height = rng.uniform(9, 34) + cbd * rng.uniform(10, 52)
-                    infill.append({"rings": coords(footprint), "height": round(height, 1), "mappedHeight": False, "source": "procedural"})
-                y += 1.05
-            x += 1.0
+    infill = [b for b in generate_infill(infill_area)
+              if serialized_land.covers(Polygon(b["rings"][0]))]
 
     print(f'Infill complete: {len(infill)} buildings. Planting trees...', flush=True)
+    # Keep planting reproducible independently of changes to building density.
+    rng = random.Random(772)
     trees = []
     minx, miny, maxx, maxy = CLIP.bounds
     # Point membership avoids an expensive overlay of thousands of road/building
@@ -172,6 +239,7 @@ def main():
     print(f'Trees complete: {len(trees)}. Triangulating water...', flush=True)
     output = {"bbox": terrain["bbox"], "center": terrain["center"], "bounds": list(CLIP.bounds), "metersPerUnit": 100,
               "water": [coords(p) for p in parts(water, "Polygon")], "parks": [coords(p) for p in parts(park, "Polygon")],
+              "urban": urban_rings, "inferredUrban": inferred_rings,
               "roads": roads, "buildings": mapped + infill, "trees": trees,
               "attribution": "© OpenStreetMap contributors, ODbL 1.0", "osmTimestamp": snapshot.get("osm3s", {}).get("timestamp_osm_base"),
               "stats": {"mappedBuildings": len(mapped), "infillBuildings": len(infill), "roadSegments": len(roads), "trees": len(trees)}}

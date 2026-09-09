@@ -3,9 +3,10 @@ import json
 import math
 import struct
 from pathlib import Path
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, LineString
 from shapely.ops import unary_union
 from shapely.prepared import prep
+from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parents[1]
 g = json.loads((ROOT/'public/data/geography.json').read_text())
@@ -25,11 +26,29 @@ coverage = triangles.area / water.area
 assert .995 < coverage < 1.001, f'Water coverage mismatch: {coverage}'
 assert triangles.difference(water.buffer(.005)).area < .001
 excluded = prep(water.union(unary_union([Polygon(p[0], p[1:]) for p in g['parks']])))
+urban = prep(unary_union([Polygon(p[0], p[1:]) for p in g['urban'] + g['inferredUrban']]))
+mapped = prep(unary_union([Polygon(b['rings'][0]) for b in g['buildings'] if b['source'] == 'osm']))
+roads = prep(unary_union([
+    LineString(r['points']).buffer(.13 if r['class'] in ['primary', 'trunk', 'motorway']
+                                  else (.085 if r['class'] == 'secondary' else .0475))
+    for r in g['roads']
+]))
+infill = []
 for b in g['buildings']:
     if b['source'] == 'procedural':
-        assert not excluded.intersects(Polygon(b['rings'][0])), 'Procedural building on water/park'
+        footprint = Polygon(b['rings'][0])
+        assert footprint.is_valid and footprint.area > 0, 'Invalid infill footprint'
+        assert urban.covers(footprint), 'Procedural building outside urban land or inferred street blocks'
+        assert not excluded.intersects(footprint), 'Procedural building on water/park'
+        assert not roads.intersects(footprint), 'Procedural building on a rendered road'
+        assert not mapped.intersects(footprint), 'Procedural building overlaps mapped building'
+        infill.append(footprint)
+assert len(infill) >= 9000, 'Denser city lost its additional building coverage'
+pairs = STRtree(infill).query(infill, predicate='intersects')
+assert not (pairs[0] != pairs[1]).any(), 'Procedural buildings overlap one another'
 assert len({p['id'] for p in places}) == len(places), 'Duplicate landmark IDs'
 assert [p['id'] for p in places] == [p['id'] for p in catalog], 'Landmark list and tour catalog differ'
+assert 'luowen' not in {p['id'] for p in places}, 'Removed Arts Institute landmark is still present'
 for place, source in zip(places, catalog):
     assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
     assert 5 <= place['cameraDistance'] <= 60
@@ -55,8 +74,10 @@ def inspect_model(filename, budget):
     for mesh in model['meshes']:
         counts[mesh['name']]=sum(model['accessors'][p['indices']]['count']//3 for p in mesh['primitives'])
     return len(raw),counts
-full_bytes,full=inspect_model('nanning-city.glb',8_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',4_000_000)
+# Extra city blocks get a bounded payload increase; mobile still keeps the same
+# buildings while halving total geometry and remaining below 60% of full bytes.
+full_bytes,full=inspect_model('nanning-city.glb',9_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',4_500_000)
 assert mobile_bytes < full_bytes*.6
 assert sum(mobile.values()) < sum(full.values())*.5
 for name, count in full.items():
@@ -67,5 +88,5 @@ old_w=region['previousBbox'][0]
 west_x=(old_w-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
 western=sum(1 for b in g['buildings'] if max(p[0] for p in b['rings'][0])<west_x)
 assert western>1000, f'Western coverage unexpectedly sparse: {western}'
-print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); no infill on water/park; water coverage {coverage:.5%}; {len(places)} geolocated points.')
+print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); infill stays within urban land without overlapping water, parks, roads or other buildings; water coverage {coverage:.5%}; {len(places)} geolocated points.')
 print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')

@@ -17,23 +17,6 @@
     ]
   },
   {
-    "id": "luowen",
-    "name": "罗文 · 广西艺术学院",
-    "lon": 108.2186957,
-    "lat": 22.8595848,
-    "category": "城西 · 校园",
-    "description": "罗文大道与大学西路一带的校园片区。以广西艺术学院相思湖校区为观察点，浏览城西的道路和校园布局。",
-    "anchorHeight": 0.65,
-    "cameraDistance": 25,
-    "modelled": false,
-    "sourceUrl": "https://www.openstreetmap.org/way/839607484",
-    "position": [
-      -83.421,
-      1.038,
-      -38.5
-    ]
-  },
-  {
     "id": "gxmzu",
     "name": "广西民族大学 · 相思湖校区",
     "lon": 108.2317606,
