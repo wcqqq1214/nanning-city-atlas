@@ -1,4 +1,4 @@
-"""Bounded, terrain-aware Qingxiang viaduct and its four connected ramps.
+"""Terrain-aware Qingxiang urban viaduct and its connected ramps.
 
 Shared structural geometry survives the mobile profile. Small fittings are
 batched separately; no external textures, Blender modifiers or runtime LOD.
@@ -83,9 +83,20 @@ class Viaduct:
         for indices in [range(1, len(self.levels)), range(len(self.levels) - 2, -1, -1)]:
             for i in indices:
                 j = i - 1 if indices.step > 0 else i + 1
-                self.levels[i] = max(self.levels[i], self.levels[j] - .06 * abs(self.main.lengths[i] - self.main.lengths[j]))
+                self.levels[i] = max(self.levels[i], self.levels[j] - .10 * abs(self.main.lengths[i] - self.main.lengths[j]))
         assert all(abs(self.levels[i] - end) < .00001 for i, end in [(0, self.ends[0]), (-1, self.ends[1])]), 'Extend the pilot to fit its approach grade'
         self.deck = max(self.levels)
+        self.landing_lifts = []
+        for _, path in self.ramps.values():
+            x, y = path.points[-1]
+            visible_ground = max(surface(x + dx, y + dy, mobile)
+                                 for dx in [-.06, 0, .06] for dy in [-.06, 0, .06]
+                                 for mobile in [False, True])
+            lift = max(0, visible_ground - height(x, y))
+            self.landing_lifts.append((x, y, lift))
+        self.sections = {'main': self.render_sections('main')}
+        for identity in self.ramps:
+            self.sections[identity] = self.render_sections(identity)
         self.piers = []
         for group in PLAN['piers']:
             identity = group['path']
@@ -94,10 +105,65 @@ class Viaduct:
                 x, y, _ = path.at(s)
                 if identity != 'main' and self.main.nearest(x, y)[0] < .19:
                     continue
-                bottom = max(surface(x, y, False), surface(x, y, True), height(x, y)) + .072
-                top = self.level(identity, s) - .035
+                bottom = max(surface(x, y, False) + .072, surface(x, y, True) + .072,
+                             self.road_level(x, y) + .007)
+                top = self.render_level(identity, s) - .035
                 if top - bottom > .075:
                     self.piers.append({'path': identity, 's': s, 'x': x, 'y': y, 'bottom': bottom, 'top': top})
+
+    def road_level(self, x, y):
+        radius = PLAN['assumptions']['landingBlendMeters'] / 100
+        lift = max((value * smooth(1 - math.hypot(x - px, y - py) / radius)
+                    for px, py, value in self.landing_lifts), default=0)
+        return self.height(x, y) + .065 + lift
+
+    def render_level(self, identity, s):
+        stations = self.sections[identity]
+        i = max(0, min(len(stations) - 2, bisect.bisect_right(stations, s) - 1))
+        a, b = stations[i:i + 2]
+        t = max(0, min(1, (s - a) / (b - a)))
+        return self.level(identity, a) * (1 - t) + self.level(identity, b) * t
+
+    def render_sections(self, identity):
+        """Retain turns, grades and merge openings without tessellating straight spans."""
+        path = self.paths[identity]
+        stations = path.lengths
+        edges = [[path.at(s, side * self.width(identity, s), self.level(identity, s))
+                  for side in [-1, 1]] for s in stations]
+        required = {0, len(stations) - 1}
+        if identity == 'main':
+            openings = [tuple(self.barrier_open((a + b) / 2, side) for side in [-1, 1])
+                        for a, b in zip(stations, stations[1:])]
+            required.update(i for i in range(1, len(openings)) if openings[i] != openings[i - 1])
+        else:
+            # Keep the sampled departure boundary so simplification cannot
+            # extend an outside guardrail into the shared merge surface.
+            departure = self.ramps[identity][0]['departure']
+            index = bisect.bisect_left(stations, departure)
+            required.update(range(max(0, index - 1), min(len(stations), index + 2)))
+        tolerance = PLAN['assumptions']['geometryToleranceMeters'] / 100
+        max_span = PLAN['assumptions']['geometryMaxSpanMeters'] / 100
+
+        def reduce(a, b):
+            if b - a <= 1:
+                return
+            def error(i):
+                t = (stations[i] - stations[a]) / (stations[b] - stations[a])
+                return max(math.dist(edges[i][side], tuple(x * (1 - t) + y * t
+                               for x, y in zip(edges[a][side], edges[b][side]))) for side in [0, 1])
+            split = max(range(a + 1, b), key=error)
+            if error(split) <= tolerance:
+                if stations[b] - stations[a] <= max_span:
+                    return
+                split = (a + b) // 2
+            required.add(split)
+            reduce(a, split)
+            reduce(split, b)
+
+        initial = sorted(required)
+        for a, b in zip(initial, initial[1:]):
+            reduce(a, b)
+        return [stations[i] for i in sorted(required)]
 
     def width(self, identity, s):
         if identity == 'main':
@@ -112,11 +178,18 @@ class Viaduct:
             i, t = self.main.section(s)
             return self.levels[i] * (1 - t) + self.levels[i + 1] * t
         ramp, path = self.ramps[identity]
-        join = self.level('main', self.main.nearest(*path.at(s)[:2])[1])
-        floor = self.height(*path.at(s)[:2]) + .065
-        end = self.height(*path.at(path.length)[:2]) + .065
-        blend = smooth((s - ramp['departure']) / (path.length - ramp['departure'] - .12))
-        # The landing follows the same height sampler as the connected street.
+        if s <= ramp['departure']:
+            return self.render_level('main', self.main.nearest(*path.at(s)[:2])[1]) + .0008
+        join = self.render_level('main', self.main.nearest(*path.at(ramp['departure'])[:2])[1])
+        floor = max(self.road_level(*path.at(s)[:2]),
+                    max(self.surface(*path.at(s, offset)[:2], mobile)
+                        for offset in [-self.width(identity, s), 0, self.width(identity, s)]
+                        for mobile in [False, True]) + .04)
+        end = self.road_level(*path.at(path.length)[:2])
+        t = max(0, min(1, (s - ramp['departure']) / (path.length - ramp['departure'] - .12)))
+        # Short easing zones leave a constant-grade middle instead of making
+        # the middle of a long hillside ramp unnecessarily steep.
+        blend = t * t / .18 if t < .1 else 1 - (1 - t) ** 2 / .18 if t > .9 else (t - .05) / .9
         return max(floor, join * (1 - blend) + end * blend) + .0008 * (1 - blend)
 
     def barrier_open(self, s, side):
@@ -137,7 +210,8 @@ def strip(batch, path, a, b, lo, hi, z1, z2, key):
 
 def build_structure(batch, network):
     for identity, path in network.paths.items():
-        for a, b in zip(path.lengths, path.lengths[1:]):
+        stations = network.sections[identity]
+        for a, b in zip(stations, stations[1:]):
             rings = []
             for s in [a, b]:
                 w, z = network.width(identity, s), network.level(identity, s)
@@ -200,20 +274,21 @@ def build_structure(batch, network):
 
 def build_details(batch, network, lightweight=False):
     for identity, path in network.paths.items():
-        spacing = .30 if lightweight else .15
+        spacing = .30 if lightweight else .20
         start = 0 if identity == 'main' else network.ramps[identity][0]['departure'] + .10
         for i in range(math.ceil((path.length - start) / spacing)):
-            a, b = start + i * spacing + .02, min(path.length - .03, start + i * spacing + (.10 if lightweight else .075))
+            a, b = start + i * spacing + .02, min(path.length - .03, start + i * spacing + (.10 if lightweight else .095))
             if b <= a:
                 continue
             offsets = [-.085, -.045, .045, .085] if identity == 'main' else [0]
             for offset in offsets:
                 strip(batch, path, a, b, offset - .0012, offset + .0012,
-                      network.level(identity, a) + .0013, network.level(identity, b) + .0013, 'viaduct_line')
+                      network.render_level(identity, a) + .0013, network.render_level(identity, b) + .0013, 'viaduct_line')
         if lightweight:
             continue
         # Edge lines and sparse lamps are a single mesh, never one object per fitting.
-        for a, b in zip(path.lengths, path.lengths[1:]):
+        stations = network.sections[identity]
+        for a, b in zip(stations, stations[1:]):
             for side in [-1, 1]:
                 if identity == 'main' and network.barrier_open((a + b) / 2, side):
                     continue
@@ -224,9 +299,9 @@ def build_details(batch, network, lightweight=False):
                       network.level(identity, a) + .0013, network.level(identity, b) + .0013, 'viaduct_line')
         if identity != 'main':
             continue
-        for i in range(1, math.floor(path.length / .75)):
-            s = i * .75
-            z = network.level(identity, s) + .014
+        for i in range(1, math.floor(path.length / 1.2)):
+            s = i * 1.2
+            z = network.render_level(identity, s) + .014
             batch.beam(path.at(s, 0, z), path.at(s, 0, z + .10), .002, 'viaduct_metal')
             for side in [-1, 1]:
                 batch.beam(path.at(s, 0, z + .10), path.at(s, side * .038, z + .115), .0018, 'viaduct_metal')

@@ -1,6 +1,6 @@
-"""Prepare the bounded Zhonghua Road pilot from the retained OSM snapshot.
+"""Prepare the extended Qingxiang urban viaduct from the retained OSM snapshot.
 
-The two mapped carriageways and four node-connected ramps control the route.
+The two mapped carriageways and eight node-connected ramps control the route.
 Cross sections and support locations are display interpretations, not a survey.
 """
 import argparse
@@ -14,8 +14,9 @@ from shapely.ops import unary_union
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN_IDS = [685249176, 808502317]
-RAMP_IDS = [685249164, 685249167, 685249169, 685249170]
-WEST, EAST = 108.302056, 108.3184243
+RAMP_IDS = [685249164, 685249167, 685249169, 685249170,
+            685249160, 685249162, 685249180, 685249181]
+WEST, EAST = 108.285, 108.339
 
 
 def rounded(points):
@@ -44,7 +45,7 @@ def prepare(capture=False):
     if capture:
         raw = json.loads((ROOT / 'work/geodata/osm.json').read_text())
         selected = [e for e in raw['elements'] if e['type'] == 'way' and e['id'] in MAIN_IDS + RAMP_IDS]
-        assert len(selected) == 6
+        assert len(selected) == len(MAIN_IDS) + len(RAMP_IDS)
         nodes = {n for e in selected if e['id'] in RAMP_IDS for n in [e['nodes'][0], e['nodes'][-1]]}
         ground = [e for e in raw['elements'] if e['type'] == 'way' and e.get('tags', {}).get('highway')
                   and e['id'] not in MAIN_IDS + RAMP_IDS and nodes.intersection(e.get('nodes', []))]
@@ -183,7 +184,7 @@ def prepare(capture=False):
         pier_plans.append({'path': identity, 'distances': distances})
     removed_trees = [i for i, (x, y, radius) in enumerate(geo['trees'])
                      if envelope.distance(Point(x, y)) < radius + .035]
-    plan = {'id': 'qingxiang-viaduct', 'name': '清厢快速路 · 中华路高架',
+    plan = {'id': 'qingxiang-viaduct', 'name': '清厢快速路 · 城区高架',
             'sceneCenter': geo['center'], 'osmTimestamp': source['osmTimestamp'],
             'inputHashes': {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest()
                             for p in ['data/viaduct-source.json', 'public/data/geography.json',
@@ -194,6 +195,8 @@ def prepare(capture=False):
             'blockedRoads': blocked_roads, 'removedTrees': removed_trees,
             'assumptions': {'mainWidthMeters': 29, 'lanes': 6, 'rampWidthMeters': 7.3,
                             'pierSpacingMeters': 34, 'rampPlanAdjustmentMaxMeters': 6.5,
+                            'geometryToleranceMeters': .4, 'geometryMaxSpanMeters': 60,
+                            'landingBlendMeters': 100,
                             'verticalProfile': 'Display clearance fitted to both terrain meshes; no surveyed bridge elevation.'}}
     (ROOT / 'data/viaduct-plan.json').write_text(json.dumps(plan, ensure_ascii=False, separators=(',', ':')) + '\n')
     print(f'Viaduct: {main.length * 100:.1f} m mainline, {len(ramps)} ramps, {len(removed_trees)} tree exclusions, {len(overrides)} replaced road features.')
