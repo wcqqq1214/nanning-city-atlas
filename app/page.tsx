@@ -85,7 +85,7 @@ const LAYER_INFO: {
     detail: '山林、江边和公园里的树木',
     icon: Trees,
   },
-  { key: 'roads', name: '道路桥梁', detail: '道路和跨江大桥', icon: Route },
+  { key: 'roads', name: '道路桥梁', detail: '道路、高架和跨江大桥', icon: Route },
   {
     key: 'water',
     name: '河流湖泊',
@@ -95,6 +95,7 @@ const LAYER_INFO: {
   { key: 'labels', name: '地名标注', detail: '可点击的城市地标', icon: MapPin },
 ];
 const iconFor = (id: string) => {
+  if (id === 'qingxiang-viaduct') return Route;
   if (id === 'qingxiu') return Mountain;
   if (id === 'zhenning') return Trees;
   if (['gxu', 'gxmzu'].includes(id)) return GraduationCap;
