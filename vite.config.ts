@@ -2,6 +2,8 @@ import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import hostingConfig from './.openai/hosting.json';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
@@ -35,7 +37,21 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  // Keep the geographic catalog and both models on the same cache revision.
+  // Pages caches stable public URLs even when a newer app bundle is loaded.
+  const cityHash = createHash('sha256');
+  for (const file of [
+    './public/data/landmarks.json',
+    './public/data/overview.json',
+    './public/models/nanning-city.glb',
+    './public/models/nanning-city-mobile.glb',
+  ]) {
+    cityHash.update(readFileSync(new URL(file, import.meta.url)));
+  }
   const sharedConfig = {
+    define: {
+      __CITY_ASSET_VERSION__: JSON.stringify(cityHash.digest('hex').slice(0, 16)),
+    },
     css: { postcss: { plugins: [tailwindcss()] } },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
