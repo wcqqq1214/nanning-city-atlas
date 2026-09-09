@@ -9,6 +9,7 @@ Planting and small parapet motifs are illustrative, not a landscape survey.
 import json
 import math
 from pathlib import Path
+from vegetation import build_tree
 
 PLAN = json.loads((Path(__file__).resolve().parents[1]/'data/nanhu-plan.json').read_text())
 MATERIAL_KEYS = ['nanhu_stone', 'nanhu_cap', 'nanhu_paving', 'nanhu_edge',
@@ -87,7 +88,7 @@ def build_park_terrain(batch, x, y, ground):
             batch.face([vertices[i] for i in tri], material)
 
 
-def build_nanhu(b, x, y, ground):
+def build_nanhu(b, x, y, ground, trees):
     def p(u, v, h):
         return (x+u, y+v, h)
 
@@ -103,30 +104,17 @@ def build_nanhu(b, x, y, ground):
     def floor(u, v):
         return max(WATER+.028, ground(x+u, y+v))
 
-    # Broadleaf crowns replace the city's coarse conical trees within the park.
-    phi = (1+math.sqrt(5))/2
-    iv = [(-1, phi, 0), (1, phi, 0), (-1, -phi, 0), (1, -phi, 0),
-          (0, -1, phi), (0, 1, phi), (0, -1, -phi), (0, 1, -phi),
-          (phi, 0, -1), (phi, 0, 1), (-phi, 0, -1), (-phi, 0, 1)]
-    iv = [tuple(c/math.sqrt(1+phi*phi) for c in v) for v in iv]
-    it = [(0,11,5),(0,5,1),(0,1,7),(0,7,10),(0,10,11),(1,5,9),(5,11,4),
-          (11,10,2),(10,7,6),(7,1,8),(3,9,4),(3,4,2),(3,2,6),(3,6,8),
-          (3,8,9),(4,9,5),(2,4,11),(6,2,10),(8,6,7),(9,8,1)]
+    # Reuse the city crown at the park's smaller scale and original positions.
     for index, (u, v, r) in enumerate(PLAN['trees']):
         h = floor(u, v)
-        cone(u, v, h, .010, .007, .16, 'nanhu_trunk', 7)
-        for k, (du, dv, dz, scale) in enumerate([(-.32, 0, .16, .78), (.30, .15, .19, .80), (0, -.1, .24, .86)]):
-            vertices = [(u+r*(du+a*scale), v+r*(dv+c*scale), h+dz+r*d*scale*.84) for a, c, d in iv]
-            color = ['nanhu_leaf', 'nanhu_leaf_light', 'nanhu_leaf_dark'][(index+k)%3]
-            for tri in it:
-                face([vertices[i] for i in tri], color)
+        color = ['nanhu_leaf','nanhu_leaf_light','nanhu_leaf_dark'][index%3]
+        build_tree(trees,x+u,y+v,h,r,color,crown_height=.21,crown_rise=r*.95,
+                   trunk_radius=.010,trunk_height=.16,trunk_color='nanhu_trunk')
 
     def palm(u, v, h, seed):
         rise = .28+(seed%5)*.016
         lean = .012*math.sin(seed*1.7)
-        cone(u, v, h, .009, .006, rise, 'nanhu_trunk', 9)
-        for j in range(3):
-            cone(u, v, h+rise*(.30+j*.20), .0095, .0095, .004, 'nanhu_wood', 9)
+        trees.cone(x+u,y+v,h,.009,.006,rise,'nanhu_trunk',4)
         # Fronds are folded ribbons with a central ridge and a drooping tip.
         for leaf in range(9):
             a = (leaf/9+seed*.071)*math.tau
@@ -137,14 +125,14 @@ def build_nanhu(b, x, y, ground):
                 z = h+rise+.08*math.sin(math.pi*t*.9)-.065*t*t
                 return (u+lean+radius*math.cos(a)-side*halfwidth*math.sin(a),
                         v+radius*math.sin(a)+side*halfwidth*math.cos(a), z-(.009*math.sin(math.pi*t) if side else 0))
-            for j in range(5):
-                t, tt = j/5, (j+1)/5
+            for j in range(3):
+                t, tt = j/3, (j+1)/3
                 for side in [-1, 1]:
                     pts = [q(t, 0), q(t, side), q(tt, side), q(tt, 0)]
                     if j == 0: pts = [pts[0], pts[2], pts[3]]
-                    elif j == 4: pts = pts[:3]
-                    face(pts, 'nanhu_palm' if (leaf+seed)%3 else 'nanhu_leaf_light')
-        cone(u+lean, v, h+rise-.018, .018, .010, .026, 'nanhu_palm', 9)
+                    elif j == 2: pts = pts[:3]
+                    trees.face([p(*q) for q in pts],'nanhu_palm' if (leaf+seed)%3 else 'nanhu_leaf_light')
+        trees.cone(x+u+lean,y+v,h+rise-.018,.018,.010,.026,'nanhu_palm',4)
 
     # Map-derived paths stay strictly landward of the existing water polygons.
     # A small offset keeps their paving clear of the coarse display DEM.

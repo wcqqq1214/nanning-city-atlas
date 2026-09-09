@@ -1,5 +1,6 @@
 """Check coordinate bounds, water triangulation, infill exclusion and GLB structure."""
 import json
+import hashlib
 import math
 import struct
 import sys
@@ -17,13 +18,14 @@ from tingzi_landmark import SITE as TINGZI_SITE, site_xy as tingzi_xy, inside_si
 from bridge_landmark import BridgePath, MAIN_SPAN, NORTH_APPROACH
 from changyou_landmark import ANGLE as CHANGYOU_ANGLE, WIDTH as CHANGYOU_WIDTH, DEPTH as CHANGYOU_DEPTH
 from nanhu_landmark import PLAN as NANHU_PLAN, BRIDGE_LENGTH as NANHU_BRIDGE_LENGTH
+from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, build_canopy, terrain_surface
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
 catalog = json.loads((ROOT/'data/landmarks.json').read_text())
-region = json.loads((ROOT/'data/region.json').read_text())
-assert g['bbox'] == t['bbox'] == region['bbox']
-assert g['bbox'][0] < region['previousBbox'][0] - .1
+scene_region = json.loads((ROOT/'data/region.json').read_text())
+assert g['bbox'] == t['bbox'] == scene_region['bbox']
+assert g['bbox'][0] < scene_region['previousBbox'][0] - .1
 assert len(g['buildings']) > 9000, 'Expanded city unexpectedly lost its building coverage'
 assert len(t['heights']) == t['cols'] * t['rows']
 assert all(math.isfinite(h) and -500 < h < 9000 for h in t['heights'])
@@ -148,6 +150,75 @@ west, south, east, north = patch['bounds']
 expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
 assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
 assert sum(p['modelled'] for p in places) == 16, 'Detailed Nanhu landmark missing from the scene catalog'
+
+# Validate the rendered canopy footprint and terrain clearance in both profiles.
+# This catches fills across mapped holes, hidden roads/buildings, and the coarse
+# mobile terrain piercing a canopy that was only fitted to bilinear heights.
+for path, fingerprint in FOREST_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Stale forest plan: {path}'
+assert all(s['classification'] in ['natural=wood','landuse=forest'] for s in FOREST_PLAN['sources'])
+assert [r['id'] for r in FOREST_REGIONS] == [s['stage'] for s in FOREST_PLAN['rollout'] if s['enabled']]
+forest = unary_union([Polygon(p[0],p[1:]) for r in FOREST_REGIONS for p in r['woodland']])
+canopy_regions = [unary_union([Polygon(p[0],p[1:]) for p in r['coverage']]) for r in FOREST_REGIONS]
+canopy_area = unary_union(canopy_regions)
+assert all(shape.is_valid for shape in canopy_regions), 'Invalid woodland rings'
+assert sum(shape.area for shape in canopy_regions)-canopy_area.area < .001, 'Rollout stages overlap'
+assert abs(canopy_area.area/100-FOREST_PLAN['areaKm2']) < .001
+assert canopy_area.difference(forest.buffer(.00002)).area < .001
+assert canopy_area.intersection(water).area < .001
+assert canopy_area.intersection(roads.context).area < .001
+assert canopy_area.intersection(unary_union([Polygon(b['rings'][0]) for b in g['buildings']])).area < .001
+assert canopy_area.intersection(nanhu_park).area < .001, 'Canopy obscures the hand-modelled Nanhu garden'
+tower = next(p['position'] for p in places if p['id']=='qingxiu')
+assert not canopy_area.contains(Point(tower[0],-tower[2])), 'Keep a clearing around Longxiang Tower'
+removed = set()
+for region, area in zip(FOREST_REGIONS,canopy_regions):
+    assert not removed.intersection(region['replacedTreeIndices']), 'Tree replaced in multiple rollout stages'
+    removed.update(region['replacedTreeIndices'])
+    for index in region['replacedTreeIndices']:
+        assert area.contains(Point(g['trees'][index][:2])), 'Removed a tree outside its woodland region'
+    buffered = prep(area.buffer(.00002))
+    for x,y,r,aspect,angle,color in region['crownClusters']:
+        assert buffered.contains(Point(x,y).buffer(r)), 'Crown cluster crosses a woodland clearing'
+
+def raw_ground(x, y):
+    west, south, east, north = g['bounds']
+    u = max(0, min(t['cols']-1.000001, (x-west)/(east-west)*(t['cols']-1)))
+    v = max(0, min(t['rows']-1.000001, (north-y)/(north-south)*(t['rows']-1)))
+    i, j = int(u), int(v)
+    a, b = u-i, v-j
+    hs = t.get('sceneHeights',t['heights'])
+    h = ((1-a)*hs[j*t['cols']+i]+a*hs[j*t['cols']+i+1])*(1-b)
+    h += ((1-a)*hs[(j+1)*t['cols']+i]+a*hs[(j+1)*t['cols']+i+1])*b
+    return max(-.08,(h-55)/100*3)
+
+class CanopyProbe:
+    def __init__(self, lightweight):
+        self.lightweight = lightweight
+        self.footprints = []
+
+    def face(self, vertices, color, normals=None):
+        assert all(math.isfinite(c) for v in vertices for c in v)
+        polygon = Polygon([v[:2] for v in vertices])
+        assert polygon.is_valid and polygon.area > 1e-10
+        self.footprints.append(polygon)
+        for weights in [(1/3,1/3,1/3),(.5,.5,0),(.5,0,.5),(0,.5,.5)]:
+            x,y,z = [sum(v[k]*w for v,w in zip(vertices,weights)) for k in range(3)]
+            floor = terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],self.lightweight)
+            assert z-floor > .095, 'Forest canopy intersects the displayed terrain'
+
+for region, area in zip(FOREST_REGIONS,canopy_regions):
+    for profile in ['detail','smooth']:
+        probe = CanopyProbe(profile=='smooth')
+        build_canopy(probe,region,raw_ground,g['bounds'],t['cols'],t['rows'],profile=='smooth')
+        merged = unary_union(probe.footprints)
+        # Coordinates are retained to 0.001 m. Check the positional envelope
+        # instead of summing harmless rounding slivers over hundreds of km².
+        assert merged.difference(area.buffer(.00002)).area < .00001, 'Canopy filled a woodland clearing'
+        assert area.buffer(-.00002).difference(merged).area < .00001, 'Canopy lost woodland coverage'
+        assert sum(p.area for p in probe.footprints)-merged.area < .005, 'Canopy triangles overlap'
+        print(f'Forest {region["id"]} / {profile}: footprint and terrain clearance verified.',flush=True)
+
 def inspect_model(filename, budget):
     raw=(ROOT/'public/models'/filename).read_bytes()
     magic,version,length=struct.unpack_from('<III',raw)
@@ -159,6 +230,20 @@ def inspect_model(filename, budget):
     names={node.get('name') for node in model['nodes']}
     assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth'} <= names
     assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
+    vegetation = next(node for node in model['nodes'] if node.get('name')=='Vegetation')
+    descendants = set()
+    def collect_children(node):
+        for index in node.get('children',[]):
+            descendants.add(index)
+            collect_children(model['nodes'][index])
+    collect_children(vegetation)
+    for region in FOREST_REGIONS:
+        for suffix in ['canopy','crowns']:
+            index = next(i for i,node in enumerate(model['nodes']) if node.get('name')==f'Vegetation_{region["id"]}_{suffix}')
+            assert index in descendants, 'Forest mesh is disconnected from the vegetation layer'
+            assert model['nodes'][index].get('children'), 'Forest lost its spatial batches'
+    nanhu_index = next(i for i,node in enumerate(model['nodes']) if node.get('name')=='Vegetation_nanhu')
+    assert nanhu_index in descendants, 'Nanhu trees ignore the vegetation switch'
     assert len(raw) < budget, f'{filename} exceeds loading budget'
     counts={}
     for mesh in model['meshes']:
@@ -178,15 +263,29 @@ assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue 
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
 assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and colonnade missing or over budget'
-assert 25_000 < full['Landmark_nanhu'] < 45_000, 'Nanhu bridge and garden geometry missing or over budget'
-assert mobile_bytes < full_bytes*.6
-assert sum(mobile.values()) < sum(full.values())*.55
-assert sum(full.values())-sum(mobile.values()) > 680_000
+assert 15_000 < full['Landmark_nanhu'] < 22_000, 'Nanhu bridge and garden geometry missing or over budget'
+# Optimizing the full-detail trees also narrows the gap between profiles. Use
+# independent absolute budgets so improving detail cannot fail a ratio check.
+# Both qualities retain independent download and geometry budgets.
+assert sum(full.values()) < 1_300_000
+assert sum(mobile.values()) < 810_000
+assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
+overview = json.loads((ROOT/'public/data/overview.json').read_text())
+for counts, profile, tree_count, triangles_per_tree in [
+    (full,'detail',overview['stats']['trees'],30),(mobile,'smooth',overview['mobileTrees'],8)]:
+    singles = sum(c for name,c in counts.items() if name.startswith('Vegetation_') and name.split('_')[1].lstrip('-').isdigit())
+    assert singles == tree_count*triangles_per_tree, 'City trees lost their bounded shared geometry'
+    for region in FOREST_REGIONS:
+        surface = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_canopy_'))
+        assert surface == len(region[profile]['triangles']), 'Exported forest coverage is incomplete'
+        crowns = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_crowns_'))
+        assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
+    assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
     if not name.startswith(('Terrain','Vegetation')):
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
-old_w=region['previousBbox'][0]
+old_w=scene_region['previousBbox'][0]
 west_x=(old_w-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
 western=sum(1 for b in g['buildings'] if max(p[0] for p in b['rings'][0])<west_x)
 assert western>1000, f'Western coverage unexpectedly sparse: {western}'

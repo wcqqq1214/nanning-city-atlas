@@ -16,6 +16,7 @@ from shapely.prepared import prep
 from shapely.strtree import STRtree
 import mapbox_earcut
 import numpy as np
+from prepare_forest_canopy import forest_source
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
@@ -261,6 +262,7 @@ def main():
     terrain["landcover"] = colors
     (DATA / "terrain.json").write_text(json.dumps(terrain, separators=(",", ":")))
     (DATA / "geography.json").write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")))
+    (ROOT / 'data/forest-source.json').write_text(json.dumps(forest_source(snapshot),ensure_ascii=False,separators=(',',':'))+'\n')
     print(json.dumps(output["stats"]))
     print(f"Water polygons: {len(output['water'])}; parks: {len(output['parks'])}")
 

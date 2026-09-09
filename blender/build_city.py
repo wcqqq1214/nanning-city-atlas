@@ -4,6 +4,7 @@ Data preparation uses WGS84; Blender uses X east, Y north, Z up.
 glTF converts to Three.js X east, Y up, Z south on export.
 """
 import bpy
+import hashlib
 import json
 import math
 import random
@@ -23,11 +24,17 @@ from bridge_landmark import MATERIAL_KEYS as BRIDGE_MATERIALS
 from changyou_landmark import build_changyou, MATERIAL_KEYS as CHANGYOU_MATERIALS, inside_site as inside_changyou
 from nanhu_landmark import build_nanhu, MATERIAL_KEYS as NANHU_MATERIALS, inside_park as inside_nanhu
 from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_cell, build_park_terrain
+from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED
+from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, CANOPY_MATERIALS
+from vegetation import build_tree
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
 MINX, MINY, MAXX, MAXY = GEO['bounds']
+assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
+for path, fingerprint in FOREST_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the forest plan after changing {path}'
 COLS, ROWS = DEM['cols'], DEM['rows']
 HEIGHTS = DEM.get('sceneHeights', DEM['heights'])
 SCALE_Z = 3.0
@@ -71,6 +78,9 @@ MATS = {
     'leaf2': material('Canopy jade', '529176'),
     'leaf3': material('Canopy lime', '83a077'),
     'trunk': material('Tree trunk', '637667'),
+    'forest_deep': material('Forest shaded foliage', '537f68'),
+    'forest_jade': material('Forest jade foliage', '608b71'),
+    'forest_light': material('Forest sunlit foliage', '70967b'),
     'landmark': material('Landmark jade glass', '568f87', .28, .35),
     'accent': material('Brass accent', 'd3ae6b', .4, .2),
     'bridge': material('Bridge vermilion', 'b9654c', .65),
@@ -193,8 +203,10 @@ def inside_landmark(x, y):
 
 
 class Batch:
-    def __init__(self, name, keys):
+    def __init__(self, name, keys, spatial=False, weld=False):
         self.name, self.keys, self.v, self.f, self.mi = name, keys, [], [], []
+        self.spatial = spatial
+        self.weld = weld
         self.normals = []
     def face(self, vertices, key, normals=None):
         start = len(self.v)
@@ -235,7 +247,10 @@ class Batch:
             mesh=bpy.data.meshes.new(name)
             mesh.from_pydata(vertices, [], faces)
             for key in self.keys: mesh.materials.append(MATS[key])
-            for polygon,index in zip(mesh.polygons,materials): polygon.material_index=index
+            for polygon,index in zip(mesh.polygons,materials):
+                polygon.material_index=index
+                if self.weld:
+                    polygon.use_smooth=True
             mesh.update()
             if normals and any(n is not None for n in normals):
                 # Smooth along a membrane panel while keeping its fold creases.
@@ -249,21 +264,50 @@ class Batch:
             obj.parent=parent
             return obj
         # Spatial batches permit Three.js frustum culling in close views.
-        if self.name not in ['Terrain','Buildings','Vegetation','Roads','Bridges']:
+        if not self.spatial and self.name not in ['Terrain','Buildings','Vegetation','Roads','Bridges']:
             return make_object(self.name,self.v,self.f,self.mi,normals=self.normals)
         parent=bpy.data.objects.new(self.name,None)
         bpy.context.collection.objects.link(parent)
         groups={}
-        for face,index in zip(self.f,self.mi):
+        for face,index,normal in zip(self.f,self.mi,self.normals):
             verts=[self.v[i] for i in face]
             cx=sum(v[0] for v in verts)/len(verts);cy=sum(v[1] for v in verts)/len(verts)
             cell=(math.floor((cx-MINX)/80),math.floor((cy-MINY)/80))
-            vertices,faces,materials=groups.setdefault(cell,([],[],[]))
-            offset=len(vertices);vertices.extend(verts)
-            faces.append(tuple(range(offset,offset+len(verts))));materials.append(index)
-        for (i,j),(vertices,faces,materials) in sorted(groups.items()):
-            make_object(f'{self.name}_{i}_{j}',vertices,faces,materials,parent)
+            vertices,faces,materials,normals,lookup=groups.setdefault(cell,([],[],[],[],{}))
+            if self.weld:
+                # Shared canopy vertices must also share Blender's normal
+                # space, otherwise tiny custom-normal differences defeat glTF
+                # deduplication and encode each triangle corner separately.
+                ids=[]
+                for vertex in verts:
+                    key=tuple(vertex)
+                    if key not in lookup:
+                        lookup[key]=len(vertices)
+                        vertices.append(vertex)
+                    ids.append(lookup[key])
+                faces.append(tuple(ids))
+            else:
+                offset=len(vertices);vertices.extend(verts)
+                faces.append(tuple(range(offset,offset+len(verts))))
+            materials.append(index);normals.append(normal)
+        for (i,j),(vertices,faces,materials,normals,lookup) in sorted(groups.items()):
+            make_object(f'{self.name}_{i}_{j}',vertices,faces,materials,parent,normals)
         return parent
+
+
+def build_forests(parent, lightweight=False):
+    for region in FOREST_REGIONS:
+        prefix = f'Vegetation_{region["id"]}'
+        canopy = Batch(prefix+'_canopy',CANOPY_MATERIALS,spatial=True,weld=True)
+        build_canopy(canopy,region,height,GEO['bounds'],COLS,ROWS,lightweight)
+        canopy_group = canopy.finish()
+        canopy_group.parent = parent
+        for obj in canopy_group.children:
+            for polygon in obj.data.polygons:
+                polygon.use_smooth = True
+        crowns = Batch(prefix+'_crowns',CANOPY_MATERIALS,spatial=True)
+        build_crown_clusters(crowns,region,height,GEO['bounds'],COLS,ROWS,lightweight)
+        crowns.finish().parent = parent
 
 
 print('Building terrain...', flush=True)
@@ -351,17 +395,20 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-visible_trees = [(x,y,r) for x,y,r in GEO['trees'] if not inside_landmark(x,y)
+original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if not inside_landmark(x,y)
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
                  and not inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y, margin=r*.6+.02)
                  and not inside_nanhu(x-NANHU_X, y-NANHU_Y)]
-for x,y,r in visible_trees:
-    z=max(.32,height(x,y))
-    trees.cone(x,y,z,.045,.03,.3,'trunk',5)
+visible_trees = [(i,x,y,r) for i,x,y,r in original_trees if i not in FOREST_REPLACED]
+for i,x,y,r in original_trees:
+    # Keep the original deterministic color sequence when interiors are removed.
     col=RNG.choice(['leaf','leaf','leaf2','leaf3'])
-    trees.cone(x,y,z+.20,r*.60,r,.28,col,7)
-    trees.cone(x,y,z+.48,r,.03,.42,col,7)
-trees.finish()
+    if i in FOREST_REPLACED:
+        continue
+    z=max(.32,terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS))
+    build_tree(trees,x,y,z,r,col)
+tree_group=trees.finish()
+build_forests(tree_group)
 
 
 
@@ -418,7 +465,9 @@ build_changyou(b,x,y,z,height)
 b.finish()
 
 b,x,y,z=landmark('nanhu')
-landmarks[-1]['position'][1]=round(build_nanhu(b,x,y,height),3)
+nanhu_trees=Batch('Vegetation_nanhu',['nanhu_trunk','nanhu_palm','nanhu_leaf','nanhu_leaf_light','nanhu_leaf_dark'])
+landmarks[-1]['position'][1]=round(build_nanhu(b,x,y,height,nanhu_trees),3)
+nanhu_trees.finish().parent=tree_group
 b.finish()
 
 b,x,y,z=landmark('bridge')
@@ -440,6 +489,10 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['stage'],
+    'source':'OSM natural=wood / landuse=forest','sourceCount':len(FOREST_PLAN['sources']),
+    'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
+    'replacedTrees':len(original_trees)-len(visible_trees)}
 summary['previousBbox']=json.loads((ROOT/'data/region.json').read_text())['previousBbox']
 summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':3,'buildingExaggeration':1.55})
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
@@ -492,11 +545,20 @@ for j,jj in zip(jy,jy[1:]):
 build_park_terrain(mobile_ground, NANHU_X, NANHU_Y, height)
 mobile_ground.finish()
 mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-for i,(x,y,r) in enumerate(visible_trees[::4]):
-    mobile_trees.cone(x,y,max(.32,height(x,y)),r,0,.78,['leaf','leaf2','leaf3'][i%3],6)
-mobile_trees.finish()
+mobile_tree_count=0
+# Subsample the original positions before removing covered forest interiors.
+for order,(i,x,y,r) in enumerate(original_trees[::4]):
+    if i in FOREST_REPLACED:
+        continue
+    mobile_tree_count+=1
+    col=['leaf','leaf2','leaf3'][order%3]
+    z=max(.32,terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=True))
+    build_tree(mobile_trees,x,y,z,r,col,lightweight=True)
+mobile_tree_group=mobile_trees.finish()
+build_forests(mobile_tree_group,lightweight=True)
+nanhu_trees.finish().parent=mobile_tree_group
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city-mobile.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
-summary['mobileTrees']=len(visible_trees[::4])
+summary['mobileTrees']=mobile_tree_count
 summary['models']={}
 for key,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
     summary['models'][key]={'file':filename,'bytes':(ROOT/'public/models'/filename).stat().st_size}
