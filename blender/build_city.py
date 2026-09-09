@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
 from landmark_details import build_expo, build_bridge
 from expo_landmark import site_distance as expo_site_distance
+from sports_landmark import SITE_PADS, MATERIAL_KEYS as SPORTS_MATERIALS, pad_distance, inside_site
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -78,6 +79,18 @@ MATS = {
     'arts_glass': material('Arts grey green foyer glazing', '68857f', .22, .23),
     'arts_frame': material('Arts brushed aluminium frames', 'a9b8b0', .36, .35),
     'arts_stone': material('Arts pale stone podium', 'd8dacc', .9),
+    'sports_roof': material('Sports silver leaf roof', 'e0e7e3', .42, .28),
+    'sports_soffit': material('Sports roof underside', 'a2afa9', .72, .12),
+    'sports_frame': material('Sports steel structure', '98a8a1', .42, .32),
+    'sports_glass': material('Sports sage glazing', '52766e', .25, .24),
+    'sports_stone': material('Sports concrete terraces', 'd6d9cd', .85),
+    'sports_track': material('Sports terracotta track', 'ae6453', .90),
+    'sports_turf': material('Sports pitch deep green', '418367', .95),
+    'sports_turf_light': material('Sports pitch mown green', '559573', .95),
+    'sports_line': material('Sports field markings', 'f4f2e3', .90),
+    'sports_seat_red': material('Sports terracotta seating', 'b76c51', .70),
+    'sports_seat_gold': material('Sports amber seating', 'd3af68', .70),
+    'sports_screen': material('Sports scoreboard', '233f3c', .40),
 }
 
 
@@ -94,6 +107,10 @@ EXPO = PLACE_BY_ID['expo']
 EXPO_X = (EXPO['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
 EXPO_Y = (EXPO['lat']-GEO['center'][1])*1113.2
 EXPO_GROUND = terrain_height(EXPO_X, EXPO_Y)
+SPORTS = PLACE_BY_ID['sports-center']
+SPORTS_X = (SPORTS['lon']-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
+SPORTS_Y = (SPORTS['lat']-GEO['center'][1])*1113.2
+SPORTS_LEVELS = [terrain_height(SPORTS_X+pad[0], SPORTS_Y+pad[1]) for pad in SITE_PADS]
 
 
 def height(x, y):
@@ -106,6 +123,14 @@ def height(x, y):
         t = max(0, min(1, (distance - .45) / .85))
         blend = t*t*(3-2*t)
         h = EXPO_GROUND*(1-blend) + h*blend
+    # The low-resolution DEM cannot resolve the three graded sports terraces.
+    # All scene layers use the same local correction, including roads and trees.
+    for pad, level in zip(SITE_PADS, SPORTS_LEVELS):
+        distance = pad_distance(x-SPORTS_X, y-SPORTS_Y, pad)
+        if distance < .65:
+            t = max(0, distance/.65)
+            blend = t*t*(3-2*t)
+            h = level*(1-blend) + h*blend
     return h
 
 
@@ -119,7 +144,8 @@ CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALO
 
 
 def inside_landmark(x, y):
-    return any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS)
+    return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
+            any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS))
 
 
 class Batch:
@@ -289,9 +315,14 @@ landmarks=[]
 def landmark(id):
     place = PLACE_BY_ID[id]
     x,y,z=pos(place['lon'],place['lat'])
+    if id == 'sports-center':
+        # The stadium's open field starts at its graded ground, unlike a closed
+        # building on a raised plinth. Keep the selection ring below the pitch.
+        z = height(x, y)
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
     if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
+    if id == 'sports-center': keys += SPORTS_MATERIALS
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]

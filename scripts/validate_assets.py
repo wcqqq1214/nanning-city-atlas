@@ -12,6 +12,7 @@ from shapely.strtree import STRtree
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'blender'))
 from arts_landmark import outline as arts_outline, DISPLAY_SCALE, SITE_ANGLE
+from sports_landmark import PLAN as SPORTS_PLAN, SITE_PADS, inside_site
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -72,6 +73,20 @@ podium = Polygon([(ax+DISPLAY_SCALE*1.12*(u*c-v*s), ay+DISPLAY_SCALE*1.12*(u*s+v
 assert podium.is_valid and not podium.intersects(water), 'Arts-center podium extends into mapped water'
 assert all(abs(x-ax) < arts['clearExtent'][0]/2 and abs(y-ay) < arts['clearExtent'][1]/2
            for x, y in podium.exterior.coords), 'Arts-center podium exceeds its replacement area'
+sports = next(p for p in catalog if p['id'] == 'sports-center')
+assert [sports['lon'], sports['lat']] == SPORTS_PLAN['center'], 'Sports model and map use different origins'
+sx = (sports['lon']-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
+sy = (sports['lat']-g['center'][1])*1113.2
+for name in ['roofEast', 'roofWest', 'arena', 'aquatics']:
+    item = SPORTS_PLAN[name]
+    points = item.get('outline') or item['outer']+item['inner'][1:-1]
+    footprint = Polygon([(sx+u, sy+v) for u, v in points])
+    assert footprint.is_valid and not footprint.intersects(water), f'{name} overlaps mapped water'
+    assert all(inside_site(u, v) for u, v in points), f'{name} extends outside its replacement boundary'
+for cx, cy, rx, ry in SITE_PADS:
+    pad = Polygon([(sx+cx+rx*math.cos(i/96*math.tau), sy+cy+ry*math.sin(i/96*math.tau))
+                   for i in range(96)])
+    assert not pad.intersects(water), 'Sports ground correction overlaps mapped water'
 def inspect_model(filename, budget):
     raw=(ROOT/'public/models'/filename).read_bytes()
     magic,version,length=struct.unpack_from('<III',raw)
@@ -87,11 +102,18 @@ def inspect_model(filename, budget):
     counts={}
     for mesh in model['meshes']:
         counts[mesh['name']]=sum(model['accessors'][p['indices']]['count']//3 for p in mesh['primitives'])
+        if mesh['name'] == 'Landmark_sports-center':
+            track = next(p for p in mesh['primitives']
+                         if model['materials'][p['material']]['name'] == 'Sports terracotta track')
+            floor = model['accessors'][track['attributes']['POSITION']]['min'][1]
+            marker = next(p for p in places if p['id'] == 'sports-center')['position'][1]
+            assert marker+.015 < floor, 'Selection ring projects over the running track'
     return len(raw),counts
-# Extra city blocks get a bounded payload increase; mobile still keeps the same
-# buildings while halving total geometry and remaining below 60% of full bytes.
-full_bytes,full=inspect_model('nanning-city.glb',9_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',4_500_000)
+# The three sports venues add ~0.34 MB to each quality. Keep a bounded 0.5 MB
+# increase while retaining the existing byte ratio and half-geometry requirement.
+full_bytes,full=inspect_model('nanning-city.glb',9_500_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',5_000_000)
+assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert mobile_bytes < full_bytes*.6
 assert sum(mobile.values()) < sum(full.values())*.5
 for name, count in full.items():

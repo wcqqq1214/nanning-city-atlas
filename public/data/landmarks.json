@@ -329,6 +329,24 @@
     ]
   },
   {
+    "id": "sports-center",
+    "name": "广西体育中心",
+    "lon": 108.3895246,
+    "lat": 22.763,
+    "category": "体育场馆",
+    "description": "五象新区的体育场馆群。主体育场两片银色屋顶高低起伏，环抱露天看台与田径场；南侧是体育馆和游泳跳水馆。",
+    "anchorHeight": 1.35,
+    "cameraDistance": 15,
+    "closeDistance": 4.4,
+    "modelled": true,
+    "sourceUrl": "https://www.gxhl.com/work/zhcs/457.html",
+    "position": [
+      91.855,
+      1.213,
+      69.018
+    ]
+  },
+  {
     "id": "tingzi",
     "name": "亭子码头",
     "lon": 108.3183526,
