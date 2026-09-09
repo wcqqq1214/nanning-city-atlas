@@ -16,9 +16,7 @@
 
 </div>
 
-![南宁三维城市沙盘全景，Blender 离线场景渲染](docs/scene-overview.png)
-
-*Blender 离线场景渲染；网页另含交互菜单与地图标注。*
+![南宁三维城市沙盘全景，实际网页截图](docs/screenshots/overview.jpg)
 
 ## 一座可以探索的三维邕城
 
