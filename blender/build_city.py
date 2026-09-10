@@ -22,6 +22,10 @@ from expo_landmark import site_distance as expo_site_distance
 from sports_landmark import SITE_PADS, MATERIAL_KEYS as SPORTS_MATERIALS, pad_distance, inside_site
 from tingzi_landmark import MATERIAL_KEYS as TINGZI_MATERIALS, inside_site as inside_tingzi, terrace_level
 from bridge_landmark import MATERIAL_KEYS as BRIDGE_MATERIALS
+from major_bridges import PLAN as RIVER_BRIDGE_PLAN, SPECS as RIVER_BRIDGE_SPECS
+from major_bridges import MATERIALS as RIVER_BRIDGE_MATS, MATERIAL_KEYS as RIVER_BRIDGE_KEYS
+from major_bridges import REPLACED_ROADS as RIVER_BRIDGE_ROADS, Bridge as RiverBridge
+from major_bridges import build_structure as build_river_bridge, build_details as build_river_details
 from changyou_landmark import build_changyou, MATERIAL_KEYS as CHANGYOU_MATERIALS, inside_site as inside_changyou
 from nanhu_landmark import build_nanhu, MATERIAL_KEYS as NANHU_MATERIALS, inside_park as inside_nanhu
 from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_cell, build_park_terrain
@@ -40,11 +44,16 @@ from railways import build_structure as build_railway_structure, build_details a
 from minzu_avenue import PLAN as MINZU_PLAN, MATERIAL_KEYS as MINZU_MATERIALS, MinzuAvenue
 from minzu_avenue import REPLACED_ROADS as MINZU_ROADS, REMOVED_TREES as MINZU_TREES
 from minzu_avenue import build_structure as build_minzu_structure, build_details as build_minzu_details
+from ground_roads import PLAN as GROUND_ROAD_PLAN, PLAN_HASH as GROUND_ROAD_HASH, MATERIAL_KEYS as GROUND_ROAD_MATERIALS
+from ground_roads import REPLACED_ROADS as GROUND_ROADS, REMOVED_TREES as GROUND_ROAD_TREES, build_ground_roads
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
 assert VIADUCT_PLAN['sceneCenter'] == GEO['center']
+assert RIVER_BRIDGE_PLAN['sceneCenter'] == GEO['center']
+for path, fingerprint in RIVER_BRIDGE_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild bridges after changing {path}'
 for path, fingerprint in VIADUCT_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the viaduct plan after changing {path}'
 assert STATION_PLAN['sceneCenter'] == GEO['center'], 'Rebuild the station plan for the scene origin'
@@ -53,6 +62,8 @@ for path,fingerprint in RAILWAY_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Rebuild the railway plan after changing {path}'
 for path, fingerprint in MINZU_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the Minzu plan after changing {path}'
+for path, fingerprint in GROUND_ROAD_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild ground roads after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
 for path, fingerprint in FOREST_PLAN['inputHashes'].items():
@@ -186,6 +197,8 @@ MATS = {
     'viaduct_asphalt': material('Qingxiang sage asphalt', '71837b', .95),
     'viaduct_line': material('Qingxiang lane markings', 'f1ead3', .90),
     'viaduct_metal': material('Qingxiang lamp columns', '7d9690', .53, .20),
+    'road_secondary': material('Secondary sage streets', '91a093', .97),
+    'road_local': material('Simple neighbourhood paving', 'b5beac', .99),
     'rail_ballast': material('Railway grey ballast', '68766e', .96),
     'rail_steel': material('Railway polished rail heads', 'e0e3db', .55, .25),
     'rail_sleeper': material('Railway concrete sleepers', 'd4d1be', .94),
@@ -193,6 +206,7 @@ MATS = {
     'rail_metal': material('Railway overhead fittings', '677a70', .56, .32),
     'rail_earth': material('Railway graded earth', 'a5af94', .98),
 }
+MATS.update({key: material(*values) for key, values in RIVER_BRIDGE_MATS.items()})
 
 
 def terrain_height(x, y):
@@ -432,11 +446,23 @@ viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bound
 minzu=MinzuAvenue(viaduct.road_level, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
 minzu_geometry=minzu.validate()
 print('Minzu avenue geometry:',minzu_geometry,flush=True)
+river_bridges={identity: RiverBridge(spec,height,minzu.road_level,
+    lambda x,y: displayed_ground_bounds(x,y)[1]) for identity,spec in RIVER_BRIDGE_SPECS.items()}
+bridge_landings=[]
+for river in river_bridges.values():
+    for s in [0,river.path.total]:
+        px,py,pz=river.at(s)
+        bridge_landings.append((px,py,max(0,pz-minzu.road_level(px,py))))
+
+def retained_road_level(x,y):
+    return minzu.road_level(x,y)+max((max(0,lift-.20*math.hypot(x-px,y-py))
+                                    for px,py,lift in bridge_landings),default=0)
+
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
 rendered_roads=[]
 for index, road in enumerate(GEO['roads']):
-    if index in MINZU_ROADS: continue
+    if index in MINZU_ROADS or index in RIVER_BRIDGE_ROADS or index in GROUND_ROADS: continue
     for points in VIADUCT_PLAN['roadOverrides'].get(str(index), [road['points']]):
         rendered_roads.append({**road, 'points': points})
 for road in rendered_roads:
@@ -458,11 +484,19 @@ for road in rendered_roads:
             x2,y2=a[0]+dx*(k+1)/steps,a[1]+dy*(k+1)/steps
             ox,oy=-dy/length*width/2,dx/length*width/2
             if road['bridge']:
-                h1,h2=max(1.1,minzu.road_level(x1,y1)),max(1.1,minzu.road_level(x2,y2))
+                h1,h2=max(1.1,retained_road_level(x1,y1)),max(1.1,retained_road_level(x2,y2))
             else:
-                h1,h2=minzu.road_level(x1,y1),minzu.road_level(x2,y2)
+                h1,h2=retained_road_level(x1,y1),retained_road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
 road_group=roadbatch.finish(); bridge_group=bridgebatch.finish()
+print('Building terrain-conforming ground streets...',flush=True)
+ground_road_batch=Batch('GroundRoads',GROUND_ROAD_MATERIALS,spatial=True,weld=True)
+ground_road_counts=build_ground_roads(ground_road_batch,height,GEO['bounds'],COLS,ROWS,bridges=river_bridges.values())
+ground_road_group=ground_road_batch.finish()
+ground_road_group.parent=road_group
+ground_road_group['planHash']=GROUND_ROAD_HASH
+del ground_road_batch
+print('Ground road geometry:',ground_road_counts,flush=True)
 minzu_batch=Batch('MinzuAvenue',MINZU_MATERIALS,spatial=True)
 build_minzu_structure(minzu_batch,minzu)
 minzu_group=minzu_batch.finish()
@@ -525,11 +559,11 @@ original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
                  and not inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y, margin=r*.6+.02)
                  and not inside_nanhu(x-NANHU_X, y-NANHU_Y)]
-visible_trees = [(i,x,y,r) for i,x,y,r in original_trees if i not in FOREST_REPLACED]
+visible_trees = [(i,x,y,r) for i,x,y,r in original_trees if i not in FOREST_REPLACED and i not in GROUND_ROAD_TREES]
 for i,x,y,r in original_trees:
     # Keep the original deterministic color sequence when interiors are removed.
     col=RNG.choice(['leaf','leaf','leaf2','leaf3'])
-    if i in FOREST_REPLACED:
+    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES:
         continue
     z=max(.32,terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS))
     build_tree(trees,x,y,z,r,col)
@@ -555,6 +589,7 @@ def landmark(id):
     if id == 'sports-center': keys += SPORTS_MATERIALS
     if id == 'tingzi': keys += TINGZI_MATERIALS
     if id == 'bridge': keys += BRIDGE_MATERIALS
+    if id in RIVER_BRIDGE_SPECS: keys += RIVER_BRIDGE_KEYS
     if id == 'changyou': keys += CHANGYOU_MATERIALS
     if id == 'nanhu': keys += NANHU_MATERIALS
     if id == 'zhenning': keys += ZHENNING_MATERIALS
@@ -604,7 +639,21 @@ b,x,y,z=landmark('bridge')
 bridge_center=build_bridge(b,GEO['roads'],height)
 # Keep the geographic catalog point, and anchor the label at deck height.
 landmarks[-1]['position'][1]=round(bridge_center[2],3)
-b.finish()
+b.finish().parent=bridge_group
+
+for identity,river in river_bridges.items():
+    b,x,y,z=landmark(identity)
+    build_river_bridge(b,river)
+    obj=b.finish()
+    obj.parent=bridge_group
+    obj['bridgeType']=river.kind
+    obj['sourceRoadIndices']=river.spec['roadIndices']
+    obj['planHash']=hashlib.sha256((ROOT/'data/bridges-plan.json').read_bytes()).hexdigest()
+    center=river.at((river.start+river.end)/2)
+    landmarks[-1]['position']=[round(center[0],3),round(center[2],3),round(-center[1],3)]
+    details=Batch('RiverBridge_Details_'+identity,RIVER_BRIDGE_KEYS)
+    build_river_details(details,river)
+    details.finish().parent=obj
 
 for place in CATALOG:
     if not place['modelled']:
@@ -626,6 +675,12 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['riverBridges']={'count':len(river_bridges)+1,'added':len(river_bridges),
+    'replacedRoadStrips':len(RIVER_BRIDGE_ROADS),'osmTimestamp':RIVER_BRIDGE_PLAN['osmTimestamp'],
+    'planHash':hashlib.sha256((ROOT/'data/bridges-plan.json').read_bytes()).hexdigest()}
+summary['groundRoads']={**GROUND_ROAD_PLAN['stats'],'detail':ground_road_counts,
+    'removedVisibleTrees':sum(i not in FOREST_REPLACED and i in GROUND_ROAD_TREES for i,x,y,r in original_trees),
+    'planHash':GROUND_ROAD_HASH}
 summary['minzuAvenue']={**MINZU_PLAN['stats'],'geometry':minzu_geometry,'detailFittings':minzu_counts,
     'osmTimestamp':MINZU_PLAN['osmTimestamp'],'planHash':hashlib.sha256((ROOT/'data/minzu-plan.json').read_bytes()).hexdigest()}
 summary['railways']={**RAILWAY_PLAN['stats'],'osmTimestamp':RAILWAY_PLAN['osmTimestamp'],
@@ -639,7 +694,7 @@ summary['viaduct']={'id':VIADUCT_PLAN['id'],'mainLengthMeters':VIADUCT_PLAN['mai
 summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['stage'],
     'source':'OSM natural=wood / landuse=forest','sourceCount':len(FOREST_PLAN['sources']),
     'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
-    'replacedTrees':len(original_trees)-len(visible_trees)}
+    'replacedTrees':sum(i in FOREST_REPLACED for i,x,y,r in original_trees)}
 summary['previousBbox']=json.loads((ROOT/'data/region.json').read_text())['previousBbox']
 summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':3,'buildingExaggeration':1.55})
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
@@ -672,6 +727,15 @@ print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'tr
 
 # Keep the editable .blend at full detail; export a separate lightweight model.
 # Structural roads and landmarks remain complete; viaduct fittings are reduced.
+for identity,river in river_bridges.items():
+    detail_object=bpy.data.objects['RiverBridge_Details_'+identity]
+    detail_mesh=detail_object.data
+    bpy.data.objects.remove(detail_object,do_unlink=True)
+    bpy.data.meshes.remove(detail_mesh)
+    details=Batch('RiverBridge_Details_'+identity,RIVER_BRIDGE_KEYS)
+    build_river_details(details,river,lightweight=True)
+    details.finish().parent=bpy.data.objects['Landmark_'+identity]
+
 detail_object=bpy.data.objects['QingxiangViaduct_Details']
 detail_mesh=detail_object.data
 bpy.data.objects.remove(detail_object,do_unlink=True)
@@ -732,7 +796,7 @@ mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
 mobile_tree_count=0
 # Subsample the original positions before removing covered forest interiors.
 for order,(i,x,y,r) in enumerate(original_trees[::4]):
-    if i in FOREST_REPLACED:
+    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES:
         continue
     mobile_tree_count+=1
     col=['leaf','leaf2','leaf3'][order%3]
@@ -741,6 +805,17 @@ for order,(i,x,y,r) in enumerate(original_trees[::4]):
 mobile_tree_group=mobile_trees.finish()
 build_forests(mobile_tree_group,lightweight=True)
 nanhu_trees.finish().parent=mobile_tree_group
+for child in list(ground_road_group.children_recursive):
+    mesh=child.data
+    bpy.data.objects.remove(child,do_unlink=True)
+    bpy.data.meshes.remove(mesh)
+bpy.data.objects.remove(ground_road_group,do_unlink=True)
+mobile_ground_roads=Batch('GroundRoads',GROUND_ROAD_MATERIALS,spatial=True,weld=True)
+summary['groundRoads']['smooth']=build_ground_roads(mobile_ground_roads,height,GEO['bounds'],COLS,ROWS,lightweight=True,bridges=river_bridges.values())
+mobile_ground_road_group=mobile_ground_roads.finish()
+mobile_ground_road_group.parent=road_group
+mobile_ground_road_group['planHash']=summary['groundRoads']['planHash']
+del mobile_ground_roads
 export_city(ROOT/'public/models/nanning-city-mobile.glb')
 summary['mobileTrees']=mobile_tree_count
 summary['models']={}
