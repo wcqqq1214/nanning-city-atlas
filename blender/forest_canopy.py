@@ -4,6 +4,7 @@ import math
 from pathlib import Path
 
 from vegetation import CROWN_POINTS, CROWN_FACES
+from zhenning_landmark import terrain_patch as zhenning_terrain_patch
 
 PLAN = json.loads((Path(__file__).resolve().parents[1]/'data/forest-plan.json').read_text())
 REGIONS = PLAN['regions']
@@ -11,16 +12,34 @@ REPLACED = {i for region in REGIONS for i in region['replacedTreeIndices']}
 CANOPY_MATERIALS = ['forest_deep', 'forest_jade', 'forest_light']
 
 
+def refined_terrain_height(col, row, ground, bounds, columns, rows):
+    """Keep the fine patch's edge on the neighbouring coarse triangle edge."""
+    west,south,east,north=bounds
+    def at(i,j):
+        return ground(west+i/(columns-1)*(east-west),north-j/(rows-1)*(north-south))
+    i0,j0,i1,j1=zhenning_terrain_patch(tuple(bounds),columns,rows,tuple(PLAN['center']))
+    if col in [i0,i1] and row%2 and j0<row<j1:
+        return (at(col,row-1)+at(col,row+1))/2
+    if row in [j0,j1] and col%2 and i0<col<i1:
+        return (at(col-1,row)+at(col+1,row))/2
+    return at(col,row)
+
+
 def terrain_surface(x, y, ground, bounds, columns, rows, lightweight=False):
     """Interpolate the displayed triangle, not a bilinear DEM height."""
     west, south, east, north = bounds
-    step = 2 if lightweight else 1
     u = max(0, min(columns-1.000001, (x-west)/(east-west)*(columns-1)))
     v = max(0, min(rows-1.000001, (north-y)/(north-south)*(rows-1)))
+    step = 2 if lightweight else 1
+    if lightweight:
+        i0,j0,i1,j1=zhenning_terrain_patch(tuple(bounds),columns,rows,tuple(PLAN['center']))
+        if i0<=u<i1 and j0<=v<j1:
+            step=1
     i, j = int(u)//step*step, int(v)//step*step
     ii, jj = min(i+step, columns-1), min(j+step, rows-1)
     a, b = (u-i)/(ii-i), (v-j)/(jj-j)
-    z = [ground(west+col/(columns-1)*(east-west), north-row/(rows-1)*(north-south))
+    z = [refined_terrain_height(col,row,ground,bounds,columns,rows) if lightweight and step==1 else
+         ground(west+col/(columns-1)*(east-west), north-row/(rows-1)*(north-south))
          for col, row in [(i,j), (ii,j), (ii,jj), (i,jj)]]
     return (z[0]*(1-a)+z[1]*(a-b)+z[2]*b if a >= b else
             z[0]*(1-b)+z[2]*a+z[3]*(b-a))

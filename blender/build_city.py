@@ -25,10 +25,12 @@ from changyou_landmark import build_changyou, MATERIAL_KEYS as CHANGYOU_MATERIAL
 from nanhu_landmark import build_nanhu, MATERIAL_KEYS as NANHU_MATERIALS, inside_park as inside_nanhu
 from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_cell, build_park_terrain
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED
-from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, CANOPY_MATERIALS
+from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, refined_terrain_height, CANOPY_MATERIALS
 from vegetation import build_tree
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as STATION_MATERIALS
 from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
+from zhenning_landmark import build_zhenning, MATERIAL_KEYS as ZHENNING_MATERIALS, terrace_level as zhenning_terrace_level
+from zhenning_landmark import terrain_patch as zhenning_terrain_patch
 from viaduct import PLAN as VIADUCT_PLAN, MATERIAL_KEYS as VIADUCT_MATERIALS, REMOVED_TREES as VIADUCT_TREES
 from viaduct import Viaduct, build_structure as build_viaduct_structure, build_details as build_viaduct_details
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
@@ -87,6 +89,16 @@ MATS = {
     'leaf2': material('Canopy jade', '529176'),
     'leaf3': material('Canopy lime', '83a077'),
     'trunk': material('Tree trunk', '637667'),
+    'zhenning_stone': material('Zhenning weathered red sandstone', '927668', .94),
+    'zhenning_stone_light': material('Zhenning pale sandstone blocks', 'ab9682', .94),
+    'zhenning_stone_dark': material('Zhenning shaded sandstone', '71685b', .95),
+    'zhenning_mortar': material('Zhenning deep masonry joints', '494940', .98),
+    'zhenning_concrete': material('Zhenning ivory concrete gallery', 'dfdfcf', .87),
+    'zhenning_paving': material('Zhenning warm stone paving', 'bcbba9', .92),
+    'zhenning_iron': material('Zhenning historic dark iron', '49433a', .64, .34),
+    'zhenning_bronze': material('Zhenning aged bronze fittings', '79735c', .72, .30),
+    'zhenning_wood': material('Zhenning dark red doors', '69493e', .86),
+    'zhenning_red': material('Zhenning red inscription', 'a45242', .86),
     'forest_deep': material('Forest shaded foliage', '537f68'),
     'forest_jade': material('Forest jade foliage', '608b71'),
     'forest_light': material('Forest sunlit foliage', '70967b'),
@@ -223,6 +235,12 @@ def pos(lon,lat):
     x=(lon-GEO['center'][0])*1113.2*math.cos(math.radians(GEO['center'][1]))
     y=(lat-GEO['center'][1])*1113.2
     return x,y,height(x,y)+.1
+
+
+def displayed_ground_bounds(x,y):
+    levels=[height(x,y), *(terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,profile)
+                           for profile in [False,True])]
+    return min(levels),max(levels)
 
 
 CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
@@ -474,6 +492,8 @@ def landmark(id):
         # Open fields and colonnade feet start at their local ground level.
         z = height(x, y)
     if id == 'tingzi': z = terrace_level(x, y, z, height)
+    if id == 'zhenning':
+        z = zhenning_terrace_level(x, y, lambda u,v: displayed_ground_bounds(u,v)[1])
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
     if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
@@ -482,6 +502,7 @@ def landmark(id):
     if id == 'bridge': keys += BRIDGE_MATERIALS
     if id == 'changyou': keys += CHANGYOU_MATERIALS
     if id == 'nanhu': keys += NANHU_MATERIALS
+    if id == 'zhenning': keys += ZHENNING_MATERIALS
     if id in STATIONS: keys += STATION_MATERIALS
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
@@ -536,6 +557,9 @@ for place in CATALOG:
         landmarks.append({**place,'position':[round(x,3),round(max(.3,z),3),round(-y,3)]})
 
 # Additional cultural, campus, riverside and transport landmarks.
+b,x,y,z=landmark('zhenning')
+build_zhenning(b,x,y,z,ground_bounds=displayed_ground_bounds)
+b.finish()
 build_extra_landmarks(landmark, height)
 place=PLACE_BY_ID['qingxiang-viaduct']
 x,y,_=pos(place['lon'],place['lat'])
@@ -599,18 +623,27 @@ for name in ['Terrain','Vegetation']:
     bpy.data.objects.remove(obj,do_unlink=True)
 mobile_ground=Batch('Terrain',['ground','hill','hillLight','bank'])
 ix=sorted(set(range(0,COLS,2))|{COLS-1});jy=sorted(set(range(0,ROWS,2))|{ROWS-1})
+zi0,zj0,zi1,zj1=zhenning_terrain_patch(tuple(GEO['bounds']),COLS,ROWS,tuple(GEO['center']))
 for j,jj in zip(jy,jy[1:]):
     for i,ii in zip(ix,ix[1:]):
         if replaces_terrain_cell(i, j):
             continue
-        verts=[]
-        for col,row in [(i,j),(ii,j),(ii,jj),(i,jj)]:
-            x=MINX+(MAXX-MINX)*col/(COLS-1);y=MAXY-(MAXY-MINY)*row/(ROWS-1)
-            verts.append((x,y,height(x,y)))
-        lc=DEM['landcover'][j*COLS+i]
-        key='hill' if lc==1 or sum(v[2] for v in verts)/4>2.6 else ('bank' if lc==2 else 'ground')
-        mobile_ground.face([verts[0],verts[2],verts[1]],key)
-        mobile_ground.face([verts[0],verts[3],verts[2]],key)
+        # Preserve the detailed hill directly under Zhenning Battery. Surface
+        # interpolation uses the same cells for its foundation and nearby trees.
+        refined=zi0<=i<zi1 and zj0<=j<zj1
+        local_cols=list(range(i,ii+1)) if refined else [i,ii]
+        local_rows=list(range(j,jj+1)) if refined else [j,jj]
+        for r0,r1 in zip(local_rows,local_rows[1:]):
+            for c0,c1 in zip(local_cols,local_cols[1:]):
+                verts=[]
+                for col,row in [(c0,r0),(c1,r0),(c1,r1),(c0,r1)]:
+                    x=MINX+(MAXX-MINX)*col/(COLS-1);y=MAXY-(MAXY-MINY)*row/(ROWS-1)
+                    h=refined_terrain_height(col,row,height,GEO['bounds'],COLS,ROWS) if refined else height(x,y)
+                    verts.append((x,y,h))
+                lc=DEM['landcover'][r0*COLS+c0]
+                key='hill' if lc==1 or sum(v[2] for v in verts)/4>2.6 else ('bank' if lc==2 else 'ground')
+                mobile_ground.face([verts[0],verts[2],verts[1]],key)
+                mobile_ground.face([verts[0],verts[3],verts[2]],key)
 build_park_terrain(mobile_ground, NANHU_X, NANHU_Y, height)
 mobile_ground.finish()
 mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])

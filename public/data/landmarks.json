@@ -147,15 +147,16 @@
     "lon": 108.3244272,
     "lat": 22.8304024,
     "category": "老城",
-    "description": "位于人民公园望仙坡上。模型展示了环形炮台和中央的古炮。",
-    "anchorHeight": 1.5,
-    "cameraDistance": 11,
+    "description": "位于人民公园望仙坡上。红砂岩环墙围合中央高台，四座连桥通向白色环廊；南门题额、拱券、营房和古炮共同勾勒出百年炮台的面貌。模型依据实景细化，并为沙盘适度放大。",
+    "anchorHeight": 0.55,
+    "cameraDistance": 5.5,
+    "cameraBearing": 205,
     "modelled": true,
     "sourceUrl": "https://www.openstreetmap.org/way/991635905",
-    "closeDistance": 3.0,
+    "closeDistance": 2.0,
     "position": [
       25.063,
-      1.85,
+      1.805,
       -6.014
     ]
   },

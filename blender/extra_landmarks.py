@@ -34,21 +34,6 @@ def build_extra_landmarks(landmark, ground=None):
         b.box(x,y-1.03-i*.1,z,1.25,.1,.12-i*.025,'roof')
     b.finish()
 
-    b,x,y,z=landmark('zhenning')
-    for i in range(20):
-        a,c=i/20*math.tau,(i+1)/20*math.tau
-        outer=[(x+math.cos(t)*.7,y+math.sin(t)*.7) for t in [a,c]]
-        inner=[(x+math.cos(t)*.49,y+math.sin(t)*.49) for t in [a,c]]
-        b.face([(px,py,z) for px,py in outer]+[(px,py,z+.43) for px,py in reversed(outer)],'building')
-        b.face([(px,py,z+.43) for px,py in [outer[0],outer[1],inner[1],inner[0]]],'roof')
-        b.face([(px,py,z+.43) for px,py in inner]+[(px,py,z) for px,py in reversed(inner)],'building')
-        if i%2==0:
-            b.box(x+math.cos(a)*.61,y+math.sin(a)*.61,z+.43,.13,.13,.13,'roof')
-    b.cone(x,y,z,.21,.17,.27,'landmark',12)
-    b.box(x+.24,y,z+.28,.78,.11,.12,'landmark')
-    b.box(x-.13,y,z+.12,.23,.27,.25,'landmark')
-    b.finish()
-
     b,x,y,z=landmark('gx-museum')
     b.box(x,y,z,2.35,1.8,.15,'roof')
     b.box(x,y+.1,z+.15,2.15,1.3,.63,'building','roof')
