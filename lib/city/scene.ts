@@ -200,6 +200,7 @@ export async function createCityScene(
     callbacks.interaction();
   };
   controls.addEventListener('start', startInteraction);
+  let labelVisibilityDistance = 0;
   const resize = () => {
     dirty = true;
     const width = Math.max(1, host.clientWidth);
@@ -213,7 +214,10 @@ export async function createCityScene(
     }
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    controls.maxDistance = Math.max(360, overviewPosition().length() * 1.15);
+    const overviewDistance = overviewPosition().length();
+    // Leave the default overview clear; show labels once the user zooms in.
+    labelVisibilityDistance = overviewDistance * 0.98;
+    controls.maxDistance = Math.max(360, overviewDistance * 1.15);
     if (!option.selected && !flight)
       camera.position.copy(
         option.topDown
@@ -309,6 +313,12 @@ export async function createCityScene(
     controls.update();
   };
   renderer.domElement.addEventListener('keydown', keyDown);
+  // Labels sit above the canvas, so send their wheel input to the same controls.
+  const onLabelWheel = (event: WheelEvent) => {
+    event.preventDefault();
+    renderer.domElement.dispatchEvent(new WheelEvent('wheel', event));
+  };
+  labelLayer.addEventListener('wheel', onLabelWheel, { passive: false });
   const onPointerDown = (event: PointerEvent) => tapGesture.start(event);
   const onPointerMove = (event: PointerEvent) => tapGesture.move(event);
   const onPointerUp = (event: PointerEvent) => {
@@ -456,6 +466,9 @@ export async function createCityScene(
     }
     if (needsOverlays) {
       camera.getWorldDirection(viewDirection);
+      const labelsVisible =
+        option.layers.labels &&
+        camera.position.distanceTo(controls.target) < labelVisibilityDistance;
       const occupied: { x: number; y: number; width: number }[] = [];
       const ordered = [...labels].sort(
         (a, b) =>
@@ -476,7 +489,7 @@ export async function createCityScene(
             Math.abs(p.y - y) < 48,
         );
         const show =
-          option.layers.labels &&
+          labelsVisible &&
           (!compactDevice ||
             !option.selected ||
             label.place.id === option.selected) &&
@@ -533,6 +546,7 @@ export async function createCityScene(
     controls.removeEventListener('change', invalidate);
     controls.dispose();
     renderer.domElement.removeEventListener('keydown', keyDown);
+    labelLayer.removeEventListener('wheel', onLabelWheel);
     renderer.domElement.removeEventListener('pointerdown', onPointerDown);
     renderer.domElement.removeEventListener('pointerup', onPointerUp);
     renderer.domElement.removeEventListener('pointercancel', cancelPointer);
