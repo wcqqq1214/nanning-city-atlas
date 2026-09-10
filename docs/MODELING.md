@@ -2,7 +2,7 @@
 
 ## Blender 重建流程
 
-需要 Blender 4.5+（本项目使用 Blender 5.2.1）与 Python 3.9+。
+使用 Blender 5.2.1 与 Python 3.9+。铁路导出器按该 Blender 版本的 Draco 编码接口适配。
 
 ```bash
 python3 -m venv work/venv
@@ -12,6 +12,8 @@ python3 scripts/fetch_geodata.py
 python3 scripts/prepare_geodata.py
 python3 scripts/prepare_stations.py
 python3 scripts/prepare_viaduct.py
+python3 scripts/fetch_railways.py
+python3 scripts/prepare_railways.py
 python3 scripts/prepare_forest_canopy.py --stage all
 npm run models:build
 ```
@@ -27,10 +29,12 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：8.98 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：6.41 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
+- `public/models/nanning-city.glb`：16.43 MB 的 Draco 精细模型。
+- `public/models/nanning-city-mobile.glb`：11.95 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
 - `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
+
+铁路的源数据、站场衔接、桥隧和两档细节说明见 [城市铁路](RAILWAYS.md)。修改铁路计划后要重新准备林冠计划，确保铁路通道不被树木覆盖。
 
 坐标约定：准备阶段 X 向东、Y 向北，每单位 100 m；Blender Z 向上；glTF 导出后 Three.js X 向东、Y 向上、Z 向南。使用城区中心处的局部等距近似投影，输入坐标统一为 WGS84。
 

@@ -86,6 +86,7 @@ const LAYER_INFO: {
     icon: Trees,
   },
   { key: 'roads', name: '道路桥梁', detail: '道路、高架和跨江大桥', icon: Route },
+  { key: 'railways', name: '铁路轨道', detail: '铁路、站场股道与铁路桥', icon: TrainFront },
   {
     key: 'water',
     name: '河流湖泊',

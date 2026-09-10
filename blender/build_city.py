@@ -1,4 +1,4 @@
-"""Create the complete Nanning scene and editable .blend with Blender 4.5+.
+"""Create the complete Nanning scene and editable .blend with Blender 5.2.1.
 Run: blender --background --python blender/build_city.py
 Data preparation uses WGS84; Blender uses X east, Y north, Z up.
 glTF converts to Three.js X east, Y up, Z south on export.
@@ -16,6 +16,7 @@ from mathutils.geometry import tessellate_polygon
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
+from gltf_export import export_city
 from landmark_details import build_expo, build_bridge
 from expo_landmark import site_distance as expo_site_distance
 from sports_landmark import SITE_PADS, MATERIAL_KEYS as SPORTS_MATERIALS, pad_distance, inside_site
@@ -33,6 +34,9 @@ from zhenning_landmark import build_zhenning, MATERIAL_KEYS as ZHENNING_MATERIAL
 from zhenning_landmark import terrain_patch as zhenning_terrain_patch
 from viaduct import PLAN as VIADUCT_PLAN, MATERIAL_KEYS as VIADUCT_MATERIALS, REMOVED_TREES as VIADUCT_TREES
 from viaduct import Viaduct, build_structure as build_viaduct_structure, build_details as build_viaduct_details
+from railways import PLAN as RAILWAY_PLAN, MATERIAL_KEYS as RAILWAY_MATERIALS, Railways
+from railways import REMOVED_TREES as RAILWAY_TREES, REMOVED_BUILDINGS as RAILWAY_BUILDINGS
+from railways import build_structure as build_railway_structure, build_details as build_railway_details
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -42,6 +46,8 @@ for path, fingerprint in VIADUCT_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the viaduct plan after changing {path}'
 assert STATION_PLAN['sceneCenter'] == GEO['center'], 'Rebuild the station plan for the scene origin'
 assert STATION_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/stations-source.json').read_bytes()).hexdigest(), 'Rebuild the station plan after changing railway data'
+for path,fingerprint in RAILWAY_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Rebuild the railway plan after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
 for path, fingerprint in FOREST_PLAN['inputHashes'].items():
@@ -175,6 +181,12 @@ MATS = {
     'viaduct_asphalt': material('Qingxiang sage asphalt', '71837b', .95),
     'viaduct_line': material('Qingxiang lane markings', 'f1ead3', .90),
     'viaduct_metal': material('Qingxiang lamp columns', '7d9690', .53, .20),
+    'rail_ballast': material('Railway grey ballast', '8b9184', .96),
+    'rail_steel': material('Railway polished rail heads', 'c0c7bf', .38, .55),
+    'rail_sleeper': material('Railway concrete sleepers', 'b6b5a5', .94),
+    'rail_concrete': material('Railway bridge concrete', 'c3cbbb', .87),
+    'rail_metal': material('Railway overhead fittings', '677a70', .56, .32),
+    'rail_earth': material('Railway graded earth', 'a5af94', .98),
 }
 
 
@@ -229,6 +241,15 @@ def height(x, y):
             blend = station_ground_blend(identity, x-sx, y-sy)
             h = level*(1-blend) + h*blend
     return h
+
+
+base_height = height
+railways = Railways(base_height,
+    lambda x,y,mobile: terrain_surface(x,y,base_height,GEO['bounds'],COLS,ROWS,mobile),STATION_SITES)
+def height(x,y):
+    return railways.cut_ground(x,y,base_height(x,y))
+railways.ground = height
+railways.surface = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
 
 
 def pos(lon,lat):
@@ -441,9 +462,25 @@ viaduct_details=Batch('QingxiangViaduct_Details',VIADUCT_MATERIALS)
 build_viaduct_details(viaduct_details,viaduct)
 viaduct_details.finish().parent=viaduct_object
 
+print('Building continuous railway network...',flush=True)
+railway_batch=Batch('Railways',RAILWAY_MATERIALS,spatial=True)
+build_railway_structure(railway_batch,railways)
+railway_group=railway_batch.finish()
+railway_details=Batch('Railway_Details',RAILWAY_MATERIALS,spatial=True)
+railway_counts=build_railway_details(railway_details,railways)
+railway_details.finish().parent=railway_group
+del railway_batch,railway_details
+railway_geometry=railways.validate(STATION_SITES)
+railway_group['planHash']=hashlib.sha256((ROOT/'data/railways-plan.json').read_bytes()).hexdigest()
+print('Railway geometry:',railway_geometry,flush=True)
+assert railway_geometry['maxStationDatumError']<1e-7, 'Railway misses station datum'
+assert railway_geometry['maxDisplayGrade']<=.120001, 'Railway grade discontinuity'
+assert railway_geometry['maxBallastPenetration']<.001, 'Display terrain pierces railway ballast'
+
 print('Building simplified city blocks...', flush=True)
 buildings=Batch('Buildings',['building','building2','building3','roof'])
-for b in GEO['buildings']:
+for building_index,b in enumerate(GEO['buildings']):
+    if building_index in RAILWAY_BUILDINGS: continue
     if any(n in b.get('name','') for n in ['龙象塔','华润大厦A','地王国际商会中心']): continue
     ring=b['rings'][0][:-1]
     if len(ring)<3: continue
@@ -464,7 +501,7 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and not inside_landmark(x,y)
+original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and i not in RAILWAY_TREES and not inside_landmark(x,y)
                  and not any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy,margin=r+.03)
                              for identity,(sx,sy,_) in STATION_SITES.items())
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
@@ -571,6 +608,10 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['railways']={**RAILWAY_PLAN['stats'],'osmTimestamp':RAILWAY_PLAN['osmTimestamp'],
+    'detailFittings':railway_counts,'geometry':railway_geometry,
+    'terrainCuts':railways.cuts,
+    'planHash':hashlib.sha256((ROOT/'data/railways-plan.json').read_bytes()).hexdigest()}
 summary['viaduct']={'id':VIADUCT_PLAN['id'],'mainLengthMeters':VIADUCT_PLAN['main']['lengthMeters'],
     'scope':VIADUCT_PLAN['scope'],'mainWays':len(VIADUCT_PLAN['main']['osmIds']),
     'ramps':VIADUCT_PLAN['mainConnections'],'linkWays':len({r['osmId'] for r in VIADUCT_PLAN['ramps']}),
@@ -605,7 +646,8 @@ bpy.context.scene.render.resolution_x=1600
 bpy.context.scene.render.resolution_y=1100
 bpy.context.scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'blender/nanning-city.blend'))
-bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
+# 18-bit positions preserve the narrow rail heads in 8 km spatial batches.
+export_city(ROOT/'public/models/nanning-city.glb')
 print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'trees,',len(landmarks),'landmarks.',flush=True)
 
 # Keep the editable .blend at full detail; export a separate lightweight model.
@@ -617,6 +659,16 @@ bpy.data.meshes.remove(detail_mesh)
 mobile_viaduct_details=Batch('QingxiangViaduct_Details',VIADUCT_MATERIALS)
 build_viaduct_details(mobile_viaduct_details,viaduct,lightweight=True)
 mobile_viaduct_details.finish().parent=viaduct_object
+railway_detail_object=bpy.data.objects['Railway_Details']
+for child in list(railway_detail_object.children_recursive):
+    mesh=child.data
+    bpy.data.objects.remove(child,do_unlink=True)
+    bpy.data.meshes.remove(mesh)
+bpy.data.objects.remove(railway_detail_object,do_unlink=True)
+mobile_railway_details=Batch('Railway_Details',RAILWAY_MATERIALS,spatial=True)
+summary['railways']['smoothFittings']=build_railway_details(mobile_railway_details,railways,lightweight=True)
+mobile_railway_details.finish().parent=railway_group
+del mobile_railway_details
 for name in ['Terrain','Vegetation']:
     obj=bpy.data.objects.get(name)
     for child in list(obj.children_recursive): bpy.data.objects.remove(child,do_unlink=True)
@@ -659,7 +711,7 @@ for order,(i,x,y,r) in enumerate(original_trees[::4]):
 mobile_tree_group=mobile_trees.finish()
 build_forests(mobile_tree_group,lightweight=True)
 nanhu_trees.finish().parent=mobile_tree_group
-bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/nanning-city-mobile.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_yup=True,export_apply=True,export_animations=False,export_extras=True,export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
+export_city(ROOT/'public/models/nanning-city-mobile.glb')
 summary['mobileTrees']=mobile_tree_count
 summary['models']={}
 for key,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:

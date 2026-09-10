@@ -38,7 +38,7 @@ export function registerAtlasTools(actions: Actions): () => void {
     .modelContext;
   if (!context?.registerTool) return () => {};
   const lifecycle = new AbortController();
-  const layerKeys = ['buildings', 'vegetation', 'roads', 'water', 'labels'];
+  const layerKeys = ['buildings', 'vegetation', 'roads', 'railways', 'water', 'labels'];
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input))
       throw new Error('Expected an object');

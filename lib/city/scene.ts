@@ -627,7 +627,10 @@ export async function createCityScene(
     city.traverse((object) => {
       if (!(object instanceof THREE.Mesh)) return;
       meshes.push(object);
-      object.castShadow = !lightweight;
+      // Repeated sleepers and thin overhead fittings add noisy, costly shadows.
+      // The railway deck, embankments and bridge structure still cast shadows.
+      object.castShadow =
+        !lightweight && !object.name.startsWith('Railway_Details_');
       object.receiveShadow = true;
       const mats = Array.isArray(object.material)
         ? object.material
@@ -709,6 +712,7 @@ export async function createCityScene(
         Vegetation: next.layers.vegetation,
         Roads: next.layers.roads,
         Bridges: next.layers.roads,
+        Railways: next.layers.railways,
         Water: next.layers.water,
       };
       Object.entries(names).forEach(([name, visible]) => {

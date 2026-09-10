@@ -22,6 +22,8 @@ from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, build_
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, inside_site as inside_station, ground_blend as station_ground_blend
 from viaduct import Viaduct
 from validate_viaduct import validate_viaduct
+from railways import TerrainCut
+from validate_railways import validate_railways
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -221,13 +223,14 @@ def terrain_ground(x, y):
     h += ((1-a)*hs[(j+1)*t['cols']+i]+a*hs[(j+1)*t['cols']+i+1])*b
     return max(-.08,(h-55)/100*3)
 
+railway_cuts=TerrainCut(json.loads((ROOT/'public/data/overview.json').read_text())['railways']['terrainCuts'])
 def raw_ground(x, y):
     h=terrain_ground(x,y)
     for identity,(sx,sy,_) in station_sites.items():
         if abs(x-sx)<10 and abs(y-sy)<10:
             blend=station_ground_blend(identity,x-sx,y-sy)
             h=terrain_ground(sx,sy)*(1-blend)+h*blend
-    return h
+    return railway_cuts.height(x,y,h)
 
 viaduct=Viaduct(raw_ground, lambda x,y,mobile: terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],lightweight=mobile))
 validate_viaduct(viaduct,g,catalog,ROOT)
@@ -279,7 +282,7 @@ def inspect_model(filename, budget):
     model=json.loads(raw[20:20+json_len])
     assert 'KHR_draco_mesh_compression' in model['extensionsRequired']
     names={node.get('name') for node in model['nodes']}
-    assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth'} <= names
+    assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth','Railways'} <= names
     assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
     vegetation = next(node for node in model['nodes'] if node.get('name')=='Vegetation')
     descendants = set()
@@ -308,8 +311,8 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',10_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',6_450_000)
+full_bytes,full=inspect_model('nanning-city.glb',17_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',12_500_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -323,9 +326,11 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
-assert sum(full.values()) < 1_300_000
+assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details'))) < 1_300_000
 # The complete fort adds shared detail; only its small terrain patch stays fine.
-assert sum(mobile.values()) < 920_000
+assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details'))) < 920_000
+assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 1_600_000
+assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 1_100_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
 overview = json.loads((ROOT/'public/data/overview.json').read_text())
 for counts, profile, tree_count, triangles_per_tree in [
@@ -339,7 +344,7 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation')) and name != 'QingxiangViaduct_Details':
+    if not name.startswith(('Terrain','Vegetation','Railway_Details')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
@@ -348,3 +353,4 @@ western=sum(1 for b in g['buildings'] if max(p[0] for p in b['rings'][0])<west_x
 assert western>1000, f'Western coverage unexpectedly sparse: {western}'
 print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); infill stays within urban land without overlapping water, parks, roads or other buildings; water coverage {coverage:.5%}; {len(places)} geolocated points.')
 print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')
+validate_railways()
