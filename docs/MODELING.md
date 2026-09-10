@@ -27,8 +27,8 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：8.65 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：6.11 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
+- `public/models/nanning-city.glb`：8.98 MB 的 Draco 精细模型。
+- `public/models/nanning-city-mobile.glb`：6.41 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
 - `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
 

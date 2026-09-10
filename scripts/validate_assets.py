@@ -309,7 +309,7 @@ def inspect_model(filename, budget):
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
 full_bytes,full=inspect_model('nanning-city.glb',10_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',6_400_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',6_450_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -317,13 +317,15 @@ assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and 
 assert 15_000 < full['Landmark_nanhu'] < 22_000, 'Nanhu bridge and garden geometry missing or over budget'
 assert 6_000 < full['Landmark_nanning-station'] < 20_000, 'Nanning station geometry missing or over budget'
 assert 15_000 < full['Landmark_east-station'] < 45_000, 'East station geometry missing or over budget'
+assert 17_000 < full['Landmark_zhenning'] < 21_000, 'Detailed Zhenning fort missing or over budget'
 assert 45_000 < full['Landmark_qingxiang-viaduct'] < 60_000, 'Full-route structure missing or over budget'
 assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details'] < 20_000
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
 assert sum(full.values()) < 1_300_000
-assert sum(mobile.values()) < 910_000
+# The complete fort adds shared detail; only its small terrain patch stays fine.
+assert sum(mobile.values()) < 920_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
 overview = json.loads((ROOT/'public/data/overview.json').read_text())
 for counts, profile, tree_count, triangles_per_tree in [
