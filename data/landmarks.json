@@ -89,16 +89,16 @@
   },
   {
     "id": "qingxiang-viaduct",
-    "name": "清厢快速路 · 城区高架",
+    "name": "清厢快速路 · 全线",
     "lon": 108.3102388,
-    "lat": 22.827661517,
+    "lat": 22.827661518,
     "anchorHeight": 0.16,
-    "cameraDistance": 28,
-    "cameraBearing": 320,
+    "cameraDistance": 70,
+    "cameraBearing": 180,
     "modelled": true,
     "layer": "roads",
     "category": "城市高架",
-    "description": "从南宁站前向两侧延伸，覆盖北大路、中华路至园湖北路一带，八条匝道连接地面街道。连续箱梁、桥墩和桥下道路呈现城市的上下层次。桥面宽度、支撑间距和高度为沙盘展示近似。",
+    "description": "西接清川大道，沿中华路经过南宁站，向东连接厢竹大道与凤岭北路。连续高架、地面路段和沿线出入口共同构成东西向快速通道；清川与凤岭立交保留上下层交叉。桥面尺寸、支撑间距和高度为沙盘展示近似。",
     "source": "https://www.openstreetmap.org/way/685249176"
   },
   {

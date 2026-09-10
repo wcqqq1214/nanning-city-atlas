@@ -410,7 +410,7 @@ for road in rendered_roads:
             x2,y2=a[0]+dx*(k+1)/steps,a[1]+dy*(k+1)/steps
             ox,oy=-dy/length*width/2,dx/length*width/2
             if road['bridge']:
-                h1,h2=max(1.1,height(x1,y1)+.065),max(1.1,height(x2,y2)+.065)
+                h1,h2=max(1.1,viaduct.road_level(x1,y1)),max(1.1,viaduct.road_level(x2,y2))
             else:
                 h1,h2=viaduct.road_level(x1,y1),viaduct.road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
@@ -548,7 +548,9 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
 summary['viaduct']={'id':VIADUCT_PLAN['id'],'mainLengthMeters':VIADUCT_PLAN['main']['lengthMeters'],
-    'ramps':len(VIADUCT_PLAN['ramps']),'piers':len(viaduct.piers),'osmTimestamp':VIADUCT_PLAN['osmTimestamp']}
+    'scope':VIADUCT_PLAN['scope'],'mainWays':len(VIADUCT_PLAN['main']['osmIds']),
+    'ramps':VIADUCT_PLAN['mainConnections'],'linkWays':len({r['osmId'] for r in VIADUCT_PLAN['ramps']}),
+    'linkSections':len(VIADUCT_PLAN['ramps']),'piers':len(viaduct.piers),'osmTimestamp':VIADUCT_PLAN['osmTimestamp']}
 summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['stage'],
     'source':'OSM natural=wood / landuse=forest','sourceCount':len(FOREST_PLAN['sources']),
     'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
