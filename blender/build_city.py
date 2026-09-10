@@ -37,6 +37,9 @@ from viaduct import Viaduct, build_structure as build_viaduct_structure, build_d
 from railways import PLAN as RAILWAY_PLAN, MATERIAL_KEYS as RAILWAY_MATERIALS, Railways
 from railways import REMOVED_TREES as RAILWAY_TREES, REMOVED_BUILDINGS as RAILWAY_BUILDINGS
 from railways import build_structure as build_railway_structure, build_details as build_railway_details
+from minzu_avenue import PLAN as MINZU_PLAN, MATERIAL_KEYS as MINZU_MATERIALS, MinzuAvenue
+from minzu_avenue import REPLACED_ROADS as MINZU_ROADS, REMOVED_TREES as MINZU_TREES
+from minzu_avenue import build_structure as build_minzu_structure, build_details as build_minzu_details
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -48,6 +51,8 @@ assert STATION_PLAN['sceneCenter'] == GEO['center'], 'Rebuild the station plan f
 assert STATION_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/stations-source.json').read_bytes()).hexdigest(), 'Rebuild the station plan after changing railway data'
 for path,fingerprint in RAILWAY_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Rebuild the railway plan after changing {path}'
+for path, fingerprint in MINZU_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the Minzu plan after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
 for path, fingerprint in FOREST_PLAN['inputHashes'].items():
@@ -424,10 +429,14 @@ water.finish()
 
 print('Building road network...', flush=True)
 viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
+minzu=MinzuAvenue(viaduct.road_level, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
+minzu_geometry=minzu.validate()
+print('Minzu avenue geometry:',minzu_geometry,flush=True)
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
 rendered_roads=[]
 for index, road in enumerate(GEO['roads']):
+    if index in MINZU_ROADS: continue
     for points in VIADUCT_PLAN['roadOverrides'].get(str(index), [road['points']]):
         rendered_roads.append({**road, 'points': points})
 for road in rendered_roads:
@@ -449,11 +458,20 @@ for road in rendered_roads:
             x2,y2=a[0]+dx*(k+1)/steps,a[1]+dy*(k+1)/steps
             ox,oy=-dy/length*width/2,dx/length*width/2
             if road['bridge']:
-                h1,h2=max(1.1,viaduct.road_level(x1,y1)),max(1.1,viaduct.road_level(x2,y2))
+                h1,h2=max(1.1,minzu.road_level(x1,y1)),max(1.1,minzu.road_level(x2,y2))
             else:
-                h1,h2=viaduct.road_level(x1,y1),viaduct.road_level(x2,y2)
+                h1,h2=minzu.road_level(x1,y1),minzu.road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
-roadbatch.finish(); bridge_group=bridgebatch.finish()
+road_group=roadbatch.finish(); bridge_group=bridgebatch.finish()
+minzu_batch=Batch('MinzuAvenue',MINZU_MATERIALS,spatial=True)
+build_minzu_structure(minzu_batch,minzu)
+minzu_group=minzu_batch.finish()
+minzu_group.parent=road_group
+minzu_group['planHash']=hashlib.sha256((ROOT/'data/minzu-plan.json').read_bytes()).hexdigest()
+minzu_details=Batch('MinzuAvenue_Details',MINZU_MATERIALS,spatial=True)
+minzu_counts=build_minzu_details(minzu_details,minzu)
+minzu_details.finish().parent=minzu_group
+del minzu_batch,minzu_details
 viaduct_batch=Batch('Landmark_qingxiang-viaduct',VIADUCT_MATERIALS)
 build_viaduct_structure(viaduct_batch,viaduct)
 viaduct_object=viaduct_batch.finish()
@@ -501,7 +519,7 @@ buildings.finish()
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and i not in RAILWAY_TREES and not inside_landmark(x,y)
+original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and i not in RAILWAY_TREES and i not in MINZU_TREES and not inside_landmark(x,y)
                  and not any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy,margin=r+.03)
                              for identity,(sx,sy,_) in STATION_SITES.items())
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
@@ -608,6 +626,8 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
+summary['minzuAvenue']={**MINZU_PLAN['stats'],'geometry':minzu_geometry,'detailFittings':minzu_counts,
+    'osmTimestamp':MINZU_PLAN['osmTimestamp'],'planHash':hashlib.sha256((ROOT/'data/minzu-plan.json').read_bytes()).hexdigest()}
 summary['railways']={**RAILWAY_PLAN['stats'],'osmTimestamp':RAILWAY_PLAN['osmTimestamp'],
     'detailFittings':railway_counts,'geometry':railway_geometry,
     'terrainCuts':railways.cuts,
@@ -659,6 +679,16 @@ bpy.data.meshes.remove(detail_mesh)
 mobile_viaduct_details=Batch('QingxiangViaduct_Details',VIADUCT_MATERIALS)
 build_viaduct_details(mobile_viaduct_details,viaduct,lightweight=True)
 mobile_viaduct_details.finish().parent=viaduct_object
+minzu_detail_object=bpy.data.objects['MinzuAvenue_Details']
+for child in list(minzu_detail_object.children_recursive):
+    mesh=child.data
+    bpy.data.objects.remove(child,do_unlink=True)
+    bpy.data.meshes.remove(mesh)
+bpy.data.objects.remove(minzu_detail_object,do_unlink=True)
+mobile_minzu_details=Batch('MinzuAvenue_Details',MINZU_MATERIALS,spatial=True)
+summary['minzuAvenue']['smoothFittings']=build_minzu_details(mobile_minzu_details,minzu,lightweight=True)
+mobile_minzu_details.finish().parent=minzu_group
+del mobile_minzu_details
 railway_detail_object=bpy.data.objects['Railway_Details']
 for child in list(railway_detail_object.children_recursive):
     mesh=child.data

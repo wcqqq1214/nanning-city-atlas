@@ -24,6 +24,7 @@ from viaduct import Viaduct
 from validate_viaduct import validate_viaduct
 from railways import TerrainCut
 from validate_railways import validate_railways
+from validate_minzu import validate_minzu
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -327,8 +328,8 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
 assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details'))) < 1_300_000
-# The complete fort adds shared detail; only its small terrain patch stays fine.
-assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details'))) < 920_000
+# The complete fort and Minzu road structure are shared across both profiles.
+assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details'))) < 960_000
 assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
 assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
@@ -344,7 +345,7 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation','Railway_Details')) and name != 'QingxiangViaduct_Details':
+    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
@@ -354,3 +355,4 @@ assert western>1000, f'Western coverage unexpectedly sparse: {western}'
 print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); infill stays within urban land without overlapping water, parks, roads or other buildings; water coverage {coverage:.5%}; {len(places)} geolocated points.')
 print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')
 validate_railways()
+validate_minzu()
