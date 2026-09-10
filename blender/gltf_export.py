@@ -1,8 +1,8 @@
-"""Export the city with extra Draco precision only for narrow railway meshes.
+"""Export the city with extra Draco precision for narrow railway and road-marking meshes.
 
 Blender 5.2 exposes a scene-wide quantization option. Scope its per-node encoder
 to this one export, restoring it afterwards; never modify installed add-on files.
-The decoded-mesh audit in validate_railways.py guards rail-head preservation.
+Decoded-mesh audits in validate_railways.py and validate_minzu.py guard narrow geometry.
 """
 import bpy
 from io_scene_gltf2.io.exp import draco
@@ -14,7 +14,7 @@ def export_city(filepath):
         raise RuntimeError('Unsupported Blender Draco exporter; this city exporter is verified with Blender 5.2.1')
 
     def encode_node(node,dll,settings,cache):
-        if node.name and node.name.startswith(('Railways_','Railway_Details_')):
+        if node.name and node.name.startswith(('Railways_','Railway_Details_','MinzuAvenue_')):
             settings={**settings,'gltf_draco_position_quantization':18}
         return original(node,dll,settings,cache)
 
