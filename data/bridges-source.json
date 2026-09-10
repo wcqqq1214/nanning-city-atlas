@@ -1,0 +1,215 @@
+{
+  "sources": {
+    "inspection": {
+      "title": "南宁市桥梁检测基本情况明细表（采购文件存档）",
+      "url": "https://qxb-img-osscache.qixin.com/bid/2eb2836f9c8d05cfdb2e3ef882c019c9.pdf"
+    },
+    "yongjiang": {
+      "title": "广西档案馆：老照片见证邕江大桥建桥岁月",
+      "url": "https://www.gxdag.org.cn/show/142/3548"
+    },
+    "yonghe": {
+      "title": "福州大学：钢管混凝土拱桥桥例简介（上）",
+      "url": "https://siberc.fzu.edu.cn/__local/6/6F/29/7C1CCAEDC24D9BB28E4EFA81912_4886B803_FCC7B.pdf?e=.pdf"
+    },
+    "qingshan": {
+      "title": "中铁四局：壮乡风情入塔来",
+      "url": "https://www.crec4.com/content-1931-18036-1.html"
+    },
+    "yinghua": {
+      "title": "中铁四局英华大桥项目建设纪实",
+      "url": "https://www.ctcecc.com/content-472-16746-1.html"
+    },
+    "liangqing": {
+      "title": "良庆大桥工程介绍",
+      "url": "https://www.china-qiao.com/ql32/nnql/nnql041.htm"
+    },
+    "wuxiang": {
+      "title": "五象大桥实景与双能量塔介绍",
+      "url": "https://k.sina.com.cn/article_1460202233_5708eaf900100gp2x.html"
+    },
+    "baisha": {
+      "title": "南宁市白沙大桥健康监测项目规模",
+      "url": "https://gcjs.ggzyjy.weihai.cn/wz/PortalQDManage/ShareResources/CorpAchievementInfo?keyValue=1d1f6727-db25-4d6b-b04b-453d7f9cc965"
+    },
+    "zhongxing": {
+      "title": "邕江桥梁记录（桥型参考，尺寸为展示近似）",
+      "url": "https://www.sohu.com/a/354370051_120337024"
+    }
+  },
+  "bridges": [
+    {
+      "id": "qingchuan-bridge",
+      "name": "清川大桥",
+      "kind": "girder",
+      "widthMeters": 38.5,
+      "spansMeters": [
+        55,
+        90,
+        90,
+        55
+      ],
+      "displayRise": 0,
+      "source": "inspection",
+      "description": "四跨连续梁跨越江面，变高度梁底与双柱桥墩连接两岸长引桥。"
+    },
+    {
+      "id": "zhongxing-bridge",
+      "name": "中兴大桥",
+      "kind": "deck-arch",
+      "widthMeters": 24,
+      "spansMeters": [
+        90,
+        90,
+        90
+      ],
+      "displayRise": 0,
+      "source": "zhongxing",
+      "description": "桥面下的混凝土箱形拱与腹柱形成连续拱孔，保留邕江二桥的低矮轮廓。"
+    },
+    {
+      "id": "yonghe-bridge",
+      "name": "永和大桥",
+      "kind": "through-arch",
+      "widthMeters": 35,
+      "spansMeters": [
+        335.4
+      ],
+      "displayRise": 1.15,
+      "source": "yonghe",
+      "description": "两道钢管桁拱从桥面下方升起，以横撑和成排吊杆连接，勾勒永和大桥的中承式拱桥轮廓。"
+    },
+    {
+      "id": "beida-bridge",
+      "name": "北大桥",
+      "kind": "girder",
+      "widthMeters": 29,
+      "spansMeters": [
+        68,
+        120,
+        120,
+        68
+      ],
+      "displayRise": 0,
+      "source": "inspection",
+      "description": "连续箱梁沿弯曲引桥接入两岸，主桥保留四跨、双通航孔与墩顶加厚梁体。"
+    },
+    {
+      "id": "yongjiang-bridge",
+      "name": "邕江大桥",
+      "kind": "girder",
+      "widthMeters": 24,
+      "spansMeters": [
+        45,
+        60.9,
+        60.9,
+        60.9,
+        60.9,
+        60.9,
+        45
+      ],
+      "displayRise": 0,
+      "source": "yongjiang",
+      "description": "邕江上的老桥以七孔连续的悬臂箱梁和双柱桥墩展开，细化栏杆、步道与路灯。"
+    },
+    {
+      "id": "lingtie-bridge",
+      "name": "凌铁大桥",
+      "kind": "twin-arch",
+      "widthMeters": 31.5,
+      "spansMeters": [
+        132,
+        132
+      ],
+      "displayRise": 0.43,
+      "source": "inspection",
+      "description": "两跨钢管混凝土拱沿桥面连续起伏，拱肋、横撑与竖直吊杆组成鲜明的双拱轮廓。"
+    },
+    {
+      "id": "baisha-bridge",
+      "name": "白沙大桥",
+      "kind": "single-stayed",
+      "widthMeters": 32,
+      "spansMeters": [
+        122.5,
+        122.5
+      ],
+      "displayRise": 0.95,
+      "source": "baisha",
+      "description": "独塔双索面斜拉桥，门形塔柱与两侧展开的拉索支撑双孔主跨，保留北岸弯曲引桥。",
+      "chains": [
+        [
+          680,
+          5431
+        ],
+        [
+          1070,
+          5432
+        ]
+      ]
+    },
+    {
+      "id": "huluding-bridge",
+      "name": "葫芦鼎大桥",
+      "kind": "girder",
+      "widthMeters": 41,
+      "spansMeters": [
+        125,
+        230,
+        125
+      ],
+      "displayRise": 0,
+      "source": "inspection",
+      "description": "大跨径连续刚构桥。深梁在主墩处加厚，向跨中逐渐收薄，主桥两旁保留独立辅桥。"
+    },
+    {
+      "id": "yinghua-bridge",
+      "name": "英华大桥",
+      "kind": "single-suspension",
+      "widthMeters": 42,
+      "spansMeters": [
+        410
+      ],
+      "displayRise": 1.45,
+      "source": "yinghua",
+      "description": "羊角编钟形双塔之间悬挂一根中央主缆，斜吊索向两侧桥缘展开，呈现独特的空间索网。"
+    },
+    {
+      "id": "wuxiang-bridge",
+      "name": "五象大桥",
+      "kind": "harp",
+      "widthMeters": 41,
+      "spansMeters": [
+        300
+      ],
+      "displayRise": 1.72,
+      "source": "wuxiang",
+      "description": "两座独柱能量塔矗立在中央分隔带，平行拉索呈竖琴式展开，连接分离式桥面。"
+    },
+    {
+      "id": "liangqing-bridge",
+      "name": "良庆大桥",
+      "kind": "suspension",
+      "widthMeters": 38,
+      "spansMeters": [
+        420
+      ],
+      "displayRise": 1.22,
+      "source": "liangqing",
+      "description": "朱红色双门塔、两道弧垂主缆与密集竖直吊索，形成横跨邕江的红色悬索桥。"
+    },
+    {
+      "id": "qingshan-bridge",
+      "name": "青山大桥",
+      "kind": "stayed",
+      "widthMeters": 42,
+      "spansMeters": [
+        430
+      ],
+      "displayRise": 1.85,
+      "source": "qingshan",
+      "description": "双塔双索面斜拉桥。白色主塔以壮族头巾为意象，曲线塔腿向上收拢，配以不对称塔冠。"
+    }
+  ],
+  "assumptions": "桥型与主跨参考文献；桥位来自现有 OSM。桥宽、塔高、拱高、墩位与附属构件按沙盘展示近似，不是工程复原。"
+}

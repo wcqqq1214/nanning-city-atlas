@@ -25,6 +25,8 @@ from validate_viaduct import validate_viaduct
 from railways import TerrainCut
 from validate_railways import validate_railways
 from validate_minzu import validate_minzu
+from validate_ground_roads import validate_ground_roads
+from validate_bridges import validate_bridges, SPECS as RIVER_BRIDGE_SPECS
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -156,7 +158,7 @@ assert patch_land.intersection(water.buffer(-.00002)).area < 1e-8, 'Nanhu displa
 west, south, east, north = patch['bounds']
 expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
 assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
-assert sum(p['modelled'] for p in places) == 18, 'A detailed landmark is missing from the scene catalog'
+assert sum(p['modelled'] for p in places) == 18+len(RIVER_BRIDGE_SPECS), 'A detailed landmark is missing from the scene catalog'
 
 # Verify mapped station placement, platform coverage, and reproducible sources.
 assert STATION_PLAN['sceneCenter'] == g['center']
@@ -312,8 +314,8 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',14_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',10_500_000)
+full_bytes,full=inspect_model('nanning-city.glb',16_800_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',11_800_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -327,9 +329,9 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
-assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details'))) < 1_300_000
+assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_300_000
 # The complete fort and Minzu road structure are shared across both profiles.
-assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details'))) < 960_000
+assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 960_000
 assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
 assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
@@ -345,7 +347,7 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details')) and name != 'QingxiangViaduct_Details':
+    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details','RiverBridge_Details_','GroundRoads')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
@@ -356,3 +358,10 @@ print(f'PASS: {len(g["buildings"])} building features ({western} west of the old
 print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')
 validate_railways()
 validate_minzu()
+
+validate_bridges()
+
+# Ground streets are terrain-conforming in each profile; budget them separately.
+assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 370_000
+assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 250_000
+validate_ground_roads()

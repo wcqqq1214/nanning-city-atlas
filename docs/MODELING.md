@@ -13,6 +13,7 @@ python3 scripts/prepare_geodata.py
 python3 scripts/prepare_stations.py
 python3 scripts/prepare_viaduct.py
 python3 scripts/prepare_minzu.py
+python3 scripts/prepare_bridges.py
 python3 scripts/fetch_railways.py
 python3 scripts/prepare_railways.py
 python3 scripts/prepare_forest_canopy.py --stage all
@@ -30,14 +31,16 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：13.41 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：9.98 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
+- `public/models/nanning-city.glb`：16.22 MB 的 Draco 精细模型。
+- `public/models/nanning-city-mobile.glb`：11.69 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
 - `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
 
 铁路的源数据、站场衔接、桥隧和两档细节说明见 [城市铁路](RAILWAYS.md)。修改铁路计划后要重新准备林冠计划，确保铁路通道不被树木覆盖。
 
 民族大道的道路替换、共享材质、两档细节与验证说明见 [民族大道](MINZU_AVENUE.md)。
+
+主要跨江桥梁的来源、桥型、两档细节与重建流程见 [主要桥梁](BRIDGES.md)。
 
 坐标约定：准备阶段 X 向东、Y 向北，每单位 100 m；Blender Z 向上；glTF 导出后 Three.js X 向东、Y 向上、Z 向南。使用城区中心处的局部等距近似投影，输入坐标统一为 WGS84。
 
@@ -56,3 +59,5 @@ public/models/       压缩 GLB
 public/draco/        随项目提供的 Draco 解码器，无第三方运行时请求
 docs/               设计、数据与验证说明
 ```
+
+全图普通地面道路采用分级材质和两档地形贴合网格，详见 [地面道路](GROUND_ROADS.md)。重建城市模型前运行 `work/venv/bin/python scripts/prepare_ground_roads.py`。
