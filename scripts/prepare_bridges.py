@@ -18,6 +18,12 @@ def prepare():
         chains = spec.get('chains', [[i] for i, r in enumerate(geo['roads'])
                                    if r['name'] == spec['name'] and r['bridge']])
         assert len(chains) == 2, f"Expected two carriageways: {spec['name']}"
+        # Explicit chains also identify unnamed bridges; check their expected OSM
+        # name against the hash-pinned geography instead of matching every blank.
+        for chain in chains:
+            for index in chain:
+                road = geo['roads'][index]
+                assert road['bridge'] and road['name'] == spec.get('osmName', spec['name']), spec['name']
         lines = []
         for chain in chains:
             points = list(geo['roads'][chain[0]]['points'])

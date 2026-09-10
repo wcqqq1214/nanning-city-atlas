@@ -356,6 +356,21 @@
     "sourceUrl": "https://www.gxdag.org.cn/show/142/3548"
   },
   {
+    "id": "taoyuan-bridge",
+    "name": "桃源大桥",
+    "lon": 108.3181354,
+    "lat": 22.8072559,
+    "category": "邕江桥梁",
+    "description": "四跨预应力混凝土连续箱梁跨越邕江，墩顶加厚、跨中收薄，西侧弯曲引桥衔接北大桥方向，配有双侧步道、栏杆与路灯。 模型尺寸与细节为沙盘近似。",
+    "anchorHeight": 0.5,
+    "cameraDistance": 18.5065052465637,
+    "closeDistance": 5.394000000000001,
+    "cameraBearing": 159.8,
+    "modelled": true,
+    "layer": "roads",
+    "sourceUrl": "https://qxb-img-osscache.qixin.com/bid/2eb2836f9c8d05cfdb2e3ef882c019c9.pdf"
+  },
+  {
     "id": "lingtie-bridge",
     "name": "凌铁大桥",
     "lon": 108.3194668,

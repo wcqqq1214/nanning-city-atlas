@@ -19,7 +19,9 @@ def validate_bridges():
     catalog=json.loads((ROOT/'public/data/landmarks.json').read_text())
     places={p['id']:p for p in catalog}
     assert len(places)==len(catalog), 'Duplicate place IDs'
-    assert len(SPECS)==12 and len(REPLACED_ROADS)==26
+    assert len(SPECS)==13 and len(REPLACED_ROADS)==28
+    assert SPECS['taoyuan-bridge']['roadIndices']==[749,872], 'Unnamed Taoyuan bridge was omitted or captured its ramps'
+    assert SPECS['taoyuan-bridge']['spansMeters']==[66,120,120,66]
     assert PLAN['sceneCenter']==geo['center']
     digest=hashlib.sha256((ROOT/'data/bridges-plan.json').read_bytes()).hexdigest()
     for path,fingerprint in PLAN['inputHashes'].items():
@@ -37,7 +39,7 @@ def validate_bridges():
         assert midpoint.distance(Point(p[0],-p[2]))<.002, f'{identity}: wrong label anchor'
         for index in s['roadIndices']:
             road=geo['roads'][index]
-            assert road['bridge'] and road['name']==s['name']
+            assert road['bridge'] and road['name']==s.get('osmName',s['name'])
             assert LineString(road['points']).difference(line.buffer(.20)).is_empty, f'{identity}: centreline drift'
     full={}
     totals=[]
@@ -48,6 +50,7 @@ def validate_bridges():
         nodes=model['nodes']; lookup={n.get('name'):n for n in nodes}
         parent=lookup['Bridges']
         structures=details=0
+        taoyuan_counts=None
         for identity,s in SPECS.items():
             node=lookup['Landmark_'+identity]
             assert nodes.index(node) in parent['children'], 'Bridge ignores roads layer'
@@ -80,13 +83,16 @@ def validate_bridges():
                         assert all(math.isfinite(v) for v in bounds['min']+bounds['max'])
                 counts.append(count)
             structures+=counts[0];details+=counts[1]
+            if identity=='taoyuan-bridge': taoyuan_counts=counts
             if profile=='nanning-city.glb': full[identity]=counts
             else:
                 assert counts[0]==full[identity][0], 'Mobile lost bridge structure'
                 assert 0<counts[1]<full[identity][1], 'Bridge fittings LOD missing'
-        assert structures<160_000 and details<160_000, 'Bridge geometry exceeded its incremental budget'
+        # Keep the original twelve-bridge budget; Taoyuan has its own allowance.
+        assert all(0<count<20_000 for count in taoyuan_counts), 'Taoyuan bridge exceeded its budget'
+        assert structures-taoyuan_counts[0]<160_000 and details-taoyuan_counts[1]<160_000, 'Existing bridge geometry exceeded its budget'
         totals.append((structures,details))
-    print(f'PASS: 12 bridges / 26 replaced strips; decoded structures and layer parenting; detail/smooth triangles {totals}')
+    print(f'PASS: {len(SPECS)} bridges / {len(REPLACED_ROADS)} replaced strips; decoded structures and layer parenting; detail/smooth triangles {totals}')
     return totals
 
 

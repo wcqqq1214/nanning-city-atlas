@@ -113,6 +113,31 @@
       "description": "邕江上的老桥以七孔连续的悬臂箱梁和双柱桥墩展开，细化栏杆、步道与路灯。"
     },
     {
+      "id": "taoyuan-bridge",
+      "name": "桃源大桥",
+      "osmName": "",
+      "kind": "girder",
+      "widthMeters": 29,
+      "spansMeters": [
+        66,
+        120,
+        120,
+        66
+      ],
+      "displayRise": 0,
+      "source": "inspection",
+      "description": "四跨预应力混凝土连续箱梁跨越邕江，墩顶加厚、跨中收薄，西侧弯曲引桥衔接北大桥方向，配有双侧步道、栏杆与路灯。",
+      "chains": [
+        [
+          749
+        ],
+        [
+          872
+        ]
+      ],
+      "locationNote": "OSM 快照中两条主线均未命名；按东接桃源路、西接北大桥连接线的连续道路及跨江位置核对。只替换主线，保留独立辅道与匝道。"
+    },
+    {
       "id": "lingtie-bridge",
       "name": "凌铁大桥",
       "kind": "twin-arch",
