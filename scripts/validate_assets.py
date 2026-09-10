@@ -311,8 +311,8 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',17_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',12_500_000)
+full_bytes,full=inspect_model('nanning-city.glb',14_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',10_500_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -329,8 +329,8 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details'))) < 1_300_000
 # The complete fort adds shared detail; only its small terrain patch stays fine.
 assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details'))) < 920_000
-assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 1_600_000
-assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 1_100_000
+assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
+assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
 overview = json.loads((ROOT/'public/data/overview.json').read_text())
 for counts, profile, tree_count, triangles_per_tree in [

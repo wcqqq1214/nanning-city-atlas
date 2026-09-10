@@ -87,7 +87,8 @@ def validate_railways():
         visit(parent)
         assert any(n.get('name')=='Railway_Details' for n in children)
         counts={'structure':0,'details':0};rail_triangles=rail_degenerate=0
-        steel_points=[]
+        longest_rail_edge=0.
+        steel_faces=[]
         for node in children:
             if 'mesh' not in node:continue
             mesh=model['meshes'][node['mesh']]
@@ -102,30 +103,28 @@ def validate_railways():
                 decoded=DracoPy.decode(raw[start:start+view['byteLength']])
                 assert np.isfinite(decoded.points).all() and len(decoded.faces)==count
                 assert decoded.faces.min()>=0 and decoded.faces.max()<len(decoded.points)
-                steel_points.append(decoded.points)
                 triangles=decoded.points[decoded.faces]
+                steel_faces.extend(Polygon([(float(p[0]),float(-p[2])) for p in tri]) for tri in triangles)
                 area=np.linalg.norm(np.cross(triangles[:,1]-triangles[:,0],triangles[:,2]-triangles[:,0]),axis=1)
+                longest_rail_edge=max(longest_rail_edge,float(np.max(
+                    np.linalg.norm((triangles-np.roll(triangles,1,axis=1))[:,:,[0,2]],axis=2))))
                 rail_triangles+=len(area);rail_degenerate+=int(np.sum(area<1e-12))
-        assert rail_triangles>50000, 'Missing continuous steel rails'
+        assert rail_triangles>0, 'Missing continuous steel rails'
         assert rail_degenerate/rail_triangles<.01, f'Compression collapses rail geometry: {rail_degenerate}/{rail_triangles}'
+        assert longest_rail_edge<.602, 'Railway segments exceed the road-style 60 m span budget'
         assert 100000<counts['structure']<1000000
-        # Inspect actual decoded rail-head coordinates, not just triangle counts.
-        # Every retained surface source node must have steel within one metre of
-        # its centreline (gauge/2 plus quantization tolerance); tunnels excluded.
-        cells=defaultdict(list)
-        for p in np.vstack(steel_points):
-            cells[(math.floor(float(p[0])/2),math.floor(float(-p[2])/2))].append((p[0],-p[2]))
-        cells={key:np.array(points) for key,points in cells.items()}
+        # Adaptive road-style segments need not retain every source vertex.
+        # Measure distance to the actual decoded steel faces, including their
+        # interiors: gauge/2 + 0.4 m simplification + compression tolerance.
+        steel_index=STRtree(steel_faces)
         max_alignment_error=0.
         for i in sampled_nodes:
-            x,y=plan['nodes'][i]['xy'];gx,gy=math.floor(x/2),math.floor(y/2)
-            candidates=[cells[(u,v)] for u in range(gx-1,gx+2) for v in range(gy-1,gy+2) if (u,v) in cells]
-            assert candidates, f'Missing exported track near {i}'
-            distance=float(np.sqrt(np.min(np.sum((np.vstack(candidates)-[x,y])**2,axis=1))))
+            point=Point(plan['nodes'][i]['xy'])
+            distance=steel_faces[int(steel_index.nearest(point))].distance(point)
             max_alignment_error=max(max_alignment_error,distance)
-        assert max_alignment_error<.0105, f'Exported steel misses source track: {max_alignment_error*100:.2f} m'
+        assert max_alignment_error<.0115, f'Exported steel misses source track: {max_alignment_error*100:.2f} m'
         profiles.append(counts)
-        print(f'{filename}: {counts}; collapsed rail faces {rail_degenerate}/{rail_triangles}; source alignment {max_alignment_error*100:.3f} m',flush=True)
+        print(f'{filename}: {counts}; collapsed rail faces {rail_degenerate}/{rail_triangles}; source alignment {max_alignment_error*100:.3f} m; longest rail XY edge {longest_rail_edge*100:.3f} m',flush=True)
     assert profiles[0]['structure']==profiles[1]['structure'], 'Mobile lost structural railways'
     assert 0<profiles[1]['details']<profiles[0]['details']
     print('PASS: all source tracks, two station connections, grade/terrain audit, layer hierarchy and decoded rail heads.',flush=True)

@@ -17,6 +17,13 @@ MATERIAL_KEYS = ['rail_ballast','rail_steel','rail_sleeper','rail_concrete','rai
 REMOVED_TREES = set(PLAN['removedTrees'])
 REMOVED_BUILDINGS = set(PLAN['removedBuildings'])
 GAUGE = .01435
+RAIL_HALF_WIDTH = .0014
+# Match Qingxiang's display geometry tolerance and longest straight span.
+GEOMETRY_TOLERANCE = .004
+GEOMETRY_MAX_SPAN = .60
+# Display-scale fittings: preserve the network while limiting repeated geometry.
+SLEEPER_SPACING = {'detail': .08, 'smooth': .20}
+MAST_STRIDE = 2
 
 
 class TerrainCut:
@@ -141,6 +148,10 @@ class Railways:
         self.terrain_cut=TerrainCut(self.cuts)
         self.levels = required
         self.paths = {}
+        self.path_nodes = {}
+        self.critical_nodes = {i for i,edges in enumerate(graph) if len(edges)!=2 or
+                               any(nodes[j]['station']!=nodes[i]['station'] for j,_ in edges)}
+        self.section_cache = {}
         for route in PLAN['paths']:
             kept=[]
             for i in route['nodes']:
@@ -155,6 +166,7 @@ class Railways:
                         break
                     kept.pop(-2)
             self.paths[route['id']]=RailPath([nodes[i]['xy'] for i in kept],[required[i] for i in kept])
+            self.path_nodes[route['id']]=kept
         self.routes = {r['id']:r for r in PLAN['paths']}
         self.track_cells={}
         for route in PLAN['paths']:
@@ -167,6 +179,57 @@ class Railways:
 
     def cut_ground(self,x,y,level):
         return self.terrain_cut.height(x,y,level)
+
+    def sections(self, identity):
+        if identity in self.section_cache:
+            return self.section_cache[identity]
+        path = self.paths[identity]
+        # Follow the road model's adaptive edge simplification while protecting
+        # track junctions, station boundaries and the displayed grade limit.
+        stations = sorted(set(path.distances) | {
+            (a+b)/2 for a,b in zip(path.distances,path.distances[1:])} | {
+            path.length*i/max(1,math.ceil(path.length/GEOMETRY_MAX_SPAN))
+            for i in range(1,math.ceil(path.length/GEOMETRY_MAX_SPAN))})
+        index = {s:i for i,s in enumerate(stations)}
+        required = {0,len(stations)-1} | {
+            index[s] for s,node in zip(path.distances,self.path_nodes[identity])
+            if node in self.critical_nodes}
+        edges = [[path.at(s,offset) for offset in [-.039,0,.039]] for s in stations]
+
+        def reduce(a,b):
+            if b-a<=1: return
+            def error(i):
+                t=(stations[i]-stations[a])/(stations[b]-stations[a])
+                chord=[tuple(x*(1-t)+y*t for x,y in zip(edges[a][side],edges[b][side]))
+                       for side in range(3)]
+                # Like the road, allow bounded vertical simplification. The
+                # final rendered chords are independently checked for terrain
+                # clearance rather than retaining every tiny elevation change.
+                return max(math.dist(edges[i][side],chord[side]) for side in range(3))
+            split=max(range(a+1,b),key=error)
+            if error(split)<=GEOMETRY_TOLERANCE:
+                low,high=edges[a][1],edges[b][1]
+                grade=abs(high[2]-low[2])/max(1e-12,math.dist(low[:2],high[:2]))
+                if stations[b]-stations[a]<=GEOMETRY_MAX_SPAN+1e-8 and grade<=.120001: return
+                split=(a+b)//2
+            required.add(split)
+            reduce(a,split)
+            reduce(split,b)
+
+        anchors=sorted(required)
+        for a,b in zip(anchors,anchors[1:]): reduce(a,b)
+        result=[stations[i] for i in sorted(required)]
+        self.section_cache[identity]=result
+        return result
+
+    def render_at(self, identity, distance, offset=0, rise=0):
+        path=self.paths[identity]
+        stations=self.sections(identity)
+        distance=max(0,min(path.length,distance))
+        i=max(0,min(len(stations)-2,bisect.bisect_right(stations,distance)-1))
+        a,b=stations[i:i+2]
+        t=(distance-a)/(b-a)
+        return tuple(u*(1-t)+v*t for u,v in zip(path.at(a,offset,rise),path.at(b,offset,rise)))
 
     def adjacent_track(self,route_id,point,radius=.026):
         x,y,z=point;gx,gy=math.floor(x/2),math.floor(y/2)
@@ -186,13 +249,17 @@ class Railways:
         worst=None
         for route in PLAN['paths']:
             path=self.paths[route['id']]
-            for a,b,za,zb in zip(path.points,path.points[1:],path.levels,path.levels[1:]):
-                max_grade=max(max_grade,abs(zb-za)/math.dist(a,b))
+            stations=self.sections(route['id'])
+            for a,b in zip(stations,stations[1:]):
+                pa,pb=path.at(a),path.at(b)
+                max_grade=max(max_grade,abs(pb[2]-pa[2])/math.dist(pa[:2],pb[:2]))
             if route['tags'].get('tunnel','no')!='no': continue
-            for a,b in zip(path.distances,path.distances[1:]):
+            for a,b in zip(stations,stations[1:]):
                 for t in [0,.25,.5,.75,1]:
                     for offset in [-.019,0,.019]:
-                        x,y,z=path.at(a+(b-a)*t,offset,-.009)
+                        # Audit the rendered straight chord, not the denser
+                        # source path that the chord approximates.
+                        x,y,z=(u*(1-t)+v*t for u,v in zip(path.at(a,offset,-.009),path.at(b,offset,-.009)))
                         floor=max(self.surface(x,y,False),self.surface(x,y,True))
                         if floor-z>penetration:
                             penetration=floor-z
@@ -217,7 +284,7 @@ def build_structure(batch, railways):
     for route in PLAN['paths']:
         if route['tags'].get('tunnel','no')!='no': continue
         path = railways.paths[route['id']]
-        distances = path.distances
+        distances = railways.sections(route['id'])
         bridge = route['tags'].get('bridge','no')!='no'
         # Flat ballast top and sloped shoulders, with continuous rail heads.
         ribbon(batch,path,distances,-.019,.019,-.009,'rail_ballast')
@@ -226,11 +293,9 @@ def build_structure(batch, railways):
                 batch.face([path.at(a,side*.019,-.009),path.at(b,side*.019,-.009),
                             path.at(b,side*.028,-.020),path.at(a,side*.028,-.020)],'rail_ballast')
             offset = side*GAUGE/2
-            ribbon(batch,path,distances,offset-.0009,offset+.0009,.003,'rail_steel')
-            for edge in [-.0009,.0009]:
-                for a,b in zip(distances,distances[1:]):
-                    batch.face([path.at(a,offset+edge,-.005),path.at(b,offset+edge,-.005),
-                                path.at(b,offset+edge,.003),path.at(a,offset+edge,.003)],'rail_steel')
+            # Rail heads remain continuous; sub-metre vertical webs are not
+            # perceptible at atlas zoom levels and need no separate side faces.
+            ribbon(batch,path,distances,offset-RAIL_HALF_WIDTH,offset+RAIL_HALF_WIDTH,.003,'rail_steel')
         if bridge:
             ribbon(batch,path,distances,-.039,.039,-.022,'rail_concrete')
             for side in [-1,1]:
@@ -277,6 +342,7 @@ def build_structure(batch, railways):
 
 
 def build_details(batch, railways, lightweight=False):
+    profile = 'smooth' if lightweight else 'detail'
     counts = {'sleepers':0,'masts':0,'portals':0}
     tunnel_nodes = set()
     surface_nodes = set()
@@ -292,22 +358,22 @@ def build_details(batch, railways, lightweight=False):
             for i,s in [(route['nodes'][0],0),(route['nodes'][-1],path.length)]:
                 tunnel_ends.setdefault(i,[]).append((path,s))
             continue
-        spacing = .08 if lightweight else .025
+        spacing = SLEEPER_SPACING[profile]
+        at = lambda distance,offset=0,rise=0: railways.render_at(route['id'],distance,offset,rise)
         count = max(1,math.floor(path.length/spacing))
         for i in range(count):
             s = (i+.5)*path.length/count
-            batch.face([path.at(s-.0018,-.0135,-.004),path.at(s+.0018,-.0135,-.004),
-                        path.at(s+.0018,.0135,-.004),path.at(s-.0018,.0135,-.004)],'rail_sleeper')
+            batch.face([at(s-.003,-.0135,-.004),at(s+.003,-.0135,-.004),
+                        at(s+.003,.0135,-.004),at(s-.003,.0135,-.004)],'rail_sleeper')
             counts['sleepers']+=1
         if route['tags'].get('electrified')!='contact_line': continue
         # The map locates electrified tracks, not individual masts. These are
         # regularly spaced schematic fittings, with reduced density on mobile.
-        for s in route['masts'][::2 if lightweight else 1]:
-            batch.beam(path.at(s,.041,-.030),path.at(s,.041,.100),.002,'rail_metal')
-            batch.beam(path.at(s,.041,.090),path.at(s,0,.075),.0016,'rail_metal')
+        for s in ([] if lightweight else route['masts'][::MAST_STRIDE]):
+            batch.beam(at(s,.041,-.030),at(s,.041,.100),.002,'rail_metal')
+            batch.beam(at(s,.041,.090),at(s,0,.075),.0016,'rail_metal')
             counts['masts']+=1
-        if not lightweight:
-            ribbon(batch,path,path.distances,-.0006,.0006,.071,'rail_metal')
+        # Masts communicate electrification; omit subpixel continuous wires.
     # A boundary between two tunnel OSM ways is not a second portal.
     for i,ends in tunnel_ends.items():
         if len(ends)!=1 or i in tunnel_nodes or i not in surface_nodes: continue
