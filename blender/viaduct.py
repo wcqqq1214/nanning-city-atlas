@@ -4,11 +4,15 @@ Shared structural geometry survives the mobile profile. Small fittings are
 batched separately; no external textures, Blender modifiers or runtime LOD.
 """
 import bisect
+from collections import defaultdict
+from functools import lru_cache
+import heapq
 import json
 import math
 from pathlib import Path
 
-PLAN = json.loads((Path(__file__).resolve().parents[1] / 'data/viaduct-plan.json').read_text())
+ROOT = Path(__file__).resolve().parents[1]
+PLAN = json.loads((ROOT / 'data/viaduct-plan.json').read_text())
 MATERIAL_KEYS = ['viaduct_concrete', 'viaduct_soffit', 'viaduct_asphalt', 'viaduct_line', 'viaduct_metal']
 REMOVED_TREES = set(PLAN['removedTrees'])
 
@@ -47,6 +51,7 @@ class Path:
         return (a[0] * (1 - t) + b[0] * t + nx / length * offset,
                 a[1] * (1 - t) + b[1] * t + ny / length * offset, z)
 
+    @lru_cache(maxsize=40000)
     def nearest(self, x, y):
         best = (float('inf'), 0)
         for i, (a, b) in enumerate(zip(self.points, self.points[1:])):
@@ -62,38 +67,95 @@ class Viaduct:
     def __init__(self, height, surface):
         self.height, self.surface = height, surface
         self.main = Path(PLAN['main']['points'])
-        self.ramps = {str(r['osmId']): (r, Path(r['points'])) for r in PLAN['ramps']}
+        self.ramps = {r['id']: (r, Path(r['points'])) for r in PLAN['ramps']}
         self.paths = {'main': self.main, **{key: path for key, (_, path) in self.ramps.items()}}
-        # A smooth bridge datum clears both displayed DEM meshes. It does not
-        # copy the terrain's local bumps into the longitudinal bridge profile.
-        self.ends = [max(1.1, height(*self.main.at(s)[:2]) + .065) for s in [0, self.main.length]]
-        floors = [max(surface(*self.main.at(s, offset)[:2], mobile)
-                      for offset in [-.19, 0, .19] for mobile in [False, True]) for s in self.main.lengths]
-        self.levels = []
-        for i, s in enumerate(self.main.lengths):
-            neighbours = range(max(0, i - 10), min(len(floors), i + 11))
-            averaged = sum(floors[j] * (11 - abs(i - j)) for j in neighbours) / sum(11 - abs(i - j) for j in neighbours)
-            center = max(averaged + .20, floors[i] + .16)
-            end = self.ends[0 if s < self.main.length / 2 else 1]
-            level = end + (center - end) * smooth(min(s, self.main.length - s) / 1.4)
-            self.levels.append(max(level, floors[i] + .12))
-        # Propagate clearance peaks instead of following sharp DEM facets.
-        # This upper envelope bounds longitudinal grade while keeping every
-        # sampled cross section above both terrain profiles.
-        for indices in [range(1, len(self.levels)), range(len(self.levels) - 2, -1, -1)]:
-            for i in indices:
-                j = i - 1 if indices.step > 0 else i + 1
-                self.levels[i] = max(self.levels[i], self.levels[j] - .10 * abs(self.main.lengths[i] - self.main.lengths[j]))
-        assert all(abs(self.levels[i] - end) < .00001 for i, end in [(0, self.ends[0]), (-1, self.ends[1])]), 'Extend the pilot to fit its approach grade'
+        source = json.loads((ROOT / 'data/viaduct-source.json').read_text())
+        ways = {e['id']: e for e in source['elements']}
+        # A node graph gives every split/merge one elevation. Source bridge
+        # flags set clearance; ground sections remain embankments, not viaducts.
+        graph, required, keys = defaultdict(list), {}, {}
+        for identity, path in self.paths.items():
+            route = self.ramps.get(identity, ({},))[0]
+            samples = []
+            for j, s in enumerate(path.lengths):
+                endpoint = 0 if j == 0 else 1 if j == len(path.lengths) - 1 else None
+                key = ('node', route['nodes'][endpoint]) if identity != 'main' and endpoint is not None else (identity, j)
+                samples.append(key)
+                w = self.width(identity, s)
+                floor = max(surface(*path.at(s, offset)[:2], mobile)
+                            for offset in [-w, 0, w] for mobile in [False, True])
+                floor = max(floor, height(*path.at(s)[:2]))
+                clearance = .22 * max(1, route.get('layer', 1)) if self.is_bridge(identity, s) else .065
+                if route.get('tunnel'):
+                    clearance = .005
+                required[key] = max(required.get(key, -1000), floor + clearance)
+                if endpoint is not None and str(endpoint) in route.get('boundaryJoints', {}):
+                    if any(ways[i]['tags'].get('bridge', 'no') != 'no' for i in route['boundaryJoints'][str(endpoint)]):
+                        required[key] = max(required[key], 1.1)
+            keys[identity] = samples
+            for j, (a, b) in enumerate(zip(samples, samples[1:])):
+                cost = .12 * (path.lengths[j + 1] - path.lengths[j])
+                graph[a].append((b, cost)); graph[b].append((a, cost))
+        self.merge_ranges = {}
+        for identity, (route, path) in self.ramps.items():
+            ranges = []
+            for endpoint, binding in route['mainJoints'].items():
+                end = int(endpoint)
+                join_s = binding['distance']
+                node = keys[identity][0 if end == 0 else -1]
+                index, _ = self.main.section(join_s)
+                for j in [index, index + 1]:
+                    main_key = keys['main'][j]
+                    cost = .12 * abs(self.main.lengths[j] - join_s)
+                    graph[node].append((main_key, cost)); graph[main_key].append((node, cost))
+                stations = path.lengths if end == 0 else path.lengths[::-1]
+                for s in stations:
+                    distance, main_s = self.main.nearest(*path.at(s)[:2])
+                    if distance > self.width('main', main_s) + self.width(identity, s) + .004:
+                        break
+                ranges.append((0 if end == 0 else s, s if end == 0 else path.length, binding['side']))
+            self.merge_ranges[identity] = ranges
+            for j, s in enumerate(path.lengths):
+                if not any(a <= s <= b for a, b, _ in ranges):
+                    continue
+                main_s = self.main.nearest(*path.at(s)[:2])[1]
+                index, t = self.main.section(main_s)
+                main_key = keys['main'][index if t < .5 else index + 1]
+                node = keys[identity][j]
+                graph[node].append((main_key, 0)); graph[main_key].append((node, 0))
+        # The maximum-source shortest-path envelope raises valleys only as much
+        # as needed to bound grade across *all* connected ramp pieces.
+        queue = [(-value, key) for key, value in required.items()]
+        heapq.heapify(queue)
+        while queue:
+            negative, key = heapq.heappop(queue)
+            value = -negative
+            if value < required[key] - 1e-10:
+                continue
+            for neighbour, cost in graph[key]:
+                candidate = value - cost
+                if candidate > required[neighbour] + 1e-10:
+                    required[neighbour] = candidate
+                    heapq.heappush(queue, (-candidate, neighbour))
+        self.profiles = {identity: [required[k] for k in samples] for identity, samples in keys.items()}
+        self.levels = self.profiles['main']
         self.deck = max(self.levels)
         self.landing_lifts = []
-        for _, path in self.ramps.values():
-            x, y = path.points[-1]
-            visible_ground = max(surface(x + dx, y + dy, mobile)
-                                 for dx in [-.06, 0, .06] for dy in [-.06, 0, .06]
-                                 for mobile in [False, True])
-            lift = max(0, visible_ground - height(x, y))
-            self.landing_lifts.append((x, y, lift))
+        # At a boundary the retained street and the new route use the same
+        # smooth lift; otherwise a coarse terrain cell can bury their junction.
+        for identity, (route, path) in self.ramps.items():
+            for endpoint in route['boundaryJoints']:
+                j = 0 if endpoint == '0' else -1
+                x, y = path.points[j]
+                lift = max(0, self.profiles[identity][j] - height(x, y) - .065)
+                self.landing_lifts.append((x, y, lift))
+        for j in [0, -1]:
+            x, y = self.main.points[j]
+            self.landing_lifts.append((x, y, max(0, self.levels[j] - height(x, y) - .065)))
+        for boundary in PLAN['main'].get('boundaries', []):
+            x, y = boundary['point']
+            s = self.main.nearest(x, y)[1]
+            self.landing_lifts.append((x, y, max(0, self.level('main', s) - height(x, y) - .065)))
         self.sections = {'main': self.render_sections('main')}
         for identity in self.ramps:
             self.sections[identity] = self.render_sections(identity)
@@ -103,18 +165,50 @@ class Viaduct:
             path = self.paths[identity]
             for s in group['distances']:
                 x, y, _ = path.at(s)
+                if not self.is_bridge(identity, s):
+                    continue
                 if identity != 'main' and self.main.nearest(x, y)[0] < .19:
                     continue
                 bottom = max(surface(x, y, False) + .072, surface(x, y, True) + .072,
                              self.road_level(x, y) + .007)
                 top = self.render_level(identity, s) - .035
+                obstructs_lower_deck = False
+                for other, other_path in self.paths.items():
+                    if other == identity:
+                        continue
+                    distance, along = other_path.nearest(x, y)
+                    if distance < self.width(other, along) + .05 and self.render_level(other, along) < top + .07:
+                        obstructs_lower_deck = True
+                        break
+                if obstructs_lower_deck:
+                    continue
                 if top - bottom > .075:
                     self.piers.append({'path': identity, 's': s, 'x': x, 'y': y, 'bottom': bottom, 'top': top})
 
+    def is_bridge(self, identity, s):
+        if identity == 'main':
+            i, t = self.main.section(s)
+            return PLAN['main']['bridge'][i if t < .5 else i + 1]
+        return self.ramps[identity][0]['bridge']
+
+    def merge_at(self, identity, s):
+        return any(a <= s <= b for a, b, _ in self.merge_ranges.get(identity, []))
+
     def road_level(self, x, y):
         radius = PLAN['assumptions']['landingBlendMeters'] / 100
-        lift = max((value * smooth(1 - math.hypot(x - px, y - py) / radius)
-                    for px, py, value in self.landing_lifts), default=0)
+        weighted, weights, fade = 0., 0., 0.
+        for px, py, value in self.landing_lifts:
+            distance = math.hypot(x - px, y - py)
+            if distance >= radius:
+                continue
+            if distance < .00001:
+                return self.height(x, y) + .065 + value
+            falloff = smooth(1 - distance / radius)
+            weight = falloff / (distance * distance)
+            weighted += value * weight
+            weights += weight
+            fade = max(fade, falloff)
+        lift = weighted / weights * fade if weights else 0
         return self.height(x, y) + .065 + lift
 
     def render_level(self, identity, s):
@@ -136,11 +230,10 @@ class Viaduct:
                         for a, b in zip(stations, stations[1:])]
             required.update(i for i in range(1, len(openings)) if openings[i] != openings[i - 1])
         else:
-            # Keep the sampled departure boundary so simplification cannot
-            # extend an outside guardrail into the shared merge surface.
-            departure = self.ramps[identity][0]['departure']
-            index = bisect.bisect_left(stations, departure)
-            required.update(range(max(0, index - 1), min(len(stations), index + 2)))
+            for a, b, _ in self.merge_ranges[identity]:
+                for s in [a, b]:
+                    index = bisect.bisect_left(stations, s)
+                    required.update(range(max(0, index - 1), min(len(stations), index + 2)))
         tolerance = PLAN['assumptions']['geometryToleranceMeters'] / 100
         max_span = PLAN['assumptions']['geometryMaxSpanMeters'] / 100
 
@@ -170,35 +263,20 @@ class Viaduct:
             i, t = self.main.section(s)
             a, b = PLAN['main']['halfWidths'][i:i + 2]
             return a * (1 - t) + b * t
-        path = self.paths[identity]
-        return .073 / 2 + (.095 - .073) / 2 * (1 - smooth((path.length - s) / .3))
+        return .073 / 2
 
     def level(self, identity, s):
-        if identity == 'main':
-            i, t = self.main.section(s)
-            return self.levels[i] * (1 - t) + self.levels[i + 1] * t
-        ramp, path = self.ramps[identity]
-        if s <= ramp['departure']:
-            return self.render_level('main', self.main.nearest(*path.at(s)[:2])[1]) + .0008
-        join = self.render_level('main', self.main.nearest(*path.at(ramp['departure'])[:2])[1])
-        floor = max(self.road_level(*path.at(s)[:2]),
-                    max(self.surface(*path.at(s, offset)[:2], mobile)
-                        for offset in [-self.width(identity, s), 0, self.width(identity, s)]
-                        for mobile in [False, True]) + .04)
-        end = self.road_level(*path.at(path.length)[:2])
-        t = max(0, min(1, (s - ramp['departure']) / (path.length - ramp['departure'] - .12)))
-        # Short easing zones leave a constant-grade middle instead of making
-        # the middle of a long hillside ramp unnecessarily steep.
-        blend = t * t / .18 if t < .1 else 1 - (1 - t) ** 2 / .18 if t > .9 else (t - .05) / .9
-        return max(floor, join * (1 - blend) + end * blend) + .0008 * (1 - blend)
+        path = self.paths[identity]
+        i, t = path.section(s)
+        value = self.profiles[identity][i] * (1 - t) + self.profiles[identity][i + 1] * t
+        return value
 
     def barrier_open(self, s, side):
         x, y, _ = self.main.at(s, side * (self.width('main', s) - .004))
-        for ramp, path in self.ramps.values():
-            if ramp['side'] != side:
-                continue
+        for identity, (_, path) in self.ramps.items():
             distance, along = path.nearest(x, y)
-            if distance < .047 and along < ramp['departure'] + .25:
+            if distance < .047 and any(a - .25 <= along <= b + .25 and ramp_side == side
+                                       for a, b, ramp_side in self.merge_ranges[identity]):
                 return True
         return False
 
@@ -230,7 +308,7 @@ def build_structure(batch, network):
                 if identity == 'main' and network.barrier_open((a + b) / 2, side):
                     continue
                 # Ramp barriers begin at the edge of the shared merge surface.
-                if identity != 'main' and b < network.ramps[identity][0]['departure']:
+                if identity != 'main' and network.merge_at(identity, (a + b) / 2):
                     continue
                 rails = []
                 for s in [a, b]:
@@ -275,10 +353,12 @@ def build_structure(batch, network):
 def build_details(batch, network, lightweight=False):
     for identity, path in network.paths.items():
         spacing = .30 if lightweight else .20
-        start = 0 if identity == 'main' else network.ramps[identity][0]['departure'] + .10
+        start = 0
         for i in range(math.ceil((path.length - start) / spacing)):
             a, b = start + i * spacing + .02, min(path.length - .03, start + i * spacing + (.10 if lightweight else .095))
             if b <= a:
+                continue
+            if identity != 'main' and network.merge_at(identity, (a + b) / 2):
                 continue
             offsets = [-.085, -.045, .045, .085] if identity == 'main' else [0]
             for offset in offsets:
@@ -292,7 +372,7 @@ def build_details(batch, network, lightweight=False):
             for side in [-1, 1]:
                 if identity == 'main' and network.barrier_open((a + b) / 2, side):
                     continue
-                if identity != 'main' and a < network.ramps[identity][0]['departure']:
+                if identity != 'main' and network.merge_at(identity, (a + b) / 2):
                     continue
                 w = min(network.width(identity, a), network.width(identity, b)) - .015
                 strip(batch, path, a, b, side * w - .0011, side * w + .0011,
