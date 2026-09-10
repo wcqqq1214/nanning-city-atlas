@@ -228,6 +228,10 @@ def prepare(stage='all'):
         sx, sy = xy(*station['center'])
         c, s = math.cos(station['angle']), math.sin(station['angle'])
         clearings.append(Polygon([(sx+u*c-v*s,sy+u*s+v*c) for u,v in station['site']]).buffer(.15))
+    railway_plan = json.loads((ROOT/'data/railways-plan.json').read_text())
+    clearings.append(unary_union([
+        LineString([railway_plan['nodes'][i]['xy'] for i in route['nodes']]).simplify(.000001).buffer(.20,cap_style=2,join_style=2)
+        for route in railway_plan['paths'] if route['tags'].get('tunnel','no')=='no']))
     # Roads and buildings are polygonal in the displayed city. Mitred buffers
     # retain clearance without adding dozens of arc vertices at every corner.
     exclusions = unary_union([water.buffer(.18,join_style=2),
@@ -245,7 +249,7 @@ def prepare(stage='all'):
             regions.append(prepare_region(key,shape,exclusions,geo,dem,
                            [1.95,4.8,8.0][order],[11922560,11922618,9862173][order]))
     inputs = ['public/data/geography.json','public/data/terrain.json','data/landmarks.json',
-              'data/nanhu-plan.json','data/forest-source.json','data/stations-plan.json']
+              'data/nanhu-plan.json','data/forest-source.json','data/stations-plan.json','data/railways-plan.json']
     plan = {'version':2,'stage':stage,'center':geo['center'],'bbox':geo['bbox'],
             'osmTimestamp':source['osmTimestamp'],'areaKm2':round(sum(r['areaKm2'] for r in regions),4),
             'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs},

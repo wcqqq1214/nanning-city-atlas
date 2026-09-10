@@ -107,22 +107,7 @@ class StationMesh:
 
 def build_platforms(m, east):
     track = .065 if east else .035
-    for rail in m.data['rails']:
-        for a, b in zip(rail['points'], rail['points'][1:]):
-            length = math.dist(a, b)
-            if length < .00001: continue
-            dx, dy = (b[0]-a[0])/length, (b[1]-a[1])/length
-            m.beam((*a,track-.006),(*b,track-.006),.016,'station_ballast')
-            for side in [-1, 1]:
-                m.beam((a[0]-dy*.009*side,a[1]+dx*.009*side,track+.003),
-                       (b[0]-dy*.009*side,b[1]+dx*.009*side,track+.003),.002,'station_rail')
-            for i in range(max(1, math.ceil(length/.11))):
-                t = (i+.5)/max(1, math.ceil(length/.11))
-                u, v = a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t
-                # Only the exposed sleeper top is visible above the ballast.
-                # Avoid six-sided boxes for thousands of subpixel fittings.
-                m.face([(u+dx*along-dy*across,v+dy*along+dx*across,track+.001)
-                        for along,across in [(-.003,-.022),(.003,-.022),(.003,.022),(-.003,.022)]], 'station_soffit')
+    # Railways owns continuous tracks through the station and both approaches.
     for platform in m.data['platforms']:
         m.slab(platform, .024, track+.020-.024, 'station_paving')
         ring = platform['ring']

@@ -2,6 +2,7 @@ export type LayerKey =
   | 'buildings'
   | 'vegetation'
   | 'roads'
+  | 'railways'
   | 'water'
   | 'labels';
 export type Layers = Record<LayerKey, boolean>;
@@ -71,6 +72,7 @@ export const DEFAULT_LAYERS: Layers = {
   buildings: true,
   vegetation: true,
   roads: true,
+  railways: true,
   water: true,
   labels: true,
 };
