@@ -43,5 +43,5 @@ def capture_road_inputs(env):
         buildings.append([i,z,z+b['height']/100*1.55])
     (out/'building-levels.json').write_text(json.dumps(buildings,separators=(',',':')))
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json','blender/elevated_roads.py','blender/ground_roads.py']
-    inputs+=['blender/minzu_avenue.py','blender/road_interfaces.py']
+    inputs+=['blender/minzu_avenue.py','blender/road_interfaces.py','blender/terrain_height.py']
     (out/'input-hashes.json').write_text(json.dumps({p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in inputs},indent=2))

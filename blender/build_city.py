@@ -16,8 +16,10 @@ from mathutils.geometry import tessellate_polygon
 
 ROOT = Path(__file__).resolve().parents[1]
 MINZU_CONTEXT_ONLY = '--minzu-context' in sys.argv
+TERRAIN_CONTEXT_ONLY = '--terrain-context' in sys.argv
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
+from terrain_height import scene_height
 from gltf_export import export_city
 from landmark_details import build_expo, build_bridge
 from expo_landmark import site_distance as expo_site_distance
@@ -75,9 +77,9 @@ for path,fingerprint in RAILWAY_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Rebuild the railway plan after changing {path}'
 for path, fingerprint in MINZU_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the Minzu plan after changing {path}'
-for path, fingerprint in ({} if MINZU_CONTEXT_ONLY else GROUND_ROAD_PLAN['inputHashes']).items():
+for path, fingerprint in ({} if MINZU_CONTEXT_ONLY or TERRAIN_CONTEXT_ONLY else GROUND_ROAD_PLAN['inputHashes']).items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild ground roads after changing {path}'
-for path, fingerprint in ({} if MINZU_CONTEXT_ONLY else ELEVATED_PLAN['inputHashes']).items():
+for path, fingerprint in ({} if MINZU_CONTEXT_ONLY or TERRAIN_CONTEXT_ONLY else ELEVATED_PLAN['inputHashes']).items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild elevated roads after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
@@ -85,7 +87,8 @@ for path, fingerprint in FOREST_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the forest plan after changing {path}'
 COLS, ROWS = DEM['cols'], DEM['rows']
 HEIGHTS = DEM.get('sceneHeights', DEM['heights'])
-SCALE_Z = 3.0
+LANDCOVER = DEM.get('landcover', [0]*(COLS*ROWS))
+SCALE_Z = DEM.get('verticalExaggeration',3.0)
 RNG = random.Random(771)
 
 bpy.ops.object.select_all(action='SELECT')
@@ -232,7 +235,7 @@ def terrain_height(x, y):
     ix, jy = int(i), int(j)
     a, b = i - ix, j - jy
     h = (HEIGHTS[jy*COLS+ix]*(1-a)+HEIGHTS[jy*COLS+ix+1]*a)*(1-b) + (HEIGHTS[(jy+1)*COLS+ix]*(1-a)+HEIGHTS[(jy+1)*COLS+ix+1]*a)*b
-    return max(-.08, (h - 55) / 100 * SCALE_Z)
+    return scene_height(h,DEM)
 
 
 EXPO = PLACE_BY_ID['expo']
@@ -256,7 +259,7 @@ for identity, station in STATIONS.items():
 def height(x, y):
     h = terrain_height(x, y)
     h = nanhu_shore_height(x-NANHU_X, y-NANHU_Y, h)
-    # The ~95 m display DEM cannot resolve the building's graded terrace. Level
+    # The city-scale display DEM cannot resolve the building's graded terrace. Level
     # its visual support, with a soft apron, so coarse hillside triangles do not
     # pass through the lobby or stairs. Raw DEM data remains unchanged.
     distance = expo_site_distance(x-EXPO_X, y-EXPO_Y)
@@ -450,6 +453,12 @@ def build_forests(parent, lightweight=False):
         crowns.finish().parent = parent
 
 
+if TERRAIN_CONTEXT_ONLY:
+    from terrain_context import capture
+    capture(globals(),include_ground='--context-ground' in sys.argv)
+    raise SystemExit(0)
+
+
 if '--check-road-interfaces' in sys.argv:
     from check_road_interfaces import capture_interfaces
     capture_interfaces(globals())
@@ -471,7 +480,7 @@ for j in range(ROWS-1):
             x=MINX+(MAXX-MINX)*ii/(COLS-1)
             y=MAXY-(MAXY-MINY)*jj/(ROWS-1)
             verts.append((x,y,height(x,y)))
-        lc = DEM.get('landcover', [0]*(COLS*ROWS))[j*COLS+i]
+        lc = LANDCOVER[j*COLS+i]
         avg = sum(p[2] for p in verts)/4
         key = ('hill' if RNG.random() > .22 else 'hillLight') if lc == 1 or avg > 2.6 else ('bank' if lc == 2 else 'ground')
         ground.face([verts[0],verts[2],verts[1]],key)
@@ -784,7 +793,7 @@ summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['s
     'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
     'replacedTrees':sum(i in FOREST_REPLACED for i,x,y,r in original_trees)}
 summary['previousBbox']=json.loads((ROOT/'data/region.json').read_text())['previousBbox']
-summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':3,'buildingExaggeration':1.55})
+summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':SCALE_Z,'buildingExaggeration':1.55})
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 
 print('Saving Blender source and glTF...', flush=True)

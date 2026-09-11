@@ -245,24 +245,10 @@ def main():
               "attribution": "© OpenStreetMap contributors, ODbL 1.0", "osmTimestamp": snapshot.get("osm3s", {}).get("timestamp_osm_base"),
               "stats": {"mappedBuildings": len(mapped), "infillBuildings": len(infill), "roadSegments": len(roads), "trees": len(trees)}}
     output["waterTriangles"] = [tri for poly in parts(water, "Polygon") for tri in triangulate_water(poly)]
-    # Flatten the water mask to a single display stage and classify the terrain.
-    # This display height is not a flood model or a measured river level.
-    print('Sampling display terrain...', flush=True)
-    ground, colors = [], []
-    water_prepared, park_prepared = prep(water), prep(park)
-    for j in range(terrain["rows"]):
-        for i in range(terrain["cols"]):
-            x = minx + (maxx - minx) * i / (terrain["cols"] - 1)
-            y = maxy - (maxy - miny) * j / (terrain["rows"] - 1)
-            p = Point(x, y)
-            in_water = water_prepared.contains(p)
-            ground.append(53.0 if in_water else max(62.0, terrain["heights"][j * terrain["cols"] + i]))
-            colors.append(2 if in_water else (1 if park_prepared.contains(p) else 0))
-    terrain["sceneHeights"] = ground
-    terrain["landcover"] = colors
-    (DATA / "terrain.json").write_text(json.dumps(terrain, separators=(",", ":")))
     (DATA / "geography.json").write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")))
     (ROOT / 'data/forest-source.json').write_text(json.dumps(forest_source(snapshot),ensure_ascii=False,separators=(',',':'))+'\n')
+    from resample_terrain import prepare as prepare_terrain
+    prepare_terrain()
     print(json.dumps(output["stats"]))
     print(f"Water polygons: {len(output['water'])}; parks: {len(output['parks'])}")
 

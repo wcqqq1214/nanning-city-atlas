@@ -28,10 +28,11 @@ def decoded_faces(filename):
     groups={'road':[],'paint':[],'terrain':[],'elevated':[]};counts={};materials=set()
     for node in model['nodes']:
         name=node.get('name','')
-        if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_','ElevatedRoads_')):continue
+        if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_','ElevatedRoads_','MinzuAvenue_')):continue
+        joined_road=name.startswith(('ElevatedRoads_','MinzuAvenue_'))
         for p in model['meshes'][node['mesh']]['primitives']:
             mat=model['materials'][p['material']]['name']
-            if name.startswith('ElevatedRoads_') and mat!='Qingxiang sage asphalt':continue
+            if joined_road and mat!='Qingxiang sage asphalt':continue
             if name.startswith('GroundRoads_'):
                 counts[mat]=counts.get(mat,0)+model['accessors'][p['indices']]['count']//3
                 materials.add(p['material'])
@@ -40,7 +41,7 @@ def decoded_faces(filename):
             start=binary+view.get('byteOffset',0);mesh=DracoPy.decode(raw[start:start+view['byteLength']])
             faces=np.asarray(mesh.points[mesh.faces],dtype=np.float64)
             assert np.isfinite(faces).all()
-            group='elevated' if name.startswith('ElevatedRoads_') else 'terrain' if name.startswith('Terrain_') else 'paint' if mat=='Qingxiang lane markings' else 'road'
+            group='elevated' if joined_road else 'terrain' if name.startswith('Terrain_') else 'paint' if mat=='Qingxiang lane markings' else 'road'
             groups[group].append(faces)
     groups={k:np.concatenate(v) for k,v in groups.items()}
     nodes=model['nodes'];parent=next(n for n in nodes if n.get('name')=='GroundRoads');roads=next(n for n in nodes if n.get('name')=='Roads')
@@ -140,7 +141,9 @@ def validate_ground_roads():
         shapes,_,_=planes(groups['road']);actual=unary_union(shapes)
         expected_xy=shapely.transform(paved,lambda xy:xy*np.array([1,-1]))
         # Ground approaches and bridge decks share a resolved solid; the bridge
-        # material owns the joined overlap. Both are valid paved coverage.
+        # material owns the joined overlap, including resolved Minzu sections.
+        # Count their actual asphalt triangles; omitting Minzu falsely reports
+        # its three paved junction fragments as holes (about 7.5 m² in detail).
         bridge_shapes,_,_=planes(groups['elevated'])
         covered=unary_union([actual,unary_union(bridge_shapes)])
         missing=expected_xy.buffer(-.003).difference(covered)

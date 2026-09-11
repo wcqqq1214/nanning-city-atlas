@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import struct
+import sys
 import DracoPy
 import numpy as np
 from shapely.geometry import LineString, Point, Polygon, box
@@ -12,6 +13,7 @@ from shapely.ops import unary_union
 from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'blender'))
 
 
 def validate_minzu():
@@ -113,11 +115,32 @@ def validate_minzu():
                 assert flipped.distance(asphalt[index.nearest(flipped)])>.01, 'Omitted side road is still rendered'
                 omitted_probes+=1
         assert omitted_probes>40, 'Missing side-road exclusion coverage'
+        # At resolved interchange joins, another carriageway may own the
+        # exposed asphalt. Audit actual shared paving there, while retaining
+        # the Minzu-only index above for omitted frontage-road checks.
+        from road_interfaces import INTERCHANGE_BOUNDS
+        west,south,east,north=INTERCHANGE_BOUNDS
+        joined_region=Polygon([(west,-south),(east,-south),(east,-north),(west,-north)])
+        coverage=list(asphalt)
+        for n in nodes:
+            if 'mesh' not in n or not n.get('name','').startswith(('ElevatedRoads_','GroundRoads_')):continue
+            for p in model['meshes'][n['mesh']]['primitives']:
+                if model['materials'][p['material']]['name'] not in ['Qingxiang sage asphalt','Secondary sage streets','Simple neighbourhood paving']:continue
+                accessor=model['accessors'][p['attributes']['POSITION']]
+                lo,hi=accessor['min'],accessor['max']
+                if hi[0]<west or lo[0]>east or hi[2]<-north or lo[2]>-south:continue
+                view=model['bufferViews'][p['extensions']['KHR_draco_mesh_compression']['bufferView']]
+                start=binary+view.get('byteOffset',0)
+                mesh=DracoPy.decode(raw[start:start+view['byteLength']])
+                for face in mesh.points[mesh.faces]:
+                    shape=Polygon(face[:,[0,2]])
+                    if shape.area>1e-10 and joined_region.intersects(shape):coverage.append(shape.intersection(joined_region))
+        source_index=STRtree(coverage)
         max_distance = 0.
         for route in plan['paths']:
             for x,y in route['points']:
                 point = Point(x,-y)
-                distance = point.distance(asphalt[index.nearest(point)])
+                distance = point.distance(coverage[source_index.nearest(point)])
                 max_distance = max(max_distance,distance)
                 assert distance < .012, f'Exported Minzu surface misses source way {route["osmId"]}'
         print(f'{filename} Minzu: {counts}; markings collapsed {collapsed}/{marking_faces}; source gap {max_distance*100:.3f} m; Nanhu height range {np.ptp(lake_heights)*100:.4f} m; {omitted_probes} side-road exclusion probes',flush=True)
