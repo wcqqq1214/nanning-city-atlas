@@ -161,7 +161,7 @@ assert patch_land.intersection(water.buffer(-.00002)).area < 1e-8, 'Nanhu displa
 west, south, east, north = patch['bounds']
 expected_land = box(nx+west, ny+south, nx+east, ny+north).difference(water)
 assert patch_land.symmetric_difference(expected_land).area < .003, 'Nanhu display terrain lost land coverage'
-assert sum(p['modelled'] for p in places) == 18+len(RIVER_BRIDGE_SPECS), 'A detailed landmark is missing from the scene catalog'
+assert sum(p['modelled'] for p in places) == 20+len(RIVER_BRIDGE_SPECS), 'A detailed landmark is missing from the scene catalog'
 
 # Verify mapped station placement, platform coverage, and reproducible sources.
 assert STATION_PLAN['sceneCenter'] == g['center']
@@ -374,3 +374,7 @@ assert sum(v for k,v in full.items() if k.startswith('ElevatedRoads_'))<500_000
 validate_elevated_roads()
 validate_road_solids()
 validate_zhuxi()
+
+# Mall checks decode both quality profiles and audit their prepared road masks.
+from validate_malls import validate_malls
+validate_malls()
