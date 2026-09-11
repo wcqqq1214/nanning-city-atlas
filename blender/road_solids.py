@@ -41,6 +41,12 @@ def ground(batch,lightweight=False):
     return {'surfaceTriangles':len(data['ground']),'approachWallTriangles':len(data['groundWalls']),
             'markingTriangles':len(data['groundPaint']),'resolvedHash':metadata['sha256']}
 
+def minzu_structure(batch,lightweight=False):
+    data,_=load('smooth' if lightweight else 'detail')
+    for tri,material in zip(data['minzu'],data['minzuMaterials']):
+        batch.face(tri.tolist(),['viaduct_asphalt','viaduct_soffit','viaduct_soffit'][int(material)])
+    for tri in data['minzuRailings']:batch.face(tri.tolist(),'viaduct_concrete')
+
 @lru_cache(maxsize=1)
 def building_limits():
     limits={}

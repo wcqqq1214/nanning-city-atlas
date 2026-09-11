@@ -49,7 +49,7 @@ from railways import REMOVED_TREES as RAILWAY_TREES, REMOVED_BUILDINGS as RAILWA
 from railways import build_structure as build_railway_structure, build_details as build_railway_details
 from minzu_avenue import PLAN as MINZU_PLAN, MATERIAL_KEYS as MINZU_MATERIALS, MinzuAvenue
 from minzu_avenue import REPLACED_ROADS as MINZU_ROADS, REMOVED_TREES as MINZU_TREES
-from minzu_avenue import build_structure as build_minzu_structure, build_details as build_minzu_details
+from road_interfaces import build_structure as build_minzu_structure, build_details as build_minzu_details
 from ground_roads import PLAN as GROUND_ROAD_PLAN, PLAN_HASH as GROUND_ROAD_HASH, MATERIAL_KEYS as GROUND_ROAD_MATERIALS
 from ground_roads import REPLACED_ROADS as GROUND_ROADS, REMOVED_TREES as GROUND_ROAD_TREES, build_ground_roads
 from elevated_roads import PLAN as ELEVATED_PLAN, PLAN_HASH as ELEVATED_HASH, REPLACED_ROADS as ELEVATED_ROADS, ElevatedRoads
@@ -447,6 +447,11 @@ def build_forests(parent, lightweight=False):
         crowns.finish().parent = parent
 
 
+if '--check-road-interfaces' in sys.argv:
+    from check_road_interfaces import capture_interfaces
+    capture_interfaces(globals())
+    raise SystemExit(0)
+
 if '--capture-road-inputs' in sys.argv:
     from road_inputs import capture_road_inputs
     capture_road_inputs(globals())
@@ -507,7 +512,7 @@ def retained_road_level(x,y):
 
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
-elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values())
+elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values(),minzu=minzu)
 print('Remaining elevated road geometry:',elevated.report,flush=True)
 elevated_levels={'detail':elevated.levels}
 elevated_floors={'detail':[r['terrainFloor'] for r in elevated.routes]}
@@ -812,7 +817,7 @@ for child in list(elevated_group.children_recursive):
     mesh=child.data;bpy.data.objects.remove(child,do_unlink=True)
     if mesh is not None:bpy.data.meshes.remove(mesh)
 bpy.data.objects.remove(elevated_group,do_unlink=True)
-elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values(),lightweight=True)
+elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values(),lightweight=True,minzu=minzu)
 elevated_levels['smooth']=elevated.levels
 elevated_floors['smooth']=[r['terrainFloor'] for r in elevated.routes]
 summary['elevatedRoads']['smoothGeometry']=elevated.report
@@ -850,6 +855,16 @@ for child in list(minzu_detail_object.children_recursive):
     bpy.data.objects.remove(child,do_unlink=True)
     bpy.data.meshes.remove(mesh)
 bpy.data.objects.remove(minzu_detail_object,do_unlink=True)
+for child in list(minzu_group.children):
+    mesh=child.data
+    bpy.data.objects.remove(child,do_unlink=True)
+    if mesh is not None:bpy.data.meshes.remove(mesh)
+bpy.data.objects.remove(minzu_group,do_unlink=True)
+mobile_minzu_structure=Batch('MinzuAvenue',MINZU_MATERIALS,spatial=True)
+build_minzu_structure(mobile_minzu_structure,minzu,lightweight=True)
+minzu_group=mobile_minzu_structure.finish();minzu_group.parent=road_group
+minzu_group['planHash']=hashlib.sha256((ROOT/'data/minzu-plan.json').read_bytes()).hexdigest()
+del mobile_minzu_structure
 mobile_minzu_details=Batch('MinzuAvenue_Details',MINZU_MATERIALS,spatial=True)
 summary['minzuAvenue']['smoothFittings']=build_minzu_details(mobile_minzu_details,minzu,lightweight=True)
 mobile_minzu_details.finish().parent=minzu_group

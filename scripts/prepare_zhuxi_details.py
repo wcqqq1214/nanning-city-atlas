@@ -20,22 +20,38 @@ def prepare(output_path=None):
     for profile in ['detail','smooth']:
         raw=np.load(ROOT/f'data/road-solids-{profile}.npz')
         levels=json.loads((ROOT/f'data/road-solids-{profile}.json').read_text())['levels']
-        road_faces=np.concatenate((raw['elevated'][raw['elevatedMaterials']==0],raw['ground']))
+        road_faces=np.concatenate((raw['elevated'],raw['ground'],raw['railings'],raw['minzu'],raw['minzuRailings']))
         c=road_faces.mean(axis=1)
         road_faces=road_faces[(c[:,0]>73)&(c[:,0]<80)&(c[:,1]>-14)&(c[:,1]<-6)]
-        surfaces=Surface(road_faces);placed=[]
+        surfaces=Surface(road_faces);caps=Surface(raw['railings']);placed=[]
         for owner,r,path in selected:
             for s in np.arange(.22,path.length-.20,.46 if profile=='smooth' else .32):
                 if any(abs(path.lengths[j]-s)<.18 for _,stations in r['mergeStations'] for j in stations):continue
                 j,t=path.section(s);z=levels[owner][j]*(1-t)+levels[owner][j+1]*t
-                x,y=path.at(s,-r['width']+.001)[:2]
-                supported=False;blocked=False
+                # Mount the pole on the parapet cap, centred within its 0.5 m
+                # width; the old road-edge base cut through the parapet side.
+                x,y=path.at(s,-r['width']-.0028)[:2]
+                supports=[(float(caps.z(f,[x,y])),f) for f in caps.tree.query(Point(x,y),predicate='intersects')
+                          if .006<float(caps.z(f,[x,y]))-z<.025]
+                if not supports:continue
+                z,cap=min(supports,key=lambda item:abs(item[0]-z-.0123))
+                # A vertical pole's whole base must clear a sloping cap.
+                z+=.0022*math.hypot(*caps.coeff[cap][:2])+.0002
+                blocked=False
+                pole=Point(x,y).buffer(.0022)
+                for f in surfaces.tree.query(pole,predicate='intersects'):
+                    xy=shapely.get_coordinates(pole.intersection(surfaces.shapes[f]))
+                    zz=surfaces.z(f,xy)
+                    # A neighbouring cap may sit just above this pole's base;
+                    # the larger lamp-arm envelope deliberately ignores that
+                    # near-base range and cannot detect this collision.
+                    if zz.max()>z+.0001 and zz.min()<z+.107:blocked=True;break
+                if blocked:continue
                 for f in surfaces.tree.query(Point(x,y).buffer(.034),predicate='intersects'):
                     cut=Point(x,y).buffer(.034).intersection(surfaces.shapes[f]);xy=shapely.get_coordinates(cut)
                     zz=surfaces.z(f,xy)
-                    if surfaces.shapes[f].covers(Point(x,y)) and abs(float(surfaces.z(f,[x,y]))-z)<.004:supported=True
                     if zz.max()>z+.014 and zz.min()<z+.14:blocked=True;break
-                if not supported or blocked:continue
+                if blocked:continue
                 if any(math.hypot(x-a,y-b)<.16 for a,b,*_ in placed):continue
                 u,v=path.at(s,0)[:2];d=math.hypot(u-x,v-y)
                 placed.append([x,y,z,(u-x)/d,(v-y)/d])

@@ -121,8 +121,10 @@ def validate_minzu():
                 max_distance = max(max_distance,distance)
                 assert distance < .012, f'Exported Minzu surface misses source way {route["osmId"]}'
         print(f'{filename} Minzu: {counts}; markings collapsed {collapsed}/{marking_faces}; source gap {max_distance*100:.3f} m; Nanhu height range {np.ptp(lake_heights)*100:.4f} m; {omitted_probes} side-road exclusion probes',flush=True)
+        with np.load(ROOT/f'data/road-solids-{"detail" if filename=="nanning-city.glb" else "smooth"}.npz') as resolved:
+            counts['nativeStructure']=counts['structure']-len(resolved['minzu'])-len(resolved['minzuRailings'])
         profiles.append(counts)
-    assert profiles[0]['structure'] == profiles[1]['structure']
+    assert profiles[0]['nativeStructure'] == profiles[1]['nativeStructure'], 'Unrelated Minzu structure changed between profiles'
     assert profiles[1]['details'] < profiles[0]['details']
     assert report['smoothFittings']['lamps'] == 0 < report['detailFittings']['lamps']
     print('PASS: Minzu provenance, six-lane main road, omitted side roads, level Nanhu crossing, terrain clearance and decoded markings.',flush=True)

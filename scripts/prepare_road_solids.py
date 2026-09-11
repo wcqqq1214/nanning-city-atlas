@@ -8,10 +8,7 @@ from shapely.geometry import Polygon,LineString,Point,box
 from shapely.strtree import STRtree
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'blender'))
-from viaduct import Path as RoadPath
 from prepare_ground_roads import triangulate
-PLAN=json.loads(gzip.decompress((ROOT/'data/elevated-roads-plan.json.gz').read_bytes()))
-GROUND=json.loads(gzip.decompress((ROOT/'data/ground-roads-plan.json.gz').read_bytes()))
 
 def prism(top,bottom,owner,kind=0):
     top=np.asarray(top,dtype=np.float64);bottom=np.asarray(bottom,dtype=np.float64)
@@ -20,12 +17,16 @@ def prism(top,bottom,owner,kind=0):
     if area<0:top=top[[0,2,1]];bottom=bottom[[0,2,1]]
     vertices=np.concatenate((top,bottom))
     faces=np.asarray([[0,1,2],[5,4,3],[0,3,4],[0,4,1],[1,4,5],[1,5,2],[2,5,3],[2,3,0]],dtype=np.uint64)
-    tags=np.asarray([owner*16+kind,owner*16+(1 if kind==0 else 6),*[owner*16+(2 if kind==0 else 7)]*6],dtype=np.uint64)
+    below,side=(1,2) if kind==0 else (9,10) if kind==8 else (6,7)
+    tags=np.asarray([owner*16+kind,owner*16+below,*[owner*16+side]*6],dtype=np.uint64)
     result=mf.Manifold(mf.Mesh64(vertices,faces,face_id=tags))
     assert result.status()==mf.Error.NoError,result.status()
     return result
 
 def prepare(profile,region=None):
+    from viaduct import Path as RoadPath
+    PLAN=json.loads(gzip.decompress((ROOT/'data/elevated-roads-plan.json.gz').read_bytes()))
+    GROUND=json.loads(gzip.decompress((ROOT/'data/ground-roads-plan.json.gz').read_bytes()))
     for path,digest in json.loads((ROOT/'work/road-repair/input-hashes.json').read_text()).items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,f'Recapture native road surfaces after changing {path}'
     levels=json.loads((ROOT/f'work/road-repair/levels-{profile}.json').read_text())
@@ -34,6 +35,8 @@ def prepare(profile,region=None):
     paths=[RoadPath(r['points']) for r in PLAN['routes']]
     route_ids=[i for i,p in enumerate(paths) if region is None or LineString(p.points).intersects(region)]
     footprints=[LineString(paths[i].points).buffer(PLAN['routes'][i]['width']+.015) for i in route_ids]
+    minzu_sections=json.loads((ROOT/'work/road-repair/minzu-sections.json').read_text())
+    footprints.extend(Polygon(np.asarray(s['points'])[:,:2]).buffer(.015) for s in minzu_sections)
     road_shapes=shapely.polygons(np.asarray(mesh['points'])[np.asarray(mesh['triangles'])]);tree=STRtree(road_shapes)
     selected=np.unique(tree.query(footprints,predicate='intersects')[1])
     if region is not None:selected=np.array([i for i in selected if road_shapes[i].intersects(region)])
@@ -64,6 +67,12 @@ def prepare(profile,region=None):
         ids=mesh['triangles'][int(i)];top=ground['vertices'][ids];bottom=top.copy();bottom[:,2]=ground['floors'][ids]-.005
         volume=prism(top,bottom,2000+int(i),3+mesh['materials'][int(i)])
         if volume is not None:volumes.append(volume)
+    for i,section in enumerate(minzu_sections):
+        q=np.asarray(section['points'])
+        if region is not None and not Polygon(q[:,:2]).intersects(region):continue
+        for indices in [[0,1,2],[0,2,3]]:
+            top=q[indices];bottom=top.copy();bottom[:,2]-=.035
+            volumes.append(prism(top,bottom,1000000+i,8))
     solid=mf.Manifold.batch_boolean(volumes,mf.OpType.Add)
     print('Resolving union...',flush=True);result=solid.to_mesh64()
     assert solid.status()==mf.Error.NoError,solid.status()

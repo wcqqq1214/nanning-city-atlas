@@ -15,7 +15,7 @@ def export_city(filepath):
         raise RuntimeError('Unsupported Blender Draco exporter; this city exporter is verified with Blender 5.2.1')
 
     def encode_node(node,dll,settings,cache):
-        if node.name and node.name.startswith(('GroundRoads_','ElevatedRoads_')):
+        if node.name and node.name.startswith(('GroundRoads_','ElevatedRoads_','MinzuAvenue_')):
             # Resolved solids meet along narrow, sloping seams across 8 km
             # batches. 18-bit material quantization can move those edges by
             # centimetres and recreate crossings; retain millimetre precision.

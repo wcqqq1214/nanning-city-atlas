@@ -7,6 +7,7 @@ import json
 import math
 from pathlib import Path
 from viaduct import Path as RoadPath, MATERIAL_KEYS
+from road_interfaces import LANDING_WAYS
 
 ROOT=Path(__file__).resolve().parents[1]
 PAYLOAD=gzip.decompress((ROOT/'data/elevated-roads-plan.json.gz').read_bytes())
@@ -25,7 +26,7 @@ def plane(tri):
 
 
 class ElevatedRoads:
-    def __init__(self,ground,surface,bridges=(),lightweight=False):
+    def __init__(self,ground,surface,bridges=(),lightweight=False,minzu=None):
         profile='smooth' if lightweight else 'detail'
         self.ground=ground;self.surface=surface;self.lightweight=lightweight
         self.routes=[{**r,'terrainFloor':r['terrainFloors'][profile],'roadFloor':r['roadFloors'][profile]} for r in PLAN['routes']]
@@ -45,6 +46,16 @@ class ElevatedRoads:
                 close=[p for p in bridge_ends if math.hypot(x-p[0],y-p[1])<.35]
                 if close:target=min(close,key=lambda p:math.hypot(x-p[0],y-p[1]))[2]
                 if target>-500:self.anchors[i,j]=target
+            if r['osmId'] in LANDING_WAYS:
+                j=0 if LANDING_WAYS[r['osmId']]==0 else len(path.points)-1
+                x,y=path.points[j];target=r['roadFloor'][j]
+                if minzu is not None:
+                    key=min(minzu.paths,key=lambda key:minzu.paths[key].nearest(x,y)[0])
+                    distance,s=minzu.paths[key].nearest(x,y)
+                    assert distance<.1,'Minzu landing moved outside its carriageway'
+                    target=minzu.at(key,s)[2]
+                assert target>-500,'Missing fixed Minzu landing height'
+                self.anchors[i,j]=target
         for i,(r,path) in enumerate(zip(self.routes,self.paths)):
             fixed={j:z-.005 for (owner,j),z in self.anchors.items() if owner==i}
             r['terrainFloor']=deck_floors(path,r['width'],r['terrainFloor'],lambda x,y:surface(x,y,lightweight),geo['bounds'],terrain['cols'],terrain['rows'],fixed)
@@ -72,6 +83,11 @@ class ElevatedRoads:
                 # an entire bridge/landing merely to flatten an existing ridge.
                 cost=max(MAX_GRADE*(t-s),min(.75*(t-s),abs(r['terrainFloor'][j+1]-r['terrainFloor'][j])))
                 if any((s if end==0 else path.length-t)<1.5 for end in r['groundEnds']):cost=max(cost,.75*(t-s))
+                end=LANDING_WAYS.get(r['osmId'])
+                if end is not None and (s if end==0 else path.length-t)<.8:
+                    # These OSM ground-end flags actually meet a fixed Minzu
+                    # deck. Keep an ordinary approach grade, not a 75% landing.
+                    cost=MAX_GRADE*(t-s)
                 graph[a].append((b,cost));graph[b].append((a,cost))
             keys.append(ids)
         for (i,j),target in self.anchors.items():levels[keys[i][j]]=target
@@ -112,6 +128,7 @@ class ElevatedRoads:
         for i,r in enumerate(self.routes):
             for end in r['groundEnds']:
                 j=0 if end==0 else len(keys[i])-1
+                if (i,j) in self.anchors:continue
                 target=max(landing_floor[keys[i][j]]+.01,r['roadFloor'][j])
                 node=keys[i][j];upper[node]=min(upper[node],target);heapq.heappush(pending,(upper[node],node))
         while pending:
