@@ -16,6 +16,7 @@ import { TapGesture } from './tap-gesture';
 import { COMPACT_LAYOUT } from './display';
 import { createAreaHighlight } from './area-highlight';
 import { landmarkArea } from './landmark-areas';
+import { createNightLighting } from './night-lighting';
 
 export async function createCityScene(
   host: HTMLElement,
@@ -665,7 +666,7 @@ export async function createCityScene(
           uniforms: { uTime: { value: 0 }, uNight: { value: 0 } },
           vertexShader: `varying vec3 vWorld; void main(){vec4 w=modelMatrix*vec4(position,1.0);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
           fragmentShader: `varying vec3 vWorld;uniform float uTime;uniform float uNight;
-          void main(){float r=sin(vWorld.x*2.8+vWorld.z*1.8+uTime*.9);float r2=sin(vWorld.x*.9-vWorld.z*4.0+uTime*.6);float glint=pow(max(0.0,r*r2),14.0)*.17;vec3 day=vec3(.17,.57,.52)+glint+sin(vWorld.z*.32+vWorld.x*.17)*.017;vec3 night=vec3(.055,.23,.24)+glint*.35;gl_FragColor=vec4(mix(day,night,uNight),1.0);
+          void main(){float r=sin(vWorld.x*2.8+vWorld.z*1.8+uTime*.9);float r2=sin(vWorld.x*.9-vWorld.z*4.0+uTime*.6);float glint=pow(max(0.0,r*r2),14.0)*.17;vec3 day=vec3(.17,.57,.52)+glint+sin(vWorld.z*.32+vWorld.x*.17)*.017;vec3 night=vec3(.012,.055,.09)+glint*vec3(.3,.52,.65);gl_FragColor=vec4(mix(day,night,uNight),1.0);
           #include <colorspace_fragment>
           }`,
           side: THREE.DoubleSide,
@@ -673,6 +674,7 @@ export async function createCityScene(
         object.material = waterMaterial;
       }
     });
+    const nightLighting = createNightLighting(city, lightweight);
     areaHighlight = createAreaHighlight(city, overview.center, landmarkArea);
     areaHighlight.resize(host.clientWidth, host.clientHeight);
     for (const place of places) {
@@ -705,15 +707,15 @@ export async function createCityScene(
         THREE.MathUtils.clamp((next.hour - 15) / 6, 0, 1) * Math.PI,
       );
       const background = new THREE.Color('#e1eae4').lerp(
-        new THREE.Color('#122c32'),
+        new THREE.Color('#071322'),
         night,
       );
       scene.background = background;
       (scene.fog as THREE.FogExp2).color.copy(background);
       (floor.material as THREE.MeshStandardMaterial).color.copy(background);
-      hemi.intensity = 1.5 - night * 0.65;
-      sun.intensity = 2.7 - night * 1.95;
-      hemi.color.set(night > 0.5 ? '#89b9ce' : '#f4f8eb');
+      hemi.intensity = 1.5 - night * 1.22;
+      sun.intensity = 2.7 - night * 2.48;
+      hemi.color.set('#f4f8eb').lerp(new THREE.Color('#779bd6'), night);
       sun.color
         .set('#fff3d7')
         .lerp(new THREE.Color('#ffbf85'), dusk * 0.6)
@@ -724,7 +726,9 @@ export async function createCityScene(
         100 + Math.max(0.1, Math.sin(sunAngle)) * 300,
         45,
       );
-      renderer.toneMappingExposure = 0.96 + night * 0.04;
+      renderer.toneMappingExposure = 0.96;
+      nightLighting.setNight(night);
+      gridMaterial.opacity = 0.19 * (1 - night * 0.8);
       if (waterMaterial) waterMaterial.uniforms.uNight.value = night;
       city.scale.y = next.heightScale;
       areaHighlight?.select(next.selected);
@@ -746,9 +750,7 @@ export async function createCityScene(
       });
       materialDefaults.forEach((base, mat) => {
         mat.color.copy(base);
-        mat.emissive.set('#efbc69');
-        mat.emissiveIntensity =
-          (mat.name.includes('glass') ? 0.16 : 0.015) * night;
+        mat.emissiveIntensity = 0;
       });
       controls.autoRotate = next.autoRotate && !reduced;
       labels.forEach((label) =>

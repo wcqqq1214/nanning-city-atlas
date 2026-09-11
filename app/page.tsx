@@ -593,7 +593,9 @@ export default function Home() {
             <span>光照与视角</span>
             <Sun size={15} />
           </div>
-          <p className="panel-description">调整时间，查看不同光照下的地图。</p>
+          <p className="panel-description">
+            调整时间，查看晨昏光照、夜间窗灯与地标亮化。
+          </p>
           <div className="time-display">
             <span>{timeLabel}</span>
             <div>
