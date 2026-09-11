@@ -39,6 +39,9 @@ from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as S
 from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
 from zhenning_landmark import build_zhenning, MATERIAL_KEYS as ZHENNING_MATERIALS, terrace_level as zhenning_terrace_level
 from zhenning_landmark import terrain_patch as zhenning_terrain_patch
+from mall_landmarks import PLAN as MALL_PLAN, SITES as MALL_SITES, MATERIALS as MALL_MATS
+from mall_landmarks import build_mall, inside_site as inside_mall, intersects_site as intersects_mall
+from mall_landmarks import support_level as mall_support_level
 from viaduct import PLAN as VIADUCT_PLAN, MATERIAL_KEYS as VIADUCT_MATERIALS, REMOVED_TREES as VIADUCT_TREES
 from viaduct import Viaduct, build_structure as build_viaduct_structure, build_details as build_viaduct_details
 from railways import PLAN as RAILWAY_PLAN, MATERIAL_KEYS as RAILWAY_MATERIALS, Railways
@@ -55,6 +58,9 @@ GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
+assert MALL_PLAN['sceneCenter'] == GEO['center']
+assert MALL_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/malls-source.json').read_bytes()).hexdigest(), 'Rebuild the mall plan after changing source geometry'
+assert all([PLACE_BY_ID[k]['lon'], PLACE_BY_ID[k]['lat']] == v['center'] for k,v in MALL_SITES.items())
 assert VIADUCT_PLAN['sceneCenter'] == GEO['center']
 assert RIVER_BRIDGE_PLAN['sceneCenter'] == GEO['center']
 for path, fingerprint in RIVER_BRIDGE_PLAN['inputHashes'].items():
@@ -214,6 +220,7 @@ MATS = {
     'rail_earth': material('Railway graded earth', 'a5af94', .98),
 }
 MATS.update({key: material(*values) for key, values in RIVER_BRIDGE_MATS.items()})
+MATS.update({key: material(*values) for key, values in MALL_MATS.items()})
 
 
 def terrain_height(x, y):
@@ -318,10 +325,13 @@ if MINZU_CONTEXT_ONLY:
 CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
 TINGZI_X, TINGZI_Y, _ = pos(PLACE_BY_ID['tingzi']['lon'], PLACE_BY_ID['tingzi']['lat'])
 CHANGYOU_X, CHANGYOU_Y, _ = pos(PLACE_BY_ID['changyou']['lon'], PLACE_BY_ID['changyou']['lat'])
+MALL_ORIGINS = {identity: pos(*site['center'])[:2] for identity,site in MALL_SITES.items()}
 
 
 def inside_landmark(x, y):
     return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
+            any(abs(x-sx)<3 and abs(y-sy)<3 and inside_mall(identity,x-sx,y-sy)
+                for identity,(sx,sy) in MALL_ORIGINS.items()) or
             inside_tingzi(x-TINGZI_X, y-TINGZI_Y) or
             inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y) or
             any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy)
@@ -592,6 +602,8 @@ for building_index,b in enumerate(GEO['buildings']):
     if len(ring)<3: continue
     x=sum(p[0] for p in ring)/len(ring); y=sum(p[1] for p in ring)/len(ring)
     if inside_landmark(x,y): continue
+    if any(abs(x-sx)<5 and abs(y-sy)<5 and intersects_mall(identity,ring,sx,sy)
+           for identity,(sx,sy) in MALL_ORIGINS.items()): continue
     z=max(.4,height(x,y))+.07
     if inside_nanhu(x-NANHU_X, y-NANHU_Y):
         z=height(x,y)+.018
@@ -645,6 +657,7 @@ def landmark(id):
     if id == 'tingzi': z = terrace_level(x, y, z, height)
     if id == 'zhenning':
         z = zhenning_terrace_level(x, y, lambda u,v: displayed_ground_bounds(u,v)[1])
+    if id in MALL_SITES: z = mall_support_level(id,x,y,displayed_ground_bounds)
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
     if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
@@ -656,6 +669,7 @@ def landmark(id):
     if id == 'nanhu': keys += NANHU_MATERIALS
     if id == 'zhenning': keys += ZHENNING_MATERIALS
     if id in STATIONS: keys += STATION_MATERIALS
+    if id in MALL_SITES: keys += list(MALL_MATS)
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
@@ -727,6 +741,10 @@ b,x,y,z=landmark('zhenning')
 build_zhenning(b,x,y,z,ground_bounds=displayed_ground_bounds)
 b.finish()
 build_extra_landmarks(landmark, height)
+for identity in MALL_SITES:
+    b,x,y,z=landmark(identity)
+    build_mall(b,identity,x,y,z,displayed_ground_bounds)
+    b.finish()
 place=PLACE_BY_ID['qingxiang-viaduct']
 x,y,_=pos(place['lon'],place['lat'])
 distance=viaduct.main.nearest(x,y)[1]

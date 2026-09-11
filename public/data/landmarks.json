@@ -250,6 +250,44 @@
     ]
   },
   {
+    "id": "hangyang",
+    "name": "会展航洋城",
+    "lon": 108.380951938,
+    "lat": 22.816504121,
+    "category": "商业地标",
+    "description": "民族大道北侧的商业综合体。银色船形裙楼连接玻璃塔楼，南向入口设波浪雨棚，近景可查看幕墙格栅、屋顶采光窗和入口广场。",
+    "anchorHeight": 2.1,
+    "cameraDistance": 7,
+    "modelled": true,
+    "closeDistance": 4.0,
+    "cameraBearing": 195,
+    "sourceUrl": "https://www.openstreetmap.org/way/651998761",
+    "position": [
+      83.059,
+      1.136,
+      9.458
+    ]
+  },
+  {
+    "id": "mixc",
+    "name": "万象城",
+    "lon": 108.3887082,
+    "lat": 22.814348141,
+    "category": "商业地标",
+    "description": "民族大道南侧的弧形购物中心。浅色幕墙、铜色入口框架和玻璃挑檐围合商业立面，屋顶保留条形采光窗，与东侧华润大厦共同构成街区天际线。",
+    "anchorHeight": 1.0,
+    "cameraDistance": 6,
+    "modelled": true,
+    "closeDistance": 3.4,
+    "cameraBearing": 335,
+    "sourceUrl": "https://www.openstreetmap.org/way/974187256",
+    "position": [
+      91.017,
+      1.635,
+      11.858
+    ]
+  },
+  {
     "id": "cr",
     "name": "华润大厦",
     "lon": 108.391122,

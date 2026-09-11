@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT/'blender'))
 from zhenning_landmark import terrain_patch
 
 INPUTS = ['public/data/geography.json','public/data/terrain.json','data/landmarks.json',
+          'data/malls-plan.json',
           'data/nanhu-plan.json','data/minzu-plan.json','data/viaduct-plan.json',
           'blender/minzu_avenue.py','blender/viaduct.py']
 
@@ -71,6 +72,9 @@ def capture_context(geo, minzu, viaduct, minzu_context=None):
         road_faces.extend(updated['roadFaces'])
     for node in model['nodes']:
         name = node.get('name','')
+        # New malls may not exist in the previous export yet. Their prepared
+        # footprints below are authoritative for both first and later builds.
+        if name in ['Landmark_hangyang', 'Landmark_mixc']: continue
         if minzu_context and name.startswith('MinzuAvenue_'): continue
         if 'mesh' not in node: continue
         is_road = name.startswith('MinzuAvenue_') and not name.startswith('MinzuAvenue_Details') or name=='Landmark_qingxiang-viaduct'
@@ -91,6 +95,12 @@ def capture_context(geo, minzu, viaduct, minzu_context=None):
                 elif ground_mask.covers(shape.representative_point()): road_faces.append(verts)
     # Existing hand-built paths own the garden; do not lay generic streets over them.
     nh = load('data/nanhu-plan.json'); cx,cy=geo['center']; kx=1113.2*math.cos(math.radians(cy))
+    malls = load('data/malls-plan.json')
+    assert malls['sceneCenter'] == geo['center']
+    for mall in malls['sites'].values():
+        mx,my=(mall['center'][0]-cx)*kx,(mall['center'][1]-cy)*1113.2
+        solid.append(Polygon([(mx+u,my+v) for u,v in mall['site']]))
+        solid.extend(box(mx+w,my+s,mx+e,my+n) for w,s,e,n in mall['entranceRects'])
     nx,ny=(nh['center'][0]-cx)*kx,(nh['center'][1]-cy)*1113.2
     for key in ['paths','square']:
         for mesh in nh[key]:
