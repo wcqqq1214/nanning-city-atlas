@@ -14,6 +14,8 @@
 
 现在先生成完整三角柱桥体，再用 Manifold 离线合并相连桥面、箱梁和邻近地面接坡，删除内部相交面。保留不同高度的独立跨越层。新增几何数据只用于建模，不由网页下载。道路与接坡单独采用 22-bit Draco 位置精度，保留空间合批接缝的毫米级位置；其他模型沿用原精度。
 
+竹溪立交接入民族大道的两处接口也参与同一实体合并：西侧连接路 OSM `959178351`、东侧匝道 `392546680`。`road_interfaces.py` 选择接口附近完整的民族大道桥面分段，沿用原生高度和宽度；合并结果保留所属道路材质并从外边界生成护栏。接入前 80 展示米内采用普通高架的 18% 纵坡上限，取消这两处固定主路接口误用的 75% 地面接坡放宽。两档分别使用各自的接口网格，民族大道同步采用 22-bit 位置精度。标线裁到合并后的可见路面，再检查接入匝道梁底，避免抬高的标线重新穿进桥体。竹溪灯杆安装在实际护栏顶面，选址同时避让梁体与护栏。
+
 - 桥头采用满足地形、固定桥端和交叉约束的最低可行高度；地面过渡取消半平面截断，避免高度突跳。
 - 桥面跨过的完整地形三角形参与高度约束，覆盖端点之间的山脊；既有精细桥端高度保持固定。
 - 护栏从合并后的外边界生成，并入口和地面连接处留口。完整护栏三角面再次检查相邻路面，有冲突的短段省略。
@@ -37,6 +39,8 @@ work/venv/bin/python scripts/finish_road_solids.py smooth
 work/venv/bin/python scripts/prepare_zhuxi_details.py
 npm run models:build
 work/venv/bin/python scripts/test_road_terrain.py
+work/venv/bin/python scripts/test_road_interfaces.py
+work/venv/bin/python scripts/validate_zhuxi.py
 work/venv/bin/python scripts/validate_assets.py
 npm run build:pages
 ```
@@ -51,19 +55,24 @@ npm run build:pages
 
 回归报告写入 `work/road-repair/collision-{detail,smooth}.json`，包含模型哈希与冲突面坐标。重点视觉复查玉洞大道建筑交叠、长虹路并入口和青山大桥地面接坡。数值检查通过不代表所有城市地标之间的碰撞都已覆盖。
 
+`validate_zhuxi.py` 另外检查竹溪范围内 `MinzuAvenue_*`、`ElevatedRoads_*` 和 `GroundRoads_*` 的路面、梁体、护栏与灯具。此项覆盖通用道路解码未纳入的民族大道接口；旧版仅检查竹溪灯具与路面，无法检测灯杆穿入护栏。
+
 ## 当前产物
 
-本次整合后的整城产物包含同步完成的竹溪立交车道、灯具与第一版绿化：
+本轮修复竹溪立交与民族大道两处接口，并同步整城最新地标产物：
 
 | 项目 | 精细档 | 流畅档 |
 | --- | ---: | ---: |
-| GLB 字节数 | 20,002,208 | 14,863,628 |
-| 整城三角面 | 2,764,182 | 2,032,606 |
-| 剩余高架结构与标线三角面 | 444,889 | 403,700 |
-| 地面道路、接坡与标线三角面 | 382,680 | 273,640 |
+| GLB 字节数 | 20,308,760 | 15,101,496 |
+| 整城三角面 | 2,795,140 | 2,061,744 |
+| 剩余高架结构与标线三角面 | 444,866 | 403,678 |
+| 地面道路、接坡与标线三角面 | 382,638 | 273,632 |
+| 竹溪灯具 | 63 | 44 |
 
-可编辑源文件为 `blender/nanning-city.blend`。原始修复前文件保存在本地 `work/road-repair/before.blend`、`before.glb`、`before-mobile.glb`。本轮最终模型与每个 Draco primitive 的哈希记录在 `work/road-repair/final-primitives.json`，便于后续仅调整植被时确认道路几何完全没有变化。
+可编辑源文件为 `blender/nanning-city.blend`。本轮修复前文件保存在本地 `work/zhuxi-repair/before.blend`、`before.glb`、`before-mobile.glb`。最终产物哈希、验证结果和范围见 `work/zhuxi-repair/final-verification.json`。
 
-两档实际导出模型的 8 类道路相交检查均为 0。桥面/地形最小净空为精细档 0.7491 m、流畅档 0.8392 m；高架标线/桥面为 0.1965 m、0.1976 m。地面道路覆盖、避让与标线净空检查通过，生产页面中的两档模型哈希与源产物一致，浏览器已实际加载两档模型。
+两档实际导出模型的通用道路 8 类相交检查与竹溪专项 6 类相交检查均为 0（采用上文所述容差）。竹溪范围全部道路顶面与地形的连续重叠净空最小值均为 0.7863 展示米；全城高架桥面/地形最小净空为精细档 0.7491 m、流畅档 0.8392 m，高架标线/桥面为 0.1965 m、0.1976 m。
 
-验证记录：通用模型、铁路、民族大道、跨江桥梁及全部道路检查在 `work/road-repair/validation-final.log` 中通过；该长进程末尾仍使用已导入的旧竹溪树数下限而失败。修正测试后，最新竹溪专项独立复跑通过，见 `zhuxi-validation.log`；没有将旧全量进程记为成功。汇总及产物哈希见 `work/road-repair/final-verification.json`。
+本轮通过 `test_road_terrain.py`、`test_road_interfaces.py`、`validate_road_interfaces.py`、`validate_zhuxi.py`、`validate_minzu.py`、`validate_elevated_roads.py`、`validate_road_solids.py`、`validate_malls.py` 和 `npm run build:pages`。实际建模预检包含原生桥台与接口附近完整地面接坡，随后再复核压缩后的最终 GLB。浏览器目视检查两档东西接口。全量 `validate_ground_roads.py` 曾因内存压力中止，本轮不记为通过；补充检查覆盖竹溪区域最终道路顶面与地形。
+
+最终专项日志保存在 `work/zhuxi-repair/validate-*-final.log`，局部地形净空记录为 `terrain-final.log`，页面构建记录为 `build-pages-final.log`。旧修复记录仍保留在 `work/road-repair/`，不代表本轮重新运行的结果。

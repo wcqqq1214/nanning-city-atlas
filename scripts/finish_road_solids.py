@@ -7,13 +7,8 @@ import shapely
 from shapely.geometry import Polygon,LineString,Point
 from shapely.strtree import STRtree
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'blender'))
-from viaduct import Path as RoadPath
-from ground_roads import SteepEdges
-from elevated_roads import plane
 from zhuxi_interchange import marking_faces
 from road_collision_checks import intersections
-PLAN=json.loads(gzip.decompress((ROOT/'data/elevated-roads-plan.json.gz').read_bytes()))
-GROUND=json.loads(gzip.decompress((ROOT/'data/ground-roads-plan.json.gz').read_bytes()))
 
 def stable_paint(faces):
     """Discard sub-1.5 cm slivers that cannot survive position quantization."""
@@ -21,6 +16,13 @@ def stable_paint(faces):
     area2=np.linalg.norm(np.cross(faces[:,1]-faces[:,0],faces[:,2]-faces[:,0]),axis=1)
     longest=np.max(np.linalg.norm(faces-np.roll(faces,1,axis=1),axis=2),axis=1)
     return faces[area2>longest*.00015]
+
+def clear_interface_paint(paint,structure):
+    """Paint lifted off a valid deck must also clear the joining ramp soffit."""
+    paint=np.asarray(paint,dtype=float).reshape(-1,3,3)
+    conflicts=intersections(paint,structure,'interface paint/structure',tolerance=.0001,min_length=.0003,edge_tolerance=0)
+    rejected={r['upperFace'] for r in conflicts['records']}
+    return paint[np.asarray([i not in rejected for i in range(len(paint))],dtype=bool)]
 
 class Surface:
     def __init__(self,faces):
@@ -49,6 +51,9 @@ class Surface:
 def quad_faces(q):return [[q[0],q[1],q[2]],[q[0],q[2],q[3]]]
 
 def finish(profile):
+    from viaduct import Path as RoadPath
+    from ground_roads import SteepEdges, PLAN as GROUND
+    from elevated_roads import plane, PLAN
     captured=json.loads((ROOT/'work/road-repair/input-hashes.json').read_text())
     for path,digest in captured.items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,f'Recapture native road surfaces after changing {path}'
@@ -60,7 +65,13 @@ def finish(profile):
     ground_faces=np.concatenate((native['vertices'][np.asarray(mesh['triangles'])[keep]],v[faces[(types>=3)&(types<=5)]]))
     ground_materials=np.concatenate((np.asarray(mesh['materials'])[keep],types[(types>=3)&(types<=5)]-3))
     elevated_faces=v[faces[types<=2]];elevated_materials=types[types<=2]
-    asphalt=Surface(v[faces[types==0]]);ground_surface=Surface(ground_faces);all_roads=Surface(np.concatenate((asphalt.faces,ground_faces)))
+    minzu_faces=v[faces[(types>=8)&(types<=10)]];minzu_materials=types[(types>=8)&(types<=10)]-8
+    minzu_sections=json.loads((ROOT/'work/road-repair/minzu-sections.json').read_text())
+    minzu_plan=json.loads((ROOT/'data/minzu-plan.json').read_text())
+    minzu_routes={r['id']:r for r in minzu_plan['paths']}
+    minzu_paths={key:RoadPath(r['points']) for key,r in minzu_routes.items()}
+    asphalt=Surface(v[faces[types==0]]);minzu_surface=Surface(v[faces[types==8]])
+    ground_surface=Surface(ground_faces);all_roads=Surface(np.concatenate((asphalt.faces,minzu_surface.faces,ground_faces)))
     steep=SteepEdges(all_roads.faces.tolist())
     # Preserve old embankment walls only where their source triangles were not
     # replaced by the joined solid. New boundary walls come from that solid.
@@ -77,7 +88,7 @@ def finish(profile):
         for a,b in zip(tri,np.roll(tri,-1)):edges[tuple(sorted((int(a),int(b))))].append((i,int(a),int(b)))
     boundary=[]
     for entries in edges.values():
-        top=[e for e in entries if types[e[0]]==0]
+        top=[e for e in entries if types[e[0]] in [0,8]]
         if len(top)==1 and not any(types[e[0]] in [3,4,5] for e in entries):
             fi,ai,bi=top[0];boundary.append((int(tags[fi]//16),ai,bi))
     starts=defaultdict(list);ends=defaultdict(list)
@@ -99,18 +110,24 @@ def finish(profile):
             if not straight(a,b,c):break
             used.add(j);b=c
         merged.append((owner,a,b))
-    barriers=[];omitted_rails=0
+    barriers=[];barrier_owners=[];omitted_rails=0
     obstacles=shapely.union_all([Polygon(p[0],p[1:]) for p in json.loads((ROOT/'data/ground-roads-context.json').read_text())['obstacles']]).buffer(.005)
     shapely.prepare(obstacles)
     for owner,ai,bi in merged:
         a,b=v[ai].copy(),v[bi].copy();length=np.linalg.norm((b-a)[:2])
         if length<.003:continue
-        path=paths[owner];mid=(a+b)/2;distance,s=path.nearest(*mid[:2])
-        if s<.02 or s>path.length-.02 or distance<PLAN['routes'][owner]['width']*.70:continue
+        if owner>=1000000:
+            key=minzu_sections[owner-1000000]['key'];path=minzu_paths[key];width=minzu_routes[key]['width']/2
+        else:path=paths[owner];width=PLAN['routes'][owner]['width']
+        mid=(a+b)/2;distance,s=path.nearest(*mid[:2])
+        if s<.02 or s>path.length-.02 or distance<width*.70:continue
         # Place the parapet outside the driving surface, with a tiny seam
         # allowance so independent material quantization cannot move it inside.
         outward=np.array([b[1]-a[1],a[0]-b[0],0])/length
         a+=outward*.0003;b+=outward*.0003;a[2]+=.0003;b[2]+=.0003
+        if owner>=1000000:
+            # Keep native Minzu lamp bases over their inward kerb strip.
+            a-=outward*.006;b-=outward*.006
         q=np.array([a,b,b+outward*.005,a+outward*.005]);poly=Polygon(q[:,:2]);blocked=False
         if obstacles.intersects(poly):omitted_rails+=1;continue
         base=plane(q[[0,1,2]].tolist())
@@ -123,13 +140,16 @@ def finish(profile):
         cap=q.copy();cap[:,2]+=.012
         barriers.extend(quad_faces(cap))
         for j,k in [(0,1),(1,2),(2,3),(3,0)]:barriers.extend(quad_faces([q[j],q[k],cap[k],cap[j]]))
+        barrier_owners.extend([owner]*10)
     # Test the complete parapet faces as well: a near-vertical corner can pass
     # the footprint test while still piercing an adjacent sloping deck.
     barriers=np.asarray(barriers,dtype=float).reshape(-1,3,3)
     collisions=intersections(barriers,all_roads.faces,profile+' parapet clearance',tolerance=.0001,min_length=.0003,edge_tolerance=0)
     rejected={r['upperFace']//10 for r in collisions['records']}
     omitted_rails+=len(rejected)
-    barriers=barriers[np.asarray([i//10 not in rejected for i in range(len(barriers))])]
+    keep=np.asarray([i//10 not in rejected for i in range(len(barriers))])
+    barrier_owners=np.asarray(barrier_owners)[keep];barriers=barriers[keep]
+    minzu_barriers=barriers[barrier_owners>=1000000];barriers=barriers[barrier_owners<1000000]
     # Piers are tested against actual paving, including resolved approaches.
     piers=[];omitted_piers=0
     for owner,s,x,y,bottom in json.loads((ROOT/f'work/road-repair/piers-{profile}.json').read_text()):
@@ -157,6 +177,20 @@ def finish(profile):
     for i,r in enumerate(PLAN['routes']):
         source_paint.extend(marking_faces(r,paths[i],levels[i],profile=='smooth'))
     elevated_paint=asphalt.paint(source_paint,steep)
+    # Only recut markings that meet the replaced native Minzu sections.
+    native_minzu=np.load(ROOT/f'work/road-repair/minzu-paint-{profile}.npy')
+    region=shapely.union_all([Polygon(np.asarray(s['points'])[:,:2]) for s in minzu_sections])
+    touched=shapely.intersects(shapely.polygons(native_minzu[:,:,:2]),region)
+    outside=[];inside=[]
+    from prepare_ground_roads import triangulate
+    for tri in native_minzu[touched]:
+        coefficients=plane(tri.tolist());poly=Polygon(tri[:,:2])
+        for shape,parts in [(poly.difference(region),outside),(poly.intersection(region),inside)]:
+            for xy in triangulate(shape):
+                xy=np.asarray(xy);z=xy[:,0]*coefficients[0]+xy[:,1]*coefficients[1]+coefficients[2]
+                parts.append(np.column_stack((xy,z)))
+    patched_paint=clear_interface_paint(minzu_surface.paint(inside,steep),np.concatenate((elevated_faces,minzu_faces)))
+    minzu_paint=np.concatenate((native_minzu[~touched],np.asarray(outside).reshape(-1,3,3),patched_paint))
     # Generic building heights are often inferred. Keep their footprint and
     # lower only conflicting blocks; very short remnants are omitted.
     geo=json.loads((ROOT/'public/data/geography.json').read_text());adjustments=[]
@@ -171,10 +205,12 @@ def finish(profile):
         if limit<roof-1e-6:
             adjustments.append({'index':i,'oldTop':roof,'base':bottom,'top':None if limit-bottom<.04 else limit,'mappedHeight':b.get('mappedHeight',False)})
     arrays=dict(elevated=elevated_faces,elevatedMaterials=elevated_materials,railings=np.asarray(barriers).reshape(-1,3,3),piers=np.asarray(piers).reshape(-1,6),elevatedPaint=elevated_paint,
-                ground=ground_faces,groundMaterials=ground_materials,groundWalls=np.asarray(walls).reshape(-1,3,3),groundPaint=ground_paint)
+                ground=ground_faces,groundMaterials=ground_materials,groundWalls=np.asarray(walls).reshape(-1,3,3),groundPaint=ground_paint,
+                minzu=minzu_faces,minzuMaterials=minzu_materials,minzuRailings=minzu_barriers,minzuPaint=minzu_paint)
     target=ROOT/f'data/road-solids-{profile}.npz';np.savez_compressed(target,**arrays)
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json']
     inputs+=['blender/road_terrain.py','blender/elevated_roads.py','blender/ground_roads.py','blender/minzu_avenue.py','blender/forest_canopy.py','blender/zhuxi_interchange.py']
+    inputs+=['blender/road_interfaces.py']
     report={'profile':profile,'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs},'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'levels':levels,
             'buildings':adjustments,'omittedRailSegments':omitted_rails,'omittedPiers':omitted_piers,'counts':{k:len(a) for k,a in arrays.items()}}
     (ROOT/f'data/road-solids-{profile}.json').write_text(json.dumps(report,separators=(',',':')))

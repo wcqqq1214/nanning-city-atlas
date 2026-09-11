@@ -7,6 +7,8 @@ def capture_road_inputs(env):
     root=env['ROOT'];out=root/'work/road-repair';out.mkdir(parents=True,exist_ok=True)
     height=env['height'];surface=lambda x,y,m:env['terrain_surface'](x,y,height,env['GEO']['bounds'],env['COLS'],env['ROWS'],lightweight=m)
     viaduct=env['Viaduct'](height,surface);minzu=env['MinzuAvenue'](viaduct.road_level,surface)
+    from road_interfaces import capture, PaintCapture
+    (out/'minzu-sections.json').write_text(json.dumps(capture(minzu)))
     bridges=[env['RiverBridge'](spec,height,minzu.road_level,lambda x,y:env['displayed_ground_bounds'](x,y)[1]) for spec in env['RIVER_BRIDGE_SPECS'].values()]
     class Capture:
         def __init__(self):self.paint=[];self.walls=[]
@@ -15,7 +17,10 @@ def capture_road_inputs(env):
             if material=='viaduct_line':self.paint.append(vertices)
             elif material=='viaduct_concrete':self.walls.append(vertices)
     for mobile,profile in [(False,'detail'),(True,'smooth')]:
-        net=env['ElevatedRoads'](height,surface,bridges=bridges,lightweight=mobile)
+        paint=PaintCapture()
+        env['build_minzu_details'](paint,minzu,lightweight=mobile,native=True)
+        np.save(out/f'minzu-paint-{profile}.npy',np.asarray(paint.faces))
+        net=env['ElevatedRoads'](height,surface,bridges=bridges,lightweight=mobile,minzu=minzu)
         capture=Capture()
         env['build_ground_roads'](capture,height,env['GEO']['bounds'],env['COLS'],env['ROWS'],lightweight=mobile,bridges=bridges,elevated=net)
         np.savez_compressed(out/f'inputs-{profile}.npz',vertices=np.asarray(capture.vertices),floors=np.asarray(capture.floors),paint=np.asarray(capture.paint),walls=np.asarray(capture.walls))
@@ -38,4 +43,5 @@ def capture_road_inputs(env):
         buildings.append([i,z,z+b['height']/100*1.55])
     (out/'building-levels.json').write_text(json.dumps(buildings,separators=(',',':')))
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json','blender/elevated_roads.py','blender/ground_roads.py']
+    inputs+=['blender/minzu_avenue.py','blender/road_interfaces.py']
     (out/'input-hashes.json').write_text(json.dumps({p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in inputs},indent=2))
