@@ -2,3 +2,4 @@ Pillow>=11.0,<13.0
 shapely>=2.0,<3.0
 mapbox-earcut>=1.0,<3.0
 DracoPy>=1.5,<3.0
+manifold3d>=3.5,<4.0

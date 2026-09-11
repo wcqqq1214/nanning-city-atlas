@@ -31,8 +31,8 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：16.38 MB 的 Draco 精细模型。
-- `public/models/nanning-city-mobile.glb`：11.80 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
+- `public/models/nanning-city.glb`：20.00 MB 的 Draco 精细模型。
+- `public/models/nanning-city-mobile.glb`：14.86 MB 的 Draco 轻量模型，保留完整建筑、道路、水系及地标主体。
 - `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
 
@@ -41,6 +41,8 @@ python3 scripts/validate_assets.py
 民族大道的道路替换、共享材质、两档细节与验证说明见 [民族大道](MINZU_AVENUE.md)。
 
 主要跨江桥梁的来源、桥型、两档细节与重建流程见 [主要桥梁](BRIDGES.md)。
+
+其余高架、立交匝道和短桥复用清厢快速路材质，包含箱梁、护栏、桥墩及地面接坡，详见 [剩余高架](ELEVATED_ROADS.md)。普通重建直接使用已保存的 `road-solids-*.npz`，无需联网。这些离线实体已统一处理并入口和接坡的相交面；修改道路、地形或高度算法后，需要按该文档重新捕获高度、合并实体，再运行 `models:build`。
 
 坐标约定：准备阶段 X 向东、Y 向北，每单位 100 m；Blender Z 向上；glTF 导出后 Three.js X 向东、Y 向上、Z 向南。使用城区中心处的局部等距近似投影，输入坐标统一为 WGS84。
 
@@ -60,4 +62,4 @@ public/draco/        随项目提供的 Draco 解码器，无第三方运行时�
 docs/               设计、数据与验证说明
 ```
 
-全图普通地面道路采用分级材质和两档地形贴合网格，详见 [地面道路](GROUND_ROADS.md)。重建城市模型前运行 `work/venv/bin/python scripts/prepare_ground_roads.py`。
+全图普通地面道路采用分级材质和两档地形贴合网格，详见 [地面道路](GROUND_ROADS.md)。修改地面道路计划时先运行 `work/venv/bin/python scripts/prepare_ground_roads.py`，随后重新生成上述高架与接坡实体。

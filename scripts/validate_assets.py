@@ -26,6 +26,9 @@ from railways import TerrainCut
 from validate_railways import validate_railways
 from validate_minzu import validate_minzu
 from validate_ground_roads import validate_ground_roads
+from validate_elevated_roads import validate_elevated_roads
+from validate_road_solids import validate_road_solids
+from validate_zhuxi import validate_zhuxi
 from validate_bridges import validate_bridges, SPECS as RIVER_BRIDGE_SPECS
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
@@ -314,8 +317,8 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',16_800_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',11_800_000)
+full_bytes,full=inspect_model('nanning-city.glb',20_500_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',15_500_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -329,9 +332,9 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
-assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_300_000
+assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_300_000
 # The complete fort and Minzu road structure are shared across both profiles.
-assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 960_000
+assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 960_000
 assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
 assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
@@ -347,7 +350,7 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details','RiverBridge_Details_','GroundRoads')) and name != 'QingxiangViaduct_Details':
+    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details','RiverBridge_Details_','GroundRoads','ElevatedRoads','ZhuxiInterchange')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
@@ -362,6 +365,12 @@ validate_minzu()
 validate_bridges()
 
 # Ground streets are terrain-conforming in each profile; budget them separately.
-assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 370_000
-assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 250_000
+# Joined approach solids retain their exposed walls and split paint at the
+# resulting boundaries; cap these complete surfaces rather than old strips.
+assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 410_000
+assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 295_000
 validate_ground_roads()
+assert sum(v for k,v in full.items() if k.startswith('ElevatedRoads_'))<500_000
+validate_elevated_roads()
+validate_road_solids()
+validate_zhuxi()

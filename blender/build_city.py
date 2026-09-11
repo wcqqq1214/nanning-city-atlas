@@ -5,6 +5,7 @@ glTF converts to Three.js X east, Y up, Z south on export.
 """
 import bpy
 import hashlib
+import gzip
 import json
 import math
 import random
@@ -33,6 +34,7 @@ from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED
 from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, refined_terrain_height, CANOPY_MATERIALS
 from vegetation import build_tree
+from zhuxi_interchange import build_details as build_zhuxi_details, build_greenery as build_zhuxi_greenery, MATERIAL_KEYS as ZHUXI_MATERIALS
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as STATION_MATERIALS
 from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
 from zhenning_landmark import build_zhenning, MATERIAL_KEYS as ZHENNING_MATERIALS, terrace_level as zhenning_terrace_level
@@ -47,6 +49,8 @@ from minzu_avenue import REPLACED_ROADS as MINZU_ROADS, REMOVED_TREES as MINZU_T
 from minzu_avenue import build_structure as build_minzu_structure, build_details as build_minzu_details
 from ground_roads import PLAN as GROUND_ROAD_PLAN, PLAN_HASH as GROUND_ROAD_HASH, MATERIAL_KEYS as GROUND_ROAD_MATERIALS
 from ground_roads import REPLACED_ROADS as GROUND_ROADS, REMOVED_TREES as GROUND_ROAD_TREES, build_ground_roads
+from elevated_roads import PLAN as ELEVATED_PLAN, PLAN_HASH as ELEVATED_HASH, REPLACED_ROADS as ELEVATED_ROADS, ElevatedRoads
+from elevated_roads import build_structure as build_elevated_structure, build_details as build_elevated_details
 GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
@@ -65,6 +69,8 @@ for path, fingerprint in MINZU_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the Minzu plan after changing {path}'
 for path, fingerprint in ({} if MINZU_CONTEXT_ONLY else GROUND_ROAD_PLAN['inputHashes']).items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild ground roads after changing {path}'
+for path, fingerprint in ({} if MINZU_CONTEXT_ONLY else ELEVATED_PLAN['inputHashes']).items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild elevated roads after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
 for path, fingerprint in FOREST_PLAN['inputHashes'].items():
@@ -431,6 +437,11 @@ def build_forests(parent, lightweight=False):
         crowns.finish().parent = parent
 
 
+if '--capture-road-inputs' in sys.argv:
+    from road_inputs import capture_road_inputs
+    capture_road_inputs(globals())
+    raise SystemExit(0)
+
 print('Building terrain...', flush=True)
 ground = Batch('Terrain', ['ground','hill','hillLight','bank'])
 for j in range(ROWS-1):
@@ -486,9 +497,13 @@ def retained_road_level(x,y):
 
 roadbatch=Batch('Roads',['road','highway'])
 bridgebatch=Batch('Bridges',['road','bridge'])
+elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values())
+print('Remaining elevated road geometry:',elevated.report,flush=True)
+elevated_levels={'detail':elevated.levels}
+elevated_floors={'detail':[r['terrainFloor'] for r in elevated.routes]}
 rendered_roads=[]
 for index, road in enumerate(GEO['roads']):
-    if index in MINZU_ROADS or index in RIVER_BRIDGE_ROADS or index in GROUND_ROADS: continue
+    if index in MINZU_ROADS or index in RIVER_BRIDGE_ROADS or index in GROUND_ROADS or index in ELEVATED_ROADS: continue
     for points in VIADUCT_PLAN['roadOverrides'].get(str(index), [road['points']]):
         rendered_roads.append({**road, 'points': points})
 for road in rendered_roads:
@@ -515,9 +530,20 @@ for road in rendered_roads:
                 h1,h2=retained_road_level(x1,y1),retained_road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
 road_group=roadbatch.finish(); bridge_group=bridgebatch.finish()
+elevated_batch=Batch('ElevatedRoads',VIADUCT_MATERIALS,spatial=True,weld=True)
+build_elevated_structure(elevated_batch,elevated)
+elevated_group=elevated_batch.finish();elevated_group.parent=bridge_group;elevated_group['planHash']=ELEVATED_HASH
+elevated_details=Batch('ElevatedRoads_Details',VIADUCT_MATERIALS,spatial=True,weld=True)
+elevated_counts=build_elevated_details(elevated_details,elevated)
+elevated_details_group=elevated_details.finish();elevated_details_group.parent=elevated_group
+del elevated_batch,elevated_details
+zhuxi_batch=Batch('ZhuxiInterchange',ZHUXI_MATERIALS)
+zhuxi_counts=build_zhuxi_details(zhuxi_batch,elevated)
+zhuxi_batch.finish().parent=elevated_group
+del zhuxi_batch
 print('Building terrain-conforming ground streets...',flush=True)
 ground_road_batch=Batch('GroundRoads',GROUND_ROAD_MATERIALS,spatial=True,weld=True)
-ground_road_counts=build_ground_roads(ground_road_batch,height,GEO['bounds'],COLS,ROWS,bridges=river_bridges.values())
+ground_road_counts=build_ground_roads(ground_road_batch,height,GEO['bounds'],COLS,ROWS,bridges=river_bridges.values(),elevated=elevated)
 ground_road_group=ground_road_batch.finish()
 ground_road_group.parent=road_group
 ground_road_group['planHash']=GROUND_ROAD_HASH
@@ -557,6 +583,8 @@ assert railway_geometry['maxBallastPenetration']<.001, 'Display terrain pierces 
 
 print('Building simplified city blocks...', flush=True)
 buildings=Batch('Buildings',['building','building2','building3','roof'])
+from road_solids import building_limits
+road_building_limits=building_limits()
 for building_index,b in enumerate(GEO['buildings']):
     if building_index in RAILWAY_BUILDINGS: continue
     if any(n in b.get('name','') for n in ['龙象塔','华润大厦A','地王国际商会中心']): continue
@@ -569,6 +597,10 @@ for building_index,b in enumerate(GEO['buildings']):
         z=height(x,y)+.018
     hh=b['height']/100*1.55
     key=RNG.choice(['building','building','building','building2','building3'])
+    if building_index in road_building_limits:
+        limit=road_building_limits[building_index]
+        if limit is None:continue
+        hh=min(hh,max(0,limit-z))
     for a,c in zip(ring,ring[1:]+ring[:1]):
         buildings.face([(a[0],a[1],z),(c[0],c[1],z),(c[0],c[1],z+hh),(a[0],a[1],z+hh)],key)
     roof_vertices = [Vector((a,b,z+hh)) for a,b in ring]
@@ -595,6 +627,10 @@ for i,x,y,r in original_trees:
     build_tree(trees,x,y,z,r,col)
 tree_group=trees.finish()
 build_forests(tree_group)
+zhuxi_trees=Batch('Vegetation_zhuxi',['leaf','leaf2','leaf3','trunk'])
+build_zhuxi_greenery(zhuxi_trees,lambda x,y:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS))
+zhuxi_trees.finish().parent=tree_group
+del zhuxi_trees
 
 
 
@@ -707,6 +743,7 @@ summary['riverBridges']={'count':len(river_bridges)+1,'added':len(river_bridges)
 summary['groundRoads']={**GROUND_ROAD_PLAN['stats'],'detail':ground_road_counts,
     'removedVisibleTrees':sum(i not in FOREST_REPLACED and i in GROUND_ROAD_TREES for i,x,y,r in original_trees),
     'planHash':GROUND_ROAD_HASH}
+summary['elevatedRoads']={**elevated.report,'detail':elevated_counts}
 summary['minzuAvenue']={**MINZU_PLAN['stats'],'geometry':minzu_geometry,'detailFittings':minzu_counts,
     'osmTimestamp':MINZU_PLAN['osmTimestamp'],'planHash':hashlib.sha256((ROOT/'data/minzu-plan.json').read_bytes()).hexdigest()}
 summary['railways']={**RAILWAY_PLAN['stats'],'osmTimestamp':RAILWAY_PLAN['osmTimestamp'],
@@ -753,6 +790,26 @@ print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'tr
 
 # Keep the editable .blend at full detail; export a separate lightweight model.
 # Structural roads and landmarks remain complete; viaduct fittings are reduced.
+for child in list(elevated_group.children_recursive):
+    mesh=child.data;bpy.data.objects.remove(child,do_unlink=True)
+    if mesh is not None:bpy.data.meshes.remove(mesh)
+bpy.data.objects.remove(elevated_group,do_unlink=True)
+elevated=ElevatedRoads(height,lambda x,y,mobile:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile),bridges=river_bridges.values(),lightweight=True)
+elevated_levels['smooth']=elevated.levels
+elevated_floors['smooth']=[r['terrainFloor'] for r in elevated.routes]
+summary['elevatedRoads']['smoothGeometry']=elevated.report
+elevated_batch=Batch('ElevatedRoads',VIADUCT_MATERIALS,spatial=True,weld=True)
+build_elevated_structure(elevated_batch,elevated)
+elevated_group=elevated_batch.finish();elevated_group.parent=bridge_group;elevated_group['planHash']=ELEVATED_HASH
+del elevated_batch
+elevated_details=Batch('ElevatedRoads_Details',VIADUCT_MATERIALS,spatial=True,weld=True)
+summary['elevatedRoads']['smooth']=build_elevated_details(elevated_details,elevated,lightweight=True)
+elevated_details.finish().parent=elevated_group
+del elevated_details
+zhuxi_batch=Batch('ZhuxiInterchange',ZHUXI_MATERIALS)
+build_zhuxi_details(zhuxi_batch,elevated)
+zhuxi_batch.finish().parent=elevated_group
+del zhuxi_batch
 for identity,river in river_bridges.items():
     detail_object=bpy.data.objects['RiverBridge_Details_'+identity]
     detail_mesh=detail_object.data
@@ -830,6 +887,10 @@ for order,(i,x,y,r) in enumerate(original_trees[::4]):
     build_tree(mobile_trees,x,y,z,r,col,lightweight=True)
 mobile_tree_group=mobile_trees.finish()
 build_forests(mobile_tree_group,lightweight=True)
+zhuxi_trees=Batch('Vegetation_zhuxi',['leaf','leaf2','leaf3','trunk'])
+build_zhuxi_greenery(zhuxi_trees,lambda x,y:terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=True),lightweight=True)
+zhuxi_trees.finish().parent=mobile_tree_group
+del zhuxi_trees
 nanhu_trees.finish().parent=mobile_tree_group
 for child in list(ground_road_group.children_recursive):
     mesh=child.data
@@ -837,12 +898,13 @@ for child in list(ground_road_group.children_recursive):
     bpy.data.meshes.remove(mesh)
 bpy.data.objects.remove(ground_road_group,do_unlink=True)
 mobile_ground_roads=Batch('GroundRoads',GROUND_ROAD_MATERIALS,spatial=True,weld=True)
-summary['groundRoads']['smooth']=build_ground_roads(mobile_ground_roads,height,GEO['bounds'],COLS,ROWS,lightweight=True,bridges=river_bridges.values())
+summary['groundRoads']['smooth']=build_ground_roads(mobile_ground_roads,height,GEO['bounds'],COLS,ROWS,lightweight=True,bridges=river_bridges.values(),elevated=elevated)
 mobile_ground_road_group=mobile_ground_roads.finish()
 mobile_ground_road_group.parent=road_group
 mobile_ground_road_group['planHash']=summary['groundRoads']['planHash']
 del mobile_ground_roads
 export_city(ROOT/'public/models/nanning-city-mobile.glb')
+(ROOT/'data/elevated-roads-heights.json.gz').write_bytes(gzip.compress(json.dumps({'planHash':ELEVATED_HASH,'profiles':elevated_levels,'terrainFloors':elevated_floors},separators=(',',':')).encode(),mtime=0))
 summary['mobileTrees']=mobile_tree_count
 summary['models']={}
 for key,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
