@@ -42,6 +42,8 @@ from zhenning_landmark import terrain_patch as zhenning_terrain_patch
 from mall_landmarks import PLAN as MALL_PLAN, SITES as MALL_SITES, MATERIALS as MALL_MATS
 from mall_landmarks import build_mall, inside_site as inside_mall, intersects_site as intersects_mall
 from mall_landmarks import support_level as mall_support_level
+from cultural_landmarks import SPECS as CULTURAL_SPECS, MATERIALS as CULTURAL_MATS
+from cultural_landmarks import build_cultural, support_level as cultural_support_level
 from viaduct import PLAN as VIADUCT_PLAN, MATERIAL_KEYS as VIADUCT_MATERIALS, REMOVED_TREES as VIADUCT_TREES
 from viaduct import Viaduct, build_structure as build_viaduct_structure, build_details as build_viaduct_details
 from railways import PLAN as RAILWAY_PLAN, MATERIAL_KEYS as RAILWAY_MATERIALS, Railways
@@ -221,6 +223,7 @@ MATS = {
 }
 MATS.update({key: material(*values) for key, values in RIVER_BRIDGE_MATS.items()})
 MATS.update({key: material(*values) for key, values in MALL_MATS.items()})
+MATS.update({key: material(*values) for key, values in CULTURAL_MATS.items()})
 
 
 def terrain_height(x, y):
@@ -663,6 +666,7 @@ def landmark(id):
     if id == 'zhenning':
         z = zhenning_terrace_level(x, y, lambda u,v: displayed_ground_bounds(u,v)[1])
     if id in MALL_SITES: z = mall_support_level(id,x,y,displayed_ground_bounds)
+    if id in CULTURAL_SPECS: z = cultural_support_level(id,x,y,displayed_ground_bounds,(GEO['bounds'],COLS,ROWS))
     keys=['roof','landmark','accent','bridge','building']
     if id == 'expo': keys += ['expo_membrane','expo_glass','expo_frame','expo_stone']
     if id == 'arts-center': keys += ['arts_white','arts_shell','arts_soffit','arts_glass','arts_frame','arts_stone']
@@ -675,18 +679,16 @@ def landmark(id):
     if id == 'zhenning': keys += ZHENNING_MATERIALS
     if id in STATIONS: keys += STATION_MATERIALS
     if id in MALL_SITES: keys += list(MALL_MATS)
+    if id in CULTURAL_SPECS: keys += list(CULTURAL_MATS)
     batch=Batch('Landmark_'+id,keys)
     landmarks.append({k:v for k,v in place.items() if k != 'clearExtent'})
     landmarks[-1]['position']=[round(x,3),round(z,3),round(-y,3)]
     return batch,x,y,z
 
-b,x,y,z=landmark('qingxiu')
-for i in range(9):
-    r=.37-i*.026
-    b.cone(x,y,z+i*.26,r,r*.96,.24,'roof',8)
-    b.cone(x,y,z+i*.26+.21,r*1.35,r*.68,.095,'accent',8)
-b.cone(x,y,z+2.5,.15,0,.52,'accent',8)
-b.finish()
+for identity in CULTURAL_SPECS:
+    b,x,y,z=landmark(identity)
+    build_cultural(b,identity,x,y,z,displayed_ground_bounds)
+    b.finish()
 
 b,x,y,z=landmark('cr')
 for i in range(8):

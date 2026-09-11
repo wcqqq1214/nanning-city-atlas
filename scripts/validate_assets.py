@@ -317,8 +317,9 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-full_bytes,full=inspect_model('nanning-city.glb',20_500_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',15_500_000)
+# Three cultural landmarks add about 0.60 MB of shared exterior detail.
+full_bytes,full=inspect_model('nanning-city.glb',21_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',16_000_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -378,3 +379,7 @@ validate_zhuxi()
 # Mall checks decode both quality profiles and audit their prepared road masks.
 from validate_malls import validate_malls
 validate_malls()
+
+# Fine cultural landmarks retain their road reservations and terrain clearance.
+from validate_cultural_landmarks import validate as validate_cultural
+validate_cultural()
