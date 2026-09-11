@@ -14,6 +14,7 @@ from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
 ROOT = Path(__file__).resolve().parents[1]
+MINZU_CONTEXT_ONLY = '--minzu-context' in sys.argv
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
 from gltf_export import export_city
@@ -62,7 +63,7 @@ for path,fingerprint in RAILWAY_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==fingerprint, f'Rebuild the railway plan after changing {path}'
 for path, fingerprint in MINZU_PLAN['inputHashes'].items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild the Minzu plan after changing {path}'
-for path, fingerprint in GROUND_ROAD_PLAN['inputHashes'].items():
+for path, fingerprint in ({} if MINZU_CONTEXT_ONLY else GROUND_ROAD_PLAN['inputHashes']).items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == fingerprint, f'Rebuild ground roads after changing {path}'
 MINX, MINY, MAXX, MAXY = GEO['bounds']
 assert FOREST_PLAN['center'] == GEO['center'] and FOREST_PLAN['bbox'] == GEO['bbox'], 'Rebuild the forest plan for the current city extent'
@@ -281,6 +282,31 @@ def displayed_ground_bounds(x,y):
     levels=[height(x,y), *(terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,profile)
                            for profile in [False,True])]
     return min(levels),max(levels)
+
+
+if MINZU_CONTEXT_ONLY:
+    # Regenerate connecting streets from the new road, before a full export.
+    # This avoids sampling stale Minzu heights/side roads from the previous GLB.
+    sample = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
+    context_viaduct = Viaduct(height, sample)
+    context_minzu = MinzuAvenue(context_viaduct.road_level, sample)
+    report = context_minzu.validate()
+    faces = []
+    for key,path in context_minzu.paths.items():
+        if context_minzu.routes[key]['bridge']: continue
+        for a,b in zip(context_minzu.sections[key],context_minzu.sections[key][1:]):
+            wa,wb = context_minzu.width(key,a),context_minzu.width(key,b)
+            quad = [context_minzu.at(key,a,-wa),context_minzu.at(key,b,-wb),
+                    context_minzu.at(key,b,wb),context_minzu.at(key,a,wa)]
+            faces.extend([[quad[i] for i in tri] for tri in [(0,1,2),(0,2,3)]])
+    payload = {'roadFaces': faces, 'geometry': report,
+               'inputHashes': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
+                               for p in ['data/minzu-plan.json','blender/minzu_avenue.py']}}
+    output = ROOT/'work/minzu-avenue/road-context.json'
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(payload,separators=(',',':'))+'\n')
+    print('Prepared Minzu connection context:',report,flush=True)
+    sys.exit(0)
 
 
 CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
