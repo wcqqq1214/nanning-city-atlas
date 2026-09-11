@@ -14,6 +14,8 @@ import { DEFAULT_LAYERS } from './types';
 import { assetUrl } from './assets';
 import { TapGesture } from './tap-gesture';
 import { COMPACT_LAYOUT } from './display';
+import { createAreaHighlight } from './area-highlight';
+import { landmarkArea } from './landmark-areas';
 
 export async function createCityScene(
   host: HTMLElement,
@@ -149,6 +151,7 @@ export async function createCityScene(
   };
   controls.addEventListener('change', invalidate);
   let city: THREE.Group | null = null;
+  let areaHighlight: ReturnType<typeof createAreaHighlight> | null = null;
   let places: Landmark[] = [];
   let overview: Overview | null = null;
   let option: SceneOptions = {
@@ -206,6 +209,7 @@ export async function createCityScene(
     const width = Math.max(1, host.clientWidth);
     const height = Math.max(1, host.clientHeight);
     renderer.setSize(width, height);
+    areaHighlight?.resize(width, height);
     for (const label of labels) {
       const display = label.el.style.display;
       label.el.style.display = 'flex';
@@ -241,6 +245,8 @@ export async function createCityScene(
   };
   const focus = (id: string | null, close = false) => {
     const place = places.find((p) => p.id === id);
+    const areaBounds = areaHighlight?.select(place?.id ?? null);
+    dirty = true;
     if (!place) {
       fly(
         new THREE.Vector3(),
@@ -252,6 +258,7 @@ export async function createCityScene(
     }
     close = close && place.closeDistance !== undefined;
     const target = new THREE.Vector3(...place.position);
+    if (areaBounds && !close) areaBounds.getCenter(target);
     target.y *= option.heightScale;
     if (close) target.y += place.anchorHeight * 0.25 * option.heightScale;
     const distance =
@@ -270,6 +277,16 @@ export async function createCityScene(
       const radius = Math.hypot(offset.x, offset.z);
       offset.x = Math.sin(bearing) * radius;
       offset.z = -Math.cos(bearing) * radius;
+    }
+    if (areaBounds && !close) {
+      const size = areaBounds.getSize(new THREE.Vector3());
+      size.y *= option.heightScale;
+      const halfFov = Math.atan(
+        Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) *
+          Math.min(1, camera.aspect),
+      );
+      const fitDistance = ((size.length() * 0.5) / Math.sin(halfFov)) * 1.08;
+      offset.setLength(Math.max(offset.length(), fitDistance));
     }
     fly(target, target.clone().add(offset));
   };
@@ -545,6 +562,7 @@ export async function createCityScene(
     controls.removeEventListener('start', startInteraction);
     controls.removeEventListener('change', invalidate);
     controls.dispose();
+    areaHighlight?.dispose();
     renderer.domElement.removeEventListener('keydown', keyDown);
     labelLayer.removeEventListener('wheel', onLabelWheel);
     renderer.domElement.removeEventListener('pointerdown', onPointerDown);
@@ -655,6 +673,8 @@ export async function createCityScene(
         object.material = waterMaterial;
       }
     });
+    areaHighlight = createAreaHighlight(city, overview.center, landmarkArea);
+    areaHighlight.resize(host.clientWidth, host.clientHeight);
     for (const place of places) {
       const el = document.createElement('button');
       el.className = 'landmark-label';
@@ -707,6 +727,7 @@ export async function createCityScene(
       renderer.toneMappingExposure = 0.96 + night * 0.04;
       if (waterMaterial) waterMaterial.uniforms.uNight.value = night;
       city.scale.y = next.heightScale;
+      areaHighlight?.select(next.selected);
       const names: Partial<Record<string, boolean>> = {
         Buildings: next.layers.buildings,
         Vegetation: next.layers.vegetation,
@@ -721,8 +742,7 @@ export async function createCityScene(
       });
       places.forEach((place) => {
         const object = city!.getObjectByName(`Landmark_${place.id}`);
-        if (object)
-          object.visible = next.layers[place.layer ?? 'buildings'];
+        if (object) object.visible = next.layers[place.layer ?? 'buildings'];
       });
       materialDefaults.forEach((base, mat) => {
         mat.color.copy(base);

@@ -408,11 +408,57 @@ button {
   padding-right: 10px;
   border-radius: 0 5px 5px 0;
 }
-.place-number {
-  font:
-    12px/1.2 Arial,
-    sans-serif;
-  color: #9aa494;
+.place-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 8px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+.place-category-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 6px 9px;
+  border: 1px solid #dfe6dc;
+  border-radius: 6px;
+  color: #536c5b;
+  background: #f5f7f2;
+  font-size: 12px;
+}
+.place-category-filters button span {
+  font-size: 11px;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+.place-category-filters button:hover {
+  background: #e9f0e4;
+}
+.place-category-filters button[aria-pressed='true'] {
+  background: #355e4d;
+  border-color: #355e4d;
+  color: #fff;
+}
+.place-category-filters button:focus-visible {
+  outline: 2px solid #355e4d;
+  outline-offset: 2px;
+}
+.place-group-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #536c5b;
+}
+.place-group-heading span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #82917c;
 }
 .place-item > svg {
   margin-left: auto;
@@ -435,7 +481,7 @@ button {
   margin-top: 5px;
 }
 .place-nanhu,
-.place-bridge {
+.category-bridges {
   background: #e6eeea;
   color: #4a867b;
 }
@@ -740,6 +786,22 @@ button {
   color: #80937e;
   letter-spacing: 0.6px;
   margin: 0;
+}
+.area-hint {
+  display: inline-block;
+  max-width: calc(100vw - 70px);
+  margin-top: 10px;
+  padding: 6px 9px;
+  border: 1px solid #bd842e66;
+  border-radius: 5px;
+  background: #fff6dfeb;
+  color: #805719;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.is-night .area-hint {
+  background: #372d1ee8;
+  color: #f2cb81;
 }
 .view-badges {
   position: absolute;
@@ -1678,6 +1740,9 @@ button {
 }
 .mobile-explorer .sidebar-bottom {
   flex-shrink: 0;
+}
+.mobile-explorer .place-category-filters button {
+  min-height: 44px;
 }
 .mobile-sheet-close {
   position: absolute;

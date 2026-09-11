@@ -63,8 +63,15 @@ import {
   type SceneMetrics,
 } from '@/lib/city/types';
 import { registerAtlasTools } from '@/lib/city/webmcp';
+import { BridgeIcon } from '@/components/bridge-icon';
+import {
+  LANDMARK_CATEGORIES,
+  landmarkCategory,
+  type LandmarkCategory,
+} from '@/lib/city/landmark-categories';
 import landmarkCatalog from '@/data/landmarks.json';
 import region from '@/data/region.json';
+import { landmarkArea } from '@/lib/city/landmark-areas';
 
 const ORDER = landmarkCatalog.map((place) => place.id);
 const LAYER_INFO: {
@@ -85,8 +92,18 @@ const LAYER_INFO: {
     detail: '山林、江边和公园里的树木',
     icon: Trees,
   },
-  { key: 'roads', name: '道路桥梁', detail: '道路、高架和跨江大桥', icon: Route },
-  { key: 'railways', name: '铁路轨道', detail: '铁路、站场股道与铁路桥', icon: TrainFront },
+  {
+    key: 'roads',
+    name: '道路桥梁',
+    detail: '道路、高架和跨江大桥',
+    icon: Route,
+  },
+  {
+    key: 'railways',
+    name: '铁路轨道',
+    detail: '铁路、站场股道与铁路桥',
+    icon: TrainFront,
+  },
   {
     key: 'water',
     name: '河流湖泊',
@@ -95,16 +112,20 @@ const LAYER_INFO: {
   },
   { key: 'labels', name: '地名标注', detail: '可点击的城市地标', icon: MapPin },
 ];
-const iconFor = (id: string) => {
+const iconFor = (place: Pick<Landmark, 'id' | 'category'>) => {
+  const { id } = place;
+  if (landmarkCategory(place) === 'bridges') return BridgeIcon;
   if (id === 'qingxiang-viaduct') return Route;
   if (id === 'qingxiu') return Mountain;
-  if (id === 'zhenning') return Trees;
+  if (id === 'zhenning') return LandmarkIcon;
   if (['gxu', 'gxmzu'].includes(id)) return GraduationCap;
   if (id === 'east-station' || id === 'nanning-station') return TrainFront;
   if (id === 'sports-center') return Trophy;
-  if (['nanhu', 'bridge', 'tingzi'].includes(id)) return Waves;
+  if (['nanhu', 'xiangsi', 'mingyue', 'tingzi'].includes(id)) return Waves;
   if (['gx-museum', 'ethnic-museum', 'confucius'].includes(id))
     return LandmarkIcon;
+  if (landmarkCategory(place) === 'nature') return Trees;
+  if (landmarkCategory(place) === 'culture') return LandmarkIcon;
   return Building2;
 };
 
@@ -186,6 +207,7 @@ export default function Home() {
   const [reload, setReload] = useState(0);
   const [tab, setTab] = useState('explore');
   const [selected, setSelected] = useState<string | null>(null);
+  const [category, setCategory] = useState<LandmarkCategory | 'all'>('all');
   const [layers, setLayers] = useState({ ...DEFAULT_LAYERS });
   const [hour, setHour] = useState(14);
   const [heightScale, setHeightScale] = useState(1);
@@ -214,9 +236,16 @@ export default function Home() {
     landmarks: places.map(({ id, name }) => ({ id, name })),
   });
   const active = places.find((place) => place.id === selected);
+  const activeArea = landmarkArea(selected);
   const ordered = ORDER.map((id) => places.find((p) => p.id === id)).filter(
     (p): p is Landmark => Boolean(p),
   );
+  const groupedPlaces = LANDMARK_CATEGORIES.map((group) => ({
+    ...group,
+    places: (ready ? ordered : landmarkCatalog).filter(
+      (place) => landmarkCategory(place) === group.id,
+    ),
+  })).filter((group) => group.places.length > 0);
   const night = hour >= 19;
 
   const choose = useCallback((id: string | null) => {
@@ -435,31 +464,65 @@ export default function Home() {
             </div>
             <ArrowUpRight size={18} />
           </button>
+          <fieldset className="place-category-filters" aria-label="地标分类">
+            <button
+              type="button"
+              aria-pressed={category === 'all'}
+              onClick={() => setCategory('all')}
+            >
+              全部
+            </button>
+            {groupedPlaces.map((group) => (
+              <button
+                key={group.id}
+                type="button"
+                aria-label={`${group.name}，${group.places.length}处`}
+                aria-pressed={category === group.id}
+                onClick={() => setCategory(group.id)}
+              >
+                {group.shortName}
+                <span aria-hidden="true">{group.places.length}</span>
+              </button>
+            ))}
+          </fieldset>
           <div className="place-list">
-            {(ready ? ordered : landmarkCatalog).map((place, index) => {
-              const Icon = iconFor(place.id);
-              return (
-                <button
-                  key={place.id}
-                  className={`place-item ${selected === place.id ? 'active' : ''}`}
-                  disabled={!ready}
-                  onClick={() => choose(place.id)}
-                  aria-pressed={selected === place.id}
+            {groupedPlaces
+              .filter((group) => category === 'all' || category === group.id)
+              .map((group) => (
+                <section
+                  key={group.id}
+                  className="place-group"
+                  aria-label={group.name}
                 >
-                  <span className="place-number">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className={`place-icon place-${place.id}`}>
-                    <Icon size={19} strokeWidth={1.6} />
-                  </span>
-                  <span className="place-text">
-                    <strong>{place.name}</strong>
-                    <small>{place.category || '城市探索点'}</small>
-                  </span>
-                  <ChevronRight size={15} />
-                </button>
-              );
-            })}
+                  <h3 className="place-group-heading">
+                    {group.name}
+                    <span>{group.places.length} 处</span>
+                  </h3>
+                  {group.places.map((place) => {
+                    const Icon = iconFor(place);
+                    return (
+                      <button
+                        key={place.id}
+                        className={`place-item ${selected === place.id ? 'active' : ''}`}
+                        disabled={!ready}
+                        onClick={() => choose(place.id)}
+                        aria-pressed={selected === place.id}
+                      >
+                        <span
+                          className={`place-icon place-${place.id} category-${group.id}`}
+                        >
+                          <Icon size={19} strokeWidth={1.6} />
+                        </span>
+                        <span className="place-text">
+                          <strong>{place.name}</strong>
+                          <small>{place.category || '城市探索点'}</small>
+                        </span>
+                        <ChevronRight size={15} />
+                      </button>
+                    );
+                  })}
+                </section>
+              ))}
           </div>
           <div className="explore-note">
             <Waves size={18} />
@@ -477,9 +540,7 @@ export default function Home() {
               全部显示
             </button>
           </div>
-          <p className="panel-description">
-            选择地图上要显示的内容。
-          </p>
+          <p className="panel-description">选择地图上要显示的内容。</p>
           <div className="layer-list">
             {LAYER_INFO.map(({ key, name, detail, icon: Icon }) => (
               <div className="layer-row" key={key}>
@@ -797,6 +858,9 @@ export default function Home() {
               ? `${active.lon.toFixed(4)}° E  /  ${active.lat.toFixed(4)}° N`
               : '石埠、相思湖、老城、青秀山及部分五象片区'}
           </p>
+          {active && activeArea && ready && (
+            <span className="area-hint">{activeArea.name} · 范围示意</span>
+          )}
         </div>
         <div className="view-badges">
           <span className="view-chip">
@@ -1014,7 +1078,8 @@ export default function Home() {
           </SheetHeader>
           <div className="info-content">
             <p>
-              这是一张可以旋转、缩放的南宁三维地图，覆盖石埠、相思湖、老城、青秀和部分五象片区。河道、道路和建筑轮廓来自 OpenStreetMap，地形来自公开高程数据，主要地标用 Blender 建模。
+              这是一张可以旋转、缩放的南宁三维地图，覆盖石埠、相思湖、老城、青秀和部分五象片区。河道、道路和建筑轮廓来自
+              OpenStreetMap，地形来自公开高程数据，主要地标用 Blender 建模。
             </p>
             <h3>怎么操作</h3>
             <ul className="guide-list">
@@ -1060,11 +1125,11 @@ export default function Home() {
             <h3>范围与精度</h3>
             <p>
               范围：{region.bbox[0]}°–{region.bbox[2]}° E，{region.bbox[1]}°–
-              {region.bbox[3]}° N，约 37 × 28
-              km，并未覆盖整个南宁市。
+              {region.bbox[3]}° N，约 37 × 28 km，并未覆盖整个南宁市。
             </p>
             <p>
-              为了看清高低差，山地起伏放大了 3 倍，建筑高度放大了 1.55 倍，水面也做了平整处理。缺少高度数据的建筑采用估算值，程序补充的建筑位置为示意，地标外形做了简化。
+              为了看清高低差，山地起伏放大了 3 倍，建筑高度放大了 1.55
+              倍，水面也做了平整处理。缺少高度数据的建筑采用估算值，程序补充的建筑位置为示意，地标外形做了简化。
             </p>
             <p>
               这张地图供浏览使用，不能用于测绘、导航或洪水分析。光照是模拟效果，不代表实时天气或准确的日照情况。
