@@ -70,7 +70,7 @@
 | **GLB + Draco** | 压缩精细与轻量两档模型，解码器随站点托管。 |
 
 - [Blender 源文件](blender/nanning-city.blend)：可编辑的城市场景与地标模型。
-- [模型资源](public/models/)：约 16.38 MB 的精细模型与 11.80 MB 的轻量模型。
+- [模型资源](public/models/)：约 20.00 MB 的精细模型与 14.86 MB 的轻量模型。
 - [场景数据](public/data/)：高程、裁剪后的地理数据库、地标与地图元数据。
 
 网页运行时只向自己的站点请求数据和模型。
@@ -127,6 +127,7 @@ python3 -m http.server --directory out 8080
 | [手机体验](docs/MOBILE.md) | 轻量模型、渲染策略、测试方法与诊断入口。 |
 | [建模说明](docs/MODELING.md) | 数据准备、Blender 重建流程与项目结构。 |
 | [城市铁路](docs/RAILWAYS.md) | 铁路来源、两站轨道衔接、桥隧结构与两档细节。 |
+| [剩余高架](docs/ELEVATED_ROADS.md) | 高架与匝道覆盖、共享材质、桥墩避让及两档地形适配。 |
 | [验收记录](docs/VALIDATION.md) · [打磨建议](docs/POLISH.md) | 验证结果、已知限制与后续计划。 |
 
 ## 许可与署名

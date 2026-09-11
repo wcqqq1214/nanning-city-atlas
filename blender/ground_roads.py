@@ -4,6 +4,8 @@ import gzip
 import hashlib
 import json
 import math
+import sys
+from collections import defaultdict
 from pathlib import Path
 from forest_canopy import refined_terrain_height, terrain_surface
 from nanhu_landmark import PLAN as NANHU_PLAN
@@ -28,7 +30,40 @@ def plane_height(vertices,x,y):
     return u*a[2]+v*b[2]+(1-u-v)*c[2]
 
 
-def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridges=()):
+class SteepEdges:
+    """Keep paint away from steep adjacent faces whose quantized edge may move."""
+    def __init__(self, triangles, margin=.002):
+        self.margin=margin;self.cells=defaultdict(list);self.faces=[]
+        for tri in triangles:
+            a,b,c=tri;u=[b[k]-a[k] for k in range(3)];v=[c[k]-a[k] for k in range(3)]
+            normal=(u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0])
+            if math.hypot(*normal[:2])<=abs(normal[2]):continue
+            index=len(self.faces);self.faces.append(tri)
+            for cell in self.covered_cells(tri,margin):self.cells[cell].append(index)
+
+    def covered_cells(self,tri,margin=0):
+        for x in range(math.floor((min(p[0] for p in tri)-margin)*2),math.floor((max(p[0] for p in tri)+margin)*2)+1):
+            for y in range(math.floor((min(p[1] for p in tri)-margin)*2),math.floor((max(p[1] for p in tri)+margin)*2)+1):yield x,y
+
+    def near(self,tri):
+        candidates=set()
+        for cell in self.covered_cells(tri):candidates.update(self.cells.get(cell,[]))
+        for index in candidates:
+            other=self.faces[index];separated=False
+            for face in (tri,other):
+                for a,b in zip(face,face[1:]+face[:1]):
+                    nx,ny=a[1]-b[1],b[0]-a[0];padding=self.margin*math.hypot(nx,ny)
+                    first=[p[0]*nx+p[1]*ny for p in tri];second=[p[0]*nx+p[1]*ny for p in other]
+                    if max(first)+padding<min(second) or max(second)+padding<min(first):separated=True;break
+                if separated:break
+            if not separated:return True
+        return False
+
+
+def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridges=(),elevated=None):
+    if '--capture-road-inputs' not in sys.argv:
+        from road_solids import ground as resolved_ground
+        return resolved_ground(batch,lightweight)
     mesh=PLAN['meshes']['smooth' if lightweight else 'detail']
     supports=[]
     for support in mesh['supports']:
@@ -61,7 +96,7 @@ def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridg
             center,inner=bridge.at(end),bridge.at(inside)
             ux,uy=center[0]-inner[0],center[1]-inner[1];length=math.hypot(ux,uy)
             ports.append((a,b,center[0],center[1],ux/length,uy/length))
-    vertices=[];floors=[];min_lift=float('inf');max_lift=0
+    vertices=[];floors=[];min_lift=float('inf');max_lift=0;max_lift_point=None
     for i,(x,y) in enumerate(mesh['points']):
         floor=plane_height(supports[mesh['pointSupports'][i]],x,y)
         z=floor+.008
@@ -84,20 +119,23 @@ def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridg
             # Old generic elevated strips use a 110 m minimum display datum.
             # They are outside this ground-road pass: do not turn a local street
             # into a cliff merely to reach a suspended legacy bridge endpoint.
-            if index<0 and target-floor>.35:
+            if index<0 and (elevated is not None or target-floor>.35):
                 blend=0
             z=max(z,floor+.008+max(0,target-floor-.008)*blend)
         for a,b,cx,cy,ux,uy in ports:
-            if abs(x-cx)>.9 or abs(y-cy)>.9 or (x-cx)*ux+(y-cy)*uy<-.002:continue
+            if abs(x-cx)>.9 or abs(y-cy)>.9:continue
             dx,dy=b[0]-a[0],b[1]-a[1]
             t=max(0,min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)))
             gap=math.hypot(x-a[0]-t*dx,y-a[1]-t*dy)
             if gap>.65:continue
             blend=max(0,1-gap/.65);blend=blend*blend*(3-2*blend)
             z=max(z,floor+.008+max(0,a[2]*(1-t)+b[2]*t-floor-.008)*blend)
+        if elevated is not None:z=elevated.connection_height(x,y,z)
         floors.append(floor)
-        min_lift=min(min_lift,z-floor);max_lift=max(max_lift,z-floor)
+        min_lift=min(min_lift,z-floor)
+        if z-floor>max_lift:max_lift=z-floor;max_lift_point=[x,y]
         vertices.append((x,y,z))
+    if hasattr(batch,'capture_vertices'):batch.capture_vertices(vertices,floors)
     for tri,material in zip(mesh['triangles'],mesh['materials']):
         batch.face([vertices[i] for i in tri],MATERIAL_KEYS[material])
     # Close only raised approach boundaries; ordinary street surfaces stay flat.
@@ -114,6 +152,7 @@ def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridg
     for x,y,parent in mesh['paintPoints']:
         z=plane_height([vertices[i] for i in mesh['triangles'][parent]],x,y)
         paint.append((x,y,z+.0020))
+    steep_edges=SteepEdges([[vertices[i] for i in tri] for tri in mesh['triangles']])
     painted=0
     for tri in mesh['paintTriangles']:
         parent=mesh['paintPoints'][tri[0]][2]
@@ -122,8 +161,9 @@ def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridg
         normal=(u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0])
         # Do not put narrow paint on near-vertical legacy connection slivers.
         if math.hypot(*normal[:2])>abs(normal[2]):continue
+        if steep_edges.near([paint[i] for i in tri]):continue
         batch.face([paint[i] for i in tri],'viaduct_line');painted+=1
     assert all(math.isfinite(v) for point in vertices for v in point)
     assert min_lift>=.007999
     return {'surfaceTriangles':len(mesh['triangles']),'approachWallTriangles':walls,'markingTriangles':painted,'omittedSteepMarkingTriangles':len(mesh['paintTriangles'])-painted,
-            'minTerrainLiftMeters':round(min_lift*100,4),'maxConnectionLiftMeters':round(max_lift*100,3)}
+            'minTerrainLiftMeters':round(min_lift*100,4),'maxConnectionLiftMeters':round(max_lift*100,3),'maxConnectionPoint':max_lift_point}

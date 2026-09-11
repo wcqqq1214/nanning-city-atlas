@@ -3,7 +3,7 @@
 Blender 5.2 exposes a scene-wide quantization option. Scope its per-node encoder
 to this one export, restoring it afterwards; never modify installed add-on files.
 Decoded-mesh audits guard narrow geometry and ground-road/terrain clearance.
-Terrain and streets share 18-bit precision so their boundaries remain aligned.
+Terrain uses 18-bit precision; resolved roads use 22-bit precision at joined edges.
 """
 import bpy
 from io_scene_gltf2.io.exp import draco
@@ -15,7 +15,12 @@ def export_city(filepath):
         raise RuntimeError('Unsupported Blender Draco exporter; this city exporter is verified with Blender 5.2.1')
 
     def encode_node(node,dll,settings,cache):
-        if node.name and node.name.startswith(('Railways_','Railway_Details_','MinzuAvenue_','RiverBridge_Details_','GroundRoads_','Terrain_')):
+        if node.name and node.name.startswith(('GroundRoads_','ElevatedRoads_')):
+            # Resolved solids meet along narrow, sloping seams across 8 km
+            # batches. 18-bit material quantization can move those edges by
+            # centimetres and recreate crossings; retain millimetre precision.
+            settings={**settings,'gltf_draco_position_quantization':22}
+        elif node.name and node.name.startswith(('Railways_','Railway_Details_','MinzuAvenue_','RiverBridge_Details_','Terrain_')):
             settings={**settings,'gltf_draco_position_quantization':18}
         return original(node,dll,settings,cache)
 

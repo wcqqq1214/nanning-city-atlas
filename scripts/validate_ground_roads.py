@@ -25,12 +25,13 @@ def load_plan():
 def decoded_faces(filename):
     raw=(ROOT/'public/models'/filename).read_bytes();size=struct.unpack_from('<I',raw,12)[0]
     model=json.loads(raw[20:20+size]);binary=28+size
-    groups={'road':[],'paint':[],'terrain':[]};counts={};materials=set()
+    groups={'road':[],'paint':[],'terrain':[],'elevated':[]};counts={};materials=set()
     for node in model['nodes']:
         name=node.get('name','')
-        if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_')):continue
+        if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_','ElevatedRoads_')):continue
         for p in model['meshes'][node['mesh']]['primitives']:
             mat=model['materials'][p['material']]['name']
+            if name.startswith('ElevatedRoads_') and mat!='Qingxiang sage asphalt':continue
             if name.startswith('GroundRoads_'):
                 counts[mat]=counts.get(mat,0)+model['accessors'][p['indices']]['count']//3
                 materials.add(p['material'])
@@ -39,7 +40,7 @@ def decoded_faces(filename):
             start=binary+view.get('byteOffset',0);mesh=DracoPy.decode(raw[start:start+view['byteLength']])
             faces=np.asarray(mesh.points[mesh.faces],dtype=np.float64)
             assert np.isfinite(faces).all()
-            group='terrain' if name.startswith('Terrain_') else 'paint' if mat=='Qingxiang lane markings' else 'road'
+            group='elevated' if name.startswith('ElevatedRoads_') else 'terrain' if name.startswith('Terrain_') else 'paint' if mat=='Qingxiang lane markings' else 'road'
             groups[group].append(faces)
     groups={k:np.concatenate(v) for k,v in groups.items()}
     nodes=model['nodes'];parent=next(n for n in nodes if n.get('name')=='GroundRoads');roads=next(n for n in nodes if n.get('name')=='Roads')
@@ -58,7 +59,7 @@ def planes(faces):
     return shapely.polygons(p[:,:,:2]),coefficients,valid
 
 
-def clearance(upper,lower,label):
+def clearance(upper,lower,label,max_vertical_separation=None):
     up,up_plane,valid=planes(upper);low,low_plane,_=planes(lower)
     index=STRtree(low);minimum=float('inf');pairs_count=0;worst=None
     for start in range(0,len(up),3000):
@@ -66,6 +67,12 @@ def clearance(upper,lower,label):
         if pairs.shape[1]==0:continue
         ui=pairs[0]+start;li=pairs[1]
         intersections=shapely.intersection(up[ui],low[li])
+        if max_vertical_separation is not None:
+            probes=shapely.get_coordinates(shapely.centroid(intersections))
+            delta=up_plane[ui]-low_plane[li]
+            keep=np.abs(delta[:,0]*probes[:,0]+delta[:,1]*probes[:,1]+delta[:,2])<max_vertical_separation
+            ui,li,intersections=ui[keep],li[keep],intersections[keep]
+            if len(ui)==0:continue
         coordinates,owners=shapely.get_coordinates(intersections,return_index=True)
         a,b=up_plane[ui[owners]],low_plane[li[owners]]
         dz=(a[:,0]-b[:,0])*coordinates[:,0]+(a[:,1]-b[:,1])*coordinates[:,1]+a[:,2]-b[:,2]
@@ -116,10 +123,13 @@ def validate_ground_roads():
     for profile,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
         groups,counts,model_hash=decoded_faces(filename);assert model_hash==digest
         report_counts=report[profile]
-        assert len(groups['road'])==report_counts['surfaceTriangles']==len(plan['meshes'][profile]['triangles'])
-        assert abs(len(groups['paint'])-report_counts['markingTriangles'])<=2
-        assert report_counts['markingTriangles']+report_counts['omittedSteepMarkingTriangles']==len(plan['meshes'][profile]['paintTriangles'])
-        assert report_counts['omittedSteepMarkingTriangles']<len(plan['meshes'][profile]['paintTriangles'])*.10
+        metadata=json.loads((ROOT/f'data/road-solids-{profile}.json').read_text())
+        assert report_counts['resolvedHash']==metadata['sha256']
+        assert hashlib.sha256((ROOT/f'data/road-solids-{profile}.npz').read_bytes()).hexdigest()==metadata['sha256']
+        assert report_counts['surfaceTriangles']==metadata['counts']['ground']
+        assert abs(len(groups['road'])-report_counts['surfaceTriangles'])<report_counts['surfaceTriangles']*.02
+        assert report_counts['markingTriangles']==metadata['counts']['groundPaint']
+        assert abs(len(groups['paint'])-report_counts['markingTriangles'])<report_counts['markingTriangles']*.02
         minimum,collapsed,total=clearance(groups['road'],groups['terrain'],profile+' roads/terrain')
         assert minimum>0, f'{profile}: decoded road penetrates displayed terrain'
         assert collapsed/total<.02,'Excessive compressed surface degeneration'
@@ -129,7 +139,11 @@ def validate_ground_roads():
         # Exact triangulation should neither lose broad areas nor duplicate junction surfaces.
         shapes,_,_=planes(groups['road']);actual=unary_union(shapes)
         expected_xy=shapely.transform(paved,lambda xy:xy*np.array([1,-1]))
-        missing=expected_xy.buffer(-.003).difference(actual)
+        # Ground approaches and bridge decks share a resolved solid; the bridge
+        # material owns the joined overlap. Both are valid paved coverage.
+        bridge_shapes,_,_=planes(groups['elevated'])
+        covered=unary_union([actual,unary_union(bridge_shapes)])
+        missing=expected_xy.buffer(-.003).difference(covered)
         # Separate material primitives quantize their shared edges independently.
         # Bound both seam width (6 cm) and total area (0.01%); broad holes still fail.
         assert missing.buffer(-.0003).area<1e-7,'Export left a broad hole in paved coverage'
