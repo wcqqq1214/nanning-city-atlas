@@ -57,7 +57,8 @@ def ground(xx,yy):
     v=max(0,min(rows-1.001,(north-yy)/(north-south)*(rows-1)))
     i,j=int(u),int(v);a,b=u-i,v-j
     h=(heights[j*cols+i]*(1-a)+heights[j*cols+i+1]*a)*(1-b)+(heights[(j+1)*cols+i]*(1-a)+heights[(j+1)*cols+i+1]*a)*b
-    return max(-.08,(h-55)/100*3)
+    from terrain_height import scene_height
+    return scene_height(h,dem)
 
 i0,j0,i1,j1=terrain_patch(tuple(geo['bounds']),cols,rows,tuple(geo['center']))
 assert all(i%2==0 for i in [i0,j0,i1,j1])

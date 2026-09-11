@@ -1,0 +1,55 @@
+{
+  "bbox": [
+    108.12,
+    22.7,
+    108.48,
+    22.95
+  ],
+  "center": [
+    108.30000000000001,
+    22.825
+  ],
+  "cols": 617,
+  "rows": 465,
+  "minElevation": 53.83,
+  "maxElevation": 387.34,
+  "units": "meters",
+  "datum": "Copernicus GLO-30 DSM, EGM2008 heights; display conditioning is separate",
+  "source": "Copernicus DEM GLO-30, 2021 release, hosted on AWS by Sinergise",
+  "sourceUrl": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N22_00_E108_00_DEM/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+  "sourceSha256": "7670186b097b61e7fd7b6b9310783d0dfec564c2faa167f28560b1e375fc17ca",
+  "sourceResolutionArcSeconds": 1,
+  "sampleSpacingMeters": 60,
+  "accessed": "2026-09-11",
+  "verticalDatumMeters": 63.3,
+  "verticalOffset": 0.26,
+  "verticalExaggeration": 1.35,
+  "conditioning": {
+    "version": 1,
+    "resampling": "bilinear after native Gaussian antialiasing",
+    "urbanPercentile": 35,
+    "urbanWindowMeters": 300,
+    "forestRidgesProtected": true,
+    "landFloorMeters": 68.3,
+    "waterDisplayMeters": 61.3,
+    "gradedSites": {
+      "hangyang": {
+        "levelMeters": 87.311,
+        "flatApronMeters": 175,
+        "blendApronMeters": 125
+      },
+      "mixc": {
+        "levelMeters": 95.37,
+        "flatApronMeters": 175,
+        "blendApronMeters": 125
+      }
+    }
+  },
+  "inputHashes": {
+    "data/region.json": "161f7fbe10c876ee8cddf859b4004cc76e9b311a053f8595af67e164dbddcad0",
+    "public/data/geography.json": "f8730cb2a3d5f54d60b2e87047e64e796211da47e81b57f29af3a03542483102",
+    "data/malls-plan.json": "ba9693962bce4f2e8006675e3f4d0b97b780dcf1bb6f63e772c9451f0df167e6"
+  },
+  "woodlandFootprintSha256": "15780802023ede155c2d167bfd9b0bf9f6704db9e0aceff89645a3de02d5372e",
+  "attributionFile": "public/data/terrain-attribution.txt"
+}

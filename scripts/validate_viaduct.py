@@ -166,7 +166,8 @@ def load_network():
         i, j, a, b = int(u), int(v), u - int(u), v - int(v)
         h = ((1 - a) * values[j * cols + i] + a * values[j * cols + i + 1]) * (1 - b)
         h += ((1 - a) * values[(j + 1) * cols + i] + a * values[(j + 1) * cols + i + 1]) * b
-        return max(-.08, (h - 55) / 100 * 3)
+        from terrain_height import scene_height
+        return scene_height(h,dem)
 
     kx = 1113.2 * math.cos(math.radians(geo['center'][1]))
     sites = {key: ((p['center'][0] - geo['center'][0]) * kx, (p['center'][1] - geo['center'][1]) * 1113.2)

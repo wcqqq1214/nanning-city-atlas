@@ -43,6 +43,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useCompactLayout } from '@/lib/city/display';
+import { assetUrl } from '@/lib/city/assets';
 import { Slider } from '@/components/ui/slider';
 import {
   Sheet,
@@ -1060,7 +1061,7 @@ export default function Home() {
             }}
           >
             简化三维地图 <span className="status-divider">·</span> ©
-            OpenStreetMap / Mapzen
+            OpenStreetMap / Copernicus DEM
           </button>
         </footer>
         {showStats && metrics && (
@@ -1139,7 +1140,7 @@ export default function Home() {
               {region.bbox[3]}° N，约 37 × 28 km，并未覆盖整个南宁市。
             </p>
             <p>
-              为了看清高低差，山地起伏放大了 3 倍，建筑高度放大了 1.55
+              为了看清高低差，山地起伏放大了 1.35 倍，建筑高度放大了 1.55
               倍，水面也做了平整处理。缺少高度数据的建筑采用估算值，程序补充的建筑位置为示意，地标外形做了简化。
             </p>
             <p>
@@ -1159,13 +1160,24 @@ export default function Home() {
                 </span>
               </a>
               <a
-                href="https://registry.opendata.aws/terrain-tiles/"
+                href="https://registry.opendata.aws/copernicus-dem/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Mapzen / AWS Terrain Tiles
+                Copernicus DEM GLO-30
                 <span>
-                  高程 · SRTM data courtesy of USGS
+                  高程 · 30 米源数据，60 米显示网格
+                  <ArrowUpRight size={14} />
+                </span>
+              </a>
+              <a
+                href={assetUrl('/data/terrain-attribution.txt')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                地形数据版权与许可
+                <span>
+                  Copernicus WorldDEM-30 · 来源声明
                   <ArrowUpRight size={14} />
                 </span>
               </a>

@@ -61,7 +61,7 @@ class SteepEdges:
 
 
 def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridges=(),elevated=None):
-    if '--capture-road-inputs' not in sys.argv:
+    if '--capture-road-inputs' not in sys.argv and '--terrain-context' not in sys.argv:
         from road_solids import ground as resolved_ground
         return resolved_ground(batch,lightweight)
     mesh=PLAN['meshes']['smooth' if lightweight else 'detail']

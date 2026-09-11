@@ -109,13 +109,13 @@ def sample_supports(points,supports):
     return result
 
 
-def capture_floors(routes):
+def capture_floors(routes, context_models):
     points=[];spans=[]
     for r in routes:
         path=RoadPath(r['points']);start=len(points)
         for s in path.lengths:points.extend([path.at(s,o)[:2] for o in [-r['width']-.015,0,r['width']+.015]])
         spans.append((start,len(points)));r['terrainFloors']={};r['roadFloors']={}
-    for profile,filename in [('detail','work/elevated-roads/before.glb'),('smooth','work/elevated-roads/before-mobile.glb')]:
+    for profile,filename in context_models.items():
         floors,paving=decoded_supports(filename)
         terrain=sample_supports(points,floors);road=sample_supports(points,paving)
         for r,(a,b) in zip(routes,spans):
@@ -150,7 +150,8 @@ def bind_paint(routes):
             r['paint'][profile]=bound
 
 
-def prepare(capture=False):
+def prepare(capture=False, context_directory=None):
+    context_models={p:str(Path(context_directory)/f'{p}.glb') for p in ['detail','smooth']} if context_directory else {'detail':'work/elevated-roads/before.glb','smooth':'work/elevated-roads/before-mobile.glb'}
     geo=load('public/data/geography.json');indices=remaining(geo)
     if capture or not (ROOT/'data/elevated-roads-source.json').exists():capture_source(geo,indices)
     source={r['roadIndex']:r for r in load('data/elevated-roads-source.json')['ways']}
@@ -279,13 +280,15 @@ def prepare(capture=False):
         if a%100==0:print('Deck clipping',a,'/',len(routes),flush=True)
     print(f'Prepared {len(routes)} elevated ways, {len(joins)} joints, {len(crossings)} separated crossings; sampling retained terrain.',flush=True)
     bind_paint(routes)
-    capture_floors(routes)
+    capture_floors(routes,context_models)
     inputs=['public/data/geography.json','public/data/terrain.json','data/elevated-roads-source.json','data/bridges-plan.json','data/viaduct-plan.json','data/minzu-plan.json']
-    plan={'sceneCenter':geo['center'],'inputHashes':{p:digest(p) for p in inputs},'contextModels':{p:digest(p) for p in ['work/elevated-roads/before.glb','work/elevated-roads/before-mobile.glb']},
+    plan={'sceneCenter':geo['center'],'inputHashes':{p:digest(p) for p in inputs},'contextModels':{p:digest(p) for p in context_models.values()},
           'routes':routes,'joins':joins,'crossings':crossings,'stats':{'ways':len(routes),'lengthKm':round(sum(p.length for p in paths)/10,3),'piers':sum(len(r['piers']) for r in routes),'crossings':len(crossings),'pairedDeckMerges':paired}}
     (ROOT/'data/elevated-roads-plan.json.gz').write_bytes(gzip.compress((json.dumps(plan,ensure_ascii=False,separators=(',',':'))+'\n').encode(),mtime=0))
     print(plan['stats'],flush=True)
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--capture',action='store_true');prepare(p.parse_args().capture)
+    p=argparse.ArgumentParser();p.add_argument('--capture',action='store_true')
+    p.add_argument('--context-directory',help='Fresh terrain context directory containing detail.glb and smooth.glb')
+    args=p.parse_args();prepare(args.capture,args.context_directory)

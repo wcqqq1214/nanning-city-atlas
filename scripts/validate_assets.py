@@ -69,7 +69,7 @@ pairs = STRtree(infill).query(infill, predicate='intersects')
 assert not (pairs[0] != pairs[1]).any(), 'Procedural buildings overlap one another'
 assert len({p['id'] for p in places}) == len(places), 'Duplicate landmark IDs'
 assert [p['id'] for p in places] == [p['id'] for p in catalog], 'Landmark list and tour catalog differ'
-assert 'luowen' not in {p['id'] for p in places}, 'Removed Arts Institute landmark is still present'
+assert not {'luowen','meili'} & {p['id'] for p in places}, 'Removed landmark is still present'
 for place, source in zip(places, catalog):
     assert all(place[key] == source[key] for key in ['name','lon','lat','cameraDistance','anchorHeight','modelled'])
     assert 5 <= place['cameraDistance'] <= (90 if place['id'] == 'qingxiang-viaduct' else 60)
@@ -227,7 +227,8 @@ def terrain_ground(x, y):
     hs = t.get('sceneHeights',t['heights'])
     h = ((1-a)*hs[j*t['cols']+i]+a*hs[j*t['cols']+i+1])*(1-b)
     h += ((1-a)*hs[(j+1)*t['cols']+i]+a*hs[(j+1)*t['cols']+i+1])*b
-    return max(-.08,(h-55)/100*3)
+    from terrain_height import scene_height
+    return scene_height(h,t)
 
 railway_cuts=TerrainCut(json.loads((ROOT/'public/data/overview.json').read_text())['railways']['terrainCuts'])
 def raw_ground(x, y):
@@ -317,9 +318,10 @@ def inspect_model(filename, budget):
     return len(raw),counts
 # Fine landmarks are identical in both qualities. Allow their shared geometry
 # within bounded file sizes, while requiring substantial terrain/tree savings.
-# Three cultural landmarks add about 0.60 MB of shared exterior detail.
-full_bytes,full=inspect_model('nanning-city.glb',21_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',16_000_000)
+# The 60 m terrain and newly split ground streets add 4.3 / 1.6 MB.
+# Keep the detailed model below a 25 MiB asset budget.
+full_bytes,full=inspect_model('nanning-city.glb',26_000_000)
+mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',18_000_000)
 assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
 assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
 assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
@@ -333,9 +335,9 @@ assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details']
 # Optimizing the full-detail trees also narrows the gap between profiles. Use
 # independent absolute budgets so improving detail cannot fail a ratio check.
 # The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
-assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_300_000
+assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_650_000
 # The complete fort and Minzu road structure are shared across both profiles.
-assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 960_000
+assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_000_000
 assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
 assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
 assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
@@ -351,7 +353,9 @@ for counts, profile, tree_count, triangles_per_tree in [
         assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
-    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_Details','RiverBridge_Details_','GroundRoads','ElevatedRoads','ZhuxiInterchange')) and name != 'QingxiangViaduct_Details':
+    # Resolved Minzu joins follow each profile's ground mesh. validate_minzu()
+    # independently checks the shared native structure and both resolved meshes.
+    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_','RiverBridge_Details_','GroundRoads','ElevatedRoads','ZhuxiInterchange')) and name != 'QingxiangViaduct_Details':
         assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
@@ -368,8 +372,8 @@ validate_bridges()
 # Ground streets are terrain-conforming in each profile; budget them separately.
 # Joined approach solids retain their exposed walls and split paint at the
 # resulting boundaries; cap these complete surfaces rather than old strips.
-assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 410_000
-assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 295_000
+assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 530_000
+assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 350_000
 validate_ground_roads()
 assert sum(v for k,v in full.items() if k.startswith('ElevatedRoads_'))<500_000
 validate_elevated_roads()
@@ -383,3 +387,5 @@ validate_malls()
 # Fine cultural landmarks retain their road reservations and terrain clearance.
 from validate_cultural_landmarks import validate as validate_cultural
 validate_cultural()
+from validate_terrain import validate as validate_terrain
+validate_terrain()

@@ -11,6 +11,7 @@ import sys
 import DracoPy
 import mapbox_earcut
 import numpy as np
+import shapely
 from shapely import make_valid
 from shapely.geometry import LineString, Point, Polygon, box
 from shapely.ops import unary_union, nearest_points
@@ -56,8 +57,8 @@ def width(road):
     return .16 if road['class'] in ['primary','trunk','motorway'] else .105 if road['class']=='secondary' else .07 if road['class']=='tertiary' else .05
 
 
-def capture_context(geo, minzu, viaduct, minzu_context=None):
-    raw = (ROOT/'public/models/nanning-city.glb').read_bytes()
+def capture_context(geo, minzu, viaduct, minzu_context=None, context_model=None, obstacles_context=None):
+    raw = (ROOT/(context_model or 'public/models/nanning-city.glb')).read_bytes()
     size = struct.unpack_from('<I',raw,12)[0]; model = json.loads(raw[20:20+size]); binary = 28+size
     road_landmarks={'Landmark_'+p['id'] for p in load('data/landmarks.json') if p.get('layer')=='roads'}
     selected_ground = [LineString(r['points']).buffer(r['width']/2+.015,cap_style=2) for r in minzu['paths'] if not r['bridge']]
@@ -65,6 +66,8 @@ def capture_context(geo, minzu, viaduct, minzu_context=None):
                         if str(i) in viaduct['roadOverrides'] and not r['bridge']]
     ground_mask = unary_union(selected_ground)
     solid, road_faces, bridge_faces = [], [], []
+    if obstacles_context:
+        solid.extend(Polygon(p[0],p[1:]) for p in load(obstacles_context)['obstacles'])
     if minzu_context:
         updated=load(minzu_context)
         for path,digest in updated['inputHashes'].items():
@@ -126,7 +129,10 @@ def capture_context(geo, minzu, viaduct, minzu_context=None):
     context = {'origin':'Boundary snapshot of existing detailed models before ground-road replacement.',
                'sourceModelSha256':hashlib.sha256(raw).hexdigest(),
                'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in INPUTS},
-               'obstacles':[rings(p) for p in polygons(unary_union(solid))], 'roadFaces':road_faces,'bridgePorts':bridge_ports}
+               'obstacles':[rings(p) for p in polygons(shapely.set_precision(unary_union(solid),1e-6))], 'roadFaces':road_faces,'bridgePorts':bridge_ports}
+    if obstacles_context:
+        context['obstacleContextSha256']=hashlib.sha256((ROOT/obstacles_context).read_bytes()).hexdigest()
+        context['origin']='Retained horizontal landmark footprints and freshly rebuilt terrain/road context.'
     if minzu_context:
         context['minzuContextSha256']=hashlib.sha256((ROOT/minzu_context).read_bytes()).hexdigest()
         context['origin']='Existing landmark boundaries plus freshly generated Minzu main carriageway surfaces.'
@@ -134,9 +140,9 @@ def capture_context(geo, minzu, viaduct, minzu_context=None):
     print('Captured detailed boundaries:',len(road_faces),'road faces;',len(context['obstacles']),'solid footprints',flush=True)
 
 
-def prepare(capture=False, minzu_context=None):
+def prepare(capture=False, minzu_context=None, context_model=None, obstacles_context=None):
     geo,dem,minzu,viaduct = [load(p) for p in ['public/data/geography.json','public/data/terrain.json','data/minzu-plan.json','data/viaduct-plan.json']]
-    if capture: capture_context(geo,minzu,viaduct,minzu_context)
+    if capture: capture_context(geo,minzu,viaduct,minzu_context,context_model,obstacles_context)
     context = load('data/ground-roads-context.json')
     for path,digest in context['inputHashes'].items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, f'Recapture detailed road boundaries after changing {path}'
@@ -275,6 +281,8 @@ def prepare(capture=False, minzu_context=None):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--capture',action='store_true')
     p.add_argument('--minzu-context',help='Fresh context from build_city.py -- --minzu-context; use with --capture')
+    p.add_argument('--context-model',help='Fresh native terrain context GLB; use with --capture')
+    p.add_argument('--obstacles-context',help='Retain horizontal landmark footprints from this context JSON')
     args=p.parse_args()
-    if args.minzu_context and not args.capture:p.error('--minzu-context requires --capture')
-    prepare(args.capture,args.minzu_context)
+    if (args.minzu_context or args.context_model or args.obstacles_context) and not args.capture:p.error('Context options require --capture')
+    prepare(args.capture,args.minzu_context,args.context_model,args.obstacles_context)

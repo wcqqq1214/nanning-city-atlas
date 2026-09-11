@@ -71,7 +71,7 @@ def prepare(profile,region=None):
         q=np.asarray(section['points'])
         if region is not None and not Polygon(q[:,:2]).intersects(region):continue
         for indices in [[0,1,2],[0,2,3]]:
-            top=q[indices];bottom=top.copy();bottom[:,2]-=.035
+            top=q[indices];bottom=np.asarray(section['bottom'])[indices]
             volumes.append(prism(top,bottom,1000000+i,8))
     solid=mf.Manifold.batch_boolean(volumes,mf.OpType.Add)
     print('Resolving union...',flush=True);result=solid.to_mesh64()

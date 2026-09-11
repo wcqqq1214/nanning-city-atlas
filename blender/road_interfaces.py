@@ -1,17 +1,19 @@
-"""Native Minzu sections participating in the two Zhuxi ramp landings."""
-import math
+"""Resolve native Minzu carriageways across the Zhuxi interchange."""
 
 # OSM landing nodes, in the retained city coordinate system.
 LANDINGS = ((74.014, -10.268), (77.513, -10.266))
 LANDING_WAYS = {959178351: 1, 392546680: 0}
+INTERCHANGE_BOUNDS = (73.8, -12.8, 79.3, -7.65)
 
 
 def selected(road, key, a, b):
-    if not road.routes[key]['bridge']:
-        return False
-    # Include complete rendered sections so no artificial cut wall is exposed.
+    # Terrain changes can move approach crossings away from the landing nodes.
+    # Resolve the entire interchange span, retaining complete native sections
+    # so side walls cannot cut through another road just outside a small patch.
     x, y, _ = road.at(key, (a+b)/2)
-    return any(math.hypot(x-u, y-v) < .35+(b-a)/2 for u, v in LANDINGS)
+    west,south,east,north = INTERCHANGE_BOUNDS
+    margin = (b-a)/2
+    return west-margin<=x<=east+margin and south-margin<=y<=north+margin
 
 
 def capture(road):
@@ -20,7 +22,9 @@ def capture(road):
         for a,b in zip(road.sections[key],road.sections[key][1:]):
             if not selected(road,key,a,b):continue
             wa,wb=road.width(key,a),road.width(key,b)
-            sections.append({'key':key,'a':a,'b':b,'points':[road.at(key,a,-wa),road.at(key,b,-wb),road.at(key,b,wb),road.at(key,a,wa)]})
+            points=[road.at(key,a,-wa),road.at(key,b,-wb),road.at(key,b,wb),road.at(key,a,wa)]
+            bottom=[(x,y,z-.035 if road.routes[key]['bridge'] else min(road.surface(x,y,False),road.surface(x,y,True))-.003) for x,y,z in points]
+            sections.append({'key':key,'a':a,'b':b,'points':points,'bottom':bottom})
     return sections
 
 
@@ -48,7 +52,7 @@ class NativeStructure:
             q=section['points']
             self.sections.append((q, min(p[0] for p in q),max(p[0] for p in q),
                                   min(p[1] for p in q),max(p[1] for p in q),
-                                  min(p[2] for p in q)-.035,max(p[2] for p in q)+.012))
+                                  min(p[2] for p in section['bottom']),max(p[2] for p in q)+.012))
     def face(self,vertices,material):
         eps=1e-8
         for q,x0,x1,y0,y1,z0,z1 in self.sections:

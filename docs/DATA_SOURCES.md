@@ -2,12 +2,12 @@
 
 ## 输入
 
-连片树冠依据当前城市 OSM 快照中的 192 条 `natural=wood` / `landuse=forest` 记录，其中 191 条与场景相交。青秀山使用 [relation 11922560](https://www.openstreetmap.org/relation/11922560)，北部外围主要使用 [relation 9862173](https://www.openstreetmap.org/relation/9862173)；其他城区与近郊林地先行处理，重叠关系去重。保留内环，并避让道路、水面、建筑、庭院与地标空地，最终覆盖约 213.88 km²。原始记录与生成计划分别位于 `data/forest-source.json`、`data/forest-plan.json`。没有把一般公园、草地或高地颜色直接解释为森林；冠形、密度和颜色为艺术化表达，详见 [城市树木与郊区树林](FOREST_CANOPY.md)。
+连片树冠依据当前城市 OSM 快照中的 192 条 `natural=wood` / `landuse=forest` 记录，其中 191 条与场景相交。青秀山使用 [relation 11922560](https://www.openstreetmap.org/relation/11922560)，北部外围主要使用 [relation 9862173](https://www.openstreetmap.org/relation/9862173)；其他城区与近郊林地先行处理，重叠关系去重。保留内环，并避让道路、水面、建筑、庭院与地标空地，最终覆盖约 213.55 km²。原始记录与生成计划分别位于 `data/forest-source.json`、`data/forest-plan.json`。没有把一般公园、草地或高地颜色直接解释为森林；冠形、密度和颜色为艺术化表达，详见 [城市树木与郊区树林](FOREST_CANOPY.md)。
 
 | 数据 | 来源 | 本项目使用方式 |
 | --- | --- | --- |
 | 河湖、道路、绿地、建设用地、建筑 | [OpenStreetMap](https://www.openstreetmap.org/copyright)，通过 [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) 取得 | 取 WGS84 范围内要素，拼接多边形关系，保留内环，裁剪并简化 |
-| 高程 | [Mapzen / AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) | z12 Terrarium 瓦片，`R × 256 + G + B / 256 − 32768` 解码为米 |
+| 高程 | [Copernicus DEM GLO-30](https://registry.opendata.aws/copernicus-dem/) | 2021 版 1 arc-second DSM，重采样为约 60 m 显示网格；源文件、哈希与处理参数见 `data/terrain-source.json` |
 | 地理背景 | [广西自然资源厅：南宁市土地利用总体规划](https://dnr.gxzf.gov.cn/zfxxgk/fdzdgknr/ghjh/ghjh/t16008000.shtml) | 核对邕江河谷、水系与青秀山、南湖等生态空间的组织关系 |
 | 青秀山背景 | [青秀山景区介绍](https://www.qxsfjq.com/Introduction.html?bindStyle=list&columnId=2&type=2) | 核对邕江畔山林与龙象塔的景区特征；不把文字资料当作测量数据 |
 
@@ -22,13 +22,15 @@
 5. OSM 建筑优先使用 `height`，其次使用 `building:levels × 3.2 m`；缺省采用 5 层，即 16 m。高度限制为 3–450 m。
 6. 程序化建筑使用固定随机种子，布置在 OSM 建设用地和有限推断的城区街区内。推断街区必须由地面道路封闭，面积为 0.3–30 公顷，距离已知建设用地不超过 100 m，且街区及其周边 60 m 内至少存在 3 栋地图建筑；原始建设用地与推断区域分别保存在 `urban`、`inferredUrban`，不将后者视为实测用地。布置前排除水面、绿地、道路和 OSM 建筑缓冲区。街区网格随可建设地块的方向旋转，以约 62 × 74 m 的单元布置不同尺度和高度的楼群；完整建筑轮廓必须落在允许区域内，楼群之间保留间距。其个体位置、高度和外形均不是实测结果。
 7. 树木在绿地和滨水缓冲区示意分布，不代表真实树种和树位。
-8. 原始高程保留为 `heights`；显示高程另存为 `sceneHeights`，水下采样设为 53 m，岸上显示地形最低取 62 m，水面统一绘制于显示高度。该处理仅用于可视化，不构成水文模型。
-9. 初始地形高差比例为 3，初始建筑高度比例为 1.55。菜单中的竖向比例会进一步作用于整个模型。
-10. 自建地标范围内不重复绘制常规建筑中心和树位，避免简化模型穿插。地理数据库保留原始要素；这是渲染替换，不代表原建筑被删除。当前常规单树在精细版显示 3,356 棵，流畅版显示 844 棵；7,600 个林内树位改为连续林冠，南湖另有独立园林植被。
+8. 原始高程保留为 `heights`；显示高程另存为 `sceneHeights`，水下采样设为 61.3 m，岸上显示地形最低取 68.3 m，水面统一绘制于显示高度。该处理仅用于可视化，不构成水文模型。
+9. 初始地形高差比例为 1.35，初始建筑高度比例为 1.55。菜单中的竖向比例会进一步作用于整个模型。
+10. 自建地标范围内不重复绘制常规建筑中心和树位，避免简化模型穿插。地理数据库保留原始要素；这是渲染替换，不代表原建筑被删除。当前常规单树在精细版显示 2,604 棵，流畅版显示 678 棵；7,567 个林内树位改为连续林冠，南湖另有独立园林植被。
 
 ## 地标位置与造型
 
 `data/landmarks.json` 是地标顺序、文字和镜头配置的唯一源目录；Blender 生成 `public/data/landmarks.json` 时补上场景坐标，前端按同一目录展示。
+
+已移除石埠 · 美丽南方（`meili`）探索点，当前为 37 处探索点、33 个独立模型。石埠所在城区仍属于地图覆盖范围。该点没有独立模型、林地清空范围或道路图层身份；删除前后参与几何生成的地标记录完全相同。因此沿用原有网格，核对实际输入不变后同步林地、道路计划及派生元数据的目录指纹，避免删除显示标记使后续重建误报数据过期。
 
 新增点位使用 OSM 的 WGS84 坐标：面要素取包围盒中心，孔庙使用场所节点，两座铁路车站使用站房最小旋转矩形中心。因此它们是浏览用的代表点，不是建筑测量控制点。每条新增记录保留对应的 `sourceUrl`。
 
@@ -61,11 +63,17 @@
 
 裁剪和处理后的 OSM 数据库随仓库公开提供于 `public/data/geography.json`，继续遵循 ODbL 1.0。下载脚本与缓存规则公开，允许重新取得原始要素。源码中的代码许可不替代数据许可。
 
-Terrain Tiles 的完整上游说明见 [Tilezen attribution](https://github.com/tilezen/joerd/blob/master/docs/attribution.md)。本区域的全球陆地高程来源标注为：SRTM terrain data courtesy of the U.S. Geological Survey。Mapzen 数据汇编还可能使用其他全球源，完整来源清单以该上游说明为准。处理后数据未获 Mapzen 或 USGS 认证。
+高程于 2026-09-11 更换为 Copernicus GLO-30（2021 版，AWS / Sinergise 提供 COG）。原始 DSM 包含建筑与植被，因此另做显示平滑及城区低分位滤波，不称作实测裸地高程。历史版本曾使用 Mapzen Terrarium / SRTM，现有重采样流程不再使用该源。
+
+produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.
+
+The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30.
+
+完整声明随站点提供于 `public/data/terrain-attribution.txt`，适用 [Copernicus WorldDEM-30 许可](https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N22_00_E108_00_DEM/INFO/eula_F.pdf)。后续再分发须保留来源、责任声明及许可第 6 条义务。重建流程与验证见 [地形重采样](TERRAIN_RESAMPLING.md)。
 
 ## 城西扩展与近景更新
 
-本次重新取得整个扩展范围的 OSM 快照，包含建筑与建设用地关系，按对应要素类型去除关系成员重复，重新裁剪道路、水面与绿地。保持约 95 m 的地形显示采样间距，不是简单拉伸旧地形。当前 6,035 个地图建筑与 13,882 个示意建筑中，3,512 个位于旧西边界以西。
+本次重新取得整个扩展范围的 OSM 快照，包含建筑与建设用地关系，按对应要素类型去除关系成员重复，重新裁剪道路、水面与绿地。当时保持约 95 m 的地形显示采样间距（现已重采样为约 60 m），不是简单拉伸旧地形。当前 6,035 个地图建筑与 13,882 个示意建筑中，3,512 个位于旧西边界以西。
 
 | 城西观察点 | 代表点来源（面要素包围盒中心） |
 | --- | --- |

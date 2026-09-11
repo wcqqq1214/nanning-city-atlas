@@ -210,7 +210,7 @@ def finish(profile):
     target=ROOT/f'data/road-solids-{profile}.npz';np.savez_compressed(target,**arrays)
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json']
     inputs+=['blender/road_terrain.py','blender/elevated_roads.py','blender/ground_roads.py','blender/minzu_avenue.py','blender/forest_canopy.py','blender/zhuxi_interchange.py']
-    inputs+=['blender/road_interfaces.py']
+    inputs+=['blender/road_interfaces.py','blender/terrain_height.py']
     report={'profile':profile,'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs},'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'levels':levels,
             'buildings':adjustments,'omittedRailSegments':omitted_rails,'omittedPiers':omitted_piers,'counts':{k:len(a) for k,a in arrays.items()}}
     (ROOT/f'data/road-solids-{profile}.json').write_text(json.dumps(report,separators=(',',':')))

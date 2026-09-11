@@ -1,17 +1,5 @@
 [
   {
-    "id": "meili",
-    "name": "石埠 · 美丽南方",
-    "lon": 108.1873367,
-    "lat": 22.845064,
-    "category": "城西 · 田园",
-    "description": "石埠位于南宁城西、邕江上游，周边有农田和村落。地图展示了这一带的河道、道路和田园。",
-    "anchorHeight": 0.65,
-    "cameraDistance": 32,
-    "modelled": false,
-    "sourceUrl": "https://www.openstreetmap.org/way/911702595"
-  },
-  {
     "id": "gxmzu",
     "name": "广西民族大学 · 相思湖校区",
     "lon": 108.2317606,
