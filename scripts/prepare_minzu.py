@@ -35,7 +35,7 @@ def prepare(capture=False):
     uses = defaultdict(list)
     for e in source['elements']:
         for n in e['nodes']: uses[n].append(e)
-    paths, tunnels, replaced = [], [], []
+    paths, tunnels, omitted, replaced = [], [], [], []
     candidates = {i: r for i, r in enumerate(geo['roads']) if r['name'] in NAMES}
     for e in source['elements']:
         if e['id'] not in selected: continue
@@ -55,10 +55,15 @@ def prepare(capture=False):
             assert len(matches) == 1, (e['id'], matches)
             replaced.extend(matches)
             frontage = tags['name'] == '民族大道辅路'
-            lanes = int(tags.get('lanes', 2 if frontage else 3))
-            # Display scale: 3.5 m lanes plus two 0.5 m shoulders. At splits,
-            # retain a common endpoint width and taper over the neighbouring way.
-            width = lanes * .035 + .01
+            if frontage:
+                omitted.append({'osmId': e['id'], 'roadIndex': matches[0], 'tags': tags,
+                                'points': list(line.coords), 'reason': 'Main carriageway only; omit side roads and non-motor traffic.'})
+                continue
+            source_points = list(line.coords)
+            line = line.simplify(.025, preserve_topology=True)
+            # Deliberately simplified six-lane boulevard, with three lanes per
+            # direction. Original lane/turn tags remain available as provenance.
+            lanes, width = 3, .10
             junctions, node_keys = [], []
             for n, p in zip(e['nodes'], e['geometry']):
                 pos = xy(p)
@@ -83,6 +88,7 @@ def prepare(capture=False):
                           'tags': tags, 'lanes': lanes, 'width': width, 'frontage': frontage,
                           'bridge': tags.get('bridge', 'no') != 'no',
                           'points': [[round(v, 6) for v in line.interpolate(s).coords[0]] for s in cleaned],
+                          'sourcePoints': source_points,
                           'sourceNodes': node_keys, 'junctions': junctions,
                           'lengthMeters': round(line.length * 100, 2)})
     assert sorted(replaced) == sorted(candidates), 'Some old Minzu strips would remain or be replaced twice'
@@ -92,12 +98,16 @@ def prepare(capture=False):
     plan = {'sceneCenter': geo['center'], 'bbox': geo['bbox'], 'osmTimestamp': source['osmTimestamp'],
             'inputHashes': {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest()
                             for p in ['data/minzu-source.json', 'public/data/geography.json', 'public/data/terrain.json']},
-            'assumptions': {'laneWidthMeters': 3.5, 'geometryMaxSpanMeters': 12,
+            'assumptions': {'laneWidthMeters': 3, 'geometryMaxSpanMeters': 12,
+                            'alignmentToleranceMeters': 2.5, 'displayLanesPerDirection': 3,
+                            'nanhuLevelExtent': [52.5, 59.0, -10.7, -10.0],
                             'junctionOpeningMeters': 20, 'lampSpacingMeters': 90,
-                            'note': 'Lane counts and bridge/tunnel flags use OSM. Widths, fittings and planting are display assumptions, not a surveyed road design.'},
-            'paths': paths, 'tunnels': tunnels, 'replacedRoads': sorted(replaced), 'removedTrees': removed,
+                            'note': 'Main carriageways only, simplified to six lanes; side roads omitted. Nanhu crossing and approaches share one level. Source tags retain actual OSM lane counts; this is not a surveyed road design.'},
+            'paths': paths, 'tunnels': tunnels, 'omittedPaths': omitted,
+            'replacedRoads': sorted(replaced), 'removedTrees': removed,
             'stats': {'mainWays': sum(not p['frontage'] for p in paths),
                       'frontageWays': sum(p['frontage'] for p in paths),
+                      'omittedFrontageWays': len(omitted),
                       'bridgeWays': sum(p['bridge'] for p in paths), 'tunnelWays': len(tunnels),
                       'carriagewayLengthMeters': round(sum(p['lengthMeters'] for p in paths), 2)}}
     (ROOT / 'data/minzu-plan.json').write_text(json.dumps(plan, ensure_ascii=False, separators=(',', ':')) + '\n')

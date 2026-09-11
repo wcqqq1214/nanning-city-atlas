@@ -55,7 +55,7 @@ def width(road):
     return .16 if road['class'] in ['primary','trunk','motorway'] else .105 if road['class']=='secondary' else .07 if road['class']=='tertiary' else .05
 
 
-def capture_context(geo, minzu, viaduct):
+def capture_context(geo, minzu, viaduct, minzu_context=None):
     raw = (ROOT/'public/models/nanning-city.glb').read_bytes()
     size = struct.unpack_from('<I',raw,12)[0]; model = json.loads(raw[20:20+size]); binary = 28+size
     road_landmarks={'Landmark_'+p['id'] for p in load('data/landmarks.json') if p.get('layer')=='roads'}
@@ -64,8 +64,14 @@ def capture_context(geo, minzu, viaduct):
                         if str(i) in viaduct['roadOverrides'] and not r['bridge']]
     ground_mask = unary_union(selected_ground)
     solid, road_faces, bridge_faces = [], [], []
+    if minzu_context:
+        updated=load(minzu_context)
+        for path,digest in updated['inputHashes'].items():
+            assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, f'Stale Minzu connection context: {path}'
+        road_faces.extend(updated['roadFaces'])
     for node in model['nodes']:
         name = node.get('name','')
+        if minzu_context and name.startswith('MinzuAvenue_'): continue
         if 'mesh' not in node: continue
         is_road = name.startswith('MinzuAvenue_') and not name.startswith('MinzuAvenue_Details') or name=='Landmark_qingxiang-viaduct'
         is_solid = name.startswith('Landmark_') and name not in road_landmarks and name not in ['Landmark_qingxiang-viaduct','Landmark_bridge','Landmark_nanhu']
@@ -95,6 +101,9 @@ def capture_context(geo, minzu, viaduct):
     bridge_index=STRtree([Polygon([p[:2] for p in f]) for f in bridge_faces])
     bridge_ports=[]
     for i,r in enumerate(geo['roads']):
+        # Fully modelled exports no longer contain legacy Bridges_* strips.
+        # Their landings are supplied by the live bridge builders at build time.
+        if not bridge_faces: break
         if not r['bridge'] or i in excluded or r['name']=='南宁大桥':continue
         w=.13 if r['class'] in ['primary','trunk','motorway'] else .085 if r['class']=='secondary' else .0475
         for endpoint,neighbour in [(r['points'][0],r['points'][1]),(r['points'][-1],r['points'][-2])]:
@@ -108,13 +117,16 @@ def capture_context(geo, minzu, viaduct):
                'sourceModelSha256':hashlib.sha256(raw).hexdigest(),
                'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in INPUTS},
                'obstacles':[rings(p) for p in polygons(unary_union(solid))], 'roadFaces':road_faces,'bridgePorts':bridge_ports}
+    if minzu_context:
+        context['minzuContextSha256']=hashlib.sha256((ROOT/minzu_context).read_bytes()).hexdigest()
+        context['origin']='Existing landmark boundaries plus freshly generated Minzu main carriageway surfaces.'
     (ROOT/'data/ground-roads-context.json').write_text(json.dumps(context,ensure_ascii=False,separators=(',',':'))+'\n')
     print('Captured detailed boundaries:',len(road_faces),'road faces;',len(context['obstacles']),'solid footprints',flush=True)
 
 
-def prepare(capture=False):
+def prepare(capture=False, minzu_context=None):
     geo,dem,minzu,viaduct = [load(p) for p in ['public/data/geography.json','public/data/terrain.json','data/minzu-plan.json','data/viaduct-plan.json']]
-    if capture: capture_context(geo,minzu,viaduct)
+    if capture: capture_context(geo,minzu,viaduct,minzu_context)
     context = load('data/ground-roads-context.json')
     for path,digest in context['inputHashes'].items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, f'Recapture detailed road boundaries after changing {path}'
@@ -251,4 +263,8 @@ def prepare(capture=False):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--capture',action='store_true');prepare(p.parse_args().capture)
+    p=argparse.ArgumentParser();p.add_argument('--capture',action='store_true')
+    p.add_argument('--minzu-context',help='Fresh context from build_city.py -- --minzu-context; use with --capture')
+    args=p.parse_args()
+    if args.minzu_context and not args.capture:p.error('--minzu-context requires --capture')
+    prepare(args.capture,args.minzu_context)

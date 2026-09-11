@@ -1,4 +1,4 @@
-"""Minzu carriageways, frontage roads and fittings using Qingxiang materials."""
+"""Simplified six-lane Minzu main carriageways, with a level Nanhu crossing."""
 import bisect
 from collections import defaultdict
 import heapq
@@ -9,7 +9,7 @@ from viaduct import Path, MATERIAL_KEYS as ROAD_MATERIALS
 
 ROOT = FilePath(__file__).resolve().parents[1]
 PLAN = json.loads((ROOT / 'data/minzu-plan.json').read_text())
-MATERIAL_KEYS = ROAD_MATERIALS + ['nanhu_grass']
+MATERIAL_KEYS = ROAD_MATERIALS
 REPLACED_ROADS = set(PLAN['replacedRoads'])
 REMOVED_TREES = set(PLAN['removedTrees'])
 
@@ -17,6 +17,8 @@ REMOVED_TREES = set(PLAN['removedTrees'])
 class MinzuAvenue:
     def __init__(self, road_level, surface):
         self.base_level, self.surface = road_level, surface
+        west, east, south, north = PLAN['assumptions']['nanhuLevelExtent']
+        self.in_nanhu = lambda x, y: west <= x <= east and south <= y <= north
         self.routes = {r['id']: r for r in PLAN['paths']}
         self.paths = {key: Path(r['points']) for key, r in self.routes.items()}
         self.keys, required, graph, widths = {}, {}, defaultdict(list), defaultdict(list)
@@ -35,13 +37,19 @@ class MinzuAvenue:
                 w = self.width(key, s)
                 floor = max(surface(*path.at(s, u)[:2], mobile)
                             for u in [-w-.04, 0, w+.04] for mobile in [False, True])
-                value = max(road_level(*path.at(s)[:2]), floor + (.30 if r['bridge'] else .07))
-                if r['bridge']: value = max(value, 1.1)
+                x, y = path.at(s)[:2]
+                lake = self.in_nanhu(x, y)
+                value = max(road_level(x, y), floor + (.30 if r['bridge'] and not lake else .07))
+                if r['bridge'] and not lake: value = max(value, 1.1)
                 node = self.keys[key][i]
                 required[node] = max(required.get(node, -1000), value)
+                if lake:
+                    graph[node].append(('nanhu-level', 0))
+                    graph['nanhu-level'].append((node, 0))
             for i, (a, b) in enumerate(zip(self.keys[key], self.keys[key][1:])):
                 cost = .12 * (path.lengths[i+1] - path.lengths[i])
                 graph[a].append((b, cost)); graph[b].append((a, cost))
+        if 'nanhu-level' in graph: required['nanhu-level'] = -1000.
         queue = [(-z, node) for node, z in required.items()]
         heapq.heapify(queue)
         while queue:
@@ -126,7 +134,13 @@ class MinzuAvenue:
                         clearance = min(clearance,*(z-self.surface(x,y,mobile) for mobile in [False,True]))
         assert clearance > .015, f'Minzu road intersects terrain: {clearance}'
         assert grade < .121, f'Minzu approach grade: {grade}'
+        lake_heights = [self.level(key,s) for key,path in self.paths.items() for s in path.lengths
+                        if self.in_nanhu(*path.at(s)[:2])]
+        lake_range = max(lake_heights)-min(lake_heights)
+        assert lake_range < 1e-8, f'Nanhu crossing is not level: {lake_range}'
         return {'minRoadClearanceMeters': round(clearance*100,3), 'maxDisplayGrade': grade,
+                'nanhuHeightRangeMeters': round(lake_range*100,6),
+                'nanhuDeckLevel': lake_heights[0],
                 'renderedSections': sum(len(s)-1 for s in self.sections.values())}
 
 
@@ -156,12 +170,6 @@ def build_structure(batch, road):
                 batch.face([road.at(key,a,side*(wa-edge)),road.at(key,b,side*(wb-edge)),q[1],q[0]],'viaduct_concrete')
             if r['bridge']:
                 batch.face([road.at(key,a,-wa,-.035),road.at(key,a,wa,-.035),road.at(key,b,wb,-.035),road.at(key,b,-wb,-.035)],'viaduct_soffit')
-            elif not road.opening(key,(a+b)/2,.25+(b-a)/2):
-                # A narrow planted verge sits inside the left shoulder. No
-                # invented median crosses an OSM junction or neighbouring road.
-                if not r['frontage']:
-                    batch.face([road.at(key,a,wa-.018,.0045),road.at(key,b,wb-.018,.0045),
-                                road.at(key,b,wb-.007,.0045),road.at(key,a,wa-.007,.0045)],'nanhu_grass')
         # Source-tagged short bridges get a soffit and end abutments. Avoid
         # guessed piers in the lower carriageway at grade-separated crossings.
         if r['bridge']:
@@ -203,18 +211,11 @@ def build_details(batch, road, lightweight=False):
         for a,b in zip(road.sections[key],road.sections[key][1:]):
             if road.opening(key,(a+b)/2,.22+(b-a)/2): continue
             for side in [-1,1]:
-                margin = .023 if side==1 and not r['frontage'] and not r['bridge'] else .010
+                margin = .010
                 wa,wb = road.width(key,a)-margin,road.width(key,b)-margin
                 batch.face([road.at(key,a,side*wa-.0012,.0018),road.at(key,b,side*wb-.0012,.0018),
                             road.at(key,b,side*wb+.0012,.0018),road.at(key,a,side*wa+.0012,.0018)],'viaduct_line')
         if lightweight: continue
-        turns = r['tags'].get('turn:lanes','').split('|')
-        if len(turns) == r['lanes'] and path.length > .5:
-            s = path.length-.30
-            w = road.width(key,s)-.014
-            for lane,turn in enumerate(turns):
-                arrow(batch,road,key,s,w-(lane+.5)*2*w/r['lanes'],turn)
-                counts['turnArrows'] += 1
         if r['frontage']: continue
         for j in range(1,math.ceil(path.length/.9)):
             s = j*.9
