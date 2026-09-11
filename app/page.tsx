@@ -795,6 +795,8 @@ export default function Home() {
           </button>
           <button
             className="export-button"
+            aria-label="导出视图"
+            title="导出视图"
             disabled={!ready || exporting}
             onClick={screenshot}
           >
@@ -805,6 +807,15 @@ export default function Home() {
             )}
             <span>导出视图</span>
           </button>
+          <a
+            className="repo-link"
+            href="https://github.com/wcqqq1214/nanning-city-atlas"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="在新标签页打开 GitHub 仓库"
+          >
+            GitHub <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
         </div>
       </header>
 

@@ -216,6 +216,26 @@ button {
   align-items: center;
   gap: 22px;
 }
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  flex-shrink: 0;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: none;
+}
+.repo-link:hover {
+  color: #204d3d;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.repo-link:focus-visible {
+  outline: 2px solid #285c49;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 .text-button {
   display: flex;
   align-items: center;
@@ -1480,7 +1500,14 @@ button {
     display: none;
   }
   .header-actions {
-    gap: 13px;
+    gap: 6px;
+  }
+  .repo-link {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .export-button > span {
+    display: none;
   }
   .about-button {
     font-size: 0;
