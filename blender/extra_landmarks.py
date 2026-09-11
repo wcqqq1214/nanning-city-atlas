@@ -34,40 +34,12 @@ def build_extra_landmarks(landmark, ground=None):
         b.box(x,y-1.03-i*.1,z,1.25,.1,.12-i*.025,'roof')
     b.finish()
 
-    b,x,y,z=landmark('gx-museum')
-    b.box(x,y,z,2.35,1.8,.15,'roof')
-    b.box(x,y+.1,z+.15,2.15,1.3,.63,'building','roof')
-    b.box(x,y+.1,z+.78,1.7,1.15,.22,'building','roof')
-    b.box(x,y-.62,z+.65,2.3,.25,.08,'roof')
-    for i in range(12):
-        b.box(x-1+i*2/11,y-.65,z+.15,.055,.055,.5,'landmark')
-    b.box(x,y-.7,z+.24,1.45,.02,.24,'landmark')
-    for i in range(3):
-        b.box(x,y-.91-i*.07,z,1.4,.07,.14-i*.04,'roof')
-    b.finish()
-
     b,x,y,z=landmark('east-station')
     build_east_station(b,x,y,z)
     b.finish()
 
     b,x,y,z=landmark('nanning-station')
     build_nanning_station(b,x,y,z)
-    b.finish()
-
-    b,x,y,z=landmark('ethnic-museum')
-    b.box(x,y,z,3.5,2.4,.15,'roof')
-    for side in [-1,1]:
-        b.box(x+side*1.12,y+.15,z+.15,1.15,1.5,.63,'building','roof',angle=-side*.16)
-        b.box(x+side*1.34,y-.48,z+.75,.95,.6,.12,'roof',angle=side*.28)
-    b.cone(x,y,z+.15,.77,.66,.64,'landmark',24)
-    b.cone(x,y,z+.79,.66,.82,.23,'accent',24)
-    b.cone(x,y,z+1.02,.83,.83,.10,'accent',24)
-    b.cone(x,y,z+1.12,.17,.17,.03,'roof',12)
-    for i in range(12):
-        a=i/12*math.tau
-        b.face([(x+math.cos(a)*.21,y+math.sin(a)*.21,z+1.135),
-                (x+math.cos(a-.055)*.7,y+math.sin(a-.055)*.7,z+1.135),
-                (x+math.cos(a+.055)*.7,y+math.sin(a+.055)*.7,z+1.135)],'roof')
     b.finish()
 
     b,x,y,z=landmark('confucius')
