@@ -55,6 +55,9 @@ def finish(profile):
     from ground_roads import SteepEdges, PLAN as GROUND
     from elevated_roads import plane, PLAN
     captured=json.loads((ROOT/'work/road-repair/input-hashes.json').read_text())
+    from road_inputs import building_envelopes,BUILDING_ENVELOPE_INPUTS
+    missing=set(BUILDING_ENVELOPE_INPUTS)-captured.keys()
+    if missing:raise ValueError('Recapture building envelopes before resolving roads: '+', '.join(sorted(missing)))
     for path,digest in captured.items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,f'Recapture native road surfaces after changing {path}'
     raw=np.load(ROOT/f'work/road-repair/solid-{profile}.npz');v=raw['vertices'];faces=raw['triangles'];tags=raw['tags'];types=tags%16
@@ -194,7 +197,9 @@ def finish(profile):
     # Generic building heights are often inferred. Keep their footprint and
     # lower only conflicting blocks; very short remnants are omitted.
     geo=json.loads((ROOT/'public/data/geography.json').read_text());adjustments=[]
-    for i,bottom,roof in json.loads((ROOT/'work/road-repair/building-levels.json').read_text()):
+    envelopes=building_envelopes(geo,json.loads((ROOT/'work/road-repair/building-levels.json').read_text()))
+    for record in envelopes:
+        i,bottom,roof=record['index'],record['bottom'],record['top']
         b=geo['buildings'][i];poly=Polygon(b['rings'][0],b['rings'][1:]).buffer(.012);limit=roof
         for j in asphalt.tree.query(poly,predicate='intersects'):
             cut=poly.intersection(asphalt.shapes[j]);xy=shapely.get_coordinates(cut)
@@ -211,8 +216,11 @@ def finish(profile):
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json']
     inputs+=['blender/road_terrain.py','blender/elevated_roads.py','blender/ground_roads.py','blender/minzu_avenue.py','blender/forest_canopy.py','blender/zhuxi_interchange.py']
     inputs+=['blender/road_interfaces.py','blender/terrain_height.py']
-    report={'profile':profile,'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs},'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'levels':levels,
-            'buildings':adjustments,'omittedRailSegments':omitted_rails,'omittedPiers':omitted_piers,'counts':{k:len(a) for k,a in arrays.items()}}
+    # Retain all verified native inputs, including optional terrain/grading
+    # plans. Dropping those bindings makes downstream site access accept roads
+    # from a different ground surface despite matching geography and DEM.
+    report={'profile':profile,'inputHashes':{**captured,**{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs}},'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'levels':levels,
+            'buildingEnvelopes':envelopes,'buildings':adjustments,'omittedRailSegments':omitted_rails,'omittedPiers':omitted_piers,'counts':{k:len(a) for k,a in arrays.items()}}
     (ROOT/f'data/road-solids-{profile}.json').write_text(json.dumps(report,separators=(',',':')))
     print(profile,report['counts'],'buildings adjusted',len(adjustments),'mapped',sum(a['mappedHeight'] for a in adjustments),flush=True)
 

@@ -8,6 +8,10 @@ from pathlib import Path
 import bpy
 from minzu_avenue import build_structure as native_minzu
 from bridge_landmark import MATERIAL_KEYS as NBRIDGE_KEYS
+from terrain_mesh import build as build_terrain_mesh, NATIVE_DATA_INPUTS
+from terrain_reduction_runtime import apply_existing as apply_terrain_reduction
+from terrain_reduction_plan import active_plan_paths
+from reservoir_runtime import input_paths as reservoir_input_paths
 
 
 def capture(env,include_ground=False):
@@ -19,25 +23,10 @@ def capture(env,include_ground=False):
     bridges={i:env['RiverBridge'](s,ground,minzu.road_level,lambda x,y:max(surface(x,y,False),surface(x,y,True))) for i,s in env['RIVER_BRIDGE_SPECS'].items()}
     for mobile,profile in [(False,'detail'),(True,'smooth')]:
         bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
-        terrain=Batch('Terrain',['ground','hill','hillLight','bank'])
-        step=2 if mobile else 1
-        ix=sorted(set(range(0,cols,step))|{cols-1});jy=sorted(set(range(0,rows,step))|{rows-1})
-        zi0,zj0,zi1,zj1=env['zhenning_terrain_patch'](tuple(geo['bounds']),cols,rows,tuple(geo['center']))
-        for j,jj in zip(jy,jy[1:]):
-            for i,ii in zip(ix,ix[1:]):
-                if env['replaces_terrain_cell'](i,j):continue
-                refined=mobile and zi0<=i<zi1 and zj0<=j<zj1
-                cc=list(range(i,ii+1)) if refined else [i,ii];rr=list(range(j,jj+1)) if refined else [j,jj]
-                for r0,r1 in zip(rr,rr[1:]):
-                    for c0,c1 in zip(cc,cc[1:]):
-                        points=[]
-                        for col,row in [(c0,r0),(c1,r0),(c1,r1),(c0,r1)]:
-                            x=west+(east-west)*col/(cols-1);y=north-(north-south)*row/(rows-1)
-                            z=env['refined_terrain_height'](col,row,ground,geo['bounds'],cols,rows) if refined else ground(x,y)
-                            points.append((x,y,z))
-                        lc=dem['landcover'][r0*cols+c0];key='hill' if lc==1 else 'bank' if lc==2 else 'ground'
-                        terrain.face([points[0],points[2],points[1]],key);terrain.face([points[0],points[3],points[2]],key)
-        env['build_park_terrain'](terrain,env['NANHU_X'],env['NANHU_Y'],ground);terrain.finish()
+        rng_state=env['RNG'].getstate()
+        terrain=build_terrain_mesh(env,lightweight=mobile)
+        env['RNG'].setstate(rng_state)
+        apply_terrain_reduction(env,profile,terrain.finish())
         b=Batch('MinzuAvenue',env['MINZU_MATERIALS'],spatial=True);native_minzu(b,minzu);b.finish()
         b=Batch('Landmark_qingxiang-viaduct',env['VIADUCT_MATERIALS']);env['build_viaduct_structure'](b,viaduct);b.finish()
         for identity,bridge in bridges.items():
@@ -50,4 +39,19 @@ def capture(env,include_ground=False):
         env['export_city'](out/f'{profile}.glb')
         print('Fresh terrain context',profile,'with ground streets' if include_ground else 'native roads only',flush=True)
     inputs=['public/data/terrain.json','public/data/geography.json','data/minzu-plan.json','data/viaduct-plan.json','data/railways-plan.json','data/nanhu-plan.json']
+    inputs+=['data/qingxiu-terrain-plan.json','blender/mountain_terrain.py']
+    inputs+=['data/waterfront-plan.json','blender/local_terrain.py','data/bridges-plan.json','blender/major_bridges.py']
+    inputs+=['blender/terrain_mesh.py']
+    inputs+=['blender/scene_ground.py']
+    inputs+=reservoir_input_paths()
+    inputs+=['blender/site_access_plan.py']
+    inputs+=['blender/site_grading.py','blender/block_grading.py']
+    if env['GRADING_PLAN'] is not None:inputs+=['data/block-grading-plan.json','data/block-grading-source.json']
+    inputs+=['blender/terrain_reduction_plan.py','blender/terrain_reduction_runtime.py','blender/reduced_surface.py','blender/forest_canopy.py']
+    inputs+=['blender/nanhu_terrain.py','blender/nanhu_landmark.py']
+    inputs+=['blender/build_city.py','blender/gltf_export.py']
+    inputs+=NATIVE_DATA_INPUTS
+    if include_ground:
+        inputs+=['data/ground-roads-plan.json.gz','data/ground-roads-context.json','blender/ground_roads.py']
+    inputs += [str(p.relative_to(root)) for p in active_plan_paths()]
     (out/'sources.json').write_text(json.dumps({'inputHashes':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in inputs},'includesGround':include_ground},indent=2))

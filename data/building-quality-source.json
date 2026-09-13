@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "osm-building-quality-v1",
+  "baseline": "baseline-p4",
+  "source": "Existing OpenStreetMap city snapshot; preserve original references and tags",
+  "footprints": {
+    "smallAreaSquareMeters": 400,
+    "largeAreaSquareMeters": 10000,
+    "smallToleranceMeters": 0.25,
+    "ordinaryToleranceMeters": 0.75,
+    "largeToleranceMeters": 1.5,
+    "namedOrCulturalToleranceMeters": 0.5,
+    "maximumSymmetricDifferenceFraction": 0.02,
+    "preserveInteriorRings": true
+  },
+  "heightEstimation": {
+    "radiusMeters": 500,
+    "minimumDistinctSources": 3,
+    "maximumSources": 7,
+    "maximumDonorHeightRatio": 2.5,
+    "floorHeightMeters": 3.2,
+    "method": "Median of nearby same-use source heights; no iterative reuse of estimates",
+    "unsupported": "Retain existing fallback and explicitly record insufficient evidence"
+  },
+  "limitations": [
+    "OSM outlines and tags are volunteered mapping, not a cadastral survey",
+    "Nearby-height estimates remain estimates, even when the neighbours have explicit height tags",
+    "Unknown building uses are not silently assigned a residential or commercial type",
+    "Display height exaggeration is applied later and is not included in source heights"
+  ]
+}

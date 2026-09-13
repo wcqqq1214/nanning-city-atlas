@@ -95,17 +95,17 @@
     "lon": 108.3244272,
     "lat": 22.8304024,
     "category": "老城",
-    "description": "位于人民公园望仙坡上。红砂岩环墙围合中央高台，四座连桥通向白色环廊；南门题额、拱券、营房和古炮共同勾勒出百年炮台的面貌。模型依据实景细化，并为沙盘适度放大。",
-    "anchorHeight": 0.55,
-    "cameraDistance": 5.5,
+    "description": "位于人民公园望仙坡。红砂岩环墙围合中央高台，四座连桥连接环廊；南北门洞、营房与古炮保留了炮台的主要形制，按来源尺寸作风格化呈现。",
+    "anchorHeight": 0.12,
+    "cameraDistance": 5,
     "cameraBearing": 205,
     "modelled": true,
     "clearExtent": [
-      1.2,
-      1.5
+      0.5,
+      0.64
     ],
     "sourceUrl": "https://www.openstreetmap.org/way/991635905",
-    "closeDistance": 2.0
+    "closeDistance": 2
   },
   {
     "id": "gxu",
@@ -161,11 +161,16 @@
     "lon": 108.365618,
     "lat": 22.818635,
     "category": "城市天际线",
-    "description": "位于金湖片区。模型保留了塔身和楼顶的主要轮廓。",
-    "anchorHeight": 5.8,
-    "cameraDistance": 12,
+    "description": "金湖广场旁的276米高层地标。玻璃塔身连接凹形裙楼，偏置高角柱与圆形顶平台构成主要轮廓。",
+    "anchorHeight": 2.8,
+    "cameraDistance": 9,
     "modelled": true,
-    "closeDistance": 4.7
+    "closeDistance": 4.2,
+    "clearExtent": [
+      1.752,
+      1.419
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/763861723"
   },
   {
     "id": "expo",
@@ -260,16 +265,16 @@
     "lon": 108.3892843,
     "lat": 22.7808329,
     "category": "历史建筑",
-    "description": "位于青秀山脚下。殿宇和庭院沿中轴排列，模型保留了红色立柱和多层屋檐。",
-    "anchorHeight": 2.0,
-    "cameraDistance": 13,
+    "description": "青秀山谷口的孔庙。门坊、泮池、主殿与后殿沿中轴展开，院落顺坡逐级抬升；布局依据公开资料作风格化近似。",
+    "anchorHeight": 0.42,
+    "cameraDistance": 8,
     "modelled": true,
     "clearExtent": [
-      3.4,
-      3.8
+      0.72,
+      2.52
     ],
     "sourceUrl": "https://www.openstreetmap.org/node/9292176827",
-    "closeDistance": 4.5
+    "closeDistance": 3.8
   },
   {
     "id": "qingxiu",
@@ -278,10 +283,10 @@
     "lat": 22.783102,
     "category": "山林",
     "description": "龙象塔位于青秀山上，周围是沿邕江分布的山林。拉远镜头可以查看山地与河道的位置。",
-    "anchorHeight": 3.4,
-    "cameraDistance": 20,
+    "anchorHeight": 0.56,
+    "cameraDistance": 12,
     "modelled": true,
-    "closeDistance": 3.4
+    "closeDistance": 2.8
   },
   {
     "id": "bridge",
@@ -498,15 +503,15 @@
     "lat": 22.7802653,
     "category": "文化场馆",
     "description": "歌剧院、音乐厅与多功能厅呈三角布局。白色格栅沿三座曲面场馆起伏，并连成宽阔屋盖，下方是玻璃门厅和石质台阶。",
-    "anchorHeight": 1.15,
-    "cameraDistance": 12,
+    "anchorHeight": 0.64,
+    "cameraDistance": 10,
     "modelled": true,
     "clearExtent": [
-      3.0,
-      3.0
+      2.755,
+      2.55
     ],
     "sourceUrl": "https://www.openstreetmap.org/way/819620330",
-    "closeDistance": 2.5
+    "closeDistance": 3.0
   },
   {
     "id": "sports-center",

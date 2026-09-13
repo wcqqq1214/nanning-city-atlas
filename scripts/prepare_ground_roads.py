@@ -20,11 +20,21 @@ from shapely.strtree import STRtree
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'blender'))
 from zhenning_landmark import terrain_patch
+from local_terrain import PLAN as LOCAL_TERRAIN, replaces_cell as replaces_local_cell
+from mountain_terrain import PLAN as MOUNTAIN_TERRAIN, replaces_cell as replaces_mountain_cell
+from site_grading import PLAN as GRADING_PLAN, replaces_cell as replaces_grading_cell
+from reservoir_runtime import PLAN as RESERVOIR_PLAN, replaces_cell as replaces_reservoir_cell, input_paths as reservoir_input_paths
+from landmark_sites import SPECS as CALIBRATION,reservation_rings
 
 INPUTS = ['public/data/geography.json','public/data/terrain.json','data/landmarks.json',
           'data/malls-plan.json',
           'data/nanhu-plan.json','data/minzu-plan.json','data/viaduct-plan.json',
-          'blender/minzu_avenue.py','blender/viaduct.py']
+          'data/qingxiu-terrain-plan.json','blender/mountain_terrain.py','blender/cultural_landmarks.py',
+          'blender/minzu_avenue.py','blender/viaduct.py','data/waterfront-plan.json','blender/local_terrain.py','blender/major_bridges.py']
+INPUTS+=['data/landmark-calibration-source.json','data/landmark-calibration-plan.json','blender/landmark_sites.py','blender/arts_landmark.py','blender/confucius_landmark.py','blender/diwang_landmark.py','blender/zhenning_landmark.py']
+if GRADING_PLAN is not None:
+    INPUTS+=['data/block-grading-plan.json','data/block-grading-source.json','blender/site_grading.py','blender/block_grading.py']
+INPUTS+=reservoir_input_paths()
 
 
 def polygons(shape):
@@ -77,7 +87,7 @@ def capture_context(geo, minzu, viaduct, minzu_context=None, context_model=None,
         name = node.get('name','')
         # New malls may not exist in the previous export yet. Their prepared
         # footprints below are authoritative for both first and later builds.
-        if name in ['Landmark_hangyang', 'Landmark_mixc']: continue
+        if name in ['Landmark_hangyang', 'Landmark_mixc',*['Landmark_'+i for i in CALIBRATION]]: continue
         if minzu_context and name.startswith('MinzuAvenue_'): continue
         if 'mesh' not in node: continue
         is_road = name.startswith('MinzuAvenue_') and not name.startswith('MinzuAvenue_Details') or name=='Landmark_qingxiang-viaduct'
@@ -98,6 +108,10 @@ def capture_context(geo, minzu, viaduct, minzu_context=None, context_model=None,
                 elif ground_mask.covers(shape.representative_point()): road_faces.append(verts)
     # Existing hand-built paths own the garden; do not lay generic streets over them.
     nh = load('data/nanhu-plan.json'); cx,cy=geo['center']; kx=1113.2*math.cos(math.radians(cy))
+    catalog={p['id']:p for p in load('data/landmarks.json')}
+    for identity in CALIBRATION:
+        place=catalog[identity];mx,my=(place['lon']-cx)*kx,(place['lat']-cy)*1113.2
+        solid.extend(Polygon([(mx+u,my+v) for u,v in ring]) for ring in reservation_rings(identity))
     malls = load('data/malls-plan.json')
     assert malls['sceneCenter'] == geo['center']
     for mall in malls['sites'].values():
@@ -214,6 +228,7 @@ def prepare(capture=False, minzu_context=None, context_model=None, obstacles_con
         for j in range(0,rows-1,step):
             for i in range(0,cols-1,step):
                 if patch['columnRange'][0]<=i<patch['columnRange'][1] and patch['rowRange'][0]<=j<patch['rowRange'][1]:continue
+                if replaces_local_cell(i,j) or replaces_mountain_cell(i,j) or replaces_grading_cell(i,j) or replaces_reservoir_cell(i,j):continue
                 ii,jj=min(i+step,cols-1),min(j+step,rows-1)
                 refined=lightweight and zi0<=i<zi1 and zj0<=j<zj1
                 xs=list(range(i,ii+1)) if refined else [i,ii];ys=list(range(j,jj+1)) if refined else [j,jj]
@@ -223,6 +238,19 @@ def prepare(capture=False, minzu_context=None, context_model=None, obstacles_con
                         for ids in [(0,2,1),(0,3,2)]:yield [v[k] for k in ids],refined
         for mesh in patch['meshes']:
             for ids in mesh['triangles']:yield [(nx+mesh['points'][k][0],ny+mesh['points'][k][1],-1,-1) for k in ids],False
+        for ids in MOUNTAIN_TERRAIN['triangles']:
+            yield [(*MOUNTAIN_TERRAIN['points'][k],-3,-3) for k in ids],False
+        for ids in LOCAL_TERRAIN['triangles']:
+            yield [(*LOCAL_TERRAIN['points'][k],-2,-2) for k in ids],False
+        if RESERVOIR_PLAN is not None:
+            for triangle in RESERVOIR_PLAN.land_xy_triangles():
+                yield [(*point,-5,-5) for point in triangle],False
+        if GRADING_PLAN is not None:
+            # Partition pavement along every graded face, so interpolating a
+            # road face never bridges a crease in the replacement ground.
+            for grading_patch in GRADING_PLAN.patches:
+                for ids in grading_patch.plan['triangles']:
+                    yield [(*grading_patch.plan['points'][k],-4,-4) for k in ids],False
     surface_parts=[];surface_tiers=[]
     for tier,area in enumerate(surfaces):
         for p in polygons(area):surface_parts.append(p);surface_tiers.append(tier)

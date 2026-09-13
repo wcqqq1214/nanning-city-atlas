@@ -32,26 +32,30 @@ def terrain_patch(bounds, columns, rows, center):
             min(columns-1,math.ceil(col(x+.60)/2)*2),min(rows-1,math.ceil(row(y-.75)/2)*2))
 
 
-def terrace_level(x, y, ground):
+def terrace_level(x, y, ground, display_scale=None):
     # Include the interior, both entrances, and both displayed DEM profiles.
     # The caller supplies the upper envelope of those profiles.
-    return max(ground(x+u*UNIT, y+v*UNIT)
+    unit=UNIT if display_scale is None else display_scale/100
+    return max(ground(x+u*unit, y+v*unit)
                for u in range(-21, 22, 3) for v in range(-27, 25, 3)) + .012
 
 
 class FortMesh:
-    def __init__(self, batch, x, y, z):
+    def __init__(self, batch, x, y, z, display_scale=None, height_scale=None):
         self.b, self.x, self.y, self.z = batch, x, y, z
+        self.unit = UNIT if display_scale is None else display_scale / 100
+        self.height_scale = HEIGHT_SCALE if height_scale is None else height_scale
 
     def p(self, u, v, h):
-        return self.x+u*UNIT, self.y+v*UNIT, self.z+h*UNIT*HEIGHT_SCALE
+        return (self.x+u*self.unit, self.y+v*self.unit,
+                self.z+h*self.unit*self.height_scale)
 
     def face(self, points, key):
         self.b.face([self.p(*p) for p in points], key)
 
     def box(self, u, v, h, width, depth, rise, key, angle=0):
-        self.b.box(*self.p(u, v, h), width*UNIT, depth*UNIT,
-                   rise*UNIT*HEIGHT_SCALE, key, angle=angle)
+        self.b.box(*self.p(u, v, h), width*self.unit, depth*self.unit,
+                   rise*self.unit*self.height_scale, key, angle=angle)
 
     def beam(self, a, b, radius=.045, key='zhenning_iron'):
         # Rails terminate in other rails, columns or slabs. Omit the hidden end
@@ -64,16 +68,16 @@ class FortMesh:
         side=[axis[1],-axis[0],0] if abs(axis[2])<.95 else [-axis[2],0,axis[0]]
         norm=math.sqrt(sum(v*v for v in side));side=[v/norm for v in side]
         up=[axis[1]*side[2]-axis[2]*side[1],axis[2]*side[0]-axis[0]*side[2],axis[0]*side[1]-axis[1]*side[0]]
-        rings=[[tuple(p[i]+radius*UNIT*(side[i]*u+up[i]*v) for i in range(3))
+        rings=[[tuple(p[i]+radius*self.unit*(side[i]*u+up[i]*v) for i in range(3))
                 for u,v in [(-1,-1),(1,-1),(1,1),(-1,1)]] for p in [a,b]]
         for i in range(4):
             j=(i+1)%4
             self.b.face([rings[0][i],rings[0][j],rings[1][j],rings[1][i]],key)
 
     def cylinder(self, u, v, h, radius, rise, key, top=None, segments=16):
-        self.b.cone(*self.p(u, v, h), radius*UNIT,
-                    (radius if top is None else top)*UNIT,
-                    rise*UNIT*HEIGHT_SCALE, key, segments)
+        self.b.cone(*self.p(u, v, h), radius*self.unit,
+                    (radius if top is None else top)*self.unit,
+                    rise*self.unit*self.height_scale, key, segments)
 
     @staticmethod
     def polar(radius, a, h):
@@ -279,8 +283,9 @@ def build_cannon(m):
     beam((1.24,-1.6,.15),(1.24,-.84,.9),.045)
 
 
-def build_zhenning(batch, x, y, z, ground_bounds=None):
-    m=FortMesh(batch,x,y,z)
+def build_zhenning(batch, x, y, z, ground_bounds=None,
+                  display_scale=None, height_scale=None):
+    m=FortMesh(batch,x,y,z,display_scale, height_scale)
     # A narrow stone apron ties the model to the hillside in both quality modes.
     m.cylinder(0,0,-.18,20.5,.18,'zhenning_paving',segments=80)
     for i in range(80):
@@ -292,15 +297,28 @@ def build_zhenning(batch, x, y, z, ground_bounds=None):
     for north,count in [(False,14),(True,8)]:
         side=1 if north else -1
         width=6.2 if not north else 4.0
+        depth=count*.48
+        entry=None
+        if display_scale is not None and ground_bounds is not None:
+            # Source-sized stairs must reach the actual outer landing. The
+            # legacy fixed 11 cm risers left a tall vertical step at the foot
+            # after removing the landmark's independent display exaggeration.
+            landing=side*(20+depth)
+            entry=max(ground_bounds(*m.p(u,landing,0)[:2])[1] for u in [-width/2,0,width/2])
+            entry=(entry-z)/(m.unit*m.height_scale)+.04
+            count=max(2,math.ceil((.025-entry)/.18)+1)
+        tread=depth/count
         tops=[]
         for i in range(count):
-            v=side*(20.0+(count-i-.5)*.48)
+            v=side*(20.0+(count-i-.5)*tread)
+            half_tread=.25 if entry is None else tread/2
             bounds=[ground_bounds(*m.p(u,v+dv,0)[:2]) if ground_bounds else (z-.08,z-.08)
-                    for u in [-width/2,0,width/2] for dv in [-.25,0,.25]]
-            bottom=(min(p[0] for p in bounds)-z-.01)/(UNIT*HEIGHT_SCALE)
-            floor=(max(p[1] for p in bounds)-z)/(UNIT*HEIGHT_SCALE)
-            top=max(.025-(count-1-i)*.11,floor+.04,(tops[-1][1]+.015) if tops else -100)
-            m.box(0,v,bottom,width,.50,top-bottom,'zhenning_paving')
+                    for u in [-width/2,0,width/2] for dv in [-half_tread,0,half_tread]]
+            bottom=(min(p[0] for p in bounds)-z-.01)/(m.unit*m.height_scale)
+            floor=(max(p[1] for p in bounds)-z)/(m.unit*m.height_scale)
+            target=.025-(count-1-i)*.11 if entry is None else entry+(.025-entry)*i/(count-1)
+            top=max(target,floor+.04,(tops[-1][1]+.015) if tops else -100)
+            m.box(0,v,bottom,width,tread+.02,top-bottom,'zhenning_paving')
             tops.append((v,top))
         for u in [-width/2-.10,width/2+.10]:
             for a,b in zip(tops,tops[1:]):

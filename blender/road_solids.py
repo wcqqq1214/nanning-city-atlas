@@ -58,3 +58,16 @@ def building_limits():
             elif top is None or limits[index] is None:limits[index]=None
             else:limits[index]=min(limits[index],top)
     return limits
+
+
+def building_envelopes(geography):
+    """Reject old clearance results before using prepared-building geometry."""
+    from road_inputs import BUILDING_ENVELOPE_INPUTS,building_envelopes as bind_envelopes
+    expected=bind_envelopes(geography,json.loads((ROOT/'work/road-repair/building-levels.json').read_text()))
+    for profile in ['detail','smooth']:
+        _,metadata=load(profile)
+        missing=set(BUILDING_ENVELOPE_INPUTS)-metadata['inputHashes'].keys()
+        if missing:raise ValueError('Recapture roads with complete building envelopes: '+', '.join(sorted(missing)))
+        if metadata.get('buildingEnvelopes')!=expected:
+            raise ValueError('Resolved road building envelopes differ from captured inputs: '+profile)
+    return {record['index']:record for record in expected}

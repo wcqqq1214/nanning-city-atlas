@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "status": "candidate; city integration and site acceptance pending",
+  "baseline": "baseline-p3",
+  "units": "metres unless specified",
+  "references": [
+    {
+      "id": "gmp",
+      "url": "https://www.gmp.de/en/projects/3231/guangxi-culture-arts-center",
+      "accessed": "2026-09-12",
+      "supports": "三厅共用屋盖与台基，歌剧院和音乐厅在南，多功能厅在北。官方剖面带0–50 m比例尺。"
+    },
+    {
+      "id": "gmp-section",
+      "url": "https://www.gmp.de/images/gmp_3033_05_3033_180314_Schnitt_Grand_Theater.jpg?w=1600",
+      "sha256": "7164b2b3e2039115627c0211041a4e4c818a64c60031ab031261349d9fb95840",
+      "supports": "剖面屋顶至台基上表面约52 m，按比例尺读图，采用±3 m判断范围；不是标注标高或竣工测量。"
+    },
+    {
+      "id": "fort-report",
+      "url": "https://silkroadonthecloud.cn/f/view-A1002001002-2054792774516322304.html",
+      "published": "2026-05-14",
+      "accessed": "2026-09-12",
+      "supports": "南宁市融媒体中心报道确认环形城堡、南北门和20间营房；860 m²占地未说明统计边界。"
+    },
+    {
+      "id": "fort-book",
+      "url": "https://www.tup.com.cn/upload/books/yz/092495-01.pdf",
+      "supports": "出版社试读第009页列外径39 m、中央台高5 m和径13.6 m；与同页860 m²和OSM约28–30 m外包尺寸不一致，分别保留。"
+    },
+    {
+      "id": "diwang-contractor",
+      "url": "https://www.thepaper.cn/newsDetail_forward_9515012",
+      "published": "2020-10-10",
+      "accessed": "2026-09-12",
+      "supports": "中建三局二公司原创项目介绍确认276 m；配图可见玻璃塔身、偏置高角柱、圆形顶平台，非尖锥屋顶。"
+    },
+    {
+      "id": "diwang-press",
+      "url": "https://v.gxnews.com.cn/a/9464627?pageno=2&remains=1",
+      "published": "2014-01-16",
+      "supports": "广西新闻网列276 m、58层与直升机停机坪；层数与OSM59不同，不按层数反推总高。"
+    },
+    {
+      "id": "confucius-opening",
+      "url": "https://v.gxnews.com.cn/a/3581421?pageno=1&remains=1",
+      "published": "2011-01-31",
+      "supports": "场地约46亩，建筑面积超过3500m²；棂星门、状元门、状元桥、泮池、大成门、大成殿、崇圣祠、明伦堂依次排列；主殿七开间，前廊8根5m龙柱。"
+    },
+    {
+      "id": "confucius-site",
+      "url": "https://culture.gxnews.com.cn/staticpages/20110131/newgx4d45f03d-3582783.shtml",
+      "published": "2011-01-31",
+      "supports": "记者现场报道描述山谷谷口场地，前临邕江、背靠青秀山。"
+    }
+  ],
+  "sites": {
+    "arts-center": {
+      "osmWay": 819620330,
+      "displayScale": 1,
+      "formerDisplayScale": 1.2,
+      "roofHeightEstimateMeters": 52,
+      "roofHeightUncertaintyMeters": 3,
+      "roofHeightMethod": "approximate ratio to 50 m bar in gmp section; preserve the independent hall profiles if within this range",
+      "platformMarginFactor": 1.12,
+      "estimates": [
+        "三厅内部轮廓与脊顶",
+        "格栅节距和厚度",
+        "台阶与外扩12%台基"
+      ],
+      "legacyClearExtentScene": [
+        3,
+        3
+      ],
+      "hallSegments": 64,
+      "hallRings": 12,
+      "entranceStairWidthMeters": 12
+    },
+    "zhenning": {
+      "osmWay": 991635905,
+      "displayScale": 1,
+      "heightScale": 1,
+      "formerDisplayScale": 2.4,
+      "formerHeightScale": 1.55,
+      "outerDiameterMeters": 39,
+      "outerDiameterMethod": "published descriptive dimension; not a measured OSM diameter",
+      "diameterUncertaintyMeters": [
+        28,
+        39
+      ],
+      "centralPlatformDiameterMeters": 13.6,
+      "centralPlatformHeightMeters": 5,
+      "estimates": [
+        "外廓半径采用文献值，OSM只约束中心位置",
+        "现状环廊、栏杆和门额的照片近似",
+        "基础与入口台阶按最终两档地形支承"
+      ],
+      "legacyClearExtentScene": [
+        1.2,
+        1.5
+      ]
+    },
+    "diwang": {
+      "osmWay": 763861723,
+      "podiumOsmWay": 1284692310,
+      "parcelOsmWay": 1284692309,
+      "heightMeters": 276,
+      "heightMethod": "OSM height tag corroborated by original contractor publication",
+      "displayHeightScale": 1,
+      "bodyHeightMeters": 230,
+      "roofDeckHeightMeters": 240,
+      "highCornerHeightMeters": 252,
+      "antennaHeightMeters": 24,
+      "podiumHeightMeters": 22.4,
+      "podiumHeightMethod": "OSM 7 levels × assumed 3.2 m; estimate",
+      "roofDeckRadiusMeters": 15,
+      "estimates": [
+        "塔身/高角柱/平台的分段高度与朝向按照片估计，合计高276 m",
+        "立面浅条带和顶平台半径",
+        "裙楼高度与基础台阶"
+      ],
+      "legacyClearExtentScene": null
+    },
+    "confucius": {
+      "status": "source-constrained illustrative terraced layout",
+      "osmNode": 9292176827,
+      "formerMainPlatformMeters": [
+        270,
+        340
+      ],
+      "knownIssue": "P3冻结资产主台基范围内局部地面高出台基约29 m；仅有POI，无建筑足印。需核对布局及按院落分级落地，不能整座抬高做巨大方台。",
+      "legacyClearExtentScene": [
+        3.4,
+        3.8
+      ],
+      "siteAreaReferenceSquareMeters": 30666.67,
+      "siteAreaMethod": "2011现场报道约46亩；不用面积推断唯一长宽。",
+      "courts": [
+        {
+          "id": "entrance",
+          "rectMeters": [
+            -32,
+            -90,
+            32,
+            -50
+          ]
+        },
+        {
+          "id": "main-court",
+          "rectMeters": [
+            -32,
+            -43,
+            32,
+            9
+          ]
+        },
+        {
+          "id": "main-hall",
+          "rectMeters": [
+            -30,
+            18,
+            30,
+            58
+          ]
+        },
+        {
+          "id": "old-hall",
+          "rectMeters": [
+            -22,
+            66,
+            22,
+            90
+          ]
+        },
+        {
+          "id": "lecture-hall",
+          "rectMeters": [
+            -22,
+            102,
+            22,
+            122
+          ]
+        }
+      ],
+      "halls": [
+        {
+          "id": "dacheng-gate",
+          "centerMeters": [
+            0,
+            -38
+          ],
+          "extentMeters": [
+            24,
+            8
+          ],
+          "columnHeightMeters": 4,
+          "roofRiseMeters": 3,
+          "court": "main-court",
+          "bays": 5
+        },
+        {
+          "id": "dacheng-hall",
+          "centerMeters": [
+            0,
+            38
+          ],
+          "extentMeters": [
+            42,
+            24
+          ],
+          "columnHeightMeters": 5,
+          "roofRiseMeters": 4.8,
+          "court": "main-hall",
+          "bays": 7
+        },
+        {
+          "id": "chongsheng-hall",
+          "centerMeters": [
+            0,
+            78
+          ],
+          "extentMeters": [
+            30,
+            15
+          ],
+          "columnHeightMeters": 4.5,
+          "roofRiseMeters": 3.5,
+          "court": "old-hall",
+          "bays": 5
+        },
+        {
+          "id": "minglun-hall",
+          "centerMeters": [
+            0,
+            112
+          ],
+          "extentMeters": [
+            24,
+            10
+          ],
+          "columnHeightMeters": 4,
+          "roofRiseMeters": 3,
+          "court": "lecture-hall",
+          "bays": 5
+        }
+      ],
+      "estimates": [
+        "院落长宽、楼栋足印与院落间距为来源顺序及现场尺寸约束下的展示估计，并非实测总平面",
+        "主殿前廊8柱/7开间和5m柱高采用报道，其余柱高/屋顶按比例估计",
+        "保留地图POI，缩小到山谷内，以独立台地和台阶采样两档最终地形，不更改原始DSM"
+      ]
+    }
+  }
+}

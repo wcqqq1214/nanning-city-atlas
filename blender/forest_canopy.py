@@ -5,10 +5,18 @@ from pathlib import Path
 
 from vegetation import CROWN_POINTS, CROWN_FACES
 from zhenning_landmark import terrain_patch as zhenning_terrain_patch
+from local_terrain import surface as local_surface
+from mountain_terrain import surface as mountain_surface, canopy_factor
+from terrain_reduction_plan import replacement_height
+from site_grading import surface as grading_surface
+from reservoir_runtime import surface as reservoir_surface
+from site_access_plan import replacement_height as access_height
+from nanhu_terrain import surface as nanhu_surface
 
 PLAN = json.loads((Path(__file__).resolve().parents[1]/'data/forest-plan.json').read_text())
 REGIONS = PLAN['regions']
 REPLACED = {i for region in REGIONS for i in region['replacedTreeIndices']}
+MOUNTAIN_REMOVED = set(PLAN.get('mountainRemovedTreeIndices', []))
 CANOPY_MATERIALS = ['forest_deep', 'forest_jade', 'forest_light']
 
 
@@ -26,6 +34,24 @@ def refined_terrain_height(col, row, ground, bounds, columns, rows):
 
 
 def terrain_surface(x, y, ground, bounds, columns, rows, lightweight=False):
+    access=access_height(x,y,lightweight)
+    if access is not None:return access
+    replacement=replacement_height(x,y,lightweight)
+    if replacement is not None:return replacement
+    ground = getattr(ground, 'unpatched', ground)
+    nanhu = nanhu_surface(x,y,ground,PLAN['center'])
+    if nanhu is not None:return nanhu
+    graded=grading_surface(x,y,ground,bounds,columns,rows,lightweight,coarse_terrain_surface)
+    if graded is not None:return graded
+    reservoir=reservoir_surface(x,y,ground,bounds,columns,rows,lightweight,coarse_terrain_surface)
+    if reservoir is not None:return reservoir
+    mountain=mountain_surface(x,y,ground,bounds,columns,rows,lightweight,coarse_terrain_surface)
+    if mountain is not None:return mountain
+    local = local_surface(x,y,ground,bounds,columns,rows,lightweight,coarse_terrain_surface)
+    return local if local is not None else coarse_terrain_surface(x,y,ground,bounds,columns,rows,lightweight)
+
+
+def coarse_terrain_surface(x, y, ground, bounds, columns, rows, lightweight=False):
     """Interpolate the displayed triangle, not a bilinear DEM height."""
     west, south, east, north = bounds
     u = max(0, min(columns-1.000001, (x-west)/(east-west)*(columns-1)))
@@ -69,7 +95,7 @@ def build_canopy(batch, region, ground, bounds, columns, rows, lightweight=False
 
 
 def build_crown_clusters(batch, region, ground, bounds, columns, rows, lightweight=False):
-    clusters = region['crownClusters'][::2 if lightweight else 1]
+    clusters = region.get('smoothCrownClusters', region['crownClusters'][::2]) if lightweight else region['crownClusters']
     for x,y,r,aspect,angle,color in clusters:
         floor = terrain_surface(x,y,ground,bounds,columns,rows,lightweight)
         c,s = math.cos(angle),math.sin(angle)
@@ -79,8 +105,8 @@ def build_crown_clusters(batch, region, ground, bounds, columns, rows, lightweig
             v = y+r*aspect*(a*s+b*c)
             # Low rounded lobes merge into the canopy beneath them. Fitting the
             # uphill side locally avoids tall, level-topped blocks on slopes.
-            h = max(floor+.48+d*.42,
-                    terrain_surface(u,v,ground,bounds,columns,rows,lightweight)+.12)
+            h = max(floor+(.48+d*.42)*canopy_factor(x,y),
+                    terrain_surface(u,v,ground,bounds,columns,rows,lightweight)+.12*canopy_factor(u,v))
             vertices.append((u,v,h))
         for face in CROWN_FACES:
             batch.face([vertices[i] for i in face],CANOPY_MATERIALS[color])

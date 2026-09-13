@@ -1,0 +1,26 @@
+{
+  "id": "p5-block-grading",
+  "status": "candidate; estimated civil grading, not surveyed",
+  "sites": [
+    {
+      "id": "xinzhong-industrial",
+      "padApronMeters": 2,
+      "loadingApronMeters": 10,
+      "meshSubdivisions": 3,
+      "retainingWidthMeters": 3,
+      "patchMarginMeters": 45,
+      "accessRoadName": "华兴路",
+      "accessWidthMeters": 8,
+      "accessShoulderMeters": 5,
+      "targetMethod": "median-existing-two-profile-pad-samples",
+      "notes": [
+        "地块、建筑与装卸场沿用已记录的 P5 类型候选。",
+        "场坪高度由两档既有显示地面样本中位数推定，不代表工程高程。",
+        "通向华兴路的场内车道为估计，尚未核实真实出入口；东侧海德路短接方案因地形高差过大未采用。",
+        "场坪外设置估计 3 米宽的连续挡土过渡带，外围保留原地形；宽度和构造未经工程测量。",
+        "挡土过渡仍须通过实际网格、接路和同机位视觉检查，不能单凭足印变平宣布场地完成。"
+      ],
+      "retainingFaceGradeThreshold": 0.6
+    }
+  ]
+}

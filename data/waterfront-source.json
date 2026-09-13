@@ -1,0 +1,28 @@
+{
+  "id": "minsheng-yongjiang",
+  "name": "民生广场—邕江大桥北岸",
+  "osmRelation": 18447332,
+  "northBankMember": 1530494329,
+  "osmUrl": "https://www.openstreetmap.org/way/1530494329",
+  "snapshotTimestamp": "2026-09-08T06:56:02Z",
+  "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9",
+  "shoreAnchorsSceneXY": [[11.919, -10.579], [17.33, -13.418]],
+  "sourceBoundaryNote": "OSM 水域 relation 标记 source=landsat；沿用现有 geography.json 的简化水边界，不解释为实测护岸线。",
+  "references": [
+    {"url": "https://v.gxnews.com.cn/a/17858642?pageno=1&remains=1", "publisher": "南宁晚报 / 广西新闻网", "date": "2018-11-27", "supports": "邕江整治包含水、堤、路、景及民生广场亲水步道；不能确定此岸段准确尺寸。"},
+    {"url": "https://www.gxnews.com.cn/staticpages/20260723/newgx6a6184e1-21973402.shtml", "publisher": "广西新闻网", "date": "2026-07-23", "supports": "民生码头在畅游阁楼下江边，邻近冬泳亭和邕江大桥；不提供护岸或步道断面测量。"}
+  ],
+  "section": {
+    "source": "estimate",
+    "waterSceneZ": 0.26,
+    "bankTopSceneZ": 0.34,
+    "promenadeWidthMeters": 8.5,
+    "greenBeltOuterMeters": 29,
+    "inlandBlendMeters": 90,
+    "endBlendMeters": 35,
+    "patchMarginMeters": 120,
+    "gridSubdivisions": 4,
+    "edgeBlendMeters": 35,
+    "note": "示意城市硬质护岸：沿用水位，墙顶比显示水面高8米；步道、绿带和过渡宽度均为估计。地形原始高程与全城显示基准不改变。"
+  }
+}

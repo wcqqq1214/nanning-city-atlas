@@ -110,7 +110,27 @@
       ],
       "displayRise": 0,
       "source": "yongjiang",
-      "description": "邕江上的老桥以七孔连续的悬臂箱梁和双柱桥墩展开，细化栏杆、步道与路灯。"
+      "description": "邕江上的老桥以七孔连续的悬臂箱梁和双柱桥墩展开，细化栏杆、步道与路灯。",
+      "displayProfile": {
+        "mainMinimumSceneZ": 0.529225,
+        "endMinimumSceneZ": 0.0,
+        "supportClearanceScene": 0.015,
+        "girderBaseDepthScene": 0.035,
+        "girderHaunchRiseScene": 0.045,
+        "provenance": {
+          "url": "https://www.msa.gov.cn/public/documents/document/mdi0/odiz/~edisp/20241101024823893.pdf",
+          "publisher": "中华人民共和国海事局",
+          "document": "广西跨内河IV级及以上航道桥梁通航净空尺度信息表",
+          "published": "2024-11-01",
+          "row": 53,
+          "navigationClearanceMeters": 6.0,
+          "navigationWidthMeters": 53.0,
+          "designHighWaterMeters": 74.65,
+          "inference": "表中净高与设计最高通航水位相加得通航孔梁底80.65米；未核实该水位高程基准与DSM EGM2008的差异。",
+          "displayMapping": "仅用于沙盘估计：0.26+(80.65-63.3)/100×1.35+0.035=0.529225；实际桥面还受两档地形、梁厚和接路约束。",
+          "estimated": "梁中部显示厚度3.5米、墩侧加厚4.5米、支承净空1.5米均为示意参数，非结构测量。"
+        }
+      }
     },
     {
       "id": "taoyuan-bridge",

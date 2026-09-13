@@ -4,21 +4,28 @@ import hashlib
 import math
 import struct
 import sys
+import argparse
 from pathlib import Path
 from shapely.geometry import Polygon, LineString, Point, box
 from shapely.ops import unary_union
 from shapely.prepared import prep
 from shapely.strtree import STRtree
 
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--site-access-plan',type=Path)
+args=parser.parse_args()
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'blender'))
-from arts_landmark import outline as arts_outline, DISPLAY_SCALE, SITE_ANGLE
+from arts_landmark import outline as arts_outline, SITE_ANGLE
+from landmark_sites import SPECS as CALIBRATION
+DISPLAY_SCALE=CALIBRATION['arts-center']['displayScale']
 from sports_landmark import PLAN as SPORTS_PLAN, SITE_PADS, inside_site
 from tingzi_landmark import SITE as TINGZI_SITE, site_xy as tingzi_xy, inside_site as inside_tingzi
 from bridge_landmark import BridgePath, MAIN_SPAN, NORTH_APPROACH
 from changyou_landmark import ANGLE as CHANGYOU_ANGLE, WIDTH as CHANGYOU_WIDTH, DEPTH as CHANGYOU_DEPTH
 from nanhu_landmark import PLAN as NANHU_PLAN, BRIDGE_LENGTH as NANHU_BRIDGE_LENGTH
 from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, build_canopy, terrain_surface
+from mountain_terrain import canopy_factor
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, inside_site as inside_station, ground_blend as station_ground_blend
 from viaduct import Viaduct
 from validate_viaduct import validate_viaduct
@@ -218,26 +225,17 @@ for region, area in zip(FOREST_REGIONS,canopy_regions):
     for x,y,r,aspect,angle,color in region['crownClusters']:
         assert buffered.contains(Point(x,y).buffer(r)), 'Crown cluster crosses a woodland clearing'
 
+from scene_ground import SceneGround
+scene_ground = SceneGround(g, t, catalog)
+
+
 def terrain_ground(x, y):
-    west, south, east, north = g['bounds']
-    u = max(0, min(t['cols']-1.000001, (x-west)/(east-west)*(t['cols']-1)))
-    v = max(0, min(t['rows']-1.000001, (north-y)/(north-south)*(t['rows']-1)))
-    i, j = int(u), int(v)
-    a, b = u-i, v-j
-    hs = t.get('sceneHeights',t['heights'])
-    h = ((1-a)*hs[j*t['cols']+i]+a*hs[j*t['cols']+i+1])*(1-b)
-    h += ((1-a)*hs[(j+1)*t['cols']+i]+a*hs[(j+1)*t['cols']+i+1])*b
-    from terrain_height import scene_height
-    return scene_height(h,t)
+    return scene_ground.terrain_height(x, y)
+
 
 railway_cuts=TerrainCut(json.loads((ROOT/'public/data/overview.json').read_text())['railways']['terrainCuts'])
 def raw_ground(x, y):
-    h=terrain_ground(x,y)
-    for identity,(sx,sy,_) in station_sites.items():
-        if abs(x-sx)<10 and abs(y-sy)<10:
-            blend=station_ground_blend(identity,x-sx,y-sy)
-            h=terrain_ground(sx,sy)*(1-blend)+h*blend
-    return railway_cuts.height(x,y,h)
+    return railway_cuts.height(x, y, scene_ground(x, y))
 
 viaduct=Viaduct(raw_ground, lambda x,y,mobile: terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],lightweight=mobile))
 validate_viaduct(viaduct,g,catalog,ROOT)
@@ -266,7 +264,7 @@ class CanopyProbe:
         for weights in [(1/3,1/3,1/3),(.5,.5,0),(.5,0,.5),(0,.5,.5)]:
             x,y,z = [sum(v[k]*w for v,w in zip(vertices,weights)) for k in range(3)]
             floor = terrain_surface(x,y,raw_ground,g['bounds'],t['cols'],t['rows'],self.lightweight)
-            assert z-floor > .095, 'Forest canopy intersects the displayed terrain'
+            assert z-floor > .095*canopy_factor(x,y), 'Forest canopy intersects the displayed terrain'
 
 for region, area in zip(FOREST_REGIONS,canopy_regions):
     for profile in ['detail','smooth']:
@@ -350,7 +348,8 @@ for counts, profile, tree_count, triangles_per_tree in [
         surface = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_canopy_'))
         assert surface == len(region[profile]['triangles']), 'Exported forest coverage is incomplete'
         crowns = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_crowns_'))
-        assert crowns == len(region['crownClusters'][::2 if profile=='smooth' else 1])*20
+        selected = region.get('smoothCrownClusters', region['crownClusters'][::2]) if profile=='smooth' else region['crownClusters']
+        assert crowns == len(selected)*20
     assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
 for name, count in full.items():
     # Resolved Minzu joins follow each profile's ground mesh. validate_minzu()
@@ -374,7 +373,7 @@ validate_bridges()
 # resulting boundaries; cap these complete surfaces rather than old strips.
 assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 530_000
 assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 350_000
-validate_ground_roads()
+validate_ground_roads(site_access_plan=args.site_access_plan)
 assert sum(v for k,v in full.items() if k.startswith('ElevatedRoads_'))<500_000
 validate_elevated_roads()
 validate_road_solids()

@@ -1,13 +1,19 @@
 """Detailed exterior interpretations of Longxiang Pagoda and two Guangxi museums.
 
-Keep the established atlas envelopes and illustrative display enlargement.
+Museums retain their established envelopes; the pagoda uses source dimensions.
 The source snapshot locates each place; photographs guide architectural details.
 See docs/CULTURAL_LANDMARKS.md for scope, sources and reproducible validation.
 """
 import math
+import json
+from pathlib import Path
+
+PAGODA_SOURCE=json.loads((Path(__file__).resolve().parents[1]/'data/qingxiu-terrain-source.json').read_text())['tower']
+PAGODA_XY_SCALE=PAGODA_SOURCE['baseDiameterMeters']/90
+PAGODA_Z_SCALE=(PAGODA_SOURCE['heightMeters']/100)/3.045
 
 SPECS = {
-    'qingxiu': {'radius': .4995, 'height': 3.05, 'osmId': 243217636},
+    'qingxiu': {'radius': .4995*PAGODA_XY_SCALE, 'height': PAGODA_SOURCE['heightMeters']/100, 'osmId': 243217636},
     'gx-museum': {'width': 2.35, 'depth': 1.8, 'height': .81, 'osmId': 476559327},
     'ethnic-museum': {'width': 3.5, 'depth': 2.4, 'height': 1.22, 'osmId': 1006681820},
 }
@@ -161,7 +167,7 @@ def arched_wall(m,width,height,opening,sill,spring):
         a,b=(-width/2,-half) if side<0 else (half,width/2)
         m.face([(a,0,0),(b,0,0),(b,0,height),(a,0,height)],'pagoda_wall')
     if sill>0:m.face([(-half,0,0),(half,0,0),(half,0,sill),(-half,0,sill)],'pagoda_wall')
-    arc=[(half*math.cos(i*math.pi/10),spring+half*math.sin(i*math.pi/10)) for i in range(11)]
+    arc=[(half*math.cos(i*math.pi/6),spring+half*math.sin(i*math.pi/6)) for i in range(7)]
     for a,b in zip(arc,arc[1:]):
         m.face([(b[0],0,b[1]),(a[0],0,a[1]),(a[0],0,height),(b[0],0,height)],'pagoda_wall')
         m.face([(a[0],0,a[1]),(b[0],0,b[1]),(b[0],thickness,b[1]),(a[0],thickness,a[1])],'pagoda_wood')
@@ -177,15 +183,16 @@ def oct_eave(m,r,z):
     profile=[(.90,z+.058),(1.01,z+.025),(1.19,z+.009),(1.30,z+.014)]
     for side in range(8):
         a,b=side*math.tau/8,(side+1)*math.tau/8
-        for j in range(6):
-            t0,t1=j/6,(j+1)/6
+        for j in range(2):
+            t0,t1=j/2,(j+1)/2
             def p(scale,h,t):
                 return (r*scale*((1-t)*math.cos(a)+t*math.cos(b)),
                         r*scale*((1-t)*math.sin(a)+t*math.sin(b)),h+.008*(abs(t-.5)*2)**4)
             for (s,h),(ss,hh) in zip(profile,profile[1:]):
                 m.face([p(s,h,t0),p(ss,hh,t0),p(ss,hh,t1),p(s,h,t1)],'pagoda_tile')
-            for (s,h),(ss,hh) in zip(profile,profile[1:]):
-                m.beam(p(s,h,t0),p(ss,hh,t0),.0018,'pagoda_edge')
+            if j==0:
+                for (s,h),(ss,hh) in zip(profile,profile[1:]):
+                    m.beam(p(s,h,t0),p(ss,hh,t0),.0018,'pagoda_edge')
         m.beam((r*1.3*math.cos(a),r*1.3*math.sin(a),z+.022),
                (r*1.3*math.cos(b),r*1.3*math.sin(b),z+.022),.005,'pagoda_edge')
 
@@ -204,22 +211,17 @@ def build_pagoda(m):
             for u in [-w*.43,w*.43]:facade.box(u,-.003,.006,.008,.010,.212,'culture_light')
             # Delicate green balcony posts and two continuous horizontal rails.
             rr=r*1.15
-            for i in range(5):
-                t=(i+.25)/5
+            for i in range(2):
+                t=(i+.5)/2
                 u=rr*((1-t)*math.cos(a)+t*math.cos(b));v=rr*((1-t)*math.sin(a)+t*math.sin(b))
                 m.beam((u,v,z+.045),(u,v,z+.102),.003,'pagoda_edge')
             for h in [.055,.104]:
                 m.beam((rr*math.cos(a),rr*math.sin(a),z+h),(rr*math.cos(b),rr*math.sin(b),z+h),.004,'pagoda_edge')
-            if floor>0:
-                # Small bells hang from the eight upturned corners.
-                q=(r*1.29*math.cos(a),r*1.29*math.sin(a))
-                m.beam((*q,z+.019),(*q,z+.002),.0015,'culture_gold')
-                m.profile(*q,[(.004,z-.004),(.006,z),(.003,z+.005)],'culture_gold',6,cap=True)
         m.profile(0,0,[(r*1.19,z+.015),(r*1.19,z+.041)],'pagoda_tile',8)
         oct_eave(m,r,z+.209)
     # A curved eight-ridged crown, not a straight cone.
     crown=[(.236,2.518),(.242,2.542),(.178,2.61),(.118,2.72),(.055,2.88),(.019,2.985)]
-    m.profile(0,0,crown,'pagoda_tile',64,cap=True)
+    m.profile(0,0,crown,'pagoda_tile',16,cap=True)
     for i in range(8):
         a=i*math.tau/8
         for (r,z),(rr,zz) in zip(crown,crown[1:]):
@@ -378,4 +380,10 @@ def build_ethnic_museum(m):
 def build_cultural(batch,identity,x,y,z,ground_bounds):
     m=Mesh(batch,x,y,z)
     foundation(m,identity,ground_bounds)
+    start=len(batch.v)
     {'qingxiu':build_pagoda,'gx-museum':build_gx_museum,'ethnic-museum':build_ethnic_museum}[identity](m)
+    if identity=='qingxiu':
+        # Scale the complete architectural body about its newly grounded base.
+        # The foundation above already uses the calibrated footprint and terrain.
+        batch.v[start:]=[(x+(u-x)*PAGODA_XY_SCALE,y+(v-y)*PAGODA_XY_SCALE,z+(h-z)*PAGODA_Z_SCALE)
+                         for u,v,h in batch.v[start:]]

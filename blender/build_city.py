@@ -17,6 +17,9 @@ from mathutils.geometry import tessellate_polygon
 ROOT = Path(__file__).resolve().parents[1]
 MINZU_CONTEXT_ONLY = '--minzu-context' in sys.argv
 TERRAIN_CONTEXT_ONLY = '--terrain-context' in sys.argv
+if '--site-access-plan' in sys.argv and any(flag in sys.argv for flag in
+        ['--terrain-context','--minzu-context','--capture-road-inputs','--check-road-interfaces']):
+    raise ValueError('Site access is downstream of resolved roads; prepare road contexts without --site-access-plan')
 sys.path.insert(0, str(ROOT / 'blender'))
 from extra_landmarks import build_extra_landmarks
 from terrain_height import scene_height
@@ -33,14 +36,34 @@ from major_bridges import build_structure as build_river_bridge, build_details a
 from changyou_landmark import build_changyou, MATERIAL_KEYS as CHANGYOU_MATERIALS, inside_site as inside_changyou
 from nanhu_landmark import build_nanhu, MATERIAL_KEYS as NANHU_MATERIALS, inside_park as inside_nanhu
 from nanhu_landmark import shore_height as nanhu_shore_height, replaces_terrain_cell, build_park_terrain
-from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED
+from forest_canopy import PLAN as FOREST_PLAN, REGIONS as FOREST_REGIONS, REPLACED as FOREST_REPLACED, MOUNTAIN_REMOVED
 from forest_canopy import build_canopy, build_crown_clusters, terrain_surface, refined_terrain_height, CANOPY_MATERIALS
+from forest_canopy import coarse_terrain_surface, canopy_factor
+from terrain_mesh import build as build_terrain_mesh
+from terrain_reduction_runtime import configure as configure_terrain_reduction, apply_existing as apply_terrain_reduction
+from site_access_runtime import configure as configure_site_access, apply_active as apply_site_access, append_roads as append_site_access_roads
+from building_placement import prepared as prepared_building, envelope as building_envelope, render as render_prepared_building
+from building_placement import validate_road_envelope
+from mountain_terrain import PLAN as MOUNTAIN_PLAN, PATH_KEYS as PARK_PATH_KEYS
+from mountain_terrain import contains as inside_mountain, replaces_cell as replaces_mountain_cell, build as build_mountain_terrain, build_paths as build_mountain_paths, water_level as mountain_water_level
+from local_terrain import PLAN as WATERFRONT_PLAN, MATERIAL_KEYS as TERRAIN_MATERIALS
+from local_terrain import contains as inside_local_terrain, replaces_cell as replaces_local_cell, build as build_local_terrain
+from site_grading import PLAN as GRADING_PLAN, MATERIAL_KEYS as GRADING_MATERIALS, contains as inside_grading
+TERRAIN_MATERIALS=TERRAIN_MATERIALS+(GRADING_MATERIALS if GRADING_PLAN is not None else [])
+from reservoir_runtime import PLAN as RESERVOIR_PLAN, MATERIAL_KEYS as RESERVOIR_MATERIALS
+from reservoir_runtime import contains as inside_reservoir, water_level as reservoir_water_level, dedicated_dam
+from reservoir_runtime import custom_water_contains, custom_water_triangles, build_water_controls
+TERRAIN_MATERIALS=TERRAIN_MATERIALS+(RESERVOIR_MATERIALS if RESERVOIR_PLAN is not None else [])
 from vegetation import build_tree
 from zhuxi_interchange import build_details as build_zhuxi_details, build_greenery as build_zhuxi_greenery, MATERIAL_KEYS as ZHUXI_MATERIALS
 from station_landmarks import PLAN as STATION_PLAN, STATIONS, MATERIAL_KEYS as STATION_MATERIALS
 from station_landmarks import inside_site as inside_station, ground_blend as station_ground_blend
 from zhenning_landmark import build_zhenning, MATERIAL_KEYS as ZHENNING_MATERIALS, terrace_level as zhenning_terrace_level
 from zhenning_landmark import terrain_patch as zhenning_terrain_patch
+from landmark_sites import SPECS as CALIBRATION, inside_site as inside_calibrated_site
+from confucius_landmark import MATERIALS as TEMPLE_MATERIALS
+from landmark_vegetation import SETTINGS as LANDMARK_VEGETATION, canopy_factor as landmark_canopy_factor
+from diwang_landmark import build_diwang
 from mall_landmarks import PLAN as MALL_PLAN, SITES as MALL_SITES, MATERIALS as MALL_MATS
 from mall_landmarks import build_mall, inside_site as inside_mall, intersects_site as intersects_mall
 from mall_landmarks import support_level as mall_support_level
@@ -62,6 +85,12 @@ GEO = json.loads((ROOT / 'public/data/geography.json').read_text())
 DEM = json.loads((ROOT / 'public/data/terrain.json').read_text())
 CATALOG = json.loads((ROOT / 'data/landmarks.json').read_text())
 PLACE_BY_ID = {place['id']: place for place in CATALOG}
+for path,digest in MOUNTAIN_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, f'Rebuild mountain after changing {path}'
+for path,digest in WATERFRONT_PLAN['inputHashes'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest, f'Rebuild waterfront after changing {path}'
+for block in GEO.get('urbanBlocks', []):
+    assert hashlib.sha256((ROOT/block['sourceFile']).read_bytes()).hexdigest()==block['sourceHash'], 'Rebuild the residential plan after changing its source/template'
 assert MALL_PLAN['sceneCenter'] == GEO['center']
 assert MALL_PLAN['sourceHash'] == hashlib.sha256((ROOT/'data/malls-source.json').read_bytes()).hexdigest(), 'Rebuild the mall plan after changing source geometry'
 assert all([PLACE_BY_ID[k]['lon'], PLACE_BY_ID[k]['lat']] == v['center'] for k,v in MALL_SITES.items())
@@ -119,6 +148,12 @@ MATS = {
     'bank': material('Riverbank', 'b3cbb5'),
     'base': material('Cut earth', '607e74'),
     'water': material('Jade water', '3ca49b', .27, .22),
+    'park_walk': material('Qingxiu park footway', 'd5cdb8'),
+    'park_steps': material('Qingxiu stepped path', 'c8b897'),
+    'park_service': material('Qingxiu park service road', '8f9c8e'),
+    'park_edge': material('Qingxiu path edge', 'b4b7a5'),
+    'waterfront_paving': material('Riverside promenade stone', 'd6d6c5'),
+    'waterfront_wall': material('Riverside retaining stone', 'a9b5a5'),
     'road': material('Road white', 'eeeee1'),
     'highway': material('Main avenue', 'f4e4b9'),
     'building': material('Warm porcelain', 'e8e9df'),
@@ -223,19 +258,24 @@ MATS = {
     'rail_concrete': material('Railway bridge concrete', 'c3cbbb', .87),
     'rail_metal': material('Railway overhead fittings', '677a70', .56, .32),
     'rail_earth': material('Railway graded earth', 'a5af94', .98),
+    'block_paving': material('Shared site paving', 'a4a79a', .96),
+    'block_retaining': material('Site retaining earth', '788782', .98),
+    'reservoir_ground': material('Reservoir terrain', '617a54', .98),
+    'dam_slope': material('Estimated dam embankment', '8c916e', .98),
+    'dam_crest': material('Estimated dam crest', 'b3b8a8', .96),
 }
 MATS.update({key: material(*values) for key, values in RIVER_BRIDGE_MATS.items()})
 MATS.update({key: material(*values) for key, values in MALL_MATS.items()})
 MATS.update({key: material(*values) for key, values in CULTURAL_MATS.items()})
+MATS.update({key: material(*values) for key, values in TEMPLE_MATERIALS.items()})
+
+
+from scene_ground import SceneGround
+GROUND_CONTEXT = SceneGround(GEO, DEM, CATALOG)
 
 
 def terrain_height(x, y):
-    i = max(0, min(COLS - 1.001, (x - MINX) / (MAXX - MINX) * (COLS - 1)))
-    j = max(0, min(ROWS - 1.001, (MAXY - y) / (MAXY - MINY) * (ROWS - 1)))
-    ix, jy = int(i), int(j)
-    a, b = i - ix, j - jy
-    h = (HEIGHTS[jy*COLS+ix]*(1-a)+HEIGHTS[jy*COLS+ix+1]*a)*(1-b) + (HEIGHTS[(jy+1)*COLS+ix]*(1-a)+HEIGHTS[(jy+1)*COLS+ix+1]*a)*b
-    return scene_height(h,DEM)
+    return GROUND_CONTEXT.terrain_height(x, y)
 
 
 EXPO = PLACE_BY_ID['expo']
@@ -257,29 +297,7 @@ for identity, station in STATIONS.items():
 
 
 def height(x, y):
-    h = terrain_height(x, y)
-    h = nanhu_shore_height(x-NANHU_X, y-NANHU_Y, h)
-    # The city-scale display DEM cannot resolve the building's graded terrace. Level
-    # its visual support, with a soft apron, so coarse hillside triangles do not
-    # pass through the lobby or stairs. Raw DEM data remains unchanged.
-    distance = expo_site_distance(x-EXPO_X, y-EXPO_Y)
-    if distance < 1.3:
-        t = max(0, min(1, (distance - .45) / .85))
-        blend = t*t*(3-2*t)
-        h = EXPO_GROUND*(1-blend) + h*blend
-    # The low-resolution DEM cannot resolve the three graded sports terraces.
-    # All scene layers use the same local correction, including roads and trees.
-    for pad, level in zip(SITE_PADS, SPORTS_LEVELS):
-        distance = pad_distance(x-SPORTS_X, y-SPORTS_Y, pad)
-        if distance < .65:
-            t = max(0, distance/.65)
-            blend = t*t*(3-2*t)
-            h = level*(1-blend) + h*blend
-    for identity, (sx, sy, level) in STATION_SITES.items():
-        if abs(x-sx) < 10 and abs(y-sy) < 10:
-            blend = station_ground_blend(identity, x-sx, y-sy)
-            h = level*(1-blend) + h*blend
-    return h
+    return GROUND_CONTEXT(x, y)
 
 
 base_height = height
@@ -287,6 +305,17 @@ railways = Railways(base_height,
     lambda x,y,mobile: terrain_surface(x,y,base_height,GEO['bounds'],COLS,ROWS,mobile),STATION_SITES)
 def height(x,y):
     return railways.cut_ground(x,y,base_height(x,y))
+railways.ground = height
+railways.surface = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
+
+# Native landmark/bridge ground and profile-specific roads/vegetation all query
+# the same replacement. The unpatched callback prevents recursive re-blending.
+unpatched_height = height
+def height(x,y):
+    if inside_local_terrain(x,y) or inside_mountain(x,y) or inside_grading(x,y) or inside_reservoir(x,y):
+        return terrain_surface(x,y,unpatched_height,GEO['bounds'],COLS,ROWS)
+    return unpatched_height(x,y)
+height.unpatched = unpatched_height
 railways.ground = height
 railways.surface = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
 
@@ -303,46 +332,19 @@ def displayed_ground_bounds(x,y):
     return min(levels),max(levels)
 
 
-if MINZU_CONTEXT_ONLY:
-    # Regenerate connecting streets from the new road, before a full export.
-    # This avoids sampling stale Minzu heights/side roads from the previous GLB.
-    sample = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
-    context_viaduct = Viaduct(height, sample)
-    context_minzu = MinzuAvenue(context_viaduct.road_level, sample)
-    report = context_minzu.validate()
-    faces = []
-    for key,path in context_minzu.paths.items():
-        if context_minzu.routes[key]['bridge']: continue
-        for a,b in zip(context_minzu.sections[key],context_minzu.sections[key][1:]):
-            wa,wb = context_minzu.width(key,a),context_minzu.width(key,b)
-            quad = [context_minzu.at(key,a,-wa),context_minzu.at(key,b,-wb),
-                    context_minzu.at(key,b,wb),context_minzu.at(key,a,wa)]
-            faces.extend([[quad[i] for i in tri] for tri in [(0,1,2),(0,2,3)]])
-    payload = {'roadFaces': faces, 'geometry': report,
-               'inputHashes': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
-                               for p in ['data/minzu-plan.json','blender/minzu_avenue.py']}}
-    output = ROOT/'work/minzu-avenue/road-context.json'
-    output.parent.mkdir(parents=True,exist_ok=True)
-    output.write_text(json.dumps(payload,separators=(',',':'))+'\n')
-    print('Prepared Minzu connection context:',report,flush=True)
-    sys.exit(0)
+
+from city_visibility import CityVisibility
+city_visibility = CityVisibility(GEO, CATALOG)
+CLEAR_AREAS = city_visibility.clear_areas
+LEGACY_CLEAR_AREAS = city_visibility.legacy_clear_areas
+CALIBRATION_ORIGINS = city_visibility.calibration_origins
+TINGZI_X, TINGZI_Y = city_visibility.tingzi
+CHANGYOU_X, CHANGYOU_Y = city_visibility.changyou
+MALL_ORIGINS = city_visibility.mall_origins
 
 
-CLEAR_AREAS = [(*pos(p['lon'], p['lat'])[:2], *p['clearExtent']) for p in CATALOG if 'clearExtent' in p]
-TINGZI_X, TINGZI_Y, _ = pos(PLACE_BY_ID['tingzi']['lon'], PLACE_BY_ID['tingzi']['lat'])
-CHANGYOU_X, CHANGYOU_Y, _ = pos(PLACE_BY_ID['changyou']['lon'], PLACE_BY_ID['changyou']['lat'])
-MALL_ORIGINS = {identity: pos(*site['center'])[:2] for identity,site in MALL_SITES.items()}
-
-
-def inside_landmark(x, y):
-    return (inside_site(x-SPORTS_X, y-SPORTS_Y) or
-            any(abs(x-sx)<3 and abs(y-sy)<3 and inside_mall(identity,x-sx,y-sy)
-                for identity,(sx,sy) in MALL_ORIGINS.items()) or
-            inside_tingzi(x-TINGZI_X, y-TINGZI_Y) or
-            inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y) or
-            any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy)
-                for identity,(sx,sy,_) in STATION_SITES.items()) or
-            any(abs(x-cx) < width/2 and abs(y-cy) < depth/2 for cx,cy,width,depth in CLEAR_AREAS))
+def inside_landmark(x, y, legacy=False):
+    return city_visibility.inside_landmark(x, y, legacy=legacy)
 
 
 class Batch:
@@ -351,12 +353,18 @@ class Batch:
         self.spatial = spatial
         self.weld = weld
         self.normals = []
+        self.cells = []
+        self.cell_override = None
+        self.partitions = []
+        self.partition_override = ''
     def face(self, vertices, key, normals=None):
         start = len(self.v)
         self.v.extend(vertices)
         self.f.append(tuple(range(start, start + len(vertices))))
         self.mi.append(self.keys.index(key))
         self.normals.append(normals)
+        self.cells.append(self.cell_override)
+        self.partitions.append(self.partition_override)
     def box(self, x, y, z, w, d, h, key, roof=None, angle=0):
         verts = []
         for zz in [z, z+h]:
@@ -412,11 +420,11 @@ class Batch:
         parent=bpy.data.objects.new(self.name,None)
         bpy.context.collection.objects.link(parent)
         groups={}
-        for face,index,normal in zip(self.f,self.mi,self.normals):
+        for face,index,normal,forced_cell,partition in zip(self.f,self.mi,self.normals,self.cells,self.partitions):
             verts=[self.v[i] for i in face]
             cx=sum(v[0] for v in verts)/len(verts);cy=sum(v[1] for v in verts)/len(verts)
-            cell=(math.floor((cx-MINX)/80),math.floor((cy-MINY)/80))
-            vertices,faces,materials,normals,lookup=groups.setdefault(cell,([],[],[],[],{}))
+            cell=forced_cell if forced_cell is not None else (math.floor((cx-MINX)/80),math.floor((cy-MINY)/80))
+            vertices,faces,materials,normals,lookup=groups.setdefault((partition,*cell),([],[],[],[],{}))
             if self.weld:
                 # Shared canopy vertices must also share Blender's normal
                 # space, otherwise tiny custom-normal differences defeat glTF
@@ -433,8 +441,9 @@ class Batch:
                 offset=len(vertices);vertices.extend(verts)
                 faces.append(tuple(range(offset,offset+len(verts))))
             materials.append(index);normals.append(normal)
-        for (i,j),(vertices,faces,materials,normals,lookup) in sorted(groups.items()):
-            make_object(f'{self.name}_{i}_{j}',vertices,faces,materials,parent,normals)
+        for (partition,i,j),(vertices,faces,materials,normals,lookup) in sorted(groups.items()):
+            suffix=f'{partition}_' if partition else ''
+            make_object(f'{self.name}_{suffix}{i}_{j}',vertices,faces,materials,parent,normals)
         return parent
 
 
@@ -451,6 +460,51 @@ def build_forests(parent, lightweight=False):
         crowns = Batch(prefix+'_crowns',CANOPY_MATERIALS,spatial=True)
         build_crown_clusters(crowns,region,height,GEO['bounds'],COLS,ROWS,lightweight)
         crowns.finish().parent = parent
+
+
+BUILDING_SUPPORT=None
+BUILDING_SUPPORT_PATH=None
+for argument_index,argument in enumerate(sys.argv[:-1]):
+    if argument=='--building-support-plan':
+        from building_support_plan import BuildingSupportPlan
+        BUILDING_SUPPORT_PATH=Path(sys.argv[argument_index+1]).resolve()
+        BUILDING_SUPPORT=BuildingSupportPlan.read(BUILDING_SUPPORT_PATH,ROOT)
+if any(prepared_building(b) for b in GEO['buildings']) and BUILDING_SUPPORT is None and not (TERRAIN_CONTEXT_ONLY or MINZU_CONTEXT_ONLY or '--check-road-interfaces' in sys.argv):
+    raise ValueError('P5 buildings require --building-support-plan for rendering and road input capture')
+for argument_index,argument in enumerate(sys.argv[:-1]):
+    if argument=='--terrain-reduction-plan':
+        configure_terrain_reduction(globals(),sys.argv[argument_index+1])
+for argument_index,argument in enumerate(sys.argv[:-1]):
+    if argument=='--site-access-plan':
+        configure_site_access(globals(),sys.argv[argument_index+1])
+
+if MINZU_CONTEXT_ONLY:
+    # Regenerate connecting streets from the new road, before a full export.
+    # This avoids sampling stale Minzu heights/side roads from the previous GLB.
+    sample = lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,mobile)
+    context_viaduct = Viaduct(height, sample)
+    context_minzu = MinzuAvenue(context_viaduct.road_level, sample)
+    report = context_minzu.validate()
+    faces = []
+    for key,path in context_minzu.paths.items():
+        if context_minzu.routes[key]['bridge']: continue
+        for a,b in zip(context_minzu.sections[key],context_minzu.sections[key][1:]):
+            wa,wb = context_minzu.width(key,a),context_minzu.width(key,b)
+            quad = [context_minzu.at(key,a,-wa),context_minzu.at(key,b,-wb),
+                    context_minzu.at(key,b,wb),context_minzu.at(key,a,wa)]
+            faces.extend([[quad[i] for i in tri] for tri in [(0,1,2),(0,2,3)]])
+    from terrain_reduction_plan import active_plan_paths
+    context_inputs=['data/minzu-plan.json','blender/minzu_avenue.py','blender/forest_canopy.py',
+                    'blender/terrain_mesh.py','blender/terrain_reduction_plan.py','blender/reduced_surface.py']
+    context_inputs += [str(p.relative_to(ROOT)) for p in active_plan_paths()]
+    payload = {'roadFaces': faces, 'geometry': report,
+               'inputHashes': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in context_inputs}}
+    output = ROOT/'work/minzu-avenue/road-context.json'
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(payload,separators=(',',':'))+'\n')
+    print('Prepared Minzu connection context:',report,flush=True)
+    sys.exit(0)
+
 
 
 if TERRAIN_CONTEXT_ONLY:
@@ -470,23 +524,8 @@ if '--capture-road-inputs' in sys.argv:
     raise SystemExit(0)
 
 print('Building terrain...', flush=True)
-ground = Batch('Terrain', ['ground','hill','hillLight','bank'])
-for j in range(ROWS-1):
-    for i in range(COLS-1):
-        if replaces_terrain_cell(i, j):
-            continue
-        verts = []
-        for ii, jj in [(i,j),(i+1,j),(i+1,j+1),(i,j+1)]:
-            x=MINX+(MAXX-MINX)*ii/(COLS-1)
-            y=MAXY-(MAXY-MINY)*jj/(ROWS-1)
-            verts.append((x,y,height(x,y)))
-        lc = LANDCOVER[j*COLS+i]
-        avg = sum(p[2] for p in verts)/4
-        key = ('hill' if RNG.random() > .22 else 'hillLight') if lc == 1 or avg > 2.6 else ('bank' if lc == 2 else 'ground')
-        ground.face([verts[0],verts[2],verts[1]],key)
-        ground.face([verts[0],verts[3],verts[2]],key)
-build_park_terrain(ground, NANHU_X, NANHU_Y, height)
-ground.finish()
+ground = build_terrain_mesh(globals())
+apply_site_access(globals(),'detail',apply_terrain_reduction(globals(),'detail',ground.finish()))
 base = Batch('Plinth', ['base'])
 base.box(0,0,-2.6,MAXX-MINX,MAXY-MINY,2.45,'base')
 for axis in ['north','south','east','west']:
@@ -502,8 +541,15 @@ for axis in ['north','south','east','west']:
 base.finish()
 water = Batch('Water',['water'])
 for tri in GEO['waterTriangles']:
-    water.face([(x,y,.26) for x,y in tri],'water')
+    x,y=[sum(p[k] for p in tri)/3 for k in [0,1]]
+    if custom_water_contains(x,y):continue
+    lake_level=reservoir_water_level(x,y)
+    if lake_level is None:lake_level=mountain_water_level(x,y)
+    water.face([(x,y,.26 if lake_level is None else lake_level) for x,y in tri],'water')
 water.finish()
+custom_water=Batch('Reservoir_water_custom',['water'])
+for triangle in custom_water_triangles():custom_water.face(triangle,'water')
+custom_water.finish()
 
 print('Building road network...', flush=True)
 viaduct=Viaduct(height, lambda x,y,mobile: terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=mobile))
@@ -557,6 +603,9 @@ for road in rendered_roads:
                 h1,h2=retained_road_level(x1,y1),retained_road_level(x2,y2)
             target.face([(x1-ox,y1-oy,h1),(x2-ox,y2-oy,h2),(x2+ox,y2+oy,h2),(x1+ox,y1+oy,h1)],'road' if road['bridge'] or not major else 'highway')
 road_group=roadbatch.finish(); bridge_group=bridgebatch.finish()
+park_paths=Batch('ParkPaths_qingxiu',PARK_PATH_KEYS)
+park_path_counts=build_mountain_paths(park_paths,height,GEO['bounds'],COLS,ROWS,False,coarse_terrain_surface)
+park_paths.finish().parent=road_group
 elevated_batch=Batch('ElevatedRoads',VIADUCT_MATERIALS,spatial=True,weld=True)
 build_elevated_structure(elevated_batch,elevated)
 elevated_group=elevated_batch.finish();elevated_group.parent=bridge_group;elevated_group['planHash']=ELEVATED_HASH
@@ -574,6 +623,7 @@ ground_road_counts=build_ground_roads(ground_road_batch,height,GEO['bounds'],COL
 ground_road_group=ground_road_batch.finish()
 ground_road_group.parent=road_group
 ground_road_group['planHash']=GROUND_ROAD_HASH
+ground_road_counts['siteAccess']=append_site_access_roads(globals(),'detail',ground_road_group)
 del ground_road_batch
 print('Ground road geometry:',ground_road_counts,flush=True)
 minzu_batch=Batch('MinzuAvenue',MINZU_MATERIALS,spatial=True)
@@ -610,22 +660,48 @@ assert railway_geometry['maxBallastPenetration']<.001, 'Display terrain pierces 
 
 print('Building simplified city blocks...', flush=True)
 buildings=Batch('Buildings',['building','building2','building3','roof'])
-from road_solids import building_limits
+from road_solids import building_limits,building_envelopes as captured_building_envelopes
+from urban_blocks import palette_records, build_massing
+mapped_buildings_batch=Batch('Buildings_quality',['building','building2','building3','roof'],spatial=True) if any(prepared_building(b) for b in GEO['buildings']) else None
 road_building_limits=building_limits()
+road_building_envelopes=captured_building_envelopes(GEO) if mapped_buildings_batch is not None else {}
+def building_visible(b, railway_hidden=False, legacy=False):
+    return city_visibility.building_visible(b, railway_hidden=railway_hidden, legacy=legacy)
+
+legacy_palette={}
+if GEO.get('urbanBlocks'):
+    hidden_ids={GEO['buildings'][i]['id'] for i in RAILWAY_BUILDINGS}
+    for b in palette_records(GEO):
+        if building_visible(b,b['id'] in hidden_ids,legacy=True):
+            legacy_palette[b['id']]=RNG.choice(['building','building','building','building2','building3'])
+block_support=[]
+prepared_building_records=[]
 for building_index,b in enumerate(GEO['buildings']):
-    if building_index in RAILWAY_BUILDINGS: continue
-    if any(n in b.get('name','') for n in ['龙象塔','华润大厦A','地王国际商会中心']): continue
+    if not building_visible(b,building_index in RAILWAY_BUILDINGS): continue
     ring=b['rings'][0][:-1]
-    if len(ring)<3: continue
     x=sum(p[0] for p in ring)/len(ring); y=sum(p[1] for p in ring)/len(ring)
-    if inside_landmark(x,y): continue
-    if any(abs(x-sx)<5 and abs(y-sy)<5 and intersects_mall(identity,ring,sx,sy)
-           for identity,(sx,sy) in MALL_ORIGINS.items()): continue
     z=max(.4,height(x,y))+.07
     if inside_nanhu(x-NANHU_X, y-NANHU_Y):
         z=height(x,y)+.018
     hh=b['height']/100*1.55
-    key=RNG.choice(['building','building','building','building2','building3'])
+    key=(b.get('materialKey') or legacy_palette.get(b['id']) or
+         ['building','building','building','building2','building3'][int(hashlib.sha256(b['id'].encode()).hexdigest()[:8],16)%5]) if GEO.get('urbanBlocks') else RNG.choice(['building','building','building','building2','building3'])
+    if dedicated_dam(b):continue
+    if prepared_building(b):
+        placement=building_envelope(b,BUILDING_SUPPORT)
+        validate_road_envelope(building_index,b,placement,road_building_envelopes)
+        if building_index in road_building_limits and road_building_limits[building_index] is None:continue
+        mapped_buildings_batch.cell_override=(math.floor((x-MINX)/80),math.floor((y-MINY)/80))
+        result=render_prepared_building(mapped_buildings_batch,b,placement,key,road_building_limits.get(building_index))
+        if result:
+            prepared_building_records.append(result)
+            if b.get('massing'):block_support.append(result)
+        continue
+    if b.get('blockId'):
+        if building_index in road_building_limits and road_building_limits[building_index] is None: continue
+        result=build_massing(buildings,b,displayed_ground_bounds,key,road_building_limits.get(building_index))
+        if result: block_support.append(result)
+        continue
     if building_index in road_building_limits:
         limit=road_building_limits[building_index]
         if limit is None:continue
@@ -636,24 +712,42 @@ for building_index,b in enumerate(GEO['buildings']):
     for tri in tessellate_polygon([roof_vertices]):
         # Blender 5.2 returns indices; older supported releases return Vectors.
         buildings.face([tuple(roof_vertices[p] if isinstance(p, int) else p) for p in tri],'roof')
-buildings.finish()
+buildings_group=buildings.finish()
+water_control_records=build_water_controls(globals(),buildings_group)
+if mapped_buildings_batch is not None:
+    mapped_buildings_batch.finish().parent=buildings_group
+if GEO.get('urbanBlocks'):
+    legacy_block_ids={b['id'] for b in GEO['buildings'] if b.get('blockId') and not prepared_building(b)}
+    assert legacy_block_ids<={r['id'] for r in block_support},'A legacy residential slab was unexpectedly hidden'
+    if mapped_buildings_batch is None:
+        (ROOT/'work/urban-structure/p1').mkdir(parents=True,exist_ok=True)
+        (ROOT/'work/urban-structure/p1/support.json').write_text(json.dumps(block_support,indent=2))
+if mapped_buildings_batch is not None:
+    output=ROOT/'work/urban-structure/p5/city-buildings.json';output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps({'records':prepared_building_records,'blockSupport':block_support,
+        'supportPlanSha256':hashlib.sha256(BUILDING_SUPPORT_PATH.read_bytes()).hexdigest()},indent=2)+'\n')
 
 print('Building tree canopy...', flush=True)
 trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
-original_trees = [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and i not in RAILWAY_TREES and i not in MINZU_TREES and not inside_landmark(x,y)
+def tree_origins(legacy=False):
+    return [(i,x,y,r) for i,(x,y,r) in enumerate(GEO['trees']) if i not in VIADUCT_TREES and i not in RAILWAY_TREES and i not in MINZU_TREES and not inside_landmark(x,y,legacy=legacy)
                  and not any(abs(x-sx)<7 and abs(y-sy)<7 and inside_station(identity,x-sx,y-sy,margin=r+.03)
                              for identity,(sx,sy,_) in STATION_SITES.items())
                  and not inside_tingzi(x-TINGZI_X, y-TINGZI_Y, margin=r+.04)
                  and not inside_changyou(x-CHANGYOU_X, y-CHANGYOU_Y, margin=r*.6+.02)
                  and not inside_nanhu(x-NANHU_X, y-NANHU_Y)]
-visible_trees = [(i,x,y,r) for i,x,y,r in original_trees if i not in FOREST_REPLACED and i not in GROUND_ROAD_TREES]
+original_trees=tree_origins()
+legacy_tree_colors={i:RNG.choice(['leaf','leaf','leaf2','leaf3']) for i,x,y,r in tree_origins(legacy=True)}
+visible_trees = [(i,x,y,r) for i,x,y,r in original_trees if i not in FOREST_REPLACED and i not in GROUND_ROAD_TREES and i not in MOUNTAIN_REMOVED]
 for i,x,y,r in original_trees:
     # Keep the original deterministic color sequence when interiors are removed.
-    col=RNG.choice(['leaf','leaf','leaf2','leaf3'])
-    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES:
+    col=legacy_tree_colors.get(i) or ['leaf','leaf','leaf2','leaf3'][int(hashlib.sha256(f'tree/{i}'.encode()).hexdigest()[:8],16)%4]
+    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES or i in MOUNTAIN_REMOVED:
         continue
     z=max(.32,terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS))
-    build_tree(trees,x,y,z,r,col)
+    scale=canopy_factor(x,y)*landmark_canopy_factor('zhenning',x-CALIBRATION_ORIGINS['zhenning'][0],y-CALIBRATION_ORIGINS['zhenning'][1])
+    build_tree(trees,x,y,z,r*scale,col,crown_height=.43*scale,crown_rise=.33*scale,
+               trunk_radius=.028*scale,trunk_height=.30*scale)
 tree_group=trees.finish()
 build_forests(tree_group)
 zhuxi_trees=Batch('Vegetation_zhuxi',['leaf','leaf2','leaf3','trunk'])
@@ -673,7 +767,7 @@ def landmark(id):
         z = height(x, y)
     if id == 'tingzi': z = terrace_level(x, y, z, height)
     if id == 'zhenning':
-        z = zhenning_terrace_level(x, y, lambda u,v: displayed_ground_bounds(u,v)[1])
+        z = zhenning_terrace_level(x, y, lambda u,v: displayed_ground_bounds(u,v)[1],display_scale=CALIBRATION[id]['displayScale'])
     if id in MALL_SITES: z = mall_support_level(id,x,y,displayed_ground_bounds)
     if id in CULTURAL_SPECS: z = cultural_support_level(id,x,y,displayed_ground_bounds,(GEO['bounds'],COLS,ROWS))
     keys=['roof','landmark','accent','bridge','building']
@@ -686,6 +780,7 @@ def landmark(id):
     if id == 'changyou': keys += CHANGYOU_MATERIALS
     if id == 'nanhu': keys += NANHU_MATERIALS
     if id == 'zhenning': keys += ZHENNING_MATERIALS
+    if id == 'confucius': keys += list(TEMPLE_MATERIALS)
     if id in STATIONS: keys += STATION_MATERIALS
     if id in MALL_SITES: keys += list(MALL_MATS)
     if id in CULTURAL_SPECS: keys += list(CULTURAL_MATS)
@@ -708,9 +803,8 @@ b.cone(x,y,z+6.3,.23,.08,.6,'landmark',4)
 b.finish()
 
 b,x,y,z=landmark('diwang')
-b.box(x,y,z,.64,.64,4.25,'landmark','roof')
-b.box(x,y,z+3.8,.42,.42,.8,'landmark','roof')
-b.cone(x,y,z+4.6,.28,0,.46,'accent',4)
+z=build_diwang(b,x,y,z,displayed_ground_bounds)
+landmarks[-1]['position'][1]=round(z,3)
 b.finish()
 
 b,x,y,z=landmark('expo')
@@ -754,9 +848,19 @@ for place in CATALOG:
 
 # Additional cultural, campus, riverside and transport landmarks.
 b,x,y,z=landmark('zhenning')
-build_zhenning(b,x,y,z,ground_bounds=displayed_ground_bounds)
+def fort_ground_bounds(u,v):
+    # First treads meet the displayed triangles. Including the unrendered
+    # bilinear DEM here raised the outer landings above both visible surfaces.
+    levels=[terrain_surface(u,v,height,GEO['bounds'],COLS,ROWS,profile) for profile in [False,True]]
+    return min(levels),max(levels)
+build_zhenning(b,x,y,z,ground_bounds=fort_ground_bounds,
+                display_scale=CALIBRATION['zhenning']['displayScale'],height_scale=CALIBRATION['zhenning']['heightScale'])
 b.finish()
-build_extra_landmarks(landmark, height)
+calibrated_support={}
+def record_calibrated_support(identity,result):
+    calibrated_support[identity]=result
+    next(p for p in landmarks if p['id']==identity)['position'][1]=round(result['anchorLevel'],3)
+build_extra_landmarks(landmark,height,displayed_ground_bounds,(GEO['bounds'],COLS,ROWS),record_calibrated_support)
 for identity in MALL_SITES:
     b,x,y,z=landmark(identity)
     build_mall(b,identity,x,y,z,displayed_ground_bounds)
@@ -770,6 +874,8 @@ landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']
 (ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
+summary['waterControls']=[{'id':r['id'],'buildingId':r['buildingId'],'node':r['node'],
+                          'parts':len(r['geometry']['parts']),'estimatedGateBays':r['geometry']['openings']} for r in water_control_records]
 summary['stats']={**GEO['stats'],'trees':len(visible_trees)}
 summary['riverBridges']={'count':len(river_bridges)+1,'added':len(river_bridges),
     'replacedRoadStrips':len(RIVER_BRIDGE_ROADS),'osmTimestamp':RIVER_BRIDGE_PLAN['osmTimestamp'],
@@ -792,8 +898,17 @@ summary['forestCanopy']={'areaKm2':FOREST_PLAN['areaKm2'],'stage':FOREST_PLAN['s
     'source':'OSM natural=wood / landuse=forest','sourceCount':len(FOREST_PLAN['sources']),
     'regions':[{'id':r['id'],'areaKm2':r['areaKm2']} for r in FOREST_REGIONS],
     'replacedTrees':sum(i in FOREST_REPLACED for i,x,y,r in original_trees)}
+summary['qingxiuTerrain']={**MOUNTAIN_PLAN['statistics'],'detailPaths':park_path_counts,'planHash':hashlib.sha256((ROOT/'data/qingxiu-terrain-plan.json').read_bytes()).hexdigest()}
+summary['landmarkCalibration']={'sites':list(CALIBRATION),'support':calibrated_support,
+    'vegetation':LANDMARK_VEGETATION,
+    'sourceHash':hashlib.sha256((ROOT/'data/landmark-calibration-source.json').read_bytes()).hexdigest(),
+    'note':'Source-sized illustrative landmarks; secondary dimensions and terraced temple layout are estimates.'}
 summary['previousBbox']=json.loads((ROOT/'data/region.json').read_text())['previousBbox']
 summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElevation':DEM['maxElevation'],'terrainExaggeration':SCALE_Z,'buildingExaggeration':1.55})
+# Compound templates already store their displayed part heights in metres.
+summary['buildingScaleOverrides']=[{'blockId':b['id'],'scale':b['template'].get('displayHeightScale',1.0),
+                                   'layoutSource':b['layoutSource'],'buildings':len(b['buildingIds'])}
+                                  for b in GEO.get('urbanBlocks',[])]
 (ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 
 print('Saving Blender source and glTF...', flush=True)
@@ -894,41 +1009,28 @@ for name in ['Terrain','Vegetation']:
     obj=bpy.data.objects.get(name)
     for child in list(obj.children_recursive): bpy.data.objects.remove(child,do_unlink=True)
     bpy.data.objects.remove(obj,do_unlink=True)
-mobile_ground=Batch('Terrain',['ground','hill','hillLight','bank'])
-ix=sorted(set(range(0,COLS,2))|{COLS-1});jy=sorted(set(range(0,ROWS,2))|{ROWS-1})
-zi0,zj0,zi1,zj1=zhenning_terrain_patch(tuple(GEO['bounds']),COLS,ROWS,tuple(GEO['center']))
-for j,jj in zip(jy,jy[1:]):
-    for i,ii in zip(ix,ix[1:]):
-        if replaces_terrain_cell(i, j):
-            continue
-        # Preserve the detailed hill directly under Zhenning Battery. Surface
-        # interpolation uses the same cells for its foundation and nearby trees.
-        refined=zi0<=i<zi1 and zj0<=j<zj1
-        local_cols=list(range(i,ii+1)) if refined else [i,ii]
-        local_rows=list(range(j,jj+1)) if refined else [j,jj]
-        for r0,r1 in zip(local_rows,local_rows[1:]):
-            for c0,c1 in zip(local_cols,local_cols[1:]):
-                verts=[]
-                for col,row in [(c0,r0),(c1,r0),(c1,r1),(c0,r1)]:
-                    x=MINX+(MAXX-MINX)*col/(COLS-1);y=MAXY-(MAXY-MINY)*row/(ROWS-1)
-                    h=refined_terrain_height(col,row,height,GEO['bounds'],COLS,ROWS) if refined else height(x,y)
-                    verts.append((x,y,h))
-                lc=DEM['landcover'][r0*COLS+c0]
-                key='hill' if lc==1 or sum(v[2] for v in verts)/4>2.6 else ('bank' if lc==2 else 'ground')
-                mobile_ground.face([verts[0],verts[2],verts[1]],key)
-                mobile_ground.face([verts[0],verts[3],verts[2]],key)
-build_park_terrain(mobile_ground, NANHU_X, NANHU_Y, height)
-mobile_ground.finish()
+mobile_ground=build_terrain_mesh(globals(),lightweight=True)
+old_paths=bpy.data.objects['ParkPaths_qingxiu'];old_path_mesh=old_paths.data
+bpy.data.objects.remove(old_paths,do_unlink=True);bpy.data.meshes.remove(old_path_mesh)
+mobile_paths=Batch('ParkPaths_qingxiu',PARK_PATH_KEYS)
+summary['qingxiuTerrain']['smoothPaths']=build_mountain_paths(mobile_paths,height,GEO['bounds'],COLS,ROWS,True,coarse_terrain_surface)
+mobile_paths.finish().parent=road_group
+apply_site_access(globals(),'smooth',apply_terrain_reduction(globals(),'smooth',mobile_ground.finish()))
 mobile_trees=Batch('Vegetation',['leaf','leaf2','leaf3','trunk'])
 mobile_tree_count=0
 # Subsample the original positions before removing covered forest interiors.
-for order,(i,x,y,r) in enumerate(original_trees[::4]):
-    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES:
+legacy_tree_ids={i for i,x,y,r in tree_origins(legacy=True)}
+legacy_mobile_colors={i:['leaf','leaf2','leaf3'][order%3] for order,(i,x,y,r) in enumerate(tree_origins(legacy=True)[::4])}
+for i,x,y,r in original_trees:
+    if i not in legacy_mobile_colors and (i in legacy_tree_ids or i%4):continue
+    if i in FOREST_REPLACED or i in GROUND_ROAD_TREES or i in MOUNTAIN_REMOVED:
         continue
     mobile_tree_count+=1
-    col=['leaf','leaf2','leaf3'][order%3]
+    col=legacy_mobile_colors.get(i) or ['leaf','leaf2','leaf3'][i%3]
     z=max(.32,terrain_surface(x,y,height,GEO['bounds'],COLS,ROWS,lightweight=True))
-    build_tree(mobile_trees,x,y,z,r,col,lightweight=True)
+    scale=canopy_factor(x,y)*landmark_canopy_factor('zhenning',x-CALIBRATION_ORIGINS['zhenning'][0],y-CALIBRATION_ORIGINS['zhenning'][1])
+    build_tree(mobile_trees,x,y,z,r*scale,col,lightweight=True,crown_height=.43*scale,crown_rise=.33*scale,
+               trunk_radius=.028*scale,trunk_height=.30*scale)
 mobile_tree_group=mobile_trees.finish()
 build_forests(mobile_tree_group,lightweight=True)
 zhuxi_trees=Batch('Vegetation_zhuxi',['leaf','leaf2','leaf3','trunk'])
@@ -946,6 +1048,7 @@ summary['groundRoads']['smooth']=build_ground_roads(mobile_ground_roads,height,G
 mobile_ground_road_group=mobile_ground_roads.finish()
 mobile_ground_road_group.parent=road_group
 mobile_ground_road_group['planHash']=summary['groundRoads']['planHash']
+summary['groundRoads']['smooth']['siteAccess']=append_site_access_roads(globals(),'smooth',mobile_ground_road_group)
 del mobile_ground_roads
 export_city(ROOT/'public/models/nanning-city-mobile.glb')
 (ROOT/'data/elevated-roads-heights.json.gz').write_bytes(gzip.compress(json.dumps({'planHash':ELEVATED_HASH,'profiles':elevated_levels,'terrainFloors':elevated_floors},separators=(',',':')).encode(),mtime=0))

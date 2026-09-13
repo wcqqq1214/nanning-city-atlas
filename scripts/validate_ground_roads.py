@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+import argparse
 
 import DracoPy
 import numpy as np
@@ -11,21 +12,22 @@ import shapely
 from shapely.geometry import LineString, Polygon, box
 from shapely.ops import unary_union
 from shapely.strtree import STRtree
+from road_access_validation import read_access, check_access, check_support, check_contact
 
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def load_plan():
-    path=ROOT/'data/ground-roads-plan.json.gz'
+def load_plan(root=ROOT):
+    path=root/'data/ground-roads-plan.json.gz'
     if path.exists():return json.loads(gzip.decompress(path.read_bytes())),path
-    path=ROOT/'data/ground-roads-plan.json'
+    path=root/'data/ground-roads-plan.json'
     return json.loads(path.read_text()),path
 
 
-def decoded_faces(filename):
-    raw=(ROOT/'public/models'/filename).read_bytes();size=struct.unpack_from('<I',raw,12)[0]
+def decoded_faces(filename,root=ROOT,include_access=False):
+    raw=(root/'public/models'/filename).read_bytes();size=struct.unpack_from('<I',raw,12)[0]
     model=json.loads(raw[20:20+size]);binary=28+size
-    groups={'road':[],'paint':[],'terrain':[],'elevated':[]};counts={};materials=set()
+    groups={'road':[],'baseRoad':[],'paint':[],'terrain':[],'elevated':[]};counts={};materials=set();access={}
     for node in model['nodes']:
         name=node.get('name','')
         if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_','ElevatedRoads_','MinzuAvenue_')):continue
@@ -36,19 +38,33 @@ def decoded_faces(filename):
             if name.startswith('GroundRoads_'):
                 counts[mat]=counts.get(mat,0)+model['accessors'][p['indices']]['count']//3
                 materials.add(p['material'])
-                if mat=='Qingxiang warm concrete':continue
+                if mat=='Qingxiang warm concrete' and not name.startswith('GroundRoads_access_'):continue
             ext=p['extensions']['KHR_draco_mesh_compression'];view=model['bufferViews'][ext['bufferView']]
             start=binary+view.get('byteOffset',0);mesh=DracoPy.decode(raw[start:start+view['byteLength']])
             faces=np.asarray(mesh.points[mesh.faces],dtype=np.float64)
             assert np.isfinite(faces).all()
+            if name.startswith('GroundRoads_access_'):
+                if any(k in node for k in ['matrix','translation','rotation','scale']):
+                    raise ValueError('Access positions must be baked')
+                native=faces[:,:,[0,2,1]].copy();native[:,:,1]*=-1
+                kind='walls' if mat=='Qingxiang warm concrete' else 'road'
+                if mat not in ['Qingxiang warm concrete','Qingxiang sage asphalt']:
+                    raise ValueError('Unexpected access material')
+                access.setdefault(name,{'road':[],'walls':[]})[kind].extend(native)
+                if kind=='walls':continue
             group='elevated' if joined_road else 'terrain' if name.startswith('Terrain_') else 'paint' if mat=='Qingxiang lane markings' else 'road'
             groups[group].append(faces)
+            if group=='road' and not name.startswith('GroundRoads_access_'):
+                groups['baseRoad'].append(faces)
     groups={k:np.concatenate(v) for k,v in groups.items()}
     nodes=model['nodes'];parent=next(n for n in nodes if n.get('name')=='GroundRoads');roads=next(n for n in nodes if n.get('name')=='Roads')
     assert nodes.index(parent) in roads['children'], 'Ground streets ignore the roads layer'
+    for name in access:
+        assert next(i for i,n in enumerate(nodes) if n.get('name')==name) in parent['children'], 'Access ignores the roads layer'
     q=next(n for n in nodes if n.get('name')=='Landmark_qingxiang-viaduct')
     assert materials & {p['material'] for p in model['meshes'][q['mesh']]['primitives']}, 'Asphalt was not shared'
-    return groups,counts,parent['extras']['planHash']
+    result=(groups,counts,parent['extras']['planHash'])
+    return (*result,{n:{k:np.asarray(v).reshape(-1,3,3) for k,v in data.items()} for n,data in access.items()}) if include_access else result
 
 
 def planes(faces):
@@ -89,15 +105,16 @@ def clearance(upper,lower,label,max_vertical_separation=None):
     return minimum,int((~valid).sum()),len(upper)
 
 
-def validate_ground_roads():
-    plan,path=load_plan();geo=json.loads((ROOT/'public/data/geography.json').read_text())
-    context=json.loads((ROOT/'data/ground-roads-context.json').read_text())
-    report=json.loads((ROOT/'public/data/overview.json').read_text())['groundRoads']
+def validate_ground_roads(root=ROOT,site_access_plan=None):
+    root=Path(root).resolve();plan,path=load_plan(root);geo=json.loads((root/'public/data/geography.json').read_text())
+    context=json.loads((root/'data/ground-roads-context.json').read_text())
+    report=json.loads((root/'public/data/overview.json').read_text())['groundRoads']
+    access=read_access(site_access_plan,root,report)
     payload=gzip.decompress(path.read_bytes()) if path.suffix=='.gz' else path.read_bytes()
     digest=hashlib.sha256(payload).hexdigest();assert report['planHash']==digest
     for name,fingerprint in plan['inputHashes'].items():
-        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==fingerprint,f'Stale ground-road input: {name}'
-    mz=json.loads((ROOT/'data/minzu-plan.json').read_text());q=json.loads((ROOT/'data/viaduct-plan.json').read_text())
+        assert hashlib.sha256((root/name).read_bytes()).hexdigest()==fingerprint,f'Stale ground-road input: {name}'
+    mz=json.loads((root/'data/minzu-plan.json').read_text());q=json.loads((root/'data/viaduct-plan.json').read_text())
     excluded=set(mz['replacedRoads'])|{int(i) for i in q['roadOverrides']}
     expected={i for i,r in enumerate(geo['roads']) if i not in excluded and not r['bridge']}
     assert set(plan['roadIndices'])==expected and len(expected)==len(plan['roadIndices'])
@@ -112,7 +129,7 @@ def validate_ground_roads():
     assert paved.intersection(water).area<1e-7,'Ground road covers water'
     assert paved.intersection(buildings).area<1e-7,'Ground road cuts through building'
     assert paved.intersection(solids).area<1e-7,'Ground road cuts through detailed landmark'
-    forest=json.loads((ROOT/'data/forest-plan.json').read_text())
+    forest=json.loads((root/'data/forest-plan.json').read_text())
     canopy=unary_union([Polygon(p[0],p[1:]) for r in forest['regions'] for p in r['coverage']])
     assert paved.intersection(canopy).area<1e-7,'Ground road buried under woodland canopy'
     road_index=STRtree(list(shapely.get_parts(paved)))
@@ -122,16 +139,34 @@ def validate_ground_roads():
         crown=shapely.Point(x,y).buffer(r*1.06,quad_segs=8)
         assert not len(road_index.query(crown,predicate='intersects')), 'Retained tree crown intersects road'
     for profile,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
-        groups,counts,model_hash=decoded_faces(filename);assert model_hash==digest
+        groups,counts,model_hash,actual_access=decoded_faces(filename,root,include_access=True);assert model_hash==digest
         report_counts=report[profile]
-        metadata=json.loads((ROOT/f'data/road-solids-{profile}.json').read_text())
+        access_checks=check_access(access,report_counts.get('siteAccess',{}),profile,actual_access)
+        access_paved=unary_union([r['sourceFootprint'] for r in access_checks])
+        native_terrain=groups['terrain'][:,:,[0,2,1]].copy();native_terrain[:,:,1]*=-1
+        for record in access_checks:
+            for kind in ['sourceFootprint','actualFootprint']:
+                shape=record[kind]
+                for obstacle,label in [(water,'water'),(buildings,'building'),(solids,'landmark'),(canopy,'woodland')]:
+                    assert shape.intersection(obstacle).area<1e-7, f'Access intersects {label}: {record["id"]}'
+                tree_index=STRtree(list(shapely.get_parts(shape)))
+                for i,(x,y,r) in enumerate(geo['trees']):
+                    if i in removed:continue
+                    assert not len(tree_index.query(shapely.Point(x,y).buffer(r*1.06,quad_segs=8),predicate='intersects')), 'Retained tree intersects access'
+            print(profile,'source-bound access:',{k:v for k,v in record.items() if 'Footprint' not in k},flush=True)
+            support=check_support(record['actualFootprint'],native_terrain)
+            name='GroundRoads_access_'+record['id'].replace('-','_')+'_0_0'
+            top=actual_access[name]['road'][:,:,[0,2,1]].copy();top[:,:,2]*=-1
+            minimum,_,_=clearance(top,groups['terrain'],profile+' access/terrain')
+            print(profile,'access support/contact:',support,check_contact(minimum),flush=True)
+        metadata=json.loads((root/f'data/road-solids-{profile}.json').read_text())
         assert report_counts['resolvedHash']==metadata['sha256']
-        assert hashlib.sha256((ROOT/f'data/road-solids-{profile}.npz').read_bytes()).hexdigest()==metadata['sha256']
+        assert hashlib.sha256((root/f'data/road-solids-{profile}.npz').read_bytes()).hexdigest()==metadata['sha256']
         assert report_counts['surfaceTriangles']==metadata['counts']['ground']
-        assert abs(len(groups['road'])-report_counts['surfaceTriangles'])<report_counts['surfaceTriangles']*.02
+        assert abs(len(groups['road'])-sum(r['pavingTriangles'] for r in access_checks)-report_counts['surfaceTriangles'])<report_counts['surfaceTriangles']*.02
         assert report_counts['markingTriangles']==metadata['counts']['groundPaint']
         assert abs(len(groups['paint'])-report_counts['markingTriangles'])<report_counts['markingTriangles']*.02
-        minimum,collapsed,total=clearance(groups['road'],groups['terrain'],profile+' roads/terrain')
+        minimum,collapsed,total=clearance(groups['baseRoad'],groups['terrain'],profile+' roads/terrain')
         assert minimum>0, f'{profile}: decoded road penetrates displayed terrain'
         assert collapsed/total<.02,'Excessive compressed surface degeneration'
         minimum,collapsed,total=clearance(groups['paint'],groups['road'],profile+' paint/road')
@@ -139,7 +174,7 @@ def validate_ground_roads():
         assert collapsed/total<.02,'Compression erased lane markings'
         # Exact triangulation should neither lose broad areas nor duplicate junction surfaces.
         shapes,_,_=planes(groups['road']);actual=unary_union(shapes)
-        expected_xy=shapely.transform(paved,lambda xy:xy*np.array([1,-1]))
+        expected_xy=shapely.transform(paved.union(access_paved),lambda xy:xy*np.array([1,-1]))
         # Ground approaches and bridge decks share a resolved solid; the bridge
         # material owns the joined overlap, including resolved Minzu sections.
         # Count their actual asphalt triangles; omitting Minzu falsely reports
@@ -157,4 +192,9 @@ def validate_ground_roads():
     print('PASS: all ground roads, disjoint junctions, water/building/tree clearance, road layer and decoded terrain/marking clearance.',flush=True)
 
 
-if __name__=='__main__':validate_ground_roads()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--scene-root',type=Path,default=ROOT)
+    parser.add_argument('--site-access-plan',type=Path)
+    args=parser.parse_args()
+    validate_ground_roads(args.scene_root,args.site_access_plan)

@@ -49,19 +49,30 @@ class Bridge:
         self.width=spec['widthMeters']/200
         self.rise=spec['displayRise']
         self.kind=spec['kind']
+        self.display_profile=spec.get('displayProfile')
         self.stations=[self.path.total*i/math.ceil(self.path.total/.06)
                        for i in range(math.ceil(self.path.total/.06)+1)]
         # A terrain-clearing longitudinal envelope avoids dips over the river and
         # keeps both rendered terrain profiles below the underside near the banks.
-        main=max(1.18,max(surface(*self.path.at(s)[:2])+.15 for s in self.stations
-                          if self.start <= s <= self.end))
-        ends=[max(1.1,road_level(*self.path.at(s)[:2])) for s in [0,self.path.total]]
+        if self.display_profile:
+            profile=self.display_profile
+            clearance=profile['supportClearanceScene']
+            support_surface=lambda s:max(surface(*self.path.at(s,offset)[:2]) for offset in [-self.width,0,self.width])
+            main=max(profile['mainMinimumSceneZ'],max(support_surface(s)+self.depth(s)+clearance
+                     for s in self.stations if self.start<=s<=self.end))
+            ends=[max(profile['endMinimumSceneZ'],road_level(*self.path.at(s)[:2])) for s in [0,self.path.total]]
+        else:
+            main=max(1.18,max(surface(*self.path.at(s)[:2])+.15 for s in self.stations
+                              if self.start <= s <= self.end))
+            ends=[max(1.1,road_level(*self.path.at(s)[:2])) for s in [0,self.path.total]]
         self.levels=[]
         for s in self.stations:
             t=max(0,min(1,s/self.start)) if s<self.start else max(0,min(1,(self.path.total-s)/(self.path.total-self.end)))
             edge=ends[0 if s<self.start else 1]
             nominal=main if self.start<=s<=self.end else edge+(main-edge)*t*t*(3-2*t)
-            self.levels.append(max(nominal,surface(*self.path.at(s)[:2])+.12))
+            support=self.depth(s)+self.display_profile['supportClearanceScene'] if self.display_profile else .12
+            floor=support_surface(s) if self.display_profile else surface(*self.path.at(s)[:2])
+            self.levels.append(max(nominal,floor+support))
         # Bound display grade in both directions, including high embankments.
         for indices in [range(1,len(self.levels)),range(len(self.levels)-2,-1,-1)]:
             for i in indices:
@@ -83,12 +94,14 @@ class Bridge:
     def at(self,s,o=0,dz=0): return self.path.at(s,o,self.level(s)+dz)
 
     def depth(self,s):
-        if self.kind!='girder' or not self.start<s<self.end: return .055
+        base=self.display_profile['girderBaseDepthScene'] if self.display_profile else .055
+        rise=self.display_profile['girderHaunchRiseScene'] if self.display_profile else .13
+        if self.kind!='girder' or not self.start<s<self.end: return base
         supports=[self.start]
         for span in self.spec['spansMeters']: supports.append(supports[-1]+span/100)
         i=max(0,min(len(supports)-2,bisect.bisect_right(supports,s)-1))
         t=(s-supports[i])/(supports[i+1]-supports[i])
-        return .055+.13*(abs(2*t-1)**2)
+        return base+rise*(abs(2*t-1)**2)
 
     def prism(self,b,s,o,w,d,z,h,key):
         corners=[self.path.at(s+ds,o+do,z+dz) for dz in [0,h]

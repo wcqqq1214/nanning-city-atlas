@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "linglong-sluice-v1",
+  "buildingId": "osm/4f21ac17f7b27ba2d93a",
+  "sourceRef": "osm/way/994979663",
+  "sourceFeature": {
+    "type": "way",
+    "id": 994979663,
+    "bounds": {
+      "minlat": 22.7345092,
+      "minlon": 108.4731417,
+      "maxlat": 22.7348663,
+      "maxlon": 108.4734601
+    },
+    "nodes": [
+      9187957980,
+      9187957981,
+      9187957982,
+      9187957983,
+      9187957980
+    ],
+    "geometry": [
+      {
+        "lat": 22.7347679,
+        "lon": 108.4731417
+      },
+      {
+        "lat": 22.7345092,
+        "lon": 108.4732832
+      },
+      {
+        "lat": 22.734592,
+        "lon": 108.4734601
+      },
+      {
+        "lat": 22.7348663,
+        "lon": 108.4733107
+      },
+      {
+        "lat": 22.7347679,
+        "lon": 108.4731417
+      }
+    ],
+    "tags": {
+      "building": "dam",
+      "layer": "1",
+      "name": "水坝",
+      "waterway": "dam"
+    }
+  },
+  "center": [
+    108.30000000000001,
+    22.825
+  ],
+  "metersPerUnit": 100,
+  "waterIndex": 3,
+  "expectedFootprintSha256": "4f21ac17f7b27ba2d93a80f81f0f8b5c68f9ce7d31713b8dafec9d0e39980d97",
+  "expectedWaterSha256": "8a5d2c190b53278fcbaa881d25dccc421b8b54ccc7169e25a483e0becfd3cb26",
+  "isEngineeringDesign": false,
+  "estimatedBayCount": 3,
+  "displayParametersMeters": {
+    "deckWidth": 4,
+    "deckThickness": 0.6,
+    "deckAboveWater": 1.5,
+    "abutmentLength": 2,
+    "pierWidth": 1.3,
+    "gateThickness": 0.3,
+    "gateOpeningAboveWater": 0.35,
+    "foundationBelowWater": 1.5,
+    "foundationEmbed": 0.3,
+    "sillBelowWater": 0.7,
+    "approachLength": 6,
+    "landingClearance": 0.05,
+    "maximumStepRise": 0.18,
+    "minimumTread": 0.28,
+    "railHeight": 1.05,
+    "railWidth": 0.08,
+    "postSpacing": 3
+  },
+  "sourceFacts": [
+    "OSM building=dam,waterway=dam,layer=1; 674.55m2 mapped footprint preserved",
+    "Mapped short end edges coincide with source lake banks; the footprint lies over water"
+  ],
+  "estimates": [
+    "Three gate bays, section dimensions, open gate position, foundation depth, service deck and stairs are display interpretations, not measured design",
+    "The layer tag is relative ordering and does not itself establish deck elevation or foundation depth"
+  ],
+  "references": [
+    {
+      "url": "https://www.openstreetmap.org/way/994979663",
+      "role": "mapped footprint and structure tags",
+      "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+    },
+    {
+      "url": "https://www.chinanews.com/sh/2018/08-01/8586321.shtml",
+      "title": "清风徐来揽翠景 湖光山色入眼底",
+      "publisher": "南宁晚报，经中新网转载",
+      "date": "2018-08-01",
+      "accessed": "2026-09-13",
+      "role": "reported park planning context: bridge-under sluices and separate north/south lake water management; does not identify this OSM footprint or gate dimensions"
+    }
+  ]
+}

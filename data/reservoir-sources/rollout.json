@@ -1,0 +1,99 @@
+{
+  "status": "independent source configurations; neighboring water interfaces and runtime registry pending",
+  "geographySha256": "a85873662b6d9a3f1aaab9bd2729a872d6d054911ed9e344f7f6396ee698e98a",
+  "groups": [
+    {
+      "id": "mading-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/mading.json",
+      "sourceSha256": "a2087e98ebeff902fd3ce0d0afab70703c5c052312c6d7e327da6e6887ba0843",
+      "waterIndices": [
+        487
+      ],
+      "damIds": [
+        "osm/2efc9e73195a84bd435a"
+      ],
+      "pendingWaterIndices": []
+    },
+    {
+      "id": "southeast-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/southeast.json",
+      "sourceSha256": "ee0ab05aa530b5018c6584e91b3ab783a6d7eb6f1864f27c39a64c3b7d3a8e5f",
+      "waterIndices": [
+        182
+      ],
+      "damIds": [
+        "osm/b17285ba7f48db26c2de"
+      ],
+      "pendingWaterIndices": [
+        155,
+        195
+      ]
+    },
+    {
+      "id": "yinling-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/yinling.json",
+      "sourceSha256": "6bb95f053a493e0969c0264af6499fd0d0d70794344f3ff071916ee7f4d3df4c",
+      "waterIndices": [
+        542
+      ],
+      "damIds": [
+        "osm/a70e6c1b8e2a216fada6"
+      ],
+      "pendingWaterIndices": []
+    },
+    {
+      "id": "longmen-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/longmen.json",
+      "sourceSha256": "513a6392efb65a78d0a5cdf77beaeb7f18cb5aad11a93b969c179b3fde922c69",
+      "waterIndices": [
+        440
+      ],
+      "damIds": [
+        "osm/bf97bad2665706418b47"
+      ],
+      "pendingWaterIndices": [
+        438,
+        472
+      ]
+    },
+    {
+      "id": "west-pools-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/west-pools.json",
+      "sourceSha256": "d1919d11ee26f3113e2bd36ec457f28e393c03ae15049d5aae24fb35bdcefe3f",
+      "waterIndices": [
+        545,
+        549
+      ],
+      "damIds": [
+        "osm/429206d2a43e43284a06",
+        "osm/cef407471055d833cc7d"
+      ],
+      "pendingWaterIndices": [
+        544,
+        546,
+        547,
+        550
+      ]
+    },
+    {
+      "id": "zhicun-reservoir-terrain-v1",
+      "source": "data/reservoir-sources/zhicun.json",
+      "sourceSha256": "ee7fccf5c79d80d4a859a5ef059d94db5525a42affda78be607564dfe84d3525",
+      "waterIndices": [
+        385
+      ],
+      "damIds": [
+        "osm/1e57a38d9fcf592a82dc"
+      ],
+      "pendingWaterIndices": []
+    }
+  ],
+  "deferredOverwaterStructures": [
+    {
+      "id": "osm/4f21ac17f7b27ba2d93a",
+      "sourceRef": "osm/way/994979663",
+      "waterIndex": 3,
+      "reason": "Mapped layer=1 dam overlaps source lake; preserve water and implement a dedicated overwater structure; no engineering crest level established."
+    }
+  ]
+}

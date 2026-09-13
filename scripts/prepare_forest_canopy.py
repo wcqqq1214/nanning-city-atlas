@@ -8,6 +8,7 @@ import hashlib
 import json
 import math
 import random
+import sys
 from functools import lru_cache
 from pathlib import Path
 
@@ -20,6 +21,7 @@ from shapely.prepared import prep
 from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'blender'))
 STAGES = ['qingxiu', 'nearby', 'all']
 
 
@@ -65,7 +67,7 @@ def woodland_geometry(feature, xy, clip):
     return unary_union(list(polygons(make_valid(shape).intersection(clip))))
 
 
-def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, seed):
+def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, seed,legacy_exclusions=None):
     allowed = woodland.difference(exclusions)
     # Tiny islands and narrow fragments retain their existing individual trees.
     allowed = unary_union([p for p in polygons(allowed) if p.area > .08])
@@ -82,18 +84,25 @@ def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, s
     boundary = allowed.boundary
     west, south, east, north = allowed.bounds
     cluster_rng = random.Random(seed+1)
-    crown_clusters = []
+    crown_clusters = [];smooth_crowns=[];legacy_order=0
     prepared = prep(allowed)
+    legacy=woodland.difference(legacy_exclusions) if legacy_exclusions is not None else allowed
+    legacy=prep(unary_union([p for p in polygons(legacy) if p.area>.08]))
     for j in range(math.ceil((north-south)/cluster_spacing)):
         for i in range(math.ceil((east-west)/cluster_spacing)):
             x = west+(i+.5+.5*(j%2))*cluster_spacing+cluster_rng.uniform(-.3,.3)
             y = south+(j+.5)*cluster_spacing+cluster_rng.uniform(-.3,.3)
             radius = cluster_rng.uniform(.66,.86)
-            if prepared.contains(Point(x,y).buffer(radius+.02)):
-                crown_clusters.append([round(x,5),round(y,5),round(radius,4),
-                                       round(cluster_rng.uniform(.78,.96),4),
-                                       round(cluster_rng.uniform(0,math.tau),4),
-                                       cluster_rng.choices([0,1,2],weights=[2,6,2])[0]])
+            disk=Point(x,y).buffer(radius+.02)
+            old_visible=legacy.contains(disk)
+            rng=cluster_rng if old_visible else random.Random(f'{seed}/{i}/{j}')
+            detail=([round(rng.uniform(.78,.96),4),round(rng.uniform(0,math.tau),4),
+                     rng.choices([0,1,2],weights=[2,6,2])[0]] if old_visible or prepared.contains(disk) else None)
+            if prepared.contains(disk):
+                crown=[round(x,5),round(y,5),round(radius,4),*detail]
+                crown_clusters.append(crown)
+                if (old_visible and legacy_order%2==0) or (not old_visible and (i+j)%2==0):smooth_crowns.append(crown)
+            if old_visible:legacy_order+=1
 
     rng = random.Random(seed)
     spacing = 1.70
@@ -170,7 +179,8 @@ def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, s
             'woodland':[rings(p) for p in polygons(woodland)],
             'coverage':[rings(p) for p in polygons(allowed)],
             'replacedTreeIndices':replaced,'edgeTreeIndices':edge_trees,
-            'crownClusters':crown_clusters,'detail':canopy_mesh(1),'smooth':canopy_mesh(2)}
+            'crownClusters':crown_clusters,'smoothCrownClusters':smooth_crowns,
+            'detail':canopy_mesh(1),'smooth':canopy_mesh(2)}
     print(f'{region_id}: {plan["areaKm2"]:.3f} km², {len(replaced)} interior trees replaced, '
           f'{len(crown_clusters)} crowns, '
           f'{len(plan["detail"]["triangles"])} / {len(plan["smooth"]["triangles"])} surface triangles.',flush=True)
@@ -211,14 +221,21 @@ def prepare(stage='all'):
         .19 if r['class'] in ['primary','trunk','motorway'] else
         .135 if r['class']=='secondary' else .10,
         cap_style=3,join_style=2) for r in geo['roads']])
-    clearings = []
+    from landmark_sites import SPECS as calibration,reservation_rings
+    clearings = [];legacy_clearings=[]
     for place in places:
         x,y = xy(place['lon'],place['lat'])
-        if place.get('clearExtent'):
+        if place['id'] in calibration:
+            clearings.extend(Polygon([(x+u,y+v) for u,v in ring]).buffer(.15,join_style=2)
+                             for ring in reservation_rings(place['id']))
+            extent=calibration[place['id']].get('legacyClearExtentScene')
+            if extent:
+                w,h=extent;legacy_clearings.append(box(x-w/2,y-h/2,x+w/2,y+h/2).buffer(.15))
+        elif place.get('clearExtent'):
             w,h = place['clearExtent']
-            clearings.append(box(x-w/2,y-h/2,x+w/2,y+h/2).buffer(.15))
-        elif place['id']=='qingxiu':
-            clearings.append(Point(x,y).buffer(.85))
+            item=box(x-w/2,y-h/2,x+w/2,y+h/2).buffer(.15)
+            clearings.append(item);legacy_clearings.append(item)
+    shared_start=len(clearings)
     # The hand-modelled Nanhu park owns its own trees, terrain and paths.
     nanhu = json.loads((ROOT/'data/nanhu-plan.json').read_text())
     nx,ny = xy(*nanhu['center'])
@@ -236,6 +253,12 @@ def prepare(stage='all'):
     # retain clearance without adding dozens of arc vertices at every corner.
     exclusions = unary_union([water.buffer(.18,join_style=2),
                               buildings.buffer(.14,join_style=2),roads,*clearings])
+    legacy_exclusions=unary_union([water.buffer(.18,join_style=2),buildings.buffer(.14,join_style=2),roads,
+                                  *legacy_clearings,*clearings[shared_start:]])
+    restoration = clip.difference(exclusions)
+    tower = next(place for place in places if place['id']=='qingxiu')
+    exclusions = exclusions.union(Point(xy(tower['lon'],tower['lat'])).buffer(.85))
+    legacy_exclusions=legacy_exclusions.union(Point(xy(tower['lon'],tower['lat'])).buffer(.85))
 
     previous = Polygon()
     regions, rollout = [], []
@@ -247,13 +270,16 @@ def prepare(stage='all'):
                         'sourceCount':sum(r['stage']==key and r['mappedAreaKm2']>0 for r in records)})
         if enabled:
             regions.append(prepare_region(key,shape,exclusions,geo,dem,
-                           [1.95,4.8,8.0][order],[11922560,11922618,9862173][order]))
+                           [1.95,4.8,8.0][order],[11922560,11922618,9862173][order],legacy_exclusions))
     inputs = ['public/data/geography.json','public/data/terrain.json','data/landmarks.json',
               'data/nanhu-plan.json','data/forest-source.json','data/stations-plan.json','data/railways-plan.json']
+    inputs+=['data/landmark-calibration-source.json','data/landmark-calibration-plan.json','blender/landmark_sites.py','blender/arts_landmark.py']
     plan = {'version':2,'stage':stage,'center':geo['center'],'bbox':geo['bbox'],
             'osmTimestamp':source['osmTimestamp'],'areaKm2':round(sum(r['areaKm2'] for r in regions),4),
             'inputHashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs},
             'sources':records,'rollout':rollout,'regions':regions}
+    from prepare_mountain_canopy import apply
+    apply(plan, geo, restoration)
     (ROOT/'data/forest-plan.json').write_text(json.dumps(plan,ensure_ascii=False,separators=(',',':'))+'\n')
     print(f'Total: {plan["areaKm2"]:.3f} km² canopy, stage {stage}.',flush=True)
 

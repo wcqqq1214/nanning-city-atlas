@@ -282,6 +282,8 @@ def prepare(capture=False, context_directory=None):
     bind_paint(routes)
     capture_floors(routes,context_models)
     inputs=['public/data/geography.json','public/data/terrain.json','data/elevated-roads-source.json','data/bridges-plan.json','data/viaduct-plan.json','data/minzu-plan.json']
+    inputs+=['data/qingxiu-terrain-plan.json','blender/mountain_terrain.py','blender/cultural_landmarks.py']
+    inputs+=['data/waterfront-plan.json','blender/local_terrain.py']
     plan={'sceneCenter':geo['center'],'inputHashes':{p:digest(p) for p in inputs},'contextModels':{p:digest(p) for p in context_models.values()},
           'routes':routes,'joins':joins,'crossings':crossings,'stats':{'ways':len(routes),'lengthKm':round(sum(p.length for p in paths)/10,3),'piers':sum(len(r['piers']) for r in routes),'crossings':len(crossings),'pairedDeckMerges':paired}}
     (ROOT/'data/elevated-roads-plan.json.gz').write_bytes(gzip.compress((json.dumps(plan,ensure_ascii=False,separators=(',',':'))+'\n').encode(),mtime=0))
