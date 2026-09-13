@@ -42,3 +42,7 @@ next-env.d.ts
 *.blend2
 *.tsbuildinfo
 __pycache__/
+
+# local urban optimization plans and validation archives
+/docs/URBAN_STRUCTURE*.md
+/docs/urban-structure*/

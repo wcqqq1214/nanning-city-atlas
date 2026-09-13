@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_canopy_exports.py", line 68, in <module>
-    main()
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_canopy_exports.py", line 54, in main
-    geometry = match_faces(native, actual, position_meters=0, normal_degrees=.5)
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_reduced_terrain_exports.py", line 32, in match_faces
-    if len(a)!=len(b):raise ValueError('Export changed triangle count')
-ValueError: Export changed triangle count

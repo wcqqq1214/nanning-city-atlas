@@ -1,9 +1,0 @@
-{
-  "status": "independent candidate regeneration is byte-identical",
-  "sha256": "cba08e3ecbae5f8cfbd2b893106e9b8cc02354146f9ae772b2eab484c054ba60",
-  "bytes": 195131,
-  "outputs": [
-    "work/urban-structure/p5/grading/candidate.json",
-    "work/urban-structure/p5/grading/repeat.json"
-  ]
-}

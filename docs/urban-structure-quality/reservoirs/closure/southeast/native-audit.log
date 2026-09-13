@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_reservoir_terrain.py", line 79, in <module>
-    if __name__=='__main__':main()
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_reservoir_terrain.py", line 64, in main
-    water['sharedShoreline']=shared_shoreline(triangles,faces,plan['source']['mesh']['bankAboveWaterMeters']*dem['verticalExaggeration'],plan['bounds'])
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_reservoir_terrain.py", line 36, in shared_shoreline
-    raise ValueError('Land and variable water do not share an exact shoreline edge')
-ValueError: Land and variable water do not share an exact shoreline edge

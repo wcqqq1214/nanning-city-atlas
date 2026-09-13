@@ -1,8 +1,0 @@
-{
-  "command": [
-    "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
-    "scripts/prepare_zhuxi_details.py"
-  ],
-  "exitCode": 0,
-  "reason": "Full city correctly rejected stale elevated-road bindings; regenerated details against both new road solids."
-}

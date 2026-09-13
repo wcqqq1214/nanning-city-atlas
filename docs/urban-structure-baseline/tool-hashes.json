@@ -1,8 +1,0 @@
-{
-  "lib/city/scene.ts": "1a966cc3daa6597aabdf25738d890421679b2bf3cf41b2f164370ee2cdf23884",
-  "lib/city/inspection.ts": "5993cc60207ab8801fc5b940fc415f0c08a3d7a89565e516bd40efb29a0eb81c",
-  "lib/city/inspection-materials.ts": "3fe6fe414f29b56e9a20682918db0bfc7ca5062d64ef320e2c4966cebc06ad51",
-  "app/inspect/page.tsx": "aedcc518f8e4384c22054ea78c3ce22048c1fea5113b7717afa0fd94b4199996",
-  "scripts/check-inspection.mjs": "fb8173de87118590ed3b9fab54011a22abe497ad8a271072803645befcfca62d",
-  "blender/render_scale_baseline.py": "22b5f24841348e8b9d80c539aa1ed6552c9f94765565a78a886114fe1fc4dab4"
-}

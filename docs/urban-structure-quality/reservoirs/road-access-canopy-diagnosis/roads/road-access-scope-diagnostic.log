@@ -1,4 +1,0 @@
-  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/diagnose_road_access_scope.py", line 16
-    out=root/'work/urban-structure/p5/full-city-review/road-access-scope-diagnostic.json';out.write_text(json.dumps({'profiles':reports,'inputs':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,path,Path(__file__),*[stage/'public/models'/f for f in ['nanning-city.glb','nanning-city-mobile.glb']]]},indent=2)+'\n')
-                                                                                                                                                                                                                                                                                                                                    ^
-SyntaxError: invalid syntax

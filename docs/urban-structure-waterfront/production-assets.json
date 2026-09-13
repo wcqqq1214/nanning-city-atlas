@@ -1,8 +1,0 @@
-{
-  "models/nanning-city.glb": "98654a6a96c390df31ab4b38a58c8e6230567b91acf83a02918338109c221c17",
-  "models/nanning-city-mobile.glb": "0a81290f739c12b59769db671aad01aaff1067e55bd34885d749ca20512692b0",
-  "data/overview.json": "da4f6dfa7994d65232cc9ac15e6bf756fb40a47781507a38158ac58be97b3f3c",
-  "data/landmarks.json": "dd0d67b620a95e1e3dbfb8761dd0cd0cc02907d9b4c8eb64a2a9415de8caf65a",
-  "data/geography.json": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956",
-  "data/terrain.json": "aaaddb41f6875947504c444464371c502156924d9635e2fd9d693dcaa0758291"
-}

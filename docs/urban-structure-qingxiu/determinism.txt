@@ -1,6 +1,0 @@
-qingxiu: 4.125 km², 124 interior trees replaced, 60 crowns, 4210 / 1959 surface triangles.
-nearby: 38.881 km², 1047 interior trees replaced, 89 crowns, 43089 / 20897 surface triangles.
-all: 170.543 km², 6396 interior trees replaced, 234 crowns, 110433 / 33527 surface triangles.
-Mountain canopy: {"regions": [{"region": "qingxiu", "areaKm2": 3.9143, "detailTriangles": 14554, "smoothTriangles": 13496}, {"region": "nearby", "areaKm2": 38.8811, "detailTriangles": 43241, "smoothTriangles": 21077}], "pathBufferMeters": 4, "platformBufferMeters": 3, "restoredRiseMeters": 10, "clearingTransitionMeters": 40, "riseFactor": 0.25}
-Total: 213.339 km² canopy, stage all.
-PASS: isolated repeat matches final forest plan byte-for-byte 885e93407a57ebcfff5288370e713beb4112bbc0a57e033871ab818fa4ad8636
