@@ -42,6 +42,12 @@ export type Overview = {
   maxElevation: number;
   terrainExaggeration: number;
   buildingExaggeration: number;
+  buildingScaleOverrides?: {
+    blockId: string;
+    scale: number;
+    layoutSource: string;
+    buildings: number;
+  }[];
   osmTimestamp: string;
   mobileTrees: number;
   models: Record<'smooth' | 'detail', { file: string; bytes: number }>;
@@ -60,12 +66,25 @@ export type SceneOptions = {
   topDown: boolean;
   selected: string | null;
 };
+export type VisualMode = 'lit' | 'clay' | 'color';
+export type CameraView = {
+  position: [number, number, number];
+  target: [number, number, number];
+  fov: number;
+};
+export type InspectionProfile = {
+  pixelRatio: number;
+  frozenTime: number;
+};
 export type SceneController = {
   apply: (options: SceneOptions) => void;
   focus: (id: string | null, close?: boolean) => void;
   zoom: (factor: number) => void;
   north: () => void;
   capture: () => Promise<void>;
+  readView: () => CameraView;
+  restoreView: (view: CameraView) => void;
+  setVisualMode: (mode: VisualMode) => void;
   dispose: () => void;
 };
 export const DEFAULT_LAYERS: Layers = {
