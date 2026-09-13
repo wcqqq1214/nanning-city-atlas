@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { restoreFlatSurfaceNormals } from './flat-surface-normals';
 import type {
   Landmark,
   Overview,
@@ -9,6 +10,8 @@ import type {
   SceneOptions,
   QualityPreference,
   SceneMetrics,
+  InspectionProfile,
+  VisualMode,
 } from './types';
 import { DEFAULT_LAYERS } from './types';
 import { assetUrl } from './assets';
@@ -17,6 +20,8 @@ import { COMPACT_LAYOUT } from './display';
 import { createAreaHighlight } from './area-highlight';
 import { landmarkArea } from './landmark-areas';
 import { createNightLighting } from './night-lighting';
+import { createInspectionMaterials } from './inspection-materials';
+import { validCamera } from './inspection';
 
 export async function createCityScene(
   host: HTMLElement,
@@ -32,9 +37,12 @@ export async function createCityScene(
   },
   signal: AbortSignal,
   quality: QualityPreference = 'auto',
+  inspection?: InspectionProfile,
 ): Promise<SceneController> {
   const startedAt = performance.now();
-  const diagnostics = new URLSearchParams(window.location.search).has('stats');
+  const diagnostics =
+    Boolean(inspection) ||
+    new URLSearchParams(window.location.search).has('stats');
   const connection = (
     navigator as Navigator & { connection?: { saveData?: boolean } }
   ).connection;
@@ -48,6 +56,7 @@ export async function createCityScene(
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#e1eae4');
   scene.fog = new THREE.FogExp2('#e1eae4', 0.0012);
+  const atmosphere = scene.fog;
   const renderer = new THREE.WebGLRenderer({
     antialias: !lightweight,
     alpha: false,
@@ -55,7 +64,8 @@ export async function createCityScene(
     powerPreference: lightweight ? 'low-power' : 'high-performance',
   });
   renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, lightweight ? 1.25 : 1.7),
+    inspection?.pixelRatio ??
+      Math.min(window.devicePixelRatio, lightweight ? 1.25 : 1.7),
   );
   renderer.shadowMap.enabled = !lightweight;
   renderer.shadowMap.autoUpdate = false;
@@ -143,6 +153,7 @@ export async function createCityScene(
   const gridMaterial = grid.material as THREE.Material;
   gridMaterial.transparent = true;
   gridMaterial.opacity = 0.19;
+  grid.visible = !inspection;
   scene.add(grid);
   let destroyed = false;
   let frame = 0;
@@ -178,11 +189,15 @@ export async function createCityScene(
     width: number;
   }[] = [];
   const meshes: THREE.Mesh[] = [];
+  const ceremonialPonds: THREE.Mesh[] = [];
   const materialDefaults = new Map<THREE.MeshStandardMaterial, THREE.Color>();
   const draco = new DRACOLoader()
     .setDecoderPath(assetUrl('/draco/'))
     .setWorkerLimit(lightweight ? 1 : 2);
   let waterMaterial: THREE.ShaderMaterial | null = null;
+  let visualMode: VisualMode = 'lit';
+  let inspectionMaterials: ReturnType<typeof createInspectionMaterials> | null =
+    null;
   let lastFrameTime = 0;
   let lastTelemetry = 0;
   let metricStart = performance.now();
@@ -222,8 +237,11 @@ export async function createCityScene(
     const overviewDistance = overviewPosition().length();
     // Leave the default overview clear; show labels once the user zooms in.
     labelVisibilityDistance = overviewDistance * 0.98;
-    controls.maxDistance = Math.max(360, overviewDistance * 1.15);
-    if (!option.selected && !flight)
+    controls.maxDistance = Math.max(
+      inspection ? 1200 : 360,
+      overviewDistance * 1.15,
+    );
+    if (!inspection && !option.selected && !flight)
       camera.position.copy(
         option.topDown
           ? new THREE.Vector3(0, overviewPosition().length(), 0.5)
@@ -417,7 +435,7 @@ export async function createCityScene(
     const wantsAnimation = Boolean(
       flight ||
       controls.autoRotate ||
-      (!lightweight && !reduced && option.layers.water),
+      (!inspection && !lightweight && !reduced && option.layers.water),
     );
     const needsOverlays = dirty || Boolean(flight || controls.autoRotate);
     if (dirty || wantsAnimation) {
@@ -441,7 +459,8 @@ export async function createCityScene(
         renderer.shadowMap.needsUpdate = true;
       }
       if (waterMaterial)
-        waterMaterial.uniforms.uTime.value = reduced ? 0 : now / 1000;
+        waterMaterial.uniforms.uTime.value =
+          inspection?.frozenTime ?? (reduced ? 0 : now / 1000);
       renderer.render(scene, camera);
       dirty = false;
       renderedFrames += 1;
@@ -454,6 +473,7 @@ export async function createCityScene(
           : Math.round((renderedFrames * 1000) / (now - metricStart));
       // Lower resolution only during sustained foreground animation, never from idle frames.
       if (
+        !inspection &&
         quality === 'auto' &&
         document.hasFocus() &&
         wantsAnimation &&
@@ -563,6 +583,7 @@ export async function createCityScene(
     controls.removeEventListener('start', startInteraction);
     controls.removeEventListener('change', invalidate);
     controls.dispose();
+    inspectionMaterials?.dispose();
     areaHighlight?.dispose();
     renderer.domElement.removeEventListener('keydown', keyDown);
     labelLayer.removeEventListener('wheel', onLabelWheel);
@@ -642,6 +663,7 @@ export async function createCityScene(
       throw new DOMException('Aborted', 'AbortError');
     }
     city = model.scene;
+    restoreFlatSurfaceNormals(city);
     scene.add(city);
     city.traverse((object) => {
       if (!(object instanceof THREE.Mesh)) return;
@@ -654,15 +676,19 @@ export async function createCityScene(
       const mats = Array.isArray(object.material)
         ? object.material
         : [object.material];
+      if (mats.every((m) => m.name === 'Temple ceremonial pond')) {
+        ceremonialPonds.push(object);
+        object.castShadow = false;
+      }
       mats.forEach((m) => {
         if (m instanceof THREE.MeshStandardMaterial) {
           m.side = THREE.DoubleSide;
           materialDefaults.set(m, m.color.clone());
         }
       });
-      if (object.name === 'Water') {
+      if (object.name === 'Water' || object.name === 'Reservoir_water_custom') {
         object.castShadow = false;
-        waterMaterial = new THREE.ShaderMaterial({
+        waterMaterial ??= new THREE.ShaderMaterial({
           uniforms: { uTime: { value: 0 }, uNight: { value: 0 } },
           vertexShader: `varying vec3 vWorld; void main(){vec4 w=modelMatrix*vec4(position,1.0);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
           fragmentShader: `varying vec3 vWorld;uniform float uTime;uniform float uNight;
@@ -702,16 +728,18 @@ export async function createCityScene(
       option = { ...next, layers: { ...next.layers } };
       if (!city) return;
       dirty = true;
-      const night = THREE.MathUtils.smoothstep(next.hour, 17.5, 21);
+      const lightHour = visualMode === 'lit' ? next.hour : 14;
+      const night = THREE.MathUtils.smoothstep(lightHour, 17.5, 21);
       const dusk = Math.sin(
-        THREE.MathUtils.clamp((next.hour - 15) / 6, 0, 1) * Math.PI,
+        THREE.MathUtils.clamp((lightHour - 15) / 6, 0, 1) * Math.PI,
       );
       const background = new THREE.Color('#e1eae4').lerp(
         new THREE.Color('#071322'),
         night,
       );
       scene.background = background;
-      (scene.fog as THREE.FogExp2).color.copy(background);
+      atmosphere.color.copy(background);
+      scene.fog = visualMode === 'lit' ? atmosphere : null;
       (floor.material as THREE.MeshStandardMaterial).color.copy(background);
       hemi.intensity = 1.5 - night * 1.22;
       sun.intensity = 2.7 - night * 2.48;
@@ -720,14 +748,21 @@ export async function createCityScene(
         .set('#fff3d7')
         .lerp(new THREE.Color('#ffbf85'), dusk * 0.6)
         .lerp(new THREE.Color('#81b9da'), night);
-      const sunAngle = ((next.hour - 6) / 12) * Math.PI;
+      const sunAngle = ((lightHour - 6) / 12) * Math.PI;
       sunOffset.set(
         -Math.cos(sunAngle) * 300,
         100 + Math.max(0.1, Math.sin(sunAngle)) * 300,
         45,
       );
       renderer.toneMappingExposure = 0.96;
-      nightLighting.setNight(night);
+      nightLighting.setNight(visualMode === 'lit' ? night : 0);
+      if (visualMode === 'clay') {
+        hemi.color.set('#ffffff');
+        hemi.groundColor.set('#888888');
+        sun.color.set('#ffffff');
+      } else {
+        hemi.groundColor.set('#668f84');
+      }
       gridMaterial.opacity = 0.19 * (1 - night * 0.8);
       if (waterMaterial) waterMaterial.uniforms.uNight.value = night;
       city.scale.y = next.heightScale;
@@ -739,6 +774,7 @@ export async function createCityScene(
         Bridges: next.layers.roads,
         Railways: next.layers.railways,
         Water: next.layers.water,
+        Reservoir_water_custom: next.layers.water,
       };
       Object.entries(names).forEach(([name, visible]) => {
         const object = city!.getObjectByName(name);
@@ -747,6 +783,9 @@ export async function createCityScene(
       places.forEach((place) => {
         const object = city!.getObjectByName(`Landmark_${place.id}`);
         if (object) object.visible = next.layers[place.layer ?? 'buildings'];
+      });
+      ceremonialPonds.forEach((pond) => {
+        pond.visible = next.layers.water;
       });
       materialDefaults.forEach((base, mat) => {
         mat.color.copy(base);
@@ -782,6 +821,40 @@ export async function createCityScene(
       apply,
       focus,
       zoom,
+      readView: () => ({
+        position: camera.position.toArray(),
+        target: controls.target.toArray(),
+        fov: camera.fov,
+      }),
+      restoreView: (view) => {
+        if (!validCamera(view)) throw new Error('无效的检查镜头');
+        if (
+          overview &&
+          (view.target[0] < overview.bounds[0] ||
+            view.target[0] > overview.bounds[2] ||
+            -view.target[2] < overview.bounds[1] ||
+            -view.target[2] > overview.bounds[3])
+        )
+          throw new Error('检查镜头目标超出地图范围');
+        flight = null;
+        const damping = controls.enableDamping;
+        controls.enableDamping = false;
+        controls.autoRotate = false;
+        controls.update();
+        camera.fov = view.fov;
+        camera.updateProjectionMatrix();
+        camera.position.fromArray(view.position);
+        controls.target.fromArray(view.target);
+        controls.update();
+        controls.enableDamping = damping;
+        dirty = true;
+      },
+      setVisualMode: (mode) => {
+        visualMode = mode;
+        inspectionMaterials ??= createInspectionMaterials(city!);
+        inspectionMaterials.apply(mode);
+        apply(option);
+      },
       north: () => {
         const d = camera.position.distanceTo(controls.target);
         fly(
