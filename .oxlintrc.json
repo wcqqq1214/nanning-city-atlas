@@ -32,6 +32,7 @@
     "next-env.d.ts",
     "components/ui/**",
     "public/draco/**",
+    "docs/urban-structure-quality/**",
     "work/**",
     "hooks/use-mobile.ts"
   ],
