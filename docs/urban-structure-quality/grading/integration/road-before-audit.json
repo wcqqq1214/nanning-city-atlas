@@ -1,0 +1,45 @@
+{
+  "status": "geometry-only audit of the supplied road snapshot; no final city acceptance",
+  "profiles": {
+    "detail": {
+      "xinzhong-industrial": {
+        "roadFaces": 252,
+        "terrainIntersections": 1264,
+        "minimumPavementClearanceMeters": -2.7347519387209474,
+        "witnessSceneXY": [
+          74.200732,
+          -131.352802
+        ],
+        "maximumPenetrationMeters": 2.7347519387209474,
+        "penetrationLimitMeters": 0.005,
+        "passed": false
+      }
+    },
+    "smooth": {
+      "xinzhong-industrial": {
+        "roadFaces": 141,
+        "terrainIntersections": 1101,
+        "minimumPavementClearanceMeters": -2.4791129106647602,
+        "witnessSceneXY": [
+          74.05974799670278,
+          -130.75302124023438
+        ],
+        "maximumPenetrationMeters": 2.4791129106647602,
+        "penetrationLimitMeters": 0.005,
+        "passed": false
+      }
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/staging/data/block-grading-plan.json": "ac2b1462ac8b2d25d2bfbe1debdde9f300797084d5edbe5a511cfbc9a475ce46",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/report.json": "3f92392752cc1ef0995544f323d970989a5f1ff4f6179ad7f1258da769f73bc8",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/detail.npz": "7f5f363e874d949c4a875942268fced27b9527c240954680c8385957c3c0299c",
+    "work/urban-structure/p5/staging/work/p5/road-grading-before/road-solids-detail.npz": "4166c9467968702c4092e702516506bdc0eab7d7fea9d735a67f8935a2b399a7",
+    "work/urban-structure/p5/staging/work/p5/road-grading-before/road-solids-detail.json": "e7e26b1d25341ba978a73c8672a783d4145d31aff76df0ae6ceb813ab5d14867",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/smooth.npz": "5d325078ba6e8bae6cf77eaff962dd6bcd82a425971ab76eeaa1cb95b701d788",
+    "work/urban-structure/p5/staging/work/p5/road-grading-before/road-solids-smooth.npz": "1b5af173d124747e67505646c348bd1b5642330659e8e9d75b80d2d00ecf4a2c",
+    "work/urban-structure/p5/staging/work/p5/road-grading-before/road-solids-smooth.json": "905bec625ee9f2fe693bafec5a25529ce21728b6ba3fca536598be66e7e201ca"
+  },
+  "toolSha256": "94d62b5b6d30e161b1563fba42324aeed26d1b659f45d022b300184fd29fe803",
+  "passed": false
+}

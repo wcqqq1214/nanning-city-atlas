@@ -1,0 +1,99 @@
+{
+  "status": "independent native reservoir export; full city replacement and compressed audit pending",
+  "planSha256": "dd631d2dfb2de535dd13cb7c95dee0efd5bcda0054dce3903b34425c39e46163",
+  "baseCityRoot": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+  "profiles": {
+    "detail": {
+      "triangles": 5014,
+      "waterTriangles": 137,
+      "bankQuads": 502,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 4.882760862301438e-10,
+      "boundarySamples": 672,
+      "maximumBoundaryErrorMeters": 0.00016030410812106766,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "b1f902893db4196d8ed22f3df042d48b785b64deb27f7462f577ff35dd13fc6d",
+          "bytes": 124499
+        },
+        "glb": {
+          "sha256": "d26028e7c0658f2018d314e6c764e0f19666dbfee2da1b17e4d1f4d068fe2601",
+          "bytes": 232180
+        },
+        "blend": {
+          "sha256": "84800a7dde52c93489e540dbbb90d14bac4e8d6eba6f4a6cec0e271e112bd7c3",
+          "bytes": 293004
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 5014,
+        "removedFaces": 2496,
+        "restoredBaseVertexSamples": 7488,
+        "maximumRemovedVertexBaseErrorMeters": 5.954660431406467e-06,
+        "maximumRemovedCentroidChangeMeters": 1.0880770176485033,
+        "maximumRemovedCentroidChangeLocation": [
+          -166.5965830485026,
+          -0.09996414184570312,
+          0.962094247341156,
+          0.951213477164671
+        ]
+      }
+    },
+    "smooth": {
+      "triangles": 5014,
+      "waterTriangles": 137,
+      "bankQuads": 502,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 4.882760862301438e-10,
+      "boundarySamples": 672,
+      "maximumBoundaryErrorMeters": 5.723213181152431e-05,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "f279678dde2033014021b59e5334ef39457c3cb715975659edc95c4d362cc13b",
+          "bytes": 123120
+        },
+        "glb": {
+          "sha256": "62364dd010d885f0bab3e4c5e5ca919877661d36b993bdee68097d5345fb3911",
+          "bytes": 231928
+        },
+        "blend": {
+          "sha256": "f81aa507f8630e363c36d87f7e4d67ad26edceda2742ac419d279725009dd7a4",
+          "bytes": 293141
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 5014,
+        "removedFaces": 2496,
+        "restoredBaseVertexSamples": 7488,
+        "maximumRemovedVertexBaseErrorMeters": 5.8802315905381874e-06,
+        "maximumRemovedCentroidChangeMeters": 1.302535299575358,
+        "maximumRemovedCentroidChangeLocation": [
+          -162.99881490071616,
+          -0.09996414184570312,
+          1.0465155045191448,
+          1.0595408575148983
+        ]
+      }
+    }
+  },
+  "baseContextHashes": {
+    "public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "public/data/terrain.json": "9f4b25a6997d0ab5c1bcf54a38aa8556e68e7e8210d5132701e97004e33ba794",
+    "blender/build_city.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7"
+  },
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_reservoir_terrain.py": "717a82babff62587226dc166293997afcaab319d5b5186328e44c66fabf0db75",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  },
+  "baselinePlanSha256": "04f1f69a61425b0b04518399c025bf4a2dd9801fd061696e56c5f63fbb1acec4"
+}

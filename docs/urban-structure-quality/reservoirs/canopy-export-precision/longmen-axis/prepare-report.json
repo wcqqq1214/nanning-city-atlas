@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+    "scripts/prepare_reservoir_terrain.py",
+    "--geography",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/data/geography.json",
+    "--terrain",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/data/terrain.json",
+    "--source",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/source.json",
+    "--raster",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+    "--output",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/plan.json"
+  ],
+  "exitCode": 0,
+  "oldPlan": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+  "sourceHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json": "4c64535733dcfb20453051d291c5cb2339e970e1fbe4981940d8aefc8e15f248",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-sources/closure/longmen.json": "c64523f3cceb47477fa62ecde8c17721c4ddc51b894e585165e57bdefb9ae7ea",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/source.json": "15e61eff393c1f97bbba251cd14c8100b6ab0e9a3d742bf23b8aa3b16ca3d3f5",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_reservoir_terrain.py": "3d23d6bcecf236eecf8f3b09f013e3cd5f3d9f2baa6cad08518371adb4f8728c"
+  },
+  "before": {
+    "crestAreaSquareMeters": 58.60987352207303,
+    "equivalentCrestLengthMeters": 14.652468380518258,
+    "minimumFootprintMarginMeters": 3.3000192754628834,
+    "damCrestTriangles": 18,
+    "damSlopeTriangles": 131
+  },
+  "after": {
+    "crestAreaSquareMeters": 93.53856672532856,
+    "equivalentCrestLengthMeters": 23.38464168133214,
+    "minimumFootprintMarginMeters": 0.9343184950445886,
+    "damCrestTriangles": 26,
+    "damSlopeTriangles": 135
+  },
+  "preserved": [
+    "all water body records",
+    "land domain",
+    "mapped dam footprint"
+  ]
+}

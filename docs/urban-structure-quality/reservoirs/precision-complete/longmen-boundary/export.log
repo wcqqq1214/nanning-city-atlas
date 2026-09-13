@@ -1,0 +1,83 @@
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+13:59:09 | INFO: Starting glTF 2.0 export
+13:59:09 | INFO: Extracting primitive: Reservoir_banks
+13:59:09 | INFO: Primitives created: 1
+13:59:09 | INFO: Extracting primitive: Reservoir_terrain
+13:59:09 | INFO: Primitives created: 3
+13:59:09 | INFO: Extracting primitive: Reservoir_water_438
+13:59:09 | INFO: Primitives created: 1
+13:59:09 | INFO: Extracting primitive: Reservoir_water_440
+13:59:09 | INFO: Primitives created: 1
+13:59:09 | INFO: Extracting primitive: Reservoir_water_470
+13:59:09 | INFO: Primitives created: 1
+13:59:09 | INFO: Extracting primitive: Reservoir_water_472
+13:59:09 | INFO: Primitives created: 1
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_banks.
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_terrain.
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_water_438.
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_water_440.
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_water_470.
+13:59:09 | INFO: Draco encoder: Encoding mesh Reservoir_water_472.
+13:59:09 | INFO: Finished glTF 2.0 export in 0.03657031059265137 s
+
+Info: Saved as "detail.blend"
+detail {'triangles': 8909, 'waterTriangles': 591, 'bankQuads': 1379, 'collapsedFaces': 0, 'maxSamplerErrorMeters': np.float64(7.165157356325835e-10), 'boundarySamples': 1488, 'maximumBoundaryErrorMeters': 0.0006903543407821289, 'restoredCityBoundarySides': [], 'cityCutSamples': 0, 'maximumCityCutSamplerErrorMeters': 0.0, 'protectedWaterBanks': [], 'files': {'npz': {'sha256': 'fda6c1539b9a9bdbe2f1c61eed2663762f1c6c6928693e05a408642cb545290e', 'bytes': 242453}, 'glb': {'sha256': '8a7acec6113d6e64cdf7b9c3bdd52208b190a6b261df83e20d542940ddeb0587', 'bytes': 440500}, 'blend': {'sha256': '499ec7e62ec2a9adbb31b81518548d82e3076f4c129f7d7412600cef79271df1', 'bytes': 476634}}}
+13:59:11 | INFO: Starting glTF 2.0 export
+13:59:11 | INFO: Extracting primitive: Reservoir_banks.001
+13:59:11 | INFO: Primitives created: 1
+13:59:11 | INFO: Extracting primitive: Reservoir_terrain.001
+13:59:11 | INFO: Primitives created: 3
+13:59:11 | INFO: Extracting primitive: Reservoir_water_438.001
+13:59:11 | INFO: Primitives created: 1
+13:59:11 | INFO: Extracting primitive: Reservoir_water_440.001
+13:59:11 | INFO: Primitives created: 1
+13:59:11 | INFO: Extracting primitive: Reservoir_water_470.001
+13:59:11 | INFO: Primitives created: 1
+13:59:11 | INFO: Extracting primitive: Reservoir_water_472.001
+13:59:11 | INFO: Primitives created: 1
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_banks.
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_terrain.
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_water_438.
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_water_440.
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_water_470.
+13:59:11 | INFO: Draco encoder: Encoding mesh Reservoir_water_472.
+13:59:11 | INFO: Finished glTF 2.0 export in 0.02408599853515625 s
+
+Info: Saved as "smooth.blend"
+smooth {'triangles': 8909, 'waterTriangles': 591, 'bankQuads': 1379, 'collapsedFaces': 0, 'maxSamplerErrorMeters': np.float64(7.165157356325835e-10), 'boundarySamples': 1488, 'maximumBoundaryErrorMeters': 0.0001150052565623838, 'restoredCityBoundarySides': [], 'cityCutSamples': 0, 'maximumCityCutSamplerErrorMeters': 0.0, 'protectedWaterBanks': [], 'files': {'npz': {'sha256': 'b7e3951a92f2acbfc9dd3a9ed7de27ce2b008dd8c9cc4dcbb8924a527d4b9438', 'bytes': 239131}, 'glb': {'sha256': 'd2ac22e7c10d6d169bd85f02ddd9c1fd81e38689d8020a34a56438756a631a10', 'bytes': 439536}, 'blend': {'sha256': '63de64eb3bec5223125b8d9faec0bc1f19561d6e32727f60a381303f492d4769', 'bytes': 475889}}}
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 5516 vertices, 8274 indices, raw size: 148932, encoded size: 70484, compression ratio: 2.11
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 26244 vertices, 26244 indices, raw size: 682344, encoded size: 336079, compression ratio: 2.03
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 405 vertices, 405 indices, raw size: 10530, encoded size: 5437, compression ratio: 1.94
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 78 vertices, 78 indices, raw size: 2028, encoded size: 1024, compression ratio: 1.98
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 537 vertices, 537 indices, raw size: 13962, encoded size: 6594, compression ratio: 2.12
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1047 vertices, 1047 indices, raw size: 27222, encoded size: 12778, compression ratio: 2.13
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 105 vertices, 105 indices, raw size: 2730, encoded size: 1353, compression ratio: 2.02
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 84 vertices, 84 indices, raw size: 2184, encoded size: 1097, compression ratio: 1.99
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 5516 vertices, 8274 indices, raw size: 148932, encoded size: 70484, compression ratio: 2.11
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 26244 vertices, 26244 indices, raw size: 682344, encoded size: 335091, compression ratio: 2.04
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 405 vertices, 405 indices, raw size: 10530, encoded size: 5437, compression ratio: 1.94
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 78 vertices, 78 indices, raw size: 2028, encoded size: 1024, compression ratio: 1.98
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 537 vertices, 537 indices, raw size: 13962, encoded size: 6594, compression ratio: 2.12
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1047 vertices, 1047 indices, raw size: 27222, encoded size: 12778, compression ratio: 2.13
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 105 vertices, 105 indices, raw size: 2730, encoded size: 1353, compression ratio: 2.02
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 84 vertices, 84 indices, raw size: 2184, encoded size: 1097, compression ratio: 1.99
+
+Blender quit

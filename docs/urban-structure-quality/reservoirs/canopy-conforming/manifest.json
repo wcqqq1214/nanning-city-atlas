@@ -1,0 +1,557 @@
+{
+  "createdAt": "2026-09-13T05:18:47.508023+00:00",
+  "scope": "Nanhu full integration failure; source microface cleanup and T-junction repair; native clearance and inspection-layer validation. New full conforming integration still running. No final asset promotion.",
+  "files": [
+    {
+      "file": "source/scripts/conform_canopy_edges.py",
+      "source": "scripts/conform_canopy_edges.py",
+      "sha256": "2d3dc2ad6b549cd9b4d1e7edebc9d728092b91fb892ff5568671da0feadb85f6",
+      "bytes": 3617
+    },
+    {
+      "file": "source/scripts/test_conform_canopy_edges.py",
+      "source": "scripts/test_conform_canopy_edges.py",
+      "sha256": "d6ece2368c86ebe75ee33c0e81b49777e53b69d6aee2e2bb0ddf2c116fdedfdf",
+      "bytes": 1976
+    },
+    {
+      "file": "source/scripts/prepare_local_canopy.py",
+      "source": "scripts/prepare_local_canopy.py",
+      "sha256": "4e5726f7545848656fc3aab85ba4ca68647d94406bea320d214ef7d8b9a6d2b5",
+      "bytes": 12221
+    },
+    {
+      "file": "source/scripts/test_local_canopy.py",
+      "source": "scripts/test_local_canopy.py",
+      "sha256": "4ea41ed9404133f22ee7a7f00977a568ff0f4702186e50d9a8785340f972e6d5",
+      "bytes": 8153
+    },
+    {
+      "file": "source/scripts/check_canopy_clearance.py",
+      "source": "scripts/check_canopy_clearance.py",
+      "sha256": "d9ef5a9336251700b5ba8325a5b762c11a64babb464d78d00dece4f0ad06025c",
+      "bytes": 8222
+    },
+    {
+      "file": "source/scripts/test_canopy_clearance.py",
+      "source": "scripts/test_canopy_clearance.py",
+      "sha256": "ea2629e47bc152d4b3c8a91f9a3fbc484029db7821bf88d7653f0a5dc01ea91b",
+      "bytes": 3900
+    },
+    {
+      "file": "source/scripts/capture_canopy_surface.py",
+      "source": "scripts/capture_canopy_surface.py",
+      "sha256": "0091711f3252e4989c33d0a807fab7538ef1e9c8e020499959436d89a796e994",
+      "bytes": 3532
+    },
+    {
+      "file": "source/blender/scene_ground.py",
+      "source": "blender/scene_ground.py",
+      "sha256": "3bec6b8a5fd08294ba487b251c9d65beb3945c094319dd8d66a0e010cfa26a76",
+      "bytes": 2964
+    },
+    {
+      "file": "source/blender/nanhu_terrain.py",
+      "source": "blender/nanhu_terrain.py",
+      "sha256": "a9bce794e2fdad7a82463665e24ec445bffde8753ac96e364ca33d548039aaab",
+      "bytes": 1561
+    },
+    {
+      "file": "source/blender/forest_canopy.py",
+      "source": "blender/forest_canopy.py",
+      "sha256": "fe3c2c7cd3d9871e74fe27953c8f48f6ef0659acf97551e59e247c2c79eda5e9",
+      "bytes": 5895
+    },
+    {
+      "file": "source/blender/build_city.py",
+      "source": "blender/build_city.py",
+      "sha256": "fbca082dc37fad73fc5eb56124c433643daea692a02006a094846820680bc18a",
+      "bytes": 63097
+    },
+    {
+      "file": "source/blender/terrain_context.py",
+      "source": "blender/terrain_context.py",
+      "sha256": "dfc5829bffd57946d2242946538f2108403cb75e95f86274291ce3399aba8efe",
+      "bytes": 4014
+    },
+    {
+      "file": "source/blender/road_inputs.py",
+      "source": "blender/road_inputs.py",
+      "sha256": "31f50a8c86079e0270a659b3aa99a1baffd460b2caf2f52cb4f9ad18dd9b50eb",
+      "bytes": 7293
+    },
+    {
+      "file": "source/scripts/validate_assets.py",
+      "source": "scripts/validate_assets.py",
+      "sha256": "625083f41d22fd0c77441fc959d5633b40d6a0b05772f313adae7b8d6eccb7e3",
+      "bytes": 25619
+    },
+    {
+      "file": "source/scripts/decoded_surface.py",
+      "source": "scripts/decoded_surface.py",
+      "sha256": "e5359ea236fa5a542ba93eee49507d45e9d82d739468acf2ebe3db69d4c2263a",
+      "bytes": 1040
+    },
+    {
+      "file": "source/scripts/test_decoded_surface.py",
+      "source": "scripts/test_decoded_surface.py",
+      "sha256": "2a2acc41414b771dd860eb3b1879143c061a2f248bfc2547fbde9c25d123450f",
+      "bytes": 1355
+    },
+    {
+      "file": "source/scripts/check_reservoir_runtime_exports.py",
+      "source": "scripts/check_reservoir_runtime_exports.py",
+      "sha256": "82a92d19d04a35aedbd55c932279b5518013fb0863926597cbe45ca49a143fcb",
+      "bytes": 5799
+    },
+    {
+      "file": "source/scripts/check_reservoir_exports.py",
+      "source": "scripts/check_reservoir_exports.py",
+      "sha256": "79f87c02375ea8e68b4ba3bed325a5e2bdb2a568ce35ce24e0ece850022973e4",
+      "bytes": 4542
+    },
+    {
+      "file": "source/scripts/check_reduced_terrain_exports.py",
+      "source": "scripts/check_reduced_terrain_exports.py",
+      "sha256": "6d9f1de4cc41ca7989572b549e2063eedf5d2113b68b8bac908466085f4ff2c4",
+      "bytes": 8063
+    },
+    {
+      "file": "source/scripts/check_site_access_exports.py",
+      "source": "scripts/check_site_access_exports.py",
+      "sha256": "2444cee1bd2195531a40c3958734bf9c5c26364bc30705e608a09f4d470b0114",
+      "bytes": 9313
+    },
+    {
+      "file": "source/scripts/check_site_grading_exports.py",
+      "source": "scripts/check_site_grading_exports.py",
+      "sha256": "24f00fda488740e6650de1b6fbdc396edce0bd46df72dabd472833fd21fc2384",
+      "bytes": 4412
+    },
+    {
+      "file": "source/lib/city/inspection.ts",
+      "source": "lib/city/inspection.ts",
+      "sha256": "290e1a3028b6385b42e35d017bc9d642a8866c7b5fabaf7ea08b20a822d2513b",
+      "bytes": 7064
+    },
+    {
+      "file": "source/app/inspect/page.tsx",
+      "source": "app/inspect/page.tsx",
+      "sha256": "ff3cde7e0683e884a098b83a8d6dd8b7c2a1d174e124db00f385697f22d6d17e",
+      "bytes": 11561
+    },
+    {
+      "file": "reports/scene-ground-equivalence.json",
+      "source": "work/urban-structure/p5/full-city-review/scene-ground-equivalence.json",
+      "sha256": "fe698cee9b674920cf15d3a9b559ddcb66ca7f00c5330da90dfe71807052d937",
+      "bytes": 1467
+    },
+    {
+      "file": "reports/codec-normal-decoder-audit.json",
+      "source": "work/urban-structure/p5/full-city-review/codec-normal-decoder-audit.json",
+      "sha256": "03eef64cd72e201160a99bca47bc6ab15eaeb6f1137e3c05edb8639905b77eff",
+      "bytes": 24019
+    },
+    {
+      "file": "reports/decoder-export-tests.log",
+      "source": "work/urban-structure/p5/full-city-review/decoder-export-tests.log",
+      "sha256": "58a520a024f15707222afe6575db8a3a9dbe7469c2c156ae0f9979903d48645a",
+      "bytes": 109
+    },
+    {
+      "file": "reports/nanhu-mesh-budget.json",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-mesh-budget.json",
+      "sha256": "2896701673220820739100dfc9f994b3e1a75bc40c833e101c75c668b4e454a8",
+      "bytes": 149437
+    },
+    {
+      "file": "reports/forest-candidate-clean.report.json",
+      "source": "work/urban-structure/p5/full-city-review/forest-candidate-clean.report.json",
+      "sha256": "d7cfbe5e94f547d0a0fdcfee266cec1dfde189a4572dda696a4dbf21795e5e4e",
+      "bytes": 43309
+    },
+    {
+      "file": "reports/forest-candidate-conforming-v2.report.json",
+      "source": "work/urban-structure/p5/full-city-review/forest-candidate-conforming-v2.report.json",
+      "sha256": "6619203e6c79928d51ea30f6b1b3147679934afeec33c5895b3ffee84eba07e8",
+      "bytes": 1204
+    },
+    {
+      "file": "reports/ground-batch-equivalence.json",
+      "source": "work/urban-structure/p5/full-city-review/ground-batch-equivalence.json",
+      "sha256": "fabe1400a79fe255a949afbc0b549872b0665ed2536e3b251a664cd5840d63cc",
+      "bytes": 2287
+    },
+    {
+      "file": "reports/nanhu-slit-raycast.json",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-slit-raycast.json",
+      "sha256": "57b5fea08962af9748d7891929ac0470d25b466a1405679f334ad7ecf744cee5",
+      "bytes": 9222
+    },
+    {
+      "file": "reports/nanhu-slit-native-edges.json",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-slit-native-edges.json",
+      "sha256": "727615622a99adae9c2f22c7ba8fe08ad1b3a32653aba720be1917a3e652d432",
+      "bytes": 4483
+    },
+    {
+      "file": "reports/nanhu-slit-conforming-edges.json",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-slit-conforming-edges.json",
+      "sha256": "fa7321631cd5d5fb102272353cb4f77b903752964efc01796354897143198579",
+      "bytes": 1731
+    },
+    {
+      "file": "reports/longmen-camera-height.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-camera-height.json",
+      "sha256": "72c70c9e4cd7c3472266a40739b25afba14ae6e67972edfec8a879f0b47c0fe8",
+      "bytes": 746
+    },
+    {
+      "file": "reports/longmen-camera-occlusion.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-camera-occlusion.json",
+      "sha256": "c5c0aa116a5fc429a33a21aadc66c46e28efae9c9b609b3263b04d84a17a82d0",
+      "bytes": 286
+    },
+    {
+      "file": "reports/longmen-mesh-raycast.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-mesh-raycast.json",
+      "sha256": "5f8f7d7f023e61e47114d7849d83ec6affb84cf4bc018fe004a8746ae12ca652",
+      "bytes": 8564
+    },
+    {
+      "file": "reports/conforming-formal-assets.json",
+      "source": "work/urban-structure/p5/full-city-review/conforming-formal-assets.json",
+      "sha256": "cb077f00b3b1f24d54a6eb09e84151b7c289cde692712215afddeebaef24f8b2",
+      "bytes": 1151
+    },
+    {
+      "file": "reports/local-canopy-tests.log",
+      "source": "work/urban-structure/p5/full-city-review/local-canopy-tests.log",
+      "sha256": "2b5251455b9ecfe680720f7c9b95a6fd922724281f3d7f45ab5054c355388361",
+      "bytes": 107
+    },
+    {
+      "file": "reports/conforming-inspection-tests.log",
+      "source": "work/urban-structure/p5/full-city-review/conforming-inspection-tests.log",
+      "sha256": "ae46c4d174fc68571f8bcc6bdba2cb3b76b00fdc2dad74a991aaec72dcd6fc10",
+      "bytes": 430
+    },
+    {
+      "file": "reports/conforming-typecheck.log",
+      "source": "work/urban-structure/p5/full-city-review/conforming-typecheck.log",
+      "sha256": "10b688b9368b19d26df1b998c7e3e19f25327b3ee5e23a0971f9d044f8b746fe",
+      "bytes": 54
+    },
+    {
+      "file": "reports/conforming-lint.log",
+      "source": "work/urban-structure/p5/full-city-review/conforming-lint.log",
+      "sha256": "f6a7ae31896d1fdad2560d5a371178b0430b360793e76c7aa7ddfd4aaba2ab23",
+      "bytes": 43
+    },
+    {
+      "file": "reports/conforming-build-pages.log",
+      "source": "work/urban-structure/p5/full-city-review/conforming-build-pages.log",
+      "sha256": "742c5592b613446ce0cb03523b330246233c3ec78025b7927b02b5b0eadcd499",
+      "bytes": 4075
+    },
+    {
+      "file": "tools/prepare_canopy_conforming_v2.py",
+      "source": "work/urban-structure/p5/full-city-review/prepare_canopy_conforming_v2.py",
+      "sha256": "57b846905e7cc23448792f5c4e4680f15dd0823d455f69cb8cf8f708d536ec70",
+      "bytes": 1326
+    },
+    {
+      "file": "tools/clean_canopy_microfaces.py",
+      "source": "work/urban-structure/p5/full-city-review/clean_canopy_microfaces.py",
+      "sha256": "97052aa3ed9663f244693f0ad38989fe6fc90879c2395f5ef42fa42b45cfee33",
+      "bytes": 1923
+    },
+    {
+      "file": "tools/check_conforming_complete.py",
+      "source": "work/urban-structure/p5/full-city-review/check_conforming_complete.py",
+      "sha256": "9e29ee433d75cae67bc1a710bb3cb07ed45d4dc2b093fb962c042f5245cdce16",
+      "bytes": 949
+    },
+    {
+      "file": "tools/probe_nanhu_slit.py",
+      "source": "work/urban-structure/p5/full-city-review/probe_nanhu_slit.py",
+      "sha256": "e438eefb6f5b9f9db1aa86beaa5c32d9eff66a9375483505c8d9d33412680327",
+      "bytes": 1816
+    },
+    {
+      "file": "tools/probe_slit_edges.py",
+      "source": "work/urban-structure/p5/full-city-review/probe_slit_edges.py",
+      "sha256": "10a0764e07d9935cd8f03ba77b2bc13addcd4b9706ddfe9ef7a69b1c62465c97",
+      "bytes": 1198
+    },
+    {
+      "file": "tools/probe_conforming_edges.py",
+      "source": "work/urban-structure/p5/full-city-review/probe_conforming_edges.py",
+      "sha256": "185664a5159543ed07c5e7150431bea6129f8ed12a08eab1732d4fa3aad403ec",
+      "bytes": 1201
+    },
+    {
+      "file": "tools/check_inspection_vegetation.mjs",
+      "source": "work/urban-structure/p5/full-city-review/check_inspection_vegetation.mjs",
+      "sha256": "571f4aa57dc226d7f3cba0830af4fdf1efeeefd5c0b4a0814ebca608786c9189",
+      "bytes": 3646
+    },
+    {
+      "file": "tools/conforming_browser.mjs",
+      "source": "work/urban-structure/p5/full-city-review/conforming_browser.mjs",
+      "sha256": "84b56a4f7ba4d3398351731f7981bc274c78d750cc767e19272a02631f8687ad",
+      "bytes": 3421
+    },
+    {
+      "file": "reports/canopy/nearby-smooth.json",
+      "source": "work/urban-structure/p5/full-city-review/canopy-conforming-audit/nearby-smooth.json",
+      "sha256": "8f5903a37e90ace13c823d890ad7d90a0e3cbc31c320588057d0e216d6372203",
+      "bytes": 1679
+    },
+    {
+      "file": "reports/canopy/nearby-detail.json",
+      "source": "work/urban-structure/p5/full-city-review/canopy-conforming-audit/nearby-detail.json",
+      "sha256": "bc7e449404c26432091ac0b759724b7e39677fe729c1b20bd4e1d841ad9ca180",
+      "bytes": 1680
+    },
+    {
+      "file": "reports/canopy/all-detail.json",
+      "source": "work/urban-structure/p5/full-city-review/canopy-conforming-audit/all-detail.json",
+      "sha256": "623106609b85956e6aa85f6d6579fbe73798e2aca44e55a25bcc00c9791f9613",
+      "bytes": 1691
+    },
+    {
+      "file": "reports/canopy/all-smooth.json",
+      "source": "work/urban-structure/p5/full-city-review/canopy-conforming-audit/all-smooth.json",
+      "sha256": "caaf88a7556c066cb4be504cb1703b9aa401752c1613feab612de87f1b10c027",
+      "bytes": 1688
+    },
+    {
+      "file": "browser/longmen/report.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/report.json",
+      "sha256": "109776282be6b8a04d0441df79fb88c1aa30827cee27321f0eb11541f7685de2",
+      "bytes": 32434
+    },
+    {
+      "file": "browser/longmen/smooth-elevated-clay.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/smooth-elevated-clay.json",
+      "sha256": "eab18c5e60b1a79b523677fa5878b59b7a5f7fc78ffe8cfd47496fa12e3d714f",
+      "bytes": 2333
+    },
+    {
+      "file": "browser/longmen/detail-elevated-lit.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-elevated-lit.png",
+      "sha256": "635acf2e49cbc20f83fef00c1276e3b1ffaa46eca08fde7fb2ce699f8015244b",
+      "bytes": 280958
+    },
+    {
+      "file": "browser/longmen/detail-elevated-clay.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-elevated-clay.json",
+      "sha256": "61a76d7bb1999fbbba4bb19d53aefb5823b0c7ef533aa2309f102f2776b6da0a",
+      "bytes": 2327
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-restored.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-restored.json",
+      "sha256": "6268e024ae4a249e96feab4de6ab28726733cd612c68593a4f74d15b294970bb",
+      "bytes": 2327
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-on.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-on.json",
+      "sha256": "47398db122b5f7468a905c048f62abbbf049f91c7ff2e021a4244a3ed81576c7",
+      "bytes": 2326
+    },
+    {
+      "file": "browser/longmen/smooth-elevated-clay.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/smooth-elevated-clay.png",
+      "sha256": "6c83420205c34cb711dd96fda7d804c42dcaa4341ab40076e4aa23bd4942076c",
+      "bytes": 159164
+    },
+    {
+      "file": "browser/longmen/smooth-elevated-lit.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/smooth-elevated-lit.json",
+      "sha256": "9db9236cae76df5d11480d29e79a8f6b8c33d871de716dfc554dfe7bd16b22c4",
+      "bytes": 2331
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-off-reloaded.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-off-reloaded.png",
+      "sha256": "af430233fdd6087aafcb0b25038af4a0bc8377dd4533e7bd8a3477481209d86a",
+      "bytes": 84018
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-restored.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-restored.png",
+      "sha256": "0805e87cfa88a44d2f3bbbf0f944442cb48538fa9195a3e5412992069583cbec",
+      "bytes": 117593
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-on.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-on.png",
+      "sha256": "0805e87cfa88a44d2f3bbbf0f944442cb48538fa9195a3e5412992069583cbec",
+      "bytes": 117593
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-off.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-off.json",
+      "sha256": "f4a1fe3504669fcd35ddf9588f5e58b997a5b9d9919b23484e29c6430dd2f203",
+      "bytes": 2343
+    },
+    {
+      "file": "browser/longmen/smooth-elevated-lit.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/smooth-elevated-lit.png",
+      "sha256": "d73eb7130f189fa01b28b544bf4e75e4ea363742cc5bff953aca4ef45cb783eb",
+      "bytes": 201432
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-off-reloaded.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-off-reloaded.json",
+      "sha256": "adac28ec8e967c531b9baf278b71350302480621c7f36c5652f7997d9fca29d9",
+      "bytes": 2344
+    },
+    {
+      "file": "browser/longmen/detail-elevated-clay.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-elevated-clay.png",
+      "sha256": "6497f9b1fc2be2b3af0ed26f725e1c2e822c055e49d2571988f52b858beca8f9",
+      "bytes": 217474
+    },
+    {
+      "file": "browser/longmen/detail-elevated-lit.json",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-elevated-lit.json",
+      "sha256": "d92ff5c59dd81a4854681d47f531748b2e6b72887fbe26bb272f943bb1c17aa8",
+      "bytes": 2313
+    },
+    {
+      "file": "browser/longmen/detail-original-clay-off.png",
+      "source": "work/urban-structure/p5/full-city-review/longmen-vegetation-review/detail-original-clay-off.png",
+      "sha256": "af430233fdd6087aafcb0b25038af4a0bc8377dd4533e7bd8a3477481209d86a",
+      "bytes": 84018
+    },
+    {
+      "file": "browser/nanhu/report.json",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-browser/report.json",
+      "sha256": "a7ca64c3927a944e49b34ac5b9cf557f334b6bce0ec96a09299ecfd089edce73",
+      "bytes": 94542
+    },
+    {
+      "file": "browser/nanhu/before-smooth-nanhu-canopy-north-lit.png",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-browser/before-smooth-nanhu-canopy-north-lit.png",
+      "sha256": "84d6b9a6ab8d039973d7455bb2b48153ac5ed6d40e071f251da6331fdde48ac8",
+      "bytes": 102794
+    },
+    {
+      "file": "browser/nanhu/after-smooth-nanhu-canopy-north-lit.png",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-browser/after-smooth-nanhu-canopy-north-lit.png",
+      "sha256": "d4eb88fc5817e9103db4a7c5d37ad5bcc76097c313512c62f0e9c072d72839b3",
+      "bytes": 104426
+    },
+    {
+      "file": "browser/nanhu/after-detail-longmen-dam-clay.png",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-browser/after-detail-longmen-dam-clay.png",
+      "sha256": "45138f37f59f77614e5559bc1dcd932295060ad19dcd2fe90df5fe224bdacc79",
+      "bytes": 117592
+    },
+    {
+      "file": "reports/nanhu-integration/pipeline-report.json",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/pipeline-report.json",
+      "sha256": "e38f67b8232716aa80d49e765ed7c5e04dff753c8c5a23038cc42aded0ed3d01",
+      "bytes": 3962
+    },
+    {
+      "file": "reports/nanhu-integration/road-rebuild-report.json",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/road-rebuild-report.json",
+      "sha256": "3f43afd32fc8fbbf030c999ed8d685887e3c8b2e81e4d52063328141def27876",
+      "bytes": 2533
+    },
+    {
+      "file": "reports/nanhu-integration/access-rebuild-report.json",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/access-rebuild-report.json",
+      "sha256": "ac0f5ca0db0c59a2862d9e49e5277191abef1f4b5ce2cf75d635d87be267a101",
+      "bytes": 2891
+    },
+    {
+      "file": "reports/nanhu-integration/final-support-audit.json",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/final-support-audit.json",
+      "sha256": "94bfb8fce736f5ac3021f394461645d4bb295c2e99a12940bd6b8981f2c66dc9",
+      "bytes": 300905
+    },
+    {
+      "file": "reports/nanhu-integration/full-city-result.json",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/full-city-result.json",
+      "sha256": "17eacbd3d2fb638747ab0ac228127238e551640d001d407440c9231d152368e3",
+      "bytes": 40
+    },
+    {
+      "file": "reports/nanhu-integration/validate-assets.log",
+      "source": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/validate-assets.log",
+      "sha256": "1cbd4762eeb2644f2badaf032304ae6158fb7d647777ef01543e3d132345bafb",
+      "bytes": 1124
+    }
+  ],
+  "externalArtifacts": [
+    {
+      "file": "work/urban-structure/p5/full-city-review/forest-candidate-clean.json",
+      "sha256": "98ef4be189500af3621062fcdfbc4a1155333e8c5ea13b0165b3f469507c6ba9",
+      "bytes": 14595654
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/forest-candidate-conforming-v2.json",
+      "sha256": "8289ff98d6151d8beb89e37e83e78dfd89259c9c5c57995da96440a9889bfd83",
+      "bytes": 14597402
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-clean-native/all-detail.npz",
+      "sha256": "ca3e0a1f9357b891f4181d3005370006654fb99157fc99744f090be4eda2a590",
+      "bytes": 3292635
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-clean-native/nearby-detail.npz",
+      "sha256": "61956d3750d5e82a41ceda7ce5c1aeecc900f8c85185941c3f6208264e87e0d3",
+      "bytes": 1177547
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-clean-native/all-smooth.npz",
+      "sha256": "2a145f1216335098b34f1043aa52ee79a26a77b73c219b32538a9af78c273c49",
+      "bytes": 1665333
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-clean-native/nearby-smooth.npz",
+      "sha256": "535b35b3db540dcf8ae8b6f914f83b529ec2541ece54ce84b81784b3678861a9",
+      "bytes": 636857
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-conforming-native/nearby-detail.npz",
+      "sha256": "ed1c73d3c8f5ffd7e23004a39ba06ed67580d13822aa12063bad2b379b37e48d",
+      "bytes": 1178283
+    },
+    {
+      "file": "work/urban-structure/p5/full-city-review/canopy-conforming-native/nearby-smooth.npz",
+      "sha256": "4095a8e0ea8851723de7522d65ac7202c8ec3441b0ee3ffcfdf36449538c90af",
+      "bytes": 637349
+    },
+    {
+      "file": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/models/nanning-city.glb",
+      "sha256": "11f7a46f6432e9c0117b70c5f377261ea2e7f507c192e72f71289a3601c6d0fe",
+      "bytes": 30332036
+    },
+    {
+      "file": "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/models/nanning-city-mobile.glb",
+      "sha256": "752e278a4b83b2e469e5dc3057d5e8e32198e62af2ee560dcd4323a18372f5d9",
+      "bytes": 22509060
+    }
+  ],
+  "tests": {
+    "canopySuiteBeforeAdditionalRegression": {
+      "command": "work/venv/bin/python -m unittest discover -s scripts -p test*canopy*.py",
+      "passed": 21
+    },
+    "localSuiteAfterAdditionalRegression": {
+      "command": "work/venv/bin/python -m unittest discover -s scripts -p test_local_canopy.py",
+      "passed": 9
+    },
+    "inspectionTests": 3,
+    "nativeCanopyGroupsPassed": 4,
+    "browserInspectionCaptures": 8
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "status": "same settings/canvas; image difference is evidence, not an automatic visual acceptance threshold",
+  "pairs": [
+    {
+      "view": "detail-longmen-dam-clay",
+      "meanAbsoluteChannelDifference": 2.6152283603828548,
+      "pixelsOver8Percent": 7.253628277153558,
+      "p99MaximumChannelDifference": 48.0,
+      "maximumChannelDifference": 59,
+      "beforeSha256": "650804b14cfa2aa5adc9add3eed2c1b5545c515a622136c6402721d847dccc4d",
+      "afterSha256": "9c8a915e42154379a109f5ec85c553980f7f244b3eba19c926f7f934f6c570f5"
+    },
+    {
+      "view": "detail-longmen-dam-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "e457879460b495ec8cae81fcfb5b6214f4b71b0f9bbbf564570d96f2e6504781",
+      "afterSha256": "e457879460b495ec8cae81fcfb5b6214f4b71b0f9bbbf564570d96f2e6504781"
+    },
+    {
+      "view": "detail-longmen-dam-lit",
+      "meanAbsoluteChannelDifference": 2.621322305451519,
+      "pixelsOver8Percent": 7.326291354556804,
+      "p99MaximumChannelDifference": 52.0,
+      "maximumChannelDifference": 67,
+      "beforeSha256": "079e4abbfdc5aa8a44cb6b4132a320bd97a6c2dce97decbcf896ad8d93a0ca25",
+      "afterSha256": "178e70f8242635228dce9f800670831489b4c9ed9720a67cf4301c92d443471b"
+    },
+    {
+      "view": "detail-overview-clay",
+      "meanAbsoluteChannelDifference": 0.24224764617145236,
+      "pixelsOver8Percent": 0.3221558988764045,
+      "p99MaximumChannelDifference": 5.0,
+      "maximumChannelDifference": 74,
+      "beforeSha256": "38e2e125b728c16bae1bb94f7e67f9c3d480b441d9a9b47e36b5b7928b0823e7",
+      "afterSha256": "9a78d08bd08a556abf60a65cdc1fbb8b2b16e98737e03373f7169ab8811076ba"
+    },
+    {
+      "view": "detail-overview-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "d7c2e14d86adf7693b7b996a442c87694157957e999a10d6ba024fa01eae523d",
+      "afterSha256": "d7c2e14d86adf7693b7b996a442c87694157957e999a10d6ba024fa01eae523d"
+    },
+    {
+      "view": "detail-overview-lit",
+      "meanAbsoluteChannelDifference": 0.14106390449438203,
+      "pixelsOver8Percent": 0.043207709113607995,
+      "p99MaximumChannelDifference": 3.0,
+      "maximumChannelDifference": 29,
+      "beforeSha256": "bacfcf0ddd9129507c433f4559e56d6bca873925cc5d4af7a96159345f70841c",
+      "afterSha256": "4aa2c6eed6d8c71d315f127f9c9cafe5b7f474fc91b9533be811dbad622cedf2"
+    },
+    {
+      "view": "detail-qingxiu-lake-clay",
+      "meanAbsoluteChannelDifference": 0.0018411230753225135,
+      "pixelsOver8Percent": 0.008095349563046191,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 45,
+      "beforeSha256": "e0b38b15e08b8223ad777e81f988d95c4c9ce17c03331f762ced7b0d5a16d123",
+      "afterSha256": "299340dec44de99daca1a11fe9e8c683e89b4cd7ea97e412f2b7ec3386e04052"
+    },
+    {
+      "view": "detail-qingxiu-lake-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "1e516c0d533f447f4c80cbcb778183a382ed7263f233bd6c8c0a8b94afbc5ef7",
+      "afterSha256": "1e516c0d533f447f4c80cbcb778183a382ed7263f233bd6c8c0a8b94afbc5ef7"
+    },
+    {
+      "view": "detail-qingxiu-lake-lit",
+      "meanAbsoluteChannelDifference": 0.00176764721181856,
+      "pixelsOver8Percent": 0.008095349563046191,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 45,
+      "beforeSha256": "35c410658dd9586e16e2a6ed097f27b0c451b74889c3f22e01ff1c4c017748e5",
+      "afterSha256": "c02f19206fb3385f9850579b76e11021f40d8b070c2421c8b74c3163b55cc31b"
+    },
+    {
+      "view": "detail-waterfront-bridgehead-clay",
+      "meanAbsoluteChannelDifference": 0.36014714679567206,
+      "pixelsOver8Percent": 0.9643219413233458,
+      "p99MaximumChannelDifference": 8.0,
+      "maximumChannelDifference": 63,
+      "beforeSha256": "749f379c19e28156fc60be5ab0268188c5adcab1180e3edc35bd5cc8de587b0a",
+      "afterSha256": "2e9b27aa65f72c7c4570863ece0c4ed7c8b166fbdfba16f6d55a01182965d37a"
+    },
+    {
+      "view": "detail-waterfront-bridgehead-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "c22946e98dde6a82c9dda9ad231d2849cf2a79bc867b74d840bf065cc2da9bde",
+      "afterSha256": "c22946e98dde6a82c9dda9ad231d2849cf2a79bc867b74d840bf065cc2da9bde"
+    },
+    {
+      "view": "detail-waterfront-bridgehead-lit",
+      "meanAbsoluteChannelDifference": 0.3430220687682064,
+      "pixelsOver8Percent": 0.9670529026217228,
+      "p99MaximumChannelDifference": 8.0,
+      "maximumChannelDifference": 62,
+      "beforeSha256": "0f42817dcc42d1e7a17be7caa8a7f6dbbda94e361af69a70e3f34c1104905f44",
+      "afterSha256": "68a5afca642c795232fe4ac3ae6e83a56f437aeb47a48b0b56c26748193c63ee"
+    },
+    {
+      "view": "smooth-longmen-dam-clay",
+      "meanAbsoluteChannelDifference": 0.005234342488555972,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 1.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "ea0aa95dbc33c6d61aacdfba29101d5896ab2a72577a5dc3daa1ade1cf36efd6",
+      "afterSha256": "cf41def1458ed26f728cd0b5572c7f00358b26d48de75c149b654becbfc74e38"
+    },
+    {
+      "view": "smooth-longmen-dam-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "8f8227858167acc366e08d94a8f5b38b762d23fc016ed4a9dcf22100f8e63a90",
+      "afterSha256": "8f8227858167acc366e08d94a8f5b38b762d23fc016ed4a9dcf22100f8e63a90"
+    },
+    {
+      "view": "smooth-longmen-dam-lit",
+      "meanAbsoluteChannelDifference": 0.021432519246774865,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 1.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "225d72a67cea0acc42cd7040e425845fbb47a8db39e4301f750e7689cf1f5879",
+      "afterSha256": "aae00f2324300295617c6d94ff625ba2b9f0ac1f823319220910ce5ebd924d86"
+    },
+    {
+      "view": "smooth-overview-clay",
+      "meanAbsoluteChannelDifference": 0.018152439658759883,
+      "pixelsOver8Percent": 0.03160112359550562,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 129,
+      "beforeSha256": "5928446967304be1b5f7711e3828faddffe07717c67b603ffaa380f1a8fea6e4",
+      "afterSha256": "cbb1d7705da810e8aa6993a5da2fe16abe50f71d2c4e09e12fa1b4107a4e30f9"
+    },
+    {
+      "view": "smooth-overview-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "078b22242cd4df74869bd24939d89cbf5897ec491100b62c658a7d29bdba611d",
+      "afterSha256": "078b22242cd4df74869bd24939d89cbf5897ec491100b62c658a7d29bdba611d"
+    },
+    {
+      "view": "smooth-overview-lit",
+      "meanAbsoluteChannelDifference": 0.0008943898252184769,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "2ecb175a53c24e30c605f2f158f9a53051b4b565ce8fa18d7db3dbfbbde49d71",
+      "afterSha256": "5e04f88a909e6cdd0463f93d5d6748e200be6fb443582ff7fe65ef9eb49611a9"
+    },
+    {
+      "view": "smooth-qingxiu-lake-clay",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "b1319fe4aa7ebeeab9df20406ed6be51cc88706a9e1994b3646ea5adf959285c",
+      "afterSha256": "b1319fe4aa7ebeeab9df20406ed6be51cc88706a9e1994b3646ea5adf959285c"
+    },
+    {
+      "view": "smooth-qingxiu-lake-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "1664775c663833690dc38cdf891e56b53f70465f956800b70395c951b76b1cfc",
+      "afterSha256": "1664775c663833690dc38cdf891e56b53f70465f956800b70395c951b76b1cfc"
+    },
+    {
+      "view": "smooth-qingxiu-lake-lit",
+      "meanAbsoluteChannelDifference": 1.8531523096129837e-05,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "5b16a95440921906b2d94fe29a36addb3b95a0b30025932bda627063fe921590",
+      "afterSha256": "cdda6f22981c04e5dfcd48a36b670b51b6de016e4c958eec0e7fef56b903f4e7"
+    },
+    {
+      "view": "smooth-waterfront-bridgehead-clay",
+      "meanAbsoluteChannelDifference": 0.0021785918643362464,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "dbefc9f13fcb81433337b31482af64abb4bcb4aea54eb25e942c1339a7b6eb52",
+      "afterSha256": "46b998d59167ddda1a59794adeb0e9bb8b26e8376f4c98898a8257e6d46e4ee3"
+    },
+    {
+      "view": "smooth-waterfront-bridgehead-color",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 0,
+      "beforeSha256": "cb8324e2476d6acd5b81c442accb3ed4bd729781a94d4afe0f970531fec1ccf7",
+      "afterSha256": "cb8324e2476d6acd5b81c442accb3ed4bd729781a94d4afe0f970531fec1ccf7"
+    },
+    {
+      "view": "smooth-waterfront-bridgehead-lit",
+      "meanAbsoluteChannelDifference": 0.001753992405326675,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0,
+      "maximumChannelDifference": 1,
+      "beforeSha256": "f91d5097d3bf89699e75a6db48dbe86bcf50f4ed90077c081861e64866c3738e",
+      "afterSha256": "ece99d887dc474f7a35d5d3ba8fd656ffd126c82240cda5b53a95b3e1feea2ae"
+    }
+  ],
+  "humanReviewed": [
+    "smooth-longmen-dam-lit",
+    "detail-qingxiu-lake-clay"
+  ],
+  "visualConclusion": "These two inspected pairs retain the visible shore, slope and path shapes. Existing Longmen steep dam/forest interface remains unresolved."
+}

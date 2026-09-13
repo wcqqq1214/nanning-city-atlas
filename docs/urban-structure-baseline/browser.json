@@ -1,0 +1,2433 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "capturedAt": "2026-09-12T08:36:46.825Z",
+  "records": [
+    {
+      "id": "restore-before",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 937.8000001907349,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "restore-link",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 937.8000001907349,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "restore-after",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-detail-clay-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 6690557,
+        "calls": 1738,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-detail-color-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 6690557,
+        "calls": 1738,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-detail-lit-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 6690557,
+        "calls": 1738,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-detail-clay-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-detail-color-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-detail-lit-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2118227,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-detail-clay-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1408251,
+        "calls": 192,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-detail-color-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1408251,
+        "calls": 192,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-detail-lit-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1408251,
+        "calls": 192,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-detail-clay-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1774612,
+        "calls": 349,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-detail-color-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1774612,
+        "calls": 349,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-detail-lit-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1774612,
+        "calls": 349,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-detail-lit-h18",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 18,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2558600,
+        "calls": 501,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-detail-lit-h21",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2392939,
+        "calls": 467,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-detail-clay-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1505806,
+        "calls": 328,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-detail-color-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1505806,
+        "calls": 328,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-detail-lit-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1505806,
+        "calls": 328,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-detail-clay-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 3299443,
+        "calls": 643,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-detail-color-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 3299443,
+        "calls": 643,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-detail-lit-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 3299443,
+        "calls": 643,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-detail-clay-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2489932,
+        "calls": 394,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-detail-color-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2489932,
+        "calls": 394,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-detail-lit-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2489932,
+        "calls": 394,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-detail-lit-h18",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 18,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 3063590,
+        "calls": 514,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-detail-lit-h21",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 2777095,
+        "calls": 459,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-detail-clay-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1621516,
+        "calls": 307,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-detail-color-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1621516,
+        "calls": 307,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-detail-lit-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 25236380,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 537.5,
+        "modelBytes": 25236380,
+        "fps": 0,
+        "triangles": 1621516,
+        "calls": 307,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-smooth-clay-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 2350421,
+        "calls": 755,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-smooth-color-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 2350421,
+        "calls": 755,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "overview-smooth-lit-h14",
+      "settings": {
+        "view": "overview",
+        "camera": {
+          "position": [
+            234.99999999999994,
+            340,
+            369.99999999999994
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 2350421,
+        "calls": 755,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-smooth-clay-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 893578,
+        "calls": 199,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-smooth-color-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 893578,
+        "calls": 199,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-smooth-lit-h14",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 893578,
+        "calls": 199,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-smooth-clay-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 516653,
+        "calls": 71,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-smooth-color-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 516653,
+        "calls": 71,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "residential-top-smooth-lit-h14",
+      "settings": {
+        "view": "residential-top",
+        "camera": {
+          "position": [
+            83.016,
+            10,
+            6.949999999999995
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 516653,
+        "calls": 71,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-smooth-clay-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 931418,
+        "calls": 240,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-smooth-color-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 931418,
+        "calls": 240,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-smooth-lit-h14",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 931418,
+        "calls": 240,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-smooth-lit-h18",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 18,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 931418,
+        "calls": 254,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-smooth-lit-h21",
+      "settings": {
+        "view": "waterfront",
+        "camera": {
+          "position": [
+            11.000000000000002,
+            4.500000000000001,
+            19.800000000000004
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 931418,
+        "calls": 254,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-smooth-clay-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 676513,
+        "calls": 220,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-smooth-color-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 676513,
+        "calls": 220,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "waterfront-low-smooth-lit-h14",
+      "settings": {
+        "view": "waterfront-low",
+        "camera": {
+          "position": [
+            17,
+            2.299999999999999,
+            21
+          ],
+          "target": [
+            15.100000000000001,
+            0.55,
+            11.6
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 676513,
+        "calls": 220,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-smooth-clay-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1509404,
+        "calls": 418,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-smooth-color-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1509404,
+        "calls": 418,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-smooth-lit-h14",
+      "settings": {
+        "view": "qingxiu",
+        "camera": {
+          "position": [
+            100,
+            13,
+            66
+          ],
+          "target": [
+            88.058,
+            2.5000000000000004,
+            46.641
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1509404,
+        "calls": 418,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-smooth-clay-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1057424,
+        "calls": 217,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-smooth-color-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1057424,
+        "calls": 217,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-smooth-lit-h14",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1057424,
+        "calls": 217,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-smooth-lit-h18",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 18,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1057424,
+        "calls": 228,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "arts-smooth-lit-h21",
+      "settings": {
+        "view": "arts",
+        "camera": {
+          "position": [
+            63.500000000000014,
+            4.5,
+            55.4
+          ],
+          "target": [
+            67.56800000000001,
+            0.75,
+            49.799
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 1057424,
+        "calls": 228,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-smooth-clay-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 725194,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-smooth-color-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 725194,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "zhenning-smooth-lit-h14",
+      "settings": {
+        "view": "zhenning",
+        "camera": {
+          "position": [
+            23.199999999999996,
+            2.8999999999999995,
+            -2.5
+          ],
+          "target": [
+            25.062999999999995,
+            1.0999999999999999,
+            -6.014
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+        "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+        "modelBytes": 17270232,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 681.4000000953674,
+        "modelBytes": 17270232,
+        "fps": 0,
+        "triangles": 725194,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "material-switching",
+    "frozen-frames",
+    "camera-roundtrip",
+    "both-profiles",
+    "normal-home-load"
+  ]
+}

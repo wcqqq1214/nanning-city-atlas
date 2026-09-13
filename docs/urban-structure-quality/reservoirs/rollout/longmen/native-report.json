@@ -1,0 +1,64 @@
+{
+  "status": "independent native reservoir export; full city replacement and compressed audit pending",
+  "planSha256": "2fbb8262a88228cdedb999740c4a3a667e3e4ec42f0a3cee03db0727e470aaba",
+  "baseCityRoot": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging",
+  "profiles": {
+    "detail": {
+      "triangles": 11456,
+      "waterTriangles": 349,
+      "bankQuads": 940,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 1.4439560658274786e-10,
+      "boundarySamples": 927,
+      "maximumBoundaryErrorMeters": 0.0005671075396396219,
+      "files": {
+        "npz": {
+          "sha256": "feb62923c97011d5d3f697a154ceca779028222742a7d6a8c181d91d3f26535a",
+          "bytes": 264673
+        },
+        "glb": {
+          "sha256": "b754bcea23a6bb19b3134e4d93203056f18f466df892f61360c6d6484dbaa3dd",
+          "bytes": 501120
+        },
+        "blend": {
+          "sha256": "a23a22bd98acec67cc7b03843502b38043caa85f14cdc4275413cf6e5af71796",
+          "bytes": 538816
+        }
+      }
+    },
+    "smooth": {
+      "triangles": 11456,
+      "waterTriangles": 349,
+      "bankQuads": 940,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 1.4439560658274786e-10,
+      "boundarySamples": 927,
+      "maximumBoundaryErrorMeters": 0.00018242588439854046,
+      "files": {
+        "npz": {
+          "sha256": "22a77ebbe99071011a79ae2d280e2007901455945db67e8045f9ba35efe34b91",
+          "bytes": 251972
+        },
+        "glb": {
+          "sha256": "ad2492c4cdd0397f106e5f6a3b5a6c3310bdaa80fbadf57395ec69fe5d6deade",
+          "bytes": 497748
+        },
+        "blend": {
+          "sha256": "eabcf351aaa642cdfed13a38b33540a846f662d91f254cb0788708229379e143",
+          "bytes": 539561
+        }
+      }
+    }
+  },
+  "baseContextHashes": {
+    "public/data/geography.json": "9edee30f0350c04fce5901362e00a16414cbc5961e2aeaf1b2e49510d49b88ac",
+    "public/data/terrain.json": "60e0c5719bbd7c7c81b7259e005e2e8f52696abc9ccf9578dca9f8f89722995a",
+    "blender/build_city.py": "e7af0f7d2759dc1781f8e42394bdc1df43f08f1b948e22fdb206c8d04c39696e",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7"
+  },
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_reservoir_terrain.py": "bb13009afc1ae5dbe3980a95ec84eb5c2fdb0eb6c851b4fbc03e2d5e08f43898",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reservoir_terrain.py": "9868e83b898743c3f0c6c03c456e62060c017f469bd4f73c91d2391b733e7a64",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  }
+}

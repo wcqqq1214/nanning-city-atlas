@@ -1,0 +1,18 @@
+import {createRequire} from 'node:module';import {readFile,writeFile,mkdir} from 'node:fs/promises';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const require=createRequire(import.meta.url),{chromium}=require(path.resolve('work/urban-structure/browser/node_modules/playwright'));
+const out=path.resolve('work/urban-structure/p5/full-city-review/longmen-vegetation-review');await mkdir(out,{recursive:true});
+const root=path.resolve('work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging');
+const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const page=await browser.newPage({viewport:{width:1440,height:1140},deviceScaleFactor:1});const errors=[],records=[],assets={};
+page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+await page.route(/\/(models\/nanning-city(?:-mobile)?\.glb|data\/(?:overview|landmarks)\.json)(?:\?|$)/,async route=>{const url=new URL(route.request().url()).pathname.replace(/^.*(?=\/(?:models|data)\/)/,'');const file=path.join(root,'public'+url),body=await readFile(file);assets[url]={file,sha256:createHash('sha256').update(body).digest('hex')};await route.fulfill({body,contentType:url.endsWith('.glb')?'model/gltf-binary':'application/json'})});
+const stage=page.locator('[data-testid="inspection-stage"][data-ready="true"]');
+async function shot(id,visible){await page.waitForTimeout(600);const pending=page.waitForEvent('download');await page.getByRole('button',{name:'导出参数 JSON',exact:true}).click();await(await pending).saveAs(path.join(out,id+'.json'));const metadata=JSON.parse(await readFile(path.join(out,id+'.json'),'utf8'));assert.equal(metadata.layers.vegetation,visible);assert.equal(metadata.settings.vegetation,visible);const bytes=await stage.screenshot({path:path.join(out,id+'.png')});const hash=createHash('sha256').update(bytes).digest('hex');records.push({id,sha256:hash,metadata,assets:{...assets}});return hash;}
+try{
+ await page.goto('http://localhost:3000/inspect?quality=detail&camera=-43.6,2.5,-84.7,-42.35,1.15,-86.35&material=clay',{waitUntil:'networkidle'});await stage.waitFor({timeout:90000});
+ const checkbox=page.getByRole('checkbox',{name:'显示植被',exact:true});assert.equal(await checkbox.isChecked(),true);
+ const before=await shot('detail-original-clay-on',true);await checkbox.uncheck();const hidden=await shot('detail-original-clay-off',false);assert.notEqual(before,hidden);
+ assert.equal(new URL(page.url()).searchParams.get('vegetation'),'off');await page.reload({waitUntil:'networkidle'});await stage.waitFor({timeout:90000});assert.equal(await checkbox.isChecked(),false);const reloaded=await shot('detail-original-clay-off-reloaded',false);assert.equal(hidden,reloaded);
+ await checkbox.check();const restored=await shot('detail-original-clay-restored',true);assert.equal(before,restored);
+ for(const quality of ['detail','smooth'])for(const material of ['clay','lit']){await page.goto(`http://localhost:3000/inspect?quality=${quality}&camera=-44.5,4.8,-82.5,-42.35,1.15,-86.35&material=${material}`,{waitUntil:'networkidle'});await stage.waitFor({timeout:90000});await shot(`${quality}-elevated-${material}`,true)}
+ assert.deepEqual(errors,[]);await writeFile(path.join(out,'report.json'),JSON.stringify({records,errors,checks:{toggleChangesPixels:true,offReloadExact:true,onRestoreExact:true},scope:'inspection control and additional dam views; geometry acceptance requires visual review'},null,2)+'\n');
+}finally{await browser.close()}

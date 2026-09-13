@@ -1,0 +1,176 @@
+[
+  {
+    "step": 2,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_ground_roads.py",
+      "--capture",
+      "--context-model",
+      "work/terrain-resample/context/detail.glb",
+      "--obstacles-context",
+      "work/urban-structure/p4/native-obstacles.json"
+    ],
+    "returncode": 0,
+    "seconds": 145.3
+  },
+  {
+    "step": 3,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context",
+      "--context-ground"
+    ],
+    "returncode": 0,
+    "seconds": 40.59
+  },
+  {
+    "step": 4,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_elevated_roads.py",
+      "--context-directory",
+      "work/terrain-resample/context"
+    ],
+    "returncode": 0,
+    "seconds": 18.29
+  },
+  {
+    "step": 5,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--capture-road-inputs"
+    ],
+    "returncode": 0,
+    "seconds": 24.03
+  },
+  {
+    "step": 6,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "detail"
+    ],
+    "returncode": 0,
+    "seconds": 6.87
+  },
+  {
+    "step": 7,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "detail"
+    ],
+    "returncode": 0,
+    "seconds": 19.32
+  },
+  {
+    "step": 8,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "smooth"
+    ],
+    "returncode": 0,
+    "seconds": 7.08
+  },
+  {
+    "step": 9,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "smooth"
+    ],
+    "returncode": 0,
+    "seconds": 14.86
+  },
+  {
+    "step": 10,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_zhuxi_details.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.38
+  },
+  {
+    "step": 11,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--check-road-interfaces"
+    ],
+    "returncode": 0,
+    "seconds": 22.39
+  },
+  {
+    "step": 12,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_road_interfaces.py"
+    ],
+    "returncode": 0,
+    "seconds": 0.37
+  },
+  {
+    "step": 13,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py"
+    ],
+    "returncode": 0,
+    "seconds": 61.97
+  },
+  {
+    "step": 14,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_terrain.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.33
+  },
+  {
+    "step": 15,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "blender/nanning-city.blend",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "scripts/validate_zhenning.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.49
+  },
+  {
+    "step": 16,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_assets.py"
+    ],
+    "returncode": 0,
+    "seconds": 169.97
+  }
+]

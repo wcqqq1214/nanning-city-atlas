@@ -1,0 +1,90 @@
+{
+  "status": "serialized geography checks passed; actual terrain and city acceptance pending",
+  "waterPolygons": 567,
+  "changedWaterIndices": [
+    3,
+    155,
+    182,
+    385,
+    440,
+    487,
+    542,
+    545,
+    549
+  ],
+  "changedBuildingIds": [
+    "osm/1e57a38d9fcf592a82dc",
+    "osm/2efc9e73195a84bd435a",
+    "osm/429206d2a43e43284a06",
+    "osm/4f21ac17f7b27ba2d93a",
+    "osm/a70e6c1b8e2a216fada6",
+    "osm/b17285ba7f48db26c2de",
+    "osm/bf97bad2665706418b47",
+    "osm/cef407471055d833cc7d"
+  ],
+  "waterTrianglesBefore": 9188,
+  "waterTrianglesAfter": 9954,
+  "waterCoverageDifferenceSquareMeters": 0.0,
+  "waterOverlapSquareMeters": -1.8189894035458565e-08,
+  "unchangedWaterTriangles": 8045,
+  "removedTreeIndices": [
+    5110,
+    6631
+  ],
+  "treesBefore": 11000,
+  "treesAfter": 10998,
+  "landcoverOutsideChangeDifferenceSquareMeters": {
+    "parks": 8.370252821361286e-05,
+    "urban": 0.0,
+    "inferredUrban": 0.0
+  },
+  "affectedBuildings": [
+    {
+      "id": "osm/2efc9e73195a84bd435a",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/b17285ba7f48db26c2de",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/a70e6c1b8e2a216fada6",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/bf97bad2665706418b47",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/429206d2a43e43284a06",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/cef407471055d833cc7d",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/1e57a38d9fcf592a82dc",
+      "waterOverlapSquareMeters": 0.0
+    },
+    {
+      "id": "osm/4f21ac17f7b27ba2d93a",
+      "waterOverlapSquareMeters": 674.5499999999644
+    }
+  ],
+  "inputs": {
+    "before": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/input.json",
+      "sha256": "9edee30f0350c04fce5901362e00a16414cbc5961e2aeaf1b2e49510d49b88ac"
+    },
+    "after": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/candidate.json",
+      "sha256": "a85873662b6d9a3f1aaab9bd2729a872d6d054911ed9e344f7f6396ee698e98a"
+    },
+    "source": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/reservoir-rollout-shoreline-source.json",
+      "sha256": "31f8d45e90680d51f39a67999f4ea6d88e4b88afbdd9c990f57542ed76bbb4b2"
+    }
+  },
+  "toolSha256": "4c73022c43764f9772054ee9cc82d311a9b9abdc03ad4bd4ec403b0a4d4a86da"
+}

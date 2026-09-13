@@ -1,0 +1,9 @@
+detail roads/terrain: continuous XY-overlap clearance 0.0000 m; 1051771 face pairs
+detail paint/road: continuous XY-overlap clearance 0.1978 m; 55094 face pairs
+detail quantized edge gaps: 25.087 m² / 37595477 m²; no gap wider than 6 cm
+Traceback (most recent call last):
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/canopy-conforming-staging/scripts/validate_ground_roads.py", line 160, in <module>
+    if __name__=='__main__':validate_ground_roads()
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/canopy-conforming-staging/scripts/validate_ground_roads.py", line 155, in validate_ground_roads
+    assert actual.difference(expected_xy.buffer(.003)).area<.001,'Export escaped road footprint'
+AssertionError: Export escaped road footprint

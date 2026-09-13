@@ -1,0 +1,125 @@
+{
+  "status": "independent native reservoir export; full city replacement and compressed audit pending",
+  "planSha256": "e8ddb7ab85e57c339659b68818da05e1ea095a551185241981294ebeb1dfad83",
+  "baseCityRoot": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+  "profiles": {
+    "detail": {
+      "triangles": 3971,
+      "waterTriangles": 1425,
+      "bankQuads": 995,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 2.0369095299344053e-09,
+      "boundarySamples": 315,
+      "maximumBoundaryErrorMeters": 8.016483059036794e-05,
+      "restoredCityBoundarySides": [
+        "east"
+      ],
+      "cityCutSamples": 108,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [
+        {
+          "geographyWaterIndex": 4,
+          "samples": 355,
+          "maximumOriginalBankErrorMeters": 7.830150350329745e-05
+        },
+        {
+          "geographyWaterIndex": 26,
+          "samples": 50,
+          "maximumOriginalBankErrorMeters": 0.000178730759553547
+        }
+      ],
+      "files": {
+        "npz": {
+          "sha256": "a250f11e02e1376b5780d81027fdc19df1c78be6870e4190537da8b3d78e7ea1",
+          "bytes": 132415
+        },
+        "glb": {
+          "sha256": "c0cc2d534b32c35335665017548fd6346be1f2d5607a008665aa9b209f5fd9f0",
+          "bytes": 256452
+        },
+        "blend": {
+          "sha256": "cb787ea3587d23cb05481a43d9a422f71e18a642eae7ed1419176282d2bf47df",
+          "bytes": 276985
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 3971,
+        "removedFaces": 448,
+        "restoredBaseVertexSamples": 1344,
+        "maximumRemovedVertexBaseErrorMeters": 2.91579638211914e-06,
+        "maximumRemovedCentroidChangeMeters": 0.8088594441053143,
+        "maximumRemovedCentroidChangeLocation": [
+          178.5891367594401,
+          -109.06081136067708,
+          0.49349363644917804,
+          0.4854050420081249
+        ]
+      }
+    },
+    "smooth": {
+      "triangles": 3971,
+      "waterTriangles": 1425,
+      "bankQuads": 995,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 6.93894941505846e-10,
+      "boundarySamples": 315,
+      "maximumBoundaryErrorMeters": 4.002401656211241e-05,
+      "restoredCityBoundarySides": [
+        "east"
+      ],
+      "cityCutSamples": 108,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [
+        {
+          "geographyWaterIndex": 4,
+          "samples": 355,
+          "maximumOriginalBankErrorMeters": 3.41802835451821e-05
+        },
+        {
+          "geographyWaterIndex": 26,
+          "samples": 50,
+          "maximumOriginalBankErrorMeters": 1.4045128393647133e-06
+        }
+      ],
+      "files": {
+        "npz": {
+          "sha256": "f4e6cd841ecd0f1cd0d41e3b4f2862941013161a25506da08501a21dd6a94aa6",
+          "bytes": 130960
+        },
+        "glb": {
+          "sha256": "47a0259f0583306fd2e6718ef7824e4c99e1f2306072c7e83dfc4695293fd267",
+          "bytes": 255984
+        },
+        "blend": {
+          "sha256": "5dce3fc014eeb045050a948b3241bd0e82287bd1bb7eb3a12e4ae90ca0a62414",
+          "bytes": 276926
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 3971,
+        "removedFaces": 448,
+        "restoredBaseVertexSamples": 1344,
+        "maximumRemovedVertexBaseErrorMeters": 2.951788014016188e-06,
+        "maximumRemovedCentroidChangeMeters": 1.6806040834300595,
+        "maximumRemovedCentroidChangeLocation": [
+          178.5891367594401,
+          -109.06081136067708,
+          0.49060218532880145,
+          0.47379614449450086
+        ]
+      }
+    }
+  },
+  "baseContextHashes": {
+    "public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "public/data/terrain.json": "9f4b25a6997d0ab5c1bcf54a38aa8556e68e7e8210d5132701e97004e33ba794",
+    "blender/build_city.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7"
+  },
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_reservoir_terrain.py": "717a82babff62587226dc166293997afcaab319d5b5186328e44c66fabf0db75",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  },
+  "baselinePlanSha256": "3febfc85c6b5a00b6cbd6820e6de57267f6ca23d67b7cb910dc8aa9da46594db"
+}

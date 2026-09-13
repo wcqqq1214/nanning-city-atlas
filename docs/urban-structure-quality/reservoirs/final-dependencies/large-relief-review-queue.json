@@ -1,0 +1,5712 @@
+{
+  "supportSha256": "43bbec2b3463e0d41aa37549cda7f72ac3149258129db782798fd2952abe0c77",
+  "count": 317,
+  "records": [
+    {
+      "id": "osm/6a26368c94886738681c",
+      "sourceRef": "osm/way/1487720502",
+      "name": "10号楼",
+      "use": "hotel",
+      "reliefMeters": 44.85055466610515,
+      "bounds": [
+        58.678,
+        -42.472,
+        59.665,
+        -41.524
+      ],
+      "groundRangeSceneZ": [
+        0.4021616483490291,
+        0.8506671950100806
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/48d2864123792621d41c",
+      "sourceRef": "osm/relation/13565118",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 40.129018764150025,
+      "bounds": [
+        72.228,
+        -111.783,
+        80.448,
+        -108.564
+      ],
+      "groundRangeSceneZ": [
+        0.7876260280609129,
+        1.1889162157024131
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bb678bb9a926a9410bde",
+      "sourceRef": "osm/way/1465225039",
+      "name": "",
+      "use": "college",
+      "reliefMeters": 32.59091709193923,
+      "bounds": [
+        -68.081,
+        13.751,
+        -67.862,
+        14.012
+      ],
+      "groundRangeSceneZ": [
+        0.2329999953508377,
+        0.55890916627023
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d61179d5d66145ecdd39",
+      "sourceRef": "osm/way/918630714",
+      "name": "F区（尾翼）",
+      "use": "yes",
+      "reliefMeters": 31.925177731759735,
+      "bounds": [
+        74.012,
+        -20.192,
+        75.89,
+        -18.796
+      ],
+      "groundRangeSceneZ": [
+        0.7576513689411808,
+        1.0769031462587781
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2be06c621f5159b73b7f",
+      "sourceRef": "osm/way/838498715",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 30.73852439571425,
+      "bounds": [
+        -71.992,
+        -108.152,
+        -71.602,
+        -107.762
+      ],
+      "groundRangeSceneZ": [
+        0.94620172393887,
+        1.2535869678960125
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/09206920924b90f4e34d",
+      "sourceRef": "osm/way/1487720457",
+      "name": "6号楼",
+      "use": "hotel",
+      "reliefMeters": 29.130292391595347,
+      "bounds": [
+        62.036,
+        -38.962,
+        62.864,
+        -38.162
+      ],
+      "groundRangeSceneZ": [
+        0.5071398802399223,
+        0.7984428041558758
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/55a3b55cdcea95aea2c0",
+      "sourceRef": "osm/way/810351963",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 27.769238990816135,
+      "bounds": [
+        129.926,
+        -61.269,
+        133.204,
+        -58.838
+      ],
+      "groundRangeSceneZ": [
+        0.4879791835866638,
+        0.7656715734948252
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ee54738e51a8efa884a6",
+      "sourceRef": "osm/way/629216645",
+      "name": "敷文阁",
+      "use": "yes",
+      "reliefMeters": 27.03603170734663,
+      "bounds": [
+        119.738,
+        0.101,
+        120.041,
+        0.307
+      ],
+      "groundRangeSceneZ": [
+        0.6113738524719139,
+        0.8817341695453802
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3de0e6f4cbac10e4dc86",
+      "sourceRef": "osm/way/1465225038",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 27.013613923351098,
+      "bounds": [
+        -68.351,
+        13.913,
+        -67.684,
+        14.314
+      ],
+      "groundRangeSceneZ": [
+        0.3002743273795012,
+        0.5704104666130122
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/46e9b7dd6c9da7fa704f",
+      "sourceRef": "osm/way/759165563",
+      "name": "艺术学院",
+      "use": "university",
+      "reliefMeters": 26.493292283014704,
+      "bounds": [
+        -8.716,
+        23.039,
+        -8.081,
+        23.717
+      ],
+      "groundRangeSceneZ": [
+        0.26360137927805827,
+        0.5285343021082053
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d133873a6bc33a1a3675",
+      "sourceRef": "osm/way/1465229978",
+      "name": "明理楼",
+      "use": "college",
+      "reliefMeters": 25.659466268043964,
+      "bounds": [
+        -70.073,
+        14.618,
+        -69.279,
+        15.274
+      ],
+      "groundRangeSceneZ": [
+        0.32588326810150514,
+        0.5824779307819448
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5289d22fcd9890172584",
+      "sourceRef": "osm/way/920857623",
+      "name": "",
+      "use": "university",
+      "reliefMeters": 25.61060162818346,
+      "bounds": [
+        47.931,
+        -29.071,
+        48.583,
+        -28.708
+      ],
+      "groundRangeSceneZ": [
+        0.24525897592153356,
+        0.5013649922033682
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5cb108d7c50da9d6b783",
+      "sourceRef": "osm/way/759494064",
+      "name": "1号楼",
+      "use": "school",
+      "reliefMeters": 22.726811900871713,
+      "bounds": [
+        -16.436,
+        22.404,
+        -16.187,
+        22.546
+      ],
+      "groundRangeSceneZ": [
+        0.3130638620190771,
+        0.5403319810277942
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/796bc14f03d7e0385460",
+      "sourceRef": "osm/relation/18466106",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 22.139019633268152,
+      "bounds": [
+        38.751,
+        -58.435,
+        39.482,
+        -57.403
+      ],
+      "groundRangeSceneZ": [
+        0.2987717305076547,
+        0.5201619268403362
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d33587e4de285df377b9",
+      "sourceRef": "osm/way/759337787",
+      "name": "君武文化艺术教育中心",
+      "use": "university",
+      "reliefMeters": 22.1070944504569,
+      "bounds": [
+        -17.468,
+        18.139,
+        -16.853,
+        18.593
+      ],
+      "groundRangeSceneZ": [
+        0.30443805382685163,
+        0.5255089983314206
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ed22f29b16476a891c3d",
+      "sourceRef": "osm/way/837932919",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 21.948464800499323,
+      "bounds": [
+        90.325,
+        -77.125,
+        92.72,
+        -75.963
+      ],
+      "groundRangeSceneZ": [
+        0.43789880800889946,
+        0.6573834560138927
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c2d271134d661cb16504",
+      "sourceRef": "osm/relation/13487810",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 21.23360621805832,
+      "bounds": [
+        71.026,
+        2.716,
+        71.489,
+        3.177
+      ],
+      "groundRangeSceneZ": [
+        0.2752810631113789,
+        0.4876171252919621
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f7c3182d6bf50a3963c0",
+      "sourceRef": "osm/way/973882513",
+      "name": "宝能环球金融中心",
+      "use": "retail",
+      "reliefMeters": 21.109600255191307,
+      "bounds": [
+        83.883,
+        -66.899,
+        86.257,
+        -63.207
+      ],
+      "groundRangeSceneZ": [
+        0.5937127133723614,
+        0.8048087159242745
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4309a87f549041c22db6",
+      "sourceRef": "osm/way/838541846",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 20.69679305812859,
+      "bounds": [
+        138.801,
+        95.189,
+        139.408,
+        95.639
+      ],
+      "groundRangeSceneZ": [
+        0.4384528904751903,
+        0.6454208210564762
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/442fa98446f57aa94471",
+      "sourceRef": "osm/relation/13487820",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 20.54772064454489,
+      "bounds": [
+        70.093,
+        3.946,
+        70.432,
+        4.284
+      ],
+      "groundRangeSceneZ": [
+        0.2388395745200711,
+        0.44431678096551996
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ab1032589aa9ad96ee1a",
+      "sourceRef": "osm/relation/19224812",
+      "name": "观音禅寺",
+      "use": "yes",
+      "reliefMeters": 20.509524640435828,
+      "bounds": [
+        93.297,
+        -38.327,
+        94.726,
+        -37.557
+      ],
+      "groundRangeSceneZ": [
+        2.964832377195176,
+        3.169927623599534
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/44264f31f85329f35cd2",
+      "sourceRef": "osm/way/838617951",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 20.452209981024794,
+      "bounds": [
+        -42.259,
+        87.557,
+        -42.111,
+        87.705
+      ],
+      "groundRangeSceneZ": [
+        1.6193012088644423,
+        1.8238233086746902
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/460fc08a7a9bfff01663",
+      "sourceRef": "osm/way/759494065",
+      "name": "2号楼",
+      "use": "school",
+      "reliefMeters": 20.295773672955896,
+      "bounds": [
+        -16.358,
+        22.653,
+        -16.101,
+        22.795
+      ],
+      "groundRangeSceneZ": [
+        0.3439467122162858,
+        0.5469044489458448
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/77f10b2e6e7f8067cd45",
+      "sourceRef": "osm/way/1393214373",
+      "name": "友谊长廊",
+      "use": "roof",
+      "reliefMeters": 19.80959234478279,
+      "bounds": [
+        71.394,
+        -33.814,
+        75.645,
+        -32.844
+      ],
+      "groundRangeSceneZ": [
+        1.1647976263163162,
+        1.3628935497641441
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f263380b92727b4f48fb",
+      "sourceRef": "osm/way/1434056046",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 19.2383002017527,
+      "bounds": [
+        136.439,
+        89.547,
+        136.639,
+        89.642
+      ],
+      "groundRangeSceneZ": [
+        0.5379324702447263,
+        0.7303154722622534
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e6758f331caa5bbad6d0",
+      "sourceRef": "osm/way/1487720497",
+      "name": "7号楼",
+      "use": "hotel",
+      "reliefMeters": 18.91712190476742,
+      "bounds": [
+        61.084,
+        -39.367,
+        61.671,
+        -38.854
+      ],
+      "groundRangeSceneZ": [
+        0.5930777558546865,
+        0.7822489749023607
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ab6afb64906336706b94",
+      "sourceRef": "osm/way/1006944584",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 18.90782740836947,
+      "bounds": [
+        69.653,
+        4.19,
+        70.099,
+        4.636
+      ],
+      "groundRangeSceneZ": [
+        0.2670095657422955,
+        0.4560878398259902
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/49362eaadf149497c019",
+      "sourceRef": "osm/way/760170141",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 18.83260000387128,
+      "bounds": [
+        -11.14,
+        27.421,
+        -10.807,
+        27.597
+      ],
+      "groundRangeSceneZ": [
+        0.37332416599965423,
+        0.561650166038367
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/50378c5256b7d9cfe46e",
+      "sourceRef": "osm/way/759129514",
+      "name": "计算机与电子信息学院",
+      "use": "university",
+      "reliefMeters": 18.57868744059823,
+      "bounds": [
+        -14.47,
+        16.728,
+        -14.055,
+        17.153
+      ],
+      "groundRangeSceneZ": [
+        0.36868218660827967,
+        0.554469061014262
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/263fa3d5146479a63434",
+      "sourceRef": "osm/way/839738501",
+      "name": "",
+      "use": "university",
+      "reliefMeters": 18.398478064801438,
+      "bounds": [
+        151.093,
+        -81.518,
+        152.107,
+        -80.877
+      ],
+      "groundRangeSceneZ": [
+        0.26608279909823196,
+        0.45006757974624634
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a1a91d8d198f8c24e13d",
+      "sourceRef": "osm/way/759494043",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 18.34235312282253,
+      "bounds": [
+        -16.924,
+        23.325,
+        -16.743,
+        23.412
+      ],
+      "groundRangeSceneZ": [
+        0.364444888678074,
+        0.5478684199062993
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/18ff23ae16c927209725",
+      "sourceRef": "osm/way/1385503801",
+      "name": "壮乡楼",
+      "use": "yes",
+      "reliefMeters": 18.1671139862285,
+      "bounds": [
+        108.551,
+        -24.898,
+        109.06,
+        -23.897
+      ],
+      "groundRangeSceneZ": [
+        1.2686356022674374,
+        1.4503067421297224
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bf9d9c2fe65127ea017f",
+      "sourceRef": "osm/way/1442866655",
+      "name": "C栋教学楼",
+      "use": "school",
+      "reliefMeters": 18.022514371803666,
+      "bounds": [
+        110.732,
+        -20.829,
+        111.156,
+        -20.364
+      ],
+      "groundRangeSceneZ": [
+        1.1163790394663664,
+        1.296604183184403
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/132ab100d25e636cc05d",
+      "sourceRef": "osm/way/1487720509",
+      "name": "12号楼",
+      "use": "hotel",
+      "reliefMeters": 17.950975400062497,
+      "bounds": [
+        63.363,
+        -38.922,
+        63.795,
+        -38.568
+      ],
+      "groundRangeSceneZ": [
+        0.4954598404537318,
+        0.6749695944543568
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ba372acadbf9441c7a90",
+      "sourceRef": "osm/way/760170133",
+      "name": "32号楼",
+      "use": "school",
+      "reliefMeters": 17.922113126840777,
+      "bounds": [
+        -10.023,
+        26.483,
+        -9.792,
+        26.606
+      ],
+      "groundRangeSceneZ": [
+        0.2872053573364335,
+        0.46642648860484126
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/07524db478b494f673c5",
+      "sourceRef": "osm/way/629216657",
+      "name": "启天楼",
+      "use": "school",
+      "reliefMeters": 17.85612396850631,
+      "bounds": [
+        119.451,
+        1.076,
+        121.117,
+        1.769
+      ],
+      "groundRangeSceneZ": [
+        0.8363457992528129,
+        1.014907038937876
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1cdd2ba36bf6a295f570",
+      "sourceRef": "osm/way/1006681831",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 17.8282217228412,
+      "bounds": [
+        80.016,
+        -53.117,
+        80.298,
+        -52.526
+      ],
+      "groundRangeSceneZ": [
+        0.35582977604436294,
+        0.5341119932727749
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/31e20acb5ae64647e39c",
+      "sourceRef": "osm/relation/18356235",
+      "name": "住院部",
+      "use": "hospital",
+      "reliefMeters": 17.735662647193706,
+      "bounds": [
+        85.303,
+        -80.653,
+        86.341,
+        -80.311
+      ],
+      "groundRangeSceneZ": [
+        0.7194845725245553,
+        0.8968411989964924
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9b63852beaf9b48983f9",
+      "sourceRef": "osm/way/991635900",
+      "name": "广西自然博物馆",
+      "use": "yes",
+      "reliefMeters": 17.715992821546457,
+      "bounds": [
+        28.668,
+        5.869,
+        29.105,
+        6.238
+      ],
+      "groundRangeSceneZ": [
+        0.47665119934978684,
+        0.6538111275652514
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d151a24358b862ef43aa",
+      "sourceRef": "osm/way/973003225",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 17.356286786892518,
+      "bounds": [
+        69.593,
+        -62.478,
+        71.199,
+        -61.563
+      ],
+      "groundRangeSceneZ": [
+        0.6407845565798298,
+        0.814347424448755
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7ad32b945d271d215d3d",
+      "sourceRef": "osm/way/839738502",
+      "name": "体育馆",
+      "use": "yes",
+      "reliefMeters": 17.327220195887882,
+      "bounds": [
+        151.147,
+        -79.962,
+        152.018,
+        -79.156
+      ],
+      "groundRangeSceneZ": [
+        0.30622827058674496,
+        0.4795004725456238
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/16fd3b5e4c30df3970a7",
+      "sourceRef": "osm/relation/13488368",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 16.989948166794065,
+      "bounds": [
+        154.111,
+        -96.957,
+        154.764,
+        -96.261
+      ],
+      "groundRangeSceneZ": [
+        0.24221392456027502,
+        0.4121134062282157
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2861a77f2383c1e3dda3",
+      "sourceRef": "osm/way/759129515",
+      "name": "第五教学楼",
+      "use": "university",
+      "reliefMeters": 16.850074495599742,
+      "bounds": [
+        -14.956,
+        16.156,
+        -14.079,
+        16.286
+      ],
+      "groundRangeSceneZ": [
+        0.3778046476211303,
+        0.5463053925771277
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3ee85171815c5a3e3fff",
+      "sourceRef": "osm/way/1504908023",
+      "name": "",
+      "use": "hospital",
+      "reliefMeters": 16.834625900368394,
+      "bounds": [
+        59.451,
+        -110.491,
+        60.961,
+        -109.782
+      ],
+      "groundRangeSceneZ": [
+        1.4948300772522707,
+        1.6631763362559546
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/153050702880fe0203ca",
+      "sourceRef": "osm/way/759129516",
+      "name": "数学与信息科学学院",
+      "use": "university",
+      "reliefMeters": 16.780000249883443,
+      "bounds": [
+        -14.939,
+        15.82,
+        -14.076,
+        15.983
+      ],
+      "groundRangeSceneZ": [
+        0.37556570140001266,
+        0.5433657038988471
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9ae9493c12a80b260a58",
+      "sourceRef": "osm/way/1001773987",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 16.70946019004407,
+      "bounds": [
+        165.843,
+        -44.736,
+        167.197,
+        -42.665
+      ],
+      "groundRangeSceneZ": [
+        0.5630902189111242,
+        0.7301848208115649
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/6e5fd993ca811a203bb9",
+      "sourceRef": "osm/way/759340891",
+      "name": "17号楼",
+      "use": "apartments",
+      "reliefMeters": 16.369097132867417,
+      "bounds": [
+        -18.663,
+        19.161,
+        -18.314,
+        19.273
+      ],
+      "groundRangeSceneZ": [
+        0.37026585558384895,
+        0.5339568269125231
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d0b6416fd8e632892f6b",
+      "sourceRef": "osm/way/1442866654",
+      "name": "阶梯教室",
+      "use": "school",
+      "reliefMeters": 16.08258074708111,
+      "bounds": [
+        110.474,
+        -20.288,
+        110.958,
+        -19.823
+      ],
+      "groundRangeSceneZ": [
+        1.0714780094048137,
+        1.2323038168756248
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/60469131765144db983f",
+      "sourceRef": "osm/way/1001773989",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 15.426082572380384,
+      "bounds": [
+        166.854,
+        -45.045,
+        167.821,
+        -43.05
+      ],
+      "groundRangeSceneZ": [
+        0.5897986940186684,
+        0.7440595197424722
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c30baf7d14a0ed03734b",
+      "sourceRef": "osm/relation/19224811",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 15.225526723796179,
+      "bounds": [
+        93.145,
+        -40.922,
+        93.46,
+        -40.593
+      ],
+      "groundRangeSceneZ": [
+        2.438155109079485,
+        2.590410376317447
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4aa0a75908b7f599b5b1",
+      "sourceRef": "osm/way/923687037",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 15.112828278433915,
+      "bounds": [
+        35.169,
+        -9.371,
+        36.241,
+        -8.712
+      ],
+      "groundRangeSceneZ": [
+        0.3188659471595754,
+        0.46999422994391454
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/66b028aadc8ba2c51099",
+      "sourceRef": "osm/way/759132930",
+      "name": "办公南楼",
+      "use": "office",
+      "reliefMeters": 14.943140043482705,
+      "bounds": [
+        -14.457,
+        17.824,
+        -14.107,
+        18.245
+      ],
+      "groundRangeSceneZ": [
+        0.3847381316364977,
+        0.5341695320713248
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9ff5d84aff8222e74ad8",
+      "sourceRef": "osm/way/990251921",
+      "name": "卧龙岗 1栋",
+      "use": "dormitory",
+      "reliefMeters": 14.501902303926006,
+      "bounds": [
+        153.667,
+        -80.137,
+        154.383,
+        -79.622
+      ],
+      "groundRangeSceneZ": [
+        0.28878792925773666,
+        0.43380695229699673
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0ac2d056fec47dcfcd16",
+      "sourceRef": "osm/way/1454569964",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 14.313791898088724,
+      "bounds": [
+        117.732,
+        -28.052,
+        118.354,
+        -27.647
+      ],
+      "groundRangeSceneZ": [
+        0.9915293586615199,
+        1.1346672776424072
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f5868881b1d4fa4e1604",
+      "sourceRef": "osm/way/991635904",
+      "name": "广西少儿图书馆",
+      "use": "yes",
+      "reliefMeters": 14.2959106284966,
+      "bounds": [
+        26.906,
+        5.562,
+        27.519,
+        5.99
+      ],
+      "groundRangeSceneZ": [
+        0.5789896453629284,
+        0.7219487516478944
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3ed881a8109e20b0e539",
+      "sourceRef": "osm/way/695836059",
+      "name": "广西国防教育馆",
+      "use": "yes",
+      "reliefMeters": 14.245627512871195,
+      "bounds": [
+        83.5,
+        30.335,
+        84.219,
+        31.101
+      ],
+      "groundRangeSceneZ": [
+        1.0376634760473529,
+        1.1801197511760648
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f28dc2fd3ea4745e6ab0",
+      "sourceRef": "osm/way/1032824603",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 14.159425959904404,
+      "bounds": [
+        139.426,
+        -58.318,
+        140.751,
+        -57.581
+      ],
+      "groundRangeSceneZ": [
+        0.7240878228362089,
+        0.8656820824352529
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/356350b496ce5b7b9134",
+      "sourceRef": "osm/relation/13488367",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 14.141421731813775,
+      "bounds": [
+        153.349,
+        -96.915,
+        154.002,
+        -96.219
+      ],
+      "groundRangeSceneZ": [
+        0.26528568647453454,
+        0.4066999037926723
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/917942988eacb0a84728",
+      "sourceRef": "osm/way/839721588",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 14.10949701021913,
+      "bounds": [
+        110.502,
+        -67.371,
+        111.216,
+        -66.732
+      ],
+      "groundRangeSceneZ": [
+        0.49772906505950587,
+        0.6388240351616972
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e8dcda0c17f6af2bfcee",
+      "sourceRef": "osm/relation/19360275",
+      "name": "心静楼",
+      "use": "dormitory",
+      "reliefMeters": 14.034038267394067,
+      "bounds": [
+        118.823,
+        0.342,
+        119.45,
+        0.968
+      ],
+      "groundRangeSceneZ": [
+        0.8284540178575526,
+        0.9687944005314932
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/10956a708de87a2ae908",
+      "sourceRef": "osm/way/760170135",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 13.953191969155176,
+      "bounds": [
+        -11.221,
+        27.12,
+        -10.885,
+        27.297
+      ],
+      "groundRangeSceneZ": [
+        0.42192747905726513,
+        0.5614593987488169
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fdbd3f810e573fd7dc0e",
+      "sourceRef": "osm/way/652167455",
+      "name": "中国共产党广西壮族自治区委员会-大楼",
+      "use": "yes",
+      "reliefMeters": 13.904408537110635,
+      "bounds": [
+        53.451,
+        -9.229,
+        54.394,
+        -8.782
+      ],
+      "groundRangeSceneZ": [
+        0.3691119964802585,
+        0.5081560818513648
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4504e85df2b041f1d403",
+      "sourceRef": "osm/way/1502439271",
+      "name": "树畔小屋",
+      "use": "yes",
+      "reliefMeters": 13.870648483885839,
+      "bounds": [
+        109.477,
+        -47.922,
+        109.592,
+        -47.755
+      ],
+      "groundRangeSceneZ": [
+        0.3798812917259209,
+        0.5185877765647793
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2fbf80a8f9550994dbbe",
+      "sourceRef": "osm/relation/13816826",
+      "name": "",
+      "use": "hospital",
+      "reliefMeters": 13.860705283559493,
+      "bounds": [
+        139.374,
+        -57.326,
+        140.18,
+        -56.794
+      ],
+      "groundRangeSceneZ": [
+        0.7201281952380372,
+        0.8587352480736321
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f9312ef56301ef3038f2",
+      "sourceRef": "osm/way/923428932",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 13.821240630096732,
+      "bounds": [
+        40.4,
+        -12.87,
+        40.751,
+        -12.71
+      ],
+      "groundRangeSceneZ": [
+        0.3215294825150483,
+        0.45974188881601563
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/211965a143b93e7a97bc",
+      "sourceRef": "osm/way/1470474502",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 13.812911845010522,
+      "bounds": [
+        15.853,
+        0.775,
+        16.337,
+        1.425
+      ],
+      "groundRangeSceneZ": [
+        0.43196394322523235,
+        0.5700930616753376
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3a9a54151bfc9521ee46",
+      "sourceRef": "osm/way/554582047",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 13.59879912516071,
+      "bounds": [
+        150.216,
+        -12.349,
+        150.643,
+        -12.105
+      ],
+      "groundRangeSceneZ": [
+        0.367424554089375,
+        0.5034125453409821
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9af500d03b1b3a7acaf1",
+      "sourceRef": "osm/way/1342460467",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 13.480267592892181,
+      "bounds": [
+        30.274,
+        -124.328,
+        31.894,
+        -122.352
+      ],
+      "groundRangeSceneZ": [
+        1.2161127781205936,
+        1.3509154540495154
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/85476db9d57f06377fa4",
+      "sourceRef": "osm/way/837946546",
+      "name": "广西美术馆",
+      "use": "yes",
+      "reliefMeters": 13.454535672840962,
+      "bounds": [
+        65.494,
+        -87.32,
+        66.735,
+        -86.08
+      ],
+      "groundRangeSceneZ": [
+        0.8722072544453745,
+        1.0067526111737841
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b89cda4c43cff06f94df",
+      "sourceRef": "osm/relation/13487808",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 13.327784708665247,
+      "bounds": [
+        71.308,
+        3.203,
+        71.77,
+        3.666
+      ],
+      "groundRangeSceneZ": [
+        0.3270841366371222,
+        0.4603619837237747
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/38643bcee50c9d95aedf",
+      "sourceRef": "osm/way/759337792",
+      "name": "19号楼",
+      "use": "apartments",
+      "reliefMeters": 13.315105125748982,
+      "bounds": [
+        -18.375,
+        18.7,
+        -18.171,
+        18.822
+      ],
+      "groundRangeSceneZ": [
+        0.3840707796258993,
+        0.5172218308833891
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1e4bd40d38427bea7d23",
+      "sourceRef": "osm/way/760170143",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 13.178039028056165,
+      "bounds": [
+        -11.031,
+        27.75,
+        -10.772,
+        27.912
+      ],
+      "groundRangeSceneZ": [
+        0.4281807813313918,
+        0.5599611716119535
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ae18a51a64fa7efa5439",
+      "sourceRef": "osm/way/1442991800",
+      "name": "",
+      "use": "commercial",
+      "reliefMeters": 13.149310904818945,
+      "bounds": [
+        107.587,
+        -13.044,
+        108.089,
+        -12.337
+      ],
+      "groundRangeSceneZ": [
+        0.919968825507766,
+        1.0514619345559555
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a3c41932a951cd2002c4",
+      "sourceRef": "osm/way/1487720498",
+      "name": "8号楼",
+      "use": "hotel",
+      "reliefMeters": 13.049702967302856,
+      "bounds": [
+        60.956,
+        -40.142,
+        61.348,
+        -39.593
+      ],
+      "groundRangeSceneZ": [
+        0.5967823927414955,
+        0.727279422414524
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e0bd92bb140836a3eb14",
+      "sourceRef": "osm/way/760176670",
+      "name": "13栋",
+      "use": "dormitory",
+      "reliefMeters": 13.031767083567214,
+      "bounds": [
+        -8.449,
+        24.694,
+        -7.356,
+        24.966
+      ],
+      "groundRangeSceneZ": [
+        0.4061214741074224,
+        0.5364391449430945
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/25bdf951ca95d374cb9f",
+      "sourceRef": "osm/relation/13487809",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 12.951398962679539,
+      "bounds": [
+        70.559,
+        2.986,
+        71.022,
+        3.447
+      ],
+      "groundRangeSceneZ": [
+        0.3467146329563384,
+        0.4762286225831338
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/750fb2ad9e7e79860499",
+      "sourceRef": "osm/way/759132933",
+      "name": "第三教学楼",
+      "use": "university",
+      "reliefMeters": 12.84142816444711,
+      "bounds": [
+        -13.382,
+        17.559,
+        -12.425,
+        17.828
+      ],
+      "groundRangeSceneZ": [
+        0.442915594408527,
+        0.5713298760529981
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f6789c2eb7922e12e145",
+      "sourceRef": "osm/way/922789138",
+      "name": "南宁市公安局-良庆派出所",
+      "use": "yes",
+      "reliefMeters": 12.757750565569381,
+      "bounds": [
+        80.476,
+        -88.49,
+        80.987,
+        -88.205
+      ],
+      "groundRangeSceneZ": [
+        0.5336905661819458,
+        0.6612680718376396
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e4bef28f825f6c71b327",
+      "sourceRef": "osm/relation/18356234",
+      "name": "门诊部",
+      "use": "hospital",
+      "reliefMeters": 12.74257907979095,
+      "bounds": [
+        86.416,
+        -82.17,
+        87.285,
+        -80.315
+      ],
+      "groundRangeSceneZ": [
+        0.5867981697503488,
+        0.7142239605482583
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4493a87981e72176be07",
+      "sourceRef": "osm/way/990251922",
+      "name": "卧龙岗 10栋",
+      "use": "dormitory",
+      "reliefMeters": 12.726528256045277,
+      "bounds": [
+        154.846,
+        -77.52,
+        155.574,
+        -76.979
+      ],
+      "groundRangeSceneZ": [
+        0.31751047218857664,
+        0.4447757547490294
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/527eeaace5992fad23da",
+      "sourceRef": "osm/way/990251930",
+      "name": "敷文园E",
+      "use": "yes",
+      "reliefMeters": 12.537788448514409,
+      "bounds": [
+        149.946,
+        -82.224,
+        150.694,
+        -81.674
+      ],
+      "groundRangeSceneZ": [
+        0.3392101266596903,
+        0.4645880111448344
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/69bf45be4a48b6f19eed",
+      "sourceRef": "osm/way/914377384",
+      "name": "",
+      "use": "university",
+      "reliefMeters": 12.52903914875475,
+      "bounds": [
+        -62.837,
+        24.511,
+        -61.883,
+        24.742
+      ],
+      "groundRangeSceneZ": [
+        0.428882060533164,
+        0.5541724520207115
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b15302e7233a0832130d",
+      "sourceRef": "osm/way/990251929",
+      "name": "敷文园D",
+      "use": "yes",
+      "reliefMeters": 12.508407653039999,
+      "bounds": [
+        149.798,
+        -83.011,
+        150.547,
+        -82.461
+      ],
+      "groundRangeSceneZ": [
+        0.342075937631499,
+        0.467160014161899
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d2869ee322cb8aca022a",
+      "sourceRef": "osm/way/1486310193",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 12.460678801969927,
+      "bounds": [
+        26.022,
+        5.099,
+        26.164,
+        5.275
+      ],
+      "groundRangeSceneZ": [
+        0.5201119141966348,
+        0.6447187022163341
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d0d3c47be538f2faaa49",
+      "sourceRef": "osm/way/880089961",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 12.443105306557257,
+      "bounds": [
+        -8.634,
+        23.173,
+        -8.508,
+        23.498
+      ],
+      "groundRangeSceneZ": [
+        0.40031909063053606,
+        0.5247501436961086
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b13503a5a2b3ac91ca68",
+      "sourceRef": "osm/relation/12774258",
+      "name": "大学生活动中心",
+      "use": "university",
+      "reliefMeters": 12.388430922046334,
+      "bounds": [
+        -9.873,
+        24.703,
+        -8.846,
+        25.427
+      ],
+      "groundRangeSceneZ": [
+        0.4086625151007963,
+        0.5325468243212597
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/6a4494150137e4a313a7",
+      "sourceRef": "osm/way/923428931",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 12.387468327593588,
+      "bounds": [
+        40.464,
+        -13.26,
+        40.814,
+        -13.099
+      ],
+      "groundRangeSceneZ": [
+        0.3468362885728755,
+        0.4707109718488114
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/161a05d7f6a2667777e8",
+      "sourceRef": "osm/way/839685991",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 12.368851915874856,
+      "bounds": [
+        16.874,
+        -9.693,
+        18.254,
+        -7.067
+      ],
+      "groundRangeSceneZ": [
+        0.5390549967055906,
+        0.6627435158643392
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9d34d500302db3b4cf26",
+      "sourceRef": "osm/relation/13487815",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 12.329004109775754,
+      "bounds": [
+        69.893,
+        3.6,
+        70.232,
+        3.94
+      ],
+      "groundRangeSceneZ": [
+        0.33826528464892025,
+        0.4615553257466778
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b47210e2635298286e11",
+      "sourceRef": "osm/way/923428937",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 12.299339950819643,
+      "bounds": [
+        39.637,
+        -12.609,
+        40.004,
+        -12.376
+      ],
+      "groundRangeSceneZ": [
+        0.3271704093489163,
+        0.4501638088571127
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/96035ca8b1f4763786d6",
+      "sourceRef": "osm/way/1442978376",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 12.28924794017452,
+      "bounds": [
+        107.711,
+        -19.129,
+        109.43,
+        -17.793
+      ],
+      "groundRangeSceneZ": [
+        1.0772398172882092,
+        1.2001322966899544
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/03e146d66304a7e9ad7a",
+      "sourceRef": "osm/way/990251926",
+      "name": "学生活动中心",
+      "use": "yes",
+      "reliefMeters": 12.132610539395827,
+      "bounds": [
+        152.411,
+        -79.894,
+        153.215,
+        -79.63
+      ],
+      "groundRangeSceneZ": [
+        0.32824788914267344,
+        0.4495739945366317
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8d2a9297f57ca9670eb1",
+      "sourceRef": "osm/way/1003913331",
+      "name": "",
+      "use": "university",
+      "reliefMeters": 12.097998145230848,
+      "bounds": [
+        152.728,
+        -79.756,
+        153.245,
+        -79.346
+      ],
+      "groundRangeSceneZ": [
+        0.3139579123094336,
+        0.4349378937617421
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/99049d3f91db4dcb7d00",
+      "sourceRef": "osm/way/1271437632",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 12.09011404115774,
+      "bounds": [
+        112.009,
+        -63.754,
+        112.225,
+        -63.537
+      ],
+      "groundRangeSceneZ": [
+        0.44570960324942277,
+        0.5666107436610002
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/07d3ba57e1151f120ee6",
+      "sourceRef": "osm/way/1419070097",
+      "name": "埌东客运站",
+      "use": "transportation",
+      "reliefMeters": 11.876304317299002,
+      "bounds": [
+        115.446,
+        -12.079,
+        118.816,
+        -11.072
+      ],
+      "groundRangeSceneZ": [
+        0.8395814127080241,
+        0.9583444558810141
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/893bf1c081e3fc5ad615",
+      "sourceRef": "osm/way/923428936",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 11.862445507219888,
+      "bounds": [
+        39.514,
+        -12.987,
+        39.88,
+        -12.755
+      ],
+      "groundRangeSceneZ": [
+        0.3473270750833404,
+        0.46595153015553925
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/dc8a05a9b3fa1add2d4d",
+      "sourceRef": "osm/way/920857624",
+      "name": "",
+      "use": "university",
+      "reliefMeters": 11.838888470034448,
+      "bounds": [
+        47.211,
+        -29.659,
+        47.888,
+        -29.4
+      ],
+      "groundRangeSceneZ": [
+        0.386877900686204,
+        0.5052667853865485
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5de21d86eaf66e2380f1",
+      "sourceRef": "osm/way/760144469",
+      "name": "东校园中区21",
+      "use": "dormitory",
+      "reliefMeters": 11.709339746597713,
+      "bounds": [
+        -12.495,
+        28.801,
+        -12.083,
+        29.005
+      ],
+      "groundRangeSceneZ": [
+        0.4232070340791121,
+        0.5403004315450892
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4da0cff5876874ec8064",
+      "sourceRef": "osm/way/1373923362",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 11.632524637818964,
+      "bounds": [
+        70.727,
+        10.266,
+        71.135,
+        10.766
+      ],
+      "groundRangeSceneZ": [
+        0.7203899481342688,
+        0.8367151945124585
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a53e11f208c78e8d87ed",
+      "sourceRef": "osm/way/839721603",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 11.614680113842812,
+      "bounds": [
+        117.782,
+        -67.603,
+        118.61,
+        -66.989
+      ],
+      "groundRangeSceneZ": [
+        0.43953567568084395,
+        0.5556824768192721
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5d2734891782a432becb",
+      "sourceRef": "osm/way/1006219101",
+      "name": "休息亭",
+      "use": "yes",
+      "reliefMeters": 11.571475830117794,
+      "bounds": [
+        176.58,
+        -103.732,
+        176.771,
+        -103.617
+      ],
+      "groundRangeSceneZ": [
+        0.267064909428683,
+        0.38277966772986094
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/295ba65eda75748218e6",
+      "sourceRef": "osm/way/1434056039",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 11.481669140187023,
+      "bounds": [
+        136.466,
+        89.422,
+        136.666,
+        89.517
+      ],
+      "groundRangeSceneZ": [
+        0.6150081588070861,
+        0.7298248502089564
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c5e3b1e052eef3a6e2c8",
+      "sourceRef": "osm/way/640476096",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 11.481562091151076,
+      "bounds": [
+        118.332,
+        -76.678,
+        118.674,
+        -76.448
+      ],
+      "groundRangeSceneZ": [
+        0.33687340952560163,
+        0.4516890304371124
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bb50340d5d2b1eac6216",
+      "sourceRef": "osm/way/652143933",
+      "name": "沃顿国际大酒店",
+      "use": "yes",
+      "reliefMeters": 11.362397859177875,
+      "bounds": [
+        56.903,
+        -12.434,
+        58.013,
+        -11.274
+      ],
+      "groundRangeSceneZ": [
+        0.4222895484200926,
+        0.5359135270118713
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e6f8ddeb41193de1f621",
+      "sourceRef": "osm/relation/11970573",
+      "name": "育林楼",
+      "use": "university",
+      "reliefMeters": 11.303269579113916,
+      "bounds": [
+        -13.355,
+        16.585,
+        -12.483,
+        16.87
+      ],
+      "groundRangeSceneZ": [
+        0.44876339065257476,
+        0.5617960864437139
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/faf75653d03dd497e520",
+      "sourceRef": "osm/way/1553163975",
+      "name": "兴进郡府营销中心",
+      "use": "yes",
+      "reliefMeters": 11.148509691217967,
+      "bounds": [
+        77.309,
+        64.199,
+        77.894,
+        64.933
+      ],
+      "groundRangeSceneZ": [
+        0.7220047332081636,
+        0.8334898301203433
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f3159cd21303b3bce751",
+      "sourceRef": "osm/way/1078228622",
+      "name": "",
+      "use": "temple",
+      "reliefMeters": 11.107640083747583,
+      "bounds": [
+        88.491,
+        37.444,
+        89.153,
+        38.098
+      ],
+      "groundRangeSceneZ": [
+        1.2983186978487424,
+        1.4093950986862183
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3d941ad3e51e147aef62",
+      "sourceRef": "osm/way/1487720507",
+      "name": "18号楼",
+      "use": "hotel",
+      "reliefMeters": 11.080441878195302,
+      "bounds": [
+        60.7,
+        -43.493,
+        61.005,
+        -42.945
+      ],
+      "groundRangeSceneZ": [
+        0.5562933627376534,
+        0.6670977815196064
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/40e8d50d637ce635ad60",
+      "sourceRef": "osm/relation/13487818",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 11.009385312222797,
+      "bounds": [
+        70.437,
+        3.757,
+        70.776,
+        4.096
+      ],
+      "groundRangeSceneZ": [
+        0.32412147727339047,
+        0.43421533039561844
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7dda1c104a2de1de9990",
+      "sourceRef": "osm/relation/18356236",
+      "name": "教学综合楼",
+      "use": "university",
+      "reliefMeters": 10.739041601679933,
+      "bounds": [
+        85.242,
+        -83.06,
+        85.921,
+        -82.277
+      ],
+      "groundRangeSceneZ": [
+        0.6172874630098795,
+        0.7246778790266788
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f723e6c8e85c665f5024",
+      "sourceRef": "osm/relation/11970574",
+      "name": "新闻传播学院",
+      "use": "university",
+      "reliefMeters": 10.718654472760425,
+      "bounds": [
+        -13.374,
+        17.96,
+        -12.532,
+        18.607
+      ],
+      "groundRangeSceneZ": [
+        0.4585923457815442,
+        0.5657788905091484
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8a10199dc0b24a3196a7",
+      "sourceRef": "osm/way/1271437630",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 10.69994732749926,
+      "bounds": [
+        110.881,
+        -64.125,
+        111.173,
+        -63.92
+      ],
+      "groundRangeSceneZ": [
+        0.3834866596321831,
+        0.4904861329071757
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/72b606ceb74c1fc33bb4",
+      "sourceRef": "osm/way/1442866656",
+      "name": "D栋教学楼",
+      "use": "school",
+      "reliefMeters": 10.671516701285055,
+      "bounds": [
+        110.22,
+        -21.019,
+        110.778,
+        -20.807
+      ],
+      "groundRangeSceneZ": [
+        1.2692775967625032,
+        1.3759927637753537
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c1ab9904c19329e99b58",
+      "sourceRef": "osm/relation/20369639",
+      "name": "南宁市民中心",
+      "use": "yes",
+      "reliefMeters": 10.573929843701224,
+      "bounds": [
+        78.203,
+        -92.078,
+        79.726,
+        -90.704
+      ],
+      "groundRangeSceneZ": [
+        0.567750595205943,
+        0.6734898936429552
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2a26c0e371895d866afc",
+      "sourceRef": "osm/way/1431060396",
+      "name": "",
+      "use": "grandstand",
+      "reliefMeters": 10.449846324360035,
+      "bounds": [
+        24.521,
+        7.887,
+        24.748,
+        8.653
+      ],
+      "groundRangeSceneZ": [
+        0.5308924961010186,
+        0.635390959344619
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/da4025fc8f09fbd69d99",
+      "sourceRef": "osm/way/541877601",
+      "name": "弘仁晚钟",
+      "use": "yes",
+      "reliefMeters": 10.3055275505187,
+      "bounds": [
+        55.912,
+        -55.797,
+        56.339,
+        -55.342
+      ],
+      "groundRangeSceneZ": [
+        0.35522546924845955,
+        0.45828074475364655
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/75180666eb8e68aa9485",
+      "sourceRef": "osm/way/760170136",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 10.2537722232373,
+      "bounds": [
+        -10.796,
+        27.205,
+        -10.284,
+        27.436
+      ],
+      "groundRangeSceneZ": [
+        0.4725134342355366,
+        0.5750511564679096
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d3074d0eb78cf4374382",
+      "sourceRef": "osm/way/922789141",
+      "name": "南宁市良庆区住房和城乡建设局",
+      "use": "yes",
+      "reliefMeters": 10.101419384616683,
+      "bounds": [
+        80.938,
+        -87.374,
+        81.24,
+        -87.06
+      ],
+      "groundRangeSceneZ": [
+        0.5219676900526,
+        0.6229818838987669
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f17e6e0ecf9dd636b8f4",
+      "sourceRef": "osm/relation/20068023",
+      "name": "教学楼",
+      "use": "school",
+      "reliefMeters": 10.054736829448352,
+      "bounds": [
+        93.257,
+        6.491,
+        94.346,
+        7.902
+      ],
+      "groundRangeSceneZ": [
+        1.2333713166734306,
+        1.333918684967914
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0ce22bab5654d061f78d",
+      "sourceRef": "osm/way/617350578",
+      "name": "南宁市规划展览馆",
+      "use": "yes",
+      "reliefMeters": 10.026717557613374,
+      "bounds": [
+        97.18,
+        -27.027,
+        98.602,
+        -25.711
+      ],
+      "groundRangeSceneZ": [
+        1.0939970875586127,
+        1.1942642631347464
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2b8a72e5e252d4a5957e",
+      "sourceRef": "osm/way/759129517",
+      "name": "西校园学生宿舍17栋",
+      "use": "dormitory",
+      "reliefMeters": 10.020383691096036,
+      "bounds": [
+        -13.349,
+        16.043,
+        -12.871,
+        16.167
+      ],
+      "groundRangeSceneZ": [
+        0.441734044483697,
+        0.5419378813946574
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/75a1f3775bb24297f678",
+      "sourceRef": "osm/way/1006381739",
+      "name": "D栋",
+      "use": "yes",
+      "reliefMeters": 9.98925091532934,
+      "bounds": [
+        109.397,
+        -25.317,
+        110.156,
+        -24.956
+      ],
+      "groundRangeSceneZ": [
+        1.1059780200425413,
+        1.2058705291958347
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c716f96f73f3192d7517",
+      "sourceRef": "osm/way/759129518",
+      "name": "西校园学生宿舍19栋",
+      "use": "dormitory",
+      "reliefMeters": 9.907383310506667,
+      "bounds": [
+        -13.349,
+        15.78,
+        -12.864,
+        15.902
+      ],
+      "groundRangeSceneZ": [
+        0.4368776291410432,
+        0.5359514622461099
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/467a20c5f8801713a15b",
+      "sourceRef": "osm/way/1238793951",
+      "name": "邕江宾馆",
+      "use": "yes",
+      "reliefMeters": 9.738719763514414,
+      "bounds": [
+        17.322,
+        -12.818,
+        18.738,
+        -10.959
+      ],
+      "groundRangeSceneZ": [
+        0.49677890239003286,
+        0.594166100025177
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f90eca8776d25663bfe5",
+      "sourceRef": "osm/relation/11971046",
+      "name": "第六教学楼",
+      "use": "university",
+      "reliefMeters": 9.567544447170073,
+      "bounds": [
+        -10.086,
+        22.893,
+        -8.848,
+        23.708
+      ],
+      "groundRangeSceneZ": [
+        0.4400411713033128,
+        0.5357166157750135
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0851c38e56f6a5f77ea8",
+      "sourceRef": "osm/way/1481120503",
+      "name": "",
+      "use": "industrial",
+      "reliefMeters": 9.480182530782333,
+      "bounds": [
+        154.462,
+        43.256,
+        155.187,
+        43.769
+      ],
+      "groundRangeSceneZ": [
+        0.45575455777062057,
+        0.5505563830784439
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b7e5f47479285d14083b",
+      "sourceRef": "osm/way/1271437637",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 9.477487029413467,
+      "bounds": [
+        110.924,
+        -63.796,
+        111.196,
+        -63.609
+      ],
+      "groundRangeSceneZ": [
+        0.4295747273622226,
+        0.5243495976563572
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f0201e412f59a07f3ff3",
+      "sourceRef": "osm/way/915110698",
+      "name": "城市奥特莱斯",
+      "use": "retail",
+      "reliefMeters": 9.450791308222561,
+      "bounds": [
+        24.688,
+        -18.435,
+        26.156,
+        -15.82
+      ],
+      "groundRangeSceneZ": [
+        0.49921044019612637,
+        0.593718353278352
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b659e8fc2d61cf48e133",
+      "sourceRef": "osm/way/1487720501",
+      "name": "9号楼",
+      "use": "hotel",
+      "reliefMeters": 9.438675348974712,
+      "bounds": [
+        60.325,
+        -41.05,
+        60.781,
+        -40.48
+      ],
+      "groundRangeSceneZ": [
+        0.6249594696956748,
+        0.719346223185422
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3e67c87c5cc4d848747c",
+      "sourceRef": "osm/way/994996783",
+      "name": "东大门",
+      "use": "yes",
+      "reliefMeters": 9.426685748446495,
+      "bounds": [
+        183.605,
+        -108.798,
+        184.685,
+        -106.773
+      ],
+      "groundRangeSceneZ": [
+        0.4005658435523607,
+        0.49483270103682564
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/618fb1f386591282db69",
+      "sourceRef": "osm/way/837956755",
+      "name": "8号楼",
+      "use": "yes",
+      "reliefMeters": 9.425886072447831,
+      "bounds": [
+        67.288,
+        -90.293,
+        67.883,
+        -89.815
+      ],
+      "groundRangeSceneZ": [
+        0.7495253676911009,
+        0.8437842284155792
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/001790af04eaabb333e8",
+      "sourceRef": "osm/way/759129519",
+      "name": "西校园学生宿舍20栋",
+      "use": "dormitory",
+      "reliefMeters": 9.399234483373265,
+      "bounds": [
+        -13.35,
+        15.53,
+        -12.865,
+        15.654
+      ],
+      "groundRangeSceneZ": [
+        0.43589568574455484,
+        0.5298880305782875
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/428237657ada29f18120",
+      "sourceRef": "osm/way/1454475771",
+      "name": "",
+      "use": "kindergarten",
+      "reliefMeters": 9.282092196498049,
+      "bounds": [
+        100.303,
+        -24.184,
+        101.236,
+        -23.125
+      ],
+      "groundRangeSceneZ": [
+        1.1523309723607689,
+        1.2451518943257494
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/43877e12ce3e82b0cecf",
+      "sourceRef": "osm/way/1442866626",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 9.272518689203846,
+      "bounds": [
+        107.802,
+        -20.708,
+        108.357,
+        -19.956
+      ],
+      "groundRangeSceneZ": [
+        1.2367559383534763,
+        1.3294811252455148
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ef476c8664f52089ef45",
+      "sourceRef": "osm/way/1442866653",
+      "name": "B栋教学楼",
+      "use": "school",
+      "reliefMeters": 9.270648002230963,
+      "bounds": [
+        109.843,
+        -19.904,
+        110.465,
+        -19.682
+      ],
+      "groundRangeSceneZ": [
+        1.1328919235703427,
+        1.2255984035926524
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5d0ea2d72bd33dc89c78",
+      "sourceRef": "osm/way/1010412241",
+      "name": "健身汇",
+      "use": "yes",
+      "reliefMeters": 9.250094920191287,
+      "bounds": [
+        110.868,
+        -24.19,
+        111.42,
+        -23.238
+      ],
+      "groundRangeSceneZ": [
+        0.9662286079113773,
+        1.0587295571132902
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ff9a629f02d21d72bf3e",
+      "sourceRef": "osm/way/1540825501",
+      "name": "广西民族剧院",
+      "use": "yes",
+      "reliefMeters": 9.239019584420948,
+      "bounds": [
+        17.093,
+        -34.792,
+        18.023,
+        -33.783
+      ],
+      "groundRangeSceneZ": [
+        0.4157849078750564,
+        0.5081751037192659
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/daedbc21e4022f90b760",
+      "sourceRef": "osm/way/1442866652",
+      "name": "A栋教学楼",
+      "use": "school",
+      "reliefMeters": 9.227071494404093,
+      "bounds": [
+        109.538,
+        -20.207,
+        110.041,
+        -19.748
+      ],
+      "groundRangeSceneZ": [
+        1.1933853782883315,
+        1.2856560932323724
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0c94fad13723f0ee663f",
+      "sourceRef": "osm/way/695833875",
+      "name": "广西花鸟市场",
+      "use": "commercial",
+      "reliefMeters": 9.202594638184713,
+      "bounds": [
+        67.595,
+        36.677,
+        69.362,
+        38.024
+      ],
+      "groundRangeSceneZ": [
+        0.6848210054539852,
+        0.7768469518358323
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/73816a98ebc663db0843",
+      "sourceRef": "osm/way/1501490712",
+      "name": "",
+      "use": "commercial",
+      "reliefMeters": 9.186709595690079,
+      "bounds": [
+        86.334,
+        -70.235,
+        87.575,
+        -69.38
+      ],
+      "groundRangeSceneZ": [
+        0.6985935001933266,
+        0.7904605961502273
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ee2c00273e8ff0253d7f",
+      "sourceRef": "osm/way/640020079",
+      "name": "智行楼",
+      "use": "school",
+      "reliefMeters": 9.17648952194181,
+      "bounds": [
+        121.665,
+        1.793,
+        122.618,
+        2.21
+      ],
+      "groundRangeSceneZ": [
+        0.83369159341661,
+        0.9254564886360281
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3db218c5bdf2ebd2fb09",
+      "sourceRef": "osm/way/1115499249",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 9.065580410315821,
+      "bounds": [
+        8.953,
+        74.972,
+        9.407,
+        75.426
+      ],
+      "groundRangeSceneZ": [
+        0.9160993044001593,
+        1.0067551085033175
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2d2733136c36b76b7fb1",
+      "sourceRef": "osm/way/1442866624",
+      "name": "广西李宁基金会",
+      "use": "yes",
+      "reliefMeters": 9.023885989360814,
+      "bounds": [
+        110.473,
+        -22.257,
+        111.033,
+        -21.951
+      ],
+      "groundRangeSceneZ": [
+        1.2217755749240649,
+        1.312014434817673
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f5b0d9b72a5ba872cc9c",
+      "sourceRef": "osm/way/1006497883",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.91382199863423,
+      "bounds": [
+        66.419,
+        8.254,
+        66.72,
+        9.957
+      ],
+      "groundRangeSceneZ": [
+        0.4506315049498081,
+        0.5397697249361504
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ebbf5b37b30e1556a091",
+      "sourceRef": "osm/way/923428933",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 8.860169384787241,
+      "bounds": [
+        40.453,
+        -12.467,
+        40.803,
+        -12.307
+      ],
+      "groundRangeSceneZ": [
+        0.3813436216762085,
+        0.4699453155240809
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/12083c924d073ff8d7fc",
+      "sourceRef": "osm/way/1271437629",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.854022168879183,
+      "bounds": [
+        110.572,
+        -64.25,
+        110.796,
+        -63.996
+      ],
+      "groundRangeSceneZ": [
+        0.42487700513616034,
+        0.5134172268249522
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2afec6ff2b1812f73e18",
+      "sourceRef": "osm/way/922791767",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.819853260443544,
+      "bounds": [
+        54.826,
+        -8.424,
+        55.336,
+        -7.803
+      ],
+      "groundRangeSceneZ": [
+        0.3352625241225837,
+        0.42346105672701917
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e75c9b99e6c3b4263a0f",
+      "sourceRef": "osm/way/1442866644",
+      "name": "学生食堂",
+      "use": "yes",
+      "reliefMeters": 8.804040881178077,
+      "bounds": [
+        109.594,
+        -21.129,
+        110.056,
+        -20.523
+      ],
+      "groundRangeSceneZ": [
+        1.3092782604334983,
+        1.397318669245279
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/41ba50a6f38346df43d3",
+      "sourceRef": "osm/way/838541836",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 8.662690291113506,
+      "bounds": [
+        138.602,
+        99.265,
+        139.208,
+        99.579
+      ],
+      "groundRangeSceneZ": [
+        0.6581063827778202,
+        0.7447332856889552
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e8a23f3a81e1c3bdf0a3",
+      "sourceRef": "osm/way/1442866632",
+      "name": "职工宿舍",
+      "use": "dormitory",
+      "reliefMeters": 8.588045359635155,
+      "bounds": [
+        108.433,
+        -19.868,
+        109.482,
+        -19.435
+      ],
+      "groundRangeSceneZ": [
+        1.1745959899741956,
+        1.2604764435705471
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fb1ad5e7f19e4382caa3",
+      "sourceRef": "osm/way/640476100",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.538787186154995,
+      "bounds": [
+        109.054,
+        -76.368,
+        109.288,
+        -76.212
+      ],
+      "groundRangeSceneZ": [
+        0.5661190907245839,
+        0.6515069625861338
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d367e3c5e97260a581f9",
+      "sourceRef": "osm/way/1446649452",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.527130688104645,
+      "bounds": [
+        148.173,
+        -51.879,
+        148.5,
+        -51.245
+      ],
+      "groundRangeSceneZ": [
+        0.6635391651466875,
+        0.748810472027734
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/713beb6b538938df0adf",
+      "sourceRef": "osm/way/1012786286",
+      "name": "",
+      "use": "train_station",
+      "reliefMeters": 8.497104411743194,
+      "bounds": [
+        -19.067,
+        -7.716,
+        -17.005,
+        -2.573
+      ],
+      "groundRangeSceneZ": [
+        0.4274787338600716,
+        0.5124497779775036
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ed2958122b0829893ea2",
+      "sourceRef": "osm/way/808814591",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 8.40217377897725,
+      "bounds": [
+        84.419,
+        43.398,
+        85.092,
+        43.961
+      ],
+      "groundRangeSceneZ": [
+        0.8232657428148646,
+        0.9072874806046372
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fc3fe6f2010d32f4d3ab",
+      "sourceRef": "osm/relation/19360278",
+      "name": "心远楼",
+      "use": "dormitory",
+      "reliefMeters": 8.401800768142964,
+      "bounds": [
+        119.243,
+        -1.033,
+        119.818,
+        -0.514
+      ],
+      "groundRangeSceneZ": [
+        0.8223381587549179,
+        0.9063561664363475
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fb7e412a9792a51422e0",
+      "sourceRef": "osm/way/1487720495",
+      "name": "4号楼",
+      "use": "hotel",
+      "reliefMeters": 8.400783113160237,
+      "bounds": [
+        63.16,
+        -38.164,
+        63.562,
+        -37.787
+      ],
+      "groundRangeSceneZ": [
+        0.7482108744854497,
+        0.832218705617052
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b177cc19c3085de34e60",
+      "sourceRef": "osm/relation/14367377",
+      "name": "瑞兴楼",
+      "use": "school",
+      "reliefMeters": 8.370938542947126,
+      "bounds": [
+        45.861,
+        15.711,
+        46.55,
+        16.213
+      ],
+      "groundRangeSceneZ": [
+        0.711778815950908,
+        0.7954882013803792
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/262e5d51563bcb046987",
+      "sourceRef": "osm/way/1385503800",
+      "name": "绿谷音乐广场",
+      "use": "yes",
+      "reliefMeters": 8.297295564356544,
+      "bounds": [
+        111.267,
+        -24.967,
+        111.498,
+        -24.425
+      ],
+      "groundRangeSceneZ": [
+        1.0234808669647029,
+        1.1064538226082683
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8dea6d982aede3b3f9f6",
+      "sourceRef": "osm/way/1482156937",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.249559645334049,
+      "bounds": [
+        17.652,
+        -0.567,
+        18.023,
+        -0.33
+      ],
+      "groundRangeSceneZ": [
+        0.4436922422517049,
+        0.5261878387050454
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/43d4ba92a0f91ddf8402",
+      "sourceRef": "osm/way/1453115189",
+      "name": "",
+      "use": "warehouse",
+      "reliefMeters": 8.242332098009086,
+      "bounds": [
+        123.145,
+        -41.589,
+        123.717,
+        -41.17
+      ],
+      "groundRangeSceneZ": [
+        0.5565267410274224,
+        0.6389500620075133
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/64662dc10401e23d9c72",
+      "sourceRef": "osm/relation/21118874",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.234156570606066,
+      "bounds": [
+        19.011,
+        -35.594,
+        19.55,
+        -35.111
+      ],
+      "groundRangeSceneZ": [
+        0.3992867842633787,
+        0.4816283499694394
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9aa330f971175a7ba09a",
+      "sourceRef": "osm/relation/13453318",
+      "name": "敷文园A",
+      "use": "yes",
+      "reliefMeters": 8.165531515696545,
+      "bounds": [
+        151.744,
+        -84.13,
+        153.015,
+        -83.508
+      ],
+      "groundRangeSceneZ": [
+        0.3785903917804774,
+        0.4602457069374428
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9835571722a05519cd0a",
+      "sourceRef": "osm/way/760187414",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 8.128794354874447,
+      "bounds": [
+        -17.582,
+        34.655,
+        -16.062,
+        34.934
+      ],
+      "groundRangeSceneZ": [
+        0.49760737912963293,
+        0.5788953226783774
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/28a5e9c78edc7ccf8ffd",
+      "sourceRef": "osm/way/1006944586",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 8.08576367433389,
+      "bounds": [
+        69.405,
+        3.747,
+        69.851,
+        4.193
+      ],
+      "groundRangeSceneZ": [
+        0.3942524542039365,
+        0.4751100909472754
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f61345dcb2ead2b9c02e",
+      "sourceRef": "osm/way/1454475765",
+      "name": "A3",
+      "use": "office",
+      "reliefMeters": 8.053900843388817,
+      "bounds": [
+        99.697,
+        -24.5,
+        100.336,
+        -23.858
+      ],
+      "groundRangeSceneZ": [
+        1.1056960597102492,
+        1.1862350681441374
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b496d7aed550b5d2a624",
+      "sourceRef": "osm/way/695833874",
+      "name": "广西花鸟市场",
+      "use": "commercial",
+      "reliefMeters": 7.937913403607588,
+      "bounds": [
+        67.364,
+        36.916,
+        69.099,
+        38.208
+      ],
+      "groundRangeSceneZ": [
+        0.7040978526805333,
+        0.7834769867166091
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f49d6a11f51110c28dbc",
+      "sourceRef": "osm/way/477439719",
+      "name": "印象城A座",
+      "use": "retail",
+      "reliefMeters": 7.885765509292986,
+      "bounds": [
+        18.721,
+        -9.718,
+        19.789,
+        -8.405
+      ],
+      "groundRangeSceneZ": [
+        0.5188623739640033,
+        0.5977200290569331
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/00e15cec791f9f9b392f",
+      "sourceRef": "osm/way/839721622",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.881883701510084,
+      "bounds": [
+        114.414,
+        -68.635,
+        114.922,
+        -68.128
+      ],
+      "groundRangeSceneZ": [
+        0.6063336469069345,
+        0.6851524839220353
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5bc72f7fb9072e1ef32e",
+      "sourceRef": "osm/way/1480606950",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 7.839976809183669,
+      "bounds": [
+        142.35,
+        -23.689,
+        143.969,
+        -22.725
+      ],
+      "groundRangeSceneZ": [
+        0.6701447921433681,
+        0.7485445602352048
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bc9a6f2b097c53b70395",
+      "sourceRef": "osm/way/759191492",
+      "name": "",
+      "use": "dormitory",
+      "reliefMeters": 7.80104244873725,
+      "bounds": [
+        -6.221,
+        23.191,
+        -4.707,
+        24.36
+      ],
+      "groundRangeSceneZ": [
+        0.4748865889131282,
+        0.5528970134005007
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8261d685d88cd0b76766",
+      "sourceRef": "osm/way/1480654660",
+      "name": "",
+      "use": "train_station",
+      "reliefMeters": 7.709088077371007,
+      "bounds": [
+        131.616,
+        4.09,
+        132.184,
+        4.277
+      ],
+      "groundRangeSceneZ": [
+        0.5197409471253813,
+        0.5968318278990914
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9c437b52d9b2cf4c316c",
+      "sourceRef": "osm/way/669637728",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.664633162579548,
+      "bounds": [
+        143.212,
+        30.018,
+        143.407,
+        30.212
+      ],
+      "groundRangeSceneZ": [
+        0.5121568467892246,
+        0.5888031784150201
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8a89d44b300520f76042",
+      "sourceRef": "osm/way/920857611",
+      "name": "南宁市中级人民法院",
+      "use": "yes",
+      "reliefMeters": 7.582489229521627,
+      "bounds": [
+        69.829,
+        -21.969,
+        70.938,
+        -20.88
+      ],
+      "groundRangeSceneZ": [
+        0.5461475510905434,
+        0.6219724433857596
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5e912b15289ffac6730b",
+      "sourceRef": "osm/way/640020075",
+      "name": "智通楼",
+      "use": "school",
+      "reliefMeters": 7.572510417141665,
+      "bounds": [
+        119.127,
+        1.572,
+        119.914,
+        1.997
+      ],
+      "groundRangeSceneZ": [
+        0.9548303904048292,
+        1.0305554945762458
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a8267655b64d64d864f5",
+      "sourceRef": "osm/way/1487720504",
+      "name": "21号楼",
+      "use": "yes",
+      "reliefMeters": 7.5252800575029255,
+      "bounds": [
+        57.177,
+        -45.805,
+        57.724,
+        -45.426
+      ],
+      "groundRangeSceneZ": [
+        0.6556884849642,
+        0.7309412855392292
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7d263307282b7ff59d1e",
+      "sourceRef": "osm/way/1130959610",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.512627976103392,
+      "bounds": [
+        -16.145,
+        -113.639,
+        -15.674,
+        -113.172
+      ],
+      "groundRangeSceneZ": [
+        0.8086299100037859,
+        0.8837561897648198
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b960c6bc312b0c2ab105",
+      "sourceRef": "osm/way/759079681",
+      "name": "第一教学楼",
+      "use": "university",
+      "reliefMeters": 7.5037751736465985,
+      "bounds": [
+        -14.941,
+        15.19,
+        -14.003,
+        15.389
+      ],
+      "groundRangeSceneZ": [
+        0.46873131210493124,
+        0.5437690638413972
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/cc4162b3dfc3725a8efd",
+      "sourceRef": "osm/way/1482717753",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.447324880238315,
+      "bounds": [
+        17.342,
+        4.737,
+        19.54,
+        6.184
+      ],
+      "groundRangeSceneZ": [
+        0.4383846233088138,
+        0.5128578721111969
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e69a5474069e3a20eacb",
+      "sourceRef": "osm/way/497493705",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 7.417272723927604,
+      "bounds": [
+        79.694,
+        -52.924,
+        80.867,
+        -51.605
+      ],
+      "groundRangeSceneZ": [
+        0.46235401235804474,
+        0.5365267395973208
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "haipo-residential/tower-0-0",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "reliefMeters": 7.395624102952825,
+      "bounds": [
+        71.291,
+        11.449,
+        71.72,
+        11.78
+      ],
+      "groundRangeSceneZ": [
+        0.7017292696369171,
+        0.7756855106664453
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b8e491792a0b0a89e663",
+      "sourceRef": "osm/way/839721592",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.375763407543001,
+      "bounds": [
+        111.913,
+        -63.233,
+        112.46,
+        -62.614
+      ],
+      "groundRangeSceneZ": [
+        0.5796186276941757,
+        0.6533762617696057
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/42f671a351331ea699e0",
+      "sourceRef": "osm/way/760170128",
+      "name": "29号楼",
+      "use": "school",
+      "reliefMeters": 7.286541188076512,
+      "bounds": [
+        -10.939,
+        26.294,
+        -10.533,
+        26.509
+      ],
+      "groundRangeSceneZ": [
+        0.4906771440823663,
+        0.5635425559631314
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1f83bb9a72a4ed1078dd",
+      "sourceRef": "osm/way/1442866647",
+      "name": "报告厅",
+      "use": "school",
+      "reliefMeters": 7.26734620474474,
+      "bounds": [
+        109.532,
+        -19.232,
+        110.105,
+        -18.667
+      ],
+      "groundRangeSceneZ": [
+        1.0381957421494619,
+        1.1108692041969093
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/6a0e22c62ffe5fe141dc",
+      "sourceRef": "osm/relation/13098424",
+      "name": "",
+      "use": "office",
+      "reliefMeters": 7.260121676003339,
+      "bounds": [
+        86.26,
+        -67.8,
+        87.755,
+        -67.071
+      ],
+      "groundRangeSceneZ": [
+        0.6823375986242375,
+        0.7549388153842709
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e44ffe5482dcd1861e78",
+      "sourceRef": "osm/way/102597070",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 7.2447565077875975,
+      "bounds": [
+        -38.785,
+        -33.133,
+        -37.946,
+        -31.397
+      ],
+      "groundRangeSceneZ": [
+        0.7336829865561243,
+        0.8061305516340003
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/262a517dee5079723e44",
+      "sourceRef": "osm/way/1454475766",
+      "name": "A2",
+      "use": "office",
+      "reliefMeters": 7.220519568627903,
+      "bounds": [
+        99.079,
+        -25.102,
+        99.603,
+        -24.55
+      ],
+      "groundRangeSceneZ": [
+        1.0978048946192658,
+        1.1700100903055448
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e11742af0f8ffa70a0d4",
+      "sourceRef": "osm/way/1537488039",
+      "name": "华夏院子营销中心",
+      "use": "industrial",
+      "reliefMeters": 7.177653683921381,
+      "bounds": [
+        127.715,
+        67.633,
+        128.587,
+        68.048
+      ],
+      "groundRangeSceneZ": [
+        0.6276957661158713,
+        0.6994723029550851
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fd1f52da657419f74bf8",
+      "sourceRef": "osm/way/1390927970",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 7.176892985409711,
+      "bounds": [
+        120.739,
+        1.705,
+        120.846,
+        1.999
+      ],
+      "groundRangeSceneZ": [
+        0.9288150999033864,
+        1.0005840297574835
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/793d0b350a113e4f2a09",
+      "sourceRef": "osm/relation/19360277",
+      "name": "心致楼",
+      "use": "dormitory",
+      "reliefMeters": 7.148174808613195,
+      "bounds": [
+        119.028,
+        -0.311,
+        119.657,
+        0.277
+      ],
+      "groundRangeSceneZ": [
+        0.8563878062523473,
+        0.9278695543384793
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/abd0a282363d7ac1f7f3",
+      "sourceRef": "osm/way/1442866633",
+      "name": "",
+      "use": "grandstand",
+      "reliefMeters": 7.128156920703388,
+      "bounds": [
+        109.342,
+        -20.236,
+        109.487,
+        -19.864
+      ],
+      "groundRangeSceneZ": [
+        1.2226701965426794,
+        1.2939517657497133
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/906bdc5c8ac6a19bbcbd",
+      "sourceRef": "osm/way/1001773990",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 7.046971402559876,
+      "bounds": [
+        166.438,
+        -43.361,
+        166.956,
+        -42.657
+      ],
+      "groundRangeSceneZ": [
+        0.5494239981620339,
+        0.6198937121876327
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7ed3ac3eac6535832881",
+      "sourceRef": "osm/relation/12874254",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 7.044410455683869,
+      "bounds": [
+        -13.975,
+        34.552,
+        -12.381,
+        35.232
+      ],
+      "groundRangeSceneZ": [
+        0.4984899482480112,
+        0.5689340528048499
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7b7e5a08abf74dc15ecd",
+      "sourceRef": "osm/way/1481161396",
+      "name": "3栋",
+      "use": "apartments",
+      "reliefMeters": 7.023962521120453,
+      "bounds": [
+        127.739,
+        -73.063,
+        128.229,
+        -72.445
+      ],
+      "groundRangeSceneZ": [
+        0.6133258219969289,
+        0.6835654472081334
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8a84207c3d94d45688cc",
+      "sourceRef": "osm/way/640020078",
+      "name": "智达楼",
+      "use": "school",
+      "reliefMeters": 6.978034732292482,
+      "bounds": [
+        120.439,
+        1.942,
+        121.314,
+        2.211
+      ],
+      "groundRangeSceneZ": [
+        0.948438912378843,
+        1.0182192597017679
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "haipo-residential/tower-1-0",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "reliefMeters": 6.97396405980335,
+      "bounds": [
+        71.319,
+        12.509,
+        71.747,
+        12.84
+      ],
+      "groundRangeSceneZ": [
+        0.6615370777359582,
+        0.7312767183339917
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c5f88c15d2b2bba89b00",
+      "sourceRef": "osm/way/1003489849",
+      "name": "学生活动中心",
+      "use": "yes",
+      "reliefMeters": 6.916625733280668,
+      "bounds": [
+        149.288,
+        -90.379,
+        150.088,
+        -89.437
+      ],
+      "groundRangeSceneZ": [
+        0.4820768690595578,
+        0.5512431263923645
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a105bc89a984c3a72a61",
+      "sourceRef": "osm/way/1028986796",
+      "name": "E1",
+      "use": "apartments",
+      "reliefMeters": 6.908330173755495,
+      "bounds": [
+        133.435,
+        -56.01,
+        133.721,
+        -55.448
+      ],
+      "groundRangeSceneZ": [
+        0.5895067153611624,
+        0.6585900170987173
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/24e1348ad45ec1ff7cfe",
+      "sourceRef": "osm/way/1487720491",
+      "name": "2号楼",
+      "use": "hotel",
+      "reliefMeters": 6.903137724833552,
+      "bounds": [
+        64.042,
+        -37.433,
+        64.594,
+        -37.167
+      ],
+      "groundRangeSceneZ": [
+        0.856082798526856,
+        0.9251141757751915
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0badbe500f379bbce153",
+      "sourceRef": "osm/way/1012349760",
+      "name": "健康管理中心",
+      "use": "hospital",
+      "reliefMeters": 6.85025588495094,
+      "bounds": [
+        46.482,
+        -36.872,
+        46.998,
+        -36.506
+      ],
+      "groundRangeSceneZ": [
+        0.4485866543234285,
+        0.5170892131729379
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bee44ba6a0837fadb976",
+      "sourceRef": "osm/way/1030593488",
+      "name": "5栋",
+      "use": "apartments",
+      "reliefMeters": 6.847257916821636,
+      "bounds": [
+        175.643,
+        -81.099,
+        175.823,
+        -80.999
+      ],
+      "groundRangeSceneZ": [
+        0.5519734471738049,
+        0.6204460263420213
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f972748d88914308b05a",
+      "sourceRef": "osm/relation/13348892",
+      "name": "",
+      "use": "public",
+      "reliefMeters": 6.776923059927187,
+      "bounds": [
+        182.749,
+        -112.993,
+        183.4,
+        -112.482
+      ],
+      "groundRangeSceneZ": [
+        0.44556285996833056,
+        0.5133320905676024
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a6ca6d5adf895bb7cf4f",
+      "sourceRef": "osm/way/1001507588",
+      "name": "10栋",
+      "use": "apartments",
+      "reliefMeters": 6.77558824769342,
+      "bounds": [
+        174.174,
+        -80.895,
+        174.482,
+        -80.604
+      ],
+      "groundRangeSceneZ": [
+        0.5704124480576844,
+        0.6381683305346186
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/624a9b45ad94f4101126",
+      "sourceRef": "osm/way/1001752210",
+      "name": "门诊综合楼",
+      "use": "hospital",
+      "reliefMeters": 6.775044895148897,
+      "bounds": [
+        172.363,
+        -50.207,
+        173.541,
+        -49.204
+      ],
+      "groundRangeSceneZ": [
+        0.5241288745796263,
+        0.5918793235311153
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fff0ec3dd5f068d87608",
+      "sourceRef": "osm/way/1004681497",
+      "name": "凤铝铝材邕宁经销",
+      "use": "yes",
+      "reliefMeters": 6.756369243323279,
+      "bounds": [
+        174.604,
+        -87.764,
+        175.124,
+        -87.179
+      ],
+      "groundRangeSceneZ": [
+        0.48719589275745134,
+        0.5547595851906841
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5e00b133e103700758de",
+      "sourceRef": "osm/relation/13487822",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 6.7490675508107945,
+      "bounds": [
+        70.224,
+        3.393,
+        70.564,
+        3.732
+      ],
+      "groundRangeSceneZ": [
+        0.3936722236467718,
+        0.46116289915487974
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1971ed3695d798716f6a",
+      "sourceRef": "osm/way/1030653060",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 6.721585024937937,
+      "bounds": [
+        132.048,
+        -49.344,
+        132.358,
+        -49.053
+      ],
+      "groundRangeSceneZ": [
+        0.5967210929053479,
+        0.6639369431547273
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fe4de36a7a56ca03ab89",
+      "sourceRef": "osm/way/1001479643",
+      "name": "17栋",
+      "use": "apartments",
+      "reliefMeters": 6.701404182640225,
+      "bounds": [
+        179.641,
+        -53.266,
+        180.26,
+        -52.889
+      ],
+      "groundRangeSceneZ": [
+        0.518972613538951,
+        0.5859866553653532
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d800db415f1a22e7bb52",
+      "sourceRef": "osm/way/924329768",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.6994708704520844,
+      "bounds": [
+        20.838,
+        -20.254,
+        21.263,
+        -20.031
+      ],
+      "groundRangeSceneZ": [
+        0.4250605985058309,
+        0.49205530721035173
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bd89fdd836eee5f4efdb",
+      "sourceRef": "osm/way/837946560",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.680705776468443,
+      "bounds": [
+        86.612,
+        -66.849,
+        87.703,
+        -65.78
+      ],
+      "groundRangeSceneZ": [
+        0.6439447571059684,
+        0.7107518148706529
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/cb3a184a124eb9a9b3fe",
+      "sourceRef": "osm/way/995203914",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.675825019826931,
+      "bounds": [
+        173.61,
+        -116.208,
+        174.322,
+        -115.598
+      ],
+      "groundRangeSceneZ": [
+        0.40229604013018516,
+        0.46905429032845447
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a427ca5b559aec3899f2",
+      "sourceRef": "osm/relation/11971048",
+      "name": "学生公寓东16栋",
+      "use": "dormitory",
+      "reliefMeters": 6.675253297113337,
+      "bounds": [
+        -4.658,
+        24.946,
+        -3.405,
+        25.549
+      ],
+      "groundRangeSceneZ": [
+        0.5031296903424004,
+        0.5698822233135338
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/3fed3b3df4a63a63b69e",
+      "sourceRef": "osm/way/1548738441",
+      "name": "住院大楼",
+      "use": "hospital",
+      "reliefMeters": 6.667309077818173,
+      "bounds": [
+        39.653,
+        -29.723,
+        41.041,
+        -29.115
+      ],
+      "groundRangeSceneZ": [
+        0.5228442996256807,
+        0.5895173904038624
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/73011850d5f9fc1cea54",
+      "sourceRef": "osm/way/1012786291",
+      "name": "",
+      "use": "train_station",
+      "reliefMeters": 6.662292291631355,
+      "bounds": [
+        -15.311,
+        9.253,
+        -10.157,
+        11.367
+      ],
+      "groundRangeSceneZ": [
+        0.45236628836580905,
+        0.5189892112821226
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/81c66b15d39144a4fc0b",
+      "sourceRef": "osm/way/640020077",
+      "name": "智睿楼",
+      "use": "school",
+      "reliefMeters": 6.643368745100631,
+      "bounds": [
+        120.522,
+        2.371,
+        121.336,
+        2.676
+      ],
+      "groundRangeSceneZ": [
+        0.9356413348774666,
+        1.002075022328473
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c5db161f30c06d991490",
+      "sourceRef": "osm/way/991369775",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.620910632647137,
+      "bounds": [
+        33.677,
+        -75.469,
+        34.164,
+        -75.123
+      ],
+      "groundRangeSceneZ": [
+        0.7907802142145908,
+        0.8569893205410621
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/21c0c4c6e5327f8f4d56",
+      "sourceRef": "osm/way/810358951",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.6173657387579965,
+      "bounds": [
+        122.226,
+        -77.955,
+        123.871,
+        -76.821
+      ],
+      "groundRangeSceneZ": [
+        0.4022602333551193,
+        0.46843389074269925
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/79ec21ceb732e3a1db32",
+      "sourceRef": "osm/way/808814589",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 6.589895506499488,
+      "bounds": [
+        83.347,
+        44.262,
+        84.065,
+        44.748
+      ],
+      "groundRangeSceneZ": [
+        0.7168637229890784,
+        0.7827626780540733
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1b739021556e4ae54709",
+      "sourceRef": "osm/relation/13337987",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.583223775870994,
+      "bounds": [
+        93.906,
+        -70.49,
+        96.021,
+        -68.771
+      ],
+      "groundRangeSceneZ": [
+        0.5684974984740481,
+        0.634329736232758
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d35ba7d8cfdd04ef652e",
+      "sourceRef": "osm/relation/12874253",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 6.575568061409709,
+      "bounds": [
+        -17.566,
+        34.957,
+        -15.976,
+        35.597
+      ],
+      "groundRangeSceneZ": [
+        0.5260194982952047,
+        0.5917751789093018
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/35e01956c3ffc4d15005",
+      "sourceRef": "osm/way/1355971502",
+      "name": "14栋",
+      "use": "apartments",
+      "reliefMeters": 6.572001360487256,
+      "bounds": [
+        139.55,
+        -59.206,
+        139.875,
+        -58.935
+      ],
+      "groundRangeSceneZ": [
+        0.7169255863733124,
+        0.782645599978185
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/092d52d1f73bae980e39",
+      "sourceRef": "osm/way/1030653062",
+      "name": "A14",
+      "use": "apartments",
+      "reliefMeters": 6.542189802502829,
+      "bounds": [
+        132.418,
+        -49.598,
+        132.749,
+        -49.339
+      ],
+      "groundRangeSceneZ": [
+        0.6179848256523099,
+        0.6834067236773382
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9e3c6467c9a515131721",
+      "sourceRef": "osm/way/838541835",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 6.5416987053954045,
+      "bounds": [
+        138.559,
+        100.122,
+        139.165,
+        100.436
+      ],
+      "groundRangeSceneZ": [
+        0.6273616009295502,
+        0.6927785879835042
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2c4b7be16f22027c9f6d",
+      "sourceRef": "osm/way/1446649453",
+      "name": "",
+      "use": "commercial",
+      "reliefMeters": 6.509908005829246,
+      "bounds": [
+        148.434,
+        -51.821,
+        149.387,
+        -51.131
+      ],
+      "groundRangeSceneZ": [
+        0.6696324183558282,
+        0.7347314984141207
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ee2d9f9d73910c61fd70",
+      "sourceRef": "osm/way/838637442",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.480366582900476,
+      "bounds": [
+        -125.585,
+        5.535,
+        -125.076,
+        6.057
+      ],
+      "groundRangeSceneZ": [
+        0.35284649303348914,
+        0.4176501588624939
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/02b5a9c5385bf2e57750",
+      "sourceRef": "osm/way/640476099",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.461059191407159,
+      "bounds": [
+        109.093,
+        -76.122,
+        109.228,
+        -75.983
+      ],
+      "groundRangeSceneZ": [
+        0.5878913346773444,
+        0.652501926591416
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/dc4e080eb4b256ffa5a3",
+      "sourceRef": "osm/way/669637727",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.45493538592703,
+      "bounds": [
+        143.111,
+        30.293,
+        143.306,
+        30.487
+      ],
+      "groundRangeSceneZ": [
+        0.500259142609714,
+        0.5648084964689843
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/eb300858692634fd20c4",
+      "sourceRef": "osm/way/1001479634",
+      "name": "4栋",
+      "use": "apartments",
+      "reliefMeters": 6.411951558238904,
+      "bounds": [
+        175.114,
+        -54.875,
+        175.69,
+        -54.486
+      ],
+      "groundRangeSceneZ": [
+        0.5213714390870265,
+        0.5854909546694156
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/137273fe4a72626e5663",
+      "sourceRef": "osm/way/1412696175",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.403323592988697,
+      "bounds": [
+        34.752,
+        26.978,
+        36.973,
+        27.924
+      ],
+      "groundRangeSceneZ": [
+        0.86280599943938,
+        0.9268392353692669
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1027b3e8beb28a32895a",
+      "sourceRef": "osm/way/973004821",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 6.402145653635349,
+      "bounds": [
+        72.329,
+        -63.69,
+        73.102,
+        -63.225
+      ],
+      "groundRangeSceneZ": [
+        0.673828786444413,
+        0.7378502429807665
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1a0f7b845e7d254b2fd5",
+      "sourceRef": "osm/relation/12874257",
+      "name": "B栋",
+      "use": "school",
+      "reliefMeters": 6.3558567327600235,
+      "bounds": [
+        -14.883,
+        23.214,
+        -14.381,
+        23.701
+      ],
+      "groundRangeSceneZ": [
+        0.5441047059337933,
+        0.6076632732613936
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d4f18f10f64329402c6b",
+      "sourceRef": "osm/relation/19224085",
+      "name": "D座",
+      "use": "commercial",
+      "reliefMeters": 6.35028581867394,
+      "bounds": [
+        81.95,
+        -76.531,
+        84.625,
+        -75.419
+      ],
+      "groundRangeSceneZ": [
+        0.7605233504237567,
+        0.8240262086104961
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/61d10823155a9f81cb85",
+      "sourceRef": "osm/way/640020074",
+      "name": "智敏楼",
+      "use": "school",
+      "reliefMeters": 6.337740103082368,
+      "bounds": [
+        118.888,
+        1.939,
+        119.693,
+        2.267
+      ],
+      "groundRangeSceneZ": [
+        0.9342727134304867,
+        0.9976501144613104
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/26459503c3a7b77038fe",
+      "sourceRef": "osm/relation/20237812",
+      "name": "教学楼",
+      "use": "university",
+      "reliefMeters": 6.302648342119044,
+      "bounds": [
+        141.773,
+        -22.223,
+        143.81,
+        -21.6
+      ],
+      "groundRangeSceneZ": [
+        0.584489297210792,
+        0.6475157806319825
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c614e829c8018feff217",
+      "sourceRef": "osm/way/923428930",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 6.291994896144759,
+      "bounds": [
+        39.385,
+        -13.359,
+        39.752,
+        -13.127
+      ],
+      "groundRangeSceneZ": [
+        0.3967855157386637,
+        0.4597054647001113
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b29b57ec694d802dbfe4",
+      "sourceRef": "osm/way/1030593502",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 6.285639035861834,
+      "bounds": [
+        175.761,
+        -81.444,
+        175.948,
+        -81.344
+      ],
+      "groundRangeSceneZ": [
+        0.5821599631766503,
+        0.6450163535352686
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/5b9e8daa9b52b89772bc",
+      "sourceRef": "osm/way/1032824608",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.267223276958767,
+      "bounds": [
+        139.786,
+        -55.798,
+        140.711,
+        -55.014
+      ],
+      "groundRangeSceneZ": [
+        0.573217586083536,
+        0.6358898188531237
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4a993f499a1edef29177",
+      "sourceRef": "osm/way/972726338",
+      "name": "",
+      "use": "commercial",
+      "reliefMeters": 6.265785606248642,
+      "bounds": [
+        77.883,
+        -67.134,
+        78.432,
+        -66.133
+      ],
+      "groundRangeSceneZ": [
+        0.7395714267949809,
+        0.8022292828574673
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/05ce9c2185d358f814d6",
+      "sourceRef": "osm/way/837956790",
+      "name": "艺术中心楼",
+      "use": "yes",
+      "reliefMeters": 6.265664447509156,
+      "bounds": [
+        89.847,
+        -108.427,
+        90.474,
+        -107.627
+      ],
+      "groundRangeSceneZ": [
+        0.6171815159697998,
+        0.6798381604448913
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/35cd53812727b9f41ad8",
+      "sourceRef": "osm/way/669637721",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.234506165293396,
+      "bounds": [
+        142.993,
+        31.83,
+        143.127,
+        31.965
+      ],
+      "groundRangeSceneZ": [
+        0.48704673920902763,
+        0.5493918008619616
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/468e88667ef61ff0b7df",
+      "sourceRef": "osm/way/991424095",
+      "name": "56栋",
+      "use": "apartments",
+      "reliefMeters": 6.203770884224014,
+      "bounds": [
+        161.917,
+        -44.41,
+        162.219,
+        -44.104
+      ],
+      "groundRangeSceneZ": [
+        0.6514294835677461,
+        0.7134671924099862
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/6389c73b86e13305f4e4",
+      "sourceRef": "osm/way/1001507586",
+      "name": "8栋",
+      "use": "apartments",
+      "reliefMeters": 6.174512938289567,
+      "bounds": [
+        173.305,
+        -81.153,
+        173.612,
+        -80.861
+      ],
+      "groundRangeSceneZ": [
+        0.5640722836914556,
+        0.6258174130743512
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "greenland-commercial/office-0-1",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "reliefMeters": 6.15906263092274,
+      "bounds": [
+        71.508,
+        10.029,
+        72.033,
+        10.401
+      ],
+      "groundRangeSceneZ": [
+        0.7028227392899848,
+        0.7644133655992122
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/6ba8b2a2465f053234ef",
+      "sourceRef": "osm/relation/15688504",
+      "name": "兴工金桥市场",
+      "use": "yes",
+      "reliefMeters": 6.1557536118093115,
+      "bounds": [
+        60.859,
+        56.122,
+        61.764,
+        56.804
+      ],
+      "groundRangeSceneZ": [
+        0.9107676470637935,
+        0.9723251831818867
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1e21c856bc5b3e198b7a",
+      "sourceRef": "osm/way/1504908028",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.076241072701993,
+      "bounds": [
+        63.386,
+        -106.493,
+        64.236,
+        -105.72
+      ],
+      "groundRangeSceneZ": [
+        0.7779929357906816,
+        0.8387553465177016
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/491d6857d70e5e9448cb",
+      "sourceRef": "osm/way/1001773988",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 6.064772388648265,
+      "bounds": [
+        165.145,
+        -43.283,
+        166.187,
+        -41.74
+      ],
+      "groundRangeSceneZ": [
+        0.5618662393495448,
+        0.6225139632360275
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/150d0812f2c434858c32",
+      "sourceRef": "osm/way/477440170",
+      "name": "国贸购物中心",
+      "use": "yes",
+      "reliefMeters": 6.049344804542778,
+      "bounds": [
+        19.969,
+        -9.856,
+        21.453,
+        -9.047
+      ],
+      "groundRangeSceneZ": [
+        0.49469823326090734,
+        0.5551916813063351
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e3d58e49ecfad050c32f",
+      "sourceRef": "osm/way/923428938",
+      "name": "",
+      "use": "residential",
+      "reliefMeters": 6.044069638072447,
+      "bounds": [
+        39.771,
+        -12.232,
+        40.138,
+        -12.0
+      ],
+      "groundRangeSceneZ": [
+        0.41074957937838263,
+        0.4711902757591071
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/90b39ea3136d10a2abbf",
+      "sourceRef": "osm/way/1030593503",
+      "name": "4栋",
+      "use": "apartments",
+      "reliefMeters": 6.040406838757839,
+      "bounds": [
+        175.583,
+        -81.445,
+        175.762,
+        -81.345
+      ],
+      "groundRangeSceneZ": [
+        0.5679949850930957,
+        0.628399053480674
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/10de280297bbdb2cea53",
+      "sourceRef": "osm/way/1001507585",
+      "name": "5栋",
+      "use": "apartments",
+      "reliefMeters": 6.012390408141499,
+      "bounds": [
+        174.234,
+        -81.346,
+        174.541,
+        -81.055
+      ],
+      "groundRangeSceneZ": [
+        0.5476966632550209,
+        0.6078205673364359
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/639aae44f2b251ba9b78",
+      "sourceRef": "osm/way/839721633",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 6.009707522567709,
+      "bounds": [
+        115.718,
+        -65.603,
+        116.161,
+        -65.107
+      ],
+      "groundRangeSceneZ": [
+        0.6740037597139512,
+        0.7341008349396283
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/27e5f25c71dbad5a2e81",
+      "sourceRef": "osm/way/1481745720",
+      "name": "绿都商厦",
+      "use": "yes",
+      "reliefMeters": 5.983145660841571,
+      "bounds": [
+        13.989,
+        -9.639,
+        14.93,
+        -9.111
+      ],
+      "groundRangeSceneZ": [
+        0.5249455242152246,
+        0.5847769808236403
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4afa4d549d5d0b38b86f",
+      "sourceRef": "osm/way/838558129",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.958288790273025,
+      "bounds": [
+        122.499,
+        -0.91,
+        123.438,
+        -0.198
+      ],
+      "groundRangeSceneZ": [
+        0.7019827973694865,
+        0.7615656852722168
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0be67d9a79b1f20769c6",
+      "sourceRef": "osm/way/652002463",
+      "name": "青秀山西门",
+      "use": "yes",
+      "reliefMeters": 5.910299755263981,
+      "bounds": [
+        67.956,
+        -33.344,
+        68.603,
+        -32.245
+      ],
+      "groundRangeSceneZ": [
+        1.0722770933423078,
+        1.1313800908949476
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/11f284d688a35cd4bd28",
+      "sourceRef": "osm/way/1030628182",
+      "name": "B17",
+      "use": "apartments",
+      "reliefMeters": 5.8944621320623725,
+      "bounds": [
+        132.928,
+        -54.977,
+        133.281,
+        -54.637
+      ],
+      "groundRangeSceneZ": [
+        0.6246350455898586,
+        0.6835796669104823
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7723afa1342d32c6cbf0",
+      "sourceRef": "osm/way/1454475764",
+      "name": "A1",
+      "use": "office",
+      "reliefMeters": 5.890272994774648,
+      "bounds": [
+        99.816,
+        -25.33,
+        100.402,
+        -24.739
+      ],
+      "groundRangeSceneZ": [
+        1.1916818390788837,
+        1.2505845690266302
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/19331847b3a0a0801742",
+      "sourceRef": "osm/way/1003489827",
+      "name": "食堂与室内体育中心",
+      "use": "yes",
+      "reliefMeters": 5.872451153457314,
+      "bounds": [
+        173.232,
+        -46.512,
+        173.953,
+        -45.703
+      ],
+      "groundRangeSceneZ": [
+        0.6983915205754347,
+        0.7571160321100079
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b4bb1e0a08227464e240",
+      "sourceRef": "osm/way/1030628175",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.830121531914134,
+      "bounds": [
+        131.659,
+        -54.591,
+        131.91,
+        -54.422
+      ],
+      "groundRangeSceneZ": [
+        0.5611908024477126,
+        0.6194920177668539
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/90a598d19a3307166229",
+      "sourceRef": "osm/way/839698882",
+      "name": "南宁百货大楼北楼",
+      "use": "yes",
+      "reliefMeters": 5.825281026856338,
+      "bounds": [
+        15.819,
+        -5.498,
+        16.737,
+        -4.36
+      ],
+      "groundRangeSceneZ": [
+        0.48358444499512626,
+        0.5418372552636896
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4fdd4fe530937cb8a3f1",
+      "sourceRef": "osm/way/1001479642",
+      "name": "16栋",
+      "use": "apartments",
+      "reliefMeters": 5.8228295076744985,
+      "bounds": [
+        178.929,
+        -53.38,
+        179.578,
+        -52.923
+      ],
+      "groundRangeSceneZ": [
+        0.5649463264990047,
+        0.6231746215757497
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c6e20846dee4ff63082e",
+      "sourceRef": "osm/way/1032824607",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.807297900679931,
+      "bounds": [
+        140.493,
+        -56.8,
+        141.419,
+        -55.983
+      ],
+      "groundRangeSceneZ": [
+        0.6424866826966218,
+        0.7005596617034211
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/09f7f0c05b7eaa321994",
+      "sourceRef": "osm/relation/12874255",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 5.803407258189397,
+      "bounds": [
+        -12.37,
+        34.456,
+        -10.774,
+        35.146
+      ],
+      "groundRangeSceneZ": [
+        0.5132977424363316,
+        0.5713318150182256
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/986ce68a1c478c2a7ead",
+      "sourceRef": "osm/way/1053204547",
+      "name": "南宁百货大楼",
+      "use": "yes",
+      "reliefMeters": 5.795320695265438,
+      "bounds": [
+        -14.628,
+        11.293,
+        -13.699,
+        12.025
+      ],
+      "groundRangeSceneZ": [
+        0.4673042990963211,
+        0.5252575060489755
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d046cf251fac3521bf97",
+      "sourceRef": "osm/relation/20598272",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.773633119342492,
+      "bounds": [
+        63.759,
+        -106.889,
+        64.484,
+        -106.165
+      ],
+      "groundRangeSceneZ": [
+        0.7972245375240714,
+        0.8549608687174963
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7b670be0f2b98b6c1766",
+      "sourceRef": "osm/relation/19726877",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 5.769303276085536,
+      "bounds": [
+        110.146,
+        -13.13,
+        111.003,
+        -12.285
+      ],
+      "groundRangeSceneZ": [
+        1.0358291610744823,
+        1.0935221938353377
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/61e87c1721b0cb0a624a",
+      "sourceRef": "osm/way/1487720505",
+      "name": "20号楼",
+      "use": "hotel",
+      "reliefMeters": 5.758360734624635,
+      "bounds": [
+        58.916,
+        -44.703,
+        59.462,
+        -44.295
+      ],
+      "groundRangeSceneZ": [
+        0.6208666585515914,
+        0.6784502658978377
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/d33722e57eddc70403c6",
+      "sourceRef": "osm/way/1427562898",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.742958734834813,
+      "bounds": [
+        32.531,
+        -87.704,
+        32.874,
+        -87.41
+      ],
+      "groundRangeSceneZ": [
+        1.2646974991518811,
+        1.3221270865002293
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/cffd9b2eb7534ff2b63e",
+      "sourceRef": "osm/way/1030628183",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.698182525368534,
+      "bounds": [
+        133.279,
+        -54.989,
+        133.611,
+        -54.651
+      ],
+      "groundRangeSceneZ": [
+        0.6054662420223895,
+        0.6624480672760749
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ff00a999a6e871696f1a",
+      "sourceRef": "osm/way/838541837",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.695317516887677,
+      "bounds": [
+        138.732,
+        98.455,
+        139.337,
+        98.77
+      ],
+      "groundRangeSceneZ": [
+        0.6408413465148026,
+        0.6977945216836794
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/063eaa961e27791e445c",
+      "sourceRef": "osm/way/1030593497",
+      "name": "6栋",
+      "use": "apartments",
+      "reliefMeters": 5.664568781098467,
+      "bounds": [
+        175.657,
+        -80.846,
+        175.837,
+        -80.746
+      ],
+      "groundRangeSceneZ": [
+        0.5368593217648083,
+        0.593505009575793
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/9c44faa87986f467e07a",
+      "sourceRef": "osm/way/1442866651",
+      "name": "行政楼",
+      "use": "office",
+      "reliefMeters": 5.639698243655289,
+      "bounds": [
+        110.399,
+        -19.648,
+        110.857,
+        -19.199
+      ],
+      "groundRangeSceneZ": [
+        1.0218028028713562,
+        1.078199785307909
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/be305130619bc4361b8c",
+      "sourceRef": "osm/way/915133526",
+      "name": "食堂",
+      "use": "yes",
+      "reliefMeters": 5.603299180015986,
+      "bounds": [
+        55.36,
+        -24.89,
+        55.821,
+        -24.43
+      ],
+      "groundRangeSceneZ": [
+        0.42802493240567685,
+        0.4840579242058367
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b5d2ae3f41361a5abb07",
+      "sourceRef": "osm/way/695833876",
+      "name": "广西花鸟市场",
+      "use": "commercial",
+      "reliefMeters": 5.599534024748731,
+      "bounds": [
+        68.515,
+        38.291,
+        68.972,
+        39.261
+      ],
+      "groundRangeSceneZ": [
+        0.7174693739034721,
+        0.7734647141509594
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fe424e44269905633812",
+      "sourceRef": "osm/way/1006681832",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 5.571410297074131,
+      "bounds": [
+        80.358,
+        -53.117,
+        80.72,
+        -52.614
+      ],
+      "groundRangeSceneZ": [
+        0.4802734994190416,
+        0.5359876023897829
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4d7bc2d0597dfd6addaf",
+      "sourceRef": "osm/way/669637722",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.559320236821996,
+      "bounds": [
+        142.983,
+        31.634,
+        143.118,
+        31.768
+      ],
+      "groundRangeSceneZ": [
+        0.4838770695096084,
+        0.5394702718778284
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bc75405972b0ddbace47",
+      "sourceRef": "osm/way/1556675787",
+      "name": "12#",
+      "use": "residential",
+      "reliefMeters": 5.547671527576448,
+      "bounds": [
+        45.931,
+        -106.215,
+        46.289,
+        -105.822
+      ],
+      "groundRangeSceneZ": [
+        0.9539693496443391,
+        1.0094460649201036
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a7286be97dd5b54cd0a3",
+      "sourceRef": "osm/relation/19360273",
+      "name": "慧弘楼(行政楼)",
+      "use": "school",
+      "reliefMeters": 5.498547395302511,
+      "bounds": [
+        120.341,
+        3.154,
+        121.056,
+        3.654
+      ],
+      "groundRangeSceneZ": [
+        0.8792774332293845,
+        0.9342629071824096
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/94f15f581e0afbf52667",
+      "sourceRef": "osm/way/1001752212",
+      "name": "住院楼",
+      "use": "hospital",
+      "reliefMeters": 5.496714615817666,
+      "bounds": [
+        172.66,
+        -49.213,
+        173.315,
+        -48.803
+      ],
+      "groundRangeSceneZ": [
+        0.5388592751532713,
+        0.5938264213114479
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e4c7d3dad55cff5c4cc8",
+      "sourceRef": "osm/way/838468089",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.483363747693193,
+      "bounds": [
+        -29.926,
+        -79.011,
+        -28.572,
+        -77.104
+      ],
+      "groundRangeSceneZ": [
+        0.7827205657958983,
+        0.8375542032728303
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b61a03e1fe07401526dd",
+      "sourceRef": "osm/way/1360095607",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 5.469269593685588,
+      "bounds": [
+        146.607,
+        -58.988,
+        147.155,
+        -57.286
+      ],
+      "groundRangeSceneZ": [
+        0.7811416614674256,
+        0.8358343574042815
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4ab73abd9f8f1396be0e",
+      "sourceRef": "osm/way/915110715",
+      "name": "",
+      "use": "retail",
+      "reliefMeters": 5.4590072636980675,
+      "bounds": [
+        17.594,
+        -7.23,
+        18.651,
+        -5.518
+      ],
+      "groundRangeSceneZ": [
+        0.5635068416595457,
+        0.6180969142965264
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/af80ad61678723d2cb3f",
+      "sourceRef": "osm/way/1355971506",
+      "name": "10栋",
+      "use": "apartments",
+      "reliefMeters": 5.45467757573217,
+      "bounds": [
+        139.59,
+        -59.775,
+        139.922,
+        -59.541
+      ],
+      "groundRangeSceneZ": [
+        0.6782324297291709,
+        0.7327792054864926
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/018f9c70a51490f9371a",
+      "sourceRef": "osm/way/1030628176",
+      "name": "B8",
+      "use": "apartments",
+      "reliefMeters": 5.432972588466001,
+      "bounds": [
+        132.297,
+        -54.948,
+        132.576,
+        -54.775
+      ],
+      "groundRangeSceneZ": [
+        0.644497924284785,
+        0.698827650169445
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/2b8edb3aa6b265d1e6ba",
+      "sourceRef": "osm/way/1001479641",
+      "name": "15栋",
+      "use": "apartments",
+      "reliefMeters": 5.418474216824087,
+      "bounds": [
+        178.221,
+        -53.648,
+        178.87,
+        -53.19
+      ],
+      "groundRangeSceneZ": [
+        0.5692442804752584,
+        0.6234290226434993
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b3380bd393ba8631e0d8",
+      "sourceRef": "osm/relation/20369638",
+      "name": "农林动教学科研实验中心",
+      "use": "university",
+      "reliefMeters": 5.413726795339491,
+      "bounds": [
+        -11.408,
+        29.696,
+        -9.575,
+        30.838
+      ],
+      "groundRangeSceneZ": [
+        0.45486454597006754,
+        0.5090018139234624
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/300ef860800c2230406d",
+      "sourceRef": "osm/way/1030593491",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.388226893583958,
+      "bounds": [
+        175.456,
+        -81.101,
+        175.644,
+        -81.001
+      ],
+      "groundRangeSceneZ": [
+        0.5508778527083651,
+        0.6047601216442047
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e09be52d3ad1cefb8da7",
+      "sourceRef": "osm/way/669637726",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.37262739785227,
+      "bounds": [
+        143.015,
+        30.577,
+        143.209,
+        30.772
+      ],
+      "groundRangeSceneZ": [
+        0.4876212858035025,
+        0.5413475597820252
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/ac595e0ff0fed99f8f3d",
+      "sourceRef": "osm/way/427982541",
+      "name": "南宁市公安局屯里站派出所",
+      "use": "yes",
+      "reliefMeters": 5.3507736441137155,
+      "bounds": [
+        131.692,
+        3.726,
+        132.083,
+        3.949
+      ],
+      "groundRangeSceneZ": [
+        0.5420920277431449,
+        0.5955997641842821
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7df164b1094230e1c93a",
+      "sourceRef": "osm/way/1516356796",
+      "name": "",
+      "use": "commercial",
+      "reliefMeters": 5.3495793102588785,
+      "bounds": [
+        79.232,
+        -75.199,
+        80.073,
+        -74.168
+      ],
+      "groundRangeSceneZ": [
+        0.8693682181430757,
+        0.9228640112456645
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/7e0e137430c113ffd61d",
+      "sourceRef": "osm/way/1028986776",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.304970568406109,
+      "bounds": [
+        133.153,
+        -67.215,
+        133.484,
+        -66.906
+      ],
+      "groundRangeSceneZ": [
+        0.7680074765762894,
+        0.8210571822603505
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b969e641eef4eeab4e40",
+      "sourceRef": "osm/way/797539888",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.295982309415326,
+      "bounds": [
+        -18.625,
+        -63.69,
+        -18.116,
+        -63.067
+      ],
+      "groundRangeSceneZ": [
+        0.7828233248475831,
+        0.8357831479417364
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/46294fa0f5225204ce6d",
+      "sourceRef": "osm/way/1028986778",
+      "name": "D9",
+      "use": "apartments",
+      "reliefMeters": 5.291245091241059,
+      "bounds": [
+        131.938,
+        -69.279,
+        132.27,
+        -68.969
+      ],
+      "groundRangeSceneZ": [
+        0.6054010128617193,
+        0.6583134637741299
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/33b310b462393a8f0caa",
+      "sourceRef": "osm/way/1548738444",
+      "name": "中国-东盟医疗保健合作中心",
+      "use": "hospital",
+      "reliefMeters": 5.286353769264163,
+      "bounds": [
+        39.807,
+        -30.389,
+        40.803,
+        -29.906
+      ],
+      "groundRangeSceneZ": [
+        0.5061318266073029,
+        0.5589953642999446
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/420e9adfe378781e0fb0",
+      "sourceRef": "osm/relation/13453319",
+      "name": "行政楼",
+      "use": "office",
+      "reliefMeters": 5.277426604707092,
+      "bounds": [
+        149.843,
+        -85.227,
+        150.89,
+        -84.44
+      ],
+      "groundRangeSceneZ": [
+        0.44540446808762546,
+        0.4981787341346964
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/75a2cd3e06d4dbc412ea",
+      "sourceRef": "osm/way/1006512420",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.276600968294343,
+      "bounds": [
+        83.264,
+        -69.671,
+        83.868,
+        -69.082
+      ],
+      "groundRangeSceneZ": [
+        0.8262179027153982,
+        0.8789839123983416
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/45e5347506c437efcb3e",
+      "sourceRef": "osm/way/1006944583",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.273654771789365,
+      "bounds": [
+        69.23,
+        4.437,
+        69.677,
+        4.883
+      ],
+      "groundRangeSceneZ": [
+        0.4056579547124741,
+        0.4583945024303678
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/f322a08b57ce53f2b928",
+      "sourceRef": "osm/relation/13348894",
+      "name": "",
+      "use": "public",
+      "reliefMeters": 5.258787768527773,
+      "bounds": [
+        182.795,
+        -113.598,
+        183.332,
+        -112.982
+      ],
+      "groundRangeSceneZ": [
+        0.48077903244825304,
+        0.5333669101335308
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/be62160b460a426f5290",
+      "sourceRef": "osm/way/991252348",
+      "name": "",
+      "use": "construction",
+      "reliefMeters": 5.232999211170952,
+      "bounds": [
+        184.321,
+        -46.45,
+        184.685,
+        -45.582
+      ],
+      "groundRangeSceneZ": [
+        0.5230638060280501,
+        0.5753937981397597
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a26f34583093a70575b6",
+      "sourceRef": "osm/way/1030628166",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.230460124646541,
+      "bounds": [
+        132.313,
+        -52.533,
+        132.601,
+        -52.275
+      ],
+      "groundRangeSceneZ": [
+        0.5347546912645269,
+        0.5870592925109923
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/37d55fce9a61f27dd29f",
+      "sourceRef": "osm/relation/20510974",
+      "name": "",
+      "use": "dormitory",
+      "reliefMeters": 5.197223900934345,
+      "bounds": [
+        -5.971,
+        19.131,
+        -5.247,
+        19.556
+      ],
+      "groundRangeSceneZ": [
+        0.5276781779741702,
+        0.5796504169835136
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/386ecaadf8f9a876857f",
+      "sourceRef": "osm/way/1030593498",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.190624322057857,
+      "bounds": [
+        175.471,
+        -80.848,
+        175.658,
+        -80.749
+      ],
+      "groundRangeSceneZ": [
+        0.5381364192940534,
+        0.590042662514632
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/4ef97f48b2cac912c460",
+      "sourceRef": "osm/way/991424094",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.177007542821954,
+      "bounds": [
+        161.641,
+        -44.46,
+        161.929,
+        -44.186
+      ],
+      "groundRangeSceneZ": [
+        0.6917080008465746,
+        0.7434780762747941
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/47efad412a6c73415b80",
+      "sourceRef": "osm/way/778713777",
+      "name": "11号楼",
+      "use": "residential",
+      "reliefMeters": 5.175220825286103,
+      "bounds": [
+        -21.594,
+        -9.193,
+        -20.677,
+        -8.071
+      ],
+      "groundRangeSceneZ": [
+        0.4398120008142578,
+        0.49156420906711884
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8691d83906ccab63992b",
+      "sourceRef": "osm/way/1028949711",
+      "name": "B12",
+      "use": "apartments",
+      "reliefMeters": 5.168557292079079,
+      "bounds": [
+        132.013,
+        -52.533,
+        132.314,
+        -52.27
+      ],
+      "groundRangeSceneZ": [
+        0.5343266755637712,
+        0.586012248484562
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8dd159c8bbc930f0b896",
+      "sourceRef": "osm/relation/13487807",
+      "name": "",
+      "use": "service",
+      "reliefMeters": 5.1649394580080665,
+      "bounds": [
+        70.841,
+        3.48,
+        71.303,
+        3.942
+      ],
+      "groundRangeSceneZ": [
+        0.3882544733944544,
+        0.43990386797453507
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/e06b18673df0c4a991e5",
+      "sourceRef": "osm/way/1028949716",
+      "name": "B7",
+      "use": "apartments",
+      "reliefMeters": 5.150996471362745,
+      "bounds": [
+        131.592,
+        -54.942,
+        131.901,
+        -54.786
+      ],
+      "groundRangeSceneZ": [
+        0.6183297925171836,
+        0.669839757230811
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/c44f4a584c3bdc507a58",
+      "sourceRef": "osm/way/640020063",
+      "name": "南宁二中国际部",
+      "use": "school",
+      "reliefMeters": 5.135186267707859,
+      "bounds": [
+        121.443,
+        0.986,
+        122.144,
+        1.487
+      ],
+      "groundRangeSceneZ": [
+        0.8343887345912249,
+        0.8857405972683035
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/b4b712b3e6b7c7a161d5",
+      "sourceRef": "osm/way/1008101420",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.120137138539349,
+      "bounds": [
+        18.064,
+        -7.187,
+        18.605,
+        -6.801
+      ],
+      "groundRangeSceneZ": [
+        0.5638085679469502,
+        0.6150099393323437
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/82d9b78bffec5f754a63",
+      "sourceRef": "osm/way/760170131",
+      "name": "",
+      "use": "school",
+      "reliefMeters": 5.118031304850257,
+      "bounds": [
+        -10.916,
+        26.625,
+        -10.65,
+        26.744
+      ],
+      "groundRangeSceneZ": [
+        0.5220173471307361,
+        0.5731976601792387
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/0aed1262ec18ccd43698",
+      "sourceRef": "osm/way/477439715",
+      "name": "印象城D座",
+      "use": "retail",
+      "reliefMeters": 5.117865600364957,
+      "bounds": [
+        18.424,
+        -8.398,
+        19.444,
+        -7.637
+      ],
+      "groundRangeSceneZ": [
+        0.5715510529148122,
+        0.6227297089184618
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8f2325df242ba1d8f9e7",
+      "sourceRef": "osm/way/1486331151",
+      "name": "",
+      "use": "yes",
+      "reliefMeters": 5.101923119180896,
+      "bounds": [
+        66.389,
+        -88.384,
+        66.907,
+        -88.093
+      ],
+      "groundRangeSceneZ": [
+        0.7155146771571843,
+        0.7665339083489933
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/1e898fa0275d5787aac4",
+      "sourceRef": "osm/way/1006681834",
+      "name": "",
+      "use": "roof",
+      "reliefMeters": 5.0936768634151806,
+      "bounds": [
+        79.917,
+        -52.735,
+        80.733,
+        -51.843
+      ],
+      "groundRangeSceneZ": [
+        0.48333411559619205,
+        0.5342708842303439
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/fae340d12e25299e67f6",
+      "sourceRef": "osm/way/808814569",
+      "name": "",
+      "use": "transportation",
+      "reliefMeters": 5.08951130345896,
+      "bounds": [
+        83.528,
+        46.305,
+        84.74,
+        47.266
+      ],
+      "groundRangeSceneZ": [
+        0.6875440296694206,
+        0.7384391427040102
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/efc625b0a41716a70506",
+      "sourceRef": "osm/way/1206956301",
+      "name": "8栋",
+      "use": "apartments",
+      "reliefMeters": 5.068117429489227,
+      "bounds": [
+        182.743,
+        -94.347,
+        183.061,
+        -94.114
+      ],
+      "groundRangeSceneZ": [
+        0.3718301242992741,
+        0.42251129859416636
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/89ec7c52b44957e76452",
+      "sourceRef": "osm/relation/13295994",
+      "name": "行政楼",
+      "use": "school",
+      "reliefMeters": 5.0624616931749244,
+      "bounds": [
+        182.028,
+        -70.451,
+        182.549,
+        -70.122
+      ],
+      "groundRangeSceneZ": [
+        0.4081469607293151,
+        0.45877157766106436
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/a65960f56d7d35f5674e",
+      "sourceRef": "osm/way/1427562908",
+      "name": "",
+      "use": "apartments",
+      "reliefMeters": 5.054224225237092,
+      "bounds": [
+        30.618,
+        -87.467,
+        31.019,
+        -87.2
+      ],
+      "groundRangeSceneZ": [
+        1.095814800670647,
+        1.1463570429230179
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/8c6cdd9617a7d1de1dd5",
+      "sourceRef": "osm/way/1030628188",
+      "name": "B13",
+      "use": "apartments",
+      "reliefMeters": 5.00534610018315,
+      "bounds": [
+        132.682,
+        -52.543,
+        133.053,
+        -52.253
+      ],
+      "groundRangeSceneZ": [
+        0.5351770030619045,
+        0.585230464063736
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    },
+    {
+      "id": "osm/bce0c10a3f24e16fc765",
+      "sourceRef": "osm/way/1487720492",
+      "name": "1号楼",
+      "use": "yes",
+      "reliefMeters": 5.004536855723352,
+      "bounds": [
+        64.853,
+        -36.084,
+        65.375,
+        -35.479
+      ],
+      "groundRangeSceneZ": [
+        0.904715240418847,
+        0.9547606089760805
+      ],
+      "status": "awaiting full-city visual review; terrain coverage alone is not site-design acceptance"
+    }
+  ]
+}

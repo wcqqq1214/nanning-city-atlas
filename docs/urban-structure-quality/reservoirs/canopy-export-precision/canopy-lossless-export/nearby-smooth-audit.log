@@ -1,0 +1,45 @@
+{
+  "passed": false,
+  "geometry": {
+    "triangles": 22011,
+    "maximumVertexDisplacementMeters": 0.0,
+    "maximumCornerNormalAngleDegrees": 0.22740406209301045,
+    "undefinedSourceCornerNormals": 2,
+    "positionLimitMeters": 0,
+    "normalLimitDegrees": 0.5,
+    "bijectiveFaceMatch": true,
+    "materialsAndWindingPreserved": true
+  },
+  "clearance": {
+    "passed": false,
+    "scope": "actual decoded canopy against the supplied final terrain triangles",
+    "canopyFaces": 22011,
+    "terrainFaces": 316384,
+    "overlapPairsChecked": 60514,
+    "minimumRequiredClearanceMeters": 9.5,
+    "minimumClearanceMeters": 9.61121421555653,
+    "failedClearanceFaces": 0,
+    "failureExamples": [],
+    "failedClearanceFaceIndices": [],
+    "verticalCanopyFacesChecked": 44,
+    "failedVerticalCanopyFaces": [],
+    "verticalFacesWithUncoveredEdges": [
+      2374,
+      2376,
+      2377,
+      15203,
+      15388,
+      15393,
+      15395
+    ],
+    "zeroAreaCanopyFaces": 48,
+    "missingCoverageSquareMeters": 458.52491191673727,
+    "sumOfPerFaceMissingCoverageSquareMeters": 458.5249120843882,
+    "coverageToleranceMeters": 0.002,
+    "coverageOutsideToleranceSquareMeters": 318.47740093290525,
+    "maximumFaceMissingCoverageSquareMeters": 2.493600645546448,
+    "facesMissingMoreThan0_01SquareMeters": 706,
+    "ignoredCanopyVerticalOrDegenerateFaces": 92,
+    "ignoredGroundVerticalOrDegenerateFaces": 22192
+  }
+}

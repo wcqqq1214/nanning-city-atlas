@@ -1,0 +1,49 @@
+{
+  "mainAndStagingSourcesEqual": true,
+  "files": [
+    {
+      "path": "blender/reservoir_runtime.py",
+      "sha256": "1e95d0d23995ba4b1803eff0cd6ec77e98b5d955ad055f4adb10b715c382c6c4"
+    },
+    {
+      "path": "blender/reservoir_terrain.py",
+      "sha256": "9868e83b898743c3f0c6c03c456e62060c017f469bd4f73c91d2391b733e7a64"
+    },
+    {
+      "path": "blender/terrain_mesh.py",
+      "sha256": "26184f0743f20ddf9f0de8f91ded0d00f48c347e77c7e6ab661386c683ff7b9a"
+    },
+    {
+      "path": "blender/build_city.py",
+      "sha256": "e7af0f7d2759dc1781f8e42394bdc1df43f08f1b948e22fdb206c8d04c39696e"
+    },
+    {
+      "path": "blender/forest_canopy.py",
+      "sha256": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7"
+    },
+    {
+      "path": "blender/gltf_export.py",
+      "sha256": "9bbacf1c4a30a38a24d35aade58feb3d743c5d8d603266bd08928ec0cc3b005d"
+    },
+    {
+      "path": "blender/ground_roads.py",
+      "sha256": "9fe7753c571d553a4d1bc6cb7f58044e5e8238d6694abaa82f2f25e47792d33e"
+    },
+    {
+      "path": "blender/road_inputs.py",
+      "sha256": "718850951a10df2f2a6a241982b764f0bd1a6abf19fdf7b5d6c7916ee5dd39bc"
+    },
+    {
+      "path": "blender/terrain_context.py",
+      "sha256": "9627dcac29cf00c9a2a434f84ce1e0282c7f879d0a37d9fad442b74be4ccfb0e"
+    },
+    {
+      "path": "scripts/prepare_ground_roads.py",
+      "sha256": "39e6344d67b97841c1124181caa106b6d280a75a1e41bf34af7e1a3b4c996d3e"
+    },
+    {
+      "path": "scripts/prepare_reservoir_terrain.py",
+      "sha256": "036aa63538bf68ab162f1b103413c2c9c93e44d8d9f6f16506c2ef5a11d7ca4c"
+    }
+  ]
+}

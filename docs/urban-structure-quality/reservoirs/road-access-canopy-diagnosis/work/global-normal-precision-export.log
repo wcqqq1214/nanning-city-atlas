@@ -1,0 +1,383 @@
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+14:48:06 | INFO: Starting glTF 2.0 export
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_0
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_1
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_2
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_0
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_1
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_2
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_0
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_1
+14:48:06 | INFO: Primitives created: 2
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_2
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_3
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_0
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_1
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_2
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_3
+14:48:06 | INFO: Primitives created: 2
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_0
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_1
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_2
+14:48:06 | INFO: Primitives created: 3
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_0_0.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_0_1.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_0_2.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_1_0.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_1_1.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_1_2.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_2_0.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_2_1.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_2_2.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_2_3.
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 553 vertices, 1635 indices, raw size: 16542, encoded size: 13522, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2081 vertices, 6639 indices, raw size: 63174, encoded size: 50606, compression ratio: 1.25
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 646 vertices, 1941 indices, raw size: 19386, encoded size: 15791, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 517 vertices, 1449 indices, raw size: 15234, encoded size: 12634, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1133 vertices, 3564 indices, raw size: 34248, encoded size: 27604, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 276 vertices, 735 indices, raw size: 8094, encoded size: 6765, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 11 vertices, 15 indices, raw size: 294, encoded size: 312, compression ratio: 0.94
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 127 vertices, 417 indices, raw size: 3882, encoded size: 3146, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 27 vertices, 81 indices, raw size: 810, encoded size: 705, compression ratio: 1.15
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1995 vertices, 6102 indices, raw size: 59964, encoded size: 48473, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 3945 vertices, 14640 indices, raw size: 123624, encoded size: 95729, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1580 vertices, 4962 indices, raw size: 47748, encoded size: 38416, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 198 vertices, 579 indices, raw size: 5910, encoded size: 4879, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 449 vertices, 1338 indices, raw size: 13452, encoded size: 10998, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 174 vertices, 453 indices, raw size: 5082, encoded size: 4283, compression ratio: 1.19
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 27 vertices, 66 indices, raw size: 780, encoded size: 703, compression ratio: 1.11
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 38 vertices, 99 indices, raw size: 1110, encoded size: 972, compression ratio: 1.14
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 62 vertices, 174 indices, raw size: 1836, encoded size: 1557, compression ratio: 1.18
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2922 vertices, 8649 indices, raw size: 87234, encoded size: 70940, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 7933 vertices, 27855 indices, raw size: 245622, encoded size: 192536, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2467 vertices, 7392 indices, raw size: 73728, encoded size: 59920, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 332 vertices, 954 indices, raw size: 9852, encoded size: 8141, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 37 vertices, 99 indices, raw size: 1086, encoded size: 947, compression ratio: 1.15
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 132 vertices, 369 indices, raw size: 3906, encoded size: 3262, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 304 vertices, 822 indices, raw size: 8916, encoded size: 7447, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 39 vertices, 99 indices, raw size: 1134, encoded size: 996, compression ratio: 1.14
+DracoEncoder | Preserve tri14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_3_0.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_3_1.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_3_2.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_3_3.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_4_0.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_4_1.
+14:48:06 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-detail_canopy_4_2.
+14:48:06 | INFO: Finished glTF 2.0 export in 0.05010199546813965 s
+
+nearby-detail 44015
+14:48:06 | INFO: Starting glTF 2.0 export
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_0
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_1
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_2
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_0
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_1
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_2
+14:48:06 | INFO: Primitives created: 1
+14:48:06 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_0
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_1
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_2
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_3
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_0
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_1
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_2
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_3
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_0
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_1
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_2
+14:48:07 | INFO: Primitives created: 1
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_0_0.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_0_1.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_0_2.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_1_0.
+angle order: no
+DracoEncoder | Encoded 184 vertices, 699 indices, raw size: 5814, encoded size: 4541, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 337 vertices, 975 indices, raw size: 10014, encoded size: 8256, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 87 vertices, 249 indices, raw size: 2538, encoded size: 2166, compression ratio: 1.17
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 403 vertices, 1212 indices, raw size: 12048, encoded size: 9868, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1267 vertices, 4116 indices, raw size: 38592, encoded size: 30867, compression ratio: 1.25
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 328 vertices, 921 indices, raw size: 9690, encoded size: 8034, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 630 vertices, 1701 indices, raw size: 18522, encoded size: 15380, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1951 vertices, 6249 indices, raw size: 59202, encoded size: 47481, compression ratio: 1.25
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 895 vertices, 2508 indices, raw size: 26472, encoded size: 21843, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 166 vertices, 477 indices, raw size: 4938, encoded size: 4092, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 736 vertices, 2271 indices, raw size: 22206, encoded size: 17991, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 178 vertices, 510 indices, raw size: 5292, encoded size: 4386, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 237 vertices, 741 indices, raw size: 7170, encoded size: 5827, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 405 vertices, 1290 indices, raw size: 12300, encoded size: 9923, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 30 vertices, 87 indices, raw size: 894, encoded size: 778, compression ratio: 1.15
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 59 vertices, 195 indices, raw size: 1806, encoded size: 1486, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 34 vertices, 87 indices, raw size: 990, encoded size: 874, compression ratio: 1.13
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 794 vertices, 2286 indices, raw size: 23580, encoded size: 19378, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2078 vertices, 7617 indices, raw size: 65058, encoded size: 50515, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 727 vertices, 2049 indices, raw size: 21522, encoded size: 17743, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 311 vertices, 981 indices, raw size: 9402, encoded size: 7627, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 689 vertices, 2490 indices, raw size: 21444, encoded size: 16854, compression ratio: 1.27
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 387 vertices, 1206 indices, raw size: 11700, encoded size: 9479, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2257 vertices, 7098 indices, raw size: 68340, encoded size: 54848, compression ratio: 1.25
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1022 vertices, 3198 indices, raw size: 30900, encoded size: 24925, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 123 vertices, 390 indices, raw size: 3732, encoded size: 3047, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2447 vertices, 9411 indices, raw size: 7747814:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_1_1.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_1_2.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_2_0.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_2_1.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_2_2.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_2_3.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_3_0.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_3_1.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_3_2.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_3_3.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_4_0.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_4_1.
+14:48:07 | INFO: Draco encoder: Encoding mesh Vegetation_nearby-smooth_canopy_4_2.
+14:48:07 | INFO: Finished glTF 2.0 export in 0.020042896270751953 s
+
+nearby-smooth 22235
+14:48:09 | INFO: Starting glTF 2.0 export
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_1
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_2
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_3
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_1_2
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_1_3
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_2_2
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | WARNING: Mesh Vegetation_all-detail_canopy_2_3 is not valid, and may be exported wrongly
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_2_3
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_3_3
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Extracting primitive: Vegetation_all-detail_canopy_4_3
+14:48:09 | INFO: Primitives created: 3
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_0_1.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_0_2.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_0_3.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_1_2.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_1_3.
+, encoded size: 59444, compression ratio: 1.30
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 481 vertices, 1506 indices, raw size: 14556, encoded size: 11809, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 83 vertices, 243 indices, raw size: 2478, encoded size: 2069, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 5903 vertices, 20502 indices, raw size: 182508, encoded size: 143311, compression ratio: 1.27
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 302 vertices, 888 indices, raw size: 9024, encoded size: 7406, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 264 vertices, 741 indices, raw size: 7794, encoded size: 6477, compression ratio: 1.20
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 335 vertices, 1014 indices, raw size: 10020, encoded size: 8212, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1121 vertices, 3540 indices, raw size: 33888, encoded size: 27328, compression ratio: 1.24
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2445 vertices, 8106 indices, raw size: 74652, encoded size: 59532, compression ratio: 1.25
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 753 vertices, 2295 indices, raw size: 22662, encoded size: 18407, compression ratio: 1.23
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 386 vertices, 1158 indices, raw size: 11580, encoded size: 9457, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 57 vertices, 183 indices, raw size: 1734, encoded size: 1437, compression ratio: 1.21
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 1329 vertices, 4755 indices, raw size: 41406, encoded size: 32363, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 439 vertices, 1677 indices, raw size: 13890, encoded size: 10773, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 13 vertices, 15 indices, raw size: 318, encoded size: 361, compression ratio: 0.88
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 51 vertices, 165 indices, raw size: 1506, encoded size: 1290, compression ratio: 1.17
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 10 vertices, 24 indices, raw size: 288, encoded size: 290, compression ratio: 0.99
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 7618 vertices, 25785 indices, raw size: 233706, encoded size: 184661, compression ratio: 1.27
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 17939 vertices, 73845 indices, raw size: 576354, encoded size: 434864, compression ratio: 1.33
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 7285 vertices, 24402 indices, raw size: 222780, encoded size: 176558, compression ratio: 1.26
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 3089 vertices, 11163 indices, raw size: 96318, encoded size: 74944, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 5852 vertices, 25365 indices, raw size: 190818, encoded size: 141846, compression ratio: 1.35
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 3618 vertices, 13458 indices, raw size: 113196, encoded size: 87775, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 6950 vertices, 24066 indices, raw size: 214020, encoded size: 168581, compression ratio: 1.27
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 16496 vertices, 66342 indices, raw size: 526788, encoded size: 400074, compression ratio: 1.32
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 6221 vertices, 21456 indices, raw size: 191328, encoded size: 150861, compression ratio: 1.27
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2989 vertices, 10062 indices, raw size: 91404, encoded size: 72547, compres14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_2_2.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_2_3.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_3_3.
+14:48:09 | INFO: Draco encoder: Encoding mesh Vegetation_all-detail_canopy_4_3.
+14:48:09 | INFO: Finished glTF 2.0 export in 0.08215498924255371 s
+
+all-detail 141757
+14:48:11 | INFO: Starting glTF 2.0 export
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_1
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_2
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_3
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_1_2
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_1_3
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_2_2
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | WARNING: Mesh Vegetation_all-smooth_canopy_2_3 is not valid, and may be exported wrongly
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_2_3
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_3_3
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_4_3
+14:48:11 | INFO: Primitives created: 1
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_0_1.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_0_2.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_0_3.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_1_2.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_1_3.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_2_2.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_2_3.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_3_3.
+14:48:11 | INFO: Draco encoder: Encoding mesh Vegetation_all-smooth_canopy_4_3.
+14:48:11 | INFO: Finished glTF 2.0 export in 0.040093183517456055 s
+
+all-smooth 68957
+sion ratio: 1.26
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 10915 vertices, 48120 indices, raw size: 356760, encoded size: 264527, compression ratio: 1.35
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 3888 vertices, 14088 indices, raw size: 120960, encoded size: 94336, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 180 vertices, 537 indices, raw size: 5394, encoded size: 4433, compression ratio: 1.22
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 400 vertices, 1506 indices, raw size: 12540, encoded size: 9815, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 166 vertices, 459 indices, raw size: 4878, encoded size: 4089, compression ratio: 1.19
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2983 vertices, 10752 indices, raw size: 92784, encoded size: 72426, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 7038 vertices, 29346 indices, raw size: 226956, encoded size: 170770, compression ratio: 1.33
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 2621 vertices, 9678 indices, raw size: 81924, encoded size: 63659, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 836 vertices, 3027 indices, raw size: 26022, encoded size: 20390, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 811 vertices, 3246 indices, raw size: 25884, encoded size: 19772, compression ratio: 1.31
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 608 vertices, 2370 indices, raw size: 19260, encoded size: 14890, compression ratio: 1.29
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 520 vertices, 2145 indices, raw size: 16722, encoded size: 12748, compression ratio: 1.31
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 652 vertices, 2700 indices, raw size: 20976, encoded size: 15972, compression ratio: 1.31
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 321 vertices, 1143 indices, raw size: 9918, encoded size: 7878, compression ratio: 1.26
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 31 vertices, 81 indices, raw size: 882, encoded size: 802, compression ratio: 1.10
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 10618 vertices, 50073 indices, raw size: 354690, encoded size: 257181, compression ratio: 1.38
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 3845 vertices, 18708 indices, raw size: 129552, encoded size: 93137, compression ratio: 1.39
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 15616 vertices, 71100 indices, raw size: 516024, encoded size: 378638, compression ratio: 1.36
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 7454 vertices, 35091 indices, raw size: 248190, encoded size: 180728, compression ratio: 1.37
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 219 vertices, 819 indices, raw size: 6894, encoded size: 5394, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 5736 vertices, 25989 indices, raw size: 189234, encoded size: 139141, compression ratio: 1.36
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 880 vertices, 3195 indices, raw size: 27462, encoded size: 21466, compression ratio: 1.28
+DracoEncoder | Preserve triangle order: no
+DracoEncoder | Encoded 411 vertices, 1803 indices, raw size: 13470, encoded size: 10093, compression ratio: 1.33
+
+Blender quit

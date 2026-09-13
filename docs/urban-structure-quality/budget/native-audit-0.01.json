@@ -1,0 +1,54 @@
+{
+  "status": "ambiguous overlapping height surfaces; paired differences are not reduction error",
+  "heightErrorInterpretationValid": false,
+  "beforeSelfOverlap": {
+    "overlappingFacePairs": 835,
+    "pairwiseOverlapSquareMeters": 2.1452748938906616,
+    "maximumOverlappingHeightDifferenceMeters": 3.0077819821796137
+  },
+  "afterSelfOverlap": {
+    "overlappingFacePairs": 4372,
+    "pairwiseOverlapSquareMeters": 33.383271043322054,
+    "maximumOverlappingHeightDifferenceMeters": 10.500000603497028
+  },
+  "beforeTriangles": 214385,
+  "afterTriangles": 192489,
+  "savedTriangles": 21896,
+  "heightFieldBeforeTriangles": 214223,
+  "heightFieldAfterTriangles": 186473,
+  "ignoredBeforeVerticalFaces": 162,
+  "ignoredAfterVerticalFaces": 6016,
+  "maximumVerticalErrorMeters": null,
+  "maximumPairedHeightDifferenceMeters": 10.500000603497028,
+  "maximumErrorWitness": {
+    "sceneXY": [
+      12.280238151550293,
+      -10.634039878845215
+    ],
+    "beforeFace": 113899,
+    "afterFace": 98146
+  },
+  "verticalErrorMetersP50": null,
+  "verticalErrorMetersP95": null,
+  "afterFacesWithinErrorMeters": null,
+  "pairedHeightDifferenceMetersP95": 0.21263829448621152,
+  "pairedFacesWithinDifferenceMeters": {
+    "0.001": 157542,
+    "0.01": 159617,
+    "0.05": 165548,
+    "0.1": 172695,
+    "0.25": 178218,
+    "0.5": 183738,
+    "1": 186237
+  },
+  "faceIndexConvention": "indices in nonvertical filtered triangle arrays",
+  "lostOldCoverageSquareMeters": 1.1209313420797067e-09,
+  "addedCoverageSquareMeters": 0.10817418259702434,
+  "materialMismatchSquareMeters": null,
+  "pairedMaterialMismatchSquareMeters": 1.2181117467979967,
+  "inputs": {
+    "work/urban-structure/p5/budget/native-smooth/original.npz": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+    "work/urban-structure/p5/budget/native-smooth/angle-0.01.npz": "f2f9ffc16a34aea762693022d550ce8065386c332d9d08326a2a38ce67c7d0a9"
+  },
+  "scriptSha256": "c74e9f963793c81b689be0aaaf2dbc073561ecd6b74f820f7663d13de7970a9f"
+}

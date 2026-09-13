@@ -1,0 +1,272 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-overview.png",
+      "imageSha256": "578da8a46813889d6d1e693a0328c6d6aa4ee13efa6d7b5499c37fba298734be",
+      "cameraLocation": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "orthoScale": 15.174547413793105,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-context",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-sluice-context.png",
+      "imageSha256": "718cbd6a6b18bf378f6288e313af6ba992bc3c6ca414bc13e14dcd8123392bf4",
+      "cameraLocation": [
+        179.00999450683594,
+        -102.03974914550781,
+        1.7774748802185059
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.5,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-oblique",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-sluice-oblique.png",
+      "imageSha256": "08b6117ab6df66fe626f82b3daf6daba97894fc590a0cd95a6fc68c5a804788d",
+      "cameraLocation": [
+        178.3699951171875,
+        -101.23974609375,
+        1.0174750089645386
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.7,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-front",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-sluice-front.png",
+      "imageSha256": "f4c151896d4235bd9d8befe037326f972687bf8edf108cf307ed7d7a538f298d",
+      "cameraLocation": [
+        178.3470001220703,
+        -100.27154541015625,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-back",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-sluice-back.png",
+      "imageSha256": "9e248821917983cb171c2998828f3d6fccd86e940127af50defeeb83e085a682",
+      "cameraLocation": [
+        177.2729949951172,
+        -100.80795288085938,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-top",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-sluice-top.png",
+      "imageSha256": "6da9109ca5c24005ce5ab2c1248bfe812effeb4422ce6211136b1095587b17b5",
+      "cameraLocation": [
+        177.80999755859375,
+        -100.53974914550781,
+        1.3274750709533691
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.65,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "east-city-cut",
+      "blendSha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/detail-east-city-cut.png",
+      "imageSha256": "4a425a51f48454edb85bc05fb11fc2feb7879595cbe2741dd8ceaf609553ade7",
+      "cameraLocation": [
+        186.02000427246094,
+        -101.74600219726562,
+        2.0624749660491943
+      ],
+      "target": [
+        184.5800018310547,
+        -99.94599914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.8,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-overview.png",
+      "imageSha256": "a852c5ac66f547fab150a98566c411d016c7d346a2c57c822661c83e28918e57",
+      "cameraLocation": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "orthoScale": 15.174547413793105,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-context",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-sluice-context.png",
+      "imageSha256": "19cab0679b158588faae74117620eebe22fb9bf9fc00c80557ea6fb468a253a7",
+      "cameraLocation": [
+        179.00999450683594,
+        -102.03974914550781,
+        1.7774748802185059
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.5,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-oblique",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-sluice-oblique.png",
+      "imageSha256": "58b21d6de3eabc365c5f2f53bc2a2fc7e40745c7d86a784ddf59b07dbeed1346",
+      "cameraLocation": [
+        178.3699951171875,
+        -101.23974609375,
+        1.0174750089645386
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.7,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-front",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-sluice-front.png",
+      "imageSha256": "e30b821035147fa528d2be35343c96cd8c2d237c0b3478e658f0e86fb723ae15",
+      "cameraLocation": [
+        178.3470001220703,
+        -100.27154541015625,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-back",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-sluice-back.png",
+      "imageSha256": "2490822770646c49189f2587604c3e4f01fe52635900fbde920764a4cbd2d243",
+      "cameraLocation": [
+        177.2729949951172,
+        -100.80795288085938,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-top",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-sluice-top.png",
+      "imageSha256": "0911cecb6056ff00806fe107cfc27f61036d702c75267316e37c9ddc938876e4",
+      "cameraLocation": [
+        177.80999755859375,
+        -100.53974914550781,
+        1.3274750709533691
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.65,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "east-city-cut",
+      "blendSha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "image": "work/urban-structure/p5/reservoirs/linglong/views/smooth-east-city-cut.png",
+      "imageSha256": "57e45a087ff71ad3cd700248131f6f37aae508019d539d70eb52e9927cc31894",
+      "cameraLocation": [
+        186.02000427246094,
+        -101.74600219726562,
+        2.0624749660491943
+      ],
+      "target": [
+        184.5800018310547,
+        -99.94599914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.8,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    }
+  ]
+}

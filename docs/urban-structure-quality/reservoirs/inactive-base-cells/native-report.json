@@ -1,0 +1,350 @@
+{
+  "status": "production native terrain/water audit; full city and downstream roads remain pending",
+  "damIds": [
+    "osm/1e57a38d9fcf592a82dc",
+    "osm/2efc9e73195a84bd435a",
+    "osm/429206d2a43e43284a06",
+    "osm/4f21ac17f7b27ba2d93a",
+    "osm/a70e6c1b8e2a216fada6",
+    "osm/b17285ba7f48db26c2de",
+    "osm/bf97bad2665706418b47",
+    "osm/cef407471055d833cc7d",
+    "osm/d32838ab86097acd54e5",
+    "osm/e1161ecca08088257c8a",
+    "osm/ec7ff5e40cbbb6904bc3"
+  ],
+  "profiles": {
+    "detail": {
+      "terrainTriangles": 101558,
+      "landTriangles": 79582,
+      "bankTriangles": 21976,
+      "patches": {
+        "southeast-connected-water-v1": {
+          "landTriangles": 27324,
+          "bankTriangles": 8056,
+          "samplerSamples": 109296,
+          "maximumSamplerErrorMeters": 6.976131894376181e-08,
+          "boundarySamples": 4569,
+          "maximumBoundaryErrorMeters": 0.0002964490498413852,
+          "nodes": [
+            "Terrain_reservoir_southeast_connected_water_v1_0_0"
+          ]
+        },
+        "longmen-reservoir-closure-v1": {
+          "landTriangles": 8897,
+          "bankTriangles": 2758,
+          "samplerSamples": 35588,
+          "maximumSamplerErrorMeters": 7.165157356325835e-10,
+          "boundarySamples": 1488,
+          "maximumBoundaryErrorMeters": 0.0006903543407821289,
+          "nodes": [
+            "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+          ]
+        },
+        "west-pools-reservoir-closure-v1": {
+          "landTriangles": 5014,
+          "bankTriangles": 1004,
+          "samplerSamples": 20056,
+          "maximumSamplerErrorMeters": 4.882760862301438e-10,
+          "boundarySamples": 672,
+          "maximumBoundaryErrorMeters": 0.00016030410812106766,
+          "nodes": [
+            "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+          ]
+        },
+        "mading-reservoir-terrain-v1": {
+          "landTriangles": 6465,
+          "bankTriangles": 1770,
+          "samplerSamples": 25860,
+          "maximumSamplerErrorMeters": 1.4455103780619538e-11,
+          "boundarySamples": 936,
+          "maximumBoundaryErrorMeters": 0.0007879785899778113,
+          "nodes": [
+            "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "yinling-reservoir-terrain-v1": {
+          "landTriangles": 7129,
+          "bankTriangles": 1486,
+          "samplerSamples": 28516,
+          "maximumSamplerErrorMeters": 1.0862422072932532e-10,
+          "boundarySamples": 1032,
+          "maximumBoundaryErrorMeters": 0.0002266776338855081,
+          "nodes": [
+            "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "zhicun-reservoir-terrain-v1": {
+          "landTriangles": 8517,
+          "bankTriangles": 2168,
+          "samplerSamples": 34068,
+          "maximumSamplerErrorMeters": 5.2668980288217426e-11,
+          "boundarySamples": 1395,
+          "maximumBoundaryErrorMeters": 0.00012690445041485532,
+          "nodes": [
+            "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "tianbao-reservoir-terrain-v1": {
+          "landTriangles": 12265,
+          "bankTriangles": 2744,
+          "samplerSamples": 49060,
+          "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+          "boundarySamples": 1656,
+          "maximumBoundaryErrorMeters": 0.00030405561739499376,
+          "nodes": [
+            "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "linglong-lake-terrain-v1": {
+          "landTriangles": 3971,
+          "bankTriangles": 1990,
+          "samplerSamples": 15884,
+          "maximumSamplerErrorMeters": 2.0369095299344053e-09,
+          "boundarySamples": 315,
+          "maximumBoundaryErrorMeters": 8.016483059036794e-05,
+          "nodes": [
+            "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+          ]
+        }
+      },
+      "cityWaterTriangles": 22192,
+      "samplerSamples": 318328,
+      "maximumSamplerErrorMeters": 6.976131894376181e-08,
+      "boundarySamples": 12063,
+      "maximumBoundaryErrorMeters": 0.0007879785899778113,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "0c6fa779caee6422e0d31b4ce7e262d4499189ed7e8b9b58680cbd60114422ec",
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0",
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_southeast_connected_water_v1_0_0",
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    "smooth": {
+      "terrainTriangles": 101558,
+      "landTriangles": 79582,
+      "bankTriangles": 21976,
+      "patches": {
+        "southeast-connected-water-v1": {
+          "landTriangles": 27324,
+          "bankTriangles": 8056,
+          "samplerSamples": 109296,
+          "maximumSamplerErrorMeters": 2.913300156670573e-08,
+          "boundarySamples": 4569,
+          "maximumBoundaryErrorMeters": 0.00011985000238912136,
+          "nodes": [
+            "Terrain_reservoir_southeast_connected_water_v1_0_0"
+          ]
+        },
+        "longmen-reservoir-closure-v1": {
+          "landTriangles": 8897,
+          "bankTriangles": 2758,
+          "samplerSamples": 35588,
+          "maximumSamplerErrorMeters": 7.165157356325835e-10,
+          "boundarySamples": 1488,
+          "maximumBoundaryErrorMeters": 0.0001150052565623838,
+          "nodes": [
+            "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+          ]
+        },
+        "west-pools-reservoir-closure-v1": {
+          "landTriangles": 5014,
+          "bankTriangles": 1004,
+          "samplerSamples": 20056,
+          "maximumSamplerErrorMeters": 4.882760862301438e-10,
+          "boundarySamples": 672,
+          "maximumBoundaryErrorMeters": 5.723213181152431e-05,
+          "nodes": [
+            "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+          ]
+        },
+        "mading-reservoir-terrain-v1": {
+          "landTriangles": 6465,
+          "bankTriangles": 1770,
+          "samplerSamples": 25860,
+          "maximumSamplerErrorMeters": 1.4455103780619538e-11,
+          "boundarySamples": 936,
+          "maximumBoundaryErrorMeters": 0.00038699038802381125,
+          "nodes": [
+            "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "yinling-reservoir-terrain-v1": {
+          "landTriangles": 7129,
+          "bankTriangles": 1486,
+          "samplerSamples": 28516,
+          "maximumSamplerErrorMeters": 1.0862422072932532e-10,
+          "boundarySamples": 1032,
+          "maximumBoundaryErrorMeters": 0.00016404518916601774,
+          "nodes": [
+            "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "zhicun-reservoir-terrain-v1": {
+          "landTriangles": 8517,
+          "bankTriangles": 2168,
+          "samplerSamples": 34068,
+          "maximumSamplerErrorMeters": 5.2668980288217426e-11,
+          "boundarySamples": 1395,
+          "maximumBoundaryErrorMeters": 0.00017117269854871608,
+          "nodes": [
+            "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "tianbao-reservoir-terrain-v1": {
+          "landTriangles": 12265,
+          "bankTriangles": 2744,
+          "samplerSamples": 49060,
+          "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+          "boundarySamples": 1656,
+          "maximumBoundaryErrorMeters": 0.00012197667269564505,
+          "nodes": [
+            "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "linglong-lake-terrain-v1": {
+          "landTriangles": 3971,
+          "bankTriangles": 1990,
+          "samplerSamples": 15884,
+          "maximumSamplerErrorMeters": 6.93894941505846e-10,
+          "boundarySamples": 315,
+          "maximumBoundaryErrorMeters": 4.002401656211241e-05,
+          "nodes": [
+            "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+          ]
+        }
+      },
+      "cityWaterTriangles": 22192,
+      "samplerSamples": 318328,
+      "maximumSamplerErrorMeters": 2.913300156670573e-08,
+      "boundarySamples": 12063,
+      "maximumBoundaryErrorMeters": 0.00038699038802381125,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "0978f0ed3b09c8f18deb9e1be6b3c457a6eab35838e50015add346ce3819acbb",
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0",
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_southeast_connected_water_v1_0_0",
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    }
+  },
+  "inputs": {
+    "public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "public/data/terrain.json": "9f4b25a6997d0ab5c1bcf54a38aa8556e68e7e8210d5132701e97004e33ba794",
+    "data/landmarks.json": "a22788a016ef67be5b6f4fe73778cbd84ac13360e80009c550ec91944a392d51",
+    "data/nanhu-plan.json": "7f5ba5c43e2392afacb08f6d42529528a9809016bca7ae714e362ac1ebfbf119",
+    "data/qingxiu-terrain-plan.json": "e214e84a8e258bf2f20712d39a59e0e84b31cda0ad8fa492ff55f6cf84b20f65",
+    "data/waterfront-plan.json": "64260008dafa0cc15b346ee50402985b125119c8300a27c22d9d438a9bf4a4d4",
+    "data/railways-plan.json": "7a84d5874eacdc8e34d44903a3e86730411a4833d95781d65a860dfcdbf02220",
+    "data/stations-plan.json": "61040a82ae5555fe684128e2afe6185481ad6ff7b4167d8dd3beaf29acb666a7",
+    "data/sports-center-footprints.json": "3d9b13c3f905fe3d2935b7781cc0b56dfc0d253ecbc178f48d06f937f41e6aa2",
+    "data/qingxiu-terrain-source.json": "f3a65b11a79b501c1ab5be0e0e6588f2c8a7e0b87a7c478c77ce1bec48e90ece",
+    "data/block-grading-plan.json": "1faa9720581ad42d67767150868a9328292be108e1648710660546c6f0d5b309",
+    "data/block-grading-source.json": "8cf540496625b3851f57cc35b577181057a85c02af0b0933df9cac8cffc14a4d",
+    "blender/reservoir_runtime.py": "56cac7640642dcfe7313e12a87d3ec131b12b3112783e98bb7e299a99e55d450",
+    "blender/reservoir_group.py": "d7dcf369efecee20de819768fca17f8f53f8e82aff9ccdc71a81ae19995cf225",
+    "blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "blender/reservoir_water.py": "cc0b012269c37ad3b80d84db5999b5ccf9c4443617ddebd28d7febbdfd93c1a7",
+    "blender/water_control_runtime.py": "590d8e35c0f3eec81aed1412e0a2b04e4b57f090a2c4e3397891e570108f4c46",
+    "blender/water_control_structures.py": "2687eb60aae72de0efed8588fb189ae43d40d7abbcdf2e32aa947ed696e288c2",
+    "data/reservoir-terrain-registry.json": "c3e4eda42b4a06af53ab818af38c60699b0905a77750b7baf56fd22be838e5a8",
+    "data/reservoir-plans/southeast-connected-water-v1.json": "6e753277146f64df4994061d3cf52d4aa841dc5ae8d8874e9151cc50944aa7f6",
+    "data/reservoir-plans/longmen-reservoir-closure-v1.json": "952277e0f0f39a9cfac73c51d0e6bcb382c00c2edc2cfbd2c25649956bde062d",
+    "data/reservoir-plans/west-pools-reservoir-closure-v1.json": "dd631d2dfb2de535dd13cb7c95dee0efd5bcda0054dce3903b34425c39e46163",
+    "data/reservoir-plans/mading-reservoir-terrain-v1.json": "29f9ab3e68e1005ab5a57a419ecb140104ad076c83781dedeb96c025e745c348",
+    "data/reservoir-plans/yinling-reservoir-terrain-v1.json": "da68605e21120c61250165e10063a8b299c012995b7bf49803a26622cb9e3096",
+    "data/reservoir-plans/zhicun-reservoir-terrain-v1.json": "55a1a329d4250584e175e9da8a2e8c11e10328b033f5f32e6f99e703f479ff72",
+    "data/reservoir-plans/tianbao-reservoir-terrain-v1.json": "50e83b20e65205b68b9d661592c10de2217dd36b88701fdd974899bcd05a00dd",
+    "data/reservoir-plans/linglong-lake-terrain-v1.json": "e8ddb7ab85e57c339659b68818da05e1ea095a551185241981294ebeb1dfad83",
+    "data/water-control-sources/linglong.json": "68c2d06289410fa2edc5316cde778850436bb078822c2fe771a04abcaa198e6e",
+    "data/reservoir-sources/connected/southeast.json": "de6de652b66800fdf319eb924d34d7fa38f1c19bb4414c1c867d0a2098d752b4",
+    "data/reservoir-sources/closure/longmen.json": "c64523f3cceb47477fa62ecde8c17721c4ddc51b894e585165e57bdefb9ae7ea",
+    "data/reservoir-sources/closure/west-pools.json": "4dafa767b187cf62f2c3ec99cf40bb4f8c68f61f97cbdec414b1ca6ecea7b5d7",
+    "data/reservoir-sources/mading.json": "21de1d0d9bd89086988c2b82adec4bb9d2c4c329d6c7b7b7302a5a2e3da35275",
+    "data/reservoir-sources/yinling.json": "1f1f0d67bbb247b5cce1666c38ac29906df4e817846497f746865c2198a2d47f",
+    "data/reservoir-sources/zhicun.json": "a6d9d52883ed5e677f11b859f4cc09aea9dc211727a0c667f8dd164e9d41f08a",
+    "data/tianbao-terrain-source.json": "c4fa267893b487bed7aec652e437a2f5df9cba65085d7ce4fe71b5c562255e79",
+    "data/reservoir-sources/linglong.json": "723cb5c72fb69b7fcbdc136073314f7ab2b4491f4235bbc160cfd30d384b3070",
+    "blender/build_city.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+    "blender/terrain_mesh.py": "26184f0743f20ddf9f0de8f91ded0d00f48c347e77c7e6ab661386c683ff7b9a",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7",
+    "blender/road_inputs.py": "718850951a10df2f2a6a241982b764f0bd1a6abf19fdf7b5d6c7916ee5dd39bc",
+    "blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  },
+  "nativeDataInputs": [
+    "public/data/geography.json",
+    "public/data/terrain.json",
+    "data/landmarks.json",
+    "data/nanhu-plan.json",
+    "data/qingxiu-terrain-plan.json",
+    "data/waterfront-plan.json",
+    "data/railways-plan.json",
+    "data/stations-plan.json",
+    "data/sports-center-footprints.json",
+    "data/qingxiu-terrain-source.json",
+    "data/block-grading-plan.json",
+    "data/block-grading-source.json",
+    "blender/reservoir_runtime.py",
+    "blender/reservoir_group.py",
+    "blender/reservoir_terrain.py",
+    "blender/reservoir_water.py",
+    "blender/water_control_runtime.py",
+    "blender/water_control_structures.py",
+    "data/reservoir-terrain-registry.json",
+    "data/reservoir-plans/southeast-connected-water-v1.json",
+    "data/reservoir-plans/longmen-reservoir-closure-v1.json",
+    "data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+    "data/reservoir-plans/mading-reservoir-terrain-v1.json",
+    "data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+    "data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+    "data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+    "data/reservoir-plans/linglong-lake-terrain-v1.json",
+    "data/water-control-sources/linglong.json",
+    "data/reservoir-sources/connected/southeast.json",
+    "data/reservoir-sources/closure/longmen.json",
+    "data/reservoir-sources/closure/west-pools.json",
+    "data/reservoir-sources/mading.json",
+    "data/reservoir-sources/yinling.json",
+    "data/reservoir-sources/zhicun.json",
+    "data/tianbao-terrain-source.json",
+    "data/reservoir-sources/linglong.json"
+  ],
+  "toolSha256": "9ed717096b198944dc94992b836d11a472de63e6c4e67bc0ba00f3bf9ed50ef2"
+}

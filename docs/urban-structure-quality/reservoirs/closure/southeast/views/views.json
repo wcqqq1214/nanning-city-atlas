@@ -1,0 +1,348 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-overview.png",
+      "imageSha256": "94698dada1e301795835ed90d9c02070d6b35436cede757daa0d219296682596",
+      "cameraLocation": [
+        154.44012451171875,
+        -181.53350830078125,
+        77.9642562866211
+      ],
+      "target": [
+        89.34453582763672,
+        -100.16400909423828,
+        0.66324383020401
+      ],
+      "orthoScale": 81.36948813751276,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "837932893",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-837932893.png",
+      "imageSha256": "7afda9477b3ff226120f0ab3f6d2156020fc4703c1f84a3358f715aef8d83cf3",
+      "cameraLocation": [
+        110.7835922241211,
+        -101.52083587646484,
+        2.3435025215148926
+      ],
+      "target": [
+        109.22999572753906,
+        -99.5788345336914,
+        0.49860429763793945
+      ],
+      "orthoScale": 1.941998291015625,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-155",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-155.png",
+      "imageSha256": "e0101fd34d601cd153f38c78a5d0a5abecd7fa1455cc8a752f4382cfdd707aa5",
+      "cameraLocation": [
+        122.32159423828125,
+        -106.8125,
+        12.61780071258545
+      ],
+      "target": [
+        112.00399780273438,
+        -93.91549682617188,
+        0.365651398897171
+      ],
+      "orthoScale": 12.897000000000006,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-155-join-0-1",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-155-join-0-1.png",
+      "imageSha256": "8b85cb222f90733e838899d2269b968df23a19d96fed7f800c3645cb5e9a3682",
+      "cameraLocation": [
+        115.72579956054688,
+        -95.9945068359375,
+        2.7833218574523926
+      ],
+      "target": [
+        113.6969985961914,
+        -93.45850372314453,
+        0.37412187457084656
+      ],
+      "orthoScale": 2.5360000000000014,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-155-join-0-2",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-155-join-0-2.png",
+      "imageSha256": "c14ae4bd2f10ab16bcc9906e2b3c126058f8483e2bb4126384bff7fafcaad64a",
+      "cameraLocation": [
+        112.54550170898438,
+        -100.83549499511719,
+        2.9615089893341064
+      ],
+      "target": [
+        110.39749908447266,
+        -98.15049743652344,
+        0.4107590317726135
+      ],
+      "orthoScale": 2.684999999999988,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-195",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-195.png",
+      "imageSha256": "8d647a2aae22282f2ef4a8e31e67f90040c25ef04540fc719b07ceb244a24631",
+      "cameraLocation": [
+        115.30940246582031,
+        -126.5199966430664,
+        13.99252700805664
+      ],
+      "target": [
+        104.00700378417969,
+        -112.39199829101562,
+        0.5709262490272522
+      ],
+      "orthoScale": 14.128,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-195-join-0-1",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-195-join-0-1.png",
+      "imageSha256": "b7362248aa1a46252002e4dccb56a5e85ac4591d1bf95b3ca63967ae5383f280",
+      "cameraLocation": [
+        106.67160034179688,
+        -116.31800079345703,
+        2.835228204727173
+      ],
+      "target": [
+        104.73400115966797,
+        -113.89600372314453,
+        0.5343281626701355
+      ],
+      "orthoScale": 2.421999999999997,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-139",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-139.png",
+      "imageSha256": "00f1df33fbe7fffbf5dd138d644f3adad216fe4a1d31b2b9f483ab8154172688",
+      "cameraLocation": [
+        127.38397979736328,
+        -93.95159912109375,
+        9.745530128479004
+      ],
+      "target": [
+        119.4834976196289,
+        -84.07599639892578,
+        0.36371049284935
+      ],
+      "orthoScale": 9.875599999999995,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-211",
+      "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/detail-water-211.png",
+      "imageSha256": "ae32d658d76c19c745fb7c1356a4481de952bd3ea860c4ae6fa8514ef36491ec",
+      "cameraLocation": [
+        120.46943664550781,
+        -157.23280334472656,
+        49.96696472167969
+      ],
+      "target": [
+        79.0459976196289,
+        -105.45349884033203,
+        0.7766314744949341
+      ],
+      "orthoScale": 51.779300000000006,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-overview.png",
+      "imageSha256": "009d7196d09de27e344c1fd4b08af2b6d83c4ccc0a94aa00896ff26685381139",
+      "cameraLocation": [
+        154.44012451171875,
+        -181.53350830078125,
+        77.94977569580078
+      ],
+      "target": [
+        89.34453582763672,
+        -100.16400909423828,
+        0.6487670540809631
+      ],
+      "orthoScale": 81.36948813751276,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "837932893",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-837932893.png",
+      "imageSha256": "ce388b91216efb574de267a65a5bd42ef829b3cd2f0c3d77a7965536283e2727",
+      "cameraLocation": [
+        110.7835922241211,
+        -101.52083587646484,
+        2.3435025215148926
+      ],
+      "target": [
+        109.22999572753906,
+        -99.5788345336914,
+        0.49860429763793945
+      ],
+      "orthoScale": 1.941998291015625,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-155",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-155.png",
+      "imageSha256": "7b67a0f7b3638704bab483e6558435feb7d6db4de63888216e6d6b7274e105dc",
+      "cameraLocation": [
+        122.32159423828125,
+        -106.8125,
+        12.61780071258545
+      ],
+      "target": [
+        112.00399780273438,
+        -93.91549682617188,
+        0.365651398897171
+      ],
+      "orthoScale": 12.897000000000006,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-155-join-0-1",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-155-join-0-1.png",
+      "imageSha256": "a47ec69569d2adc67c800df9291cec6eaca3577b315b7b8df33ddf60378dec3a",
+      "cameraLocation": [
+        115.72579956054688,
+        -95.9945068359375,
+        2.7833218574523926
+      ],
+      "target": [
+        113.6969985961914,
+        -93.45850372314453,
+        0.37412187457084656
+      ],
+      "orthoScale": 2.5360000000000014,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-155-join-0-2",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-155-join-0-2.png",
+      "imageSha256": "f8d1a4d07e70882baa3109fad5998216b0e1b66a61e44afcb1333dd9e675f910",
+      "cameraLocation": [
+        112.54550170898438,
+        -100.83549499511719,
+        2.9615089893341064
+      ],
+      "target": [
+        110.39749908447266,
+        -98.15049743652344,
+        0.4107590317726135
+      ],
+      "orthoScale": 2.684999999999988,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-195",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-195.png",
+      "imageSha256": "6d1d1110e84c06f0d50800fa38c99093348b4e05638dfee613fd3efc0bae99f8",
+      "cameraLocation": [
+        115.30940246582031,
+        -126.5199966430664,
+        13.991775512695312
+      ],
+      "target": [
+        104.00700378417969,
+        -112.39199829101562,
+        0.5701754093170166
+      ],
+      "orthoScale": 14.128,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-195-join-0-1",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-195-join-0-1.png",
+      "imageSha256": "3dad03600d7ffddba89ae93e5899276b32f2341f622fab09e3c9d2ff2c5725da",
+      "cameraLocation": [
+        106.67160034179688,
+        -116.31800079345703,
+        2.835228204727173
+      ],
+      "target": [
+        104.73400115966797,
+        -113.89600372314453,
+        0.5343281626701355
+      ],
+      "orthoScale": 2.421999999999997,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-139",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-139.png",
+      "imageSha256": "8f523d4e34b741646fcf72ef1cde6946c059d1ff90670450517c904e6a532459",
+      "cameraLocation": [
+        127.38397979736328,
+        -93.95159912109375,
+        9.745556831359863
+      ],
+      "target": [
+        119.4834976196289,
+        -84.07599639892578,
+        0.36373746395111084
+      ],
+      "orthoScale": 9.875599999999995,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-211",
+      "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1",
+      "image": "work/urban-structure/p5/reservoirs/closure/southeast/views/smooth-water-211.png",
+      "imageSha256": "3f53b8e2310b21be3470dbd4aa504558cdf3ab25e332860803571884eeac0242",
+      "cameraLocation": [
+        120.46943664550781,
+        -157.23280334472656,
+        49.96696472167969
+      ],
+      "target": [
+        79.0459976196289,
+        -105.45349884033203,
+        0.7766314744949341
+      ],
+      "orthoScale": 51.779300000000006,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    }
+  ]
+}

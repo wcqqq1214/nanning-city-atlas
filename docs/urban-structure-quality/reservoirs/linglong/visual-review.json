@@ -1,0 +1,14 @@
+{
+  "scope": "14 independent Workbench views in three contact sheets, plus full-size detail front and smooth oblique",
+  "viewsSha256": "34ca36fb301dea0922c81f1f059503b24951273f2edf252475813bfae657cb1c",
+  "observations": [
+    "Low deck, two internal piers and three gate bays are visible, replacing the ordinary-building interpretation in this independent candidate.",
+    "Both land approaches meet the candidate terrain in front/oblique views. Small fittings share the existing concrete/metal palette.",
+    "The eastern atlas cut has no visible flooded-bank gap after restoring shore height to the cut; its thin edge strip reflects the stored water/city-boundary coordinate difference.",
+    "Unselected water is omitted and appears white. Steep transitions to protected neighboring shores remain visible; complete city materials and physical water levels still need review."
+  ],
+  "limitations": [
+    "Bay count and dimensions are estimates; news establishes park-wide sluice context but does not locate this exact OSM footprint.",
+    "No ordinary city building, roads, canopy, production water shader or plinth mesh in this independent render. This is not full-city acceptance."
+  ]
+}

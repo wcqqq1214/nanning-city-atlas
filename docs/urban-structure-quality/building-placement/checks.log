@@ -1,0 +1,18 @@
+["/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python", "scripts/test_building_road_envelopes.py"]
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.022s
+
+OK
+
+["/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python", "scripts/test_building_placement.py"]
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+["/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python", "-m", "py_compile", "blender/building_placement.py", "blender/road_inputs.py", "blender/road_solids.py", "blender/build_city.py", "scripts/finish_road_solids.py", "scripts/audit_building_road_envelopes.py"]
+
+["git", "diff", "--check"]
+

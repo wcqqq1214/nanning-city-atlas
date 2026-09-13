@@ -1,0 +1,51 @@
+{
+  "status": "serialized geography checks passed; actual terrain and city acceptance pending",
+  "waterPolygons": 567,
+  "changedWaterIndices": [
+    139,
+    155,
+    195,
+    211,
+    438,
+    470,
+    472,
+    543,
+    544,
+    546,
+    547,
+    548,
+    550
+  ],
+  "changedBuildingIds": [],
+  "waterTrianglesBefore": 9954,
+  "waterTrianglesAfter": 10469,
+  "waterCoverageDifferenceSquareMeters": 0.0,
+  "waterOverlapSquareMeters": -9.094947017729282e-09,
+  "unchangedWaterTriangles": 9540,
+  "removedTreeIndices": [
+    9936
+  ],
+  "treesBefore": 10998,
+  "treesAfter": 10997,
+  "landcoverOutsideChangeDifferenceSquareMeters": {
+    "parks": 7.810229969553554e-05,
+    "urban": 0.0,
+    "inferredUrban": 0.0
+  },
+  "affectedBuildings": [],
+  "inputs": {
+    "before": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/input.json",
+      "sha256": "a85873662b6d9a3f1aaab9bd2729a872d6d054911ed9e344f7f6396ee698e98a"
+    },
+    "after": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/candidate.json",
+      "sha256": "5c405548dff16c46d583446bf1ea4cda9207822375510e5bbeb365c7d23e5117"
+    },
+    "source": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/reservoir-neighbor-closure-source.json",
+      "sha256": "0a86e2e4c1ee40991793aac27621ec20d6fa90cb96918a394660a398c0e69d7d"
+    }
+  },
+  "toolSha256": "219c8321b0abc0070fd427da8059fbd1db90726cbd32dfb3f9516e264da489a6"
+}

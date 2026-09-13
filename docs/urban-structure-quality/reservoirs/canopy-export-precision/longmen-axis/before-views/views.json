@@ -1,0 +1,158 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "731bfb6eb3edf306df7c5870fa6dc45b7bf6aef4f5cbd7755d43f9a9bc707bd9",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/detail-overview.png",
+      "imageSha256": "9090c5029208537c1f1fdff7c796160ff73b074ac38c188587249f09033cfa33",
+      "cameraLocation": [
+        -26.479564666748047,
+        54.709716796875,
+        35.06485366821289
+      ],
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.0
+      ],
+      "orthoScale": 35.857740535175104,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "detail",
+      "view": "838600978",
+      "blendSha256": "731bfb6eb3edf306df7c5870fa6dc45b7bf6aef4f5cbd7755d43f9a9bc707bd9",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/detail-838600978.png",
+      "imageSha256": "097dd265c294056ef15d8f9202408b52d658e8e4d9011b90cf4e32e72f0a5e02",
+      "cameraLocation": [
+        -40.7744026184082,
+        84.51499938964844,
+        2.6591477394104004
+      ],
+      "target": [
+        -42.34000015258789,
+        86.47200012207031,
+        0.800000011920929
+      ],
+      "orthoScale": 1.9569976806640625,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "detail",
+      "view": "dam-profile",
+      "blendSha256": "731bfb6eb3edf306df7c5870fa6dc45b7bf6aef4f5cbd7755d43f9a9bc707bd9",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/detail-dam-profile.png",
+      "imageSha256": "09b554de9dff042e86897942a32317e2ccfba1a1dc286aa307d5a6e07f7e1552",
+      "cameraLocation": [
+        -42.349998474121094,
+        85.05999755859375,
+        2.2100000381469727
+      ],
+      "target": [
+        -42.349998474121094,
+        86.45999908447266,
+        1.2999999523162842
+      ],
+      "orthoScale": 1.4,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "detail",
+      "view": "dam-plan",
+      "blendSha256": "731bfb6eb3edf306df7c5870fa6dc45b7bf6aef4f5cbd7755d43f9a9bc707bd9",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/detail-dam-plan.png",
+      "imageSha256": "d2c1e40f923485390955bc415f975786572544fd5f8c54668c41533da3c6dee7",
+      "cameraLocation": [
+        -42.349998474121094,
+        86.3949966430664,
+        2.5999999046325684
+      ],
+      "target": [
+        -42.349998474121094,
+        86.45999908447266,
+        1.2999999523162842
+      ],
+      "orthoScale": 1.3,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "ebcf703503cd40d8584e2d029c0e10a86df94cdcad9189ad5a9ec9624b606b33",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/smooth-overview.png",
+      "imageSha256": "85b52653b7220c8d2d7ec50ba854f27438548d077e2c860034924377c8b9a878",
+      "cameraLocation": [
+        -26.479564666748047,
+        54.709716796875,
+        35.06485366821289
+      ],
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.0
+      ],
+      "orthoScale": 35.857740535175104,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "smooth",
+      "view": "838600978",
+      "blendSha256": "ebcf703503cd40d8584e2d029c0e10a86df94cdcad9189ad5a9ec9624b606b33",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/smooth-838600978.png",
+      "imageSha256": "faa5b4b9a7947bd1af428464881e66fa38e91367e32f0de218bd9774616f991f",
+      "cameraLocation": [
+        -40.7744026184082,
+        84.51499938964844,
+        2.6591477394104004
+      ],
+      "target": [
+        -42.34000015258789,
+        86.47200012207031,
+        0.800000011920929
+      ],
+      "orthoScale": 1.9569976806640625,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "smooth",
+      "view": "dam-profile",
+      "blendSha256": "ebcf703503cd40d8584e2d029c0e10a86df94cdcad9189ad5a9ec9624b606b33",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/smooth-dam-profile.png",
+      "imageSha256": "3751768f34a3d54a992d49e9dd3cfc041a11299463147cfef4e3fda6e8972f04",
+      "cameraLocation": [
+        -42.349998474121094,
+        85.05999755859375,
+        2.2100000381469727
+      ],
+      "target": [
+        -42.349998474121094,
+        86.45999908447266,
+        1.2999999523162842
+      ],
+      "orthoScale": 1.4,
+      "targetHeightMethod": "legacy fixed height"
+    },
+    {
+      "profile": "smooth",
+      "view": "dam-plan",
+      "blendSha256": "ebcf703503cd40d8584e2d029c0e10a86df94cdcad9189ad5a9ec9624b606b33",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views/smooth-dam-plan.png",
+      "imageSha256": "3383844fd58d896be69b688da8ac474b606eb5a40442927bb46f88de6dc47c2b",
+      "cameraLocation": [
+        -42.349998474121094,
+        86.3949966430664,
+        2.5999999046325684
+      ],
+      "target": [
+        -42.349998474121094,
+        86.45999908447266,
+        1.2999999523162842
+      ],
+      "orthoScale": 1.3,
+      "targetHeightMethod": "legacy fixed height"
+    }
+  ]
+}

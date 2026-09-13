@@ -1,0 +1,256 @@
+{
+  "status": "independent southeast connected geometry verified; full-city integration and slope calibration remain incomplete",
+  "candidateGeographySha256": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+  "planSha256": "58baef28838e02c0777160ae722a8f9d97f8dd6923f9ec8200314c849d02ec10",
+  "changedWaterIndices": [
+    139,
+    140,
+    155,
+    195,
+    211,
+    212,
+    438,
+    470,
+    472,
+    543,
+    544,
+    546,
+    547,
+    548,
+    550
+  ],
+  "selectedWaterIndices": [
+    182,
+    155,
+    195,
+    139,
+    211,
+    140,
+    212
+  ],
+  "connectedWaterGroups": [
+    {
+      "id": "lengtang-north-channel",
+      "waterIndices": [
+        139,
+        140
+      ]
+    },
+    {
+      "id": "yuxiang-channel",
+      "waterIndices": [
+        211,
+        212
+      ]
+    }
+  ],
+  "protectedWaterBanks": [
+    {
+      "geographyWaterIndex": 143,
+      "transitionMeters": 35,
+      "holdMeters": 2,
+      "distanceToSelectedWaterMeters": 80.11547915353148
+    },
+    {
+      "geographyWaterIndex": 229,
+      "transitionMeters": 11.500434750594625,
+      "holdMeters": 2,
+      "distanceToSelectedWaterMeters": 23.00086950118925
+    },
+    {
+      "geographyWaterIndex": 263,
+      "transitionMeters": 35,
+      "holdMeters": 2,
+      "distanceToSelectedWaterMeters": 147.90540896126845
+    }
+  ],
+  "interfaceAudit": {
+    "schemaVersion": 1,
+    "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+    "neighbors": [
+      {
+        "geographyWaterIndex": 0,
+        "boundaryVertexCount": 31,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 143,
+        "boundaryVertexCount": 617,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 228,
+        "boundaryVertexCount": 16,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 229,
+        "boundaryVertexCount": 151,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 253,
+        "boundaryVertexCount": 114,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 255,
+        "boundaryVertexCount": 16,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      },
+      {
+        "geographyWaterIndex": 263,
+        "boundaryVertexCount": 24,
+        "maximumRestoreWeight": 0.0,
+        "sharedSelectedBoundaryMeters": 0.0,
+        "requiresInterfaceResolution": false
+      }
+    ],
+    "unresolvedWaterIndices": []
+  },
+  "profiles": {
+    "detail": {
+      "terrainTriangles": 82702,
+      "waterTriangles": 11657,
+      "bankTriangles": 8056,
+      "totalTriangles": 102415,
+      "glbBytes": 3739340,
+      "maximumVertexDisplacementMeters": 0,
+      "protectedWaterBanks": [
+        {
+          "geographyWaterIndex": 143,
+          "samples": 3070,
+          "maximumOriginalBankErrorMeters": 0.0002110997949500426
+        },
+        {
+          "geographyWaterIndex": 229,
+          "samples": 755,
+          "maximumOriginalBankErrorMeters": 0.0003776615232042868
+        },
+        {
+          "geographyWaterIndex": 263,
+          "samples": 120,
+          "maximumOriginalBankErrorMeters": 5.081685239272105e-06
+        }
+      ],
+      "waterJoins": {
+        "139": {
+          "sharedNativeEdges": 363,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 6.780624389635115e-06,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 22,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "211": {
+          "sharedNativeEdges": 1550,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 1.870155334471324e-05,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 20,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "140": {
+          "sharedNativeEdges": 163,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 3.8003921508655836e-06,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 22,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "212": {
+          "sharedNativeEdges": 812,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 1.7061233520521135e-05,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 20,
+          "maximumWaterJoinErrorMeters": 0.0
+        }
+      }
+    },
+    "smooth": {
+      "terrainTriangles": 82702,
+      "waterTriangles": 11657,
+      "bankTriangles": 8056,
+      "totalTriangles": 102415,
+      "glbBytes": 3709012,
+      "maximumVertexDisplacementMeters": 0,
+      "protectedWaterBanks": [
+        {
+          "geographyWaterIndex": 143,
+          "samples": 3070,
+          "maximumOriginalBankErrorMeters": 0.00010171389688284904
+        },
+        {
+          "geographyWaterIndex": 229,
+          "samples": 755,
+          "maximumOriginalBankErrorMeters": 0.00018897624473046548
+        },
+        {
+          "geographyWaterIndex": 263,
+          "samples": 120,
+          "maximumOriginalBankErrorMeters": 1.7761238413349645e-05
+        }
+      ],
+      "waterJoins": {
+        "139": {
+          "sharedNativeEdges": 363,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 6.780624389635115e-06,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 22,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "211": {
+          "sharedNativeEdges": 1550,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 1.870155334471324e-05,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 20,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "140": {
+          "sharedNativeEdges": 163,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 3.8003921508655836e-06,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 22,
+          "maximumWaterJoinErrorMeters": 0.0
+        },
+        "212": {
+          "sharedNativeEdges": 812,
+          "cityBoundaryEdges": 0,
+          "maximumBankClearanceErrorMeters": 1.7061233520521135e-05,
+          "expectedBankClearanceMeters": 0.2025,
+          "connectedWaterEdges": 20,
+          "maximumWaterJoinErrorMeters": 0.0
+        }
+      }
+    }
+  },
+  "tests": {
+    "testsRun": 59,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "patterns": [
+      "test_reservoir*.py",
+      "test_building_shorelines.py",
+      "test_building_road_envelopes.py"
+    ],
+    "parsedPythonFiles": 18
+  },
+  "views": 42
+}

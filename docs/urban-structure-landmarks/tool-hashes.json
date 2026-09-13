@@ -1,0 +1,11 @@
+{
+  "scripts/prepare_landmark_calibration.py": "e468efe1ba15b439751a5fe5a89314bf9b7fb40ec2ed142366ff66638edd832a",
+  "scripts/audit_landmark_sites.py": "1169d7f6fa35ddb59f90998e8de1f1944de80741fb4211d4e91edd81498f884f",
+  "blender/diwang_landmark.py": "318a1759e3fef886e6682b2efeac6219bc3dc0a279e85463265baa30a59e29f3",
+  "blender/render_landmark_candidates.py": "fd2c1b6f180d255a52ba4dd6596e19b40377a04f60802ff58f3f4e5501fff10b",
+  "blender/arts_landmark.py": "ea68eac236ae182075a8c48dab7737463c131b574e27f54e182b7a29980b5fd7",
+  "blender/zhenning_landmark.py": "66ceaf0d4031484e0c9ea566e7587f86a25818d064552704e6a1dfb460a9fe13",
+  "data/landmark-calibration-osm.json": "b746131cb994f69ea23dbbf4fd62cb802f8bd57f9245635184c9731e485cfbe1",
+  "data/landmark-calibration-source.json": "2db3a1e5ba60b9d0b496e75d04f14d9433fee031043dc0ec68e8e6088ecef5a9",
+  "data/landmark-calibration-plan.json": "14e8d9bcf247d6c84fc85e8a3803638c06f0c78caf58a61a72a8683694204c5a"
+}

@@ -1,0 +1,267 @@
+{
+  "status": "isolated and actual terrain-integrated access exports checked; full city and site visual acceptance pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "terrain": {
+          "triangles": 4150,
+          "maximumVertexDisplacementMeters": 0.0,
+          "maximumCornerNormalAngleDegrees": 0.15730201695970328,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        },
+        "roads": {
+          "triangles": 330,
+          "maximumVertexDisplacementMeters": 1.1920928955078125e-05,
+          "maximumCornerNormalAngleDegrees": 0.1310937290370082,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        }
+      },
+      "soilOverlapSquareMeters": 0.0,
+      "pavingOverlapSquareMeters": 0.0,
+      "outwardWallFaces": 70,
+      "sites": [
+        {
+          "id": "xinzhong-industrial",
+          "mouthHeightErrorMeters": 0.0007523484526039681,
+          "mouthGapMeters": 0.00014287006956225783,
+          "accessSoilContact": {
+            "maximumOldTerrainAbovePavementMeters": 0,
+            "witnessSceneXY": null,
+            "supportReplacementRequired": true
+          },
+          "existingRoadClearance": {
+            "roadFaces": 799,
+            "terrainIntersections": 1754,
+            "minimumPavementClearanceMeters": 0.7985981607463444,
+            "witnessSceneXY": [
+              73.96934509277344,
+              -130.36843872070312
+            ],
+            "maximumPenetrationMeters": 0.0,
+            "penetrationLimitMeters": 0.005,
+            "passed": true
+          },
+          "buildings": [
+            {
+              "id": "xinzhong-industrial/warehouse-0",
+              "support": {
+                "status": "covered",
+                "minimumSceneZ": 1.2166670560836792,
+                "maximumSceneZ": 1.2166670560836792,
+                "minimumWitnessSceneXYZ": [
+                  72.24353361250317,
+                  -130.73271475074583,
+                  1.2166670560836792
+                ],
+                "maximumWitnessSceneXYZ": [
+                  73.15458679199219,
+                  -130.75302124023438,
+                  1.2166670560836792
+                ],
+                "coveredFraction": 1.0,
+                "uncoveredAreaSquareMeters": 0.0,
+                "uncoveredBeyondToleranceSquareMeters": 0.0,
+                "coverageToleranceMeters": 0.005,
+                "intersectingFaces": 72
+              }
+            },
+            {
+              "id": "xinzhong-industrial/warehouse-1",
+              "support": {
+                "status": "covered",
+                "minimumSceneZ": 1.2166670560836792,
+                "maximumSceneZ": 1.2166670560836792,
+                "minimumWitnessSceneXYZ": [
+                  72.55496215820312,
+                  -132.75230407714844,
+                  1.2166670560836792
+                ],
+                "maximumWitnessSceneXYZ": [
+                  73.55433654785156,
+                  -131.9525909423828,
+                  1.2166670560836792
+                ],
+                "coveredFraction": 1.0,
+                "uncoveredAreaSquareMeters": 0.0,
+                "uncoveredBeyondToleranceSquareMeters": 0.0,
+                "coverageToleranceMeters": 0.005,
+                "intersectingFaces": 89
+              }
+            }
+          ]
+        }
+      ],
+      "bytes": 138272,
+      "integratedGeometry": {
+        "terrain": {
+          "triangles": 4150,
+          "maximumVertexDisplacementMeters": 0.0,
+          "maximumCornerNormalAngleDegrees": 0.15730201695970328,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        },
+        "roads": {
+          "triangles": 330,
+          "maximumVertexDisplacementMeters": 1.1920928955078125e-05,
+          "maximumCornerNormalAngleDegrees": 0.1310937290370082,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        }
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "terrain": {
+          "triangles": 4150,
+          "maximumVertexDisplacementMeters": 0.0,
+          "maximumCornerNormalAngleDegrees": 0.17096790337241977,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        },
+        "roads": {
+          "triangles": 330,
+          "maximumVertexDisplacementMeters": 1.1920928955078125e-05,
+          "maximumCornerNormalAngleDegrees": 0.1335811112808896,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        }
+      },
+      "soilOverlapSquareMeters": 0.0,
+      "pavingOverlapSquareMeters": 0.0,
+      "outwardWallFaces": 70,
+      "sites": [
+        {
+          "id": "xinzhong-industrial",
+          "mouthHeightErrorMeters": 0.0006330819173783198,
+          "mouthGapMeters": 0.00014287006956225783,
+          "accessSoilContact": {
+            "maximumOldTerrainAbovePavementMeters": 6.866753568535167e-07,
+            "witnessSceneXY": [
+              72.15520327131456,
+              -131.89767482508356
+            ],
+            "supportReplacementRequired": true
+          },
+          "existingRoadClearance": {
+            "roadFaces": 795,
+            "terrainIntersections": 1739,
+            "minimumPavementClearanceMeters": 0.7988502304212247,
+            "witnessSceneXY": [
+              74.13453674316406,
+              -130.35317993164062
+            ],
+            "maximumPenetrationMeters": 0.0,
+            "penetrationLimitMeters": 0.005,
+            "passed": true
+          },
+          "buildings": [
+            {
+              "id": "xinzhong-industrial/warehouse-0",
+              "support": {
+                "status": "covered",
+                "minimumSceneZ": 1.2166670560836792,
+                "maximumSceneZ": 1.2166670560836792,
+                "minimumWitnessSceneXYZ": [
+                  72.24353361250317,
+                  -130.73271475074583,
+                  1.2166670560836792
+                ],
+                "maximumWitnessSceneXYZ": [
+                  73.15458679199219,
+                  -130.75302124023438,
+                  1.2166670560836792
+                ],
+                "coveredFraction": 1.0,
+                "uncoveredAreaSquareMeters": 0.0,
+                "uncoveredBeyondToleranceSquareMeters": 0.0,
+                "coverageToleranceMeters": 0.005,
+                "intersectingFaces": 72
+              }
+            },
+            {
+              "id": "xinzhong-industrial/warehouse-1",
+              "support": {
+                "status": "covered",
+                "minimumSceneZ": 1.2166670560836792,
+                "maximumSceneZ": 1.2166670560836792,
+                "minimumWitnessSceneXYZ": [
+                  72.55496215820312,
+                  -132.75230407714844,
+                  1.2166670560836792
+                ],
+                "maximumWitnessSceneXYZ": [
+                  73.55433654785156,
+                  -131.9525909423828,
+                  1.2166670560836792
+                ],
+                "coveredFraction": 1.0,
+                "uncoveredAreaSquareMeters": 0.0,
+                "uncoveredBeyondToleranceSquareMeters": 0.0,
+                "coverageToleranceMeters": 0.005,
+                "intersectingFaces": 89
+              }
+            }
+          ]
+        }
+      ],
+      "bytes": 137916,
+      "integratedGeometry": {
+        "terrain": {
+          "triangles": 4150,
+          "maximumVertexDisplacementMeters": 0.0,
+          "maximumCornerNormalAngleDegrees": 0.17096790337241977,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        },
+        "roads": {
+          "triangles": 330,
+          "maximumVertexDisplacementMeters": 1.1920928955078125e-05,
+          "maximumCornerNormalAngleDegrees": 0.1335811112808896,
+          "undefinedSourceCornerNormals": 0,
+          "positionLimitMeters": 0.0002,
+          "normalLimitDegrees": 0.5,
+          "bijectiveFaceMatch": true,
+          "materialsAndWindingPreserved": true
+        }
+      }
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/staging/work/p5/retaining-access-candidate.json": "988a54d31e6dfeaafdc74fbaeb18e59ed5af698b440639d4ffa568e2f1809956",
+    "work/urban-structure/p5/staging/data/block-grading-plan.json": "d1f611931ad288ac54f89a7f7b86ec2607528548b3d1f065236e01eeb19e7aa0",
+    "work/urban-structure/p5/staging/public/data/geography.json": "e341669ad39ce9ee8b607d17d050bb8adf0d66811924dbaf4e24c92c7afbda8f",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-exports/report.json": "d232980c8416e76469d46f1a776d0c58092a0c608ddc99b3177dcb5bf1f7f2c9",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-exports/detail.glb": "caa8a8dc14133c3cd74f87d6621228b6238f8de479171819166624d050568d7f",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-exports/smooth.glb": "08772d322207412bb2e6dbb12a0bfffa892e47e3bec3808e7c333962783470a4",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/detail.glb": "15710c861d15ba8ec69cc0d42f51f454f457d1e7adc05c9db3d6809d265b6925",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/smooth.glb": "226c5b4e518798caa0195d3ffb5b4d8e1926d3aeffc669206525b1494bf11ad3",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/sources.json": "8bec8fcf19a5dd39553d73ceffbad974cb4501839b5629868299fee0893060a9",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-runtime/report.json": "0bc872826c8748f16435f121ca0497ec32d5b4db19405dbaac791b3a819eb3ab",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-runtime/detail.glb": "2528e0988621b1c3d3e4c1a6062429aedf53994b3c3d7e341e137ab355d4b6e3",
+    "work/urban-structure/p5/staging/work/p5/retaining-access-runtime/smooth.glb": "94a6ee6a6fe29cf5505fad6c0451295a3119eafaa9e93a77c7b3d25e2f432560"
+  },
+  "toolSha256": "4a61b570bbd6c4bbd4de3cfb6c6a5e8c4a46cdecad8250c05423ed91d9e9f60c"
+}

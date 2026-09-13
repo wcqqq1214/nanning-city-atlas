@@ -1,0 +1,287 @@
+{
+  "status": "candidate-data-checks-passed; city integration pending",
+  "statistics": {
+    "mappedBuildings": 6035,
+    "footprintsChanged": 1808,
+    "heightsChanged": 90,
+    "buildingsWithInteriors": 97,
+    "geometryChanges": 1902,
+    "retained-legacy-fallback": 5353,
+    "osm-tag": 556,
+    "nearby-use-median": 126
+  },
+  "scope": "All mapped records, roof coverage, source footprint error, known heights, donor evidence, IDs, infill non-overlap and non-building features",
+  "baseExtrusion": {
+    "beforeTriangles": 90497,
+    "candidateTriangles": 125108,
+    "deltaTriangles": 34611
+  },
+  "limitations": [
+    "Extrusion estimates include buildings hidden by landmarks, railways or roads",
+    "Terrain support, GLB export, browser appearance and final budgets are not verified here",
+    "Nearby height values remain estimates; tests check source selection separately"
+  ],
+  "largestGeometryChanges": [
+    {
+      "id": "osm/f972748d88914308b05a",
+      "sourceRef": "osm/relation/13348892",
+      "beforeTriangles": 31,
+      "candidateTriangles": 296,
+      "deltaTriangles": 265,
+      "symmetricDifferencePercent": 0.52513
+    },
+    {
+      "id": "osm/428237657ada29f18120",
+      "sourceRef": "osm/way/1454475771",
+      "beforeTriangles": 91,
+      "candidateTriangles": 286,
+      "deltaTriangles": 195,
+      "symmetricDifferencePercent": 0.34859
+    },
+    {
+      "id": "osm/f322a08b57ce53f2b928",
+      "sourceRef": "osm/relation/13348894",
+      "beforeTriangles": 43,
+      "candidateTriangles": 219,
+      "deltaTriangles": 176,
+      "symmetricDifferencePercent": 1.233044
+    },
+    {
+      "id": "osm/48d2864123792621d41c",
+      "sourceRef": "osm/relation/13565118",
+      "beforeTriangles": 58,
+      "candidateTriangles": 211,
+      "deltaTriangles": 153,
+      "symmetricDifferencePercent": 0.07519
+    },
+    {
+      "id": "osm/454acf9102c8bda60b78",
+      "sourceRef": "osm/relation/13348893",
+      "beforeTriangles": 31,
+      "candidateTriangles": 180,
+      "deltaTriangles": 149,
+      "symmetricDifferencePercent": 1.549468
+    },
+    {
+      "id": "osm/1b739021556e4ae54709",
+      "sourceRef": "osm/relation/13337987",
+      "beforeTriangles": 70,
+      "candidateTriangles": 210,
+      "deltaTriangles": 140,
+      "symmetricDifferencePercent": 0.553358
+    },
+    {
+      "id": "osm/4761f742dec670fc22e4",
+      "sourceRef": "osm/relation/13346051",
+      "beforeTriangles": 40,
+      "candidateTriangles": 177,
+      "deltaTriangles": 137,
+      "symmetricDifferencePercent": 0.31402
+    },
+    {
+      "id": "osm/b3380bd393ba8631e0d8",
+      "sourceRef": "osm/relation/20369638",
+      "beforeTriangles": 55,
+      "candidateTriangles": 190,
+      "deltaTriangles": 135,
+      "symmetricDifferencePercent": 0.126531
+    },
+    {
+      "id": "osm/32d9c027b28cc9939563",
+      "sourceRef": "osm/relation/13488366",
+      "beforeTriangles": 31,
+      "candidateTriangles": 156,
+      "deltaTriangles": 125,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/40e8d50d637ce635ad60",
+      "sourceRef": "osm/relation/13487818",
+      "beforeTriangles": 31,
+      "candidateTriangles": 156,
+      "deltaTriangles": 125,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/442fa98446f57aa94471",
+      "sourceRef": "osm/relation/13487820",
+      "beforeTriangles": 31,
+      "candidateTriangles": 156,
+      "deltaTriangles": 125,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/5e00b133e103700758de",
+      "sourceRef": "osm/relation/13487822",
+      "beforeTriangles": 31,
+      "candidateTriangles": 156,
+      "deltaTriangles": 125,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/a7bb4b9e654b3a7c8968",
+      "sourceRef": "osm/relation/13488365",
+      "beforeTriangles": 31,
+      "candidateTriangles": 156,
+      "deltaTriangles": 125,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/d4f18f10f64329402c6b",
+      "sourceRef": "osm/relation/19224085",
+      "beforeTriangles": 79,
+      "candidateTriangles": 203,
+      "deltaTriangles": 124,
+      "symmetricDifferencePercent": 0.163512
+    },
+    {
+      "id": "osm/0b52f49218557efdbdae",
+      "sourceRef": "osm/way/1001479657",
+      "beforeTriangles": 46,
+      "candidateTriangles": 169,
+      "deltaTriangles": 123,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/9d34d500302db3b4cf26",
+      "sourceRef": "osm/relation/13487815",
+      "beforeTriangles": 34,
+      "candidateTriangles": 156,
+      "deltaTriangles": 122,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/cdcb40cc8109e299bc23",
+      "sourceRef": "osm/relation/13346052",
+      "beforeTriangles": 43,
+      "candidateTriangles": 162,
+      "deltaTriangles": 119,
+      "symmetricDifferencePercent": 0.95847
+    },
+    {
+      "id": "osm/1a44b3abb9a6366f29ca",
+      "sourceRef": "osm/relation/7300871",
+      "beforeTriangles": 28,
+      "candidateTriangles": 144,
+      "deltaTriangles": 116,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/b13503a5a2b3ac91ca68",
+      "sourceRef": "osm/relation/12774258",
+      "beforeTriangles": 43,
+      "candidateTriangles": 153,
+      "deltaTriangles": 110,
+      "symmetricDifferencePercent": 0.741853
+    },
+    {
+      "id": "osm/16ca5a827e44fbc78639",
+      "sourceRef": "osm/way/759170254",
+      "beforeTriangles": 103,
+      "candidateTriangles": 208,
+      "deltaTriangles": 105,
+      "symmetricDifferencePercent": 0.691214
+    },
+    {
+      "id": "osm/e4bef28f825f6c71b327",
+      "sourceRef": "osm/relation/18356234",
+      "beforeTriangles": 37,
+      "candidateTriangles": 140,
+      "deltaTriangles": 103,
+      "symmetricDifferencePercent": 0.033264
+    },
+    {
+      "id": "osm/e2e53de0b5517ebe9c60",
+      "sourceRef": "osm/relation/11564915",
+      "beforeTriangles": 64,
+      "candidateTriangles": 160,
+      "deltaTriangles": 96,
+      "symmetricDifferencePercent": 0.596309
+    },
+    {
+      "id": "osm/7b670be0f2b98b6c1766",
+      "sourceRef": "osm/relation/19726877",
+      "beforeTriangles": 73,
+      "candidateTriangles": 168,
+      "deltaTriangles": 95,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/07524db478b494f673c5",
+      "sourceRef": "osm/way/629216657",
+      "beforeTriangles": 58,
+      "candidateTriangles": 145,
+      "deltaTriangles": 87,
+      "symmetricDifferencePercent": 0.284655
+    },
+    {
+      "id": "osm/258d19f88f8bfd23a4e6",
+      "sourceRef": "osm/way/778713779",
+      "beforeTriangles": 85,
+      "candidateTriangles": 172,
+      "deltaTriangles": 87,
+      "symmetricDifferencePercent": 0.028856
+    },
+    {
+      "id": "osm/25bdf951ca95d374cb9f",
+      "sourceRef": "osm/relation/13487809",
+      "beforeTriangles": 31,
+      "candidateTriangles": 117,
+      "deltaTriangles": 86,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/7fc6b2cb9af7c2fc1cc9",
+      "sourceRef": "osm/relation/13487813",
+      "beforeTriangles": 31,
+      "candidateTriangles": 117,
+      "deltaTriangles": 86,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/b89cda4c43cff06f94df",
+      "sourceRef": "osm/relation/13487808",
+      "beforeTriangles": 31,
+      "candidateTriangles": 117,
+      "deltaTriangles": 86,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/c3185ec4a2a9c4e20ca7",
+      "sourceRef": "osm/relation/13487811",
+      "beforeTriangles": 31,
+      "candidateTriangles": 117,
+      "deltaTriangles": 86,
+      "symmetricDifferencePercent": 0.0
+    },
+    {
+      "id": "osm/e3ad3c30c63a1c719b71",
+      "sourceRef": "osm/relation/13487812",
+      "beforeTriangles": 31,
+      "candidateTriangles": 117,
+      "deltaTriangles": 86,
+      "symmetricDifferencePercent": 0.0
+    }
+  ],
+  "inputs": {
+    "before": {
+      "path": "work/urban-structure/baseline-p4/public/data/geography.json",
+      "sha256": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956"
+    },
+    "candidate": {
+      "path": "work/urban-structure/p5/quality-stable-mesh-candidate.json",
+      "sha256": "c048cb5739ae35c4c0685976eb746edcabe11bd22ca274acfdf8ab5764aa32a1"
+    },
+    "snapshot": {
+      "path": "work/geodata/osm.json",
+      "sha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+    }
+  },
+  "tools": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_building_quality.py": "598c26bb95a951709dcc2675988b4e2e6eb243784a2817c131a927a1a8985e2a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/data/building-quality-source.json": "7a0c3104bd3fcb5d49d2fc8aa1d55710cbcbd6f4cbb3f15efe258e3811b10228",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_quality.py": "1a2954273dcf39348b6d801c8c34394d865a5a8f2796fa4dd3f6ba5407699fa1",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_geodata.py": "d83deef28ca51746c566328d04ff95c23df67dd949615709dd41853325995499",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/test_building_quality.py": "d1942af09c77fdebbcc5ada922de9853b9ef98bf999adce8d6020d180bb4ac15"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "status": "independent reservoir GLB checked; full city integration remains pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 7834,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.19316909461679793,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "sharedShoreline": {
+            "sharedNativeEdges": 995,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025,
+            "connectedWaterEdges": 0,
+            "maximumWaterJoinErrorMeters": 0.0
+          }
+        }
+      },
+      "terrain": {
+        "triangles": 4419,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 7834,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.18030213142255,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "sharedShoreline": {
+            "sharedNativeEdges": 995,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025,
+            "connectedWaterEdges": 0,
+            "maximumWaterJoinErrorMeters": 0.0
+          }
+        }
+      },
+      "terrain": {
+        "triangles": 4419,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/plan.json": "3cdbc5f8f40e26db77055438578d75f083f9771fb0b8e77d603226e540aade07",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/report.json": "5cca46d2d593ee8eca782499b1fd5d0c7af32d96ff109510f6d3e486d4c18a2e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/detail.npz": "9063a99b6d9cc7540fde55de3e6a2fb397cc6775b2d037ece8e65f6e8464e876",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/detail.glb": "781952a2094daa6567051568ce58950add593a2767902bfd76d2a3b17fc76fea",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/smooth.npz": "2095254efa2a8f0d2bd1fb57d486df9bb1c4f8a9689b644859ffe931d0445186",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/smooth.glb": "38a518b92ace48cdd532caea69d770de811d1c1e0e3763611ca6a0b56d543bdf"
+  },
+  "toolSha256": "5487f82b333f587315b58a1d6f475a33c6183953a38f7c049f633116b6c2c9d6"
+}

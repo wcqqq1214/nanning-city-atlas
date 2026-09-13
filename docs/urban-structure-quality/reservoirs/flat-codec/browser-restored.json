@@ -1,0 +1,3726 @@
+{
+  "records": [
+    {
+      "id": "before-detail-overview-clay",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:16.153Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": {
+          "profile": "detail",
+          "loadMs": 1055.0999999046326,
+          "modelBytes": 30229144,
+          "fps": 4,
+          "triangles": 7009176,
+          "calls": 1964,
+          "pixelRatio": 1
+        },
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-overview-lit",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:17.966Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-qingxiu-lake-clay",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:19.749Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-qingxiu-lake-lit",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:21.515Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-waterfront-bridgehead-clay",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:23.297Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-waterfront-bridgehead-lit",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:25.050Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-longmen-dam-clay",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:26.815Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-detail-longmen-dam-lit",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "before",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb",
+          "sha256": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:28.564Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 30229144,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-overview-clay",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:30.527Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-overview-lit",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:32.341Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-qingxiu-lake-clay",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:34.124Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-qingxiu-lake-lit",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:35.941Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-waterfront-bridgehead-clay",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:37.708Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-waterfront-bridgehead-lit",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:39.455Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-longmen-dam-clay",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:41.158Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "before-smooth-longmen-dam-lit",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "before",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/data/overview.json",
+          "sha256": "a7b9bf3accdf61061591e458e9b49436c6645beecae04223d919b1c255c7da6d"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city-mobile.glb",
+          "sha256": "19c7b0d5bdb083f45ff8157ec7005233d43a7ebbe61a290b91fac2a0db4798e9"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:43.255Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 22409844,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-overview-clay",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:45.393Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-overview-lit",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:47.291Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-qingxiu-lake-clay",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:49.023Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-qingxiu-lake-lit",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:50.721Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-waterfront-bridgehead-clay",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:52.640Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-waterfront-bridgehead-lit",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:54.405Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-longmen-dam-clay",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:56.124Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=clay&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-detail-longmen-dam-lit",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "after",
+      "profile": "detail",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb",
+          "sha256": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:57.839Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=detail&material=lit&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "detail",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 26603076,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-overview-clay",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:48:59.715Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-overview-lit",
+      "view": {
+        "id": "overview",
+        "camera": [
+          235,
+          340,
+          370,
+          0,
+          0,
+          0
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:01.462Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=234.99999999999994%2C340%2C369.99999999999994%2C0%2C0%2C0&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              234.99999999999994,
+              340,
+              369.99999999999994
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-qingxiu-lake-clay",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:03.146Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-qingxiu-lake-lit",
+      "view": {
+        "id": "qingxiu-lake",
+        "camera": [
+          84,
+          4.5,
+          48,
+          87.285,
+          1.775,
+          44.157
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:04.844Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=84%2C4.5%2C48%2C87.285%2C1.7750000000000001%2C44.157&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              84,
+              4.5,
+              48
+            ],
+            "target": [
+              87.285,
+              1.7750000000000001,
+              44.157
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-waterfront-bridgehead-clay",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:06.530Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-waterfront-bridgehead-lit",
+      "view": {
+        "id": "waterfront-bridgehead",
+        "camera": [
+          19.2,
+          2.3,
+          15.1,
+          16.55,
+          0.45,
+          12.25
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:08.246Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=19.2%2C2.2999999999999994%2C15.1%2C16.55%2C0.45%2C12.25&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              19.2,
+              2.2999999999999994,
+              15.1
+            ],
+            "target": [
+              16.55,
+              0.45,
+              12.25
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-longmen-dam-clay",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "clay",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:09.926Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=clay&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "clay",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    },
+    {
+      "id": "after-smooth-longmen-dam-lit",
+      "view": {
+        "id": "longmen-dam",
+        "reason": "Source dam and shoreline slope review",
+        "buildingIds": [
+          "osm/bf97bad2665706418b47"
+        ],
+        "camera": [
+          -43.6,
+          2.5,
+          -84.7,
+          -42.35,
+          1.15,
+          -86.35
+        ]
+      },
+      "version": "after",
+      "profile": "smooth",
+      "material": "lit",
+      "assets": {
+        "/data/landmarks.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/landmarks.json",
+          "sha256": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+        },
+        "/data/overview.json": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/data/overview.json",
+          "sha256": "1fc1af6bf8ceefb2860b4c5b115767a8298cf1109022e2f93ab94ee71b4c7d29"
+        },
+        "/models/nanning-city-mobile.glb": {
+          "file": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city-mobile.glb",
+          "sha256": "b063bf7b984dfb66b04b2d18d9a0d0f2c9f084bb366e4a685a8b64de18e7de61"
+        }
+      },
+      "metadata": {
+        "schemaVersion": 1,
+        "capturedAt": "2026-09-13T03:49:11.596Z",
+        "url": "http://localhost:3000/inspect?view=overview&quality=smooth&material=lit&hour=14&height=1&camera=-43.6%2C2.5%2C-84.7%2C-42.35%2C1.15%2C-86.35&fov=40",
+        "settings": {
+          "view": "overview",
+          "camera": {
+            "position": [
+              -43.6,
+              2.5,
+              -84.7
+            ],
+            "target": [
+              -42.35,
+              1.15,
+              -86.35
+            ],
+            "fov": 40
+          },
+          "quality": "smooth",
+          "material": "lit",
+          "hour": 14,
+          "heightScale": 1
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1,
+          "frozenTime": 0
+        },
+        "effectiveHour": 14,
+        "layers": {
+          "buildings": true,
+          "vegetation": true,
+          "roads": true,
+          "railways": true,
+          "water": true,
+          "labels": false
+        },
+        "source": {
+          "model": "/models/nanning-city-mobile.glb?v=986e7e7dbcb8128c",
+          "overview": "/data/overview.json?v=986e7e7dbcb8128c",
+          "modelBytes": 19180388,
+          "metersPerUnit": 100,
+          "terrainExaggeration": 1.35,
+          "buildingExaggeration": 1.55,
+          "buildingScaleOverrides": [
+            {
+              "blockId": "xiangxieli-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 13
+            },
+            {
+              "blockId": "haipo-residential",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 4
+            },
+            {
+              "blockId": "greenland-commercial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 5
+            },
+            {
+              "blockId": "mingxiu-campus",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 8
+            },
+            {
+              "blockId": "xinzhong-industrial",
+              "scale": 1,
+              "layoutSource": "estimate",
+              "buildings": 2
+            }
+          ],
+          "osmTimestamp": "2026-09-08T06:56:02Z"
+        },
+        "renderer": null,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "note": "模型内还有地标独立展示倍率；网页高度倍率不是中性比例。静止帧率不代表连续操作性能。"
+      }
+    }
+  ],
+  "errors": [],
+  "status": "screenshots captured; visual review separate"
+}

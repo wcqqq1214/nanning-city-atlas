@@ -1,0 +1,22 @@
+{
+  "public/data/geography.json": {
+    "sha256": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956",
+    "unchanged": true
+  },
+  "public/data/terrain.json": {
+    "sha256": "aaaddb41f6875947504c444464371c502156924d9635e2fd9d693dcaa0758291",
+    "unchanged": true
+  },
+  "public/models/nanning-city.glb": {
+    "sha256": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6",
+    "unchanged": true
+  },
+  "public/models/nanning-city-mobile.glb": {
+    "sha256": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0",
+    "unchanged": true
+  },
+  "blender/nanning-city.blend": {
+    "sha256": "4f1c24b71d2f50703a83269c2a5ff5d0bf950c391c60b636a710e5858471854e",
+    "unchanged": true
+  }
+}

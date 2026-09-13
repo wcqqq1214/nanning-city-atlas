@@ -1,0 +1,24 @@
+{
+  "detail": {
+    "source": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+    "sourceSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f",
+    "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/water-web/detail.glb",
+    "sha256": "36d6d9784fb143ccbf83350d7a65d9f1a09615b27cce84572e9794109cbdae4d",
+    "bytes": 10238116,
+    "waterNodes": [
+      "Reservoir_water_custom",
+      "Water"
+    ]
+  },
+  "smooth": {
+    "source": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+    "sourceSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959",
+    "path": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/water-web/smooth.glb",
+    "sha256": "6ec24b0cbdc067fd6ddc4c474e6a4bfd0eb32c17c64e18ced2e795b5b8340601",
+    "bytes": 6619612,
+    "waterNodes": [
+      "Reservoir_water_custom",
+      "Water"
+    ]
+  }
+}

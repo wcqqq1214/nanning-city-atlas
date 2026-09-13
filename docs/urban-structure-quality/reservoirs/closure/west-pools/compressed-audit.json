@@ -1,0 +1,150 @@
+{
+  "status": "independent reservoir GLB checked; full city integration remains pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 8651,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.19762207428393772,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 7510,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 8651,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.19762207428393772,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 7510,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/plan.json": "4350d781f4a16401798d7cb7ee4b2b334025cfa5ec5830e973ada83206ec6a3c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/native/report.json": "04655126fbd1dfe1ae4e54dbbf2278f8121ca77caabe137dfbd40c289f545b1b",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/native/detail.npz": "929ec1a1ee6a19c0a70ed9596b7c64593ef530d949b79ff4b7a995dddf06a4d2",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/native/detail.glb": "df101648fbaac5e6e9b7f4eaadde918900c48451f98124d25e6f07e49c16a761",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/native/smooth.npz": "fcac0796860a2342c37d719633cf4f63b7179d254d1515ed899e1459245dac68",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/native/smooth.glb": "99a9be2b290d455a4bedd629d87bae257d84c4a736b99f5a61bf6c9a2a7248dc"
+  },
+  "toolSha256": "8f53ab176c39a35f1e54d016a3ad29ca3fa0ed305e78959c249e862bf13d1b84"
+}

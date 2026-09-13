@@ -1,0 +1,99 @@
+{
+  "status": "independent native reservoir export; full city replacement and compressed audit pending",
+  "planSha256": "da68605e21120c61250165e10063a8b299c012995b7bf49803a26622cb9e3096",
+  "baseCityRoot": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+  "profiles": {
+    "detail": {
+      "triangles": 7129,
+      "waterTriangles": 165,
+      "bankQuads": 743,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 1.0862422072932532e-10,
+      "boundarySamples": 1032,
+      "maximumBoundaryErrorMeters": 0.0002266776338855081,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "7cf73d0d7fc829c7fcb4915e5011819e0e596568d1c5abfef913aa5bdd179e99",
+          "bytes": 179898
+        },
+        "glb": {
+          "sha256": "1f79b9188ad8a04828fb59ebdb3f020fd41c92422d79bea458f83b6f65785e48",
+          "bytes": 322536
+        },
+        "blend": {
+          "sha256": "5dbea6fd72ffb27b190a1f209f40ddbfbf55203c497571b4fff097ba0395252c",
+          "bytes": 373966
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 7129,
+        "removedFaces": 3744,
+        "restoredBaseVertexSamples": 11232,
+        "maximumRemovedVertexBaseErrorMeters": 1.1915166586717874e-05,
+        "maximumRemovedCentroidChangeMeters": 2.87278509818516,
+        "maximumRemovedCentroidChangeLocation": [
+          -156.30297342936197,
+          63.377227783203125,
+          1.4894404013951619,
+          1.4607125504133103
+        ]
+      }
+    },
+    "smooth": {
+      "triangles": 7129,
+      "waterTriangles": 165,
+      "bankQuads": 743,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 1.0862422072932532e-10,
+      "boundarySamples": 1032,
+      "maximumBoundaryErrorMeters": 0.00016404518916601774,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "b6e9ae38b6de3a43a6d7b0fff28b587ba0fe50ed4dc990f8a0a29a8c9286a005",
+          "bytes": 178079
+        },
+        "glb": {
+          "sha256": "2b585ce5e6e4aac017381bc3c1bac7cb8f2d29f78fa63dbcde8a59c9501cd7be",
+          "bytes": 322072
+        },
+        "blend": {
+          "sha256": "183fcfa209df4a61b9b1dab4646dce24aa6365d480ecfba1d0056a18e1e24cc4",
+          "bytes": 373701
+        }
+      },
+      "inactiveRestoration": {
+        "retainedFacesExact": 7129,
+        "removedFaces": 3744,
+        "restoredBaseVertexSamples": 11232,
+        "maximumRemovedVertexBaseErrorMeters": 1.1799110311017103e-05,
+        "maximumRemovedCentroidChangeMeters": 3.6982526329723653,
+        "maximumRemovedCentroidChangeLocation": [
+          -157.0025380452474,
+          63.47719192504883,
+          1.4311399062474568,
+          1.3941573799177331
+        ]
+      }
+    }
+  },
+  "baseContextHashes": {
+    "public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "public/data/terrain.json": "9f4b25a6997d0ab5c1bcf54a38aa8556e68e7e8210d5132701e97004e33ba794",
+    "blender/build_city.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7"
+  },
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_reservoir_terrain.py": "717a82babff62587226dc166293997afcaab319d5b5186328e44c66fabf0db75",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  },
+  "baselinePlanSha256": "733b5b9e5a0969e2cbc178d1fb0fde6f02d48e972b6cd4a2d17a92d6126c4772"
+}

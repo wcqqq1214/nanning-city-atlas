@@ -1,0 +1,162 @@
+[
+  {
+    "id": "southeast-connected-water-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/connected/southeast.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/southeast-connected-water-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "longmen-reservoir-closure-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/closure/longmen.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "west-pools-reservoir-closure-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/closure/west-pools.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "mading-reservoir-terrain-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/mading.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/mading-reservoir-terrain-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "yinling-reservoir-terrain-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/yinling.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "zhicun-reservoir-terrain-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/zhicun.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "tianbao-reservoir-terrain-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/tianbao-terrain-source.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "linglong-lake-terrain-v1",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_reservoir_terrain.py",
+      "--geography",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json",
+      "--terrain",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/terrain.json",
+      "--source",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-sources/linglong.json",
+      "--raster",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/linglong-lake-terrain-v1.json",
+      "--runtime-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging"
+    ],
+    "exitCode": 0
+  }
+]

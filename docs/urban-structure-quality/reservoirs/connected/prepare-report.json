@@ -1,0 +1,503 @@
+{
+  "id": "p5-reservoir-connected-shorelines-v1",
+  "status": "source geometry restored; downstream terrain, land cover, roads and vegetation pending",
+  "sourceHash": "229415c05d41678b9282d959635c30fbd8311db9ce2330842bbdd74fa2057541",
+  "water": [
+    {
+      "index": 438,
+      "sourceRef": "osm/relation/11521065",
+      "beforeSha256": "3ed004d9ef7433c1d70fce786a24b6f7b81d8a1ccc83c503ff14ef265c176161",
+      "afterSha256": "22fc964a1523f641a496b31e397192effaf0c2bd9155598cea888e2513602b02",
+      "beforeAreaSquareMeters": 15331.794999999975,
+      "afterAreaSquareMeters": 14724.779999999993,
+      "symmetricDifferenceSquareMeters": 4553.444120488542,
+      "islands": 8,
+      "beforeTriangles": 88,
+      "afterTriangles": 179
+    },
+    {
+      "index": 472,
+      "sourceRef": "osm/way/838617949",
+      "beforeSha256": "610b2094e298b19bf60aae1726ef4c0609a83cc8b12439309c043c1dbddd2c43",
+      "afterSha256": "63e2ac90041b59de320dd9efd61890bf84adc1727358b1831455115ec1407266",
+      "beforeAreaSquareMeters": 9004.390000000045,
+      "afterAreaSquareMeters": 9121.704999999967,
+      "symmetricDifferenceSquareMeters": 741.0092883041837,
+      "islands": 0,
+      "beforeTriangles": 16,
+      "afterTriangles": 28
+    },
+    {
+      "index": 544,
+      "sourceRef": "osm/way/838637421",
+      "beforeSha256": "b0c90d57738215f4bcfeba73e66e9caef6e70fba9f104e25a1ee77dde873389a",
+      "afterSha256": "a5780f204ab4a92d6bad30f388aa3c84fd3d21cb6444db039ad03b90604fec7d",
+      "beforeAreaSquareMeters": 7910.254999999934,
+      "afterAreaSquareMeters": 7910.254999999934,
+      "symmetricDifferenceSquareMeters": 0.0,
+      "islands": 0,
+      "beforeTriangles": 2,
+      "afterTriangles": 2
+    },
+    {
+      "index": 546,
+      "sourceRef": "osm/way/838637422",
+      "beforeSha256": "a4db5b5c3c900ae57f8055926c0757190f80470dff33da59fbf2a189f01d19d9",
+      "afterSha256": "6d4f0c4375345a7547855704d3350d39b9318ef7818977c836d8600c6ff8a784",
+      "beforeAreaSquareMeters": 7160.674999999893,
+      "afterAreaSquareMeters": 7491.264999999856,
+      "symmetricDifferenceSquareMeters": 330.5899999999645,
+      "islands": 0,
+      "beforeTriangles": 5,
+      "afterTriangles": 7
+    },
+    {
+      "index": 547,
+      "sourceRef": "osm/way/838637423",
+      "beforeSha256": "3897de98ed377f5fa8c31ad7db0e157bdaa760af49718a3afdd7bc8fb27ae8fc",
+      "afterSha256": "c4a225c456ce5d2ae4a502360d3d801933a69d31a98cf7c9e3d88269c99f95f9",
+      "beforeAreaSquareMeters": 20373.529999999813,
+      "afterAreaSquareMeters": 20172.654999999813,
+      "symmetricDifferenceSquareMeters": 954.7122811059895,
+      "islands": 0,
+      "beforeTriangles": 9,
+      "afterTriangles": 15
+    },
+    {
+      "index": 550,
+      "sourceRef": "osm/way/838637418",
+      "beforeSha256": "70182734c4a4d61e12cc4f90f2a99ad80ab96be50818e212b8ef3fd5690245bc",
+      "afterSha256": "b0e6663a1f3f45869656b7a6f82d51222f69df0e34d929acad1db518bb783fff",
+      "beforeAreaSquareMeters": 5093.640000000039,
+      "afterAreaSquareMeters": 5320.200000000073,
+      "symmetricDifferenceSquareMeters": 226.56000000003382,
+      "islands": 0,
+      "beforeTriangles": 3,
+      "afterTriangles": 4
+    },
+    {
+      "index": 155,
+      "sourceRef": "source-union:water-155",
+      "beforeSha256": "66f93f13db426146382ed694167ad91d0a79498e3494ccae98602c92d561433a",
+      "afterSha256": "64e23bf876c7dec3d3662823565ecde7372d667a318644498ed155cd6e3a1dcf",
+      "beforeAreaSquareMeters": 286435.94499999983,
+      "afterAreaSquareMeters": 286477.65499999985,
+      "symmetricDifferenceSquareMeters": 7044.708010137305,
+      "islands": 0,
+      "beforeTriangles": 51,
+      "afterTriangles": 140
+    },
+    {
+      "index": 195,
+      "sourceRef": "source-union:water-195",
+      "beforeSha256": "368cea9c3ce64033e43646e9d1056ed99bb607468fa923e2fb63aa67584d374a",
+      "afterSha256": "ab68b49448cfa70c25295670892a74da2c23d6c9538f7e87772fd9a0007a2889",
+      "beforeAreaSquareMeters": 146424.74000000014,
+      "afterAreaSquareMeters": 145356.9600000004,
+      "symmetricDifferenceSquareMeters": 6104.804012802242,
+      "islands": 0,
+      "beforeTriangles": 42,
+      "afterTriangles": 94
+    },
+    {
+      "index": 470,
+      "sourceRef": "osm/way/838617948",
+      "beforeSha256": "80f5b1f5c131488021717864150358bfbf71e79f9b53bebae990996f7758e038",
+      "afterSha256": "607ef12f102e8c9ab2c6f4c9fab51c3ff66fb46b48bec444c89768277457073b",
+      "beforeAreaSquareMeters": 15185.395000000015,
+      "afterAreaSquareMeters": 15558.440000000035,
+      "symmetricDifferenceSquareMeters": 1587.620463327285,
+      "islands": 0,
+      "beforeTriangles": 20,
+      "afterTriangles": 35
+    },
+    {
+      "index": 139,
+      "sourceRef": "source-union:water-139",
+      "beforeSha256": "7bef49e58ce9598a8cca7c1d4b90efc0af86e19cc57246e5f564044c43819fee",
+      "afterSha256": "b3c9422ae1c1dd225e2f4b761628f5bec7549b000a3b6e9856f123436f3f55ef",
+      "beforeAreaSquareMeters": 30660.254999999735,
+      "afterAreaSquareMeters": 31016.88999999992,
+      "symmetricDifferenceSquareMeters": 3531.3629428527443,
+      "islands": 0,
+      "beforeTriangles": 25,
+      "afterTriangles": 66
+    },
+    {
+      "index": 211,
+      "sourceRef": "source-union:water-211",
+      "beforeSha256": "250a9f9b1dad6a22b369df92e0dfa387ae240d2eef055d922980c6ea06d735e8",
+      "afterSha256": "02aabad5ca4e4ce8a03c474a47fbe791768427e01f532065b3e3a6a5fcdb93eb",
+      "beforeAreaSquareMeters": 418229.4649999972,
+      "afterAreaSquareMeters": 419141.41499999986,
+      "symmetricDifferenceSquareMeters": 22155.944720820386,
+      "islands": 0,
+      "beforeTriangles": 145,
+      "afterTriangles": 350
+    },
+    {
+      "index": 543,
+      "sourceRef": "osm/way/838637425",
+      "beforeSha256": "d5a6e74ff2ea892a4db2e7e200eee5742c1681029ca8b877d825e3ee83eb78f0",
+      "afterSha256": "574dfdfba068571b8bf953ac7d35c233c6c4ab37751b8f60bccd6def851fb379",
+      "beforeAreaSquareMeters": 4904.4450000000115,
+      "afterAreaSquareMeters": 4904.4450000000115,
+      "symmetricDifferenceSquareMeters": 0.0,
+      "islands": 0,
+      "beforeTriangles": 5,
+      "afterTriangles": 5
+    },
+    {
+      "index": 548,
+      "sourceRef": "osm/way/838637424",
+      "beforeSha256": "d6f283de1015e3b105a9083442a356f9432b6f4e3baaf76e6d91211d84b2d316",
+      "afterSha256": "636e10fd4d2dc2047aa649f8a8580b21ccdc799b6b3b6f460c2633e9908dca23",
+      "beforeAreaSquareMeters": 2646.550000000027,
+      "afterAreaSquareMeters": 2696.3250000000326,
+      "symmetricDifferenceSquareMeters": 49.775000000006195,
+      "islands": 0,
+      "beforeTriangles": 3,
+      "afterTriangles": 4
+    },
+    {
+      "index": 140,
+      "sourceRef": "source-union:water-140",
+      "beforeSha256": "3af3d37b25383f3a2cd4f3ab6cf2ee470bda3f8c4ce29a9693f911956c29e1d9",
+      "afterSha256": "2bcef1b2228fa0249fa35c7425e6b4894ab97ec4aa0f12a7d7e21be80fef25d1",
+      "beforeAreaSquareMeters": 18179.649999999954,
+      "afterAreaSquareMeters": 17355.019999999993,
+      "symmetricDifferenceSquareMeters": 1481.6838161561839,
+      "islands": 0,
+      "beforeTriangles": 16,
+      "afterTriangles": 42
+    },
+    {
+      "index": 212,
+      "sourceRef": "source-union:water-212",
+      "beforeSha256": "dd22a1d948884e68533a861211ee7519d1a5241be68a5b56f0c4c005fb162c10",
+      "afterSha256": "100a09d2997942a4b560cb912704a4d3ad1bec43941d496a731bfb0722631719",
+      "beforeAreaSquareMeters": 263664.245,
+      "afterAreaSquareMeters": 260799.77,
+      "symmetricDifferenceSquareMeters": 9261.862223451095,
+      "islands": 8,
+      "beforeTriangles": 126,
+      "afterTriangles": 246
+    }
+  ],
+  "restoredBuildingIds": [],
+  "affectedBuildings": [],
+  "unchangedWaterTriangles": 9398,
+  "unchangedWaterTrianglesSha256": "191f840a10477d7105bd5c45cab94ae33e0768c5c886ad6edd50f25c713c01d3",
+  "newWaterLandcoverOverlapBeforeCorrectionSquareMeters": {
+    "parks": 25529.947305083366,
+    "urban": 0.0,
+    "inferredUrban": 0.0
+  },
+  "landcoverChanges": [
+    {
+      "field": "parks",
+      "sourceIndex": 34,
+      "outputIndices": [
+        34
+      ],
+      "removedSquareMeters": 3289.5489815200563
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 41,
+      "outputIndices": [
+        41
+      ],
+      "removedSquareMeters": 454.10500000005794
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 42,
+      "outputIndices": [
+        42
+      ],
+      "removedSquareMeters": 518.8158186599945
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 43,
+      "outputIndices": [
+        43
+      ],
+      "removedSquareMeters": 241.980267185008
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 44,
+      "outputIndices": [
+        44
+      ],
+      "removedSquareMeters": 77.65792230501667
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 45,
+      "outputIndices": [
+        45
+      ],
+      "removedSquareMeters": 250.86898607502573
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 48,
+      "outputIndices": [
+        48
+      ],
+      "removedSquareMeters": 696.3653811899784
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 52,
+      "outputIndices": [
+        52
+      ],
+      "removedSquareMeters": 747.8406062599685
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 54,
+      "outputIndices": [
+        54
+      ],
+      "removedSquareMeters": 786.8171346198949
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 58,
+      "outputIndices": [
+        58,
+        59
+      ],
+      "removedSquareMeters": 6187.255675561402
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 71,
+      "outputIndices": [
+        72
+      ],
+      "removedSquareMeters": 680.7727399850938
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 107,
+      "outputIndices": [
+        108
+      ],
+      "removedSquareMeters": 369.72785570991374
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 108,
+      "outputIndices": [
+        109
+      ],
+      "removedSquareMeters": 839.6763824351128
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 115,
+      "outputIndices": [
+        116,
+        117
+      ],
+      "removedSquareMeters": 199.7841496849917
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 116,
+      "outputIndices": [
+        118,
+        119
+      ],
+      "removedSquareMeters": 246.0731068749933
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 117,
+      "outputIndices": [
+        120
+      ],
+      "removedSquareMeters": 386.26895840008444
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 118,
+      "outputIndices": [
+        121
+      ],
+      "removedSquareMeters": 562.5812811513287
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 126,
+      "outputIndices": [
+        129
+      ],
+      "removedSquareMeters": 1634.831958609846
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 128,
+      "outputIndices": [
+        131
+      ],
+      "removedSquareMeters": 531.613379280076
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 137,
+      "outputIndices": [
+        140,
+        141
+      ],
+      "removedSquareMeters": 3276.636853304495
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 138,
+      "outputIndices": [
+        142,
+        143
+      ],
+      "removedSquareMeters": 341.3498946145088
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 146,
+      "outputIndices": [
+        151
+      ],
+      "removedSquareMeters": 175.54517715000716
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 161,
+      "outputIndices": [
+        166,
+        167
+      ],
+      "removedSquareMeters": 65.19042776493622
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 162,
+      "outputIndices": [
+        168
+      ],
+      "removedSquareMeters": 9.897444159991942
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 178,
+      "outputIndices": [
+        184
+      ],
+      "removedSquareMeters": 25.3461827390733
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 188,
+      "outputIndices": [
+        194
+      ],
+      "removedSquareMeters": 285.7613106349777
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 189,
+      "outputIndices": [
+        195,
+        196
+      ],
+      "removedSquareMeters": 477.1884063300291
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 190,
+      "outputIndices": [
+        197
+      ],
+      "removedSquareMeters": 842.9493580749892
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 208,
+      "outputIndices": [
+        215
+      ],
+      "removedSquareMeters": 276.0274374149674
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 211,
+      "outputIndices": [
+        218
+      ],
+      "removedSquareMeters": 958.3087751451203
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 371,
+      "outputIndices": [
+        378
+      ],
+      "removedSquareMeters": 35.761683281948095
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 373,
+      "outputIndices": [
+        380
+      ],
+      "removedSquareMeters": 27.33000000000159
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 374,
+      "outputIndices": [
+        381
+      ],
+      "removedSquareMeters": 27.59999999999412
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 375,
+      "outputIndices": [
+        382
+      ],
+      "removedSquareMeters": 2.4687729849987017
+    }
+  ],
+  "removedTrees": [
+    {
+      "index": 1568,
+      "expectedTree": [
+        120.389,
+        -77.624,
+        0.4
+      ],
+      "geographyWaterIndex": 140,
+      "reason": "Procedural tree newly covered by restored source shoreline"
+    },
+    {
+      "index": 9936,
+      "expectedTree": [
+        103.693,
+        -117.404,
+        0.32
+      ],
+      "geographyWaterIndex": 195,
+      "reason": "Procedural tree newly covered by restored source shoreline"
+    }
+  ],
+  "newWaterTreeIndices": [],
+  "newWaterBuildingOverlaps": [],
+  "inputSha256": "a85873662b6d9a3f1aaab9bd2729a872d6d054911ed9e344f7f6396ee698e98a",
+  "toolSha256": "568f040aa8de2d7047d14b2202100f49ad10c34cf80201a20707f9e55303d0e2"
+}

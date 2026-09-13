@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "scope": "continuous native mesh overlap; compressed export and visual QA are separate",
+  "canopyFaces": 22011,
+  "terrainFaces": 316384,
+  "overlapPairsChecked": 48995,
+  "minimumRequiredClearanceMeters": 9.5,
+  "minimumClearanceMeters": 9.610372051059436,
+  "failedClearanceFaces": 0,
+  "failedClearanceFaceIndices": [],
+  "verticalCanopyFacesChecked": 44,
+  "failedVerticalCanopyFaces": [],
+  "verticalFacesWithUncoveredEdges": [],
+  "zeroAreaCanopyFaces": 48,
+  "missingCoverageSquareMeters": 7.581653204715109,
+  "sumOfPerFaceMissingCoverageSquareMeters": 7.584056066962372,
+  "coverageToleranceMeters": 0.002,
+  "coverageOutsideToleranceSquareMeters": 0.0,
+  "maximumFaceMissingCoverageSquareMeters": 0.1830374816040161,
+  "facesMissingMoreThan0_01SquareMeters": 144,
+  "ignoredCanopyVerticalOrDegenerateFaces": 92,
+  "ignoredGroundVerticalOrDegenerateFaces": 22148
+}

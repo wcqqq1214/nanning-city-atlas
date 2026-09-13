@@ -1,0 +1,20 @@
+{
+  "status": "production terrain/water fixed-view review; complete city still pending",
+  "profiles": {
+    "detail": {
+      "nativePositionsUnchanged": true,
+      "nativeWaterUnchanged": true,
+      "recoloredFaces": 26569
+    },
+    "smooth": {
+      "nativePositionsUnchanged": true,
+      "nativeWaterUnchanged": true,
+      "recoloredFaces": 26569
+    }
+  },
+  "visualReview": {
+    "views": 8,
+    "observed": "The uniform dark-green rectangular material boundary disappeared after restoring the original cell palette. Three estimated dam crests and banks remain visible in both profiles. Views omit complete city buildings, roads and canopy.",
+    "remaining": "Four other source water bodies in the rectangle keep zero replacement weight along their boundaries; their water/land interfaces still need separate review."
+  }
+}

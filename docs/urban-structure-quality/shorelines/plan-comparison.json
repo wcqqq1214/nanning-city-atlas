@@ -1,0 +1,9 @@
+{
+  "status": "plan-view source diagnosis; terrain/3D acceptance separate",
+  "files": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/shorelines/input.json": "e341669ad39ce9ee8b607d17d050bb8adf0d66811924dbaf4e24c92c7afbda8f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/shorelines/candidate.json": "de1a4ee6b1047f59ce67826150b3c50812d30d96a34614565182dad6ce6add3f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/shorelines/plan-comparison.png": "2783f22dd28523237c8ed73d6e487ed44ebf8db0b605123bae8cdaf9de185593",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/plot_building_shorelines.py": "d400bb570d2652171c25de50d93bbce4ea16b7754f9e6024292a813cc78d6d8e"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "continuous native mesh overlap; compressed export and visual QA are separate",
+  "canopyFaces": 138798,
+  "terrainFaces": 726496,
+  "overlapPairsChecked": 328022,
+  "minimumRequiredClearanceMeters": 9.5,
+  "minimumClearanceMeters": 9.855913638982727,
+  "failedClearanceFaces": 0,
+  "failureExamples": [],
+  "failedClearanceFaceIndices": [],
+  "verticalCanopyFacesChecked": 1182,
+  "failedVerticalCanopyFaces": [],
+  "verticalFacesWithUncoveredEdges": [],
+  "zeroAreaCanopyFaces": 297,
+  "missingCoverageSquareMeters": 11.939336178985876,
+  "sumOfPerFaceMissingCoverageSquareMeters": 11.945463904326818,
+  "coverageToleranceMeters": 0.002,
+  "coverageOutsideToleranceSquareMeters": 0.0,
+  "maximumFaceMissingCoverageSquareMeters": 0.0915194223568552,
+  "facesMissingMoreThan0_01SquareMeters": 402,
+  "ignoredCanopyVerticalOrDegenerateFaces": 1479,
+  "ignoredGroundVerticalOrDegenerateFaces": 22148,
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/precision-decoded/all-detail.npz": "0afe4fcfda78251341ccfb711bc603692020899ef443554fcdd043526f2e881d",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/precision-decoded/terrain-detail.npz": "f9c32c7b91749a5199dab2f84bee05f3973b6e9086392acaf70bc0be6ef00f1b",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_canopy_clearance.py": "d9ef5a9336251700b5ba8325a5b762c11a64babb464d78d00dece4f0ad06025c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "2b662f56a4656a75f374fdfde293cf8914c4056d5755eb01548608cf23c66653"
+  }
+}

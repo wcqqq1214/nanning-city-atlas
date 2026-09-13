@@ -1,0 +1,1186 @@
+{
+  "status": "geometry-preserving candidate; browser visuals and full validators pending",
+  "input": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/canopy-conforming-staging/public/models/nanning-city.glb",
+  "inputSha256": "e2d5e0f7a113fb98258a5f73bd738ab3af2ce7b947d293089ce890d1da117726",
+  "output": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/precision-codec/public/models/nanning-city.glb",
+  "outputSha256": "c9d873f9bea058bff51df9ad9f1354081bf0d1f422c51aa6aaafe78810ea058d",
+  "beforeBytes": 40060964,
+  "afterBytes": 28317628,
+  "savedBytes": 11743336,
+  "records": [
+    {
+      "nodes": [
+        "Terrain_0_0"
+      ],
+      "flatFaces": 32380,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.21613203327631442,
+      "beforePayloadBytes": 730965,
+      "afterPayloadBytes": 204179
+    },
+    {
+      "nodes": [
+        "Terrain_0_0"
+      ],
+      "flatFaces": 1175,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1762807675422574,
+      "beforePayloadBytes": 28740,
+      "afterPayloadBytes": 12897
+    },
+    {
+      "nodes": [
+        "Terrain_0_0"
+      ],
+      "flatFaces": 329,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17091681251015034,
+      "beforePayloadBytes": 8594,
+      "afterPayloadBytes": 6580
+    },
+    {
+      "nodes": [
+        "Terrain_0_0"
+      ],
+      "flatFaces": 1761,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17746104834959156,
+      "beforePayloadBytes": 38335,
+      "afterPayloadBytes": 14310
+    },
+    {
+      "nodes": [
+        "Terrain_0_1"
+      ],
+      "flatFaces": 30834,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.20047536527447496,
+      "beforePayloadBytes": 689152,
+      "afterPayloadBytes": 196661
+    },
+    {
+      "nodes": [
+        "Terrain_0_1"
+      ],
+      "flatFaces": 1386,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18730466780869118,
+      "beforePayloadBytes": 32790,
+      "afterPayloadBytes": 18130
+    },
+    {
+      "nodes": [
+        "Terrain_0_1"
+      ],
+      "flatFaces": 391,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19522755132861686,
+      "beforePayloadBytes": 9810,
+      "afterPayloadBytes": 8225
+    },
+    {
+      "nodes": [
+        "Terrain_0_1"
+      ],
+      "flatFaces": 2217,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.170374487995518,
+      "beforePayloadBytes": 48546,
+      "afterPayloadBytes": 20197
+    },
+    {
+      "nodes": [
+        "Terrain_0_2"
+      ],
+      "flatFaces": 2704,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1992310387115606,
+      "beforePayloadBytes": 61265,
+      "afterPayloadBytes": 21093
+    },
+    {
+      "nodes": [
+        "Terrain_0_2"
+      ],
+      "flatFaces": 24201,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.21201276653628334,
+      "beforePayloadBytes": 555571,
+      "afterPayloadBytes": 209745
+    },
+    {
+      "nodes": [
+        "Terrain_0_2"
+      ],
+      "flatFaces": 6821,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.20530425389135273,
+      "beforePayloadBytes": 160980,
+      "afterPayloadBytes": 130128
+    },
+    {
+      "nodes": [
+        "Terrain_0_2"
+      ],
+      "flatFaces": 137,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17931356136928514,
+      "beforePayloadBytes": 3329,
+      "afterPayloadBytes": 1678
+    },
+    {
+      "nodes": [
+        "Terrain_0_3"
+      ],
+      "flatFaces": 3446,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16016004272586404,
+      "beforePayloadBytes": 81092,
+      "afterPayloadBytes": 23111
+    },
+    {
+      "nodes": [
+        "Terrain_0_3"
+      ],
+      "flatFaces": 10081,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19840285290679274,
+      "beforePayloadBytes": 231313,
+      "afterPayloadBytes": 88496
+    },
+    {
+      "nodes": [
+        "Terrain_0_3"
+      ],
+      "flatFaces": 3027,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.20654043728607394,
+      "beforePayloadBytes": 71582,
+      "afterPayloadBytes": 56617
+    },
+    {
+      "nodes": [
+        "Terrain_1_0"
+      ],
+      "flatFaces": 29137,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2198880479073821,
+      "beforePayloadBytes": 658869,
+      "afterPayloadBytes": 187082
+    },
+    {
+      "nodes": [
+        "Terrain_1_0"
+      ],
+      "flatFaces": 4691,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1856352400343533,
+      "beforePayloadBytes": 108067,
+      "afterPayloadBytes": 44225
+    },
+    {
+      "nodes": [
+        "Terrain_1_0"
+      ],
+      "flatFaces": 1370,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19007916808404918,
+      "beforePayloadBytes": 32683,
+      "afterPayloadBytes": 26422
+    },
+    {
+      "nodes": [
+        "Terrain_1_0"
+      ],
+      "flatFaces": 446,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1920008255359733,
+      "beforePayloadBytes": 11276,
+      "afterPayloadBytes": 5926
+    },
+    {
+      "nodes": [
+        "Terrain_1_1"
+      ],
+      "flatFaces": 30103,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19037511498601256,
+      "beforePayloadBytes": 669760,
+      "afterPayloadBytes": 193377
+    },
+    {
+      "nodes": [
+        "Terrain_1_1"
+      ],
+      "flatFaces": 1826,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19690668094316321,
+      "beforePayloadBytes": 42574,
+      "afterPayloadBytes": 24013
+    },
+    {
+      "nodes": [
+        "Terrain_1_1"
+      ],
+      "flatFaces": 576,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16295976624727282,
+      "beforePayloadBytes": 14134,
+      "afterPayloadBytes": 12086
+    },
+    {
+      "nodes": [
+        "Terrain_1_1"
+      ],
+      "flatFaces": 3140,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.15910601560658655,
+      "beforePayloadBytes": 67600,
+      "afterPayloadBytes": 25880
+    },
+    {
+      "nodes": [
+        "Terrain_1_2"
+      ],
+      "flatFaces": 14342,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1852538398950168,
+      "beforePayloadBytes": 319525,
+      "afterPayloadBytes": 91835
+    },
+    {
+      "nodes": [
+        "Terrain_1_2"
+      ],
+      "flatFaces": 12749,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19626296000296958,
+      "beforePayloadBytes": 293722,
+      "afterPayloadBytes": 114730
+    },
+    {
+      "nodes": [
+        "Terrain_1_2"
+      ],
+      "flatFaces": 3643,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2035755013761283,
+      "beforePayloadBytes": 86475,
+      "afterPayloadBytes": 70231
+    },
+    {
+      "nodes": [
+        "Terrain_1_2"
+      ],
+      "flatFaces": 553,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1675189841134408,
+      "beforePayloadBytes": 13333,
+      "afterPayloadBytes": 6800
+    },
+    {
+      "nodes": [
+        "Terrain_1_3"
+      ],
+      "flatFaces": 11969,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2037906893375039,
+      "beforePayloadBytes": 275353,
+      "afterPayloadBytes": 104406
+    },
+    {
+      "nodes": [
+        "Terrain_1_3"
+      ],
+      "flatFaces": 3427,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19358715309898059,
+      "beforePayloadBytes": 81237,
+      "afterPayloadBytes": 65794
+    },
+    {
+      "nodes": [
+        "Terrain_2_0"
+      ],
+      "flatFaces": 25767,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18074120008163455,
+      "beforePayloadBytes": 579667,
+      "afterPayloadBytes": 169461
+    },
+    {
+      "nodes": [
+        "Terrain_2_0"
+      ],
+      "flatFaces": 7077,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19752580239736928,
+      "beforePayloadBytes": 163219,
+      "afterPayloadBytes": 68964
+    },
+    {
+      "nodes": [
+        "Terrain_2_0"
+      ],
+      "flatFaces": 1914,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18790085950490606,
+      "beforePayloadBytes": 45689,
+      "afterPayloadBytes": 38484
+    },
+    {
+      "nodes": [
+        "Terrain_2_0"
+      ],
+      "flatFaces": 753,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16643417271116462,
+      "beforePayloadBytes": 17735,
+      "afterPayloadBytes": 6969
+    },
+    {
+      "nodes": [
+        "Terrain_2_1"
+      ],
+      "flatFaces": 59788,
+      "explicitNormalFaces": 19,
+      "maximumFlatNormalDifferenceDegrees": 0.4817131425395575,
+      "beforePayloadBytes": 1306096,
+      "afterPayloadBytes": 382241
+    },
+    {
+      "nodes": [
+        "Terrain_2_1"
+      ],
+      "flatFaces": 1629,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1846016417056432,
+      "beforePayloadBytes": 38227,
+      "afterPayloadBytes": 22222
+    },
+    {
+      "nodes": [
+        "Terrain_2_1"
+      ],
+      "flatFaces": 4241,
+      "explicitNormalFaces": 6,
+      "maximumFlatNormalDifferenceDegrees": 0.4971297769002238,
+      "beforePayloadBytes": 92038,
+      "afterPayloadBytes": 41983
+    },
+    {
+      "nodes": [
+        "Terrain_2_1"
+      ],
+      "flatFaces": 2645,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17766922761814927,
+      "beforePayloadBytes": 57051,
+      "afterPayloadBytes": 22047
+    },
+    {
+      "nodes": [
+        "Terrain_2_1"
+      ],
+      "flatFaces": 276,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.43345526606335494,
+      "beforePayloadBytes": 6416,
+      "afterPayloadBytes": 3301
+    },
+    {
+      "nodes": [
+        "Terrain_2_2"
+      ],
+      "flatFaces": 30698,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18900243102612824,
+      "beforePayloadBytes": 686086,
+      "afterPayloadBytes": 197894
+    },
+    {
+      "nodes": [
+        "Terrain_2_2"
+      ],
+      "flatFaces": 3138,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2237844677018168,
+      "beforePayloadBytes": 72889,
+      "afterPayloadBytes": 35417
+    },
+    {
+      "nodes": [
+        "Terrain_2_2"
+      ],
+      "flatFaces": 918,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17557632552171068,
+      "beforePayloadBytes": 22348,
+      "afterPayloadBytes": 18298
+    },
+    {
+      "nodes": [
+        "Terrain_2_2"
+      ],
+      "flatFaces": 624,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1833313643180761,
+      "beforePayloadBytes": 15242,
+      "afterPayloadBytes": 8645
+    },
+    {
+      "nodes": [
+        "Terrain_2_3"
+      ],
+      "flatFaces": 5394,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19617528103475496,
+      "beforePayloadBytes": 122616,
+      "afterPayloadBytes": 38587
+    },
+    {
+      "nodes": [
+        "Terrain_2_3"
+      ],
+      "flatFaces": 7776,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2077084024830405,
+      "beforePayloadBytes": 179937,
+      "afterPayloadBytes": 71433
+    },
+    {
+      "nodes": [
+        "Terrain_2_3"
+      ],
+      "flatFaces": 2228,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2060090423394683,
+      "beforePayloadBytes": 53303,
+      "afterPayloadBytes": 43142
+    },
+    {
+      "nodes": [
+        "Terrain_2_3"
+      ],
+      "flatFaces": 358,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18086263865062963,
+      "beforePayloadBytes": 8926,
+      "afterPayloadBytes": 3981
+    },
+    {
+      "nodes": [
+        "Terrain_3_0"
+      ],
+      "flatFaces": 27481,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1735741245383394,
+      "beforePayloadBytes": 619245,
+      "afterPayloadBytes": 178563
+    },
+    {
+      "nodes": [
+        "Terrain_3_0"
+      ],
+      "flatFaces": 1533,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19323983678550025,
+      "beforePayloadBytes": 37626,
+      "afterPayloadBytes": 19060
+    },
+    {
+      "nodes": [
+        "Terrain_3_0"
+      ],
+      "flatFaces": 443,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17621243447821727,
+      "beforePayloadBytes": 11556,
+      "afterPayloadBytes": 9228
+    },
+    {
+      "nodes": [
+        "Terrain_3_0"
+      ],
+      "flatFaces": 948,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16323619082047286,
+      "beforePayloadBytes": 23173,
+      "afterPayloadBytes": 8365
+    },
+    {
+      "nodes": [
+        "Terrain_3_1"
+      ],
+      "flatFaces": 49699,
+      "explicitNormalFaces": 74,
+      "maximumFlatNormalDifferenceDegrees": 0.4920977638376394,
+      "beforePayloadBytes": 1094824,
+      "afterPayloadBytes": 359629
+    },
+    {
+      "nodes": [
+        "Terrain_3_1"
+      ],
+      "flatFaces": 13267,
+      "explicitNormalFaces": 175,
+      "maximumFlatNormalDifferenceDegrees": 0.4903838949146363,
+      "beforePayloadBytes": 295729,
+      "afterPayloadBytes": 142088
+    },
+    {
+      "nodes": [
+        "Terrain_3_1"
+      ],
+      "flatFaces": 2337,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1891793057644337,
+      "beforePayloadBytes": 52816,
+      "afterPayloadBytes": 29482
+    },
+    {
+      "nodes": [
+        "Terrain_3_1"
+      ],
+      "flatFaces": 1876,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1762756310742733,
+      "beforePayloadBytes": 41540,
+      "afterPayloadBytes": 18420
+    },
+    {
+      "nodes": [
+        "Terrain_3_2"
+      ],
+      "flatFaces": 34610,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2154059925587657,
+      "beforePayloadBytes": 777406,
+      "afterPayloadBytes": 215773
+    },
+    {
+      "nodes": [
+        "Terrain_3_2"
+      ],
+      "flatFaces": 404,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17536601831802193,
+      "beforePayloadBytes": 9749,
+      "afterPayloadBytes": 5086
+    },
+    {
+      "nodes": [
+        "Terrain_3_2"
+      ],
+      "flatFaces": 375,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1784332727302991,
+      "beforePayloadBytes": 9262,
+      "afterPayloadBytes": 4824
+    },
+    {
+      "nodes": [
+        "Terrain_3_3"
+      ],
+      "flatFaces": 14614,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2167298076644496,
+      "beforePayloadBytes": 329811,
+      "afterPayloadBytes": 93954
+    },
+    {
+      "nodes": [
+        "Terrain_3_3"
+      ],
+      "flatFaces": 1662,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18828637624940553,
+      "beforePayloadBytes": 40518,
+      "afterPayloadBytes": 17322
+    },
+    {
+      "nodes": [
+        "Terrain_3_3"
+      ],
+      "flatFaces": 504,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19319722550929935,
+      "beforePayloadBytes": 13045,
+      "afterPayloadBytes": 9815
+    },
+    {
+      "nodes": [
+        "Terrain_3_3"
+      ],
+      "flatFaces": 308,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17646199173663346,
+      "beforePayloadBytes": 7735,
+      "afterPayloadBytes": 3390
+    },
+    {
+      "nodes": [
+        "Terrain_4_0"
+      ],
+      "flatFaces": 18751,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18033101930214449,
+      "beforePayloadBytes": 419719,
+      "afterPayloadBytes": 121414
+    },
+    {
+      "nodes": [
+        "Terrain_4_0"
+      ],
+      "flatFaces": 1228,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.15630014836712916,
+      "beforePayloadBytes": 29783,
+      "afterPayloadBytes": 13345
+    },
+    {
+      "nodes": [
+        "Terrain_4_0"
+      ],
+      "flatFaces": 348,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.17550360904583936,
+      "beforePayloadBytes": 9032,
+      "afterPayloadBytes": 6720
+    },
+    {
+      "nodes": [
+        "Terrain_4_0"
+      ],
+      "flatFaces": 1108,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.14395390262806967,
+      "beforePayloadBytes": 25101,
+      "afterPayloadBytes": 12675
+    },
+    {
+      "nodes": [
+        "Terrain_4_1"
+      ],
+      "flatFaces": 16772,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19376329561284358,
+      "beforePayloadBytes": 377583,
+      "afterPayloadBytes": 109726
+    },
+    {
+      "nodes": [
+        "Terrain_4_1"
+      ],
+      "flatFaces": 2738,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1839239307497672,
+      "beforePayloadBytes": 66223,
+      "afterPayloadBytes": 27857
+    },
+    {
+      "nodes": [
+        "Terrain_4_1"
+      ],
+      "flatFaces": 756,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1594751110696979,
+      "beforePayloadBytes": 19161,
+      "afterPayloadBytes": 14949
+    },
+    {
+      "nodes": [
+        "Terrain_4_1"
+      ],
+      "flatFaces": 1762,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1842252398122026,
+      "beforePayloadBytes": 39934,
+      "afterPayloadBytes": 14324
+    },
+    {
+      "nodes": [
+        "Terrain_4_2"
+      ],
+      "flatFaces": 20608,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.21619669721602466,
+      "beforePayloadBytes": 463410,
+      "afterPayloadBytes": 129535
+    },
+    {
+      "nodes": [
+        "Terrain_4_2"
+      ],
+      "flatFaces": 846,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16752868515017388,
+      "beforePayloadBytes": 21089,
+      "afterPayloadBytes": 8159
+    },
+    {
+      "nodes": [
+        "Terrain_4_2"
+      ],
+      "flatFaces": 235,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1842594897622941,
+      "beforePayloadBytes": 5871,
+      "afterPayloadBytes": 4001
+    },
+    {
+      "nodes": [
+        "Terrain_4_3"
+      ],
+      "flatFaces": 8910,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16196178962766794,
+      "beforePayloadBytes": 210179,
+      "afterPayloadBytes": 56752
+    },
+    {
+      "nodes": [
+        "Terrain_4_3"
+      ],
+      "flatFaces": 1300,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.16950437050358969,
+      "beforePayloadBytes": 33031,
+      "afterPayloadBytes": 11488
+    },
+    {
+      "nodes": [
+        "Terrain_4_3"
+      ],
+      "flatFaces": 348,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.1504608478069724,
+      "beforePayloadBytes": 9435,
+      "afterPayloadBytes": 6756
+    },
+    {
+      "nodes": [
+        "Terrain_grading_access_xinzhong_industrial_0_0"
+      ],
+      "flatFaces": 2289,
+      "explicitNormalFaces": 120,
+      "maximumFlatNormalDifferenceDegrees": 0.4898039614311907,
+      "beforePayloadBytes": 74547,
+      "afterPayloadBytes": 25443
+    },
+    {
+      "nodes": [
+        "Terrain_grading_access_xinzhong_industrial_0_0"
+      ],
+      "flatFaces": 1352,
+      "explicitNormalFaces": 44,
+      "maximumFlatNormalDifferenceDegrees": 0.452029620243983,
+      "beforePayloadBytes": 40114,
+      "afterPayloadBytes": 13369
+    },
+    {
+      "nodes": [
+        "Terrain_grading_access_xinzhong_industrial_0_0"
+      ],
+      "flatFaces": 342,
+      "explicitNormalFaces": 3,
+      "maximumFlatNormalDifferenceDegrees": 0.3345333426208122,
+      "beforePayloadBytes": 11206,
+      "afterPayloadBytes": 3969
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+      ],
+      "flatFaces": 349,
+      "explicitNormalFaces": 2,
+      "maximumFlatNormalDifferenceDegrees": 0.45202788580759845,
+      "beforePayloadBytes": 13523,
+      "afterPayloadBytes": 3300
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+      ],
+      "flatFaces": 1792,
+      "explicitNormalFaces": 107,
+      "maximumFlatNormalDifferenceDegrees": 0.4913985520492224,
+      "beforePayloadBytes": 73012,
+      "afterPayloadBytes": 25685
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+      ],
+      "flatFaces": 583,
+      "explicitNormalFaces": 26,
+      "maximumFlatNormalDifferenceDegrees": 0.46218373925395356,
+      "beforePayloadBytes": 23641,
+      "afterPayloadBytes": 8590
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+      ],
+      "flatFaces": 1058,
+      "explicitNormalFaces": 54,
+      "maximumFlatNormalDifferenceDegrees": 0.475771477678791,
+      "beforePayloadBytes": 42764,
+      "afterPayloadBytes": 16471
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+      ],
+      "flatFaces": 1986,
+      "explicitNormalFaces": 4,
+      "maximumFlatNormalDifferenceDegrees": 0.4429989869653457,
+      "beforePayloadBytes": 50467,
+      "afterPayloadBytes": 24214
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 6086,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.2526125885734827,
+      "beforePayloadBytes": 233835,
+      "afterPayloadBytes": 53442
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 1780,
+      "explicitNormalFaces": 2,
+      "maximumFlatNormalDifferenceDegrees": 0.21860017427619555,
+      "beforePayloadBytes": 69005,
+      "afterPayloadBytes": 22133
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 879,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.30590838376084445,
+      "beforePayloadBytes": 34910,
+      "afterPayloadBytes": 11020
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 2888,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.24826538705726042,
+      "beforePayloadBytes": 75640,
+      "afterPayloadBytes": 34352
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 233,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.18976922986384917,
+      "beforePayloadBytes": 9286,
+      "afterPayloadBytes": 2429
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 3755,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.360194819586462,
+      "beforePayloadBytes": 144440,
+      "afterPayloadBytes": 32571
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1017,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.20661182232677516,
+      "beforePayloadBytes": 39511,
+      "afterPayloadBytes": 12630
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 702,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.20229770835485625,
+      "beforePayloadBytes": 27919,
+      "afterPayloadBytes": 9076
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 2468,
+      "explicitNormalFaces": 6,
+      "maximumFlatNormalDifferenceDegrees": 0.4083576250766501,
+      "beforePayloadBytes": 72653,
+      "afterPayloadBytes": 26644
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_southeast_connected_water_v1_0_0"
+      ],
+      "flatFaces": 12715,
+      "explicitNormalFaces": 247,
+      "maximumFlatNormalDifferenceDegrees": 0.49924501984503233,
+      "beforePayloadBytes": 490605,
+      "afterPayloadBytes": 118880
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_southeast_connected_water_v1_0_0"
+      ],
+      "flatFaces": 6945,
+      "explicitNormalFaces": 225,
+      "maximumFlatNormalDifferenceDegrees": 0.48179291575003375,
+      "beforePayloadBytes": 273243,
+      "afterPayloadBytes": 88278
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_southeast_connected_water_v1_0_0"
+      ],
+      "flatFaces": 2181,
+      "explicitNormalFaces": 70,
+      "maximumFlatNormalDifferenceDegrees": 0.4809191638220552,
+      "beforePayloadBytes": 86068,
+      "afterPayloadBytes": 31853
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_southeast_connected_water_v1_0_0"
+      ],
+      "flatFaces": 4347,
+      "explicitNormalFaces": 292,
+      "maximumFlatNormalDifferenceDegrees": 0.49218392458003607,
+      "beforePayloadBytes": 177023,
+      "afterPayloadBytes": 69379
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_southeast_connected_water_v1_0_0"
+      ],
+      "flatFaces": 8276,
+      "explicitNormalFaces": 42,
+      "maximumFlatNormalDifferenceDegrees": 0.48258203988070514,
+      "beforePayloadBytes": 211442,
+      "afterPayloadBytes": 100718
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 285,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.20130484074233657,
+      "beforePayloadBytes": 11171,
+      "afterPayloadBytes": 2850
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 6695,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.48283357394668885,
+      "beforePayloadBytes": 257237,
+      "afterPayloadBytes": 57480
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1939,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.34384850212153556,
+      "beforePayloadBytes": 75050,
+      "afterPayloadBytes": 23191
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1136,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.38133134478231034,
+      "beforePayloadBytes": 44604,
+      "afterPayloadBytes": 13998
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 4749,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.46768556741798234,
+      "beforePayloadBytes": 147212,
+      "afterPayloadBytes": 47066
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 201,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.18988827892338486,
+      "beforePayloadBytes": 7802,
+      "afterPayloadBytes": 2249
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 3297,
+      "explicitNormalFaces": 10,
+      "maximumFlatNormalDifferenceDegrees": 0.4147510707051072,
+      "beforePayloadBytes": 126803,
+      "afterPayloadBytes": 25393
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 661,
+      "explicitNormalFaces": 2,
+      "maximumFlatNormalDifferenceDegrees": 0.28486501754155413,
+      "beforePayloadBytes": 26331,
+      "afterPayloadBytes": 7050
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 1843,
+      "explicitNormalFaces": 7,
+      "maximumFlatNormalDifferenceDegrees": 0.3887907835713123,
+      "beforePayloadBytes": 58583,
+      "afterPayloadBytes": 18705
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+      ],
+      "flatFaces": 174,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.0,
+      "beforePayloadBytes": 6412,
+      "afterPayloadBytes": 1748
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 4334,
+      "explicitNormalFaces": 2,
+      "maximumFlatNormalDifferenceDegrees": 0.4094181086766339,
+      "beforePayloadBytes": 166787,
+      "afterPayloadBytes": 35879
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1222,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.41710190860722846,
+      "beforePayloadBytes": 47414,
+      "afterPayloadBytes": 14117
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 770,
+      "explicitNormalFaces": 2,
+      "maximumFlatNormalDifferenceDegrees": 0.48046191100599794,
+      "beforePayloadBytes": 30705,
+      "afterPayloadBytes": 9669
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 2212,
+      "explicitNormalFaces": 7,
+      "maximumFlatNormalDifferenceDegrees": 0.3004014867259542,
+      "beforePayloadBytes": 66403,
+      "afterPayloadBytes": 23539
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 66,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.19886757820096704,
+      "beforePayloadBytes": 2527,
+      "afterPayloadBytes": 715
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 237,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.22582194778404774,
+      "beforePayloadBytes": 9226,
+      "afterPayloadBytes": 2221
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 5538,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.21747826587701688,
+      "beforePayloadBytes": 213182,
+      "afterPayloadBytes": 46837
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1409,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.2056421784031676,
+      "beforePayloadBytes": 54728,
+      "afterPayloadBytes": 17757
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 1001,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.34038579518354783,
+      "beforePayloadBytes": 39398,
+      "afterPayloadBytes": 11848
+    },
+    {
+      "nodes": [
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "flatFaces": 2476,
+      "explicitNormalFaces": 1,
+      "maximumFlatNormalDifferenceDegrees": 0.3894098793530459,
+      "beforePayloadBytes": 67490,
+      "afterPayloadBytes": 28348
+    }
+  ],
+  "prefixes": [
+    "Terrain_"
+  ],
+  "toolSha256": "a327c8f42139ec7a08064d855d2bef8f3a0d0a3f59ec4583f97645b84b8281a0"
+}

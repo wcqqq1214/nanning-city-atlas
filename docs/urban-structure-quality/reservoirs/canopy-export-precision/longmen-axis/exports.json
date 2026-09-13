@@ -1,0 +1,42 @@
+[
+  {
+    "version": "before",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before"
+    ],
+    "exitCode": 0,
+    "seconds": 28.39
+  },
+  {
+    "version": "after",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/plan.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after"
+    ],
+    "exitCode": 0,
+    "seconds": 31.33
+  }
+]

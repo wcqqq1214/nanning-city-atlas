@@ -1,0 +1,135 @@
+{
+  "status": "production reservoir and water native checks plus compressed terrain context; complete city pending",
+  "profiles": {
+    "detail": {
+      "compressedTerrain": {
+        "triangles": 31521,
+        "maximumVertexDisplacementMeters": 2.384185791015625e-05,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 28777,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        }
+      }
+    },
+    "smooth": {
+      "compressedTerrain": {
+        "triangles": 31521,
+        "maximumVertexDisplacementMeters": 2.384185791015625e-05,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 28777,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        }
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/data/reservoir-terrain-plan.json": "e8089c2f308c1e2d1622e200f37bdd6c724a770fea98e6bd91a9322d3fb5651e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-native/report.json": "57f22193dbf263a9fc99ebdccfc4802ccb3ceefa14eef3145aee3885c2763a3d",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-context/sources.json": "75463bfd139b03b11c32c983a64f3d3a009b9a1a3c7d81a476853344f78a1c53",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-native/detail.npz": "4cac06528780a0e68085cc33e921b3e6e30f3173fd03121c6cd2bd4398aa0768",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-native/smooth.npz": "6f0e08785f34ce68a914c8fafe1bc1e81b8495f2d82a49e0ffaed94f1e1facf8",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-context/detail.glb": "87b997dfe99b4ff741f9ae36110efeb55ddc41acb5ec30c9c3b66388324ebd49",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/work/p5/tianbao-palette-context/smooth.glb": "d337cbfc1b1178c0fefa8ff50746089a8e015291734c3b087f183ad2448003a5"
+  },
+  "toolSha256": "726da43697a675aa9b5e39f6b868d15c1c8647466722b8d94ac636b3cd9a1dee"
+}

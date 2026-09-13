@@ -1,0 +1,27 @@
+{
+  "status": "P4 budget measured; P5 candidate extrusion is not an export budget result",
+  "profiles": {
+    "nanning-city.glb": {
+      "sha256": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6",
+      "triangles": 3480403,
+      "nonInfrastructureTriangles": 1618541,
+      "nonInfrastructureLimitExclusive": 1650000,
+      "remainingToExclusiveLimit": 31459,
+      "bytes": 25579860,
+      "byteLimit": 26000000,
+      "remainingBytes": 420140
+    },
+    "nanning-city-mobile.glb": {
+      "sha256": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0",
+      "triangles": 2373054,
+      "nonInfrastructureTriangles": 991859,
+      "nonInfrastructureLimitExclusive": 1000000,
+      "remainingToExclusiveLimit": 8141,
+      "bytes": 17637060,
+      "byteLimit": 18000000,
+      "remainingBytes": 362940
+    }
+  },
+  "geographyAndTerrainMatchP4": true,
+  "validatorSha256": "e0be5848c7c139fe6658121f994f7a9ba87433984c1e123d3fea7a67181595e9"
+}

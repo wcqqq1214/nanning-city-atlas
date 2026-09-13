@@ -1,0 +1,202 @@
+{
+  "status": "face-count probe only; no changed city or accepted simplification",
+  "input": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/precision-before/blender/nanning-city.blend",
+  "inputSha256": "05884e1fd37afd901143f9f7c01474469ce8a9049fb8b220c83b164392519a92",
+  "records": [
+    {
+      "name": "Landmark_arts-center",
+      "before": 48808,
+      "skipped": "custom or smooth normals"
+    },
+    {
+      "name": "Landmark_baisha-bridge",
+      "before": 12600,
+      "after": 12306,
+      "saved": 294
+    },
+    {
+      "name": "Landmark_beida-bridge",
+      "before": 9012,
+      "after": 8808,
+      "saved": 204
+    },
+    {
+      "name": "Landmark_bridge",
+      "before": 26892,
+      "after": 26892,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_changyou",
+      "before": 35768,
+      "skipped": "custom or smooth normals"
+    },
+    {
+      "name": "Landmark_confucius",
+      "before": 2812,
+      "after": 2812,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_cr",
+      "before": 170,
+      "after": 170,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_diwang",
+      "before": 358,
+      "after": 358,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_east-station",
+      "before": 22973,
+      "after": 22265,
+      "saved": 708
+    },
+    {
+      "name": "Landmark_ethnic-museum",
+      "before": 21022,
+      "after": 21020,
+      "saved": 2
+    },
+    {
+      "name": "Landmark_expo",
+      "before": 25124,
+      "skipped": "custom or smooth normals"
+    },
+    {
+      "name": "Landmark_gx-museum",
+      "before": 14218,
+      "after": 14214,
+      "saved": 4
+    },
+    {
+      "name": "Landmark_gxu",
+      "before": 308,
+      "after": 308,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_hangyang",
+      "before": 22967,
+      "after": 22777,
+      "saved": 190
+    },
+    {
+      "name": "Landmark_huluding-bridge",
+      "before": 10374,
+      "after": 10020,
+      "saved": 354
+    },
+    {
+      "name": "Landmark_liangqing-bridge",
+      "before": 15186,
+      "after": 14636,
+      "saved": 550
+    },
+    {
+      "name": "Landmark_lingtie-bridge",
+      "before": 12756,
+      "after": 12540,
+      "saved": 216
+    },
+    {
+      "name": "Landmark_mixc",
+      "before": 5342,
+      "after": 5340,
+      "saved": 2
+    },
+    {
+      "name": "Landmark_nanhu",
+      "before": 17455,
+      "after": 17041,
+      "saved": 414
+    },
+    {
+      "name": "Landmark_nanning-station",
+      "before": 12620,
+      "after": 12188,
+      "saved": 432
+    },
+    {
+      "name": "Landmark_qingchuan-bridge",
+      "before": 7986,
+      "after": 7946,
+      "saved": 40
+    },
+    {
+      "name": "Landmark_qingshan-bridge",
+      "before": 13068,
+      "after": 12780,
+      "saved": 288
+    },
+    {
+      "name": "Landmark_qingxiang-viaduct",
+      "before": 48710,
+      "after": 48710,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_qingxiu",
+      "before": 20444,
+      "after": 20442,
+      "saved": 2
+    },
+    {
+      "name": "Landmark_sports-center",
+      "before": 47412,
+      "skipped": "custom or smooth normals"
+    },
+    {
+      "name": "Landmark_taoyuan-bridge",
+      "before": 12138,
+      "after": 11836,
+      "saved": 302
+    },
+    {
+      "name": "Landmark_tingzi",
+      "before": 20702,
+      "skipped": "custom or smooth normals"
+    },
+    {
+      "name": "Landmark_wuxiang-bridge",
+      "before": 11012,
+      "after": 10804,
+      "saved": 208
+    },
+    {
+      "name": "Landmark_yinghua-bridge",
+      "before": 11676,
+      "after": 11424,
+      "saved": 252
+    },
+    {
+      "name": "Landmark_yonghe-bridge",
+      "before": 20526,
+      "after": 20298,
+      "saved": 228
+    },
+    {
+      "name": "Landmark_yongjiang-bridge",
+      "before": 3732,
+      "after": 3472,
+      "saved": 260
+    },
+    {
+      "name": "Landmark_zhenning",
+      "before": 19996,
+      "after": 19996,
+      "saved": 0
+    },
+    {
+      "name": "Landmark_zhongxing-bridge",
+      "before": 12276,
+      "after": 12088,
+      "saved": 188
+    }
+  ],
+  "savedTriangles": 5138,
+  "toolSha256": "862f0c0a2260f6475274c160458294f64d7196d9f5790d7c6da71c19ab2b73c4"
+}

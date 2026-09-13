@@ -1,0 +1,33 @@
+{
+  "status": "explicit runtime terrain/sampler candidate checked; roads, paths, buildings and full city pending",
+  "nativeTriangles": 179861,
+  "samples": 61428,
+  "maximumFinalSamplerErrorMeters": 2.3386848013728923e-11,
+  "maximumDetailSamplerChangeMeters": 0.0,
+  "paletteRngPreserved": true,
+  "maximumChangeFromLegacySamplerMeters": 80.73785108989388,
+  "legacySamplerDifferenceWitness": [
+    86.5296630859375,
+    -43.84846496582031,
+    1.7855000495910645
+  ],
+  "planSha256": "4e4fd7049d853b9798972e4637d7a6e11e954bed64e4dce4cbdb5c5feccae1d1",
+  "files": {
+    "native.npz": {
+      "bytes": 4219588,
+      "sha256": "e544a94ad3cd696cea43f4066338f45f0a2230c2032fcb0331e7a73bc470f69a"
+    },
+    "terrain.glb": {
+      "bytes": 2127080,
+      "sha256": "413d2c92aa0a31f83d638986a8da4dd57938f82c91834207688caf256a7809cb"
+    }
+  },
+  "toolHashes": {
+    "blender/check_terrain_reduction_runtime.py": "7adc1053d626d483c02da714ad8b3d6e438bcad8a701f96d3be8c68857577002",
+    "blender/terrain_reduction_runtime.py": "efe38ef353981e24c1a27764e777c588a7f32e78e01d5dc0e53f9b6ff2d1d01b",
+    "blender/terrain_reduction_plan.py": "cabf49d0dbe4b3076490489d46ff72f0f447315bd97c6ffd41b687985bf6b456",
+    "blender/forest_canopy.py": "74a7a2242b9953d434569c2e71117aa59ca6914e512516dc1fea4452d015d20f",
+    "blender/terrain_mesh.py": "daaa08acc1226ae7d94ed98582c99585c39c873949c4d980f8ad078122afc36b",
+    "blender/build_city.py": "3c4101c7cc231d54e39d692a040a83cc6b724d167097c66933ef1d03b0726b0b"
+  }
+}

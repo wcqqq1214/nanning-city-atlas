@@ -1,0 +1,18 @@
+{
+  "detail": {
+    "old18BitBytes": 10421608,
+    "partition30BitBytes": 10461948,
+    "deltaBytes": 40340
+  },
+  "smooth": {
+    "old18BitBytes": 6704908,
+    "partition30BitBytes": 6746620,
+    "deltaBytes": 41712
+  },
+  "hashes": {
+    "work/urban-structure/p5/staging/work/p5/grading-conforming-context-18bit/smooth.glb": "c3a84cf6d4f8c9e61e84f03f95243cc61cb3b2831fad815095ecd7b8e2bc5816",
+    "work/urban-structure/p5/staging/work/p5/grading-conforming-context-18bit/detail.glb": "cd59e09f4591a98c5108d5fc2fe567a0ac82cbaa74d9f8ac27c49a4fe56e81b5",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-context/smooth.glb": "b452e8a2319e580756b173168be4de26d902fc67a021b1411ddb72eb747804a8",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-context/detail.glb": "8976f7303fd2dce95b4d1554947cba1292169f3bd0ecb272d7d92e096c2c47d3"
+  }
+}

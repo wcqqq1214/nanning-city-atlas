@@ -1,0 +1,149 @@
+{
+  "status": "production terrain and water; complete city, roads and canopy omitted",
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "deb9497053e97a59788fb9a63903c1073c091d230f1aac1e69b2479b37190156",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/detail-overview.png",
+      "imageSha256": "d2d66b8465ed88cbf6657ace2f19db28804f32d8ff56491fcc6cabd6378028a9",
+      "cameraLocation": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.31587219238281
+      ],
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.0
+      ],
+      "orthoScale": 41.38512931034482
+    },
+    {
+      "profile": "detail",
+      "view": "451895605",
+      "blendSha256": "deb9497053e97a59788fb9a63903c1073c091d230f1aac1e69b2479b37190156",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/detail-451895605.png",
+      "imageSha256": "d55b65fe074836ac4795bc36cedd0825ee44b579c23ce7fcb12705a4d9c93fa9",
+      "cameraLocation": [
+        -66.16712951660156,
+        49.31633377075195,
+        2.7180516719818115
+      ],
+      "target": [
+        -67.78233337402344,
+        51.33533477783203,
+        0.800000011920929
+      ],
+      "orthoScale": 2.019001770019531
+    },
+    {
+      "profile": "detail",
+      "view": "451895606",
+      "blendSha256": "deb9497053e97a59788fb9a63903c1073c091d230f1aac1e69b2479b37190156",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/detail-451895606.png",
+      "imageSha256": "d4028dc15c01709f06ec4295aa34c385260ec5f763d101bc074891becc866844",
+      "cameraLocation": [
+        -58.3905029296875,
+        54.79133605957031,
+        2.514747381210327
+      ],
+      "target": [
+        -59.83449935913086,
+        56.59633255004883,
+        0.800000011920929
+      ],
+      "orthoScale": 1.8049972534179688
+    },
+    {
+      "profile": "detail",
+      "view": "451895607",
+      "blendSha256": "deb9497053e97a59788fb9a63903c1073c091d230f1aac1e69b2479b37190156",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/detail-451895607.png",
+      "imageSha256": "c82decef09cea9100614e02d5dfe10d3e89a06aa5495b3b8b940966dc6160f8a",
+      "cameraLocation": [
+        -61.35531997680664,
+        49.61412048339844,
+        3.5179543495178223
+      ],
+      "target": [
+        -63.64412307739258,
+        52.47512435913086,
+        0.800000011920929
+      ],
+      "orthoScale": 2.861004638671875
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "3b741b88c9e471577fdc8bfda38a61b9d55e1470081541c0c377dd9ee63b19b9",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/smooth-overview.png",
+      "imageSha256": "0aee90ff77a75ef5bb1a74c9a1770bcdd031b14e220f0de94decd73d1bf35302",
+      "cameraLocation": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.31587219238281
+      ],
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.0
+      ],
+      "orthoScale": 41.38512931034482
+    },
+    {
+      "profile": "smooth",
+      "view": "451895605",
+      "blendSha256": "3b741b88c9e471577fdc8bfda38a61b9d55e1470081541c0c377dd9ee63b19b9",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/smooth-451895605.png",
+      "imageSha256": "352993cca9284eac338bd6e973528e7281fd574eb9e475bcb6071eb995730e5d",
+      "cameraLocation": [
+        -66.16712951660156,
+        49.31633377075195,
+        2.7180516719818115
+      ],
+      "target": [
+        -67.78233337402344,
+        51.33533477783203,
+        0.800000011920929
+      ],
+      "orthoScale": 2.019001770019531
+    },
+    {
+      "profile": "smooth",
+      "view": "451895606",
+      "blendSha256": "3b741b88c9e471577fdc8bfda38a61b9d55e1470081541c0c377dd9ee63b19b9",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/smooth-451895606.png",
+      "imageSha256": "b2070df4779ff8ca1141f1efb094d76008feafc5f0fc4e9ad1a9a60028b8c572",
+      "cameraLocation": [
+        -58.3905029296875,
+        54.79133605957031,
+        2.514747381210327
+      ],
+      "target": [
+        -59.83449935913086,
+        56.59633255004883,
+        0.800000011920929
+      ],
+      "orthoScale": 1.8049972534179688
+    },
+    {
+      "profile": "smooth",
+      "view": "451895607",
+      "blendSha256": "3b741b88c9e471577fdc8bfda38a61b9d55e1470081541c0c377dd9ee63b19b9",
+      "image": "work/urban-structure/p5/staging/work/p5/tianbao-palette-previews/smooth-451895607.png",
+      "imageSha256": "3c25dc93db1d145c0d3119fe47fd3f554bdb9a67533a65887e7de36e9a149ccd",
+      "cameraLocation": [
+        -61.35531997680664,
+        49.61412048339844,
+        3.5179543495178223
+      ],
+      "target": [
+        -63.64412307739258,
+        52.47512435913086,
+        0.800000011920929
+      ],
+      "orthoScale": 2.861004638671875
+    }
+  ]
+}

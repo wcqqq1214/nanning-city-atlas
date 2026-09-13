@@ -1,0 +1,47 @@
+[
+  {
+    "step": 13,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py"
+    ],
+    "returncode": 0,
+    "seconds": 86.39
+  },
+  {
+    "step": 14,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_terrain.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.35
+  },
+  {
+    "step": 15,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "blender/nanning-city.blend",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "scripts/validate_zhenning.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.46
+  },
+  {
+    "step": 16,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_assets.py"
+    ],
+    "returncode": 0,
+    "seconds": 214.6
+  }
+]

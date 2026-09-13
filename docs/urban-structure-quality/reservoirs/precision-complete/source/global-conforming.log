@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/prepare_global_conforming.py", line 15, in <module>
+    new,r=conform_edges(old,triangulation='boundary')
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/conform_canopy_edges.py", line 46, in conform_edges
+    index = int(ids[candidate]); p = points[index]
+IndexError: list index out of range

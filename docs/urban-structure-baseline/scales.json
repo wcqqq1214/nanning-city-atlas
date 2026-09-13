@@ -1,0 +1,245 @@
+{
+  "baselineCommit": "73edbb75e671e5ee1e9b7567ecb40652fe86290c",
+  "baselineManifestSha256": "39b2024f68a99dcd8e7317ab1cee471508ef76ef7776a4ea72c28d5382e950b7",
+  "generatorSha256": "22b5f24841348e8b9d80c539aa1ed6552c9f94765565a78a886114fe1fc4dab4",
+  "parcelSourceSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9",
+  "note": "Isolated gray geometry, same camera per pair. Neutral removes known display multipliers; source shapes/heights remain approximate. Flat reference ground is not the city site. Terrain shows conditioned DSM relief above its local minimum.",
+  "samples": {
+    "residential": {
+      "camera": {
+        "position": [
+          5.047281265258789,
+          -7.738527774810791,
+          5.726193904876709
+        ],
+        "target": [
+          0.010048866271972656,
+          -0.1826786994934082,
+          0.43709999322891235
+        ],
+        "orthographicScale": 5.429649829864502
+      },
+      "variants": {
+        "current": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1.55
+          ],
+          "bounds": [
+            [
+              -1.4344511032104492,
+              -1.9341787099838257,
+              0.0
+            ],
+            [
+              1.4545488357543945,
+              1.5688213109970093,
+              0.8741999864578247
+            ]
+          ],
+          "triangles": 180,
+          "geometrySha256": "d697cf0c88c12522c2c7243782402337abd76e703722c07945b1bb43683eea7c"
+        },
+        "neutral": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1
+          ],
+          "bounds": [
+            [
+              -1.4344511032104492,
+              -1.9341787099838257,
+              0.0
+            ],
+            [
+              1.4545488357543945,
+              1.5688213109970093,
+              0.5640000104904175
+            ]
+          ],
+          "triangles": 180,
+          "geometrySha256": "bc954c2a47a867901e879f243c604d305e44320c406dd1e925a11b7c3d553af3"
+        }
+      }
+    },
+    "arts": {
+      "camera": {
+        "position": [
+          4.031917572021484,
+          -6.056875705718994,
+          4.564788341522217
+        ],
+        "target": [
+          -0.005234479904174805,
+          -0.0011478662490844727,
+          0.3257790207862854
+        ],
+        "orthographicScale": 4.351659774780273
+      },
+      "variants": {
+        "current": {
+          "displayFactorsXYZ": [
+            1.2,
+            1.2,
+            1.2
+          ],
+          "bounds": [
+            [
+              -1.4089956283569336,
+              -1.395755410194397,
+              -0.02500000037252903
+            ],
+            [
+              1.398526668548584,
+              1.393459677696228,
+              0.6765580177307129
+            ]
+          ],
+          "triangles": 57716,
+          "geometrySha256": "57b266984102dcd3fb6f928aa6e713f6487b86ac1cbdbad5f1e2d48bb5d14660"
+        },
+        "neutral": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1
+          ],
+          "bounds": [
+            [
+              -1.1741629838943481,
+              -1.1631295680999756,
+              -0.02500000037252903
+            ],
+            [
+              1.1654388904571533,
+              1.161216378211975,
+              0.567965030670166
+            ]
+          ],
+          "triangles": 57716,
+          "geometrySha256": "ae50daf78f7462f39599fbdde05838df1a6264a31e4471053b528ae8da4e8d4d"
+        }
+      }
+    },
+    "zhenning": {
+      "camera": {
+        "position": [
+          1.745588779449463,
+          -2.6529431343078613,
+          1.9769461154937744
+        ],
+        "target": [
+          0.0,
+          -0.03456002473831177,
+          0.14407800137996674
+        ],
+        "orthographicScale": 1.8815759420394897
+      },
+      "variants": {
+        "current": {
+          "displayFactorsXYZ": [
+            2.4,
+            2.4,
+            3.7199999999999998
+          ],
+          "bounds": [
+            [
+              -0.492000013589859,
+              -0.6415200233459473,
+              -0.029999999329447746
+            ],
+            [
+              0.492000013589859,
+              0.5723999738693237,
+              0.31815600395202637
+            ]
+          ],
+          "triangles": 19294,
+          "geometrySha256": "65e88000e73830f0d27c75d0ffa7e9233261bc7e411e9befbf2f927af77ef376"
+        },
+        "neutral": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1
+          ],
+          "bounds": [
+            [
+              -0.20499999821186066,
+              -0.267300009727478,
+              -0.029999999329447746
+            ],
+            [
+              0.20499999821186066,
+              0.23849999904632568,
+              0.0856499969959259
+            ]
+          ],
+          "triangles": 19294,
+          "geometrySha256": "ca7774c17d56bcec59548972647341b685c9fee4407b81fcafeb84b2ef2ef275"
+        }
+      }
+    },
+    "terrain": {
+      "camera": {
+        "position": [
+          16.232513427734375,
+          -24.663652420043945,
+          18.30562973022461
+        ],
+        "target": [
+          -0.15453195571899414,
+          -0.08308196067810059,
+          1.0992307662963867
+        ],
+        "orthographicScale": 17.663652420043945
+      },
+      "variants": {
+        "current": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1.35
+          ],
+          "bounds": [
+            [
+              -5.8509955406188965,
+              -5.781034469604492,
+              0.0
+            ],
+            [
+              5.541931629180908,
+              5.614870548248291,
+              2.1984615325927734
+            ]
+          ],
+          "triangles": 722,
+          "geometrySha256": "8938e76c21eba42281091d281945bdbc74912d8adbb240e60d3c612abbd2e1ad"
+        },
+        "neutral": {
+          "displayFactorsXYZ": [
+            1,
+            1,
+            1
+          ],
+          "bounds": [
+            [
+              -5.8509955406188965,
+              -5.781034469604492,
+              0.0
+            ],
+            [
+              5.541931629180908,
+              5.614870548248291,
+              1.6284899711608887
+            ]
+          ],
+          "triangles": 722,
+          "geometrySha256": "962dfd2fbb7ae1112fa497b58daa1bda96073b9869bd400394d21610d28e45ec"
+        }
+      }
+    }
+  }
+}

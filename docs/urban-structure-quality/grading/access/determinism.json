@@ -1,0 +1,9 @@
+{
+  "status": "independent regeneration is byte-identical",
+  "sha256": "ed059064ad076dbfbd0d1a9b6f8cca90077c394e053e87b98fd8103e638f53ca",
+  "bytes": 1258574,
+  "outputs": [
+    "work/urban-structure/p5/grading/access-candidate.json",
+    "work/urban-structure/p5/grading/access-repeat.json"
+  ]
+}

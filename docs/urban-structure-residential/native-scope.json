@@ -1,0 +1,9 @@
+{
+  "outsideFacesBefore": 137790,
+  "outsideFacesAfter": 137790,
+  "removedBeforeFaces": 108,
+  "newPilotFaces": 389,
+  "missingOutsideFaces": 0,
+  "addedOutsideFaces": 0,
+  "sameNativeGeometryAndMaterials": true
+}

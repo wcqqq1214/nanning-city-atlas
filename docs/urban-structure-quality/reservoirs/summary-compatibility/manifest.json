@@ -1,0 +1,12 @@
+{
+  "test_city_summary.py": "aa6c13a2c761b9a183e49ac952f57e8e1a5f11282af94df677d4efa3bb540575",
+  "full-city-stale-zhuxi.log": "4563fe7b2a4cf463b0f3132db1ba5e516a83e8b0c2a6468b9e48aea5419a413e",
+  "checks.json": "4bc70bc7ae1623c23ad252c25a95493313f3d93d61563a0065c920c39a4b1482",
+  "build_city-after.py": "bf95ab46534d556ac4fafc202bf5f919a0089b465dcf090ebfb9c6f92aac839a",
+  "full-city-summary-failure.log": "38b39eb2287021ab8dda3dac83b0e105456a6a92c2d42c314844d3c2732b27bd",
+  "zhuxi-details.log": "9935ae3bd5078ab7a4f9a311ddc37b71eb273c5e41a350647699aa438f15aaec",
+  "actual-five-block-regression.json": "5b2a027c2a05bdd304313def27a94333d025da625082f874e6291ec4ff7f49ff",
+  "formal-assets-unchanged.json": "c0ec956f55dd0b54cbe1ca015ceea2196907386f49eea7ab4732b70c430efa92",
+  "build_city-before.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+  "zhuxi-rebuild-result.json": "92a4fca81ef5cddb0226b8568672c4fee08d07d8789202edbc239e40ca221829"
+}

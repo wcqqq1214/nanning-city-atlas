@@ -1,0 +1,294 @@
+{
+  "status": "P5 active; native candidate clearance improved, strict checks and full integration incomplete",
+  "files": [
+    {
+      "path": "forest-candidate-coplanar.report.json",
+      "sha256": "58748dc416830f8bf56b47b2eeb411cdecc32b13c62faee62acd135045307a50",
+      "source": "work/urban-structure/p5/full-city-review/forest-candidate-coplanar.report.json"
+    },
+    {
+      "path": "forest-candidate-continuous.report.json",
+      "sha256": "309424e32fa9948223b10a25885cfd3a8449fe9e0bc45f744ac674d38730958f",
+      "source": "work/urban-structure/p5/full-city-review/forest-candidate-continuous.report.json"
+    },
+    {
+      "path": "forest-candidate-nanhu.report.json",
+      "sha256": "01886788d5c284a90bf6d2c46bf36509b985bca4ffe0c1add21fa838e54e33e6",
+      "source": "work/urban-structure/p5/full-city-review/forest-candidate-nanhu.report.json"
+    },
+    {
+      "path": "canopy-continuous-tests.log",
+      "sha256": "791edf303b12ab6f98fdc277862b9156cf55bb4cf63ddc03e4048178bf9744f8",
+      "source": "work/urban-structure/p5/full-city-review/canopy-continuous-tests.log"
+    },
+    {
+      "path": "nanhu-terrain-tests.log",
+      "sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+      "source": "work/urban-structure/p5/full-city-review/nanhu-terrain-tests.log"
+    },
+    {
+      "path": "canopy-formal-hashes.json",
+      "sha256": "02428520bea3de5864769229710964e3f791c50dff9f25027cd08351870665f4",
+      "source": "work/urban-structure/p5/full-city-review/canopy-formal-hashes.json"
+    },
+    {
+      "path": "canopy-coplanar-native/nearby-smooth-clearance.json",
+      "sha256": "1853454046aad5048cebd370a5530224d13bcdae6acb60a9b7e13d51df369110",
+      "source": "work/urban-structure/p5/full-city-review/canopy-coplanar-native/nearby-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-coplanar-native/nearby-detail-clearance.json",
+      "sha256": "d2a6744a99513351ed5f08c927e6f6018875949898953ad6ca767efdbcc07409",
+      "source": "work/urban-structure/p5/full-city-review/canopy-coplanar-native/nearby-detail-clearance.json"
+    },
+    {
+      "path": "canopy-coplanar-native/all-smooth-clearance.json",
+      "sha256": "4515884d6f7e76c45a2adf111c432cb624dd55be8bfc1c73377481ba9152f8ec",
+      "source": "work/urban-structure/p5/full-city-review/canopy-coplanar-native/all-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-coplanar-native/manifest.json",
+      "sha256": "e735787d8fc1d79394fede6795f2892fb892c82ac5482c6fe2572e5b65e9c415",
+      "source": "work/urban-structure/p5/full-city-review/canopy-coplanar-native/manifest.json"
+    },
+    {
+      "path": "canopy-coplanar-native/all-detail-clearance.json",
+      "sha256": "3fd5e8f2ed00f8f075b2d34bbba2cee009318e33946d74256707e95cfed5a94f",
+      "source": "work/urban-structure/p5/full-city-review/canopy-coplanar-native/all-detail-clearance.json"
+    },
+    {
+      "path": "canopy-production-native/all-smooth-reduced-audit.json",
+      "sha256": "dac1faf49d009e22db8073c698fae908af2c16fce32f48a674c87bd2c48a5cde",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth-reduced-audit.json"
+    },
+    {
+      "path": "canopy-production-native/nearby-smooth-clearance.json",
+      "sha256": "8e3bec00ddfc8df5645f55eb1be793c21039583bfed0ba7a6799876b3e2efaac",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/nearby-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-production-native/coverage-gap-width.json",
+      "sha256": "b4ce65684f812cdbcf03511b8f2654c304acaa9d70fc268d6899271bf6dc4551",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/coverage-gap-width.json"
+    },
+    {
+      "path": "canopy-production-native/nearby-detail-clearance.json",
+      "sha256": "32480fddc3dceca52d265a3aa93d6476f6a91c4ee2e36e1fc329b4d4c04410d8",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/nearby-detail-clearance.json"
+    },
+    {
+      "path": "canopy-production-native/all-smooth-clearance.json",
+      "sha256": "031bbe5da8aa64f68a8fb1db186302c605ae8f45f32868ebcf69c58b0ba89324",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-production-native/manifest.json",
+      "sha256": "cb772faf1a6c05fe54f3465adf0f58ddbc55f73dadea72e275dab694c51ec8b7",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/manifest.json"
+    },
+    {
+      "path": "canopy-production-native/all-detail-clearance.json",
+      "sha256": "0fd5f17c1cfd3d2bebd7f30368de8976cc2576da7e27cec86abc98dd4fb51f2f",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/all-detail-clearance.json"
+    },
+    {
+      "path": "canopy-production-native/all-smooth-reduced.json",
+      "sha256": "18a20225c00635002c62aaff9930d0f8617890794970e8e36e32ed82e7296669",
+      "source": "work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth-reduced.json"
+    },
+    {
+      "path": "canopy-continuous-native/nearby-smooth-clearance.json",
+      "sha256": "095a11b75b2447e8097d1e12a3e4db562010fb27a3469e5d708fa96d8343215e",
+      "source": "work/urban-structure/p5/full-city-review/canopy-continuous-native/nearby-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-continuous-native/nearby-detail-clearance.json",
+      "sha256": "e70b33ee55c2eeba56c46b930a1625344d3e7df35f1de3a2acae3bc391aa5711",
+      "source": "work/urban-structure/p5/full-city-review/canopy-continuous-native/nearby-detail-clearance.json"
+    },
+    {
+      "path": "canopy-continuous-native/manifest.json",
+      "sha256": "09580d139076969b904738af46a742eb512751161381d7c78e760350663f359a",
+      "source": "work/urban-structure/p5/full-city-review/canopy-continuous-native/manifest.json"
+    },
+    {
+      "path": "canopy-nanhu-native/nearby-smooth-clearance.json",
+      "sha256": "95202c4f81770027591e9911fa143a9d592e1e8ba3685b2ff11ef6898e21d6ac",
+      "source": "work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-nanhu-native/nearby-detail-clearance.json",
+      "sha256": "5bef78ad83d02acefba0f93b05557c9190f6a04fe62692be8aab2a4a9d0277c9",
+      "source": "work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-detail-clearance.json"
+    },
+    {
+      "path": "canopy-nanhu-native/manifest.json",
+      "sha256": "f0207d2560e27bbf6b9de07be19af3d34629d19f024a7102a1c2d2f607ac61b4",
+      "source": "work/urban-structure/p5/full-city-review/canopy-nanhu-native/manifest.json"
+    },
+    {
+      "path": "canopy-nanhu-final-native/nearby-smooth-clearance.json",
+      "sha256": "111192eaf3ccb7fd3a57bef235a42b642daae90880059e3c5844d347cc39698d",
+      "source": "work/urban-structure/p5/full-city-review/canopy-nanhu-final-native/nearby-smooth-clearance.json"
+    },
+    {
+      "path": "canopy-nanhu-final-native/manifest.json",
+      "sha256": "4e0438435bd186aba43209395c7d8696da1f39f2a9cfb574c1996dc670f9858f",
+      "source": "work/urban-structure/p5/full-city-review/canopy-nanhu-final-native/manifest.json"
+    },
+    {
+      "path": "source/scripts/prepare_local_canopy.py",
+      "sha256": "ed1021d11d84d7801a2da5037ffa32ee8cd120e0ca1cfd075bedc831d41a5f7a",
+      "source": "scripts/prepare_local_canopy.py"
+    },
+    {
+      "path": "source/scripts/check_canopy_clearance.py",
+      "sha256": "ca83547bf9806fce3fab2907b7ecc030ab2989b29022ea89aa9629817e212cea",
+      "source": "scripts/check_canopy_clearance.py"
+    },
+    {
+      "path": "source/scripts/capture_canopy_surface.py",
+      "sha256": "0091711f3252e4989c33d0a807fab7538ef1e9c8e020499959436d89a796e994",
+      "source": "scripts/capture_canopy_surface.py"
+    },
+    {
+      "path": "source/scripts/test_local_canopy.py",
+      "sha256": "3031e727adc6e95ce21b853b448e6129c544c38232ba2e19e6b59104bbfc0757",
+      "source": "scripts/test_local_canopy.py"
+    },
+    {
+      "path": "source/scripts/test_canopy_clearance.py",
+      "sha256": "999b1795104429e50af77a64c9d9069fa9983f9fa4ed9bcca7b44ba6af7b4210",
+      "source": "scripts/test_canopy_clearance.py"
+    },
+    {
+      "path": "source/scripts/test_nanhu_terrain.py",
+      "sha256": "fafa33876fafa490f14b8dd2703c3a53996ba0661e37f0e81590fef2f9d473f1",
+      "source": "scripts/test_nanhu_terrain.py"
+    },
+    {
+      "path": "source/blender/nanhu_terrain.py",
+      "sha256": "a9bce794e2fdad7a82463665e24ec445bffde8753ac96e364ca33d548039aaab",
+      "source": "blender/nanhu_terrain.py"
+    },
+    {
+      "path": "source/blender/forest_canopy.py",
+      "sha256": "fe3c2c7cd3d9871e74fe27953c8f48f6ef0659acf97551e59e247c2c79eda5e9",
+      "source": "blender/forest_canopy.py"
+    },
+    {
+      "path": "source/blender/terrain_context.py",
+      "sha256": "38999fe8420d8c55fbeae27f44f17d4db9358c7cf19a18aeb9e111738f4699a7",
+      "source": "blender/terrain_context.py"
+    },
+    {
+      "path": "source/blender/road_inputs.py",
+      "sha256": "76a4fb9f6006ec54912d583c0f8b44185f66b961e144b5a5a45da4ec041db067",
+      "source": "blender/road_inputs.py"
+    },
+    {
+      "path": "source/blender/check_site_grading.py",
+      "sha256": "dcc5debb352c4826f3d25218516e66d04fb1b9c089a7b4225ee2f5fed6ef79b5",
+      "source": "blender/check_site_grading.py"
+    },
+    {
+      "path": "reduce_canopy_trial.py",
+      "sha256": "19e9b54e1f0fdd5251534aa6e9d35007b56dbf24e67fd99ef767b5ee2ba5aa81",
+      "source": "work/urban-structure/p5/full-city-review/reduce_canopy_trial.py"
+    },
+    {
+      "path": "check_canopy_gap_width.py",
+      "sha256": "3f099291844c216abddfd884a97a5750e8859726e28abe5902d1ce35c3dd3620",
+      "source": "work/urban-structure/p5/full-city-review/check_canopy_gap_width.py"
+    },
+    {
+      "path": "repair_nearby_canopy.py",
+      "sha256": "62bfa458d4222276354d0b3c5e3bfbef95df0047ade0c8e725a4c5fac7bffec3",
+      "source": "work/urban-structure/p5/full-city-review/repair_nearby_canopy.py"
+    },
+    {
+      "path": "repair_nanhu_last_face.py",
+      "sha256": "96082d8ec87296b8d0dd7df1a5ab1cb1ab1c8319cd6648115c30c0d023eed126",
+      "source": "work/urban-structure/p5/full-city-review/repair_nanhu_last_face.py"
+    },
+    {
+      "path": "capture_nanhu_sampler_trial.py",
+      "sha256": "bcf0b0c21b1176eb468056ab70d1b7d892cc08c2a1da26e373acfca4bc496963",
+      "source": "work/urban-structure/p5/full-city-review/capture_nanhu_sampler_trial.py"
+    }
+  ],
+  "externalArtifacts": [
+    {
+      "path": "work/urban-structure/p5/full-city-review/forest-candidate-coplanar.json",
+      "bytes": 14588212,
+      "sha256": "6b1e77bc48d844d73c11ba4c7bb4ab9acb0009fa9616a02e787990f1fc43a5f0"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/forest-candidate-continuous.json",
+      "bytes": 14632680,
+      "sha256": "24e57c38a713154aa3172d603eb04b7d8099ab8ca1be6b0bd3bf48c37c6030ef"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/forest-candidate-nanhu.json",
+      "bytes": 14635400,
+      "sha256": "dc7f6746dc903359231ecd61e1e3dc27a4d55266b95bd756b4a2bedf02719e58"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth-reduced.npz",
+      "bytes": 837804,
+      "sha256": "6dc9a2774fbe14bf284db0cbf5f4dc6e4deea64a25c2a0770d6a6936c329cabb"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-production-native/all-detail.npz",
+      "bytes": 3328193,
+      "sha256": "654ee9337154e3b199d18dbfb64edccef9cc23d99e7dd3f42088835110453f06"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-production-native/nearby-detail.npz",
+      "bytes": 1176218,
+      "sha256": "8c4673ee87bc7569ee027b1cbf9b11a47a186c381dafb53d435ac5d1f3a439a9"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth.npz",
+      "bytes": 1683181,
+      "sha256": "55826f39d674f0d102b7b3881ea7a9db348902bacf426b4d1dc5d0428c6b5dc6"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-production-native/nearby-smooth.npz",
+      "bytes": 623014,
+      "sha256": "8ac6129df257a87a9f93e48db8c3681f47d9844785bbb726917859cf983cb27a"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-continuous-native/nearby-detail.npz",
+      "bytes": 1178854,
+      "sha256": "ce7b4589933613a932798fadfa661b5882ce08f9964468d4f3383b11c3a247a5"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-continuous-native/nearby-smooth.npz",
+      "bytes": 636076,
+      "sha256": "64d8f6fccb5803159ac704876edbebdab44f4bc3901124faf42effa4029862d6"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-detail.npz",
+      "bytes": 1178946,
+      "sha256": "f68080903f8b941dd87a401da95fabb080825484c752673d7e2e28713df7f2a1"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-smooth.npz",
+      "bytes": 636800,
+      "sha256": "c6728964c41712d79d7f02a89448a7c02583529f042b6ba3f69a7d2f65e3172e"
+    },
+    {
+      "path": "work/urban-structure/p5/full-city-review/canopy-nanhu-final-native/nearby-smooth.npz",
+      "bytes": 637705,
+      "sha256": "4d47bc0242eb2f1ba88c1e1bd40b75062449014edf672892e2d73b1ef8d9e9a8"
+    }
+  ],
+  "limits": [
+    "canopy-coplanar-native uses incomplete validator ground callback and is superseded by actual production capture",
+    "canopy-continuous-native alone fails; forest-candidate-nanhu requires the new shared Nanhu sampler",
+    "canopy-nanhu captures use an explicit candidate function override in an isolated process; production dependency rebuild is pending",
+    "strict continuous checker exits 1; no full pass claimed",
+    "1790-face reduction is not combined with the final forest plan"
+  ]
+}

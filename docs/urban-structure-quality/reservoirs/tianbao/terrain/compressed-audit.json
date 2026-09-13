@@ -1,0 +1,114 @@
+{
+  "status": "independent reservoir GLB checked; full city integration remains pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 32004,
+        "maximumVertexDisplacementMeters": 0.0003814697265625,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 28777,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 32004,
+        "maximumVertexDisplacementMeters": 0.0003814697265625,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.005,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 28777,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/terrain-plan.json": "11af4714616da7c41870f57664a0ad6d0e8bb2629e6a9ca56b82eef264235c1a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/native-export/report.json": "d63776e36c1f28649e236406b11f65cbe6b075aece3d837fa57d57aed3b7b259",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/native-export/detail.npz": "acc9c3b511c8c3b9bcdc1692a449f7e840b5846e9093b778eb56d944cefd4aff",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/native-export/detail.glb": "96608c0ffb50e6f4eee92d7efc3ea7a7828e0c98459e1b881d2de6f1610bbb97",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/native-export/smooth.npz": "83d31428a1a4a2cddcdd5f195536318e5f42c0ce0f15e33d854c21dd6fed32ce",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/native-export/smooth.glb": "d8b63a635a4cf13dd4c8c1bb7db49d4d63e6183b24572e9a7f6d0ebbe5d38586"
+  },
+  "toolSha256": "8f53ab176c39a35f1e54d016a3ad29ca3fa0ed305e78959c249e862bf13d1b84"
+}

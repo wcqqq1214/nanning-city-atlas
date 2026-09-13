@@ -1,0 +1,101 @@
+{
+  "status": "same-camera runtime-normal restoration check; inspected detail Longmen retains prior shadows without new stripes",
+  "pairs": [
+    {
+      "view": "detail-longmen-dam-clay",
+      "meanAbsoluteChannelDifference": 0.0027351877861007076,
+      "pixelsOver8Percent": 0.0003901373283395755,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-longmen-dam-lit",
+      "meanAbsoluteChannelDifference": 0.009477736163129422,
+      "pixelsOver8Percent": 0.0003901373283395755,
+      "p99MaximumChannelDifference": 1.0
+    },
+    {
+      "view": "detail-overview-clay",
+      "meanAbsoluteChannelDifference": 0.0015410424469413234,
+      "pixelsOver8Percent": 0.0004876716604244694,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-overview-lit",
+      "meanAbsoluteChannelDifference": 0.0015410424469413234,
+      "pixelsOver8Percent": 0.003218632958801498,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-qingxiu-lake-clay",
+      "meanAbsoluteChannelDifference": 3.5762588431127755e-06,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-qingxiu-lake-lit",
+      "meanAbsoluteChannelDifference": 7.80274656679151e-06,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-waterfront-bridgehead-clay",
+      "meanAbsoluteChannelDifference": 0.0023226175613816065,
+      "pixelsOver8Percent": 0.0006827403245942572,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "detail-waterfront-bridgehead-lit",
+      "meanAbsoluteChannelDifference": 0.004173494069912609,
+      "pixelsOver8Percent": 0.0006827403245942572,
+      "p99MaximumChannelDifference": 1.0
+    },
+    {
+      "view": "smooth-longmen-dam-clay",
+      "meanAbsoluteChannelDifference": 0.0052180867665418225,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 1.0
+    },
+    {
+      "view": "smooth-longmen-dam-lit",
+      "meanAbsoluteChannelDifference": 0.021432519246774865,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 1.0
+    },
+    {
+      "view": "smooth-overview-clay",
+      "meanAbsoluteChannelDifference": 0.001403519038701623,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "smooth-overview-lit",
+      "meanAbsoluteChannelDifference": 0.0008943898252184769,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "smooth-qingxiu-lake-clay",
+      "meanAbsoluteChannelDifference": 0.0,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "smooth-qingxiu-lake-lit",
+      "meanAbsoluteChannelDifference": 1.8531523096129837e-05,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "smooth-waterfront-bridgehead-clay",
+      "meanAbsoluteChannelDifference": 0.00218119277985851,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    },
+    {
+      "view": "smooth-waterfront-bridgehead-lit",
+      "meanAbsoluteChannelDifference": 0.001753992405326675,
+      "pixelsOver8Percent": 0.0,
+      "p99MaximumChannelDifference": 0.0
+    }
+  ]
+}

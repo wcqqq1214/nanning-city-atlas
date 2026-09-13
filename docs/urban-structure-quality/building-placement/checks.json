@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-09-12T19:55:48.141360+00:00",
+  "commands": [
+    {
+      "command": [
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+        "scripts/test_building_road_envelopes.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+        "scripts/test_building_placement.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+        "-m",
+        "py_compile",
+        "blender/building_placement.py",
+        "blender/road_inputs.py",
+        "blender/road_solids.py",
+        "blender/build_city.py",
+        "scripts/finish_road_solids.py",
+        "scripts/audit_building_road_envelopes.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sourceHashes": {
+    "blender/building_placement.py": "e0a54d41e16866603ef8648c99f8e33245681c81d984dc2bca1145695f0a7ef1",
+    "blender/road_inputs.py": "c3c19322c26b082b18e53315e2c01d10c16bf8614b90b980d7e4e5fa55567b88",
+    "blender/road_solids.py": "8879d8180a7e0e91681394d46c37e3da77d0de26931a4bd24852c5f05abf40a1",
+    "blender/build_city.py": "fa4c138d4eb3f7757f090a1a40e4a063bf6950ee5db0a0a7209b09da468b7617",
+    "scripts/finish_road_solids.py": "e4f9c7e71510c3409cfa3bc6638052759041abb91a6223a96f9f6acd6adb636c",
+    "scripts/test_building_road_envelopes.py": "92c18ffb82f94a629cc7aa85885c2c80ec37178c6cd612a24b8bdc894455682d",
+    "scripts/test_building_placement.py": "5e608d829d8a2a09213c788b41d6b16618a03fb07dc117d1c77bf57e04a32fbc"
+  }
+}

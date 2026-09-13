@@ -1,0 +1,41 @@
+{
+  "status": "actual Water mesh and compression checked; terrain/building interfaces and final city separate",
+  "geometry": {
+    "triangles": 9068,
+    "maximumVertexDisplacementMeters": 0.010789593218788873,
+    "maximumCornerNormalAngleDegrees": 0.02436002138980916,
+    "undefinedSourceCornerNormals": 0,
+    "positionLimitMeters": 0.02,
+    "normalLimitDegrees": 0.5,
+    "bijectiveFaceMatch": true,
+    "materialsAndWindingPreserved": true
+  },
+  "positionToleranceMeters": 0.02,
+  "waterOverlapSquareMeters": 0.0,
+  "restoredLakes": [
+    {
+      "index": 227,
+      "islands": 2,
+      "missingBeyondToleranceSquareMeters": 0.0,
+      "extraBeyondToleranceSquareMeters": 0.0
+    },
+    {
+      "index": 343,
+      "islands": 0,
+      "missingBeyondToleranceSquareMeters": 0.0,
+      "extraBeyondToleranceSquareMeters": 0.0
+    },
+    {
+      "index": 339,
+      "islands": 0,
+      "missingBeyondToleranceSquareMeters": 0.0,
+      "extraBeyondToleranceSquareMeters": 0.0
+    }
+  ],
+  "inputs": {
+    "work/urban-structure/p5/staging/work/p5/shoreline-water-export/report.json": "82b2f6c3ba44309ff4e9ea99e5c0c3dc696fc17a2afcd41a4f28d6d9086ebd66",
+    "work/urban-structure/p5/staging/work/p5/shoreline-water-export/water.glb": "b8804f9d7b7f4f54b1c03afd32d675cdaed539f6a995b54f08f444fcab6d48a7",
+    "work/urban-structure/p5/staging/public/data/geography.json": "de1a4ee6b1047f59ce67826150b3c50812d30d96a34614565182dad6ce6add3f"
+  },
+  "toolSha256": "5c6aaae631884abf4921cd2cf688863fe62c22b3a607b0f14876a2e00a555d4c"
+}

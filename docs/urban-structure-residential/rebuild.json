@@ -1,0 +1,233 @@
+[
+  {
+    "step": 0,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_bridges.py"
+    ],
+    "returncode": 0,
+    "seconds": 0.24
+  },
+  {
+    "step": 1,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_nanhu_landmark.py"
+    ],
+    "returncode": 0,
+    "seconds": 2.75
+  },
+  {
+    "step": 2,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_railways.py"
+    ],
+    "returncode": 0,
+    "seconds": 13.26
+  },
+  {
+    "step": 3,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_viaduct.py"
+    ],
+    "returncode": 0,
+    "seconds": 39.3
+  },
+  {
+    "step": 4,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_minzu.py"
+    ],
+    "returncode": 0,
+    "seconds": 0.73
+  },
+  {
+    "step": 5,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_forest_canopy.py",
+      "--stage",
+      "all"
+    ],
+    "returncode": 0,
+    "seconds": 88.39
+  },
+  {
+    "step": 6,
+    "command": [
+      "blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context"
+    ],
+    "returncode": 0,
+    "seconds": 47.13
+  },
+  {
+    "step": 7,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_ground_roads.py",
+      "--capture",
+      "--context-model",
+      "work/terrain-resample/context/detail.glb",
+      "--obstacles-context",
+      "work/terrain-resample/old-ground-context.json"
+    ],
+    "returncode": 0,
+    "seconds": 187.81
+  },
+  {
+    "step": 8,
+    "command": [
+      "blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context",
+      "--context-ground"
+    ],
+    "returncode": 0,
+    "seconds": 49.57
+  },
+  {
+    "step": 9,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_elevated_roads.py",
+      "--context-directory",
+      "work/terrain-resample/context"
+    ],
+    "returncode": 0,
+    "seconds": 42.24
+  },
+  {
+    "step": 10,
+    "command": [
+      "blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--capture-road-inputs"
+    ],
+    "returncode": 0,
+    "seconds": 32.8
+  },
+  {
+    "step": 11,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "detail"
+    ],
+    "returncode": 0,
+    "seconds": 10.25
+  },
+  {
+    "step": 12,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "detail"
+    ],
+    "returncode": 0,
+    "seconds": 112.94
+  },
+  {
+    "step": 13,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "smooth"
+    ],
+    "returncode": 0,
+    "seconds": 22.15
+  },
+  {
+    "step": 14,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "smooth"
+    ],
+    "returncode": 0,
+    "seconds": 46.45
+  },
+  {
+    "step": 15,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_zhuxi_details.py"
+    ],
+    "returncode": 0,
+    "seconds": 3.75
+  },
+  {
+    "step": 16,
+    "command": [
+      "blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--check-road-interfaces"
+    ],
+    "returncode": 0,
+    "seconds": 51.7
+  },
+  {
+    "step": 17,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_road_interfaces.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.22
+  },
+  {
+    "step": 18,
+    "command": [
+      "blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py"
+    ],
+    "returncode": 0,
+    "seconds": 131.34
+  },
+  {
+    "step": 19,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_terrain.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.54
+  },
+  {
+    "step": 20,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/validate_assets.py"
+    ],
+    "returncode": 0,
+    "seconds": 267.75
+  }
+]

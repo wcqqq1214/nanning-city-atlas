@@ -1,0 +1,78 @@
+{
+  "status": "geometry-only audit of the supplied road snapshot; no final city acceptance",
+  "profiles": {
+    "detail": {
+      "xinzhong-industrial": {
+        "roadFaces": 795,
+        "terrainIntersections": 1492,
+        "minimumPavementClearanceMeters": 0.799978267042678,
+        "witnessSceneXY": [
+          75.118983,
+          -134.351724
+        ],
+        "maximumPenetrationMeters": 0.0,
+        "penetrationLimitMeters": 0.005,
+        "passed": true
+      }
+    },
+    "smooth": {
+      "xinzhong-industrial": {
+        "roadFaces": 793,
+        "terrainIntersections": 1492,
+        "minimumPavementClearanceMeters": 0.7999675776517279,
+        "witnessSceneXY": [
+          70.756077,
+          -129.584726
+        ],
+        "maximumPenetrationMeters": 0.0,
+        "penetrationLimitMeters": 0.005,
+        "passed": true
+      }
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/staging/data/block-grading-plan.json": "ac2b1462ac8b2d25d2bfbe1debdde9f300797084d5edbe5a511cfbc9a475ce46",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/report.json": "3f92392752cc1ef0995544f323d970989a5f1ff4f6179ad7f1258da769f73bc8",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/detail.npz": "7f5f363e874d949c4a875942268fced27b9527c240954680c8385957c3c0299c",
+    "work/urban-structure/p5/staging/data/road-solids-detail.npz": "d4f6afc3e7a5ea4ae2c18d0b73175811fd2c3c418bce4bdf132996389876f1b2",
+    "work/urban-structure/p5/staging/data/road-solids-detail.json": "78282f92551503d38ad6c4278e762dc8a3c856ca27649ff6d7d534228d775f24",
+    "work/urban-structure/p5/staging/work/p5/grading-source-bound-native/smooth.npz": "5d325078ba6e8bae6cf77eaff962dd6bcd82a425971ab76eeaa1cb95b701d788",
+    "work/urban-structure/p5/staging/data/road-solids-smooth.npz": "15903f9e94c572f964469860b116aa49e002ab78f10e67c1837cbe7467390e66",
+    "work/urban-structure/p5/staging/data/road-solids-smooth.json": "79e69ced1d0faf2b6d4c8622330bf26c368ce6a39e5066c5ad95b16d779818f8",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/sources.json": "dfb27c9f649af1a8471dadda6e77da3e407de419c4bd8bc08fcea89b50107407",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/detail.glb": "d5815d0180dcd0d8c688c054dac080345cd526808b0480a77800c03a72ce9fe5",
+    "work/urban-structure/p5/staging/work/terrain-resample/context/smooth.glb": "172e8928bbcb8e0ec4f519c84592e9aa4a641b969f0a68288dafc8ca7197276d"
+  },
+  "toolSha256": "bd8a450cd575048854d93dfbb73e396ebb66ac921c94fbb1198726e9ca5e0d1e",
+  "passed": true,
+  "decodedProfiles": {
+    "detail": {
+      "xinzhong-industrial": {
+        "roadFaces": 799,
+        "terrainIntersections": 1680,
+        "minimumPavementClearanceMeters": 0.7985981607463444,
+        "witnessSceneXY": [
+          73.96934509277344,
+          -130.36843872070312
+        ],
+        "maximumPenetrationMeters": 0.0,
+        "penetrationLimitMeters": 0.005,
+        "passed": true
+      }
+    },
+    "smooth": {
+      "xinzhong-industrial": {
+        "roadFaces": 795,
+        "terrainIntersections": 1665,
+        "minimumPavementClearanceMeters": 0.7988502304212247,
+        "witnessSceneXY": [
+          74.13453674316406,
+          -130.35317993164062
+        ],
+        "maximumPenetrationMeters": 0.0,
+        "penetrationLimitMeters": 0.005,
+        "passed": true
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "status": "independent reservoir GLB checked; full city integration remains pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 12258,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.21806995327923945,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 8909,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 12258,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.21806995327923945,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 8909,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/plan.json": "f1b4144060fa2c8172a8c7e3360f88ed9ec2986eade2f0ec6e0ee954aaef04b4",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/report.json": "7b549d3e4b83e98f21af19b905388314f456f36a46a702a42f21c56813870fec",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/detail.npz": "fda6c1539b9a9bdbe2f1c61eed2663762f1c6c6928693e05a408642cb545290e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/detail.glb": "8a7acec6113d6e64cdf7b9c3bdd52208b190a6b261df83e20d542940ddeb0587",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/smooth.npz": "b7e3951a92f2acbfc9dd3a9ed7de27ce2b008dd8c9cc4dcbb8924a527d4b9438",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/smooth.glb": "d2ac22e7c10d6d169bd85f02ddd9c1fd81e38689d8020a34a56438756a631a10"
+  },
+  "toolSha256": "79f87c02375ea8e68b4ba3bed325a5e2bdb2a568ce35ce24e0ece850022973e4",
+  "decoderSha256": "e5359ea236fa5a542ba93eee49507d45e9d82d739468acf2ebe3db69d4c2263a"
+}

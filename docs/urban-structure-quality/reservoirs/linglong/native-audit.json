@@ -1,0 +1,73 @@
+{
+  "status": "native coverage only; compressed and full-city checks remain pending",
+  "profiles": {
+    "detail": {
+      "terrain": {
+        "triangles": 4419,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            69.99999999999999,
+            70.00000000000001
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 995,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025,
+            "connectedWaterEdges": 0,
+            "maximumWaterJoinErrorMeters": 0.0
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    },
+    "smooth": {
+      "terrain": {
+        "triangles": 4419,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            69.99999999999999,
+            70.00000000000001
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 995,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025,
+            "connectedWaterEdges": 0,
+            "maximumWaterJoinErrorMeters": 0.0
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/plan.json": "3cdbc5f8f40e26db77055438578d75f083f9771fb0b8e77d603226e540aade07",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/detail.npz": "9063a99b6d9cc7540fde55de3e6a2fb397cc6775b2d037ece8e65f6e8464e876",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/native/smooth.npz": "2095254efa2a8f0d2bd1fb57d486df9bb1c4f8a9689b644859ffe931d0445186"
+  },
+  "toolSha256": "cbc4f457a9ca779c7a2d91ae1e48927fb801b9fc9859227dbfa626e1882e8d33"
+}

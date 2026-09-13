@@ -1,0 +1,29 @@
+{
+  "changed": true,
+  "originalTriangles": 21996,
+  "candidateTriangles": 22031,
+  "partitionToleranceMeters": 0.002,
+  "maximumPartitionAxisShiftMeters": 0.00095367431640625,
+  "outsideTrianglesCopiedExactly": 21972,
+  "coverageDifferenceSquareMeters": 0.0,
+  "overlapSquareMeters": 0.036436604204936884,
+  "originalOverlapSquareMeters": 0.03643662239483092,
+  "additionalOverlapSquareMeters": -1.8189894035458565e-08,
+  "mergeCoplanarPartitions": true,
+  "sourcePartitionFaces": 16,
+  "partitionCells": 16,
+  "maximumMergedPlaneResidualMeters": 0.0,
+  "sourceFailedFaces": [
+    16341
+  ],
+  "repairAreaSquareMeters": 873.8484174908627,
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/forest-candidate-continuous.json": "24e57c38a713154aa3172d603eb04b7d8099ab8ca1be6b0bd3bf48c37c6030ef",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-smooth-clearance.json": "95202c4f81770027591e9911fa143a9d592e1e8ba3685b2ff11ef6898e21d6ac",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/canopy-nanhu-native/nearby-smooth.npz": "c6728964c41712d79d7f02a89448a7c02583529f042b6ba3f69a7d2f65e3172e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/smooth.npz": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/repair_nanhu_last_face.py": "96082d8ec87296b8d0dd7df1a5ab1cb1ab1c8319cd6648115c30c0d023eed126",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_local_canopy.py": "ed1021d11d84d7801a2da5037ffa32ee8cd120e0ca1cfd075bedc831d41a5f7a"
+  },
+  "outputSha256": "dc7f6746dc903359231ecd61e1e3dc27a4d55266b95bd756b4a2bedf02719e58"
+}

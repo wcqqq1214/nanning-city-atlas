@@ -1,0 +1,75 @@
+{
+  "status": "isolated access export; whole city and site-edge acceptance pending",
+  "profiles": {
+    "detail": {
+      "zeroAreaBoundaryWallFacesOmitted": 22,
+      "files": {
+        "detail-terrain.npz": {
+          "bytes": 81138,
+          "sha256": "906fbd05b0fba3817024919d737080944b48df699a2ef3c4725d481a0fe874aa"
+        },
+        "detail-roads.npz": {
+          "bytes": 7579,
+          "sha256": "0c3d06a510a0b4ea3ae3cbbefa38969e4fdae9efc74f67a0da3ab8f80048b4ac"
+        },
+        "detail.glb": {
+          "bytes": 129316,
+          "sha256": "8f3497e2aca90d6a3059daeada928777619522d988cebbd7a6003bdb7afe8dcc"
+        }
+      },
+      "terrainTriangles": 3834,
+      "roadsTriangles": 330
+    },
+    "smooth": {
+      "zeroAreaBoundaryWallFacesOmitted": 22,
+      "files": {
+        "smooth-terrain.npz": {
+          "bytes": 79884,
+          "sha256": "aa4ceacd63b059b1a577f77858827ebd18cc7ae2cb1c88d622f95a7d0947cfcf"
+        },
+        "smooth-roads.npz": {
+          "bytes": 7594,
+          "sha256": "4752d73122e43d816e3fac458e39a02e893d1c3c38bfe3efef152f3909aac8f3"
+        },
+        "smooth.glb": {
+          "bytes": 129172,
+          "sha256": "90d1ba1f3ea7810fdb063ca45ded0ab00944a5b42fbe3d204e0dfe2ab6ffd255"
+        }
+      },
+      "terrainTriangles": 3834,
+      "roadsTriangles": 330
+    }
+  },
+  "candidateSha256": "7427bb62646655d8ed54e2d98830284d4c0e052b146a67248c61df04fae3aef7",
+  "tools": {
+    "blender/export_site_access.py": "0813e6bd74bc0b857349659fb20b5a94d7e031a239ca3b135e14da6a9ad09c65",
+    "blender/build_city.py": "777f80f078ef08f6cee74c955d4c6f5b7ac1b1167a3ddae5dbe76de280de111c",
+    "blender/gltf_export.py": "afd94a9108ca6c891f640b3c283e92d10a639f2c1fd39fd98caab3eefcc7e3a7",
+    "blender/terrain_reduction_runtime.py": "efe38ef353981e24c1a27764e777c588a7f32e78e01d5dc0e53f9b6ff2d1d01b",
+    "blender/site_access_runtime.py": "251fee6c58742b1c597360bd51831ea6b4cf9c530c41804af247accd6cd017b9"
+  },
+  "materialKeys": [
+    "ground",
+    "hill",
+    "hillLight",
+    "bank",
+    "waterfront_paving",
+    "waterfront_wall",
+    "block_paving",
+    "block_retaining",
+    "viaduct_asphalt",
+    "viaduct_concrete"
+  ],
+  "materialLabels": [
+    "Porcelain earth",
+    "Green hills",
+    "Hill facets light",
+    "Riverbank",
+    "Riverside promenade stone",
+    "Riverside retaining stone",
+    "Shared site paving",
+    "Site retaining earth",
+    "Qingxiang sage asphalt",
+    "Qingxiang warm concrete"
+  ]
+}

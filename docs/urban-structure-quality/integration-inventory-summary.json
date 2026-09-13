@@ -1,0 +1,842 @@
+{
+  "status": "provisional visible extrusion and P4 terrain inventory; final integration pending",
+  "statistics": {
+    "changedOrReplacedRecords": 1947,
+    "visibleCandidateRecords": 1877,
+    "visibleSupportStatus": {
+      "supported": 1875,
+      "review-required": 2
+    },
+    "beforeTriangles": 42018,
+    "candidateTriangles": 75828,
+    "deltaTriangles": 33810
+  },
+  "visibleIncompleteGround": [
+    {
+      "id": "osm/4aa0a75908b7f599b5b1",
+      "sourceRef": "osm/way/923687037",
+      "name": "",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 28,
+      "candidateTriangles": 52,
+      "deltaTriangles": 24,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "review-required",
+      "reliefMeters": 15.116303301934602,
+      "groundRangeSceneZ": [
+        0.3188311969245685,
+        0.46999422994391454
+      ],
+      "mappedWaterOverlapSquareMeters": 88.87749630591016,
+      "footprintAreaSquareMeters": 5269.910000000002
+    },
+    {
+      "id": "osm/5ae9b829076de2274e1e",
+      "sourceRef": "osm/way/651997945",
+      "name": "霁霖阁饭店",
+      "use": "commercial",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 22,
+      "candidateTriangles": 40,
+      "deltaTriangles": 18,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "review-required",
+      "reliefMeters": 3.008751304633428,
+      "groundRangeSceneZ": [
+        1.785585165023802,
+        1.8156726780701362
+      ],
+      "mappedWaterOverlapSquareMeters": 44.636712090289514,
+      "footprintAreaSquareMeters": 472.8899999999936
+    }
+  ],
+  "visibilityTransitions": [],
+  "limitations": [
+    "Road and railway exclusions are P4 masks, remapped by stable ID; new footprints need fresh checks",
+    "Positive road caps may change rendered roof/foundation counts after terrain integration",
+    "Ground extrema refer to P4 terrain; new platforms and campus urban mask require fresh terrain",
+    "Extrusion delta excludes platform/terrain changes, export triangulation and compression"
+  ],
+  "inputs": {
+    "before": {
+      "path": "work/urban-structure/baseline-p4/public/data/geography.json",
+      "sha256": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956"
+    },
+    "candidate": {
+      "path": "work/urban-structure/p5/rollout/candidate.json",
+      "sha256": "46ad67026af413add98354e07ecc1cb68278b0dedff38253412db167d8b04a15"
+    },
+    "support": {
+      "path": "work/urban-structure/p5/rollout/support-p4-terrain.json",
+      "sha256": "415696f761c2d5be0fbf71a8534ce0166fef4a5dff0bec1fe87adbe9bd2625e9"
+    },
+    "catalog": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/landmarks.json",
+      "sha256": "a22788a016ef67be5b6f4fe73778cbd84ac13360e80009c550ec91944a392d51"
+    },
+    "railway": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/railways-plan.json",
+      "sha256": "884b1aa052bec1f8da2928e04e02f50ba62597ca9c668191b95e443576bd7fba"
+    },
+    "detailRoads": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/road-solids-detail.json",
+      "sha256": "e09b6c9e183307a2e7bbc1ad771bd66c6d498da90ffbc617b62e478a16cd00b4"
+    },
+    "smoothRoads": {
+      "path": "/Users/wcqqq1214/Project/nanning-city-atlas/data/road-solids-smooth.json",
+      "sha256": "d9b8a4fe2fd686fc27afe8b45718b81add355c0b8947ab77bdf3a07f0a1e3e79"
+    }
+  },
+  "toolHashes": {
+    "scripts/audit_building_integration.py": "15ca4d6f918c41a9476271fd381804e5e25d4bd05461bb4df6c10355d8c3ea27",
+    "blender/arts_landmark.py": "ce5194e07706c6c4622ad476f66f642381f2b357d716a31298b25f27eb44f062",
+    "blender/block_massing.py": "ed5e9443592f926530dfcb6e2de26fff61477ea2cc5989ca16792a8704a641bb",
+    "blender/bridge_landmark.py": "665b098eee32ab96822ebca1322e6dd3013fe0077cf4b1aa2974433bc09f7833",
+    "blender/build_city.py": "bd898ae6b5772b17df5ae78ad650304e71b989475eab84a4742ebe38956e687b",
+    "blender/changyou_landmark.py": "461e3fd7c854edfee2ea03ca9c6aa2c99dac6f6a1ee3a74a21924f3640b9fee8",
+    "blender/check_calibrated_sites.py": "8fee2e99239d8b4824798430e5347ae922de704f4de8dfab482836c399defbb7",
+    "blender/check_road_interfaces.py": "a65e6941efaf21271c2034fa11f4af6bdd0f389671f1cdf65be8da5d4aaf2798",
+    "blender/check_urban_block_scope.py": "e291fd08bad085a63a88b31dddf9b524248e3917f1130223ed322bef49506983",
+    "blender/city_visibility.py": "7977534de6852fb80eb485bd2697901576a7b728122af9192ac4881b50e96e83",
+    "blender/confucius_landmark.py": "ccc7ea999fb94550ca81b8868b0cf5336ac691b0ac0bc459590d883149ac172d",
+    "blender/cultural_landmarks.py": "624d7ed7f947f60613e9073f1f8aa0fe8d7e6145ea0786b12ff0e3182fa8f440",
+    "blender/diwang_landmark.py": "318a1759e3fef886e6682b2efeac6219bc3dc0a279e85463265baa30a59e29f3",
+    "blender/elevated_roads.py": "f577c41f8f83a14cbb8314c0997b1645aaa3d5e016af042ccfa15d027c37b1f9",
+    "blender/expo_landmark.py": "3550537f9960eed160db8abc2c29a79675b3dffa215fd9da202a64caa9534e4d",
+    "blender/extra_landmarks.py": "326bf51d220e253b61aeefb72469895257863fc06be57a61cc040cfc0beb6264",
+    "blender/forest_canopy.py": "bcf2648f00c5ac45b72b8697a682b1906c3f2d71419d37525f2100420c4a4584",
+    "blender/gltf_export.py": "3d7bb587631a02301cef49dde83d8de2894d7fd06f3e1d363a72d52de9574e8c",
+    "blender/ground_roads.py": "fdcad59f2130663a4064ef6e89b23554b24a6598902d8e822d70834ec936c437",
+    "blender/landmark_details.py": "0cf161e60c8b0be11982360dcdf7a2a4e298c35aa97c3445a0b0a8c512a51303",
+    "blender/landmark_sites.py": "1f90b9aabbd0979290964c4e5680811142e99514860958a28b29dd635fce2e88",
+    "blender/landmark_vegetation.py": "720cef62775e2342243e86b0227cbc69cc7ef99400b3acd077461077028c4281",
+    "blender/local_terrain.py": "825d1e998c275c100cb689e90ad98f697d6680067a2f2f477e1aa2601136af79",
+    "blender/major_bridges.py": "84d3b6187fff0f194909d9337acb9896ba4c50d8ce32b064e89d14a8398e7f19",
+    "blender/mall_landmarks.py": "6a473ada6abe33583aa1068698e42d392dc74b752f3e5ce83dd675eb91412d7c",
+    "blender/minzu_avenue.py": "bed9f85b0b53fa885bc852de6d71fdad79a227c4557dbf2792fa2e7f2542b2ed",
+    "blender/mountain_terrain.py": "fd7eda792beb62739fa20d74bf12db13b9e3e8ddcd5f1be641d9e245bea69fe8",
+    "blender/nanhu_landmark.py": "cf9ef10a76ea3e05dd4c5b91970c0eb5aca25bf6e04dbd47b485a3f72da3d2c7",
+    "blender/railways.py": "22adf974494f3b70a35fbdc857cdb36becbcece75edf55e40a17725a49aa560e",
+    "blender/render_block_rollout.py": "15420abe4142783d2fd4b338e60340ed2422d08d1f7d1bbdcd675811c0c1dd2b",
+    "blender/render_bridges.py": "64a23dae0f437ebab8be7664f55744333c068bd209856c8d35a053d049535ea2",
+    "blender/render_cultural.py": "587cc8e452900f0677c8f45c42a83c260ef7e4652055215457cc1d6219ad7874",
+    "blender/render_landmark_candidates.py": "fd2c1b6f180d255a52ba4dd6596e19b40377a04f60802ff58f3f4e5501fff10b",
+    "blender/render_malls.py": "1f4a2bf82794a87a6aef1465c4d514c10cd1e578a5277163d1c8ffa95a3f9d2c",
+    "blender/render_scale_baseline.py": "22b5f24841348e8b9d80c539aa1ed6552c9f94765565a78a886114fe1fc4dab4",
+    "blender/road_inputs.py": "055b59cd1d4a0aaabdf5aa4b2d7b5cb5a33e15fa6323d7aad1e04716a3044d75",
+    "blender/road_interfaces.py": "4884c62b0485f664c0038901f11751bbc3ba961c350e9044c0224501e595e18a",
+    "blender/road_solids.py": "6472f4606541aba93803e590eb40cb0ef35577d3d199b7c7f7c78ad84df628a2",
+    "blender/road_terrain.py": "7381358809a6d19c580e1dc9fe0d476826744ecab2a5ae4d9cf999c73a24b865",
+    "blender/sports_landmark.py": "dfe8308f7d0f3d9d1f45b347f9cfb3a84419d851e786309b81fb3a1953413e32",
+    "blender/station_landmarks.py": "1e005812858422db2b12acf9642cc5f2778a72248547439d120b946d317a2fec",
+    "blender/terrain_context.py": "a8a27e0ab0334228c4224e3eba23fcd8ed6778a48029ada262d9ecc4c4b1fb26",
+    "blender/terrain_height.py": "6cc83fcfd705fa6b6b1f0c6cf5d1829401bd9cdd6c215a966cdbe28bf1f65088",
+    "blender/tingzi_landmark.py": "d871a82aef237ec04f61d3604b6a004d0e1534416b684f168190e86f73627aff",
+    "blender/urban_blocks.py": "efab37a6e04dc7e41ff2f537aede3985224948e17644543b7ae53a975fe948e7",
+    "blender/vegetation.py": "5de0491935788bf2d47d29a86251f9787b33a49c21558f4c70d8bb6a9570ddd7",
+    "blender/viaduct.py": "eed58cf7a7fb738a704778680cb3ed7cb2ed6a8e1a0d251af0be36094dc6562a",
+    "blender/zhenning_landmark.py": "6c9fc8afaef4514d3ec89da28df2cd3ca709d8fd5dd2315b9df6d1c5651213ef",
+    "blender/zhuxi_interchange.py": "9c62cb800717999d35ce17a8b38d588ccf8547bfe60c2f212e6a220f96e0fe0e"
+  },
+  "reservationDataHashes": {
+    "data/cultural-landmarks-source.json": "3efacb84fc89b2b2ba11364b27580f971ac372f9bef880ee1dc0e6e31fe4b0e9",
+    "data/landmark-areas.json": "c67e476dfd680a5c7739aeea2b372e38310b6da157b40c12c0007320060b748f",
+    "data/landmark-calibration-osm.json": "b746131cb994f69ea23dbbf4fd62cb802f8bd57f9245635184c9731e485cfbe1",
+    "data/landmark-calibration-plan.json": "14dbd42e3cec32f9d25c8437002d31e07911fe6a7d3d447236c17ce397fbdece",
+    "data/landmark-calibration-source.json": "8a7834cab85fd547f319199a4c16f07c54ddcfe7b9ef1d7e4a722ea86b3f279e",
+    "data/landmarks.json": "a22788a016ef67be5b6f4fe73778cbd84ac13360e80009c550ec91944a392d51",
+    "data/malls-plan.json": "ba9693962bce4f2e8006675e3f4d0b97b780dcf1bb6f63e772c9451f0df167e6",
+    "data/stations-plan.json": "61040a82ae5555fe684128e2afe6185481ad6ff7b4167d8dd3beaf29acb666a7",
+    "data/sports-center-footprints.json": "3d9b13c3f905fe3d2935b7781cc0b56dfc0d253ecbc178f48d06f937f41e6aa2"
+  },
+  "terrainStatistics": {
+    "buildings": 1921,
+    "supported": 1919,
+    "reviewRequired": 2,
+    "reliefMetersP50": 1.946896749659821,
+    "reliefMetersP95": 12.387468327593588,
+    "reliefMetersMaximum": 72.82762799540414
+  },
+  "visibleReliefAboveFiveMetersCount": 322,
+  "highestVisibleRelief": [
+    {
+      "id": "osm/ec7ff5e40cbbb6904bc3",
+      "sourceRef": "osm/way/451895607",
+      "name": "",
+      "use": "dam",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 19,
+      "candidateTriangles": 22,
+      "deltaTriangles": 3,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 72.82762799540414,
+      "groundRangeSceneZ": [
+        0.2518301405607062,
+        0.9801064205147476
+      ]
+    },
+    {
+      "id": "osm/44264f31f85329f35cd2",
+      "sourceRef": "osm/way/838617951",
+      "name": "",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 10,
+      "candidateTriangles": 55,
+      "deltaTriangles": 45,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 65.1650571282417,
+      "groundRangeSceneZ": [
+        1.2005263349653887,
+        1.8521769062478057
+      ]
+    },
+    {
+      "id": "osm/e1161ecca08088257c8a",
+      "sourceRef": "osm/way/451895605",
+      "name": "",
+      "use": "dam",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 13,
+      "candidateTriangles": 16,
+      "deltaTriangles": 3,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 50.93019971250854,
+      "groundRangeSceneZ": [
+        0.47579665513801217,
+        0.9850986522630976
+      ]
+    },
+    {
+      "id": "osm/6a26368c94886738681c",
+      "sourceRef": "osm/way/1487720502",
+      "name": "10号楼",
+      "use": "hotel",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 49,
+      "candidateTriangles": 82,
+      "deltaTriangles": 33,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 44.85055466610515,
+      "groundRangeSceneZ": [
+        0.4021616483490291,
+        0.8506671950100806
+      ]
+    },
+    {
+      "id": "osm/48d2864123792621d41c",
+      "sourceRef": "osm/relation/13565118",
+      "name": "",
+      "use": "roof",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 58,
+      "candidateTriangles": 211,
+      "deltaTriangles": 153,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 40.129018764150025,
+      "groundRangeSceneZ": [
+        0.7876260280609129,
+        1.1889162157024131
+      ]
+    },
+    {
+      "id": "osm/bb678bb9a926a9410bde",
+      "sourceRef": "osm/way/1465225039",
+      "name": "",
+      "use": "college",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 22,
+      "candidateTriangles": 40,
+      "deltaTriangles": 18,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 32.59091709193923,
+      "groundRangeSceneZ": [
+        0.2329999953508377,
+        0.55890916627023
+      ]
+    },
+    {
+      "id": "osm/d61179d5d66145ecdd39",
+      "sourceRef": "osm/way/918630714",
+      "name": "F区（尾翼）",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 115,
+      "candidateTriangles": 181,
+      "deltaTriangles": 66,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 31.925177731759735,
+      "groundRangeSceneZ": [
+        0.7576513689411808,
+        1.0769031462587781
+      ]
+    },
+    {
+      "id": "osm/f6789c2eb7922e12e145",
+      "sourceRef": "osm/way/922789138",
+      "name": "南宁市公安局-良庆派出所",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 16,
+      "candidateTriangles": 28,
+      "deltaTriangles": 12,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 31.357938105819727,
+      "groundRangeSceneZ": [
+        0.31092622492285216,
+        0.6245056059810494
+      ]
+    },
+    {
+      "id": "osm/2be06c621f5159b73b7f",
+      "sourceRef": "osm/way/838498715",
+      "name": "",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 22,
+      "candidateTriangles": 55,
+      "deltaTriangles": 33,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 30.73852439571425,
+      "groundRangeSceneZ": [
+        0.94620172393887,
+        1.2535869678960125
+      ]
+    },
+    {
+      "id": "osm/09206920924b90f4e34d",
+      "sourceRef": "osm/way/1487720457",
+      "name": "6号楼",
+      "use": "hotel",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 73,
+      "candidateTriangles": 88,
+      "deltaTriangles": 15,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 29.130292391595347,
+      "groundRangeSceneZ": [
+        0.5071398802399223,
+        0.7984428041558758
+      ]
+    },
+    {
+      "id": "osm/55a3b55cdcea95aea2c0",
+      "sourceRef": "osm/way/810351963",
+      "name": "",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 43,
+      "candidateTriangles": 64,
+      "deltaTriangles": 21,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 27.769238990816135,
+      "groundRangeSceneZ": [
+        0.4879791835866638,
+        0.7656715734948252
+      ]
+    },
+    {
+      "id": "osm/ee54738e51a8efa884a6",
+      "sourceRef": "osm/way/629216645",
+      "name": "敷文阁",
+      "use": "yes",
+      "blockId": null,
+      "beforeVisible": true,
+      "candidateVisible": true,
+      "beforeTriangles": 16,
+      "candidateTriangles": 58,
+      "deltaTriangles": 42,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 27.03603170734663,
+      "groundRangeSceneZ": [
+        0.6113738524719139,
+        0.8817341695453802
+      ]
+    }
+  ],
+  "templateSupport": [
+    {
+      "id": "greenland-commercial/office-0-1",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "blockId": "greenland-commercial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 6.15906263092274,
+      "groundRangeSceneZ": [
+        0.7028227392899848,
+        0.7644133655992122
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-0-2",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "blockId": "greenland-commercial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.4056567082908042,
+      "groundRangeSceneZ": [
+        0.7040305766974533,
+        0.7280871437803613
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-0-5",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "blockId": "greenland-commercial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.772497116201488,
+      "groundRangeSceneZ": [
+        0.728548043065308,
+        0.7462730142273228
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-1-5",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "blockId": "greenland-commercial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.1929138717508447,
+      "groundRangeSceneZ": [
+        0.7075244220601171,
+        0.7194535607776256
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-1-6",
+      "sourceRef": null,
+      "name": null,
+      "use": "commercial",
+      "blockId": "greenland-commercial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.601731231501724,
+      "groundRangeSceneZ": [
+        0.7142289494501668,
+        0.730246261765184
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-0-0",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "blockId": "haipo-residential",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 7.395624102952825,
+      "groundRangeSceneZ": [
+        0.7017292696369171,
+        0.7756855106664453
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-0-2",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "blockId": "haipo-residential",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.4327873755788256,
+      "groundRangeSceneZ": [
+        0.6730425446274699,
+        0.6873704183832582
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-1-0",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "blockId": "haipo-residential",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 6.97396405980335,
+      "groundRangeSceneZ": [
+        0.6615370777359582,
+        0.7312767183339917
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-1-2",
+      "sourceRef": null,
+      "name": null,
+      "use": "residential",
+      "blockId": "haipo-residential",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 26,
+      "deltaTriangles": 26,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.371658818712463,
+      "groundRangeSceneZ": [
+        0.6518333713437579,
+        0.6755499595308825
+      ]
+    },
+    {
+      "id": "mingxiu-campus/administration",
+      "sourceRef": null,
+      "name": "办公楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.2511197110440917,
+      "groundRangeSceneZ": [
+        0.5227771310327126,
+        0.5452883281431535
+      ]
+    },
+    {
+      "id": "mingxiu-campus/geography",
+      "sourceRef": null,
+      "name": "地理楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 22,
+      "deltaTriangles": 22,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 0.9724551580891583,
+      "groundRangeSceneZ": [
+        0.5070205276276794,
+        0.5167450792085709
+      ]
+    },
+    {
+      "id": "mingxiu-campus/integrated",
+      "sourceRef": null,
+      "name": "文科综合楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.35255308571648,
+      "groundRangeSceneZ": [
+        0.5268436877877102,
+        0.550369218644875
+      ]
+    },
+    {
+      "id": "mingxiu-campus/languages",
+      "sourceRef": null,
+      "name": "外语楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 24,
+      "deltaTriangles": 24,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.230383221776655,
+      "groundRangeSceneZ": [
+        0.506162333989972,
+        0.5284661662077386
+      ]
+    },
+    {
+      "id": "mingxiu-campus/library-east",
+      "sourceRef": null,
+      "name": "东侧图书馆",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 28,
+      "deltaTriangles": 28,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 4.252155635825972,
+      "groundRangeSceneZ": [
+        0.5109100239658193,
+        0.553431580324079
+      ]
+    },
+    {
+      "id": "mingxiu-campus/library-north",
+      "sourceRef": null,
+      "name": "北侧新图书馆",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.0827256449649214,
+      "groundRangeSceneZ": [
+        0.49652166993890834,
+        0.5073489263885576
+      ]
+    },
+    {
+      "id": "mingxiu-campus/physics",
+      "sourceRef": null,
+      "name": "物理楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 2.2055283854621743,
+      "groundRangeSceneZ": [
+        0.5031089987809352,
+        0.5251642826355569
+      ]
+    },
+    {
+      "id": "mingxiu-campus/teaching",
+      "sourceRef": null,
+      "name": "教学楼",
+      "use": "campus",
+      "blockId": "mingxiu-campus",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 1.3087463699176016,
+      "groundRangeSceneZ": [
+        0.5104257705855297,
+        0.5235132342847058
+      ]
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-0",
+      "sourceRef": null,
+      "name": null,
+      "use": "industrial",
+      "blockId": "xinzhong-industrial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 15.468117358796718,
+      "groundRangeSceneZ": [
+        1.2019957468065705,
+        1.3566769203945377
+      ]
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-1",
+      "sourceRef": null,
+      "name": null,
+      "use": "industrial",
+      "blockId": "xinzhong-industrial",
+      "beforeVisible": false,
+      "candidateVisible": true,
+      "beforeTriangles": 0,
+      "candidateTriangles": 10,
+      "deltaTriangles": 10,
+      "baselineRoadLimitSceneZ": null,
+      "baselineRoadMaskPresent": false,
+      "requiresNewInfrastructureChecks": true,
+      "supportStatus": "supported",
+      "reliefMeters": 16.02251749558956,
+      "groundRangeSceneZ": [
+        1.1299265202559088,
+        1.2901516952118044
+      ]
+    }
+  ],
+  "terrainInputs": {
+    "geography": {
+      "path": "work/urban-structure/p5/rollout/candidate.json",
+      "sha256": "46ad67026af413add98354e07ecc1cb68278b0dedff38253412db167d8b04a15"
+    },
+    "detail": {
+      "path": "work/urban-structure/baseline-p4/public/models/nanning-city.glb",
+      "sha256": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6"
+    },
+    "smooth": {
+      "path": "work/urban-structure/baseline-p4/public/models/nanning-city-mobile.glb",
+      "sha256": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0"
+    }
+  },
+  "terrainTools": {
+    "prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+  }
+}

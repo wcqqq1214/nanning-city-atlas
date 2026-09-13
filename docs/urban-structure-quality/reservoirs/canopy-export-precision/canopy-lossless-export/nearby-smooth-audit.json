@@ -1,0 +1,52 @@
+{
+  "passed": false,
+  "geometry": {
+    "triangles": 22011,
+    "maximumVertexDisplacementMeters": 0.0,
+    "maximumCornerNormalAngleDegrees": 0.22740406209301045,
+    "undefinedSourceCornerNormals": 2,
+    "positionLimitMeters": 0,
+    "normalLimitDegrees": 0.5,
+    "bijectiveFaceMatch": true,
+    "materialsAndWindingPreserved": true
+  },
+  "clearance": {
+    "passed": false,
+    "scope": "actual decoded canopy against the supplied final terrain triangles",
+    "canopyFaces": 22011,
+    "terrainFaces": 316384,
+    "overlapPairsChecked": 60514,
+    "minimumRequiredClearanceMeters": 9.5,
+    "minimumClearanceMeters": 9.61121421555653,
+    "failedClearanceFaces": 0,
+    "failureExamples": [],
+    "failedClearanceFaceIndices": [],
+    "verticalCanopyFacesChecked": 44,
+    "failedVerticalCanopyFaces": [],
+    "verticalFacesWithUncoveredEdges": [
+      2374,
+      2376,
+      2377,
+      15203,
+      15388,
+      15393,
+      15395
+    ],
+    "zeroAreaCanopyFaces": 48,
+    "missingCoverageSquareMeters": 458.52491191673727,
+    "sumOfPerFaceMissingCoverageSquareMeters": 458.5249120843882,
+    "coverageToleranceMeters": 0.002,
+    "coverageOutsideToleranceSquareMeters": 318.47740093290525,
+    "maximumFaceMissingCoverageSquareMeters": 2.493600645546448,
+    "facesMissingMoreThan0_01SquareMeters": 706,
+    "ignoredCanopyVerticalOrDegenerateFaces": 92,
+    "ignoredGroundVerticalOrDegenerateFaces": 22192
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/canopy-lossless-export/nearby-smooth.npz": "4095a8e0ea8851723de7522d65ac7202c8ec3441b0ee3ffcfdf36449538c90af",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/canopy-lossless-export/nearby-smooth.glb": "d74dc90d5fd706aa7232c39e2b8bdfaff14d73ec593e1b6d7a36875a281c1b02",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/conforming-decoded/terrain-smooth.npz": "ae641c185450df27a3e05fd2e10b0a2d0df52578f44cec215251161874060647",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/build_city.py": "fbca082dc37fad73fc5eb56124c433643daea692a02006a094846820680bc18a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_canopy_exports.py": "111bbbbbf565bc347fc28503abb25589c382ecf6325535cbbec4cd2784a16a9a"
+  }
+}

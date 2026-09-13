@@ -1,0 +1,201 @@
+{
+  "detail": {
+    "before": {
+      "bytes": 25236380,
+      "triangles": 3462527,
+      "sha256": "2cf7d0c77fbf7f2803fa300c8c80b39a0deee4d67df2d567469a8ab0503b1a76"
+    },
+    "after": {
+      "bytes": 25237932,
+      "triangles": 3463099,
+      "sha256": "e11238091e49d9c76493394e428d605bcf75c3d97a40e03527b0c5773979a9cb"
+    },
+    "changedMeshNodes": [
+      "Buildings_3_1"
+    ],
+    "unexpectedChanges": [],
+    "identicalMeshNodes": 249,
+    "byteDelta": 1552,
+    "triangleDelta": 572,
+    "slabs": [
+      {
+        "id": "xiangxieli-residential/slab/0/0",
+        "roofCoverage": 0.99681,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/0/1",
+        "roofCoverage": 0.99502,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/0/2",
+        "roofCoverage": 0.99176,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/0",
+        "roofCoverage": 0.99534,
+        "floorClearanceMeters": 1.236,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/1",
+        "roofCoverage": 0.99932,
+        "floorClearanceMeters": 1.24,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/2",
+        "roofCoverage": 0.99212,
+        "floorClearanceMeters": 1.284,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/0",
+        "roofCoverage": 0.98468,
+        "floorClearanceMeters": 1.318,
+        "exportedTopMeters": 82.642
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/1",
+        "roofCoverage": 0.99285,
+        "floorClearanceMeters": 1.297,
+        "exportedTopMeters": 83.134
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/2",
+        "roofCoverage": 0.99959,
+        "floorClearanceMeters": 2.203,
+        "exportedTopMeters": 84.119
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/0",
+        "roofCoverage": 0.9955,
+        "floorClearanceMeters": 1.442,
+        "exportedTopMeters": 85.104
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/1",
+        "roofCoverage": 0.98406,
+        "floorClearanceMeters": 1.244,
+        "exportedTopMeters": 87.073
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/2",
+        "roofCoverage": 0.99516,
+        "floorClearanceMeters": 1.229,
+        "exportedTopMeters": 87.566
+      },
+      {
+        "id": "xiangxieli-residential/slab/4/0",
+        "roofCoverage": 0.99402,
+        "floorClearanceMeters": 1.207,
+        "exportedTopMeters": 91.012
+      }
+    ]
+  },
+  "smooth": {
+    "before": {
+      "bytes": 17270232,
+      "triangles": 2350419,
+      "sha256": "122ea61f683cc1485fd7fd656dc703ed551529638fb10dc6f142892529ff78c8"
+    },
+    "after": {
+      "bytes": 17271840,
+      "triangles": 2350991,
+      "sha256": "dec8a523cbdb0200b1a4cbd5d9d8f35b977d0b8cb3596c0fce35a5ac99277419"
+    },
+    "changedMeshNodes": [
+      "Buildings_3_1"
+    ],
+    "unexpectedChanges": [],
+    "identicalMeshNodes": 246,
+    "byteDelta": 1608,
+    "triangleDelta": 572,
+    "slabs": [
+      {
+        "id": "xiangxieli-residential/slab/0/0",
+        "roofCoverage": 0.99681,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/0/1",
+        "roofCoverage": 0.99502,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/0/2",
+        "roofCoverage": 0.99176,
+        "floorClearanceMeters": 1.21,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/0",
+        "roofCoverage": 0.99534,
+        "floorClearanceMeters": 1.23,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/1",
+        "roofCoverage": 0.99932,
+        "floorClearanceMeters": 1.217,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/1/2",
+        "roofCoverage": 0.99212,
+        "floorClearanceMeters": 1.243,
+        "exportedTopMeters": 77.719
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/0",
+        "roofCoverage": 0.98468,
+        "floorClearanceMeters": 1.239,
+        "exportedTopMeters": 82.642
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/1",
+        "roofCoverage": 0.99285,
+        "floorClearanceMeters": 1.271,
+        "exportedTopMeters": 83.134
+      },
+      {
+        "id": "xiangxieli-residential/slab/2/2",
+        "roofCoverage": 0.99959,
+        "floorClearanceMeters": 1.242,
+        "exportedTopMeters": 84.119
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/0",
+        "roofCoverage": 0.9955,
+        "floorClearanceMeters": 1.173,
+        "exportedTopMeters": 85.104
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/1",
+        "roofCoverage": 0.98406,
+        "floorClearanceMeters": 2.0,
+        "exportedTopMeters": 87.073
+      },
+      {
+        "id": "xiangxieli-residential/slab/3/2",
+        "roofCoverage": 0.99516,
+        "floorClearanceMeters": 1.226,
+        "exportedTopMeters": 87.566
+      },
+      {
+        "id": "xiangxieli-residential/slab/4/0",
+        "roofCoverage": 0.99402,
+        "floorClearanceMeters": 4.822,
+        "exportedTopMeters": 91.012
+      }
+    ]
+  },
+  "identicalBuildingsAcrossQualities": true
+}

@@ -1,0 +1,90 @@
+{
+  "status": "production native terrain/water audit; full city and downstream roads remain pending",
+  "damIds": [
+    "osm/d32838ab86097acd54e5",
+    "osm/e1161ecca08088257c8a",
+    "osm/ec7ff5e40cbbb6904bc3"
+  ],
+  "profiles": {
+    "detail": {
+      "terrainTriangles": 31521,
+      "landTriangles": 28777,
+      "bankTriangles": 2744,
+      "cityWaterTriangles": 9188,
+      "samplerSamples": 115108,
+      "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+      "boundarySamples": 1344,
+      "maximumBoundaryErrorMeters": 0.00030405561739499376,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "4cac06528780a0e68085cc33e921b3e6e30f3173fd03121c6cd2bd4398aa0768",
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "deb9497053e97a59788fb9a63903c1073c091d230f1aac1e69b2479b37190156"
+    },
+    "smooth": {
+      "terrainTriangles": 31521,
+      "landTriangles": 28777,
+      "bankTriangles": 2744,
+      "cityWaterTriangles": 9188,
+      "samplerSamples": 115108,
+      "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+      "boundarySamples": 1344,
+      "maximumBoundaryErrorMeters": 0.00012857615985240045,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "6f0e08785f34ce68a914c8fafe1bc1e81b8495f2d82a49e0ffaed94f1e1facf8",
+      "nodes": [
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "3b741b88c9e471577fdc8bfda38a61b9d55e1470081541c0c377dd9ee63b19b9"
+    }
+  },
+  "inputs": {
+    "public/data/geography.json": "9edee30f0350c04fce5901362e00a16414cbc5961e2aeaf1b2e49510d49b88ac",
+    "public/data/terrain.json": "60e0c5719bbd7c7c81b7259e005e2e8f52696abc9ccf9578dca9f8f89722995a",
+    "data/landmarks.json": "a22788a016ef67be5b6f4fe73778cbd84ac13360e80009c550ec91944a392d51",
+    "data/nanhu-plan.json": "7f5ba5c43e2392afacb08f6d42529528a9809016bca7ae714e362ac1ebfbf119",
+    "data/qingxiu-terrain-plan.json": "453a588fde425e5874bd2a6f84d37bfc4766b458d524755a9bfd871425d9af0b",
+    "data/waterfront-plan.json": "f7da6ba9ecd1d83a0309b3b15a130d649e42240727790781c3bcdc9c331801e9",
+    "data/railways-plan.json": "8c8a65ab76d3de7c30716aaea8a2f8c2c19e5bb0a1a52272c85cc268592bd209",
+    "data/stations-plan.json": "61040a82ae5555fe684128e2afe6185481ad6ff7b4167d8dd3beaf29acb666a7",
+    "data/sports-center-footprints.json": "3d9b13c3f905fe3d2935b7781cc0b56dfc0d253ecbc178f48d06f937f41e6aa2",
+    "data/qingxiu-terrain-source.json": "f3a65b11a79b501c1ab5be0e0e6588f2c8a7e0b87a7c478c77ce1bec48e90ece",
+    "data/block-grading-plan.json": "bc8046570809e24be9406058772c13f9f6d995426fb798b239f2b6b31c6ea49a",
+    "data/block-grading-source.json": "8cf540496625b3851f57cc35b577181057a85c02af0b0933df9cac8cffc14a4d",
+    "blender/reservoir_runtime.py": "1e95d0d23995ba4b1803eff0cd6ec77e98b5d955ad055f4adb10b715c382c6c4",
+    "blender/reservoir_terrain.py": "9868e83b898743c3f0c6c03c456e62060c017f469bd4f73c91d2391b733e7a64",
+    "data/reservoir-terrain-plan.json": "e8089c2f308c1e2d1622e200f37bdd6c724a770fea98e6bd91a9322d3fb5651e",
+    "data/tianbao-terrain-source.json": "8365db2903fd139e11472d3511a49c23d0d52dd2609960958d2cf28d1268c05c",
+    "blender/build_city.py": "e7af0f7d2759dc1781f8e42394bdc1df43f08f1b948e22fdb206c8d04c39696e",
+    "blender/terrain_mesh.py": "26184f0743f20ddf9f0de8f91ded0d00f48c347e77c7e6ab661386c683ff7b9a",
+    "blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7",
+    "blender/road_inputs.py": "718850951a10df2f2a6a241982b764f0bd1a6abf19fdf7b5d6c7916ee5dd39bc",
+    "blender/gltf_export.py": "9bbacf1c4a30a38a24d35aade58feb3d743c5d8d603266bd08928ec0cc3b005d"
+  },
+  "toolSha256": "19cf56cea2a46d17c2e41f15ad923c247d9e3e6f6796922e71c96bca28813982"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "group": "southeast",
+    "step": "native-export",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/plan.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "group": "southeast",
+    "step": "native-audit",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_reservoir_terrain.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/plan.json",
+      "--exports",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/native-audit.json"
+    ],
+    "exitCode": 1
+  }
+]

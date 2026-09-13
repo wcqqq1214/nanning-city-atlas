@@ -1,0 +1,86 @@
+{
+  "status": "review-only composition; source pipeline integration, full validators and budgets pending",
+  "profiles": [
+    {
+      "profile": "detail",
+      "inputs": {
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/precision-complete-models/public/models/nanning-city.glb": "e2d5e0f7a113fb98258a5f73bd738ab3af2ce7b947d293089ce890d1da117726",
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/global-conforming-v3-native/nearby-detail.glb": "ff225a6219a251161765a37f603cc38d602f518e2bf659c1317afb8842e11591",
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/global-conforming-v3-native/all-detail.glb": "36f24733f81b2d6f7afbce35e7fd5ddd2476493a510ef4ef47cd6b30405a2104"
+      },
+      "outputSha256": "708568fbf15602948d39976c58389bd83afb7efb2f9e88f32f74e976c98e384e",
+      "bytes": 40076204,
+      "replacedNodes": [
+        "Vegetation_nearby_canopy_0_0",
+        "Vegetation_nearby_canopy_0_1",
+        "Vegetation_nearby_canopy_0_2",
+        "Vegetation_nearby_canopy_1_0",
+        "Vegetation_nearby_canopy_1_1",
+        "Vegetation_nearby_canopy_1_2",
+        "Vegetation_nearby_canopy_2_0",
+        "Vegetation_nearby_canopy_2_1",
+        "Vegetation_nearby_canopy_2_2",
+        "Vegetation_nearby_canopy_2_3",
+        "Vegetation_nearby_canopy_3_0",
+        "Vegetation_nearby_canopy_3_1",
+        "Vegetation_nearby_canopy_3_2",
+        "Vegetation_nearby_canopy_3_3",
+        "Vegetation_nearby_canopy_4_0",
+        "Vegetation_nearby_canopy_4_1",
+        "Vegetation_nearby_canopy_4_2",
+        "Vegetation_all_canopy_0_1",
+        "Vegetation_all_canopy_0_2",
+        "Vegetation_all_canopy_0_3",
+        "Vegetation_all_canopy_1_2",
+        "Vegetation_all_canopy_1_3",
+        "Vegetation_all_canopy_2_2",
+        "Vegetation_all_canopy_2_3",
+        "Vegetation_all_canopy_3_3",
+        "Vegetation_all_canopy_4_3"
+      ],
+      "otherMeshRecordsAndPayloadBytesExact": true,
+      "sceneHierarchyAndMaterialsExact": true
+    },
+    {
+      "profile": "smooth",
+      "inputs": {
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/precision-complete-models/public/models/nanning-city-mobile.glb": "0cd6fe3a50ba487fa2e990976c64d9c39897abe6d9917278c9dd444a73fab3ca",
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/global-conforming-v3-native/nearby-smooth.glb": "5de0c189bb9f03ef25ce444268ac2b74a74692349c3a9b4c8cb91bf20fe181dc",
+        "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/global-conforming-v3-native/all-smooth.glb": "e1071ba830922d502e87fcea0f17c088166d9faafd86898612a5f0964a5b396f"
+      },
+      "outputSha256": "a0f4a040051a52b0cbd547ec3fc0ffe8dce9b60e83efb037f208c4254e391ca5",
+      "bytes": 25831208,
+      "replacedNodes": [
+        "Vegetation_nearby_canopy_0_0",
+        "Vegetation_nearby_canopy_0_1",
+        "Vegetation_nearby_canopy_0_2",
+        "Vegetation_nearby_canopy_1_0",
+        "Vegetation_nearby_canopy_1_1",
+        "Vegetation_nearby_canopy_1_2",
+        "Vegetation_nearby_canopy_2_0",
+        "Vegetation_nearby_canopy_2_1",
+        "Vegetation_nearby_canopy_2_2",
+        "Vegetation_nearby_canopy_2_3",
+        "Vegetation_nearby_canopy_3_0",
+        "Vegetation_nearby_canopy_3_1",
+        "Vegetation_nearby_canopy_3_2",
+        "Vegetation_nearby_canopy_3_3",
+        "Vegetation_nearby_canopy_4_0",
+        "Vegetation_nearby_canopy_4_1",
+        "Vegetation_nearby_canopy_4_2",
+        "Vegetation_all_canopy_0_1",
+        "Vegetation_all_canopy_0_2",
+        "Vegetation_all_canopy_0_3",
+        "Vegetation_all_canopy_1_2",
+        "Vegetation_all_canopy_1_3",
+        "Vegetation_all_canopy_2_2",
+        "Vegetation_all_canopy_2_3",
+        "Vegetation_all_canopy_3_3",
+        "Vegetation_all_canopy_4_3"
+      ],
+      "otherMeshRecordsAndPayloadBytesExact": true,
+      "sceneHierarchyAndMaterialsExact": true
+    }
+  ],
+  "toolSha256": "f5e5195744f91b534df9ddbea9dc7552d2484f91e87da7e2fa1383ef8b6b1ec1"
+}

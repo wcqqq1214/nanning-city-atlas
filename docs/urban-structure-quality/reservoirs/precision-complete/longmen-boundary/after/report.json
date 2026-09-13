@@ -1,0 +1,72 @@
+{
+  "status": "independent native reservoir export; full city replacement and compressed audit pending",
+  "planSha256": "f1b4144060fa2c8172a8c7e3360f88ed9ec2986eade2f0ec6e0ee954aaef04b4",
+  "baseCityRoot": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging",
+  "profiles": {
+    "detail": {
+      "triangles": 8909,
+      "waterTriangles": 591,
+      "bankQuads": 1379,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 7.165157356325835e-10,
+      "boundarySamples": 1488,
+      "maximumBoundaryErrorMeters": 0.0006903543407821289,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "fda6c1539b9a9bdbe2f1c61eed2663762f1c6c6928693e05a408642cb545290e",
+          "bytes": 242453
+        },
+        "glb": {
+          "sha256": "8a7acec6113d6e64cdf7b9c3bdd52208b190a6b261df83e20d542940ddeb0587",
+          "bytes": 440500
+        },
+        "blend": {
+          "sha256": "499ec7e62ec2a9adbb31b81518548d82e3076f4c129f7d7412600cef79271df1",
+          "bytes": 476634
+        }
+      }
+    },
+    "smooth": {
+      "triangles": 8909,
+      "waterTriangles": 591,
+      "bankQuads": 1379,
+      "collapsedFaces": 0,
+      "maxSamplerErrorMeters": 7.165157356325835e-10,
+      "boundarySamples": 1488,
+      "maximumBoundaryErrorMeters": 0.0001150052565623838,
+      "restoredCityBoundarySides": [],
+      "cityCutSamples": 0,
+      "maximumCityCutSamplerErrorMeters": 0.0,
+      "protectedWaterBanks": [],
+      "files": {
+        "npz": {
+          "sha256": "b7e3951a92f2acbfc9dd3a9ed7de27ce2b008dd8c9cc4dcbb8924a527d4b9438",
+          "bytes": 239131
+        },
+        "glb": {
+          "sha256": "d2ac22e7c10d6d169bd85f02ddd9c1fd81e38689d8020a34a56438756a631a10",
+          "bytes": 439536
+        },
+        "blend": {
+          "sha256": "63de64eb3bec5223125b8d9faec0bc1f19561d6e32727f60a381303f492d4769",
+          "bytes": 475889
+        }
+      }
+    }
+  },
+  "baseContextHashes": {
+    "public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "public/data/terrain.json": "9f4b25a6997d0ab5c1bcf54a38aa8556e68e7e8210d5132701e97004e33ba794",
+    "blender/build_city.py": "fbca082dc37fad73fc5eb56124c433643daea692a02006a094846820680bc18a",
+    "blender/forest_canopy.py": "fe3c2c7cd3d9871e74fe27953c8f48f6ef0659acf97551e59e247c2c79eda5e9"
+  },
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/blender/check_reservoir_terrain.py": "717a82babff62587226dc166293997afcaab319d5b5186328e44c66fabf0db75",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  }
+}

@@ -1,0 +1,11 @@
+Complete Qingxiang: 14249.96 m, 27 main ways, 88 complete link ways, 31 mainline connections, 330 piers, 7 separated crossings; bridge clearance >= 21.69 display m; max display slope 12.0%.
+Forest qingxiu / detail: footprint and terrain clearance verified.
+Forest qingxiu / smooth: footprint and terrain clearance verified.
+Traceback (most recent call last):
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/scripts/validate_assets.py", line 277, in <module>
+    build_canopy(probe,region,raw_ground,g['bounds'],t['cols'],t['rows'],profile=='smooth')
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/blender/forest_canopy.py", line 91, in build_canopy
+    batch.face([vertices[i] for i in tri], CANOPY_MATERIALS[color], [normals[i] for i in tri])
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/scripts/validate_assets.py", line 272, in face
+    assert z-floor > .095*canopy_factor(x,y), 'Forest canopy intersects the displayed terrain'
+AssertionError: Forest canopy intersects the displayed terrain

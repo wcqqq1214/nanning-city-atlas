@@ -1,0 +1,419 @@
+{
+  "status": "eight independent native replacement domains do not overlap; runtime integration pending",
+  "groups": [
+    {
+      "id": "southeast-connected-water-v1",
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/plan.json",
+      "sha256": "58baef28838e02c0777160ae722a8f9d97f8dd6923f9ec8200314c849d02ec10",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              53.96649932861328,
+              -122.35603332519531
+            ],
+            [
+              53.96649932861328,
+              -74.37327575683594
+            ],
+            [
+              124.72257232666016,
+              -74.37327575683594
+            ],
+            [
+              124.72257232666016,
+              -122.35603332519531
+            ],
+            [
+              53.96649932861328,
+              -122.35603332519531
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 33950714.97154422
+    },
+    {
+      "id": "longmen-reservoir-closure-v1",
+      "path": "work/urban-structure/p5/reservoirs/closure/longmen/plan.json",
+      "sha256": "364d835a202a5eab02268429d4923bca293b6cbdef94707e2c34c94039515e51",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.75607299804688,
+              104.36250305175781
+            ],
+            [
+              -39.57543182373047,
+              104.36250305175781
+            ],
+            [
+              -39.57543182373047,
+              76.77241516113281
+            ],
+            [
+              -55.16575622558594,
+              76.77241516113281
+            ],
+            [
+              -55.16575622558594,
+              83.9698257446289
+            ],
+            [
+              -70.75607299804688,
+              83.9698257446289
+            ],
+            [
+              -70.75607299804688,
+              104.36250305175781
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 7480667.1954726335
+    },
+    {
+      "id": "west-pools-reservoir-closure-v1",
+      "path": "work/urban-structure/p5/reservoirs/closure/west-pools/plan.json",
+      "sha256": "4350d781f4a16401798d7cb7ee4b2b334025cfa5ec5830e973ada83206ec6a3c",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -170.29428100585938,
+              -17.993534088134766
+            ],
+            [
+              -170.29428100585938,
+              0.0
+            ],
+            [
+              -155.90321350097656,
+              0.0
+            ],
+            [
+              -155.90321350097656,
+              -17.993534088134766
+            ],
+            [
+              -170.29428100585938,
+              -17.993534088134766
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 2589461.637137574
+    },
+    {
+      "id": "mading-reservoir-terrain-v1",
+      "path": "work/urban-structure/p5/reservoirs/rollout/mading/plan.json",
+      "sha256": "4021c97c017d7d9682ff622b73fef0c16ba187c7d6c5fdda3090f111abe8a9e6",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.73001861572266,
+              122.35603332519531
+            ],
+            [
+              -112.73001861572266,
+              139.14999389648438
+            ],
+            [
+              -86.34639739990234,
+              139.14999389648438
+            ],
+            [
+              -86.34639739990234,
+              122.35603332519531
+            ],
+            [
+              -112.73001861572266,
+              122.35603332519531
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 4430854.944263119
+    },
+    {
+      "id": "yinling-reservoir-terrain-v1",
+      "path": "work/urban-structure/p5/reservoirs/rollout/yinling/plan.json",
+      "sha256": "8f607c3717b2966766c1bd7abaafb7e8f6093a93e9e4c7c84dc65081a5a4c231",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -178.68907165527344,
+              43.18448257446289
+            ],
+            [
+              -178.68907165527344,
+              63.57715606689453
+            ],
+            [
+              -155.90321350097656,
+              63.57715606689453
+            ],
+            [
+              -155.90321350097656,
+              43.18448257446289
+            ],
+            [
+              -178.68907165527344,
+              43.18448257446289
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 4646645.655854372
+    },
+    {
+      "id": "zhicun-reservoir-terrain-v1",
+      "path": "work/urban-structure/p5/reservoirs/rollout/zhicun/plan.json",
+      "sha256": "2f87e5eb7bcbd8a9f937cd7969ef6d70dc204b0662b8f2e5efee80865d2142c7",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -37.17692184448242,
+              104.36250305175781
+            ],
+            [
+              -37.17692184448242,
+              130.75302124023438
+            ],
+            [
+              13.191810607910156,
+              130.75302124023438
+            ],
+            [
+              13.191810607910156,
+              104.36250305175781
+            ],
+            [
+              -37.17692184448242,
+              104.36250305175781
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 13292569.49915376
+    },
+    {
+      "id": "tianbao-reservoir-terrain-v1",
+      "path": "work/urban-structure/p5/staging/data/reservoir-terrain-plan.json",
+      "sha256": "e8089c2f308c1e2d1622e200f37bdd6c724a770fea98e6bd91a9322d3fb5651e",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -87.545654296875,
+              47.982757568359375
+            ],
+            [
+              -87.545654296875,
+              83.9698257446289
+            ],
+            [
+              -55.16575622558594,
+              83.9698257446289
+            ],
+            [
+              -55.16575622558594,
+              47.982757568359375
+            ],
+            [
+              -87.545654296875,
+              47.982757568359375
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 11652575.994321378
+    },
+    {
+      "id": "linglong-lake-terrain-v1",
+      "path": "work/urban-structure/p5/reservoirs/linglong/plan.json",
+      "sha256": "3cdbc5f8f40e26db77055438578d75f083f9771fb0b8e77d603226e540aade07",
+      "nativeReplacementDomain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              184.6853485107422,
+              -109.16077423095703
+            ],
+            [
+              184.6853485107422,
+              -95.96551513671875
+            ],
+            [
+              175.09130859375,
+              -95.96551513671875
+            ],
+            [
+              175.09130859375,
+              -109.16077423095703
+            ],
+            [
+              184.6853485107422,
+              -109.16077423095703
+            ]
+          ]
+        ]
+      },
+      "areaSquareMeters": 1265958.4246517625
+    }
+  ],
+  "pairs": [
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "longmen-reservoir-closure-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "west-pools-reservoir-closure-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "mading-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "yinling-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "zhicun-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "southeast-connected-water-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "west-pools-reservoir-closure-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "mading-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "yinling-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "zhicun-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "longmen-reservoir-closure-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "west-pools-reservoir-closure-v1",
+      "b": "mading-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "west-pools-reservoir-closure-v1",
+      "b": "yinling-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "west-pools-reservoir-closure-v1",
+      "b": "zhicun-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "west-pools-reservoir-closure-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "west-pools-reservoir-closure-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "mading-reservoir-terrain-v1",
+      "b": "yinling-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "mading-reservoir-terrain-v1",
+      "b": "zhicun-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "mading-reservoir-terrain-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "mading-reservoir-terrain-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "yinling-reservoir-terrain-v1",
+      "b": "zhicun-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "yinling-reservoir-terrain-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "yinling-reservoir-terrain-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "zhicun-reservoir-terrain-v1",
+      "b": "tianbao-reservoir-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "zhicun-reservoir-terrain-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    },
+    {
+      "a": "tianbao-reservoir-terrain-v1",
+      "b": "linglong-lake-terrain-v1",
+      "overlapSquareMeters": 0.0
+    }
+  ]
+}

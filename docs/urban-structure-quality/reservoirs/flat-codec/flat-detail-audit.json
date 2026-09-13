@@ -1,0 +1,1398 @@
+{
+  "triangles": 3628457,
+  "flatFaces": 651513,
+  "maximumFlatNormalDifferenceDegrees": 0.4996955403885073,
+  "meshes": [
+    {
+      "name": "ElevatedRoads_0_0",
+      "triangles": 2834,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_0_1",
+      "triangles": 6484,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_0_2",
+      "triangles": 12568,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_1_0",
+      "triangles": 16265,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_1_1",
+      "triangles": 48335,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_1_2",
+      "triangles": 9369,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_2_0",
+      "triangles": 28089,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_2_1",
+      "triangles": 62598,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_2_2",
+      "triangles": 35689,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_2_3",
+      "triangles": 2736,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_2_-1",
+      "triangles": 6,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_3_0",
+      "triangles": 55341,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_3_1",
+      "triangles": 68199,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_3_2",
+      "triangles": 44008,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_3_3",
+      "triangles": 1406,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_4_0",
+      "triangles": 9740,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_4_1",
+      "triangles": 8078,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_4_2",
+      "triangles": 1707,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_4_3",
+      "triangles": 781,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_0_0",
+      "triangles": 241,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_0_1",
+      "triangles": 788,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_0_2",
+      "triangles": 1355,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_1_0",
+      "triangles": 1425,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_1_1",
+      "triangles": 4309,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_1_2",
+      "triangles": 881,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_2_0",
+      "triangles": 2825,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_2_1",
+      "triangles": 5406,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_2_2",
+      "triangles": 3815,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_2_3",
+      "triangles": 247,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_3_0",
+      "triangles": 5134,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_3_1",
+      "triangles": 7619,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_3_2",
+      "triangles": 4098,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_3_3",
+      "triangles": 100,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_4_0",
+      "triangles": 1077,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_4_1",
+      "triangles": 1160,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_4_2",
+      "triangles": 68,
+      "flatFaces": 0
+    },
+    {
+      "name": "ElevatedRoads_Details_4_3",
+      "triangles": 132,
+      "flatFaces": 0
+    },
+    {
+      "name": "ZhuxiInterchange",
+      "triangles": 2170,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_baisha-bridge",
+      "triangles": 15078,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_baisha-bridge",
+      "triangles": 12600,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_beida-bridge",
+      "triangles": 13026,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_beida-bridge",
+      "triangles": 9012,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_bridge",
+      "triangles": 26892,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_huluding-bridge",
+      "triangles": 15232,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_huluding-bridge",
+      "triangles": 10374,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_liangqing-bridge",
+      "triangles": 17274,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_liangqing-bridge",
+      "triangles": 15186,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_lingtie-bridge",
+      "triangles": 14048,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_lingtie-bridge",
+      "triangles": 12756,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_qingchuan-bridge",
+      "triangles": 11452,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_qingchuan-bridge",
+      "triangles": 7986,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_qingshan-bridge",
+      "triangles": 10408,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_qingshan-bridge",
+      "triangles": 13068,
+      "flatFaces": 0
+    },
+    {
+      "name": "QingxiangViaduct_Details",
+      "triangles": 18214,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_qingxiang-viaduct",
+      "triangles": 48710,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_taoyuan-bridge",
+      "triangles": 17602,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_taoyuan-bridge",
+      "triangles": 12138,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_wuxiang-bridge",
+      "triangles": 10266,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_wuxiang-bridge",
+      "triangles": 11012,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_yinghua-bridge",
+      "triangles": 10730,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_yinghua-bridge",
+      "triangles": 11676,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_yonghe-bridge",
+      "triangles": 10890,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_yonghe-bridge",
+      "triangles": 20526,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_yongjiang-bridge",
+      "triangles": 5220,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_yongjiang-bridge",
+      "triangles": 3732,
+      "flatFaces": 0
+    },
+    {
+      "name": "RiverBridge_Details_zhongxing-bridge",
+      "triangles": 11452,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_zhongxing-bridge",
+      "triangles": 12276,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_0_0",
+      "triangles": 1102,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_0_1",
+      "triangles": 6130,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_0_2",
+      "triangles": 120,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_1_0",
+      "triangles": 6884,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_1_1",
+      "triangles": 18047,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_1_2",
+      "triangles": 9197,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_1_3",
+      "triangles": 25,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_2_0",
+      "triangles": 17546,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_2_1",
+      "triangles": 29744,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_2_2",
+      "triangles": 22845,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_2_3",
+      "triangles": 1016,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_3_0",
+      "triangles": 18716,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_3_1",
+      "triangles": 21060,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_3_2",
+      "triangles": 10982,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_3_3",
+      "triangles": 1116,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_4_0",
+      "triangles": 5689,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_4_1",
+      "triangles": 11353,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_4_2",
+      "triangles": 2733,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_4_3",
+      "triangles": 719,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_0_0",
+      "triangles": 22,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_0_1",
+      "triangles": 13,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_1_0",
+      "triangles": 538,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_1_1",
+      "triangles": 1205,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_1_2",
+      "triangles": 830,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_2_0",
+      "triangles": 2044,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_2_1",
+      "triangles": 14142,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_2_2",
+      "triangles": 4013,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_3_0",
+      "triangles": 4641,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_3_1",
+      "triangles": 12928,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_3_2",
+      "triangles": 1119,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_4_0",
+      "triangles": 14365,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_4_1",
+      "triangles": 14105,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_4_2",
+      "triangles": 5503,
+      "flatFaces": 0
+    },
+    {
+      "name": "Buildings_quality_4_3",
+      "triangles": 333,
+      "flatFaces": 0
+    },
+    {
+      "name": "Reservoir_control_linglong_sluice_v1",
+      "triangles": 672,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_arts-center",
+      "triangles": 48808,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_changyou",
+      "triangles": 35768,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_confucius",
+      "triangles": 2812,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_cr",
+      "triangles": 170,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_diwang",
+      "triangles": 358,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_east-station",
+      "triangles": 22973,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_ethnic-museum",
+      "triangles": 21022,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_expo",
+      "triangles": 25124,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_gx-museum",
+      "triangles": 14218,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_gxu",
+      "triangles": 308,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_hangyang",
+      "triangles": 22967,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_mixc",
+      "triangles": 5342,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_nanhu",
+      "triangles": 17455,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_nanning-station",
+      "triangles": 12620,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_qingxiu",
+      "triangles": 20444,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_sports-center",
+      "triangles": 47412,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_tingzi",
+      "triangles": 20702,
+      "flatFaces": 0
+    },
+    {
+      "name": "Landmark_zhenning",
+      "triangles": 19996,
+      "flatFaces": 0
+    },
+    {
+      "name": "Plinth",
+      "triangles": 4330,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_0_0",
+      "triangles": 13770,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_0_1",
+      "triangles": 1522,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_1_0",
+      "triangles": 32354,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_1_1",
+      "triangles": 39574,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_2_0",
+      "triangles": 4202,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_2_1",
+      "triangles": 23950,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_2_2",
+      "triangles": 10296,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_2_3",
+      "triangles": 3852,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_3_0",
+      "triangles": 8120,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_3_1",
+      "triangles": 9548,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_3_2",
+      "triangles": 29242,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_4_0",
+      "triangles": 8704,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_4_1",
+      "triangles": 28296,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railway_Details_4_2",
+      "triangles": 12116,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_0_0",
+      "triangles": 21410,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_0_1",
+      "triangles": 3482,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_1_0",
+      "triangles": 48946,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_1_1",
+      "triangles": 61654,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_2_0",
+      "triangles": 4334,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_2_1",
+      "triangles": 39512,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_2_2",
+      "triangles": 13442,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_2_3",
+      "triangles": 7914,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_3_0",
+      "triangles": 12018,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_3_1",
+      "triangles": 15272,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_3_2",
+      "triangles": 42408,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_4_0",
+      "triangles": 11056,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_4_1",
+      "triangles": 52636,
+      "flatFaces": 0
+    },
+    {
+      "name": "Railways_4_2",
+      "triangles": 20418,
+      "flatFaces": 0
+    },
+    {
+      "name": "Reservoir_water_custom",
+      "triangles": 13029,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_0_0",
+      "triangles": 7036,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_0_1",
+      "triangles": 18158,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_0_2",
+      "triangles": 6967,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_0_3",
+      "triangles": 754,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_1_0",
+      "triangles": 20547,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_1_1",
+      "triangles": 45233,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_1_2",
+      "triangles": 23758,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_1_3",
+      "triangles": 1260,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_2_0",
+      "triangles": 38628,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_2_1",
+      "triangles": 66578,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_2_2",
+      "triangles": 46765,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_2_3",
+      "triangles": 5055,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_3_0",
+      "triangles": 70264,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_3_1",
+      "triangles": 66720,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_3_2",
+      "triangles": 38736,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_3_3",
+      "triangles": 5764,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_4_0",
+      "triangles": 20828,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_4_1",
+      "triangles": 24734,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_4_2",
+      "triangles": 11289,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_4_3",
+      "triangles": 2560,
+      "flatFaces": 0
+    },
+    {
+      "name": "GroundRoads_access_xinzhong_industrial_0_0",
+      "triangles": 330,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_2_1",
+      "triangles": 2238,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_3_1",
+      "triangles": 5743,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_4_1",
+      "triangles": 3668,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_Details_2_1",
+      "triangles": 4112,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_Details_3_1",
+      "triangles": 8917,
+      "flatFaces": 0
+    },
+    {
+      "name": "MinzuAvenue_Details_4_1",
+      "triangles": 6350,
+      "flatFaces": 0
+    },
+    {
+      "name": "ParkPaths_qingxiu",
+      "triangles": 14178,
+      "flatFaces": 0
+    },
+    {
+      "name": "Terrain_0_0",
+      "triangles": 35645,
+      "flatFaces": 33555
+    },
+    {
+      "name": "Terrain_0_1",
+      "triangles": 34828,
+      "flatFaces": 30834
+    },
+    {
+      "name": "Terrain_0_2",
+      "triangles": 33863,
+      "flatFaces": 26905
+    },
+    {
+      "name": "Terrain_0_3",
+      "triangles": 16554,
+      "flatFaces": 13527
+    },
+    {
+      "name": "Terrain_1_0",
+      "triangles": 35644,
+      "flatFaces": 34274
+    },
+    {
+      "name": "Terrain_1_1",
+      "triangles": 35645,
+      "flatFaces": 30103
+    },
+    {
+      "name": "Terrain_1_2",
+      "triangles": 31287,
+      "flatFaces": 27644
+    },
+    {
+      "name": "Terrain_1_3",
+      "triangles": 15514,
+      "flatFaces": 11969
+    },
+    {
+      "name": "Terrain_2_0",
+      "triangles": 35511,
+      "flatFaces": 33597
+    },
+    {
+      "name": "Terrain_2_1",
+      "triangles": 68763,
+      "flatFaces": 59566
+    },
+    {
+      "name": "Terrain_2_2",
+      "triangles": 35378,
+      "flatFaces": 31322
+    },
+    {
+      "name": "Terrain_2_3",
+      "triangles": 15756,
+      "flatFaces": 13528
+    },
+    {
+      "name": "Terrain_3_0",
+      "triangles": 30405,
+      "flatFaces": 29014
+    },
+    {
+      "name": "Terrain_3_1",
+      "triangles": 67428,
+      "flatFaces": 48281
+    },
+    {
+      "name": "Terrain_3_2",
+      "triangles": 35511,
+      "flatFaces": 35389
+    },
+    {
+      "name": "Terrain_3_3",
+      "triangles": 17088,
+      "flatFaces": 16584
+    },
+    {
+      "name": "Terrain_4_0",
+      "triangles": 21435,
+      "flatFaces": 19979
+    },
+    {
+      "name": "Terrain_4_1",
+      "triangles": 22028,
+      "flatFaces": 19510
+    },
+    {
+      "name": "Terrain_4_2",
+      "triangles": 21945,
+      "flatFaces": 21454
+    },
+    {
+      "name": "Terrain_4_3",
+      "triangles": 10560,
+      "flatFaces": 10210
+    },
+    {
+      "name": "Terrain_grading_access_xinzhong_industrial_0_0",
+      "triangles": 4150,
+      "flatFaces": 3983
+    },
+    {
+      "name": "Terrain_reservoir_linglong_lake_terrain_v1_0_0",
+      "triangles": 5961,
+      "flatFaces": 5768
+    },
+    {
+      "name": "Terrain_reservoir_longmen_reservoir_closure_v1_0_0",
+      "triangles": 11655,
+      "flatFaces": 11633
+    },
+    {
+      "name": "Terrain_reservoir_mading_reservoir_terrain_v1_0_0",
+      "triangles": 8235,
+      "flatFaces": 8175
+    },
+    {
+      "name": "Terrain_reservoir_southeast_connected_water_v1_0_0",
+      "triangles": 35380,
+      "flatFaces": 34464
+    },
+    {
+      "name": "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0",
+      "triangles": 15009,
+      "flatFaces": 15005
+    },
+    {
+      "name": "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0",
+      "triangles": 6018,
+      "flatFaces": 5975
+    },
+    {
+      "name": "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0",
+      "triangles": 8615,
+      "flatFaces": 8604
+    },
+    {
+      "name": "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0",
+      "triangles": 10685,
+      "flatFaces": 10661
+    },
+    {
+      "name": "Vegetation_0_0",
+      "triangles": 2318,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_0_1",
+      "triangles": 4795,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_0_2",
+      "triangles": 4661,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_0_3",
+      "triangles": 1361,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_1_0",
+      "triangles": 4076,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_1_1",
+      "triangles": 3996,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_1_2",
+      "triangles": 6721,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_1_3",
+      "triangles": 2206,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_1_-1",
+      "triangles": 31,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_2_0",
+      "triangles": 7670,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_2_1",
+      "triangles": 3543,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_2_2",
+      "triangles": 7115,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_2_3",
+      "triangles": 4783,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_2_-1",
+      "triangles": 8,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_3_0",
+      "triangles": 5990,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_3_1",
+      "triangles": 5769,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_3_2",
+      "triangles": 1949,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_3_3",
+      "triangles": 2252,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_4_0",
+      "triangles": 3690,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_4_1",
+      "triangles": 3000,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_4_2",
+      "triangles": 960,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_4_3",
+      "triangles": 660,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_-1_2",
+      "triangles": 72,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_-1_3",
+      "triangles": 14,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_0_1",
+      "triangles": 68,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_0_2",
+      "triangles": 36018,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_0_3",
+      "triangles": 14812,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_1_2",
+      "triangles": 23367,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_1_3",
+      "triangles": 18517,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_2_2",
+      "triangles": 834,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_2_3",
+      "triangles": 12315,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_3_3",
+      "triangles": 2881,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_canopy_4_3",
+      "triangles": 1996,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_0_2",
+      "triangles": 1525,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_0_3",
+      "triangles": 755,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_1_2",
+      "triangles": 789,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_1_3",
+      "triangles": 900,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_2_2",
+      "triangles": 26,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_2_3",
+      "triangles": 545,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_3_3",
+      "triangles": 60,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_all_crowns_4_3",
+      "triangles": 80,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nanhu",
+      "triangles": 5802,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_0_0",
+      "triangles": 3405,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_0_1",
+      "triangles": 1833,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_0_2",
+      "triangles": 102,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_1_0",
+      "triangles": 8568,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_1_1",
+      "triangles": 790,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_1_2",
+      "triangles": 87,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_2_0",
+      "triangles": 14435,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_2_1",
+      "triangles": 308,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_2_2",
+      "triangles": 430,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_2_3",
+      "triangles": 641,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_3_0",
+      "triangles": 1900,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_3_1",
+      "triangles": 3357,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_3_2",
+      "triangles": 1086,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_3_3",
+      "triangles": 677,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_4_0",
+      "triangles": 123,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_4_1",
+      "triangles": 3984,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_canopy_4_2",
+      "triangles": 1559,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_0_0",
+      "triangles": 60,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_0_1",
+      "triangles": 20,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_1_0",
+      "triangles": 616,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_2_0",
+      "triangles": 704,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_3_2",
+      "triangles": 20,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_4_1",
+      "triangles": 280,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_nearby_crowns_4_2",
+      "triangles": 80,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_qingxiu_canopy_3_1",
+      "triangles": 14661,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_qingxiu_crowns_3_1",
+      "triangles": 500,
+      "flatFaces": 0
+    },
+    {
+      "name": "Vegetation_zhuxi",
+      "triangles": 3150,
+      "flatFaces": 0
+    },
+    {
+      "name": "Water",
+      "triangles": 9163,
+      "flatFaces": 0
+    }
+  ],
+  "status": "all geometry, material ownership, hierarchy and explicit normals preserved; flat deviation bounded; visual checks separate",
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/public/models/nanning-city.glb": "139b0fcb16e0e517c7e5fd671ff84739e0c3111bc445d9b2e57af1cba536ba22",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/flat-buildings-candidate/public/models/nanning-city.glb": "e6e2671f493743b8c36e6d571aabcb1f2462709d3152b7bb628b3bab05655535",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_flat_surfaces.py": "192f8a9d96c13684264dcd0ec092395f3e897fd002d023915b5849488cfa7062"
+  }
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "group": "longmen",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/render_reservoir_terrain.py",
+      "--",
+      "--plan",
+      "work/urban-structure/p5/reservoirs/neighbors/longmen/plan.json",
+      "--exports",
+      "work/urban-structure/p5/reservoirs/neighbors/longmen/native",
+      "--output",
+      "work/urban-structure/p5/reservoirs/neighbors/longmen/views",
+      "--adaptive-height",
+      "--no-shadows",
+      "--extra-views",
+      "work/urban-structure/p5/reservoirs/neighbors/longmen/extra-views.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "group": "west-pools",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/render_reservoir_terrain.py",
+      "--",
+      "--plan",
+      "work/urban-structure/p5/reservoirs/neighbors/west-pools/plan.json",
+      "--exports",
+      "work/urban-structure/p5/reservoirs/neighbors/west-pools/native",
+      "--output",
+      "work/urban-structure/p5/reservoirs/neighbors/west-pools/views",
+      "--adaptive-height",
+      "--no-shadows",
+      "--extra-views",
+      "work/urban-structure/p5/reservoirs/neighbors/west-pools/extra-views.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "group": "southeast",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/render_reservoir_terrain.py",
+      "--",
+      "--plan",
+      "work/urban-structure/p5/reservoirs/neighbors/southeast/plan.json",
+      "--exports",
+      "work/urban-structure/p5/reservoirs/neighbors/southeast/native",
+      "--output",
+      "work/urban-structure/p5/reservoirs/neighbors/southeast/views",
+      "--adaptive-height",
+      "--no-shadows",
+      "--extra-views",
+      "work/urban-structure/p5/reservoirs/neighbors/southeast/extra-views.json"
+    ],
+    "exitCode": 0
+  }
+]

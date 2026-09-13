@@ -1,0 +1,281 @@
+{
+  "assets": {
+    "public/models/nanning-city.glb": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6",
+    "public/models/nanning-city-mobile.glb": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0",
+    "public/data/overview.json": "7b8dccac61b145ed4e0367429758fb02cbaf85e280d699e3b6b52253e5629161",
+    "public/data/landmarks.json": "fc3b32a77fba9dfc3627cf36bb7a85c4ccab30ddfc4ea343ed88365ccb734780"
+  },
+  "records": [
+    {
+      "id": "arts-center-detail-focus",
+      "stats": "精细 · 56 fps · 25.58 MB · 1.37 s1,861,710 三角形 · 293 次绘制 · 1.00 像素比例",
+      "calls": 293
+    },
+    {
+      "id": "arts-center-detail-close",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.37 s1,963,880 三角形 · 372 次绘制 · 1.00 像素比例",
+      "calls": 372
+    },
+    {
+      "id": "arts-center-detail-城市建筑-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.37 s1,963,880 三角形 · 372 次绘制 · 1.00 像素比例",
+      "calls": 372
+    },
+    {
+      "id": "arts-center-detail-城市建筑-off",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.37 s1,719,419 三角形 · 316 次绘制 · 1.00 像素比例",
+      "calls": 316
+    },
+    {
+      "id": "arts-center-detail-河流湖泊-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.37 s1,963,880 三角形 · 372 次绘制 · 1.00 像素比例",
+      "calls": 372
+    },
+    {
+      "id": "arts-center-detail-河流湖泊-off",
+      "stats": "精细 · 静止省电 · 25.58 MB · 1.37 s2,986,092 三角形 · 505 次绘制 · 1.00 像素比例",
+      "calls": 505
+    },
+    {
+      "id": "arts-center-smooth-focus",
+      "stats": "流畅 · 27 fps · 17.64 MB · 1.12 s2,200,857 三角形 · 620 次绘制 · 1.00 像素比例",
+      "calls": 620
+    },
+    {
+      "id": "arts-center-smooth-close",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.12 s1,301,919 三角形 · 268 次绘制 · 1.00 像素比例",
+      "calls": 268
+    },
+    {
+      "id": "arts-center-smooth-城市建筑-on",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.12 s1,301,919 三角形 · 268 次绘制 · 1.00 像素比例",
+      "calls": 268
+    },
+    {
+      "id": "arts-center-smooth-城市建筑-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.12 s1,071,551 三角形 · 255 次绘制 · 1.00 像素比例",
+      "calls": 255
+    },
+    {
+      "id": "arts-center-smooth-河流湖泊-on",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.12 s1,316,012 三角形 · 311 次绘制 · 1.00 像素比例",
+      "calls": 311
+    },
+    {
+      "id": "arts-center-smooth-河流湖泊-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.12 s1,307,059 三角形 · 310 次绘制 · 1.00 像素比例",
+      "calls": 310
+    },
+    {
+      "id": "zhenning-detail-focus",
+      "stats": "精细 · 55 fps · 25.58 MB · 1.59 s1,193,024 三角形 · 214 次绘制 · 1.00 像素比例",
+      "calls": 214
+    },
+    {
+      "id": "zhenning-detail-close",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.59 s910,240 三角形 · 196 次绘制 · 1.00 像素比例",
+      "calls": 196
+    },
+    {
+      "id": "zhenning-detail-城市建筑-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.59 s910,240 三角形 · 196 次绘制 · 1.00 像素比例",
+      "calls": 196
+    },
+    {
+      "id": "zhenning-detail-城市建筑-off",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.59 s811,979 三角形 · 162 次绘制 · 1.00 像素比例",
+      "calls": 162
+    },
+    {
+      "id": "zhenning-detail-河流湖泊-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 1.59 s910,240 三角形 · 196 次绘制 · 1.00 像素比例",
+      "calls": 196
+    },
+    {
+      "id": "zhenning-detail-河流湖泊-off",
+      "stats": "精细 · 静止省电 · 25.58 MB · 1.59 s1,461,773 三角形 · 276 次绘制 · 1.00 像素比例",
+      "calls": 276
+    },
+    {
+      "id": "zhenning-smooth-focus",
+      "stats": "流畅 · 28 fps · 17.64 MB · 1.01 s1,721,413 三角形 · 487 次绘制 · 1.00 像素比例",
+      "calls": 487
+    },
+    {
+      "id": "zhenning-smooth-close",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.01 s634,812 三角形 · 153 次绘制 · 1.00 像素比例",
+      "calls": 153
+    },
+    {
+      "id": "zhenning-smooth-城市建筑-on",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.01 s634,812 三角形 · 153 次绘制 · 1.00 像素比例",
+      "calls": 153
+    },
+    {
+      "id": "zhenning-smooth-城市建筑-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.01 s538,931 三角形 · 128 次绘制 · 1.00 像素比例",
+      "calls": 128
+    },
+    {
+      "id": "zhenning-smooth-河流湖泊-on",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.01 s637,192 三角形 · 162 次绘制 · 1.00 像素比例",
+      "calls": 162
+    },
+    {
+      "id": "zhenning-smooth-河流湖泊-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.01 s628,239 三角形 · 161 次绘制 · 1.00 像素比例",
+      "calls": 161
+    },
+    {
+      "id": "diwang-detail-focus",
+      "stats": "精细 · 47 fps · 25.58 MB · 0.87 s4,513,853 三角形 · 965 次绘制 · 1.00 像素比例",
+      "calls": 965
+    },
+    {
+      "id": "diwang-detail-close",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.87 s2,247,536 三角形 · 366 次绘制 · 1.00 像素比例",
+      "calls": 366
+    },
+    {
+      "id": "diwang-detail-城市建筑-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.87 s2,247,536 三角形 · 366 次绘制 · 1.00 像素比例",
+      "calls": 366
+    },
+    {
+      "id": "diwang-detail-城市建筑-off",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.87 s1,275,880 三角形 · 229 次绘制 · 1.00 像素比例",
+      "calls": 229
+    },
+    {
+      "id": "diwang-detail-河流湖泊-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.87 s1,399,025 三角形 · 261 次绘制 · 1.00 像素比例",
+      "calls": 261
+    },
+    {
+      "id": "diwang-detail-河流湖泊-off",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.87 s2,241,351 三角形 · 378 次绘制 · 1.00 像素比例",
+      "calls": 378
+    },
+    {
+      "id": "diwang-smooth-focus",
+      "stats": "流畅 · 30 fps · 17.64 MB · 0.99 s1,845,599 三角形 · 487 次绘制 · 1.00 像素比例",
+      "calls": 487
+    },
+    {
+      "id": "diwang-smooth-close",
+      "stats": "流畅 · 30 fps · 17.64 MB · 0.99 s916,849 三角形 · 206 次绘制 · 1.00 像素比例",
+      "calls": 206
+    },
+    {
+      "id": "diwang-smooth-城市建筑-on",
+      "stats": "流畅 · 30 fps · 17.64 MB · 0.99 s916,849 三角形 · 206 次绘制 · 1.00 像素比例",
+      "calls": 206
+    },
+    {
+      "id": "diwang-smooth-城市建筑-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 0.99 s794,525 三角形 · 180 次绘制 · 1.00 像素比例",
+      "calls": 180
+    },
+    {
+      "id": "diwang-smooth-河流湖泊-on",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 0.99 s917,670 三角形 · 212 次绘制 · 1.00 像素比例",
+      "calls": 212
+    },
+    {
+      "id": "diwang-smooth-河流湖泊-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 0.99 s908,717 三角形 · 211 次绘制 · 1.00 像素比例",
+      "calls": 211
+    },
+    {
+      "id": "confucius-detail-focus",
+      "stats": "精细 · 40 fps · 25.58 MB · 0.85 s5,037,287 三角形 · 1049 次绘制 · 1.00 像素比例",
+      "calls": 1049
+    },
+    {
+      "id": "confucius-detail-close",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.85 s2,471,930 三角形 · 424 次绘制 · 1.00 像素比例",
+      "calls": 424
+    },
+    {
+      "id": "confucius-detail-城市建筑-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.85 s2,471,930 三角形 · 424 次绘制 · 1.00 像素比例",
+      "calls": 424
+    },
+    {
+      "id": "confucius-detail-城市建筑-off",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.85 s1,642,465 三角形 · 297 次绘制 · 1.00 像素比例",
+      "calls": 297
+    },
+    {
+      "id": "confucius-detail-河流湖泊-on",
+      "stats": "精细 · 60 fps · 25.58 MB · 0.85 s1,898,613 三角形 · 374 次绘制 · 1.00 像素比例",
+      "calls": 374
+    },
+    {
+      "id": "confucius-detail-河流湖泊-off",
+      "stats": "精细 · 静止省电 · 25.58 MB · 0.85 s2,523,878 三角形 · 470 次绘制 · 1.00 像素比例",
+      "calls": 470
+    },
+    {
+      "id": "confucius-smooth-focus",
+      "stats": "流畅 · 28 fps · 17.64 MB · 1.04 s2,155,927 三角形 · 630 次绘制 · 1.00 像素比例",
+      "calls": 630
+    },
+    {
+      "id": "confucius-smooth-close",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.04 s1,247,482 三角形 · 282 次绘制 · 1.00 像素比例",
+      "calls": 282
+    },
+    {
+      "id": "confucius-smooth-城市建筑-on",
+      "stats": "流畅 · 30 fps · 17.64 MB · 1.04 s1,247,482 三角形 · 282 次绘制 · 1.00 像素比例",
+      "calls": 282
+    },
+    {
+      "id": "confucius-smooth-城市建筑-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.04 s1,027,369 三角形 · 236 次绘制 · 1.00 像素比例",
+      "calls": 236
+    },
+    {
+      "id": "confucius-smooth-河流湖泊-on",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.04 s1,283,517 三角形 · 313 次绘制 · 1.00 像素比例",
+      "calls": 313
+    },
+    {
+      "id": "confucius-smooth-河流湖泊-off",
+      "stats": "流畅 · 静止省电 · 17.64 MB · 1.04 s1,274,562 三角形 · 311 次绘制 · 1.00 像素比例",
+      "calls": 311
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "four-site-selection",
+    "close-focus",
+    "both-qualities",
+    "building-layer-draws",
+    "water-layer-captures",
+    "ceremonial-pond-pixel-removal"
+  ],
+  "pondPixelRemoval": {
+    "detail": {
+      "crop": [
+        762,
+        595,
+        824,
+        628
+      ],
+      "waterPixelsOn": 195,
+      "waterPixelsOff": 0
+    },
+    "smooth": {
+      "crop": [
+        762,
+        595,
+        824,
+        628
+      ],
+      "waterPixelsOn": 214,
+      "waterPixelsOff": 0
+    }
+  }
+}

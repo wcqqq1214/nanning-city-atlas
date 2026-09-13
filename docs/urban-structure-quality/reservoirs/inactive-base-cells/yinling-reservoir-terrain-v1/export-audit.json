@@ -1,0 +1,66 @@
+{
+  "status": "independent reservoir GLB checked; full city integration remains pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 8780,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.2125866269725902,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 7129,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 8780,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.2125866269725902,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "water": {
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0
+        }
+      },
+      "terrain": {
+        "triangles": 7129,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json": "da68605e21120c61250165e10063a8b299c012995b7bf49803a26622cb9e3096",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native/report.json": "87ec2af40114530f9d7663a5de2ff1ae4e8cbfc2d8861cc61868496f407f7c5a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native/detail.npz": "7cf73d0d7fc829c7fcb4915e5011819e0e596568d1c5abfef913aa5bdd179e99",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native/detail.glb": "1f79b9188ad8a04828fb59ebdb3f020fd41c92422d79bea458f83b6f65785e48",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native/smooth.npz": "b6e9ae38b6de3a43a6d7b0fff28b587ba0fe50ed4dc990f8a0a29a8c9286a005",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native/smooth.glb": "2b585ce5e6e4aac017381bc3c1bac7cb8f2d29f78fa63dbcde8a59c9501cd7be"
+  },
+  "toolSha256": "5487f82b333f587315b58a1d6f475a33c6183953a38f7c049f633116b6c2c9d6"
+}

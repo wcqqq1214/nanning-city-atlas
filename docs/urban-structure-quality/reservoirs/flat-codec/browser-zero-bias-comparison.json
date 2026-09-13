@@ -1,0 +1,6 @@
+{
+  "intervention": "browser-only served scene module normalBias .08 to 0, no workspace scene mutation",
+  "meanAbsoluteChannelDifference": 0.006154416354556804,
+  "pixelsOver8Percent": 0.0,
+  "p99MaximumChannelDifference": 1.0
+}

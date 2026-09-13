@@ -1,0 +1,160 @@
+[
+  {
+    "step": "relocate-reservoir-plans",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/reprepare_reservoirs.py"
+    ],
+    "exitCode": 0,
+    "seconds": 90.93
+  },
+  {
+    "step": "base-context",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context"
+    ],
+    "exitCode": 0,
+    "seconds": 90.5
+  },
+  {
+    "step": "freeze-base",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/freeze_base.py"
+    ],
+    "exitCode": 0,
+    "seconds": 0.16
+  },
+  {
+    "step": "landmark-context",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "work/p5/final-integration/capture_landmarks.py"
+    ],
+    "exitCode": 0,
+    "seconds": 46.46
+  },
+  {
+    "step": "base-support",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_building_support.py",
+      "--geography",
+      "public/data/geography.json",
+      "--detail",
+      "work/p5/final-integration/base-context/detail.glb",
+      "--smooth",
+      "work/p5/final-integration/base-context/smooth.glb",
+      "--context-sources",
+      "work/p5/final-integration/base-context/sources.json",
+      "--output",
+      "work/p5/final-integration/base-support.json"
+    ],
+    "exitCode": 0,
+    "seconds": 6.96
+  },
+  {
+    "step": "road-dependencies",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/rebuild_roads.py"
+    ],
+    "exitCode": 0,
+    "seconds": 471.13
+  },
+  {
+    "step": "native-ground",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_site_grading.py",
+      "--",
+      "--output",
+      "work/p5/final-integration/native-ground"
+    ],
+    "exitCode": 0,
+    "seconds": 51.8
+  },
+  {
+    "step": "access-dependencies",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/prepare_access_after_roads.py"
+    ],
+    "exitCode": 0,
+    "seconds": 131.44
+  },
+  {
+    "step": "access-isolated",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/export_site_access.py",
+      "--",
+      "--candidate",
+      "work/p5/final-integration/access-plan.json",
+      "--output",
+      "work/p5/final-integration/access-isolated"
+    ],
+    "exitCode": 0,
+    "seconds": 15.02
+  },
+  {
+    "step": "access-export-audit",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_site_access_exports.py",
+      "--directory",
+      "work/p5/final-integration/access-isolated",
+      "--candidate",
+      "work/p5/final-integration/access-plan.json",
+      "--context",
+      "work/terrain-resample/context",
+      "--plan",
+      "data/block-grading-plan.json",
+      "--geography",
+      "public/data/geography.json",
+      "--integrated-directory",
+      "work/p5/final-integration/access-runtime",
+      "--output",
+      "work/p5/final-integration/access-export-audit.json"
+    ],
+    "exitCode": 0,
+    "seconds": 5.06
+  },
+  {
+    "step": "final-support-audit",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/audit_final_support.py"
+    ],
+    "exitCode": 0,
+    "seconds": 5.36
+  },
+  {
+    "step": "full-city",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/build_full_city.py"
+    ],
+    "exitCode": 0,
+    "seconds": 198.0
+  }
+]

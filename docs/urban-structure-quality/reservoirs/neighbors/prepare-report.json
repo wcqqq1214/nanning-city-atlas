@@ -1,0 +1,202 @@
+{
+  "id": "p5-reservoir-neighbor-shorelines-v1",
+  "status": "source geometry restored; downstream terrain, land cover, roads and vegetation pending",
+  "sourceHash": "8f8cb48f73d87af23f436d08075a6d4bdc0ad321c9ae23edd7f67be1cc24e9a1",
+  "water": [
+    {
+      "index": 438,
+      "sourceRef": "osm/relation/11521065",
+      "beforeSha256": "3ed004d9ef7433c1d70fce786a24b6f7b81d8a1ccc83c503ff14ef265c176161",
+      "afterSha256": "22fc964a1523f641a496b31e397192effaf0c2bd9155598cea888e2513602b02",
+      "beforeAreaSquareMeters": 15331.794999999975,
+      "afterAreaSquareMeters": 14724.779999999993,
+      "symmetricDifferenceSquareMeters": 4553.444120488542,
+      "islands": 8,
+      "beforeTriangles": 88,
+      "afterTriangles": 179
+    },
+    {
+      "index": 472,
+      "sourceRef": "osm/way/838617949",
+      "beforeSha256": "610b2094e298b19bf60aae1726ef4c0609a83cc8b12439309c043c1dbddd2c43",
+      "afterSha256": "63e2ac90041b59de320dd9efd61890bf84adc1727358b1831455115ec1407266",
+      "beforeAreaSquareMeters": 9004.390000000045,
+      "afterAreaSquareMeters": 9121.704999999967,
+      "symmetricDifferenceSquareMeters": 741.0092883041837,
+      "islands": 0,
+      "beforeTriangles": 16,
+      "afterTriangles": 28
+    },
+    {
+      "index": 544,
+      "sourceRef": "osm/way/838637421",
+      "beforeSha256": "b0c90d57738215f4bcfeba73e66e9caef6e70fba9f104e25a1ee77dde873389a",
+      "afterSha256": "a5780f204ab4a92d6bad30f388aa3c84fd3d21cb6444db039ad03b90604fec7d",
+      "beforeAreaSquareMeters": 7910.254999999934,
+      "afterAreaSquareMeters": 7910.254999999934,
+      "symmetricDifferenceSquareMeters": 0.0,
+      "islands": 0,
+      "beforeTriangles": 2,
+      "afterTriangles": 2
+    },
+    {
+      "index": 546,
+      "sourceRef": "osm/way/838637422",
+      "beforeSha256": "a4db5b5c3c900ae57f8055926c0757190f80470dff33da59fbf2a189f01d19d9",
+      "afterSha256": "6d4f0c4375345a7547855704d3350d39b9318ef7818977c836d8600c6ff8a784",
+      "beforeAreaSquareMeters": 7160.674999999893,
+      "afterAreaSquareMeters": 7491.264999999856,
+      "symmetricDifferenceSquareMeters": 330.5899999999645,
+      "islands": 0,
+      "beforeTriangles": 5,
+      "afterTriangles": 7
+    },
+    {
+      "index": 547,
+      "sourceRef": "osm/way/838637423",
+      "beforeSha256": "3897de98ed377f5fa8c31ad7db0e157bdaa760af49718a3afdd7bc8fb27ae8fc",
+      "afterSha256": "c4a225c456ce5d2ae4a502360d3d801933a69d31a98cf7c9e3d88269c99f95f9",
+      "beforeAreaSquareMeters": 20373.529999999813,
+      "afterAreaSquareMeters": 20172.654999999813,
+      "symmetricDifferenceSquareMeters": 954.7122811059895,
+      "islands": 0,
+      "beforeTriangles": 9,
+      "afterTriangles": 15
+    },
+    {
+      "index": 550,
+      "sourceRef": "osm/way/838637418",
+      "beforeSha256": "70182734c4a4d61e12cc4f90f2a99ad80ab96be50818e212b8ef3fd5690245bc",
+      "afterSha256": "b0e6663a1f3f45869656b7a6f82d51222f69df0e34d929acad1db518bb783fff",
+      "beforeAreaSquareMeters": 5093.640000000039,
+      "afterAreaSquareMeters": 5320.200000000073,
+      "symmetricDifferenceSquareMeters": 226.56000000003382,
+      "islands": 0,
+      "beforeTriangles": 3,
+      "afterTriangles": 4
+    },
+    {
+      "index": 155,
+      "sourceRef": "source-union:water-155",
+      "beforeSha256": "66f93f13db426146382ed694167ad91d0a79498e3494ccae98602c92d561433a",
+      "afterSha256": "64e23bf876c7dec3d3662823565ecde7372d667a318644498ed155cd6e3a1dcf",
+      "beforeAreaSquareMeters": 286435.94499999983,
+      "afterAreaSquareMeters": 286477.65499999985,
+      "symmetricDifferenceSquareMeters": 7044.708010137305,
+      "islands": 0,
+      "beforeTriangles": 51,
+      "afterTriangles": 140
+    },
+    {
+      "index": 195,
+      "sourceRef": "source-union:water-195",
+      "beforeSha256": "368cea9c3ce64033e43646e9d1056ed99bb607468fa923e2fb63aa67584d374a",
+      "afterSha256": "ab68b49448cfa70c25295670892a74da2c23d6c9538f7e87772fd9a0007a2889",
+      "beforeAreaSquareMeters": 146424.74000000014,
+      "afterAreaSquareMeters": 145356.9600000004,
+      "symmetricDifferenceSquareMeters": 6104.804012802242,
+      "islands": 0,
+      "beforeTriangles": 42,
+      "afterTriangles": 94
+    }
+  ],
+  "restoredBuildingIds": [],
+  "affectedBuildings": [],
+  "unchangedWaterTriangles": 9738,
+  "unchangedWaterTrianglesSha256": "a0b9a365eba84f32a78963610e6b142d4f5c0083d5eeba86c622c76a35d08363",
+  "newWaterLandcoverOverlapBeforeCorrectionSquareMeters": {
+    "parks": 8291.631115677295,
+    "urban": 0.0,
+    "inferredUrban": 0.0
+  },
+  "landcoverChanges": [
+    {
+      "field": "parks",
+      "sourceIndex": 34,
+      "outputIndices": [
+        34
+      ],
+      "removedSquareMeters": 2309.2162505417946
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 52,
+      "outputIndices": [
+        52
+      ],
+      "removedSquareMeters": 747.8406062599685
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 54,
+      "outputIndices": [
+        54
+      ],
+      "removedSquareMeters": 786.8171346198949
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 58,
+      "outputIndices": [
+        58
+      ],
+      "removedSquareMeters": 3673.8239361267233
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 71,
+      "outputIndices": [
+        71
+      ],
+      "removedSquareMeters": 680.7727399850938
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 371,
+      "outputIndices": [
+        371
+      ],
+      "removedSquareMeters": 35.761683281948095
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 373,
+      "outputIndices": [
+        373
+      ],
+      "removedSquareMeters": 27.33000000000159
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 374,
+      "outputIndices": [
+        374
+      ],
+      "removedSquareMeters": 27.59999999999412
+    },
+    {
+      "field": "parks",
+      "sourceIndex": 375,
+      "outputIndices": [
+        375
+      ],
+      "removedSquareMeters": 2.4687729849987017
+    }
+  ],
+  "removedTrees": [
+    {
+      "index": 9936,
+      "expectedTree": [
+        103.693,
+        -117.404,
+        0.32
+      ],
+      "geographyWaterIndex": 195,
+      "reason": "Procedurally planted tree is newly inside the restored source water boundary; preserve every other tree and ordering."
+    }
+  ],
+  "newWaterTreeIndices": [],
+  "newWaterBuildingOverlaps": [],
+  "inputSha256": "a85873662b6d9a3f1aaab9bd2729a872d6d054911ed9e344f7f6396ee698e98a",
+  "toolSha256": "568f040aa8de2d7047d14b2202100f49ad10c34cf80201a20707f9e55303d0e2"
+}

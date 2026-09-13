@@ -1,0 +1,149 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "f63104ec457678b495234465123c3f11ae97a37fe0803b376ad46005447901a3",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/detail-overview.png",
+      "imageSha256": "81c119750b5b730e4c64393f7fdd14c9f539a2f8ebec7297cd7ce04a20b33af0",
+      "cameraLocation": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.31587219238281
+      ],
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.0
+      ],
+      "orthoScale": 41.38512931034482
+    },
+    {
+      "profile": "detail",
+      "view": "451895605",
+      "blendSha256": "f63104ec457678b495234465123c3f11ae97a37fe0803b376ad46005447901a3",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/detail-451895605.png",
+      "imageSha256": "2cf82afd6fa8d94d7dd9176e893a22947a9d05a3b8184bfc98bb6f28c3b28adc",
+      "cameraLocation": [
+        -66.16712951660156,
+        49.31633377075195,
+        2.7180516719818115
+      ],
+      "target": [
+        -67.78233337402344,
+        51.33533477783203,
+        0.800000011920929
+      ],
+      "orthoScale": 2.019001770019531
+    },
+    {
+      "profile": "detail",
+      "view": "451895606",
+      "blendSha256": "f63104ec457678b495234465123c3f11ae97a37fe0803b376ad46005447901a3",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/detail-451895606.png",
+      "imageSha256": "c131f7ea4a811fff107612fd931333895c6a429f186d9bb088398ac812423633",
+      "cameraLocation": [
+        -58.3905029296875,
+        54.79133605957031,
+        2.514747381210327
+      ],
+      "target": [
+        -59.83449935913086,
+        56.59633255004883,
+        0.800000011920929
+      ],
+      "orthoScale": 1.8049972534179688
+    },
+    {
+      "profile": "detail",
+      "view": "451895607",
+      "blendSha256": "f63104ec457678b495234465123c3f11ae97a37fe0803b376ad46005447901a3",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/detail-451895607.png",
+      "imageSha256": "65d16725231d6de4cf1cf6decf200582d10cf34457853b7c25ff729d3c90be02",
+      "cameraLocation": [
+        -61.35531997680664,
+        49.61412048339844,
+        3.5179543495178223
+      ],
+      "target": [
+        -63.64412307739258,
+        52.47512435913086,
+        0.800000011920929
+      ],
+      "orthoScale": 2.861004638671875
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "b69238fd2b1e641f95d47abf40b57f6be223c2c289a7dc0296e660c469252101",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/smooth-overview.png",
+      "imageSha256": "2d59a5eeaa64257f0fe46f5fb2cf3e7681351f0c4479c237c824348603ee4f27",
+      "cameraLocation": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.31587219238281
+      ],
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.0
+      ],
+      "orthoScale": 41.38512931034482
+    },
+    {
+      "profile": "smooth",
+      "view": "451895605",
+      "blendSha256": "b69238fd2b1e641f95d47abf40b57f6be223c2c289a7dc0296e660c469252101",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/smooth-451895605.png",
+      "imageSha256": "d42a2fb811ea2f3a47aa69bf9fe9341d6198084ff94ed28b1ecfd3b2ba85121e",
+      "cameraLocation": [
+        -66.16712951660156,
+        49.31633377075195,
+        2.7180516719818115
+      ],
+      "target": [
+        -67.78233337402344,
+        51.33533477783203,
+        0.800000011920929
+      ],
+      "orthoScale": 2.019001770019531
+    },
+    {
+      "profile": "smooth",
+      "view": "451895606",
+      "blendSha256": "b69238fd2b1e641f95d47abf40b57f6be223c2c289a7dc0296e660c469252101",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/smooth-451895606.png",
+      "imageSha256": "bae2693b71dff0828d4e9b8070687ce1190129073f5ef125bd8eb22a8f07631d",
+      "cameraLocation": [
+        -58.3905029296875,
+        54.79133605957031,
+        2.514747381210327
+      ],
+      "target": [
+        -59.83449935913086,
+        56.59633255004883,
+        0.800000011920929
+      ],
+      "orthoScale": 1.8049972534179688
+    },
+    {
+      "profile": "smooth",
+      "view": "451895607",
+      "blendSha256": "b69238fd2b1e641f95d47abf40b57f6be223c2c289a7dc0296e660c469252101",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/previews/smooth-451895607.png",
+      "imageSha256": "4f9c7a3b3937f3a8d74bc2b5f4a4dd26e807209dfa8916bd018453688917210e",
+      "cameraLocation": [
+        -61.35531997680664,
+        49.61412048339844,
+        3.5179543495178223
+      ],
+      "target": [
+        -63.64412307739258,
+        52.47512435913086,
+        0.800000011920929
+      ],
+      "orthoScale": 2.861004638671875
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "reviewedScreenshots": 14,
+  "contactSheets": 2,
+  "observations": [
+    "Both quality profiles show custom connected lake212 bright turquoise in daylight and dark blue with glints at night.",
+    "Clay and base-color inspection modes return to the same lit water appearance.",
+    "Homepage water-off screenshots show no blue lake/river surfaces; enabling the layer restores both ordinary and custom water."
+  ],
+  "scope": "Production scene.ts and real captured terrain/water GLBs via local browser request fixtures; full buildings, streets, canopy and dedicated structural emitter omitted.",
+  "limits": [
+    "Vinext has no available Next MCP endpoint (404); agent-browser unavailable. Existing Playwright/Chrome and normal compile diagnostics used.",
+    "Fixture overview bytes match loaded captured GLBs. These browser assets are not complete-city budget measurements."
+  ]
+}

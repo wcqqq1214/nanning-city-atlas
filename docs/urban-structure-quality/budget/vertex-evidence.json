@@ -1,0 +1,392 @@
+{
+  "status": "candidate geometry and sampler checked; production activation and exports pending",
+  "profiles": {
+    "5cm": {
+      "sha256": "80c81076bb38a7830a5e43c269aeb42f87d9b4db4f304e96c505b6389f0d6a2e",
+      "audit": {
+        "status": "native candidate checks passed; production sampler, compressed export and city QA pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 196839,
+        "savedTriangles": 17546,
+        "unchangedOriginalFaces": 184425,
+        "replacedOriginalFaces": 29960,
+        "newFaces": 12414,
+        "boundaryAndMaterialSeamsUnchanged": true,
+        "allVerticesFromOriginal": true,
+        "replacementUnchangedOverlapSquareMeters": 9.948494496124901e-11,
+        "maximumNormalAngleDegrees": 1.987076829303647,
+        "heightToleranceMeters": 0.05,
+        "normalToleranceDegrees": 2.0,
+        "replacementAudit": {
+          "status": "height-field comparison; vertical surfaces and city dependents require separate checks",
+          "heightErrorInterpretationValid": true,
+          "beforeSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "afterSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "beforeTriangles": 29960,
+          "afterTriangles": 12414,
+          "savedTriangles": 17546,
+          "heightFieldBeforeTriangles": 29960,
+          "heightFieldAfterTriangles": 12414,
+          "ignoredBeforeVerticalFaces": 0,
+          "ignoredAfterVerticalFaces": 0,
+          "maximumVerticalErrorMeters": 0.049998549394569824,
+          "maximumPairedHeightDifferenceMeters": 0.049998549394569824,
+          "maximumErrorWitness": {
+            "sceneXY": [
+              62.69441435067843,
+              -6.331055375821218
+            ],
+            "beforeFace": 22646,
+            "afterFace": 8089
+          },
+          "verticalErrorMetersP50": 0.02085268497468394,
+          "verticalErrorMetersP95": 0.046952086364247386,
+          "afterFacesWithinErrorMeters": {
+            "0.001": 3269,
+            "0.01": 4595,
+            "0.05": 12414,
+            "0.1": 12414,
+            "0.25": 12414,
+            "0.5": 12414,
+            "1": 12414
+          },
+          "pairedHeightDifferenceMetersP95": 0.046952086364247386,
+          "pairedFacesWithinDifferenceMeters": {
+            "0.001": 3269,
+            "0.01": 4595,
+            "0.05": 12414,
+            "0.1": 12414,
+            "0.25": 12414,
+            "0.5": 12414,
+            "1": 12414
+          },
+          "faceIndexConvention": "indices in nonvertical filtered triangle arrays",
+          "lostOldCoverageSquareMeters": 0.0,
+          "addedCoverageSquareMeters": 0.0,
+          "materialMismatchSquareMeters": 0.0,
+          "pairedMaterialMismatchSquareMeters": 0.0
+        },
+        "inputs": {
+          "work/urban-structure/p5/budget/native-smooth/original.npz": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+          "work/urban-structure/p5/budget/vertex-smooth-5cm.npz": "80c81076bb38a7830a5e43c269aeb42f87d9b4db4f304e96c505b6389f0d6a2e"
+        },
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_terrain_reduction.py": "5b05155e2f7d0ca200fbaee1367bd6ce74d2fa6bdc517e10d2b3497373c64cb5",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/audit_terrain_reduction.py": "c74e9f963793c81b689be0aaaf2dbc073561ecd6b74f820f7663d13de7970a9f",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      },
+      "sampler": {
+        "checkedVerticesAndCentroids": 49656,
+        "maximumSceneHeightErrorMeters": 3.671507542435393e-11
+      },
+      "repeatSha256": "80c81076bb38a7830a5e43c269aeb42f87d9b4db4f304e96c505b6389f0d6a2e",
+      "repeatIdentical": true,
+      "generation": {
+        "status": "bounded native candidate; production sampling, compression and city dependencies pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 196839,
+        "savedTriangles": 17546,
+        "removedVertices": 8773,
+        "protectedVertices": 5017,
+        "initialCandidates": 89378,
+        "attempts": 92857,
+        "rejections": {
+          "normal": 769,
+          "height": 83315
+        },
+        "heightToleranceMeters": 0.05,
+        "normalToleranceDegrees": 1.9999999999999472,
+        "maximumAcceptedHeightErrorMeters": 0.049998549394569824,
+        "maximumAcceptedNormalAngleDegrees": 1.987076829303647,
+        "unchangedOriginalFaces": 184425,
+        "input": {
+          "path": "work/urban-structure/p5/budget/native-smooth/original.npz",
+          "sha256": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50"
+        },
+        "outputSha256": "80c81076bb38a7830a5e43c269aeb42f87d9b4db4f304e96c505b6389f0d6a2e",
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_terrain_reduction.py": "316f4a917fa060a139389caeb3a7bd7bb7f4cb23d8b69341776392323166baca",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      }
+    },
+    "10cm": {
+      "sha256": "9373a2ca4f972e0ca809ef637ef3ac810276121278afc0cd13c6b67e4d97602b",
+      "audit": {
+        "status": "native candidate checks passed; production sampler, compressed export and city QA pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 188253,
+        "savedTriangles": 26132,
+        "unchangedOriginalFaces": 172780,
+        "replacedOriginalFaces": 41605,
+        "newFaces": 15473,
+        "boundaryAndMaterialSeamsUnchanged": true,
+        "allVerticesFromOriginal": true,
+        "replacementUnchangedOverlapSquareMeters": 9.948494496124901e-11,
+        "maximumNormalAngleDegrees": 1.9959580816246196,
+        "heightToleranceMeters": 0.1,
+        "normalToleranceDegrees": 2.0,
+        "replacementAudit": {
+          "status": "height-field comparison; vertical surfaces and city dependents require separate checks",
+          "heightErrorInterpretationValid": true,
+          "beforeSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "afterSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "beforeTriangles": 41605,
+          "afterTriangles": 15473,
+          "savedTriangles": 26132,
+          "heightFieldBeforeTriangles": 41605,
+          "heightFieldAfterTriangles": 15473,
+          "ignoredBeforeVerticalFaces": 0,
+          "ignoredAfterVerticalFaces": 0,
+          "maximumVerticalErrorMeters": 0.09990930557252087,
+          "maximumPairedHeightDifferenceMeters": 0.09990930557252087,
+          "maximumErrorWitness": {
+            "sceneXY": [
+              33.84565734863281,
+              -23.591520309448242
+            ],
+            "beforeFace": 1508,
+            "afterFace": 13777
+          },
+          "verticalErrorMetersP50": 0.046121614299324265,
+          "verticalErrorMetersP95": 0.09382221540910063,
+          "afterFacesWithinErrorMeters": {
+            "0.001": 3184,
+            "0.01": 4121,
+            "0.05": 8161,
+            "0.1": 15473,
+            "0.25": 15473,
+            "0.5": 15473,
+            "1": 15473
+          },
+          "pairedHeightDifferenceMetersP95": 0.09382221540910063,
+          "pairedFacesWithinDifferenceMeters": {
+            "0.001": 3184,
+            "0.01": 4121,
+            "0.05": 8161,
+            "0.1": 15473,
+            "0.25": 15473,
+            "0.5": 15473,
+            "1": 15473
+          },
+          "faceIndexConvention": "indices in nonvertical filtered triangle arrays",
+          "lostOldCoverageSquareMeters": 0.0,
+          "addedCoverageSquareMeters": 0.0,
+          "materialMismatchSquareMeters": 0.0,
+          "pairedMaterialMismatchSquareMeters": 0.0
+        },
+        "inputs": {
+          "work/urban-structure/p5/budget/native-smooth/original.npz": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+          "work/urban-structure/p5/budget/vertex-smooth-10cm.npz": "9373a2ca4f972e0ca809ef637ef3ac810276121278afc0cd13c6b67e4d97602b"
+        },
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_terrain_reduction.py": "5b05155e2f7d0ca200fbaee1367bd6ce74d2fa6bdc517e10d2b3497373c64cb5",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/audit_terrain_reduction.py": "c74e9f963793c81b689be0aaaf2dbc073561ecd6b74f820f7663d13de7970a9f",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      },
+      "sampler": {
+        "checkedVerticesAndCentroids": 61892,
+        "maximumSceneHeightErrorMeters": 2.976507929020045e-11
+      },
+      "generation": {
+        "status": "bounded native candidate; production sampling, compression and city dependencies pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 188253,
+        "savedTriangles": 26132,
+        "removedVertices": 13066,
+        "protectedVertices": 5017,
+        "initialCandidates": 89378,
+        "attempts": 95172,
+        "rejections": {
+          "normal": 965,
+          "height": 81141
+        },
+        "heightToleranceMeters": 0.1,
+        "normalToleranceDegrees": 1.9999999999999472,
+        "maximumAcceptedHeightErrorMeters": 0.09990930557252087,
+        "maximumAcceptedNormalAngleDegrees": 1.9959580816246196,
+        "unchangedOriginalFaces": 172780,
+        "input": {
+          "path": "work/urban-structure/p5/budget/native-smooth/original.npz",
+          "sha256": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50"
+        },
+        "outputSha256": "9373a2ca4f972e0ca809ef637ef3ac810276121278afc0cd13c6b67e4d97602b",
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_terrain_reduction.py": "316f4a917fa060a139389caeb3a7bd7bb7f4cb23d8b69341776392323166baca",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      }
+    },
+    "20cm": {
+      "sha256": "c1e5e44658e5c9dceafdb69e42d08ac2defd955b349e694eb440070d72658837",
+      "audit": {
+        "status": "native candidate checks passed; production sampler, compressed export and city QA pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 179861,
+        "savedTriangles": 34524,
+        "unchangedOriginalFaces": 164504,
+        "replacedOriginalFaces": 49881,
+        "newFaces": 15357,
+        "boundaryAndMaterialSeamsUnchanged": true,
+        "allVerticesFromOriginal": true,
+        "replacementUnchangedOverlapSquareMeters": 9.948494496124901e-11,
+        "maximumNormalAngleDegrees": 1.9999778516888818,
+        "heightToleranceMeters": 0.2,
+        "normalToleranceDegrees": 2.0,
+        "replacementAudit": {
+          "status": "height-field comparison; vertical surfaces and city dependents require separate checks",
+          "heightErrorInterpretationValid": true,
+          "beforeSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "afterSelfOverlap": {
+            "overlappingFacePairs": 0,
+            "pairwiseOverlapSquareMeters": 0.0,
+            "maximumOverlappingHeightDifferenceMeters": 0.0
+          },
+          "beforeTriangles": 49881,
+          "afterTriangles": 15357,
+          "savedTriangles": 34524,
+          "heightFieldBeforeTriangles": 49881,
+          "heightFieldAfterTriangles": 15357,
+          "ignoredBeforeVerticalFaces": 0,
+          "ignoredAfterVerticalFaces": 0,
+          "maximumVerticalErrorMeters": 0.19994622270869122,
+          "maximumPairedHeightDifferenceMeters": 0.19994622270869122,
+          "maximumErrorWitness": {
+            "sceneXY": [
+              50.968351842286474,
+              -10.396260261535645
+            ],
+            "beforeFace": 23741,
+            "afterFace": 14486
+          },
+          "verticalErrorMetersP50": 0.0802546739578025,
+          "verticalErrorMetersP95": 0.18706410115969518,
+          "afterFacesWithinErrorMeters": {
+            "0.001": 3007,
+            "0.01": 3607,
+            "0.05": 5864,
+            "0.1": 8901,
+            "0.25": 15357,
+            "0.5": 15357,
+            "1": 15357
+          },
+          "pairedHeightDifferenceMetersP95": 0.18706410115969518,
+          "pairedFacesWithinDifferenceMeters": {
+            "0.001": 3007,
+            "0.01": 3607,
+            "0.05": 5864,
+            "0.1": 8901,
+            "0.25": 15357,
+            "0.5": 15357,
+            "1": 15357
+          },
+          "faceIndexConvention": "indices in nonvertical filtered triangle arrays",
+          "lostOldCoverageSquareMeters": 0.0,
+          "addedCoverageSquareMeters": 0.0,
+          "materialMismatchSquareMeters": 0.0,
+          "pairedMaterialMismatchSquareMeters": 0.0
+        },
+        "inputs": {
+          "work/urban-structure/p5/budget/native-smooth/original.npz": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+          "work/urban-structure/p5/budget/vertex-smooth-20cm.npz": "c1e5e44658e5c9dceafdb69e42d08ac2defd955b349e694eb440070d72658837"
+        },
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_terrain_reduction.py": "5b05155e2f7d0ca200fbaee1367bd6ce74d2fa6bdc517e10d2b3497373c64cb5",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/audit_terrain_reduction.py": "c74e9f963793c81b689be0aaaf2dbc073561ecd6b74f820f7663d13de7970a9f",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      },
+      "sampler": {
+        "checkedVerticesAndCentroids": 61428,
+        "maximumSceneHeightErrorMeters": 2.3386848013728923e-11
+      },
+      "repeatSha256": "c1e5e44658e5c9dceafdb69e42d08ac2defd955b349e694eb440070d72658837",
+      "repeatIdentical": true,
+      "generation": {
+        "status": "bounded native candidate; production sampling, compression and city dependencies pending",
+        "originalTriangles": 214385,
+        "candidateTriangles": 179861,
+        "savedTriangles": 34524,
+        "removedVertices": 17262,
+        "protectedVertices": 5017,
+        "initialCandidates": 89378,
+        "attempts": 96147,
+        "rejections": {
+          "normal": 1545,
+          "height": 77340
+        },
+        "heightToleranceMeters": 0.2,
+        "normalToleranceDegrees": 1.9999999999999472,
+        "maximumAcceptedHeightErrorMeters": 0.19994622270869122,
+        "maximumAcceptedNormalAngleDegrees": 1.9999778516888818,
+        "unchangedOriginalFaces": 164504,
+        "input": {
+          "path": "work/urban-structure/p5/budget/native-smooth/original.npz",
+          "sha256": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50"
+        },
+        "outputSha256": "c1e5e44658e5c9dceafdb69e42d08ac2defd955b349e694eb440070d72658837",
+        "toolHashes": {
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_terrain_reduction.py": "316f4a917fa060a139389caeb3a7bd7bb7f4cb23d8b69341776392323166baca",
+          "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585"
+        }
+      }
+    }
+  },
+  "tests": {
+    "vertexRemoval": 12,
+    "replacementSampler": 4,
+    "terrainAudit": 7
+  },
+  "formalAssets": {
+    "public/data/geography.json": {
+      "sha256": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956",
+      "matchesP4": true
+    },
+    "public/data/terrain.json": {
+      "sha256": "aaaddb41f6875947504c444464371c502156924d9635e2fd9d693dcaa0758291",
+      "matchesP4": true
+    },
+    "public/models/nanning-city.glb": {
+      "sha256": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6",
+      "matchesP4": true
+    },
+    "public/models/nanning-city-mobile.glb": {
+      "sha256": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0",
+      "matchesP4": true
+    },
+    "blender/nanning-city.blend": {
+      "sha256": "4f1c24b71d2f50703a83269c2a5ff5d0bf950c391c60b636a710e5858471854e",
+      "matchesP4": true
+    }
+  },
+  "toolHashes": {
+    "scripts/prepare_terrain_reduction.py": "316f4a917fa060a139389caeb3a7bd7bb7f4cb23d8b69341776392323166baca",
+    "scripts/check_terrain_reduction.py": "5b05155e2f7d0ca200fbaee1367bd6ce74d2fa6bdc517e10d2b3497373c64cb5",
+    "scripts/test_terrain_vertex_removal.py": "7fe1a6d7f65b505909365a60a1dffaad4f8a5f6242b380f6d0aab172d458f454",
+    "scripts/test_reduced_surface.py": "59790c5c5dc0a3ccf6dfbac0f2134626a7bdd7cd9ecd214dd5229440a5d63127",
+    "blender/reduced_surface.py": "243e42d99c255a7e2c8717663c7708c2d896d494ed41a2c981cf9c6e29d6cd96",
+    "blender/render_terrain_reduction.py": "87d5db2610a4eb5c6c70b3df08f7ffc5448cbd988e1d033410f37bf31525c13c"
+  }
+}

@@ -1,0 +1,109 @@
+[
+  {
+    "step": "landmark-obstacles",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "work/p5/final-integration/prepare_fresh_obstacles.py"
+    ],
+    "exitCode": 0,
+    "seconds": 9.16
+  },
+  {
+    "step": "ground-plan",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_ground_roads.py",
+      "--capture",
+      "--context-model",
+      "work/p5/final-integration/base-context/detail.glb",
+      "--obstacles-context",
+      "work/p5/final-integration/fresh-landmark-obstacles.json"
+    ],
+    "exitCode": 0,
+    "seconds": 171.45
+  },
+  {
+    "step": "ground-context",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context",
+      "--context-ground"
+    ],
+    "exitCode": 0,
+    "seconds": 135.48
+  },
+  {
+    "step": "elevated-plan",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_elevated_roads.py",
+      "--context-directory",
+      "work/terrain-resample/context"
+    ],
+    "exitCode": 0,
+    "seconds": 47.13
+  },
+  {
+    "step": "road-inputs",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--capture-road-inputs",
+      "--building-support-plan",
+      "work/p5/final-integration/base-support.json"
+    ],
+    "exitCode": 0,
+    "seconds": 83.49
+  },
+  {
+    "step": "prepare-detail",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "detail"
+    ],
+    "exitCode": 0,
+    "seconds": 13.93
+  },
+  {
+    "step": "finish-detail",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "detail"
+    ],
+    "exitCode": 0,
+    "seconds": 29.56
+  },
+  {
+    "step": "prepare-smooth",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/prepare_road_solids.py",
+      "smooth"
+    ],
+    "exitCode": 0,
+    "seconds": 13.46
+  },
+  {
+    "step": "finish-smooth",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/finish_road_solids.py",
+      "smooth"
+    ],
+    "exitCode": 0,
+    "seconds": 23.8
+  }
+]

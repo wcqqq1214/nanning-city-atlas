@@ -1,0 +1,150 @@
+{
+  "status": "source-bound support reader audit; city placement and access pending",
+  "accepted": 1919,
+  "rejected": [
+    {
+      "id": "osm/5ae9b829076de2274e1e",
+      "reason": "Incomplete terrain under osm/5ae9b829076de2274e1e; site review required"
+    },
+    {
+      "id": "osm/4aa0a75908b7f599b5b1",
+      "reason": "Incomplete terrain under osm/4aa0a75908b7f599b5b1; site review required"
+    }
+  ],
+  "templateRanges": [
+    {
+      "id": "haipo-residential/tower-0-0",
+      "range": [
+        0.7017292696369171,
+        0.7756855106664453
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-0-2",
+      "range": [
+        0.6730425446274699,
+        0.6873704183832582
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-1-0",
+      "range": [
+        0.6615370777359582,
+        0.7312767183339917
+      ]
+    },
+    {
+      "id": "haipo-residential/tower-1-2",
+      "range": [
+        0.6518333713437579,
+        0.6755499595308825
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-0-1",
+      "range": [
+        0.7028227392899848,
+        0.7644133655992122
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-0-2",
+      "range": [
+        0.7040305766974533,
+        0.7280871437803613
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-0-5",
+      "range": [
+        0.728548043065308,
+        0.7462730142273228
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-1-5",
+      "range": [
+        0.7075244220601171,
+        0.7194535607776256
+      ]
+    },
+    {
+      "id": "greenland-commercial/office-1-6",
+      "range": [
+        0.7142289494501668,
+        0.730246261765184
+      ]
+    },
+    {
+      "id": "mingxiu-campus/library-north",
+      "range": [
+        0.49245598590547357,
+        0.49974631042439027
+      ]
+    },
+    {
+      "id": "mingxiu-campus/geography",
+      "range": [
+        0.498405071761224,
+        0.5027301655795806
+      ]
+    },
+    {
+      "id": "mingxiu-campus/teaching",
+      "range": [
+        0.49636666473941193,
+        0.5006828770499488
+      ]
+    },
+    {
+      "id": "mingxiu-campus/physics",
+      "range": [
+        0.4970646916676969,
+        0.5026395586286665
+      ]
+    },
+    {
+      "id": "mingxiu-campus/integrated",
+      "range": [
+        0.4985902389595559,
+        0.5091735611767114
+      ]
+    },
+    {
+      "id": "mingxiu-campus/library-east",
+      "range": [
+        0.4962370694133743,
+        0.5130021636645603
+      ]
+    },
+    {
+      "id": "mingxiu-campus/languages",
+      "range": [
+        0.4990196891281526,
+        0.507486551767177
+      ]
+    },
+    {
+      "id": "mingxiu-campus/administration",
+      "range": [
+        0.4969062541065767,
+        0.5049133696915532
+      ]
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-0",
+      "range": [
+        1.2166670560836792,
+        1.2166670560836792
+      ]
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-1",
+      "range": [
+        1.2166670560836792,
+        1.2166670560836792
+      ]
+    }
+  ],
+  "planSha256": "2b671ae876df97ae46b6f5428d3bac4ba8e358c401d11e44fafeade08fe1c893"
+}

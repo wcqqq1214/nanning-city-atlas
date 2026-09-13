@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/prepare_global_conforming.py", line 15, in <module>
+    new,r=conform_edges(old,triangulation='boundary')
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/conform_canopy_edges.py", line 62, in conform_edges
+    faces = triangulate_stations(stations, np.asarray([len(ring)], dtype=np.uint32))
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_block_grading.py", line 67, in triangulate_stations
+    raise ValueError('Terrain triangulation omitted a boundary station')
+ValueError: Terrain triangulation omitted a boundary station

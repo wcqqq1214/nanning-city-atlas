@@ -1,0 +1,90 @@
+{
+  "status": "candidate only; runtime, compressed mesh and visual checks pending",
+  "regions": {
+    "qingxiu/detail": {
+      "changed": false
+    },
+    "nearby/detail": {
+      "changed": true,
+      "originalTriangles": 43285,
+      "candidateTriangles": 43768,
+      "partitionToleranceMeters": 0.002,
+      "maximumPartitionAxisShiftMeters": 0.00095367431640625,
+      "outsideTrianglesCopiedExactly": 42171,
+      "coverageDifferenceSquareMeters": 1.635465749205487e-08,
+      "overlapSquareMeters": 0.037050090213597286,
+      "originalOverlapSquareMeters": 0.03705007202370325,
+      "additionalOverlapSquareMeters": 1.8189894035458565e-08,
+      "mergeCoplanarPartitions": true,
+      "sourcePartitionFaces": 564,
+      "partitionCells": 564,
+      "maximumMergedPlaneResidualMeters": 0.0
+    },
+    "all/detail": {
+      "changed": true,
+      "originalTriangles": 110808,
+      "candidateTriangles": 140509,
+      "partitionToleranceMeters": 0.002,
+      "maximumPartitionAxisShiftMeters": 0.00095367431640625,
+      "outsideTrianglesCopiedExactly": 84362,
+      "coverageDifferenceSquareMeters": 1.007778941808954e-07,
+      "overlapSquareMeters": 0.018993596313521266,
+      "originalOverlapSquareMeters": 0.019399776647333056,
+      "additionalOverlapSquareMeters": -0.00040618033381178975,
+      "mergeCoplanarPartitions": true,
+      "sourcePartitionFaces": 44988,
+      "partitionCells": 44368,
+      "maximumMergedPlaneResidualMeters": 3.552713678800501e-13
+    },
+    "qingxiu/smooth": {
+      "changed": false
+    },
+    "nearby/smooth": {
+      "changed": true,
+      "originalTriangles": 21121,
+      "candidateTriangles": 21484,
+      "partitionToleranceMeters": 0.002,
+      "maximumPartitionAxisShiftMeters": 0.00095367431640625,
+      "outsideTrianglesCopiedExactly": 20389,
+      "coverageDifferenceSquareMeters": 9.829091023600757e-09,
+      "overlapSquareMeters": 0.036436599657463375,
+      "originalOverlapSquareMeters": 0.03643658601504285,
+      "additionalOverlapSquareMeters": 1.3642420526593924e-08,
+      "mergeCoplanarPartitions": true,
+      "sourcePartitionFaces": 280,
+      "partitionCells": 279,
+      "maximumMergedPlaneResidualMeters": 0.0
+    },
+    "all/smooth": {
+      "changed": true,
+      "originalTriangles": 33916,
+      "candidateTriangles": 67316,
+      "partitionToleranceMeters": 0.002,
+      "maximumPartitionAxisShiftMeters": 0.00095367431640625,
+      "outsideTrianglesCopiedExactly": 24427,
+      "coverageDifferenceSquareMeters": 9.359261103661372e-08,
+      "overlapSquareMeters": 0.011280571925453842,
+      "originalOverlapSquareMeters": 0.011280826583970338,
+      "additionalOverlapSquareMeters": -2.546585164964199e-07,
+      "mergeCoplanarPartitions": true,
+      "sourcePartitionFaces": 34581,
+      "partitionCells": 32901,
+      "maximumMergedPlaneResidualMeters": 6.283748632540664e-07
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/forest-plan.json": "2af3f0bfd9e08a3764107bd29197758fc6f1f22a39dd4afeed74adb3bbca1e28",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-terrain-registry.json": "3736bb7b2ce53823fc7cc68ec5250735320a76465254720cfc2c17b79b09edd4",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_local_canopy.py": "ed1021d11d84d7801a2da5037ffa32ee8cd120e0ca1cfd075bedc831d41a5f7a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/southeast-connected-water-v1.json": "c56e55083c64328f6a34b1ea9463522889a66e9f588705e3b0508f11dd97e03f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json": "deef1e2fb6677583776e16ff52cdf02a9626dd9071ea9cfcf83c7fbafb6dd99c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json": "710e6059af43dc098fd5dc7213222df41c0857311065fe637b0bec26b2d0e042",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/mading-reservoir-terrain-v1.json": "0244bbaff4a53b5b360c9aef929a9d619a11dc1d1154da5b783d823b4ab23cc9",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json": "996005cab01365d9e1119b20bbfae83fb7fca6f87436e13e0ad54fe171e3a056",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json": "2bfa30e2b052a47213dcce4e61ddf29619ce7234b8c10a0323bc71c5dacbebbe",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json": "7b17199bceda9e4426db22640e2d03376a3bb5c820d10338f6aa91d2d9aa28d3",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/data/reservoir-plans/linglong-lake-terrain-v1.json": "24d0c615144c1a42d434bfe2db13c268582313a112c4d8839a30450e338d7d5c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/detail.npz": "32265cb5a63e8c80d9b1e3b8de16e01ab0aadd086d1781b4a1e217196e9e0e69",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/smooth.npz": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd"
+  }
+}

@@ -1,0 +1,1168 @@
+{
+  "statistics": {
+    "buildings": 1921,
+    "supported": 1919,
+    "reviewRequired": 2,
+    "reliefMetersP50": 1.9345402687099833,
+    "reliefMetersP95": 12.329004109775754,
+    "reliefMetersMaximum": 72.82762799540414
+  },
+  "templateRecords": [
+    {
+      "id": "haipo-residential/tower-0-0",
+      "sourceRef": null,
+      "blockId": "haipo-residential",
+      "footprintHash": "65ef5d193d827f8f2bb20109fa31730d0e3716bf16131428626c9d00f69fd04e",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.7017292696369171,
+          "maximumSceneZ": 0.7756855106664453,
+          "minimumWitnessSceneXYZ": [
+            71.72,
+            11.769,
+            0.7017292696369171
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.291,
+            11.461,
+            0.7756855106664453
+          ],
+          "coveredFraction": 0.9999999999999983,
+          "uncoveredAreaSquareMeters": 3.2471855065940858e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7099854245231318,
+          "maximumSceneZ": 0.7526189658753832,
+          "minimumWitnessSceneXYZ": [
+            71.72,
+            11.769,
+            0.7099854245231318
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.291,
+            11.461,
+            0.7526189658753832
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 1
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.7017292696369171,
+        0.7756855106664453
+      ],
+      "reliefMeters": 7.395624102952825
+    },
+    {
+      "id": "haipo-residential/tower-0-2",
+      "sourceRef": null,
+      "blockId": "haipo-residential",
+      "footprintHash": "4b8cae47bba3596f10c7abfe978f952ebdee7ff8c5961135c5495d3fa9de5727",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.6730425446274699,
+          "maximumSceneZ": 0.6828824997589285,
+          "minimumWitnessSceneXYZ": [
+            73.42583349288807,
+            11.724297218043407,
+            0.6730425446274699
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.391,
+            11.405,
+            0.6828824997589285
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 1.8691645453650096e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.6754764599297758,
+          "maximumSceneZ": 0.6873704183832582,
+          "minimumWitnessSceneXYZ": [
+            73.399,
+            11.725,
+            0.6754764599297758
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.81,
+            11.394,
+            0.6873704183832582
+          ],
+          "coveredFraction": 0.9999999999999996,
+          "uncoveredAreaSquareMeters": 1.5655879370690684e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.6730425446274699,
+        0.6873704183832582
+      ],
+      "reliefMeters": 1.4327873755788256
+    },
+    {
+      "id": "haipo-residential/tower-1-0",
+      "sourceRef": null,
+      "blockId": "haipo-residential",
+      "footprintHash": "6fc37ce8a5be5e603c5e069742c47999ac682524c342a74aea0d8374e9420cb8",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.6744664739796891,
+          "maximumSceneZ": 0.7312767183339917,
+          "minimumWitnessSceneXYZ": [
+            71.747,
+            12.829,
+            0.6744664739796891
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.32112335681916,
+            12.595497131347656,
+            0.7312767183339917
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 3.1398156102001307e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 7
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.6615370777359582,
+          "maximumSceneZ": 0.7156264991328172,
+          "minimumWitnessSceneXYZ": [
+            71.747,
+            12.829,
+            0.6615370777359582
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.319,
+            12.52,
+            0.7156264991328172
+          ],
+          "coveredFraction": 0.9999999999999992,
+          "uncoveredAreaSquareMeters": 1.8691645453650096e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.6615370777359582,
+        0.7312767183339917
+      ],
+      "reliefMeters": 6.97396405980335
+    },
+    {
+      "id": "haipo-residential/tower-1-2",
+      "sourceRef": null,
+      "blockId": "haipo-residential",
+      "footprintHash": "082bf8e8aae1a3ae2b59cd82c87e2d35c8447ca29f834293b5236eadb7492547",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.6518333713437579,
+          "maximumSceneZ": 0.6755499595308825,
+          "minimumWitnessSceneXYZ": [
+            73.42167023181916,
+            12.595497131347656,
+            0.6518333713437579
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.847,
+            12.774,
+            0.6755499595308825
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 6.911788849595091e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.6551461069354123,
+          "maximumSceneZ": 0.673176714757743,
+          "minimumWitnessSceneXYZ": [
+            73.427,
+            12.785,
+            0.6551461069354123
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.847,
+            12.774,
+            0.673176714757743
+          ],
+          "coveredFraction": 0.9999999999999952,
+          "uncoveredAreaSquareMeters": 6.624475273886432e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.6518333713437579,
+        0.6755499595308825
+      ],
+      "reliefMeters": 2.371658818712463
+    },
+    {
+      "id": "greenland-commercial/office-0-1",
+      "sourceRef": null,
+      "blockId": "greenland-commercial",
+      "footprintHash": "33e5d8c7c82ecbec367bd6e77e3fb38118d107e7d584fd752326e1dd5f42c553",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.7282086810253238,
+          "maximumSceneZ": 0.7644133655992122,
+          "minimumWitnessSceneXYZ": [
+            71.98,
+            10.029,
+            0.7282086810253238
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.561,
+            10.401,
+            0.7644133655992122
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 7.589415207398531e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7028227392899848,
+          "maximumSceneZ": 0.7514631762099819,
+          "minimumWitnessSceneXYZ": [
+            71.95538330078125,
+            10.033537400067864,
+            0.7028227392899848
+          ],
+          "maximumWitnessSceneXYZ": [
+            71.508,
+            10.116,
+            0.7514631762099819
+          ],
+          "coveredFraction": 0.9999999999999992,
+          "uncoveredAreaSquareMeters": 1.734723475976807e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.7028227392899848,
+        0.7644133655992122
+      ],
+      "reliefMeters": 6.15906263092274
+    },
+    {
+      "id": "greenland-commercial/office-0-2",
+      "sourceRef": null,
+      "blockId": "greenland-commercial",
+      "footprintHash": "44096f40845e2701f2fda3f25c9ce940b175b466c35d550ff8345dda19ee4658",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.7040305766974533,
+          "maximumSceneZ": 0.7280871437803613,
+          "minimumWitnessSceneXYZ": [
+            72.5550765991211,
+            9.921917922197762,
+            0.7040305766974533
+          ],
+          "maximumWitnessSceneXYZ": [
+            72.14804958217807,
+            10.003643979636786,
+            0.7280871437803613
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 6.327403878625404e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 7
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7072135927440251,
+          "maximumSceneZ": 0.7215952430875081,
+          "minimumWitnessSceneXYZ": [
+            72.147,
+            9.998,
+            0.7072135927440251
+          ],
+          "maximumWitnessSceneXYZ": [
+            72.65384485282485,
+            10.09737326519024,
+            0.7215952430875081
+          ],
+          "coveredFraction": 0.9999999999999947,
+          "uncoveredAreaSquareMeters": 7.346553920761778e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.7040305766974533,
+        0.7280871437803613
+      ],
+      "reliefMeters": 2.4056567082908042
+    },
+    {
+      "id": "greenland-commercial/office-0-5",
+      "sourceRef": null,
+      "blockId": "greenland-commercial",
+      "footprintHash": "085cf57300640450fb19840d8c8787e40fe2baecfaaa6910d6a296166e0ca61e",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.728548043065308,
+          "maximumSceneZ": 0.7462730142273228,
+          "minimumWitnessSceneXYZ": [
+            74.118,
+            9.928,
+            0.728548043065308
+          ],
+          "maximumWitnessSceneXYZ": [
+            74.537,
+            9.555,
+            0.7462730142273228
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7336771448825659,
+          "maximumSceneZ": 0.7456568968896726,
+          "minimumWitnessSceneXYZ": [
+            74.118,
+            9.928,
+            0.7336771448825659
+          ],
+          "maximumWitnessSceneXYZ": [
+            74.537,
+            9.555,
+            0.7456568968896726
+          ],
+          "coveredFraction": 0.9999999999999974,
+          "uncoveredAreaSquareMeters": 7.755840240875056e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.728548043065308,
+        0.7462730142273228
+      ],
+      "reliefMeters": 1.772497116201488
+    },
+    {
+      "id": "greenland-commercial/office-1-5",
+      "sourceRef": null,
+      "blockId": "greenland-commercial",
+      "footprintHash": "7a8e8b7617ce0c1e252db0b3ae1b78506c438b8b48788aaf5458b5bfb17f71d6",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.7075244220601171,
+          "maximumSceneZ": 0.7184904025309085,
+          "minimumWitnessSceneXYZ": [
+            74.271,
+            10.754,
+            0.7075244220601171
+          ],
+          "maximumWitnessSceneXYZ": [
+            74.69,
+            10.381,
+            0.7184904025309085
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 1.1328557449757914e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7077054072074798,
+          "maximumSceneZ": 0.7194535607776256,
+          "minimumWitnessSceneXYZ": [
+            74.271,
+            10.754,
+            0.7077054072074798
+          ],
+          "maximumWitnessSceneXYZ": [
+            74.69,
+            10.381,
+            0.7194535607776256
+          ],
+          "coveredFraction": 0.9999999999999947,
+          "uncoveredAreaSquareMeters": 8.062127354602211e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.7075244220601171,
+        0.7194535607776256
+      ],
+      "reliefMeters": 1.1929138717508447
+    },
+    {
+      "id": "greenland-commercial/office-1-6",
+      "sourceRef": null,
+      "blockId": "greenland-commercial",
+      "footprintHash": "d49c4d206aca4c454e97ef58518645e608bacff4f18fee8261f3af796a0e3049",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.7142289494501668,
+          "maximumSceneZ": 0.7248247316329157,
+          "minimumWitnessSceneXYZ": [
+            74.91,
+            10.636,
+            0.7142289494501668
+          ],
+          "maximumWitnessSceneXYZ": [
+            75.329,
+            10.263,
+            0.7248247316329157
+          ],
+          "coveredFraction": 0.999999999999993,
+          "uncoveredAreaSquareMeters": 9.77950359581925e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.7181369081813923,
+          "maximumSceneZ": 0.730246261765184,
+          "minimumWitnessSceneXYZ": [
+            74.91,
+            10.636,
+            0.7181369081813923
+          ],
+          "maximumWitnessSceneXYZ": [
+            75.329,
+            10.263,
+            0.730246261765184
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 1
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.7142289494501668,
+        0.730246261765184
+      ],
+      "reliefMeters": 1.601731231501724
+    },
+    {
+      "id": "mingxiu-campus/library-north",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "92a90e5e9ef0128c82a8d51bfcac942031b38e6facb1ac6646645d68775af102",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.49245598590547357,
+          "maximumSceneZ": 0.4978622051207928,
+          "minimumWitnessSceneXYZ": [
+            15.702380657517766,
+            23.279386996901177,
+            0.49245598590547357
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.609,
+            22.974,
+            0.4978622051207928
+          ],
+          "coveredFraction": 0.9999999999999974,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 8
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4965565823615895,
+          "maximumSceneZ": 0.49974631042439027,
+          "minimumWitnessSceneXYZ": [
+            16.274,
+            23.473,
+            0.4965565823615895
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.609,
+            22.974,
+            0.49974631042439027
+          ],
+          "coveredFraction": 0.9999999999999987,
+          "uncoveredAreaSquareMeters": 7.173081573164097e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.49245598590547357,
+        0.49974631042439027
+      ],
+      "reliefMeters": 0.7290324518916702
+    },
+    {
+      "id": "mingxiu-campus/geography",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "4bd14292a7b45ca80714b5f310262de0dccd914006efdb1ca714a28e267f0b34",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.498405071761224,
+          "maximumSceneZ": 0.5027301655795806,
+          "minimumWitnessSceneXYZ": [
+            15.814,
+            22.829,
+            0.498405071761224
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.546,
+            22.346,
+            0.5027301655795806
+          ],
+          "coveredFraction": 0.9999999999999982,
+          "uncoveredAreaSquareMeters": 2.8514517136368767e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 4
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.49971126684603506,
+          "maximumSceneZ": 0.500932805003863,
+          "minimumWitnessSceneXYZ": [
+            15.546,
+            22.346,
+            0.49971126684603506
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.704594799041748,
+            22.79175567626953,
+            0.500932805003863
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 1.855069917122698e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 4
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.498405071761224,
+        0.5027301655795806
+      ],
+      "reliefMeters": 0.4325093818356607
+    },
+    {
+      "id": "mingxiu-campus/teaching",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "062bcd1555d94941ac093acf9d8fcf99915e4bbbafd1eed5f740e7bd24552d56",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.49636666473941193,
+          "maximumSceneZ": 0.4992788479681879,
+          "minimumWitnessSceneXYZ": [
+            16.315878986858795,
+            22.665824565535605,
+            0.49636666473941193
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.983,
+            22.375,
+            0.4992788479681879
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 2.242130092700023e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 4
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.5005174084421339,
+          "maximumSceneZ": 0.5006828770499488,
+          "minimumWitnessSceneXYZ": [
+            15.983,
+            22.375,
+            0.5005174084421339
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.93,
+            22.541,
+            0.5006828770499488
+          ],
+          "coveredFraction": 0.9999999999999981,
+          "uncoveredAreaSquareMeters": 2.662800535624399e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.49636666473941193,
+        0.5006828770499488
+      ],
+      "reliefMeters": 0.43162123105369155
+    },
+    {
+      "id": "mingxiu-campus/physics",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "f651861fe65de536d6d1d43888242377da33f247aca294fb52ea7e6b08c4ebe0",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.4990574726808562,
+          "maximumSceneZ": 0.5026395586286665,
+          "minimumWitnessSceneXYZ": [
+            16.94228095570177,
+            22.19202423095703,
+            0.4990574726808562
+          ],
+          "maximumWitnessSceneXYZ": [
+            17.389223098754883,
+            22.370601036438966,
+            0.5026395586286665
+          ],
+          "coveredFraction": 0.9999999999999952,
+          "uncoveredAreaSquareMeters": 4.180141476017862e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 4
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4970646916676969,
+          "maximumSceneZ": 0.499609488223841,
+          "minimumWitnessSceneXYZ": [
+            17.553,
+            22.258,
+            0.4970646916676969
+          ],
+          "maximumWitnessSceneXYZ": [
+            16.935,
+            22.203,
+            0.499609488223841
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.4970646916676969,
+        0.5026395586286665
+      ],
+      "reliefMeters": 0.5574866960969593
+    },
+    {
+      "id": "mingxiu-campus/integrated",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "abe180fd9b83b2e5347616b100aa4d186ce19929a0fed9401e1dab70738cb159",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.4988639834503332,
+          "maximumSceneZ": 0.5091735611767114,
+          "minimumWitnessSceneXYZ": [
+            16.744,
+            21.932,
+            0.4988639834503332
+          ],
+          "maximumWitnessSceneXYZ": [
+            16.21700650092506,
+            21.592239379882812,
+            0.5091735611767114
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 3.12982062142253e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 8
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4985902389595559,
+          "maximumSceneZ": 0.5017699648958008,
+          "minimumWitnessSceneXYZ": [
+            16.311,
+            21.254,
+            0.4985902389595559
+          ],
+          "maximumWitnessSceneXYZ": [
+            16.881,
+            21.408,
+            0.5017699648958008
+          ],
+          "coveredFraction": 0.9999743447596771,
+          "uncoveredAreaSquareMeters": 0.08031796295066918,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.4985902389595559,
+        0.5091735611767114
+      ],
+      "reliefMeters": 1.0583322217155522
+    },
+    {
+      "id": "mingxiu-campus/library-east",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "42db48a16a0a2a5de675767565d738a1606360a02d4eb14e3178322d099dee71",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.5024545345614635,
+          "maximumSceneZ": 0.5130021636645603,
+          "minimumWitnessSceneXYZ": [
+            17.572,
+            21.758,
+            0.5024545345614635
+          ],
+          "maximumWitnessSceneXYZ": [
+            17.389223098754883,
+            21.299359388584044,
+            0.5130021636645603
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 4.213497633480737e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 7
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4962370694133743,
+          "maximumSceneZ": 0.5089853736117878,
+          "minimumWitnessSceneXYZ": [
+            17.64487760498047,
+            21.592369079589844,
+            0.4962370694133743
+          ],
+          "maximumWitnessSceneXYZ": [
+            17.162651676508695,
+            21.219230470960394,
+            0.5089853736117878
+          ],
+          "coveredFraction": 0.9999990518374597,
+          "uncoveredAreaSquareMeters": 0.00120453147189141,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.4962370694133743,
+        0.5130021636645603
+      ],
+      "reliefMeters": 1.6765094251185997
+    },
+    {
+      "id": "mingxiu-campus/languages",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "1bc1538ced05c4d6a0b24f1b2c94ed2af6654f4432251e37d58cf86fb742e736",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.5005714594328426,
+          "maximumSceneZ": 0.507486551767177,
+          "minimumWitnessSceneXYZ": [
+            15.943,
+            22.174,
+            0.5005714594328426
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.999454583597462,
+            21.782743368673046,
+            0.507486551767177
+          ],
+          "coveredFraction": 0.9999999999999994,
+          "uncoveredAreaSquareMeters": 2.1141942363467336e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4990196891281526,
+          "maximumSceneZ": 0.5001270644708453,
+          "minimumWitnessSceneXYZ": [
+            15.661,
+            21.676,
+            0.4990196891281526
+          ],
+          "maximumWitnessSceneXYZ": [
+            15.943,
+            22.174,
+            0.5001270644708453
+          ],
+          "coveredFraction": 0.9999999999999968,
+          "uncoveredAreaSquareMeters": 3.742665899419961e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 2
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.4990196891281526,
+        0.507486551767177
+      ],
+      "reliefMeters": 0.8466862639024464
+    },
+    {
+      "id": "mingxiu-campus/administration",
+      "sourceRef": null,
+      "blockId": "mingxiu-campus",
+      "footprintHash": "a263c09fdd0bedf620954da88d6fa822e14749dc7f8dc5cad8a2fe9e1b6a54c8",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 0.4986532623148421,
+          "maximumSceneZ": 0.5049133696915532,
+          "minimumWitnessSceneXYZ": [
+            16.78963279724121,
+            20.802790854742444,
+            0.4986532623148421
+          ],
+          "maximumWitnessSceneXYZ": [
+            16.989,
+            20.869,
+            0.5049133696915532
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 2.892888565416557e-12,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 7
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 0.4969062541065767,
+          "maximumSceneZ": 0.5034612742795991,
+          "minimumWitnessSceneXYZ": [
+            16.45,
+            20.69,
+            0.4969062541065767
+          ],
+          "maximumWitnessSceneXYZ": [
+            16.989,
+            20.869,
+            0.5034612742795991
+          ],
+          "coveredFraction": 0.9999818322638485,
+          "uncoveredAreaSquareMeters": 0.018279286053429506,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 3
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        0.4969062541065767,
+        0.5049133696915532
+      ],
+      "reliefMeters": 0.8007115584976521
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-0",
+      "sourceRef": null,
+      "blockId": "xinzhong-industrial",
+      "footprintHash": "6dcd5627689c09aeca334809369ef00ac33ef726379c841ac30f59a828eaaf84",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 1.2166670560836792,
+          "maximumSceneZ": 1.2166670560836792,
+          "minimumWitnessSceneXYZ": [
+            72.24353361250317,
+            -130.73271475074583,
+            1.2166670560836792
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.15458679199219,
+            -130.75302124023438,
+            1.2166670560836792
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 72
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 1.2166670560836792,
+          "maximumSceneZ": 1.2166670560836792,
+          "minimumWitnessSceneXYZ": [
+            72.24353361250317,
+            -130.73271475074583,
+            1.2166670560836792
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.15458679199219,
+            -130.75302124023438,
+            1.2166670560836792
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 72
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        1.2166670560836792,
+        1.2166670560836792
+      ],
+      "reliefMeters": 0.0
+    },
+    {
+      "id": "xinzhong-industrial/warehouse-1",
+      "sourceRef": null,
+      "blockId": "xinzhong-industrial",
+      "footprintHash": "1e8c5db942df3fd0dcf1b9062a4b308501762b654940f6920d93a2adde9f70aa",
+      "profiles": {
+        "detail": {
+          "status": "covered",
+          "minimumSceneZ": 1.2166670560836792,
+          "maximumSceneZ": 1.2166670560836792,
+          "minimumWitnessSceneXYZ": [
+            72.55496215820312,
+            -132.75230407714844,
+            1.2166670560836792
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.55433654785156,
+            -131.9525909423828,
+            1.2166670560836792
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 89
+        },
+        "smooth": {
+          "status": "covered",
+          "minimumSceneZ": 1.2166670560836792,
+          "maximumSceneZ": 1.2166670560836792,
+          "minimumWitnessSceneXYZ": [
+            72.55496215820312,
+            -132.75230407714844,
+            1.2166670560836792
+          ],
+          "maximumWitnessSceneXYZ": [
+            73.55433654785156,
+            -131.9525909423828,
+            1.2166670560836792
+          ],
+          "coveredFraction": 1.0,
+          "uncoveredAreaSquareMeters": 0.0,
+          "uncoveredBeyondToleranceSquareMeters": 0.0,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 89
+        }
+      },
+      "status": "supported",
+      "groundRangeSceneZ": [
+        1.2166670560836792,
+        1.2166670560836792
+      ],
+      "reliefMeters": 0.0
+    }
+  ],
+  "reviewRequired": [
+    {
+      "id": "osm/5ae9b829076de2274e1e",
+      "sourceRef": "osm/way/651997945",
+      "blockId": null,
+      "footprintHash": "6da4c8d118b57cd424c89cd9cb930110e49f89d763a8de9a31fd1cb0690a5e1c",
+      "profiles": {
+        "detail": {
+          "status": "incomplete-terrain",
+          "minimumSceneZ": 1.785585165023802,
+          "maximumSceneZ": 1.815645340298838,
+          "minimumWitnessSceneXYZ": [
+            87.8450785934,
+            -43.67363960430002,
+            1.785585165023802
+          ],
+          "maximumWitnessSceneXYZ": [
+            87.37,
+            -43.605,
+            1.815645340298838
+          ],
+          "coveredFraction": 0.9056129084053246,
+          "uncoveredAreaSquareMeters": 44.63471174420669,
+          "uncoveredBeyondToleranceSquareMeters": 43.884488929806295,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        },
+        "smooth": {
+          "status": "incomplete-terrain",
+          "minimumSceneZ": 1.7855852842330933,
+          "maximumSceneZ": 1.8156726780701362,
+          "minimumWitnessSceneXYZ": [
+            87.77035522460938,
+            -43.70924377441406,
+            1.7855852842330933
+          ],
+          "maximumWitnessSceneXYZ": [
+            87.37,
+            -43.605,
+            1.8156726780701362
+          ],
+          "coveredFraction": 0.9054526564149787,
+          "uncoveredAreaSquareMeters": 44.710493307925034,
+          "uncoveredBeyondToleranceSquareMeters": 43.96037231250932,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 6
+        }
+      },
+      "status": "review-required",
+      "groundRangeSceneZ": [
+        1.785585165023802,
+        1.8156726780701362
+      ],
+      "reliefMeters": 3.008751304633428
+    },
+    {
+      "id": "osm/4aa0a75908b7f599b5b1",
+      "sourceRef": "osm/way/923687037",
+      "blockId": null,
+      "footprintHash": "e345bc6826b7f637c01d3f032b5eb0a8f0e799297823fc67a5b1def6f6ae97b9",
+      "profiles": {
+        "detail": {
+          "status": "incomplete-terrain",
+          "minimumSceneZ": 0.3188311969245685,
+          "maximumSceneZ": 0.46999422994391454,
+          "minimumWitnessSceneXYZ": [
+            35.59,
+            -9.371,
+            0.3188311969245685
+          ],
+          "maximumWitnessSceneXYZ": [
+            36.241,
+            -8.835022906531563,
+            0.46999422994391454
+          ],
+          "coveredFraction": 0.9830850676791546,
+          "uncoveredAreaSquareMeters": 89.14017098695487,
+          "uncoveredBeyondToleranceSquareMeters": 86.56092714160067,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 51
+        },
+        "smooth": {
+          "status": "incomplete-terrain",
+          "minimumSceneZ": 0.31899530400846965,
+          "maximumSceneZ": 0.4699064105710952,
+          "minimumWitnessSceneXYZ": [
+            35.59,
+            -9.371,
+            0.31899530400846965
+          ],
+          "maximumWitnessSceneXYZ": [
+            36.241,
+            -8.835053790319076,
+            0.4699064105710952
+          ],
+          "coveredFraction": 0.9831572566415081,
+          "uncoveredAreaSquareMeters": 88.75974165234598,
+          "uncoveredBeyondToleranceSquareMeters": 86.38757027345571,
+          "coverageToleranceMeters": 0.05,
+          "intersectingFaces": 51
+        }
+      },
+      "status": "review-required",
+      "groundRangeSceneZ": [
+        0.3188311969245685,
+        0.46999422994391454
+      ],
+      "reliefMeters": 15.116303301934602
+    }
+  ],
+  "inputs": {
+    "geography": {
+      "path": "work/urban-structure/p5/staging/public/data/geography.json",
+      "sha256": "e341669ad39ce9ee8b607d17d050bb8adf0d66811924dbaf4e24c92c7afbda8f"
+    },
+    "detail": {
+      "path": "work/urban-structure/p5/staging/work/p5/grading-precision-context/detail.glb",
+      "sha256": "8976f7303fd2dce95b4d1554947cba1292169f3bd0ecb272d7d92e096c2c47d3"
+    },
+    "smooth": {
+      "path": "work/urban-structure/p5/staging/work/p5/grading-precision-context/smooth.glb",
+      "sha256": "b452e8a2319e580756b173168be4de26d902fc67a021b1411ddb72eb747804a8"
+    }
+  },
+  "reportSha256": "8a076eb9513701eae644d85bc09a0489e4ab1196a74a7d1ce9dd0fe47464535c",
+  "limitations": [
+    "Ground under each footprint is measured; this does not certify entrance access or platform design",
+    "Large relief needs site review; a tall foundation skirt is not itself a terrain solution",
+    "Buildings hidden by city landmarks, railways or roads are included until visibility is resolved"
+  ]
+}

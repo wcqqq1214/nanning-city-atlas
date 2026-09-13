@@ -1,0 +1,25 @@
+{
+  "status": "north retaining folds resolved in inspected staged contexts; full city acceptance remains pending",
+  "generatedViews": 12,
+  "reviewedViews": [
+    "xinzhong-industrial-detail-west-materials.png",
+    "xinzhong-industrial-detail-north-gray.png",
+    "xinzhong-industrial-smooth-west-materials.png",
+    "xinzhong-industrial-smooth-top-materials.png"
+  ],
+  "observations": [
+    "The sharp triangular folds previously visible at the north concave corner are replaced by a continuous battered retaining face in both reviewed profile views.",
+    "The west connector remains visually continuous between the retained road and yard.",
+    "The top view shows a continuous pad boundary without the previous triangular corner fragments."
+  ],
+  "limitations": [
+    "These views contain decoded terrain/access, separately imported surrounding roads and warehouse candidates; other city buildings and vegetation are absent.",
+    "The 3 metre retaining width is a display estimate and some retaining faces are steeper; no civil engineering validation is claimed."
+  ],
+  "files": {
+    "xinzhong-industrial-detail-west-materials.png": "64e325c1369d82c3bc78c2ae5fc7b50c271cdba57a6fe63eba4938994a4735e2",
+    "xinzhong-industrial-detail-north-gray.png": "09fcce86f33b50fa0ffacee4ef1153c3e7c3ce520783e6c0baa938ef79a71a90",
+    "xinzhong-industrial-smooth-west-materials.png": "7b7e374153d09759c58aa7efa33406af0d4f3148564b9bf5f0dc7870407d02fc",
+    "xinzhong-industrial-smooth-top-materials.png": "d8a57b09a1b7516b602ca6734e45521f77ea470774278c4da5363b16dd181b9b"
+  }
+}

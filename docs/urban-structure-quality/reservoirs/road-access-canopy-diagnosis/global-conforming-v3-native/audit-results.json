@@ -1,0 +1,66 @@
+[
+  {
+    "name": "nearby-detail",
+    "exitCode": 0,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/check_canopy_exports.py",
+      "--directory",
+      "work/urban-structure/p5/full-city-review/global-conforming-v3-native",
+      "--name",
+      "nearby-detail",
+      "--terrain",
+      "work/urban-structure/p5/full-city-review/precision-decoded/terrain-detail.npz",
+      "--city-source",
+      "blender/build_city.py"
+    ]
+  },
+  {
+    "name": "nearby-smooth",
+    "exitCode": 0,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/check_canopy_exports.py",
+      "--directory",
+      "work/urban-structure/p5/full-city-review/global-conforming-v3-native",
+      "--name",
+      "nearby-smooth",
+      "--terrain",
+      "work/urban-structure/p5/full-city-review/precision-decoded/terrain-smooth.npz",
+      "--city-source",
+      "blender/build_city.py"
+    ]
+  },
+  {
+    "name": "all-detail",
+    "exitCode": 0,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/check_canopy_exports.py",
+      "--directory",
+      "work/urban-structure/p5/full-city-review/global-conforming-v3-native",
+      "--name",
+      "all-detail",
+      "--terrain",
+      "work/urban-structure/p5/full-city-review/precision-decoded/terrain-detail.npz",
+      "--city-source",
+      "blender/build_city.py"
+    ]
+  },
+  {
+    "name": "all-smooth",
+    "exitCode": 0,
+    "command": [
+      "work/venv/bin/python",
+      "scripts/check_canopy_exports.py",
+      "--directory",
+      "work/urban-structure/p5/full-city-review/global-conforming-v3-native",
+      "--name",
+      "all-smooth",
+      "--terrain",
+      "work/urban-structure/p5/full-city-review/precision-decoded/terrain-smooth.npz",
+      "--city-source",
+      "blender/build_city.py"
+    ]
+  }
+]

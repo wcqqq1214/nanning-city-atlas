@@ -1,0 +1,35 @@
+{
+  "mading": {
+    "geometryAndHeightsUnchanged": true
+  },
+  "southeast": {
+    "geometryAndHeightsUnchanged": true
+  },
+  "yinling": {
+    "geometryAndHeightsUnchanged": true
+  },
+  "longmen": {
+    "allRetainedVertexValuesUnchanged": true,
+    "overlapWithTianbaoSquareMeters": 0.0,
+    "originalBounds": [
+      -70.75607664132268,
+      82.77025862068966,
+      -39.57543269769215,
+      99.56422413793103
+    ],
+    "originalRowRange": [
+      66,
+      94
+    ],
+    "removedTriangles": 909,
+    "removedPoints": 512,
+    "boundaryPoints": 106,
+    "removedAndBoundaryWeightsAreZero": true
+  },
+  "west-pools": {
+    "geometryAndHeightsUnchanged": true
+  },
+  "zhicun": {
+    "geometryAndHeightsUnchanged": true
+  }
+}

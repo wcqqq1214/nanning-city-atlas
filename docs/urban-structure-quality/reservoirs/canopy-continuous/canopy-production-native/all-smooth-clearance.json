@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "scope": "continuous native mesh overlap; compressed export and visual QA are separate",
+  "canopyFaces": 67316,
+  "terrainFaces": 316384,
+  "overlapPairsChecked": 125223,
+  "minimumRequiredClearanceMeters": 9.5,
+  "minimumClearanceMeters": 9.855913638648417,
+  "failedClearanceFaces": 0,
+  "failureExamples": [],
+  "missingCoverageSquareMeters": 2.619723718756658,
+  "maximumFaceMissingCoverageSquareMeters": 0.09149574916082708,
+  "facesMissingMoreThanOneSquareCentimeter": 44,
+  "ignoredCanopyVerticalOrDegenerateFaces": 1029,
+  "ignoredGroundVerticalOrDegenerateFaces": 22138,
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/canopy-production-native/all-smooth.npz": "55826f39d674f0d102b7b3881ea7a9db348902bacf426b4d1dc5d0428c6b5dc6",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/smooth.npz": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_canopy_clearance.py": "ff71916411ee821c7a03458e0ca5daebd5627bb11c92c5ea4a441c71ba26c7da",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "2b662f56a4656a75f374fdfde293cf8914c4056d5755eb01548608cf23c66653"
+  }
+}

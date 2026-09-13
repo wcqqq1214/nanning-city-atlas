@@ -1,0 +1,8 @@
+{
+  "changedWaterIndices": [
+    227
+  ],
+  "verified": "Exact source feature equality, exact restored projected rings, same snapshot, all other lake fingerprints unchanged",
+  "inputSha256": "d9e9b73363b01284362a02ab71ce5edb9ec05c6c0c45ffd79ae28edafe931a7e",
+  "outputSha256": "bceaaac6a666c0d5580cdd912e190f9204dc9fdecbb5f71b4bef9eea3d17c3f0"
+}

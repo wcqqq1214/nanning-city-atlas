@@ -1,0 +1,91 @@
+{
+  "baseline": "baseline-p3",
+  "note": "Decoded P3 terrain, candidate footprints; Confucius uses the existing platform extent, not a proposed replacement.",
+  "planSha256": "14e8d9bcf247d6c84fc85e8a3803638c06f0c78caf58a61a72a8683694204c5a",
+  "sites": {
+    "arts-center": {
+      "footprintAreaSquareMeters": 38130.04644565976,
+      "mappedWaterOverlapSquareMeters": 0.0,
+      "profiles": {
+        "detail": {
+          "minimumSceneHeightMeters": 43.99290809583134,
+          "maximumSceneHeightMeters": 48.82126823000643,
+          "reliefMeters": 4.8283601341750915,
+          "uncoveredSquareMeters": 0.36611687392526016,
+          "terrainPieces": 36
+        },
+        "smooth": {
+          "minimumSceneHeightMeters": 40.3954193237924,
+          "maximumSceneHeightMeters": 48.58566037101149,
+          "reliefMeters": 8.190241047219088,
+          "uncoveredSquareMeters": 0.05472223086732117,
+          "terrainPieces": 16
+        }
+      }
+    },
+    "zhenning": {
+      "footprintAreaSquareMeters": 1374.7808835328765,
+      "mappedWaterOverlapSquareMeters": 0.0,
+      "profiles": {
+        "detail": {
+          "minimumSceneHeightMeters": 88.93018364175676,
+          "maximumSceneHeightMeters": 92.77389049530034,
+          "reliefMeters": 3.8437068535435825,
+          "uncoveredSquareMeters": 8.764962934928266e-14,
+          "terrainPieces": 6
+        },
+        "smooth": {
+          "minimumSceneHeightMeters": 88.93075461011722,
+          "maximumSceneHeightMeters": 92.7738964557648,
+          "reliefMeters": 3.8431418456475797,
+          "uncoveredSquareMeters": 8.977146342576694e-14,
+          "terrainPieces": 6
+        }
+      }
+    },
+    "diwang": {
+      "footprintAreaSquareMeters": 5323.4806683323795,
+      "mappedWaterOverlapSquareMeters": 0.0,
+      "profiles": {
+        "detail": {
+          "minimumSceneHeightMeters": 45.23909257334687,
+          "maximumSceneHeightMeters": 45.751445926366486,
+          "reliefMeters": 0.5123533530196123,
+          "uncoveredSquareMeters": 3.0043242199573328e-12,
+          "terrainPieces": 9
+        },
+        "smooth": {
+          "minimumSceneHeightMeters": 45.2149515516538,
+          "maximumSceneHeightMeters": 45.843218612577175,
+          "reliefMeters": 0.6282670609233765,
+          "uncoveredSquareMeters": 5.338611497318624e-12,
+          "terrainPieces": 6
+        }
+      }
+    },
+    "confucius": {
+      "footprintAreaSquareMeters": 91799.99999999977,
+      "mappedWaterOverlapSquareMeters": 0.0,
+      "profiles": {
+        "detail": {
+          "minimumSceneHeightMeters": 43.0275261865632,
+          "maximumSceneHeightMeters": 91.25499759275186,
+          "reliefMeters": 48.22747140618866,
+          "uncoveredSquareMeters": 0.0,
+          "terrainPieces": 306
+        },
+        "smooth": {
+          "minimumSceneHeightMeters": 43.22907850596267,
+          "maximumSceneHeightMeters": 92.69217598958264,
+          "reliefMeters": 49.46309748361997,
+          "uncoveredSquareMeters": 0.0,
+          "terrainPieces": 306
+        }
+      }
+    }
+  },
+  "assets": {
+    "detail": "2c0ed11af6b759026719994f1893ff2bb20a8e323abaed69e4b01f2cd9fd03ff",
+    "smooth": "a1e3a4e5273b4dbeb4cf8c9495c2ce7e8637df7a77a8052cd1c31d163feeb7df"
+  }
+}

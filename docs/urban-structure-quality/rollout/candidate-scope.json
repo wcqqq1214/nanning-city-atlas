@@ -1,0 +1,650 @@
+{
+  "status": "candidate only; formal asset integration pending",
+  "publicAssetsStillP4": {
+    "public/models/nanning-city.glb": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6",
+    "public/models/nanning-city-mobile.glb": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0",
+    "public/data/geography.json": "a3a29d0d04449b0b35e4811c0e6e4da63a143f44060da8881fb5deefac973956",
+    "public/data/terrain.json": "aaaddb41f6875947504c444464371c502156924d9635e2fd9d693dcaa0758291"
+  },
+  "sites": [
+    {
+      "id": "haipo-residential",
+      "name": "海珀璞晖住宅组团",
+      "use": "residential",
+      "boundary": [
+        [
+          [
+            70.698,
+            11.236
+          ],
+          [
+            70.728,
+            11.17
+          ],
+          [
+            70.816,
+            11.127
+          ],
+          [
+            71.69,
+            11.115
+          ],
+          [
+            72.646,
+            11.188
+          ],
+          [
+            74.2,
+            11.068
+          ],
+          [
+            74.226,
+            11.512
+          ],
+          [
+            74.302,
+            11.817
+          ],
+          [
+            74.407,
+            12.163
+          ],
+          [
+            74.441,
+            12.459
+          ],
+          [
+            74.411,
+            12.724
+          ],
+          [
+            74.349,
+            12.908
+          ],
+          [
+            74.255,
+            13.041
+          ],
+          [
+            74.163,
+            13.1
+          ],
+          [
+            74.027,
+            13.115
+          ],
+          [
+            70.838,
+            13.199
+          ],
+          [
+            70.793,
+            13.197
+          ],
+          [
+            70.751,
+            13.173
+          ],
+          [
+            70.732,
+            13.105
+          ],
+          [
+            70.698,
+            11.236
+          ]
+        ]
+      ],
+      "configurationHash": "6ac024d01710729bf5b217e4c1757e2e27419a16af0b7f044dece5f5cff95b3c",
+      "statistics": {
+        "removed": 10,
+        "generated": 4,
+        "siteM2": 72976.13,
+        "footprintM2": 5374.59
+      },
+      "buildingIds": [
+        "haipo-residential/tower-0-0",
+        "haipo-residential/tower-0-2",
+        "haipo-residential/tower-1-0",
+        "haipo-residential/tower-1-2"
+      ],
+      "preservedBuildingIds": [],
+      "rejectedCandidates": [
+        {
+          "id": "tower-0-1",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "tower-1-1",
+          "reason": "outside-permitted-area"
+        }
+      ],
+      "addedUrban": [],
+      "removedBuildingIds": [
+        "procedural/d50dad3d05793791f890",
+        "procedural/756238553080aa67f6d6",
+        "procedural/4a88efeb5efed2fe44b7",
+        "procedural/fde911cc40b7e63f2cba",
+        "procedural/c9eaf48ef32c16b8057e",
+        "procedural/382c2fab8d2bea4a6c39",
+        "procedural/5dc78daafdb386975314",
+        "procedural/56b14cebfb003349e0ac",
+        "procedural/74130bfa038116a4d841",
+        "procedural/939dab1a00fb80eaf379"
+      ],
+      "registrationAdjustments": {}
+    },
+    {
+      "id": "greenland-commercial",
+      "name": "绿地中央广场商业办公组团",
+      "use": "commercial",
+      "boundary": [
+        [
+          [
+            70.743,
+            10.81
+          ],
+          [
+            70.667,
+            10.793
+          ],
+          [
+            70.63,
+            10.765
+          ],
+          [
+            70.606,
+            10.702
+          ],
+          [
+            70.577,
+            9.986
+          ],
+          [
+            70.598,
+            9.913
+          ],
+          [
+            70.647,
+            9.852
+          ],
+          [
+            70.716,
+            9.816
+          ],
+          [
+            74.514,
+            9.113
+          ],
+          [
+            74.825,
+            9.115
+          ],
+          [
+            74.957,
+            9.145
+          ],
+          [
+            75.071,
+            9.191
+          ],
+          [
+            75.113,
+            9.255
+          ],
+          [
+            75.112,
+            9.398
+          ],
+          [
+            75.138,
+            9.669
+          ],
+          [
+            75.182,
+            9.842
+          ],
+          [
+            75.33,
+            9.954
+          ],
+          [
+            75.585,
+            10.039
+          ],
+          [
+            75.643,
+            10.07
+          ],
+          [
+            75.332,
+            11.004
+          ],
+          [
+            74.375,
+            11.004
+          ],
+          [
+            74.339,
+            10.839
+          ],
+          [
+            70.743,
+            10.81
+          ]
+        ]
+      ],
+      "configurationHash": "694998d2b5ef69d8fe6f54cef56ebdec2f673957e9c1f5f2906013b9f5a624f7",
+      "statistics": {
+        "removed": 6,
+        "generated": 5,
+        "siteM2": 68482.38,
+        "footprintM2": 6962.86
+      },
+      "buildingIds": [
+        "greenland-commercial/office-0-1",
+        "greenland-commercial/office-0-2",
+        "greenland-commercial/office-0-5",
+        "greenland-commercial/office-1-5",
+        "greenland-commercial/office-1-6"
+      ],
+      "preservedBuildingIds": [
+        "osm/fab75247b8dcf22c2b12",
+        "osm/4da0cff5876874ec8064",
+        "osm/1b56b610d074128d4d17"
+      ],
+      "rejectedCandidates": [
+        {
+          "id": "office-0-0",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-0-3",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-0-4",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-0-6",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-1-0",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-1-1",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-1-2",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-1-3",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "office-1-4",
+          "reason": "outside-permitted-area"
+        }
+      ],
+      "addedUrban": [],
+      "removedBuildingIds": [
+        "procedural/2feb08bf02936cfb0c0c",
+        "procedural/aed47e15c8c5465ba985",
+        "procedural/fa458da0234e5608dfe1",
+        "procedural/2ca6dd7190bf292afd5d",
+        "procedural/83b88846b3e3c91f1573",
+        "procedural/c0cd7dd4c76ed4cde051"
+      ],
+      "registrationAdjustments": {}
+    },
+    {
+      "id": "mingxiu-campus",
+      "name": "南宁师范大学明秀校区教学组团",
+      "use": "campus",
+      "boundary": [
+        [
+          [
+            15.346,
+            23.33
+          ],
+          [
+            15.916,
+            18.72
+          ],
+          [
+            15.007,
+            18.562
+          ],
+          [
+            15.077,
+            17.917
+          ],
+          [
+            16.602,
+            17.999
+          ],
+          [
+            16.454,
+            19.004
+          ],
+          [
+            17.661,
+            19.139
+          ],
+          [
+            17.666,
+            19.36
+          ],
+          [
+            18.893,
+            19.658
+          ],
+          [
+            18.671,
+            20.704
+          ],
+          [
+            17.747,
+            20.528
+          ],
+          [
+            17.633,
+            20.668
+          ],
+          [
+            17.639,
+            21.421
+          ],
+          [
+            18.516,
+            21.523
+          ],
+          [
+            18.058,
+            22.396
+          ],
+          [
+            17.637,
+            22.24
+          ],
+          [
+            17.149,
+            23.878
+          ],
+          [
+            15.346,
+            23.33
+          ]
+        ]
+      ],
+      "configurationHash": "f76f801f6e097830d9b897f9bc25a34d53a8fb75d88f009d4d7230c6795ca684",
+      "statistics": {
+        "removed": 0,
+        "generated": 8,
+        "siteM2": 121672.95,
+        "footprintM2": 11308.67
+      },
+      "buildingIds": [
+        "mingxiu-campus/library-north",
+        "mingxiu-campus/geography",
+        "mingxiu-campus/teaching",
+        "mingxiu-campus/physics",
+        "mingxiu-campus/integrated",
+        "mingxiu-campus/library-east",
+        "mingxiu-campus/languages",
+        "mingxiu-campus/administration"
+      ],
+      "preservedBuildingIds": [],
+      "rejectedCandidates": [
+        {
+          "id": "training",
+          "reason": "outside-permitted-area"
+        },
+        {
+          "id": "chemistry",
+          "reason": "outside-permitted-area"
+        }
+      ],
+      "addedUrban": [
+        [
+          [
+            [
+              15.346,
+              23.33
+            ],
+            [
+              15.916,
+              18.72
+            ],
+            [
+              15.007,
+              18.562
+            ],
+            [
+              15.077,
+              17.917
+            ],
+            [
+              16.602,
+              17.999
+            ],
+            [
+              16.454,
+              19.004
+            ],
+            [
+              17.661,
+              19.139
+            ],
+            [
+              17.666,
+              19.36
+            ],
+            [
+              18.893,
+              19.658
+            ],
+            [
+              18.671,
+              20.704
+            ],
+            [
+              17.747,
+              20.528
+            ],
+            [
+              17.633,
+              20.668
+            ],
+            [
+              17.639,
+              21.421
+            ],
+            [
+              18.516,
+              21.523
+            ],
+            [
+              18.058,
+              22.396
+            ],
+            [
+              17.637,
+              22.24
+            ],
+            [
+              17.149,
+              23.878
+            ],
+            [
+              15.346,
+              23.33
+            ]
+          ]
+        ]
+      ],
+      "removedBuildingIds": [],
+      "registrationAdjustments": {
+        "mingxiu-campus/library-north": {
+          "translationMeters": [
+            0,
+            0
+          ],
+          "footprintScale": 1.0
+        },
+        "mingxiu-campus/geography": {
+          "translationMeters": [
+            2,
+            0
+          ],
+          "footprintScale": 1.0
+        },
+        "mingxiu-campus/teaching": {
+          "translationMeters": [
+            2,
+            -10
+          ],
+          "footprintScale": 0.95
+        },
+        "mingxiu-campus/physics": {
+          "translationMeters": [
+            -2,
+            0
+          ],
+          "footprintScale": 0.95
+        },
+        "mingxiu-campus/integrated": {
+          "translationMeters": [
+            -2,
+            0
+          ],
+          "footprintScale": 1.0
+        },
+        "mingxiu-campus/library-east": {
+          "translationMeters": [
+            -6,
+            0
+          ],
+          "footprintScale": 1.0
+        },
+        "mingxiu-campus/languages": {
+          "translationMeters": [
+            4,
+            0
+          ],
+          "footprintScale": 1.0
+        },
+        "mingxiu-campus/administration": {
+          "translationMeters": [
+            -6,
+            -2
+          ],
+          "footprintScale": 1.0
+        }
+      }
+    },
+    {
+      "id": "xinzhong-industrial",
+      "name": "万纬新中智慧园仓储组团",
+      "use": "industrial",
+      "boundary": [
+        [
+          [
+            71.411,
+            -130.472
+          ],
+          [
+            71.916,
+            -132.781
+          ],
+          [
+            71.975,
+            -132.87
+          ],
+          [
+            72.039,
+            -132.927
+          ],
+          [
+            72.125,
+            -132.951
+          ],
+          [
+            74.222,
+            -132.971
+          ],
+          [
+            74.302,
+            -132.952
+          ],
+          [
+            74.375,
+            -132.896
+          ],
+          [
+            74.4,
+            -132.807
+          ],
+          [
+            74.391,
+            -132.7
+          ],
+          [
+            74.019,
+            -131.102
+          ],
+          [
+            73.353,
+            -131.193
+          ],
+          [
+            73.215,
+            -130.257
+          ],
+          [
+            71.411,
+            -130.472
+          ]
+        ]
+      ],
+      "configurationHash": "f63a54b3054030ad488d7789f99e97f7b8599dfa728b471d494eb5b25df2274a",
+      "statistics": {
+        "removed": 10,
+        "generated": 2,
+        "siteM2": 59034.25,
+        "footprintM2": 18171.72
+      },
+      "buildingIds": [
+        "xinzhong-industrial/warehouse-0",
+        "xinzhong-industrial/warehouse-1"
+      ],
+      "preservedBuildingIds": [],
+      "rejectedCandidates": [],
+      "addedUrban": [],
+      "removedBuildingIds": [
+        "procedural/385dcac44821ceec485d",
+        "procedural/8bbc383a34a4b400f8b0",
+        "procedural/35dd50323da2fa3c75b9",
+        "procedural/93b8092d2a26fe7e6121",
+        "procedural/5ed9f718ab7bbb70276a",
+        "procedural/245314312d8a406c4925",
+        "procedural/e7dc46ecad23594c7341",
+        "procedural/2d455797e6012c26661e",
+        "procedural/fdd2837829eb88c80470",
+        "procedural/abec8388db76ba5729f7"
+      ],
+      "registrationAdjustments": {}
+    }
+  ],
+  "inputs": {
+    "data/block-sources/p5-rollout.json": "b2cc7432cc9effbcf6a40d08a3c3c0d49d515fd1954843a8b69f2b7229e52b37",
+    "work/urban-structure/p5/quality-candidate.json": "f6e7ca6e11e343533a55ed54c7ecee9a90b8b73dd216f1ff1bf16e0624aa0b05",
+    "work/urban-structure/p5/rollout/candidate.json": "46ad67026af413add98354e07ecc1cb68278b0dedff38253412db167d8b04a15"
+  },
+  "hiddenTreeIndices": []
+}

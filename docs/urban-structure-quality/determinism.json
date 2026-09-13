@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "method": "Two independent complete candidate generations from the same frozen input; byte equality checked",
+  "outputs": [
+    {
+      "path": "work/urban-structure/p5/quality-candidate.json",
+      "sha256": "f6e7ca6e11e343533a55ed54c7ecee9a90b8b73dd216f1ff1bf16e0624aa0b05"
+    },
+    {
+      "path": "work/urban-structure/p5/quality-repeat.json",
+      "sha256": "f6e7ca6e11e343533a55ed54c7ecee9a90b8b73dd216f1ff1bf16e0624aa0b05"
+    }
+  ]
+}

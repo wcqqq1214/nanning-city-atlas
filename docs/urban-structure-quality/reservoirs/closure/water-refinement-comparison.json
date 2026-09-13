@@ -1,0 +1,88 @@
+{
+  "status": "water 155/195 only; water 139/211 and full southeast shoreline acceptance remain failed",
+  "waters": {
+    "155": {
+      "commonPhysicalProbes": 2079,
+      "outsideOneNativeBoundarySkipped": 5,
+      "oldMaximumProbeErrorMeters": 0.6851557386120959,
+      "newMaximumProbeErrorMeters": 0.04792656432465492,
+      "oldWaterTriangles": 1125,
+      "newWaterTriangles": 2017,
+      "nativeProfiles": {
+        "detail": {
+          "coverage": {
+            "triangles": 2017,
+            "overlapSquareMeters": 0.0,
+            "uncoveredBeyond5mmSquareMeters": 0.0,
+            "excessBeyond5mmSquareMeters": 0.0
+          },
+          "shoreline": {
+            "sharedNativeEdges": 563,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 9.760856628404646e-06,
+            "expectedBankClearanceMeters": 0.2025
+          }
+        },
+        "smooth": {
+          "coverage": {
+            "triangles": 2017,
+            "overlapSquareMeters": 0.0,
+            "uncoveredBeyond5mmSquareMeters": 0.0,
+            "excessBeyond5mmSquareMeters": 0.0
+          },
+          "shoreline": {
+            "sharedNativeEdges": 563,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 9.760856628404646e-06,
+            "expectedBankClearanceMeters": 0.2025
+          }
+        }
+      }
+    },
+    "195": {
+      "commonPhysicalProbes": 1091,
+      "outsideOneNativeBoundarySkipped": 3,
+      "oldMaximumProbeErrorMeters": 1.035210157215218,
+      "newMaximumProbeErrorMeters": 0.16274052137195838,
+      "oldWaterTriangles": 702,
+      "newWaterTriangles": 1055,
+      "nativeProfiles": {
+        "detail": {
+          "coverage": {
+            "triangles": 1055,
+            "overlapSquareMeters": 0.0,
+            "uncoveredBeyond5mmSquareMeters": 0.0,
+            "excessBeyond5mmSquareMeters": 0.0
+          },
+          "shoreline": {
+            "sharedNativeEdges": 427,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 1.870155334471324e-05,
+            "expectedBankClearanceMeters": 0.2025
+          }
+        },
+        "smooth": {
+          "coverage": {
+            "triangles": 1055,
+            "overlapSquareMeters": 0.0,
+            "uncoveredBeyond5mmSquareMeters": 0.0,
+            "excessBeyond5mmSquareMeters": 0.0
+          },
+          "shoreline": {
+            "sharedNativeEdges": 427,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 1.870155334471324e-05,
+            "expectedBankClearanceMeters": 0.2025
+          }
+        }
+      }
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/reservoirs/neighbors/southeast/plan.json": "4e607c6b51ac76a9a4be811621b8b333516b90cf58a66cb04e5cf15eeb8a62d3",
+    "work/urban-structure/p5/reservoirs/closure/southeast/plan.json": "7bf8b287180c8a9d4a0004bf336ed85ed0114b4a82416ceaf3a35ef55ab66bac",
+    "work/urban-structure/p5/reservoirs/closure/southeast/native/detail.npz": "472fe75b0f32c5aa5d02b226b83a0666b84a2f697f630456ecb0517da29f9600",
+    "work/urban-structure/p5/reservoirs/closure/southeast/native/smooth.npz": "51f1d7a933e3acc2b06f0eaee53d9787bf7f92fd8b50a0668b2187db55b1028f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/check_refinement.py": "58f329045179d266bf1504d6441a3aa4cedd2e545937cf0045e88e1d39fff9a3"
+  }
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/build_city.py",
+      "--",
+      "--terrain-context",
+      "--context-ground"
+    ],
+    "exitCode": 0,
+    "seconds": 156.02
+  },
+  {
+    "command": [
+      "work/venv/bin/python",
+      "scripts/prepare_elevated_roads.py",
+      "--context-directory",
+      "work/terrain-resample/context"
+    ],
+    "exitCode": 0,
+    "seconds": 37.51
+  }
+]

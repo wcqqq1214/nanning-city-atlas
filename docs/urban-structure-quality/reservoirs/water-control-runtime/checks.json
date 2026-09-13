@@ -1,0 +1,30 @@
+{
+  "testsRun": 79,
+  "successful": true,
+  "failures": 0,
+  "errors": 0,
+  "patterns": [
+    "test_reservoir*.py",
+    "test_water_control*.py",
+    "test_building_road_envelopes.py",
+    "test_building_shorelines.py"
+  ],
+  "parsedFiles": [
+    "blender/build_city.py",
+    "blender/reservoir_runtime.py",
+    "blender/water_control_runtime.py",
+    "blender/water_control_structures.py",
+    "blender/check_water_control_runtime.py",
+    "scripts/check_water_control_exports.py",
+    "scripts/test_water_control_runtime.py"
+  ],
+  "sourceHashes": {
+    "blender/build_city.py": "b59dd5fd23512d4ef75d97a3a9e86c5a8f3f76300d501fd2235fd1e012a526e4",
+    "blender/reservoir_runtime.py": "56cac7640642dcfe7313e12a87d3ec131b12b3112783e98bb7e299a99e55d450",
+    "blender/water_control_runtime.py": "590d8e35c0f3eec81aed1412e0a2b04e4b57f090a2c4e3397891e570108f4c46",
+    "blender/water_control_structures.py": "2687eb60aae72de0efed8588fb189ae43d40d7abbcdf2e32aa947ed696e288c2",
+    "blender/check_water_control_runtime.py": "a4945527219b23b3a1636804bdf1bbfdf85a3438e267626285e560b79d7c8646",
+    "scripts/check_water_control_exports.py": "5518b4e5e5785f3abac055cbe0a2cc4722b5303485b0a641a532d983be29212e",
+    "scripts/test_water_control_runtime.py": "9a7fc5c80b0f1a59c160e061059c08cb5ebce8ce5fb253f8dae13bdf4143d517"
+  }
+}

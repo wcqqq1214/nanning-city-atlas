@@ -1,0 +1,52 @@
+{
+  "nearby-detail": {
+    "trianglesSplit": 111,
+    "trianglesAdded": 189,
+    "exactDuplicateTrianglesRemoved": 1,
+    "triangulation": "boundary",
+    "boundaryFallbacks": 14,
+    "omittedSquareMeters": 5.225700166594562e-06,
+    "maximumRiseDifferenceMeters": 0.007042655774628066,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 2.9238202909660394e-06
+  },
+  "nearby-smooth": {
+    "trianglesSplit": 115,
+    "trianglesAdded": 224,
+    "exactDuplicateTrianglesRemoved": 0,
+    "triangulation": "boundary",
+    "boundaryFallbacks": 15,
+    "omittedSquareMeters": 4.9690240177649686e-06,
+    "maximumRiseDifferenceMeters": 0.006154490510973387,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 2.1029260305951685e-06
+  },
+  "all-detail": {
+    "trianglesSplit": 2148,
+    "trianglesAdded": 2956,
+    "exactDuplicateTrianglesRemoved": 12,
+    "triangulation": "boundary",
+    "boundaryFallbacks": 110,
+    "omittedSquareMeters": 2.0523318285921748e-05,
+    "maximumRiseDifferenceMeters": 0.0023055459538349338,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 1.0886127566902046e-05
+  },
+  "all-smooth": {
+    "trianglesSplit": 1200,
+    "trianglesAdded": 2503,
+    "exactDuplicateTrianglesRemoved": 4,
+    "triangulation": "boundary",
+    "boundaryFallbacks": 64,
+    "omittedSquareMeters": 1.6324456902799773e-05,
+    "maximumRiseDifferenceMeters": 6.458103796345505,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 5.572761845929274e-06
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/forest-candidate-conforming-v2.json": "8289ff98d6151d8beb89e37e83e78dfd89259c9c5c57995da96440a9889bfd83",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/prepare_global_conforming_v3.py": "fbd9f06c6dbf467e8c3252b4f7553254a3fb3d1a65a2c4478104f5b4e8077603",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/conform_canopy_edges.py": "7118de67e1a62ad0a72dcaa40542766a88eb750711edea770a8930899b233eed"
+  },
+  "outputSha256": "ccc777d1c3e0c85e24ea88348f5a8a3306b43d5f428991853d9fe3cf030c17c5"
+}

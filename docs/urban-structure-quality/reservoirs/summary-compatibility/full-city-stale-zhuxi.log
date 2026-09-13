@@ -1,0 +1,18 @@
+/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/blender/build_city.py:135: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Building terrain...
+Building road network...
+Minzu avenue geometry: {'minRoadClearanceMeters': 6.693, 'maxDisplayGrade': 0.12000000026352, 'nanhuHeightRangeMeters': 0.0, 'nanhuDeckLevel': 0.5588178958903085, 'renderedSections': 846}
+Remaining elevated road geometry: {'ways': 1104, 'lengthKm': 193.646, 'piers': 1586, 'crossings': 164, 'pairedDeckMerges': 87, 'maxDisplayGrade': 0.75, 'minCrossingClearanceMeters': 12.5, 'maxExternalSeamMeters': 0.0, 'planHash': 'b87e237b55c9b7cb40e931e332a893d537b334bfa18fd2d7bd0b4e1179756923'}
+Traceback (most recent call last):
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/blender/build_city.py", line 640, in <module>
+    zhuxi_counts=build_zhuxi_details(zhuxi_batch,elevated)
+  File "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/blender/zhuxi_interchange.py", line 51, in build_details
+    assert hashlib.sha256((root/filename).read_bytes()).hexdigest()==digest, f'Rebuild Zhuxi details after changing {filename}'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Rebuild Zhuxi details after changing data/elevated-roads-plan.json.gz
+
+Error: script failed, file: 'blender/build_city.py', exiting.
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

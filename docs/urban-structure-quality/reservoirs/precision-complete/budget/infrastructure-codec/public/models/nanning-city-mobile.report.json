@@ -1,0 +1,29 @@
+{
+  "status": "geometry-preserving candidate; browser visuals and full validators pending",
+  "input": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/conforming-codec/public/models/nanning-city-mobile.glb",
+  "inputSha256": "1f3f47496783ff1840bf77bcbbd2279910d7dd684aa314a9e5718166d2d65301",
+  "output": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/budget-reduction/infrastructure-codec/public/models/nanning-city-mobile.glb",
+  "outputSha256": "a441f1db079234cf7d23326fab9158c2a78d1880827ba9bf7c9429a24d787031",
+  "beforeBytes": 19275392,
+  "afterBytes": 19271156,
+  "savedBytes": 4236,
+  "records": [
+    {
+      "nodes": [
+        "GroundRoads_access_xinzhong_industrial_0_0"
+      ],
+      "flatFaces": 260,
+      "explicitNormalFaces": 0,
+      "maximumFlatNormalDifferenceDegrees": 0.22952370309282377,
+      "beforePayloadBytes": 6394,
+      "afterPayloadBytes": 1955
+    }
+  ],
+  "prefixes": [
+    "GroundRoads_",
+    "ElevatedRoads_",
+    "Railways_",
+    "Railway_Details_"
+  ],
+  "toolSha256": "a327c8f42139ec7a08064d855d2bef8f3a0d0a3f59ec4583f97645b84b8281a0"
+}

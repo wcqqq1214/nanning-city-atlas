@@ -1,0 +1,16 @@
+{
+  "viewManifestSha256": "b3cbdd59575735ee6778808e2e2612d72a32a1bd274a2af72636854d94217ff2",
+  "reviewedImages": 64,
+  "matchedCameraPairs": 32,
+  "contactSheets": 8,
+  "observations": [
+    "All eight reservoir overview pairs preserve lake, island and dam silhouettes in both profiles.",
+    "Close views at each group/profile maximum removed-face centroid change show the original base facets replacing small extra diagonal kinks; no new open seams are visible.",
+    "Steep Longmen and other near-water slopes remain in both versions and are not solved by this restoration."
+  ],
+  "limits": [
+    "The views show production terrain and water, not complete buildings, streets, canopy, plinth, the dedicated sluice emitter or browser lighting.",
+    "This restores original base topology in zero-restoration cells. It is not a 5mm approximation to every point of the old dense mesh: maximum sampled removed-face centroid changes are3.632819m detail and5.578127m smooth.",
+    "The 5mm checks apply to source-base vertex sampling and seams. Retained native faces and source water/dam parameters are exact."
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "baseline": "baseline-p3",
+  "profiles": {
+    "detail": {
+      "before": {
+        "bytes": 25631028,
+        "triangles": 3485815,
+        "sha256": "2c0ed11af6b759026719994f1893ff2bb20a8e323abaed69e4b01f2cd9fd03ff"
+      },
+      "after": {
+        "bytes": 25579860,
+        "triangles": 3480403,
+        "sha256": "df792264e8c4bfd77f9d1b7c88ada32ce5c391dbe1575d9522bb3c76115773b6"
+      },
+      "byteDelta": -51168,
+      "triangleDelta": -5412,
+      "changedNodes": [
+        "Buildings_3_1",
+        "GroundRoads_1_0",
+        "GroundRoads_1_1",
+        "GroundRoads_1_2",
+        "GroundRoads_2_0",
+        "GroundRoads_2_1",
+        "GroundRoads_2_2",
+        "GroundRoads_2_3",
+        "GroundRoads_3_0",
+        "GroundRoads_3_1",
+        "GroundRoads_3_2",
+        "GroundRoads_3_3",
+        "GroundRoads_4_0",
+        "GroundRoads_4_1",
+        "GroundRoads_4_2",
+        "GroundRoads_4_3",
+        "Landmark_arts-center",
+        "Landmark_confucius",
+        "Landmark_diwang",
+        "Landmark_zhenning",
+        "Vegetation_2_1",
+        "Vegetation_3_1",
+        "Vegetation_qingxiu_canopy_3_1"
+      ],
+      "protectedNodes": 26,
+      "outsideBuildingsMaxErrorMeters": {
+        "Buildings_3_1": 0
+      },
+      "outsideTreesMaxErrorMeters": {
+        "Vegetation_2_1": 0,
+        "Vegetation_3_1": 0,
+        "Vegetation_qingxiu_canopy_3_1": 0
+      },
+      "forestInfluenceRadiusMeters": 224.6225086585702,
+      "outsideForestMaxErrorMeters": {
+        "Vegetation_2_1": 0,
+        "Vegetation_3_1": 0,
+        "Vegetation_qingxiu_canopy_3_1": 0
+      },
+      "sites": {
+        "arts-center": {
+          "triangles": 48808,
+          "bounds": [
+            [
+              66.23027801513672,
+              0.3790135383605957,
+              48.56379699707031
+            ],
+            [
+              68.75947570800781,
+              1.0432008504867554,
+              50.96177291870117
+            ]
+          ],
+          "roofHeightMeters": 54.32008504867554,
+          "minimumTerrainClearanceMeters": 1.178731769993585
+        },
+        "zhenning": {
+          "triangles": 19996,
+          "bounds": [
+            [
+              24.858034133911133,
+              0.864920973777771,
+              -6.2524518966674805
+            ],
+            [
+              25.268033981323242,
+              1.0241575241088867,
+              -5.746651649475098
+            ]
+          ],
+          "heightAboveAnchorMeters": 8.515751361846924,
+          "firstTreadClearanceMeters": {
+            "south": 0.2582954991131592,
+            "north": 0.2291639958034386
+          },
+          "coreTreeHeightMeters": {
+            "6874": 13.976427768260425,
+            "6967": 14.044206972545448,
+            "9130": 14.244312499639122
+          }
+        },
+        "diwang": {
+          "triangles": 358,
+          "bounds": [
+            [
+              66.48990631103516,
+              0.43251848220825195,
+              6.776716232299805
+            ],
+            [
+              67.62208557128906,
+              3.2234394550323486,
+              7.755086421966553
+            ]
+          ],
+          "heightMeters": 276.0439453125,
+          "minimumTerrainClearanceMeters": 0.548554073633517
+        },
+        "confucius": {
+          "triangles": 2812,
+          "bounds": [
+            [
+              91.28834533691406,
+              0.4518968164920807,
+              47.946815490722656
+            ],
+            [
+              91.9283676147461,
+              0.7203250527381897,
+              50.06681442260742
+            ]
+          ],
+          "courts": [
+            {
+              "id": "entrance",
+              "level": 0.5234583337609837,
+              "minimumTerrainClearanceMeters": 1.1961740844905533
+            },
+            {
+              "id": "main-court",
+              "level": 0.5541105026237754,
+              "minimumTerrainClearanceMeters": 1.1934806262172026
+            },
+            {
+              "id": "main-hall",
+              "level": 0.5902788125207598,
+              "minimumTerrainClearanceMeters": 1.1954163701345055
+            },
+            {
+              "id": "old-hall",
+              "level": 0.6152788125207598,
+              "minimumTerrainClearanceMeters": 2.901533344943341
+            },
+            {
+              "id": "lecture-hall",
+              "level": 0.6443696085463816,
+              "minimumTerrainClearanceMeters": 3.287107353773522
+            }
+          ]
+        }
+      }
+    },
+    "smooth": {
+      "before": {
+        "bytes": 17688792,
+        "triangles": 2378524,
+        "sha256": "a1e3a4e5273b4dbeb4cf8c9495c2ce7e8637df7a77a8052cd1c31d163feeb7df"
+      },
+      "after": {
+        "bytes": 17637060,
+        "triangles": 2373054,
+        "sha256": "69f4fc10da0de0c7f35784f105386c0dda5dbb47493d09926591668e0ff50ce0"
+      },
+      "byteDelta": -51732,
+      "triangleDelta": -5470,
+      "changedNodes": [
+        "Buildings_3_1",
+        "ElevatedRoads_3_1",
+        "GroundRoads_0_0",
+        "GroundRoads_0_1",
+        "GroundRoads_0_2",
+        "GroundRoads_1_0",
+        "GroundRoads_1_1",
+        "GroundRoads_1_2",
+        "GroundRoads_2_0",
+        "GroundRoads_2_1",
+        "GroundRoads_2_2",
+        "GroundRoads_2_3",
+        "GroundRoads_3_0",
+        "GroundRoads_3_1",
+        "GroundRoads_3_2",
+        "GroundRoads_3_3",
+        "GroundRoads_4_0",
+        "GroundRoads_4_1",
+        "GroundRoads_4_2",
+        "GroundRoads_4_3",
+        "Landmark_arts-center",
+        "Landmark_confucius",
+        "Landmark_diwang",
+        "Landmark_zhenning",
+        "Vegetation_2_1",
+        "Vegetation_qingxiu_canopy_3_1"
+      ],
+      "protectedNodes": 26,
+      "outsideBuildingsMaxErrorMeters": {
+        "Buildings_3_1": 0
+      },
+      "outsideTreesMaxErrorMeters": {
+        "Vegetation_2_1": 0,
+        "Vegetation_qingxiu_canopy_3_1": 0
+      },
+      "forestInfluenceRadiusMeters": 224.6225086585702,
+      "outsideForestMaxErrorMeters": {
+        "Vegetation_2_1": 0,
+        "Vegetation_qingxiu_canopy_3_1": 0
+      },
+      "sites": {
+        "arts-center": {
+          "triangles": 48808,
+          "bounds": [
+            [
+              66.23027801513672,
+              0.3790135383605957,
+              48.56379699707031
+            ],
+            [
+              68.75947570800781,
+              1.0432008504867554,
+              50.96177291870117
+            ]
+          ],
+          "roofHeightMeters": 54.32008504867554,
+          "minimumTerrainClearanceMeters": 1.4143396289885313
+        },
+        "zhenning": {
+          "triangles": 19996,
+          "bounds": [
+            [
+              24.858034133911133,
+              0.864920973777771,
+              -6.2524518966674805
+            ],
+            [
+              25.268033981323242,
+              1.0241575241088867,
+              -5.746651649475098
+            ]
+          ],
+          "heightAboveAnchorMeters": 8.515751361846924,
+          "firstTreadClearanceMeters": {
+            "south": 0.2577225291925833,
+            "north": 0.2304107893848384
+          },
+          "coreTreeHeightMeters": {}
+        },
+        "diwang": {
+          "triangles": 358,
+          "bounds": [
+            [
+              66.48990631103516,
+              0.43251848220825195,
+              6.776716232299805
+            ],
+            [
+              67.62208557128906,
+              3.2234394550323486,
+              7.755086421966553
+            ]
+          ],
+          "heightMeters": 276.0439453125,
+          "minimumTerrainClearanceMeters": 0.4567813874228277
+        },
+        "confucius": {
+          "triangles": 2812,
+          "bounds": [
+            [
+              91.28834533691406,
+              0.4518968164920807,
+              47.946815490722656
+            ],
+            [
+              91.9283676147461,
+              0.7203250527381897,
+              50.06681442260742
+            ]
+          ],
+          "courts": [
+            {
+              "id": "entrance",
+              "level": 0.5234583337609837,
+              "minimumTerrainClearanceMeters": 3.619122081073989
+            },
+            {
+              "id": "main-court",
+              "level": 0.5541105026237754,
+              "minimumTerrainClearanceMeters": 3.391500913535439
+            },
+            {
+              "id": "main-hall",
+              "level": 0.5902788125207598,
+              "minimumTerrainClearanceMeters": 4.063513263544582
+            },
+            {
+              "id": "old-hall",
+              "level": 0.6152788125207598,
+              "minimumTerrainClearanceMeters": 3.038781166364024
+            },
+            {
+              "id": "lecture-hall",
+              "level": 0.6443696085463816,
+              "minimumTerrainClearanceMeters": 1.2068428607938775
+            }
+          ]
+        }
+      }
+    }
+  }
+}

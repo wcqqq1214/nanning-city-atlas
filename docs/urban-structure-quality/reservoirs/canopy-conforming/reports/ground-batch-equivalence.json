@@ -1,0 +1,98 @@
+{
+  "detail": {
+    "keys": [
+      "triangles",
+      "materials",
+      "cornerNormals"
+    ],
+    "comparisons": {
+      "triangles": {
+        "beforeShape": [
+          726496,
+          3,
+          3
+        ],
+        "afterShape": [
+          726496,
+          3,
+          3
+        ],
+        "exactEqual": true
+      },
+      "materials": {
+        "beforeShape": [
+          726496
+        ],
+        "afterShape": [
+          726496
+        ],
+        "exactEqual": true
+      },
+      "cornerNormals": {
+        "beforeShape": [
+          726496,
+          3,
+          3
+        ],
+        "afterShape": [
+          726496,
+          3,
+          3
+        ],
+        "exactEqual": true
+      }
+    },
+    "inputs": {
+      "work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/detail.npz": "32265cb5a63e8c80d9b1e3b8de16e01ab0aadd086d1781b4a1e217196e9e0e69",
+      "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/access-runtime/detail.npz": "32265cb5a63e8c80d9b1e3b8de16e01ab0aadd086d1781b4a1e217196e9e0e69"
+    }
+  },
+  "smooth": {
+    "keys": [
+      "triangles",
+      "materials",
+      "cornerNormals"
+    ],
+    "comparisons": {
+      "triangles": {
+        "beforeShape": [
+          316384,
+          3,
+          3
+        ],
+        "afterShape": [
+          316384,
+          3,
+          3
+        ],
+        "exactEqual": true
+      },
+      "materials": {
+        "beforeShape": [
+          316384
+        ],
+        "afterShape": [
+          316384
+        ],
+        "exactEqual": true
+      },
+      "cornerNormals": {
+        "beforeShape": [
+          316384,
+          3,
+          3
+        ],
+        "afterShape": [
+          316384,
+          3,
+          3
+        ],
+        "exactEqual": true
+      }
+    },
+    "inputs": {
+      "work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/smooth.npz": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd",
+      "work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/work/p5/nanhu-integration/access-runtime/smooth.npz": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd"
+    }
+  }
+}

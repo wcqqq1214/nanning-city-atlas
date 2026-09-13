@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "plans": [
+    {
+      "id": "southeast-connected-water-v1",
+      "path": "data/reservoir-plans/southeast-connected-water-v1.json",
+      "sha256": "6e753277146f64df4994061d3cf52d4aa841dc5ae8d8874e9151cc50944aa7f6"
+    },
+    {
+      "id": "longmen-reservoir-closure-v1",
+      "path": "data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "sha256": "952277e0f0f39a9cfac73c51d0e6bcb382c00c2edc2cfbd2c25649956bde062d"
+    },
+    {
+      "id": "west-pools-reservoir-closure-v1",
+      "path": "data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+      "sha256": "dd631d2dfb2de535dd13cb7c95dee0efd5bcda0054dce3903b34425c39e46163"
+    },
+    {
+      "id": "mading-reservoir-terrain-v1",
+      "path": "data/reservoir-plans/mading-reservoir-terrain-v1.json",
+      "sha256": "29f9ab3e68e1005ab5a57a419ecb140104ad076c83781dedeb96c025e745c348"
+    },
+    {
+      "id": "yinling-reservoir-terrain-v1",
+      "path": "data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+      "sha256": "da68605e21120c61250165e10063a8b299c012995b7bf49803a26622cb9e3096"
+    },
+    {
+      "id": "zhicun-reservoir-terrain-v1",
+      "path": "data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+      "sha256": "55a1a329d4250584e175e9da8a2e8c11e10328b033f5f32e6f99e703f479ff72"
+    },
+    {
+      "id": "tianbao-reservoir-terrain-v1",
+      "path": "data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+      "sha256": "50e83b20e65205b68b9d661592c10de2217dd36b88701fdd974899bcd05a00dd"
+    },
+    {
+      "id": "linglong-lake-terrain-v1",
+      "path": "data/reservoir-plans/linglong-lake-terrain-v1.json",
+      "sha256": "e8ddb7ab85e57c339659b68818da05e1ea095a551185241981294ebeb1dfad83"
+    }
+  ],
+  "structures": [
+    {
+      "id": "linglong-sluice-v1",
+      "source": "data/water-control-sources/linglong.json",
+      "sha256": "68c2d06289410fa2edc5316cde778850436bb078822c2fe771a04abcaa198e6e",
+      "reservoirId": "linglong-lake-terrain-v1"
+    }
+  ]
+}

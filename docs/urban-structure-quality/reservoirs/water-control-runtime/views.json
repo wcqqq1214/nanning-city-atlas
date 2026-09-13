@@ -1,0 +1,272 @@
+{
+  "status": "production terrain and water; complete city, roads and canopy omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-overview.png",
+      "imageSha256": "fb9bff2afb626ef41edc00ac9f6309904532ed88c0bfb088acec685fc8a78774",
+      "cameraLocation": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "orthoScale": 15.174547413793105,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-context",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-sluice-context.png",
+      "imageSha256": "dee333fda63b5f1fbd5297ef569add66c7226f5fcd9820207a5bbd9a8c9afff2",
+      "cameraLocation": [
+        179.00999450683594,
+        -102.03974914550781,
+        1.7774748802185059
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.5,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-oblique",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-sluice-oblique.png",
+      "imageSha256": "91fb65afdbeb17eeff26d7663c812df80c9acf546cd823e1ee003c0c408495fb",
+      "cameraLocation": [
+        178.3699951171875,
+        -101.23974609375,
+        1.0174750089645386
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.7,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-front",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-sluice-front.png",
+      "imageSha256": "6d7e96d32f4b06c3de5cd1c0e12fd5450a8b1a3df1c6766133617b4c1818f1f5",
+      "cameraLocation": [
+        178.3470001220703,
+        -100.27154541015625,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-back",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-sluice-back.png",
+      "imageSha256": "cd08b3fae1676ee08b2841dae4f156eb1ec14ed08094f679f6c98064631e11de",
+      "cameraLocation": [
+        177.2729949951172,
+        -100.80795288085938,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "sluice-top",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-sluice-top.png",
+      "imageSha256": "6c80471b2c8e7c43a0c7341a82eece0551e3f02ab8f40be96e7a9c46fb16ca95",
+      "cameraLocation": [
+        177.80999755859375,
+        -100.53974914550781,
+        1.3274750709533691
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.65,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "east-city-cut",
+      "blendSha256": "32e760fa007a982b1dfbe9dff9b5913d2ded4bd61bf7ed120bd52dfd8cad6502",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/detail-east-city-cut.png",
+      "imageSha256": "ac9ee88ef0e96d859323bd02f1a452b1193c1e61260874a075b9cbe2117b5b51",
+      "cameraLocation": [
+        186.02000427246094,
+        -101.74600219726562,
+        2.040450096130371
+      ],
+      "target": [
+        184.5800018310547,
+        -99.94599914550781,
+        0.33044999837875366
+      ],
+      "orthoScale": 1.8,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-overview.png",
+      "imageSha256": "388123392284aaebd081280ea370a550dd79e97c39f036aedc0eb1975675ad4a",
+      "cameraLocation": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "orthoScale": 15.174547413793105,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-context",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-sluice-context.png",
+      "imageSha256": "f995f2e9f81fd18652f2c1468a4a50eaf2fb770879367ffdadd3b80b4a5bc2af",
+      "cameraLocation": [
+        179.00999450683594,
+        -102.03974914550781,
+        1.7774748802185059
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 1.5,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-oblique",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-sluice-oblique.png",
+      "imageSha256": "1dc9f997abaa63b1602b277f61f14213a4ee9ff7e43d2b39c4e02740ca870eb1",
+      "cameraLocation": [
+        178.3699951171875,
+        -101.23974609375,
+        1.0174750089645386
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.7,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-front",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-sluice-front.png",
+      "imageSha256": "1c41ec31b03afd2edbd5cac2e4dfaeb4c2ab3120080a2122477ac0cdb6281730",
+      "cameraLocation": [
+        178.3470001220703,
+        -100.27154541015625,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-back",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-sluice-back.png",
+      "imageSha256": "3c7340097ae47302d19b61922ad65faeb738ef6ff51ae673adae2ca7720226b1",
+      "cameraLocation": [
+        177.2729949951172,
+        -100.80795288085938,
+        0.4964749813079834
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.6,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "sluice-top",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-sluice-top.png",
+      "imageSha256": "ca72f4ed28f3b2e6b8f2ab59afe80f1644dc7d9d0034791fc6d16dec95d0c20b",
+      "cameraLocation": [
+        177.80999755859375,
+        -100.53974914550781,
+        1.3274750709533691
+      ],
+      "target": [
+        177.80999755859375,
+        -100.53974914550781,
+        0.35247498750686646
+      ],
+      "orthoScale": 0.65,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "east-city-cut",
+      "blendSha256": "4acd0a010f43a6e9263e5589e90f766a587e47b2000a752ece98cb34751b43b3",
+      "image": "work/urban-structure/p5/reservoirs/integration/water-control/views/smooth-east-city-cut.png",
+      "imageSha256": "50cf624c9e0914d45257f5acb96aaf9180093de30187a780f206cf58a100f9c5",
+      "cameraLocation": [
+        186.02000427246094,
+        -101.74600219726562,
+        2.040450096130371
+      ],
+      "target": [
+        184.5800018310547,
+        -99.94599914550781,
+        0.33044999837875366
+      ],
+      "orthoScale": 1.8,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    }
+  ]
+}

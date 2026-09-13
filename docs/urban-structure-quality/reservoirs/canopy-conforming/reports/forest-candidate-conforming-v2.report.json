@@ -1,0 +1,24 @@
+{
+  "detail": {
+    "trianglesSplit": 9,
+    "trianglesAdded": 31,
+    "omittedSquareMeters": 1.2550450238129507e-06,
+    "maximumRiseDifferenceMeters": 0.012473088061670265,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 1.117785968552617e-06
+  },
+  "smooth": {
+    "trianglesSplit": 3,
+    "trianglesAdded": 18,
+    "omittedSquareMeters": 8.437582307677453e-07,
+    "maximumRiseDifferenceMeters": 0.013758812329618,
+    "toleranceMeters": 1.0000000000000001e-07,
+    "coverageDifferenceSquareMeters": 8.437582307677453e-07
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/forest-candidate-clean.json": "98ef4be189500af3621062fcdfbc4a1155333e8c5ea13b0165b3f469507c6ba9",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/prepare_canopy_conforming_v2.py": "57b846905e7cc23448792f5c4e4680f15dd0823d455f69cb8cf8f708d536ec70",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/conform_canopy_edges.py": "2d3dc2ad6b549cd9b4d1e7edebc9d728092b91fb892ff5568671da0feadb85f6"
+  },
+  "outputSha256": "8289ff98d6151d8beb89e37e83e78dfd89259c9c5c57995da96440a9889bfd83"
+}

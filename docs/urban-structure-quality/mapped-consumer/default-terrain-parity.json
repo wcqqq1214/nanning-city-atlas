@@ -1,0 +1,16 @@
+{
+  "detail": {
+    "nativeTriangles": 636419,
+    "nativeArchiveSha256": "b49673b3f09e515e7e92760d15d12174d35a7592597f5821e6bab8ebc6baa9ee",
+    "arraysIdentical": true,
+    "rngIdentical": true,
+    "builderSha256": "c3096b0af0fa12965f341d9c8fdf1488ab5c94cd7f99e1db4246cd96851cc2bf"
+  },
+  "smooth": {
+    "nativeTriangles": 214385,
+    "nativeArchiveSha256": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+    "arraysIdentical": true,
+    "rngIdentical": true,
+    "builderSha256": "c3096b0af0fa12965f341d9c8fdf1488ab5c94cd7f99e1db4246cd96851cc2bf"
+  }
+}

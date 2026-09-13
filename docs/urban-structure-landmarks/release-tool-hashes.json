@@ -1,0 +1,18 @@
+{
+  "data/landmark-calibration-source.json": "8a7834cab85fd547f319199a4c16f07c54ddcfe7b9ef1d7e4a722ea86b3f279e",
+  "data/landmark-calibration-osm.json": "b746131cb994f69ea23dbbf4fd62cb802f8bd57f9245635184c9731e485cfbe1",
+  "data/landmark-calibration-plan.json": "14dbd42e3cec32f9d25c8437002d31e07911fe6a7d3d447236c17ce397fbdece",
+  "data/landmarks.json": "a22788a016ef67be5b6f4fe73778cbd84ac13360e80009c550ec91944a392d51",
+  "blender/build_city.py": "b1ccf7e9452eb9d91c5e69e7950d5d10c1ad2db3e1694956f5d6d6eeea154003",
+  "blender/landmark_sites.py": "1f90b9aabbd0979290964c4e5680811142e99514860958a28b29dd635fce2e88",
+  "blender/landmark_vegetation.py": "720cef62775e2342243e86b0227cbc69cc7ef99400b3acd077461077028c4281",
+  "blender/confucius_landmark.py": "ccc7ea999fb94550ca81b8868b0cf5336ac691b0ac0bc459590d883149ac172d",
+  "blender/diwang_landmark.py": "318a1759e3fef886e6682b2efeac6219bc3dc0a279e85463265baa30a59e29f3",
+  "blender/arts_landmark.py": "ce5194e07706c6c4622ad476f66f642381f2b357d716a31298b25f27eb44f062",
+  "blender/zhenning_landmark.py": "6c9fc8afaef4514d3ec89da28df2cd3ca709d8fd5dd2315b9df6d1c5651213ef",
+  "scripts/check_landmark_exports.py": "44a2a49c4b976e61e8c72825f295140850211ff07fd583b347de32871552a8a8",
+  "scripts/test_landmark_calibration.py": "3630d208789de99f47f18be2fefc7078de5a47dd8813e7ee5403be9950493198",
+  "scripts/check-landmark-interaction.mjs": "68066e60ecde907625adfc544613427f2fad5e4b4b79d279ec84f515a7954600",
+  "lib/city/inspection.ts": "9e55f7a6aaab1f732274c85cb4a051110834245ac43a8c3104129337460c48be",
+  "lib/city/scene.ts": "4bff6c02cd7dfe52dba11d152c8bcf2467c6a629fc5c1b4c1ffd0395ae464fb1"
+}

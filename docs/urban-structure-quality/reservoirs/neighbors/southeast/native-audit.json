@@ -1,0 +1,123 @@
+{
+  "status": "native coverage only; compressed and full-city checks remain pending",
+  "profiles": {
+    "detail": {
+      "terrain": {
+        "triangles": 17724,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 1125,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            69.66712188720703,
+            74.60792922973633
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 501,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 702,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            81.11284255981445,
+            86.24992370605469
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 394,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 6.780624389635115e-06,
+            "expectedBankClearanceMeters": 0.2025
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        }
+      }
+    },
+    "smooth": {
+      "terrain": {
+        "triangles": 17724,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 1125,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            69.66712188720703,
+            74.60792922973633
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 501,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 2.160072326673479e-06,
+            "expectedBankClearanceMeters": 0.2025
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 702,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "heightMode": "continuous source-region display mesh",
+          "displaySourceMeterRange": [
+            81.11284255981445,
+            86.24992370605469
+          ],
+          "sharedShoreline": {
+            "sharedNativeEdges": 394,
+            "cityBoundaryEdges": 0,
+            "maximumBankClearanceErrorMeters": 6.780624389635115e-06,
+            "expectedBankClearanceMeters": 0.2025
+          },
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        }
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/neighbors/southeast/plan.json": "4e607c6b51ac76a9a4be811621b8b333516b90cf58a66cb04e5cf15eeb8a62d3",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/neighbors/southeast/native/detail.npz": "626a6fe4394e6d974790f7578a4c2c2aaa371284d100a0baa9e973213e8fb3e9",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/neighbors/southeast/native/smooth.npz": "58d0c6431a84e3809b7117e549f8802943fba5a8449143ca5880f51825234c6e"
+  },
+  "toolSha256": "ea749629999a9f9fa68868525fd0e572496fce37220437bd73cae61a8b35fa99"
+}

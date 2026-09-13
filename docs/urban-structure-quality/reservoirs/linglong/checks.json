@@ -1,0 +1,25 @@
+{
+  "testsRun": 66,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "patterns": [
+    "test_reservoir*.py",
+    "test_water_control_structures.py",
+    "test_building_shorelines.py",
+    "test_building_road_envelopes.py"
+  ],
+  "parsedFiles": [
+    "blender/water_control_structures.py",
+    "blender/check_water_control_structures.py",
+    "scripts/check_water_control_exports.py",
+    "scripts/test_water_control_structures.py",
+    "scripts/prepare_reservoir_terrain.py",
+    "scripts/test_reservoir_terrain.py",
+    "blender/reservoir_terrain.py",
+    "blender/reservoir_runtime.py",
+    "blender/check_reservoir_runtime.py",
+    "blender/check_reservoir_terrain.py",
+    "blender/render_reservoir_terrain.py"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "planSha256": "4c64535733dcfb20453051d291c5cb2339e970e1fbe4981940d8aefc8e15f248",
+  "views": [
+    {
+      "name": "dam-profile",
+      "target": [
+        -42.35,
+        86.46,
+        1.3
+      ],
+      "orthoScale": 1.4,
+      "cameraOffsetFactors": [
+        0,
+        -1,
+        0.65
+      ]
+    },
+    {
+      "name": "dam-plan",
+      "target": [
+        -42.35,
+        86.46,
+        1.3
+      ],
+      "orthoScale": 1.3,
+      "cameraOffsetFactors": [
+        0,
+        -0.05,
+        1
+      ]
+    }
+  ]
+}

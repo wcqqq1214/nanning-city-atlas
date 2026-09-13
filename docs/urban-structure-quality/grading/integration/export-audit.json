@@ -1,0 +1,102 @@
+{
+  "status": "actual grading Draco checks passed; road access and full city acceptance pending",
+  "profiles": {
+    "detail": {
+      "geometry": {
+        "triangles": 2184,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.18168899349796344,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.0002,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nodes": [
+        "Terrain_grading_xinzhong_industrial_0_0"
+      ],
+      "overlapSquareMeters": 0.0,
+      "pads": [
+        {
+          "id": "xinzhong-industrial",
+          "support": {
+            "status": "covered",
+            "minimumSceneZ": 1.2166670560836224,
+            "maximumSceneZ": 1.2166670560837076,
+            "minimumWitnessSceneXYZ": [
+              73.65281677246094,
+              -131.25137329101562,
+              1.2166670560836224
+            ],
+            "maximumWitnessSceneXYZ": [
+              73.48883056640625,
+              -131.2872772216797,
+              1.2166670560837076
+            ],
+            "coveredFraction": 1.0,
+            "uncoveredAreaSquareMeters": 0.0,
+            "uncoveredBeyondToleranceSquareMeters": 0.0,
+            "coverageToleranceMeters": 0.005,
+            "intersectingFaces": 234
+          }
+        }
+      ],
+      "contextBytes": 10461948
+    },
+    "smooth": {
+      "geometry": {
+        "triangles": 2184,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.21490724869109445,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0.0002,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nodes": [
+        "Terrain_grading_xinzhong_industrial_0_0"
+      ],
+      "overlapSquareMeters": 0.0,
+      "pads": [
+        {
+          "id": "xinzhong-industrial",
+          "support": {
+            "status": "covered",
+            "minimumSceneZ": 1.216667056083665,
+            "maximumSceneZ": 1.2166670560837076,
+            "minimumWitnessSceneXYZ": [
+              73.29791259765625,
+              -131.1528778076172,
+              1.216667056083665
+            ],
+            "maximumWitnessSceneXYZ": [
+              73.65281677246094,
+              -131.25137329101562,
+              1.2166670560837076
+            ],
+            "coveredFraction": 1.0,
+            "uncoveredAreaSquareMeters": 0.0,
+            "uncoveredBeyondToleranceSquareMeters": 0.0,
+            "coverageToleranceMeters": 0.005,
+            "intersectingFaces": 234
+          }
+        }
+      ],
+      "contextBytes": 6746620
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/staging/data/block-grading-plan.json": "ac2b1462ac8b2d25d2bfbe1debdde9f300797084d5edbe5a511cfbc9a475ce46",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-native/detail.npz": "7f5f363e874d949c4a875942268fced27b9527c240954680c8385957c3c0299c",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-native/smooth.npz": "5d325078ba6e8bae6cf77eaff962dd6bcd82a425971ab76eeaa1cb95b701d788",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-context/detail.glb": "8976f7303fd2dce95b4d1554947cba1292169f3bd0ecb272d7d92e096c2c47d3",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-context/smooth.glb": "b452e8a2319e580756b173168be4de26d902fc67a021b1411ddb72eb747804a8"
+  },
+  "toolSha256": "b43bdb4f17cc802f67cdfd6e750fb80b4c78fe336e484ebb20040d031e172148",
+  "dependencies": {
+    "check_reduced_terrain_exports.py": "a2ef09ce1f46e4a0b56c002b2c9d3f935b2e9ea4c26b4c7d76b29065caaca699",
+    "prepare_building_support.py": "69eef92d0101e7575d5018f40eb10ec2dd3cc826e02541888a77507e1270a585",
+    "validate_cultural_landmarks.py": "d8b03fa0fbe4de1ce48e4bbde23982ac4fc836cd4580de80bf06a1078559d791"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "status": "isolated warehouse grading comparison; city roads and surrounding city omitted",
+  "inputs": {
+    "work/urban-structure/p5/grading/candidate.json": "cba08e3ecbae5f8cfbd2b893106e9b8cc02354146f9ae772b2eab484c054ba60",
+    "work/urban-structure/p5/rollout/candidate.json": "46ad67026af413add98354e07ecc1cb68278b0dedff38253412db167d8b04a15",
+    "work/urban-structure/p5/rollout/support-p4-terrain.json": "415696f761c2d5be0fbf71a8534ce0166fef4a5dff0bec1fe87adbe9bd2625e9"
+  },
+  "tools": {
+    "blender/render_block_grading.py": "8e01184b9b866baba259603273c9352e8128851aef798ac5a3f46ba44cbde44a",
+    "blender/block_grading.py": "c32ae80025486571df23ddfe35350cddd686bdb28a657c7a7bdc6803dcaa33b2",
+    "blender/block_massing.py": "ed5e9443592f926530dfcb6e2de26fff61477ea2cc5989ca16792a8704a641bb"
+  },
+  "views": [
+    {
+      "profile": "detail",
+      "view": "west",
+      "variant": "before",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-detail-west-before.png",
+      "sha256": "26f71c91e89c246b537a02c8b93f912173f1f0a6b4916654851471a0575127cd",
+      "triangles": 2142
+    },
+    {
+      "profile": "detail",
+      "view": "west",
+      "variant": "graded",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-detail-west-graded.png",
+      "sha256": "436dcb6dd5f56b6b568ed5993e18b98e07ace03d54cdb32364682b900576e5e6",
+      "triangles": 2142
+    },
+    {
+      "profile": "detail",
+      "view": "east",
+      "variant": "before",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-detail-east-before.png",
+      "sha256": "17d16c0a72fe4720f757cc32ad21e26ee09c071177dcce0c1f3a9ae52175777f",
+      "triangles": 2142
+    },
+    {
+      "profile": "detail",
+      "view": "east",
+      "variant": "graded",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-detail-east-graded.png",
+      "sha256": "0806d67613b287e58ae14ae4b9e2269eb638adff58903e65fb6e6f0ad1f000d2",
+      "triangles": 2142
+    },
+    {
+      "profile": "smooth",
+      "view": "west",
+      "variant": "before",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-smooth-west-before.png",
+      "sha256": "ea982abb756af307752c1bbb3dd97215d59fc5659b2c3514d094a6a9589b71a7",
+      "triangles": 2142
+    },
+    {
+      "profile": "smooth",
+      "view": "west",
+      "variant": "graded",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-smooth-west-graded.png",
+      "sha256": "d538f4d05d6077d6c50ef532d3ea3ad79100894ea2f9ab03adb8341f6f7537da",
+      "triangles": 2142
+    },
+    {
+      "profile": "smooth",
+      "view": "east",
+      "variant": "before",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-smooth-east-before.png",
+      "sha256": "6f200991fbb165563414bdcb0505953b32081a6cc917cdbb5458f8a2b6d651c2",
+      "triangles": 2142
+    },
+    {
+      "profile": "smooth",
+      "view": "east",
+      "variant": "graded",
+      "path": "work/urban-structure/p5/grading/previews/xinzhong-industrial-smooth-east-graded.png",
+      "sha256": "ebe15f9b45e1cb08a8eaa447dfbea7a12ea24d872f0dbb37687de9e1d5ebfd09",
+      "triangles": 2142
+    }
+  ],
+  "retainingFaces": {
+    "detail": 78,
+    "smooth": 73
+  }
+}

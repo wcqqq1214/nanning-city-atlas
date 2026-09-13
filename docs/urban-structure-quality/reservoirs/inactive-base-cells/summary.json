@@ -1,0 +1,1084 @@
+{
+  "status": "inactive base-cell restoration verified in native, decoded and visual terrain contexts; complete city pending",
+  "scope": "production terrain and native major roads, excluding complete ordinary buildings, ground streets, canopy and structural emitter",
+  "restoredCells": 3542,
+  "removedDenseTriangles": 113650,
+  "profiles": {
+    "detail": {
+      "before": {
+        "bytes": 17922364,
+        "totalTriangles": 1403142,
+        "terrainTriangles": 810048,
+        "sha256": "2cfc0e1b391fc1d25f9cebadd0542eeb4eaf92e20582690ab5830c644566dcd9"
+      },
+      "after": {
+        "bytes": 13946872,
+        "totalTriangles": 1317828,
+        "terrainTriangles": 724734,
+        "sha256": "a6dca30c4e3f564ca92d17e1310bd48a278795596973727590c85006c585327a"
+      },
+      "savedBytes": 3975492,
+      "removedTerrainTriangles": 85314
+    },
+    "smooth": {
+      "before": {
+        "bytes": 14433156,
+        "totalTriangles": 1014282,
+        "terrainTriangles": 421188,
+        "sha256": "3f2454efac3b9f12366fcf57290ec979243b0b5c8caaf4acea0dea14a81ee1db"
+      },
+      "after": {
+        "bytes": 10328428,
+        "totalTriangles": 907716,
+        "terrainTriangles": 314622,
+        "sha256": "ada8be53d3b6719f25e66527cdb7ba27dfbc816723f9650d175afb8a65c1f3cd"
+      },
+      "savedBytes": 4104728,
+      "removedTerrainTriangles": 106566
+    }
+  },
+  "groups": [
+    {
+      "id": "southeast-connected-water-v1",
+      "planSha256": "6e753277146f64df4994061d3cf52d4aa841dc5ae8d8874e9151cc50944aa7f6",
+      "cells": 1721,
+      "denseTriangles": 55378,
+      "detailBaseTriangles": 13768,
+      "smoothBaseTriangles": 3442,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 27324,
+          "removedFaces": 55378,
+          "restoredBaseVertexSamples": 166134,
+          "maximumRemovedVertexBaseErrorMeters": 1.1801229815588954e-05,
+          "maximumRemovedCentroidChangeMeters": 3.295971996086977,
+          "maximumRemovedCentroidChangeLocation": [
+            54.766003926595054,
+            -74.57320149739583,
+            1.105124553044637,
+            1.1380842730055067
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 27324,
+          "removedFaces": 55378,
+          "restoredBaseVertexSamples": 166134,
+          "maximumRemovedVertexBaseErrorMeters": 1.1409452849164836e-05,
+          "maximumRemovedCentroidChangeMeters": 5.578126791071392,
+          "maximumRemovedCentroidChangeLocation": [
+            54.16637420654297,
+            -74.57320149739583,
+            1.291832168896993,
+            1.3476134368077068
+          ]
+        }
+      }
+    },
+    {
+      "id": "longmen-reservoir-closure-v1",
+      "planSha256": "952277e0f0f39a9cfac73c51d0e6bcb382c00c2edc2cfbd2c25649956bde062d",
+      "cells": 272,
+      "denseTriangles": 8704,
+      "detailBaseTriangles": 2176,
+      "smoothBaseTriangles": 544,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 8897,
+          "removedFaces": 8704,
+          "restoredBaseVertexSamples": 26112,
+          "maximumRemovedVertexBaseErrorMeters": 1.1916504316644705e-05,
+          "maximumRemovedCentroidChangeMeters": 2.7546465018206234,
+          "maximumRemovedCentroidChangeLocation": [
+            -66.95843505859375,
+            104.16257222493489,
+            1.9089958270390828,
+            1.936542292057289
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 8897,
+          "removedFaces": 8704,
+          "restoredBaseVertexSamples": 26112,
+          "maximumRemovedVertexBaseErrorMeters": 1.1919990594577712e-05,
+          "maximumRemovedCentroidChangeMeters": 3.148625589298204,
+          "maximumRemovedCentroidChangeLocation": [
+            -62.2613525390625,
+            104.26253763834636,
+            2.571626901626587,
+            2.603113157519569
+          ]
+        }
+      }
+    },
+    {
+      "id": "west-pools-reservoir-closure-v1",
+      "planSha256": "dd631d2dfb2de535dd13cb7c95dee0efd5bcda0054dce3903b34425c39e46163",
+      "cells": 78,
+      "denseTriangles": 2496,
+      "detailBaseTriangles": 624,
+      "smoothBaseTriangles": 156,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 5014,
+          "removedFaces": 2496,
+          "restoredBaseVertexSamples": 7488,
+          "maximumRemovedVertexBaseErrorMeters": 5.954660431406467e-06,
+          "maximumRemovedCentroidChangeMeters": 1.0880770176485033,
+          "maximumRemovedCentroidChangeLocation": [
+            -166.5965830485026,
+            -0.09996414184570312,
+            0.962094247341156,
+            0.951213477164671
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 5014,
+          "removedFaces": 2496,
+          "restoredBaseVertexSamples": 7488,
+          "maximumRemovedVertexBaseErrorMeters": 5.8802315905381874e-06,
+          "maximumRemovedCentroidChangeMeters": 1.302535299575358,
+          "maximumRemovedCentroidChangeLocation": [
+            -162.99881490071616,
+            -0.09996414184570312,
+            1.0465155045191448,
+            1.0595408575148983
+          ]
+        }
+      }
+    },
+    {
+      "id": "mading-reservoir-terrain-v1",
+      "planSha256": "29f9ab3e68e1005ab5a57a419ecb140104ad076c83781dedeb96c025e745c348",
+      "cells": 144,
+      "denseTriangles": 4608,
+      "detailBaseTriangles": 1152,
+      "smoothBaseTriangles": 288,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 6465,
+          "removedFaces": 4608,
+          "restoredBaseVertexSamples": 13824,
+          "maximumRemovedVertexBaseErrorMeters": 1.1920757536643123e-05,
+          "maximumRemovedCentroidChangeMeters": 2.9396907509818604,
+          "maximumRemovedCentroidChangeLocation": [
+            -95.44075266520183,
+            122.45599873860677,
+            2.5968844890594482,
+            2.5674875815496296
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 6465,
+          "removedFaces": 4608,
+          "restoredBaseVertexSamples": 13824,
+          "maximumRemovedVertexBaseErrorMeters": 1.1919331743825978e-05,
+          "maximumRemovedCentroidChangeMeters": 4.562801207091494,
+          "maximumRemovedCentroidChangeLocation": [
+            -104.5351079305013,
+            122.55596415201823,
+            1.940251072247823,
+            1.894623060176908
+          ]
+        }
+      }
+    },
+    {
+      "id": "yinling-reservoir-terrain-v1",
+      "planSha256": "da68605e21120c61250165e10063a8b299c012995b7bf49803a26622cb9e3096",
+      "cells": 117,
+      "denseTriangles": 3744,
+      "detailBaseTriangles": 936,
+      "smoothBaseTriangles": 234,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 7129,
+          "removedFaces": 3744,
+          "restoredBaseVertexSamples": 11232,
+          "maximumRemovedVertexBaseErrorMeters": 1.1915166586717874e-05,
+          "maximumRemovedCentroidChangeMeters": 2.87278509818516,
+          "maximumRemovedCentroidChangeLocation": [
+            -156.30297342936197,
+            63.377227783203125,
+            1.4894404013951619,
+            1.4607125504133103
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 7129,
+          "removedFaces": 3744,
+          "restoredBaseVertexSamples": 11232,
+          "maximumRemovedVertexBaseErrorMeters": 1.1799110311017103e-05,
+          "maximumRemovedCentroidChangeMeters": 3.6982526329723653,
+          "maximumRemovedCentroidChangeLocation": [
+            -157.0025380452474,
+            63.47719192504883,
+            1.4311399062474568,
+            1.3941573799177331
+          ]
+        }
+      }
+    },
+    {
+      "id": "zhicun-reservoir-terrain-v1",
+      "planSha256": "55a1a329d4250584e175e9da8a2e8c11e10328b033f5f32e6f99e703f479ff72",
+      "cells": 680,
+      "denseTriangles": 21760,
+      "detailBaseTriangles": 5440,
+      "smoothBaseTriangles": 1360,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 8517,
+          "removedFaces": 21760,
+          "restoredBaseVertexSamples": 65280,
+          "maximumRemovedVertexBaseErrorMeters": 1.1918131281873912e-05,
+          "maximumRemovedCentroidChangeMeters": 2.881839561361166,
+          "maximumRemovedCentroidChangeLocation": [
+            10.293609619140625,
+            130.6530558268229,
+            1.2623663743336995,
+            1.2335479787200878
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 8517,
+          "removedFaces": 21760,
+          "restoredBaseVertexSamples": 65280,
+          "maximumRemovedVertexBaseErrorMeters": 1.1920496412187731e-05,
+          "maximumRemovedCentroidChangeMeters": 4.316245200627145,
+          "maximumRemovedCentroidChangeLocation": [
+            -34.97828674316406,
+            104.56243387858073,
+            1.9883429606755574,
+            2.031505412681829
+          ]
+        }
+      }
+    },
+    {
+      "id": "tianbao-reservoir-terrain-v1",
+      "planSha256": "50e83b20e65205b68b9d661592c10de2217dd36b88701fdd974899bcd05a00dd",
+      "cells": 516,
+      "denseTriangles": 16512,
+      "detailBaseTriangles": 4128,
+      "smoothBaseTriangles": 1032,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 12265,
+          "removedFaces": 16512,
+          "restoredBaseVertexSamples": 49536,
+          "maximumRemovedVertexBaseErrorMeters": 1.1912944053449337e-05,
+          "maximumRemovedCentroidChangeMeters": 3.6328192346358756,
+          "maximumRemovedCentroidChangeLocation": [
+            -76.05278778076172,
+            83.86986287434895,
+            1.8308782974878948,
+            1.8672064898342535
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 12265,
+          "removedFaces": 16512,
+          "restoredBaseVertexSamples": 49536,
+          "maximumRemovedVertexBaseErrorMeters": 1.191618350659951e-05,
+          "maximumRemovedCentroidChangeMeters": 4.072722294525222,
+          "maximumRemovedCentroidChangeLocation": [
+            -76.55247751871745,
+            83.76990000406902,
+            1.7727762858072917,
+            1.813503508752544
+          ]
+        }
+      }
+    },
+    {
+      "id": "linglong-lake-terrain-v1",
+      "planSha256": "e8ddb7ab85e57c339659b68818da05e1ea095a551185241981294ebeb1dfad83",
+      "cells": 14,
+      "denseTriangles": 448,
+      "detailBaseTriangles": 112,
+      "smoothBaseTriangles": 28,
+      "selection": "whole native cells; zero weights; all source water protected",
+      "profiles": {
+        "detail": {
+          "retainedFacesExact": 3971,
+          "removedFaces": 448,
+          "restoredBaseVertexSamples": 1344,
+          "maximumRemovedVertexBaseErrorMeters": 2.91579638211914e-06,
+          "maximumRemovedCentroidChangeMeters": 0.8088594441053143,
+          "maximumRemovedCentroidChangeLocation": [
+            178.5891367594401,
+            -109.06081136067708,
+            0.49349363644917804,
+            0.4854050420081249
+          ]
+        },
+        "smooth": {
+          "retainedFacesExact": 3971,
+          "removedFaces": 448,
+          "restoredBaseVertexSamples": 1344,
+          "maximumRemovedVertexBaseErrorMeters": 2.951788014016188e-06,
+          "maximumRemovedCentroidChangeMeters": 1.6806040834300595,
+          "maximumRemovedCentroidChangeLocation": [
+            178.5891367594401,
+            -109.06081136067708,
+            0.49060218532880145,
+            0.47379614449450086
+          ]
+        }
+      }
+    }
+  ],
+  "tests": 83,
+  "formalAssetsUnchanged": true,
+  "visualImages": 64,
+  "visualPairs": 32,
+  "runtimeAudit": {
+    "detail": {
+      "compressedTerrain": {
+        "triangles": 101558,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.22517507666049458,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 79582,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 2017,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 1055,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "139": {
+          "triangles": 1345,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "211": {
+          "triangles": 4140,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "140": {
+          "triangles": 707,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "212": {
+          "triangles": 2340,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 8
+        },
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 3.7384033202414457e-06,
+          "islands": 1
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0980834847250662e-07,
+          "islands": 8
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.7356872605844842e-06,
+          "islands": 0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.5068053915712198e-06,
+          "islands": 0
+        },
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 7.438659688219218e-07,
+          "islands": 0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "487": {
+          "triangles": 352,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.749298088135845e-06,
+          "islands": 1
+        },
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.5558471561382134e-06,
+          "islands": 4
+        },
+        "385": {
+          "triangles": 325,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        },
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    },
+    "smooth": {
+      "compressedTerrain": {
+        "triangles": 101558,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 79582,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 2017,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 1055,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "139": {
+          "triangles": 1345,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "211": {
+          "triangles": 4140,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "140": {
+          "triangles": 707,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "212": {
+          "triangles": 2340,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 8
+        },
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 3.7384033202414457e-06,
+          "islands": 1
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0980834847250662e-07,
+          "islands": 8
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.7356872605844842e-06,
+          "islands": 0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.5068053915712198e-06,
+          "islands": 0
+        },
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 7.438659688219218e-07,
+          "islands": 0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "487": {
+          "triangles": 352,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.749298088135845e-06,
+          "islands": 1
+        },
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.5558471561382134e-06,
+          "islands": 4
+        },
+        "385": {
+          "triangles": 325,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        },
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    }
+  },
+  "nativeAudit": {
+    "detail": {
+      "terrainTriangles": 101558,
+      "landTriangles": 79582,
+      "bankTriangles": 21976,
+      "patches": {
+        "southeast-connected-water-v1": {
+          "landTriangles": 27324,
+          "bankTriangles": 8056,
+          "samplerSamples": 109296,
+          "maximumSamplerErrorMeters": 6.976131894376181e-08,
+          "boundarySamples": 4569,
+          "maximumBoundaryErrorMeters": 0.0002964490498413852,
+          "nodes": [
+            "Terrain_reservoir_southeast_connected_water_v1_0_0"
+          ]
+        },
+        "longmen-reservoir-closure-v1": {
+          "landTriangles": 8897,
+          "bankTriangles": 2758,
+          "samplerSamples": 35588,
+          "maximumSamplerErrorMeters": 7.165157356325835e-10,
+          "boundarySamples": 1488,
+          "maximumBoundaryErrorMeters": 0.0006903543407821289,
+          "nodes": [
+            "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+          ]
+        },
+        "west-pools-reservoir-closure-v1": {
+          "landTriangles": 5014,
+          "bankTriangles": 1004,
+          "samplerSamples": 20056,
+          "maximumSamplerErrorMeters": 4.882760862301438e-10,
+          "boundarySamples": 672,
+          "maximumBoundaryErrorMeters": 0.00016030410812106766,
+          "nodes": [
+            "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+          ]
+        },
+        "mading-reservoir-terrain-v1": {
+          "landTriangles": 6465,
+          "bankTriangles": 1770,
+          "samplerSamples": 25860,
+          "maximumSamplerErrorMeters": 1.4455103780619538e-11,
+          "boundarySamples": 936,
+          "maximumBoundaryErrorMeters": 0.0007879785899778113,
+          "nodes": [
+            "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "yinling-reservoir-terrain-v1": {
+          "landTriangles": 7129,
+          "bankTriangles": 1486,
+          "samplerSamples": 28516,
+          "maximumSamplerErrorMeters": 1.0862422072932532e-10,
+          "boundarySamples": 1032,
+          "maximumBoundaryErrorMeters": 0.0002266776338855081,
+          "nodes": [
+            "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "zhicun-reservoir-terrain-v1": {
+          "landTriangles": 8517,
+          "bankTriangles": 2168,
+          "samplerSamples": 34068,
+          "maximumSamplerErrorMeters": 5.2668980288217426e-11,
+          "boundarySamples": 1395,
+          "maximumBoundaryErrorMeters": 0.00012690445041485532,
+          "nodes": [
+            "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "tianbao-reservoir-terrain-v1": {
+          "landTriangles": 12265,
+          "bankTriangles": 2744,
+          "samplerSamples": 49060,
+          "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+          "boundarySamples": 1656,
+          "maximumBoundaryErrorMeters": 0.00030405561739499376,
+          "nodes": [
+            "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "linglong-lake-terrain-v1": {
+          "landTriangles": 3971,
+          "bankTriangles": 1990,
+          "samplerSamples": 15884,
+          "maximumSamplerErrorMeters": 2.0369095299344053e-09,
+          "boundarySamples": 315,
+          "maximumBoundaryErrorMeters": 8.016483059036794e-05,
+          "nodes": [
+            "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+          ]
+        }
+      },
+      "cityWaterTriangles": 22192,
+      "samplerSamples": 318328,
+      "maximumSamplerErrorMeters": 6.976131894376181e-08,
+      "boundarySamples": 12063,
+      "maximumBoundaryErrorMeters": 0.0007879785899778113,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "0c6fa779caee6422e0d31b4ce7e262d4499189ed7e8b9b58680cbd60114422ec",
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0",
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_southeast_connected_water_v1_0_0",
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    "smooth": {
+      "terrainTriangles": 101558,
+      "landTriangles": 79582,
+      "bankTriangles": 21976,
+      "patches": {
+        "southeast-connected-water-v1": {
+          "landTriangles": 27324,
+          "bankTriangles": 8056,
+          "samplerSamples": 109296,
+          "maximumSamplerErrorMeters": 2.913300156670573e-08,
+          "boundarySamples": 4569,
+          "maximumBoundaryErrorMeters": 0.00011985000238912136,
+          "nodes": [
+            "Terrain_reservoir_southeast_connected_water_v1_0_0"
+          ]
+        },
+        "longmen-reservoir-closure-v1": {
+          "landTriangles": 8897,
+          "bankTriangles": 2758,
+          "samplerSamples": 35588,
+          "maximumSamplerErrorMeters": 7.165157356325835e-10,
+          "boundarySamples": 1488,
+          "maximumBoundaryErrorMeters": 0.0001150052565623838,
+          "nodes": [
+            "Terrain_reservoir_longmen_reservoir_closure_v1_0_0"
+          ]
+        },
+        "west-pools-reservoir-closure-v1": {
+          "landTriangles": 5014,
+          "bankTriangles": 1004,
+          "samplerSamples": 20056,
+          "maximumSamplerErrorMeters": 4.882760862301438e-10,
+          "boundarySamples": 672,
+          "maximumBoundaryErrorMeters": 5.723213181152431e-05,
+          "nodes": [
+            "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0"
+          ]
+        },
+        "mading-reservoir-terrain-v1": {
+          "landTriangles": 6465,
+          "bankTriangles": 1770,
+          "samplerSamples": 25860,
+          "maximumSamplerErrorMeters": 1.4455103780619538e-11,
+          "boundarySamples": 936,
+          "maximumBoundaryErrorMeters": 0.00038699038802381125,
+          "nodes": [
+            "Terrain_reservoir_mading_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "yinling-reservoir-terrain-v1": {
+          "landTriangles": 7129,
+          "bankTriangles": 1486,
+          "samplerSamples": 28516,
+          "maximumSamplerErrorMeters": 1.0862422072932532e-10,
+          "boundarySamples": 1032,
+          "maximumBoundaryErrorMeters": 0.00016404518916601774,
+          "nodes": [
+            "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "zhicun-reservoir-terrain-v1": {
+          "landTriangles": 8517,
+          "bankTriangles": 2168,
+          "samplerSamples": 34068,
+          "maximumSamplerErrorMeters": 5.2668980288217426e-11,
+          "boundarySamples": 1395,
+          "maximumBoundaryErrorMeters": 0.00017117269854871608,
+          "nodes": [
+            "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "tianbao-reservoir-terrain-v1": {
+          "landTriangles": 12265,
+          "bankTriangles": 2744,
+          "samplerSamples": 49060,
+          "maximumSamplerErrorMeters": 2.3615553956801705e-10,
+          "boundarySamples": 1656,
+          "maximumBoundaryErrorMeters": 0.00012197667269564505,
+          "nodes": [
+            "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0"
+          ]
+        },
+        "linglong-lake-terrain-v1": {
+          "landTriangles": 3971,
+          "bankTriangles": 1990,
+          "samplerSamples": 15884,
+          "maximumSamplerErrorMeters": 6.93894941505846e-10,
+          "boundarySamples": 315,
+          "maximumBoundaryErrorMeters": 4.002401656211241e-05,
+          "nodes": [
+            "Terrain_reservoir_linglong_lake_terrain_v1_0_0"
+          ]
+        }
+      },
+      "cityWaterTriangles": 22192,
+      "samplerSamples": 318328,
+      "maximumSamplerErrorMeters": 2.913300156670573e-08,
+      "boundarySamples": 12063,
+      "maximumBoundaryErrorMeters": 0.00038699038802381125,
+      "materialNames": [
+        "Porcelain earth",
+        "Green hills",
+        "Hill facets light",
+        "Riverbank",
+        "Riverside promenade stone",
+        "Riverside retaining stone",
+        "Shared site paving",
+        "Site retaining earth",
+        "Reservoir terrain",
+        "Estimated dam embankment",
+        "Estimated dam crest"
+      ],
+      "sha256": "0978f0ed3b09c8f18deb9e1be6b3c457a6eab35838e50015add346ce3819acbb",
+      "nodes": [
+        "Terrain_reservoir_linglong_lake_terrain_v1_0_0",
+        "Terrain_reservoir_longmen_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_mading_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_southeast_connected_water_v1_0_0",
+        "Terrain_reservoir_tianbao_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_west_pools_reservoir_closure_v1_0_0",
+        "Terrain_reservoir_yinling_reservoir_terrain_v1_0_0",
+        "Terrain_reservoir_zhicun_reservoir_terrain_v1_0_0"
+      ],
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    }
+  }
+}

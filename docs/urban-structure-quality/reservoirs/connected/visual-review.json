@@ -1,0 +1,49 @@
+{
+  "scope": "42 fixed independent Workbench candidate views, inspected in seven six-image contact sheets; three channel/island views also inspected at full resolution",
+  "viewsManifestSha256": "5e0776f5bd3dac18577fe7e8e441d99f5b508b20ccb63eab2cc7fb242cd034a0",
+  "observations": [
+    "Both direct water joins are visibly continuous, with no transverse bank wall or open gap in these views.",
+    "All eight islands appear as land openings in water 212; tiny islands remain simple low polygons.",
+    "Steep, faceted shore and island transitions remain visible, especially near water 212 and the dam. Source-region display levels and slopes still need physical/visual calibration.",
+    "White neighboring-water holes are omitted unselected water meshes in this independent export, not a claim of missing water in the complete city."
+  ],
+  "limitations": [
+    "No city roads, buildings, vegetation, production materials or runtime water shader in this render.",
+    "Workbench view checks do not prove engineering water levels or hydraulic accuracy; DSM remains 30m surface data."
+  ],
+  "fullResolutionViews": [
+    "detail-channel-211-212",
+    "detail-water-212-island-0",
+    "smooth-channel-139-140"
+  ],
+  "contactSheets": [
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-00.png",
+      "sha256": "db722745e0b06f397ca016ed79917ce85021ee45a56586cda9ad5c226a1f6825"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-01.png",
+      "sha256": "65b7ae32ad6e42d4065d4fa22dbf86cd025265a3cde70433442ed11825afa53a"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-02.png",
+      "sha256": "8aa2c33d11ec48704b687b836e8090b0151fbbb1b74e3cec3634bbeb04449a5d"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-03.png",
+      "sha256": "48a05ac69efefca3a7ab38fa6e6fb323309af62e2011d817c56999d5f449a635"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-04.png",
+      "sha256": "445f704e8238054cc2f9fb970af7afd32dde971b3ed47a439894dc6886c14a96"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-05.png",
+      "sha256": "3d9290c16d294dd2a20a0499836838968f3dd5f28052b68c6d89e712d2fbeef3"
+    },
+    {
+      "path": "work/urban-structure/p5/reservoirs/connected/southeast/views/contact-06.png",
+      "sha256": "84c99ab943bd376c6efc321c7ff7a4019ce42957c9d144c44a7264acb74873c0"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "command": "work/venv/bin/python scripts/test_reservoir_terrain.py",
+      "exitCode": 0,
+      "tests": 11
+    },
+    {
+      "command": "work/venv/bin/python scripts/test_building_road_envelopes.py",
+      "exitCode": 0,
+      "tests": 7
+    }
+  ],
+  "limits": "Targeted tests and production native/compressed terrain context only; complete city validation remains pending."
+}

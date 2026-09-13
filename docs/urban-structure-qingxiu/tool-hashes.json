@@ -1,0 +1,20 @@
+{
+  "lib/city/inspection.ts": "fa0ccbc143f594b9f43cdb23c6d9c9adb6b76592df49fa58c63e7e1f4c9b55e3",
+  "scripts/prepare_forest_canopy.py": "c3c5d05fd7aef7e77a3bae344501ca5b77fc50c51f96118a21b482706fcbb776",
+  "scripts/validate_cultural_landmarks.py": "d8b03fa0fbe4de1ce48e4bbde23982ac4fc836cd4580de80bf06a1078559d791",
+  "scripts/validate_assets.py": "5aede066711fe6cdedbff4eb5890b2589a3b21f7921fa28db4ac55b40ff2d5c0",
+  "scripts/prepare_qingxiu_terrain.py": "9358eab4abf645dddcc012a6d8995113d129184f4c418935ada9df8637dfa9ea",
+  "scripts/inspect_qingxiu_terrain.py": "0a823716915b96e3e6ed20aac9c1b0f6d1c28cd18881eab26ed3b51c52deff5a",
+  "scripts/prepare_mountain_canopy.py": "20f91777952229f9f205d20ed0d9080eae75f814f1672b26738ce59bdfcb3274",
+  "scripts/test_qingxiu_terrain.py": "86a67b5bedc8af1140d04320fe261dee3bd845cf6c81998a2b52f98329eb9af7",
+  "scripts/test_mountain_canopy.py": "8bb93235d9d93de57b2dec4cf6112c8cef369144c8d53e83c72a0e69fb937b73",
+  "scripts/check_qingxiu_exports.py": "6f1953d73bc4fa80399a50c6526eaa45af6d17192fab34d73b0dac4bbacc48b0",
+  "scripts/check-inspection.mjs": "c107300fe77926a76c368966496c8d83477e5dd13688fafc58b3aefca9684471",
+  "scripts/check-qingxiu-interaction.mjs": "c866eee1e99ac04fe67a142e43c201715d362fc1f9c9f3faa1b5284befd75322",
+  "scripts/check-city-motion.mjs": "c012f706daa708a1af02067eba3f85c35b1ac0d811d0bc4df358d92dca64bbaf",
+  "blender/mountain_terrain.py": "fd7eda792beb62739fa20d74bf12db13b9e3e8ddcd5f1be641d9e245bea69fe8",
+  "blender/cultural_landmarks.py": "624d7ed7f947f60613e9073f1f8aa0fe8d7e6145ea0786b12ff0e3182fa8f440",
+  "blender/forest_canopy.py": "bcf2648f00c5ac45b72b8697a682b1906c3f2d71419d37525f2100420c4a4584",
+  "blender/gltf_export.py": "3d7bb587631a02301cef49dde83d8de2894d7fd06f3e1d363a72d52de9574e8c",
+  "blender/build_city.py": "a32ecfc7139a3690a57b54f0553efea389e2312dfdee75eda4f96aaafac11ce6"
+}

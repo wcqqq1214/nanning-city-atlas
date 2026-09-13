@@ -1,0 +1,42 @@
+{
+  "status": "independent sluice on two candidate terrain profiles; city activation pending",
+  "triangles": 672,
+  "parts": 56,
+  "materialNames": [
+    "Qingxiang warm concrete",
+    "Qingxiang lamp columns"
+  ],
+  "shorelineSupportSnapCount": 8,
+  "maximumShorelineSupportSnapMeters": 0.0004667148554363116,
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/data/water-control-sources/linglong.json": "68c2d06289410fa2edc5316cde778850436bb078822c2fe771a04abcaa198e6e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/linglong/plan.json": "3cdbc5f8f40e26db77055438578d75f083f9771fb0b8e77d603226e540aade07",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/connected/candidate.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/blender/build_city.py": "e7af0f7d2759dc1781f8e42394bdc1df43f08f1b948e22fdb206c8d04c39696e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/public/data/terrain.json": "60e0c5719bbd7c7c81b7259e005e2e8f52696abc9ccf9578dca9f8f89722995a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/blender/forest_canopy.py": "0426e29adac99de347173716eb9e7fd6c0bc6115b12279f198ce3a361a8926a7",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/check_water_control_structures.py": "228c2e96f61ca7164d7781b21b9d73eefdd6256fb2637e26d07603fde647eaee",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/water_control_structures.py": "be0146a8008f0bf80ac394d520fb401d2ba5d4f6be8aad0194fbef54fa1665ca",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reservoir_terrain.py": "cd42d0e3a2f1592ef5c27ed6ccb09c01fb14a292da2c49f8fcd73ae3907f6ced",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/reduced_surface.py": "243e42d99c255a7e2c8717663c7708c2d896d494ed41a2c981cf9c6e29d6cd96",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/blender/gltf_export.py": "aa93ebbde65eb657bcf7d6d0d12a2e5a95945059e1d1468af6c828445a01477d"
+  },
+  "files": {
+    "structure.glb": {
+      "sha256": "a716e692ae94d403f6036fd1ee42816ba7e527de88504ea672dcec108da367b6",
+      "bytes": 19236
+    },
+    "smooth.blend": {
+      "sha256": "d5f45a2fcfd3eaa392bb7f6a0e2026e7eb87be41915c299864078220c6799243",
+      "bytes": 301652
+    },
+    "structure.npz": {
+      "sha256": "e15c184370c4cc0df9fd58331439bb167c24924ffd0fa404ae781500c6849881",
+      "bytes": 7762
+    },
+    "detail.blend": {
+      "sha256": "170fecafe47a2b9ce330d411ab6e58bdd1da1e930e63290e59ef36b801c5fbfd",
+      "bytes": 300656
+    }
+  }
+}

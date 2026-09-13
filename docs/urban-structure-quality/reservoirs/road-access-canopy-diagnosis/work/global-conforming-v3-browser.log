@@ -1,0 +1,16 @@
+before detail nanhu-canopy-north
+before detail nanhu-canopy-east
+before detail largest-rise-join
+before detail longmen-dam
+before smooth nanhu-canopy-north
+before smooth nanhu-canopy-east
+before smooth largest-rise-join
+before smooth longmen-dam
+after detail nanhu-canopy-north
+after detail nanhu-canopy-east
+after detail largest-rise-join
+after detail longmen-dam
+after smooth nanhu-canopy-north
+after smooth nanhu-canopy-east
+after smooth largest-rise-join
+after smooth longmen-dam

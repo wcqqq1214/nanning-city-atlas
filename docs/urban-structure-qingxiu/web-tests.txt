@@ -1,0 +1,20 @@
+✔ all published areas drape onto sloped terrain without double-applying height scale (85.893667ms)
+✔ selection switches areas, reuses geometry, and clears for landmarks or overview (8.750542ms)
+✔ a new city release bypasses cached models and geographic data (1.26875ms)
+✔ root hosting works and decoder directories remain valid URL prefixes (0.20925ms)
+✔ saved inspection links restore every camera and display setting without precision loss (4.008625ms)
+✔ malformed or unsafe camera values fall back to a known usable viewpoint (0.474375ms)
+✔ clay and flat colors preserve geometry, restore original materials and release only inspection materials (2.070167ms)
+✔ a stationary primary pointer selects a landmark, including small finger jitter (1.068125ms)
+✔ pinching cannot select a landmark when either finger is released first (0.195625ms)
+✔ a pan that returns to its origin is still a drag (0.11175ms)
+✔ DOM event fields inherited from a prototype are retained (0.102ms)
+✔ cancelled and secondary pointers do not select (0.120125ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 303.078375

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+  "neighbors": [
+    {
+      "geographyWaterIndex": 140,
+      "boundaryVertexCount": 44,
+      "maximumRestoreWeight": 1.0,
+      "sharedSelectedBoundaryMeters": 92.35458840793946,
+      "requiresInterfaceResolution": true
+    },
+    {
+      "geographyWaterIndex": 143,
+      "boundaryVertexCount": 266,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 212,
+      "boundaryVertexCount": 361,
+      "maximumRestoreWeight": 1.0,
+      "sharedSelectedBoundaryMeters": 74.40920641963538,
+      "requiresInterfaceResolution": true
+    },
+    {
+      "geographyWaterIndex": 228,
+      "boundaryVertexCount": 16,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 229,
+      "boundaryVertexCount": 113,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 253,
+      "boundaryVertexCount": 114,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 255,
+      "boundaryVertexCount": 16,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 263,
+      "boundaryVertexCount": 18,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    }
+  ],
+  "unresolvedWaterIndices": [
+    140,
+    212
+  ]
+}

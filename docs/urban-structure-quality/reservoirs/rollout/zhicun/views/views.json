@@ -1,0 +1,82 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "a5cbc11f8f904ee2693ceb66a4d696150f7a6144afe1c0b054e1eb98a7abeab2",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/zhicun/views/detail-overview.png",
+      "imageSha256": "16240fb82fa4792401501b335661411a95079eb1acf9c867a43a33b1ae1125f5",
+      "cameraLocation": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894889235496521
+      ],
+      "orthoScale": 57.92404240297515,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "839626497",
+      "blendSha256": "a5cbc11f8f904ee2693ceb66a4d696150f7a6144afe1c0b054e1eb98a7abeab2",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/zhicun/views/detail-839626497.png",
+      "imageSha256": "c867652021eea86c06fbda5f91177b3a0b5b9ec1f723537d83dae4fd5b26ab76",
+      "cameraLocation": [
+        -9.5404691696167,
+        106.4260025024414,
+        3.4374208450317383
+      ],
+      "target": [
+        -11.307666778564453,
+        108.63500213623047,
+        1.3388742208480835
+      ],
+      "orthoScale": 2.20899658203125,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "92c96cbb971bf90d75c8e39f9624c967dce86400dddd7fc12d0ec6afad6c8027",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/zhicun/views/smooth-overview.png",
+      "imageSha256": "8d6244a78b60c04da2cbdbd4ceb500985441ad7b3fa39daa1c8242f58be0458d",
+      "cameraLocation": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894890308380127
+      ],
+      "orthoScale": 57.92404240297515,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "839626497",
+      "blendSha256": "92c96cbb971bf90d75c8e39f9624c967dce86400dddd7fc12d0ec6afad6c8027",
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/zhicun/views/smooth-839626497.png",
+      "imageSha256": "5b4153f39be73c47d2135698f382f6b4485e4fde7fd7b063afeb454426e2c04d",
+      "cameraLocation": [
+        -9.5404691696167,
+        106.4260025024414,
+        3.4374208450317383
+      ],
+      "target": [
+        -11.307666778564453,
+        108.63500213623047,
+        1.3388742208480835
+      ],
+      "orthoScale": 2.20899658203125,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    }
+  ]
+}

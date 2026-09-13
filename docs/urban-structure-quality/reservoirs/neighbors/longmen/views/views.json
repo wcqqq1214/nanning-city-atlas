@@ -1,0 +1,158 @@
+{
+  "status": "independent exported candidate; roads/canopy/city omitted",
+  "workbenchShadows": false,
+  "views": [
+    {
+      "profile": "detail",
+      "view": "overview",
+      "blendSha256": "1faba175cdffbbf8cc060a1e9034b9bacf19762f3ff15c3da87b9c37b058e0c0",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/detail-overview.png",
+      "imageSha256": "ed16a66826e433a54da1ac8029e853ba31deda72be778fc436f8b812d2b3b426",
+      "cameraLocation": [
+        -26.479564666748047,
+        52.910362243652344,
+        36.14436340332031
+      ],
+      "target": [
+        -55.16575622558594,
+        88.76810455322266,
+        2.0795090198516846
+      ],
+      "orthoScale": 35.857740535175104,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "838600978",
+      "blendSha256": "1faba175cdffbbf8cc060a1e9034b9bacf19762f3ff15c3da87b9c37b058e0c0",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/detail-838600978.png",
+      "imageSha256": "b03b0cfd965bbb2a22a1f4010876d6bfda27c43bb009d00369e2c075a4737d08",
+      "cameraLocation": [
+        -40.7744026184082,
+        84.51499938964844,
+        3.343597888946533
+      ],
+      "target": [
+        -42.34000015258789,
+        86.47200012207031,
+        1.4844499826431274
+      ],
+      "orthoScale": 1.9569976806640625,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-438",
+      "blendSha256": "1faba175cdffbbf8cc060a1e9034b9bacf19762f3ff15c3da87b9c37b058e0c0",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/detail-water-438.png",
+      "imageSha256": "41e46701507c15bb8314a50026e39123c56df377c8a271c9d2125ddd7e67547a",
+      "cameraLocation": [
+        -35.69459915161133,
+        74.39599609375,
+        9.079656600952148
+      ],
+      "target": [
+        -42.46099853515625,
+        82.85399627685547,
+        1.0445566177368164
+      ],
+      "orthoScale": 8.457999999999998,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "detail",
+      "view": "water-472",
+      "blendSha256": "1faba175cdffbbf8cc060a1e9034b9bacf19762f3ff15c3da87b9c37b058e0c0",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/detail-water-472.png",
+      "imageSha256": "42b049f68c2f2f0f69109c6ce55a7ca303e9891704899af29e5fbc814ad891d7",
+      "cameraLocation": [
+        -62.42290496826172,
+        94.33200073242188,
+        4.984920978546143
+      ],
+      "target": [
+        -65.34850311279297,
+        97.98899841308594,
+        1.5107710361480713
+      ],
+      "orthoScale": 3.6570000000000107,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "overview",
+      "blendSha256": "0175eb8c41199681fc29cd0bfc6de1f0b2e68ea7166328c9f51dcfc82a65b153",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/smooth-overview.png",
+      "imageSha256": "b07f60687cab2bc5a2484c2368c3219b7dc718c682528d63e109e32376cc275b",
+      "cameraLocation": [
+        -26.479564666748047,
+        52.910362243652344,
+        36.14436340332031
+      ],
+      "target": [
+        -55.16575622558594,
+        88.76810455322266,
+        2.0795090198516846
+      ],
+      "orthoScale": 35.857740535175104,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "838600978",
+      "blendSha256": "0175eb8c41199681fc29cd0bfc6de1f0b2e68ea7166328c9f51dcfc82a65b153",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/smooth-838600978.png",
+      "imageSha256": "4ed9c58940651474ffe96e7602ad3022df5bd0017b773088f1e33958a89a6216",
+      "cameraLocation": [
+        -40.7744026184082,
+        84.51499938964844,
+        3.343597888946533
+      ],
+      "target": [
+        -42.34000015258789,
+        86.47200012207031,
+        1.4844499826431274
+      ],
+      "orthoScale": 1.9569976806640625,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-438",
+      "blendSha256": "0175eb8c41199681fc29cd0bfc6de1f0b2e68ea7166328c9f51dcfc82a65b153",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/smooth-water-438.png",
+      "imageSha256": "617203282def7d3f6004a79bc6efc5b044f0f3e9e086f40b011652b2c20ecb00",
+      "cameraLocation": [
+        -35.69459915161133,
+        74.39599609375,
+        9.079656600952148
+      ],
+      "target": [
+        -42.46099853515625,
+        82.85399627685547,
+        1.0445566177368164
+      ],
+      "orthoScale": 8.457999999999998,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    },
+    {
+      "profile": "smooth",
+      "view": "water-472",
+      "blendSha256": "0175eb8c41199681fc29cd0bfc6de1f0b2e68ea7166328c9f51dcfc82a65b153",
+      "image": "work/urban-structure/p5/reservoirs/neighbors/longmen/views/smooth-water-472.png",
+      "imageSha256": "f5552c2baae592d9f59cad5fc2155b3998fc2e5b0d4f12936e55a27e86696c22",
+      "cameraLocation": [
+        -62.42290496826172,
+        94.33200073242188,
+        4.984920978546143
+      ],
+      "target": [
+        -65.34850311279297,
+        97.98899841308594,
+        1.5107710361480713
+      ],
+      "orthoScale": 3.6570000000000107,
+      "targetHeightMethod": "nearest actual terrain vertex"
+    }
+  ]
+}

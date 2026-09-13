@@ -1,0 +1,511 @@
+{
+  "status": "production reservoir and water native checks plus compressed terrain context; complete city pending",
+  "profiles": {
+    "detail": {
+      "compressedTerrain": {
+        "triangles": 215208,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.22517507666049458,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 193232,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 2017,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 1055,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "139": {
+          "triangles": 1345,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "211": {
+          "triangles": 4140,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "140": {
+          "triangles": 707,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "212": {
+          "triangles": 2340,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 8
+        },
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 3.7384033202414457e-06,
+          "islands": 1
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0980834847250662e-07,
+          "islands": 8
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.7356872605844842e-06,
+          "islands": 0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.5068053915712198e-06,
+          "islands": 0
+        },
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 7.438659688219218e-07,
+          "islands": 0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "487": {
+          "triangles": 352,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.749298088135845e-06,
+          "islands": 1
+        },
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.5558471561382134e-06,
+          "islands": 4
+        },
+        "385": {
+          "triangles": 325,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        },
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    },
+    "smooth": {
+      "compressedTerrain": {
+        "triangles": 215208,
+        "maximumVertexDisplacementMeters": 0.0,
+        "maximumCornerNormalAngleDegrees": 0.22103602928473662,
+        "undefinedSourceCornerNormals": 0,
+        "positionLimitMeters": 0,
+        "normalLimitDegrees": 0.5,
+        "bijectiveFaceMatch": true,
+        "materialsAndWindingPreserved": true
+      },
+      "nativeLand": {
+        "triangles": 193232,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "nativeWater": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        },
+        "155": {
+          "triangles": 2017,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "195": {
+          "triangles": 1055,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "139": {
+          "triangles": 1345,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "211": {
+          "triangles": 4140,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "140": {
+          "triangles": 707,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 0
+        },
+        "212": {
+          "triangles": 2340,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 8
+        },
+        "440": {
+          "triangles": 349,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 3.7384033202414457e-06,
+          "islands": 1
+        },
+        "438": {
+          "triangles": 179,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0980834847250662e-07,
+          "islands": 8
+        },
+        "472": {
+          "triangles": 28,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.7356872605844842e-06,
+          "islands": 0
+        },
+        "470": {
+          "triangles": 35,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.5068053915712198e-06,
+          "islands": 0
+        },
+        "545": {
+          "triangles": 61,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "549": {
+          "triangles": 39,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "544": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "546": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "547": {
+          "triangles": 15,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "550": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 7.438659688219218e-07,
+          "islands": 0
+        },
+        "543": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.0217895579932588e-06,
+          "islands": 0
+        },
+        "548": {
+          "triangles": 4,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.822845425944138e-07,
+          "islands": 0
+        },
+        "487": {
+          "triangles": 352,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.749298088135845e-06,
+          "islands": 1
+        },
+        "542": {
+          "triangles": 165,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.5558471561382134e-06,
+          "islands": 4
+        },
+        "385": {
+          "triangles": 325,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "467": {
+          "triangles": 467,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 7
+        },
+        "464": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 5.435943695175638e-07,
+          "islands": 0
+        },
+        "465": {
+          "triangles": 2,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 4.1007994777686463e-07,
+          "islands": 0
+        },
+        "480": {
+          "triangles": 7,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 2.7847290029470173e-06,
+          "islands": 0
+        },
+        "485": {
+          "triangles": 5,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 9.727478156307257e-07,
+          "islands": 0
+        },
+        "3": {
+          "triangles": 1425,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 0.0,
+          "islands": 3
+        }
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-terrain-registry.json": "b85c843678c18940791fbe677edfa58ca39c1481e44ca1493a4be1dd126546d5",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/southeast-connected-water-v1.json": "4f4fbf80bc5edacad91fd4eee22342ea82f51ef1b9c0c8c0b5cc3c16cf19b290",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/longmen-reservoir-closure-v1.json": "6b654f79f7d3a9afa7b35a2803ff702d42cac990275167b856b3970749943391",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json": "04f1f69a61425b0b04518399c025bf4a2dd9801fd061696e56c5f63fbb1acec4",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/mading-reservoir-terrain-v1.json": "e4c0968053242a6ef2978e2ea0ccb19813d394216a2eaa3cf5618b5edec8397a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json": "733b5b9e5a0969e2cbc178d1fb0fde6f02d48e972b6cd4a2d17a92d6126c4772",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json": "46b894b3c38749463d159973cda57f82443aab2e736cb5b331137436b686b36c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json": "5bf9630017df8b07fcce8a6f8dfb0f4626aea8c029ffa98663edb289a08b6f5a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/linglong-lake-terrain-v1.json": "3febfc85c6b5a00b6cbd6820e6de57267f6ca23d67b7cb910dc8aa9da46594db",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/report.json": "8f0547564b3611074892a32df05f9eda6b92d8424a869e5fccf19dcad91cb18f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/work/terrain-resample/context/sources.json": "3d393a9902a8fee68e4a7d2d02c34474b704ba74a8a236a0fe52f5e54ee47a10",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.npz": "d6f7b9a4f0ff0b8c602926b8cfbf1ce7278d13beae439066d4727b8da4d99b3c",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.npz": "a06453b2086273952271cd5c44ed9d68967c5bd76139b77b628862b619e0a07a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/work/terrain-resample/context/detail.glb": "2cfc0e1b391fc1d25f9cebadd0542eeb4eaf92e20582690ab5830c644566dcd9",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/work/terrain-resample/context/smooth.glb": "3f2454efac3b9f12366fcf57290ec979243b0b5c8caaf4acea0dea14a81ee1db"
+  },
+  "toolSha256": "2777b6b3657ac58a7a0797fc85536155cc655245862b93d51b51e153f55ddb50"
+}

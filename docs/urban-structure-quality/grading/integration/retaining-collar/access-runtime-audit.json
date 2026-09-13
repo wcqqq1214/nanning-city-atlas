@@ -1,0 +1,80 @@
+{
+  "status": "actual terrain replacement and shared sampler audit; full city and visual acceptance pending",
+  "candidateSha256": "988a54d31e6dfeaafdc74fbaeb18e59ed5af698b440639d4ffa568e2f1809956",
+  "profiles": {
+    "detail": {
+      "originalTriangles": 638706,
+      "finalTriangles": 640468,
+      "replacedTriangles": 2388,
+      "replacementTriangles": 4150,
+      "unchangedMeshes": 20,
+      "outsidePositionsMaterialsCornerNormalsIdentical": true,
+      "paletteRngPreserved": true,
+      "samplerPoints": 16600,
+      "maximumSamplerErrorMeters": 4.920130969310321e-09,
+      "sha256": "12f88ea828808a609d6ce8ff82bdc1b4714d3af8b56619a0929f4a55a5a09d83",
+      "maximumSamplerChangeFromBaseMeters": 2.304410934448242,
+      "outsideSamplerPoints": 655,
+      "outsideSamplerUnchanged": true,
+      "cityAndForestShareSampler": true,
+      "roads": {
+        "xinzhong-industrial": {
+          "pavingTriangles": 260,
+          "wallTriangles": 70,
+          "omittedZeroAreaWalls": 22
+        }
+      },
+      "export": {
+        "bytes": 6174636,
+        "sha256": "2528e0988621b1c3d3e4c1a6062429aedf53994b3c3d7e341e137ab355d4b6e3"
+      }
+    },
+    "smooth": {
+      "originalTriangles": 216768,
+      "finalTriangles": 218530,
+      "replacedTriangles": 2388,
+      "replacementTriangles": 4150,
+      "unchangedMeshes": 20,
+      "outsidePositionsMaterialsCornerNormalsIdentical": true,
+      "paletteRngPreserved": true,
+      "samplerPoints": 16600,
+      "maximumSamplerErrorMeters": 5.817279991049418e-09,
+      "sha256": "3ca9488d0bdee2d892042a9ecdf0d20a9e2601ab3af485385809fcee8e44ec68",
+      "maximumSamplerChangeFromBaseMeters": 2.0082831382751465,
+      "outsideSamplerPoints": 655,
+      "outsideSamplerUnchanged": true,
+      "cityAndForestShareSampler": true,
+      "roads": {
+        "xinzhong-industrial": {
+          "pavingTriangles": 260,
+          "wallTriangles": 70,
+          "omittedZeroAreaWalls": 22
+        }
+      },
+      "export": {
+        "bytes": 2459156,
+        "sha256": "94a6ee6a6fe29cf5505fad6c0451295a3119eafaa9e93a77c7b3d25e2f432560"
+      }
+    }
+  },
+  "tools": {
+    "blender/check_site_access_runtime.py": "be487245c4b36be562fc83ac59137b40b52c3c913d68d0582b78af89568754b3",
+    "blender/site_access_plan.py": "1ea1ede0cd42714b8ffcd39c4bdb5e0170cb34a0122e5a3f8d58e40c4c7a0eb1",
+    "blender/site_access_runtime.py": "251fee6c58742b1c597360bd51831ea6b4cf9c530c41804af247accd6cd017b9",
+    "blender/capture_native_terrain.py": "be91f9a5e5a3deb0fa93bf30acb782acfbbfdd2f74f16edc98e4320c6b4e16ab",
+    "blender/terrain_reduction_runtime.py": "efe38ef353981e24c1a27764e777c588a7f32e78e01d5dc0e53f9b6ff2d1d01b",
+    "blender/build_city.py": "777f80f078ef08f6cee74c955d4c6f5b7ac1b1167a3ddae5dbe76de280de111c",
+    "blender/terrain_mesh.py": "1643f266eee7c1b4e202ac03a9a99ce5f185924006d52181f63db06bb5df41d2",
+    "blender/forest_canopy.py": "8de64bc605a2aa4c1ee2f230fc6b80578243cc81bfa536ab4a294f3773f9f4bd"
+  },
+  "inputs": {
+    "data/block-grading-plan.json": "d1f611931ad288ac54f89a7f7b86ec2607528548b3d1f065236e01eeb19e7aa0",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/data/road-solids-detail.npz": "d4f6afc3e7a5ea4ae2c18d0b73175811fd2c3c418bce4bdf132996389876f1b2",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/data/road-solids-detail.json": "6bc5f9d20b376ad7c6867f144577a900c638657a747d3bc23574f8e9e1701784",
+    "work/p5/retaining-native/detail.npz": "5440ae581df6a2f43ddaae851489d2576b137b7fbed34b29233f6ab33dd14260",
+    "work/p5/retaining-native/report.json": "5596a080cad3dc3e34aa8fb66117c2ad559d7281dc28b505a27d27aaa4f2623f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/data/road-solids-smooth.npz": "15903f9e94c572f964469860b116aa49e002ab78f10e67c1837cbe7467390e66",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/staging/data/road-solids-smooth.json": "177e3800c30439efbb84aadb3ea9f0c85f18c7c755ba4a3cb99176265ba0c0a4",
+    "work/p5/retaining-native/smooth.npz": "61ea869739f52d5dc15d6acbf8142eab3d2a72b7ade66ff46a77ad67fa1e1af5"
+  }
+}

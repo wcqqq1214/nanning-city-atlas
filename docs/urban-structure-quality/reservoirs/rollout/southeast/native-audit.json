@@ -1,0 +1,47 @@
+{
+  "status": "native coverage only; compressed and full-city checks remain pending",
+  "profiles": {
+    "detail": {
+      "terrain": {
+        "triangles": 3029,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        }
+      }
+    },
+    "smooth": {
+      "terrain": {
+        "triangles": 3029,
+        "overlapSquareMeters": 0.0,
+        "uncoveredBeyond5mmSquareMeters": 0.0,
+        "excessBeyond5mmSquareMeters": 0.0
+      },
+      "water": {
+        "182": {
+          "triangles": 53,
+          "overlapSquareMeters": 0.0,
+          "uncoveredBeyond5mmSquareMeters": 0.0,
+          "excessBeyond5mmSquareMeters": 0.0,
+          "maximumHeightErrorMeters": 1.354217538107605e-06,
+          "islands": 0
+        }
+      }
+    }
+  },
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/southeast/plan.json": "9456b2e674cd61637cdbc23f73e8a0348e62a55a77816b62922eece2b3183ae4",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/southeast/native/detail.npz": "fe3baf1775b824ab13ff91e34d568dd235427045e06b91bf9ef214e45fe00e1e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/rollout/southeast/native/smooth.npz": "35ab5c6ce343ea14605a86f4d372e473d5934f4d8f8d255b0c4544f04c68bacb"
+  },
+  "toolSha256": "83147c31c81a8f77bfaac2b37dbd3cc643769faa102419a62ddb993ae01e9433"
+}

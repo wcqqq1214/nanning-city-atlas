@@ -1,0 +1,92 @@
+{
+  "status": "native scope, single coverage, flat pad and sampler checks passed; final access and compressed city pending",
+  "profiles": {
+    "detail": {
+      "outsideTriangles": 636318,
+      "outsideGeometryMaterialsNormalsIdentical": true,
+      "paletteRngPreserved": true,
+      "originalPatchTriangles": 128,
+      "replacementTriangles": 2184,
+      "netTriangles": 2056,
+      "replacementOverlapSquareMeters": 0.0,
+      "nativeCoverageToleranceMeters": 0.005,
+      "sites": [
+        {
+          "id": "xinzhong-industrial",
+          "padReliefMeters": 8.526512829121202e-12,
+          "padSupport": {
+            "status": "covered",
+            "minimumSceneZ": 1.2166670560836224,
+            "maximumSceneZ": 1.2166670560837076,
+            "minimumWitnessSceneXYZ": [
+              73.65281677246094,
+              -131.25137329101562,
+              1.2166670560836224
+            ],
+            "maximumWitnessSceneXYZ": [
+              73.48883056640625,
+              -131.2872772216797,
+              1.2166670560837076
+            ],
+            "coveredFraction": 1.0,
+            "uncoveredAreaSquareMeters": 0.0,
+            "uncoveredBeyondToleranceSquareMeters": 0.0,
+            "coverageToleranceMeters": 0.005,
+            "intersectingFaces": 234
+          },
+          "boundaryVertices": 96,
+          "maximumBoundaryHeightDifferenceMeters": 0.0001067021401013335
+        }
+      ],
+      "samplerPoints": 8736,
+      "maximumSamplerErrorMeters": 2.398081733190338e-12
+    },
+    "smooth": {
+      "outsideTriangles": 214380,
+      "outsideGeometryMaterialsNormalsIdentical": true,
+      "paletteRngPreserved": true,
+      "originalPatchTriangles": 32,
+      "replacementTriangles": 2184,
+      "netTriangles": 2152,
+      "replacementOverlapSquareMeters": 0.0,
+      "nativeCoverageToleranceMeters": 0.005,
+      "sites": [
+        {
+          "id": "xinzhong-industrial",
+          "padReliefMeters": 4.263256414560601e-12,
+          "padSupport": {
+            "status": "covered",
+            "minimumSceneZ": 1.216667056083665,
+            "maximumSceneZ": 1.2166670560837076,
+            "minimumWitnessSceneXYZ": [
+              73.29791259765625,
+              -131.1528778076172,
+              1.216667056083665
+            ],
+            "maximumWitnessSceneXYZ": [
+              73.65281677246094,
+              -131.25137329101562,
+              1.2166670560837076
+            ],
+            "coveredFraction": 1.0,
+            "uncoveredAreaSquareMeters": 0.0,
+            "uncoveredBeyondToleranceSquareMeters": 0.0,
+            "coverageToleranceMeters": 0.005,
+            "intersectingFaces": 234
+          },
+          "boundaryVertices": 96,
+          "maximumBoundaryHeightDifferenceMeters": 7.551180249976142e-05
+        }
+      ],
+      "samplerPoints": 8736,
+      "maximumSamplerErrorMeters": 4.130029651605582e-12
+    }
+  },
+  "inputs": {
+    "work/urban-structure/p5/staging/data/block-grading-plan.json": "ac2b1462ac8b2d25d2bfbe1debdde9f300797084d5edbe5a511cfbc9a475ce46",
+    "work/urban-structure/p5/staging/public/data/geography.json": "e341669ad39ce9ee8b607d17d050bb8adf0d66811924dbaf4e24c92c7afbda8f",
+    "work/urban-structure/p5/staging/work/p5/grading-conforming-before/report.json": "aac521e308fb2c374f5563d3bea7079e00b0c05bf2d26c1852e24fb6b97114c8",
+    "work/urban-structure/p5/staging/work/p5/grading-precision-native/report.json": "d1bbb694f678bfe580adf90fb84e3753d062b897e2d429369936cb6c71331f88"
+  },
+  "toolSha256": "1552bd6f157c3dcfc3edb2c7b796ab576988001f9b0d159f729b9409958c7e07"
+}

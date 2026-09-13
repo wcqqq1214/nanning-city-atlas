@@ -1,0 +1,10 @@
+{
+  "status": "plan-view source diagnosis; terrain/3D acceptance separate",
+  "files": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/input.json": "de1a4ee6b1047f59ce67826150b3c50812d30d96a34614565182dad6ce6add3f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/candidate.json": "9edee30f0350c04fce5901362e00a16414cbc5961e2aeaf1b2e49510d49b88ac",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/tianbao/shoreline-comparison.png": "e6b9065b827ddae2e00ac622d10f2cfa23a9435998de6de0afbc4a13dc739ac3",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/plot_building_shorelines.py": "c94cad108bcc3451f535760dbf94516363c94ee6e1e93836ce65826bbcaa4bab",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/data/tianbao-shoreline-source.json": "faa6a05f0fece9ff4650649b22cd42dfd45e7237148f58255e8243506428a031"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "status": "isolated native terrain visual comparison; no city dependents or Draco compression",
+  "inputs": {
+    "work/urban-structure/p5/budget/native-smooth/original.npz": "809121e2b01da950701b310bdc788ea5158b6fc6f1f684b030a11c5574764c50",
+    "work/urban-structure/p5/budget/vertex-smooth-20cm.npz": "c1e5e44658e5c9dceafdb69e42d08ac2defd955b349e694eb440070d72658837",
+    "work/urban-structure/p5/budget/vertex-smooth-20cm-audit.json": "6d62e275c0225e8b80abd6b3bb967643055e3b3240dbbcbd7a80847696827175"
+  },
+  "scriptSha256": "87d5db2610a4eb5c6c70b3df08f7ffc5448cbd988e1d033410f37bf31525c13c",
+  "target": [
+    50.968353271484375,
+    -10.396260261535645,
+    0.5155965089797974
+  ],
+  "widthMeters": 500,
+  "views": [
+    {
+      "mode": "gray",
+      "view": "top",
+      "variant": "before",
+      "cameraPosition": [
+        50.968353271484375,
+        -10.396260261535645,
+        8.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/gray-top-before.png",
+      "sha256": "959caaaa0d1869b7e7d6461d34b1ebf19a8f1ab54a69f9c9e3cd76c58c7af912"
+    },
+    {
+      "mode": "gray",
+      "view": "top",
+      "variant": "after",
+      "cameraPosition": [
+        50.968353271484375,
+        -10.396260261535645,
+        8.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/gray-top-after.png",
+      "sha256": "1cfc665b481b791f56151877a7238a191226ea646011b6d0ea57a1368462b441"
+    },
+    {
+      "mode": "gray",
+      "view": "oblique",
+      "variant": "before",
+      "cameraPosition": [
+        53.968353271484375,
+        -14.396260261535645,
+        3.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/gray-oblique-before.png",
+      "sha256": "17149a9a33575864d5cac54fab810ec860b6d5021474ece02d6e502b051b1b41"
+    },
+    {
+      "mode": "gray",
+      "view": "oblique",
+      "variant": "after",
+      "cameraPosition": [
+        53.968353271484375,
+        -14.396260261535645,
+        3.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/gray-oblique-after.png",
+      "sha256": "967200bde0b6c8a06664df1d06f474767b097e963b0f19c156a0ac96a3247564"
+    },
+    {
+      "mode": "materials",
+      "view": "top",
+      "variant": "before",
+      "cameraPosition": [
+        50.968353271484375,
+        -10.396260261535645,
+        8.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/materials-top-before.png",
+      "sha256": "90724e059b07b3c6f18b04281880629171f8561d1a62391cb57ca240aa7c99d5"
+    },
+    {
+      "mode": "materials",
+      "view": "top",
+      "variant": "after",
+      "cameraPosition": [
+        50.968353271484375,
+        -10.396260261535645,
+        8.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/materials-top-after.png",
+      "sha256": "8af9cc93ea8e46a29f8ba6572db542fa9db44f6fbfd035392358ae374f7ddc2e"
+    },
+    {
+      "mode": "materials",
+      "view": "oblique",
+      "variant": "before",
+      "cameraPosition": [
+        53.968353271484375,
+        -14.396260261535645,
+        3.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/materials-oblique-before.png",
+      "sha256": "fd315a1402c7ea722632af1e23eb7660768153c649658c7ab550edeba6886a32"
+    },
+    {
+      "mode": "materials",
+      "view": "oblique",
+      "variant": "after",
+      "cameraPosition": [
+        53.968353271484375,
+        -14.396260261535645,
+        3.515596389770508
+      ],
+      "path": "work/urban-structure/p5/budget/vertex-20cm-previews/materials-oblique-after.png",
+      "sha256": "1afab5afe97b52bb80815814aff7cd8d8df5a487ddb78e6c72d7b58e59705928"
+    }
+  ]
+}

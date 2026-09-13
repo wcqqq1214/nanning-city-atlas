@@ -1,0 +1,457 @@
+{
+  "baseUrl": "http://localhost:8083/nanning-city-atlas",
+  "baseline": null,
+  "suppliedAssets": {},
+  "capturedAt": "2026-09-12T11:44:50.606Z",
+  "records": [
+    {
+      "id": "restore-before",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 826,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2167471,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "restore-link",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 826,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2167471,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "restore-after",
+      "settings": {
+        "view": "residential",
+        "camera": {
+          "position": [
+            87.4,
+            5.6,
+            12.800000000000004
+          ],
+          "target": [
+            83.016,
+            0.6,
+            6.596
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 511.40000009536743,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2167471,
+        "calls": 357,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-detail-clay-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "clay",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 511.40000009536743,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2107626,
+        "calls": 297,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-detail-color-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "color",
+        "hour": 21,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 511.40000009536743,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2107626,
+        "calls": 297,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-detail-lit-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "detail",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 25631028,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "detail",
+        "loadMs": 511.40000009536743,
+        "modelBytes": 25631028,
+        "fps": 0,
+        "triangles": 2107626,
+        "calls": 297,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-smooth-clay-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "clay",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city-mobile.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 17688792,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 619.5,
+        "modelBytes": 17688792,
+        "fps": 0,
+        "triangles": 1087290,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-smooth-color-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "color",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city-mobile.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 17688792,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 619.5,
+        "modelBytes": 17688792,
+        "fps": 0,
+        "triangles": 1087290,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "qingxiu-foothill-smooth-lit-h14",
+      "settings": {
+        "view": "qingxiu-foothill",
+        "camera": {
+          "position": [
+            96,
+            6.500000000000001,
+            34
+          ],
+          "target": [
+            89.8,
+            0.8,
+            29.600000000000005
+          ],
+          "fov": 40
+        },
+        "quality": "smooth",
+        "material": "lit",
+        "hour": 14,
+        "heightScale": 1
+      },
+      "source": {
+        "model": "/nanning-city-atlas/models/nanning-city-mobile.glb?v=a60531e7a9166946",
+        "overview": "/nanning-city-atlas/data/overview.json?v=a60531e7a9166946",
+        "modelBytes": 17688792,
+        "metersPerUnit": 100,
+        "terrainExaggeration": 1.35,
+        "buildingExaggeration": 1.55,
+        "buildingScaleOverrides": [
+          {
+            "blockId": "xiangxieli-residential",
+            "scale": 1,
+            "layoutSource": "estimate",
+            "buildings": 13
+          }
+        ],
+        "osmTimestamp": "2026-09-08T06:56:02Z"
+      },
+      "renderer": {
+        "profile": "smooth",
+        "loadMs": 619.5,
+        "modelBytes": 17688792,
+        "fps": 0,
+        "triangles": 1087290,
+        "calls": 188,
+        "pixelRatio": 1
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "material-switching",
+    "frozen-frames",
+    "camera-roundtrip",
+    "both-profiles",
+    "normal-home-load"
+  ]
+}

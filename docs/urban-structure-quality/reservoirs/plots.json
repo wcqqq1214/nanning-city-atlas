@@ -1,0 +1,9 @@
+{
+  "inventorySha256": "5724860538e6b3cab29efe5c44f4731e28bd2028cf655405c5f9af05fc12c83b",
+  "plotterSha256": "56b988e906ff1acb49dac965f7baa2af3d86a5c2499043383e82a434604001f7",
+  "status": "source plots; not Blender/runtime verification",
+  "images": {
+    "source-map.png": "3c34a541d5116c9101bccbed0e8bc1b43929565d754a34f56f11e9127c13323f",
+    "source-profiles.png": "404afbf66966287a9dc5e4187d5615e46480013e80438609ec93aafe037aa9a8"
+  }
+}

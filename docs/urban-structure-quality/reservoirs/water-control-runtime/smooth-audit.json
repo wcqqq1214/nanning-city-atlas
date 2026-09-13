@@ -1,0 +1,122 @@
+{
+  "status": "independent actual sluice export verified; full-city activation pending",
+  "geometry": {
+    "triangles": 672,
+    "maximumVertexDisplacementMeters": 0.0,
+    "maximumCornerNormalAngleDegrees": 0.10800906138503406,
+    "undefinedSourceCornerNormals": 0,
+    "positionLimitMeters": 0,
+    "normalLimitDegrees": 0.5,
+    "bijectiveFaceMatch": true,
+    "materialsAndWindingPreserved": true
+  },
+  "outsideFootprintBeyond5mmSquareMeters": 0.0,
+  "approachWaterOverlapBeyond5mmSquareMeters": 0.0,
+  "gateApertures": [
+    {
+      "centerXY": [
+        177.8566357769476,
+        -100.63255206620777
+      ],
+      "probes": [
+        {
+          "xy": [
+            177.86607768148255,
+            -100.65134082254747
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.8566357769476,
+            -100.63255206620777
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.84719387241262,
+            -100.61376330986805
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        }
+      ]
+    },
+    {
+      "centerXY": [
+        177.81,
+        -100.53975
+      ],
+      "probes": [
+        {
+          "xy": [
+            177.82095734939452,
+            -100.56155438990251
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.81,
+            -100.53975
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.7990426506055,
+            -100.51794561009748
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        }
+      ]
+    },
+    {
+      "centerXY": [
+        177.76336422305243,
+        -100.44694793379225
+      ],
+      "probes": [
+        {
+          "xy": [
+            177.7728061275874,
+            -100.46573669013196
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.76336422305243,
+            -100.44694793379225
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        },
+        {
+          "xy": [
+            177.75392231851745,
+            -100.42815917745253
+          ],
+          "belowWaterClearanceMeters": 0.699999928458972,
+          "aboveWaterClearanceMeters": 0.3500014543410257
+        }
+      ]
+    }
+  ],
+  "inputs": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/public/data/geography.json": "3d702b731957568f045f0d9512be70337208bcdae1af5d4bc7f78094f845b2ac",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/data/water-control-sources/linglong.json": "68c2d06289410fa2edc5316cde778850436bb078822c2fe771a04abcaa198e6e",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/water-control/native/smooth/report.json": "18ee42e70d46c94ba8bf157adbb8ffd46038d166ebd272cf92cb7c88d1b56b8d",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/water-control/native/smooth/geometry.json": "54d82eb134687c9d63d61cfe16e59546909944ffb9cf3618422ac6839c5d138a",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/water-control/native/smooth/structure.npz": "49352f66b29755dd5991a0fd1a7097220d48b6a127813b8e6c200c462efa95d2",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/water-control/native/smooth/structure.glb": "955da554177fc47831d6dc340e7128e68b5f13b8f34167673aa52263259ac51f",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/check_water_control_exports.py": "5518b4e5e5785f3abac055cbe0a2cc4722b5303485b0a641a532d983be29212e"
+  }
+}

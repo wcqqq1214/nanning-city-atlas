@@ -1,0 +1,236 @@
+{
+  "status": "longmen and west-pools independent geometry verified; southeast full shoreline failed; complete P5 pending",
+  "groups": {
+    "longmen": {
+      "planPath": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/longmen/plan.json",
+      "planSha256": "364d835a202a5eab02268429d4923bca293b6cbdef94707e2c34c94039515e51",
+      "statistics": {
+        "points": 9728,
+        "triangles": 17601,
+        "patchAreaSquareMeters": 7480667.1954726335,
+        "landAreaSquareMeters": 7105600.108493236,
+        "damCrestTriangles": 18,
+        "damSlopeTriangles": 131
+      },
+      "interfaceAudit": {
+        "schemaVersion": 1,
+        "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+        "neighbors": [
+          {
+            "geographyWaterIndex": 443,
+            "boundaryVertexCount": 8,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 447,
+            "boundaryVertexCount": 10,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 448,
+            "boundaryVertexCount": 6,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 451,
+            "boundaryVertexCount": 16,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 452,
+            "boundaryVertexCount": 15,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 454,
+            "boundaryVertexCount": 26,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 459,
+            "boundaryVertexCount": 4,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          }
+        ],
+        "unresolvedWaterIndices": []
+      },
+      "nativeAndCompressedAccepted": true,
+      "profiles": {
+        "detail": {
+          "bytes": 765668,
+          "glbSha256": "773a46ef90fe90132860a281581aec613c3eb978392bcd2cae6b60a10050a650",
+          "blendSha256": "5ab69cf9ddb648c12d04d44174409882ffb3c64a27c5e1c821c2c907bff55f58",
+          "totalTriangles": 20950
+        },
+        "smooth": {
+          "bytes": 759916,
+          "glbSha256": "55bee2c2a64a19d1ce5104bba21912da73cfb87567ad3aca85e2670a548cf47d",
+          "blendSha256": "712fdf2c279bd6fb3e35f85f505c2269cadce66b18c3d424a821dea2ca4af7bb",
+          "totalTriangles": 20950
+        }
+      }
+    },
+    "west-pools": {
+      "planPath": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/west-pools/plan.json",
+      "planSha256": "4350d781f4a16401798d7cb7ee4b2b334025cfa5ec5830e973ada83206ec6a3c",
+      "statistics": {
+        "points": 4117,
+        "triangles": 7510,
+        "patchAreaSquareMeters": 2589461.637137574,
+        "landAreaSquareMeters": 2374488.7872214895,
+        "damCrestTriangles": 174,
+        "damSlopeTriangles": 846
+      },
+      "interfaceAudit": {
+        "schemaVersion": 1,
+        "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+        "neighbors": [
+          {
+            "geographyWaterIndex": 551,
+            "boundaryVertexCount": 19,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 552,
+            "boundaryVertexCount": 4,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          }
+        ],
+        "unresolvedWaterIndices": []
+      },
+      "nativeAndCompressedAccepted": true,
+      "profiles": {
+        "detail": {
+          "bytes": 325240,
+          "glbSha256": "df101648fbaac5e6e9b7f4eaadde918900c48451f98124d25e6f07e49c16a761",
+          "blendSha256": "bb91a0ded240a2b845bbf92ef654addbcf266f8f4fb3fbc3fc80019781676e4a",
+          "totalTriangles": 8651
+        },
+        "smooth": {
+          "bytes": 323784,
+          "glbSha256": "99a9be2b290d455a4bedd629d87bae257d84c4a736b99f5a61bf6c9a2a7248dc",
+          "blendSha256": "493fa56629944af59b8a8a1b6d9bce3f084c065b6734d446a4989beb85a85a0e",
+          "totalTriangles": 8651
+        }
+      }
+    },
+    "southeast": {
+      "planPath": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/closure/southeast/plan.json",
+      "planSha256": "7bf8b287180c8a9d4a0004bf336ed85ed0114b4a82416ceaf3a35ef55ab66bac",
+      "statistics": {
+        "points": 37807,
+        "triangles": 70879,
+        "patchAreaSquareMeters": 31404409.729200415,
+        "landAreaSquareMeters": 29889562.725015566,
+        "damCrestTriangles": 40,
+        "damSlopeTriangles": 262
+      },
+      "interfaceAudit": {
+        "schemaVersion": 1,
+        "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+        "neighbors": [
+          {
+            "geographyWaterIndex": 140,
+            "boundaryVertexCount": 44,
+            "maximumRestoreWeight": 1.0,
+            "sharedSelectedBoundaryMeters": 92.35458840793946,
+            "requiresInterfaceResolution": true
+          },
+          {
+            "geographyWaterIndex": 143,
+            "boundaryVertexCount": 266,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 212,
+            "boundaryVertexCount": 361,
+            "maximumRestoreWeight": 1.0,
+            "sharedSelectedBoundaryMeters": 74.40920641963538,
+            "requiresInterfaceResolution": true
+          },
+          {
+            "geographyWaterIndex": 228,
+            "boundaryVertexCount": 16,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 229,
+            "boundaryVertexCount": 113,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 253,
+            "boundaryVertexCount": 114,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 255,
+            "boundaryVertexCount": 16,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          },
+          {
+            "geographyWaterIndex": 263,
+            "boundaryVertexCount": 18,
+            "maximumRestoreWeight": 0.0,
+            "sharedSelectedBoundaryMeters": 0.0,
+            "requiresInterfaceResolution": false
+          }
+        ],
+        "unresolvedWaterIndices": [
+          140,
+          212
+        ]
+      },
+      "nativeAndCompressedAccepted": false,
+      "profiles": {
+        "detail": {
+          "bytes": 3108540,
+          "glbSha256": "851fb74a7394cf60472c57b9db4c26facb708f5f978b536d9f4fb9744ae8f477",
+          "blendSha256": "3bcc69f88460072ab1909fdc53a6fa6f71ca21b7dc6249c0893fa0f72092daef"
+        },
+        "smooth": {
+          "bytes": 3080096,
+          "glbSha256": "e7ad0dccff0f3a1c4796a23962dc7cccb791da37642ed6bfac6c9a5522517e01",
+          "blendSha256": "f6d321d1dd14ed6189755c5036300f682f8a9ad341edd37a65be0f59225213c1"
+        }
+      }
+    }
+  },
+  "visualReview": {
+    "viewsInspected": 46,
+    "observations": [
+      "Longmen 470 and west-pools 543/548 are present in both profiles. Existing faceted Longmen abutment remains pending.",
+      "Water 195 join looks smoother in the inspected fixed views; source-region levels and physical slope remain unverified display estimates.",
+      "Southeast 139/211 end at unexported connecting waters 140/212. White holes persist; no complete southeast or city acceptance."
+    ]
+  },
+  "tests": 55
+}

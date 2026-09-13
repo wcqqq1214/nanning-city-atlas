@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "method": "all unselected water boundaries in actual native replacement domain; 5 mm vertex proximity",
+  "neighbors": [
+    {
+      "geographyWaterIndex": 551,
+      "boundaryVertexCount": 19,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    },
+    {
+      "geographyWaterIndex": 552,
+      "boundaryVertexCount": 4,
+      "maximumRestoreWeight": 0.0,
+      "sharedSelectedBoundaryMeters": 0.0,
+      "requiresInterfaceResolution": false
+    }
+  ],
+  "unresolvedWaterIndices": []
+}

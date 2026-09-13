@@ -1,0 +1,127 @@
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+14:46:48 | INFO: Starting glTF 2.0 export
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_0
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_1
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_0_2
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_0
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_1
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_1_2
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_0
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_1
+14:46:48 | INFO: Primitives created: 2
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_2
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_2_3
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_0
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_1
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_2
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_3_3
+14:46:48 | INFO: Primitives created: 2
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_0
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_1
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Extracting primitive: Vegetation_nearby-detail_canopy_4_2
+14:46:48 | INFO: Primitives created: 3
+14:46:48 | INFO: Finished glTF 2.0 export in 0.037001848220825195 s
+
+nearby-detail 44015
+14:46:49 | INFO: Starting glTF 2.0 export
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_0
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_1
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_0_2
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_0
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_1
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_1_2
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_0
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_1
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_2
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_2_3
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_0
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_1
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_2
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_3_3
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_0
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_1
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Extracting primitive: Vegetation_nearby-smooth_canopy_4_2
+14:46:49 | INFO: Primitives created: 1
+14:46:49 | INFO: Finished glTF 2.0 export in 0.015100955963134766 s
+
+nearby-smooth 22235
+14:46:52 | INFO: Starting glTF 2.0 export
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_1
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_2
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_0_3
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_1_2
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_1_3
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_2_2
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | WARNING: Mesh Vegetation_all-detail_canopy_2_3 is not valid, and may be exported wrongly
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_2_3
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_3_3
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Extracting primitive: Vegetation_all-detail_canopy_4_3
+14:46:52 | INFO: Primitives created: 3
+14:46:52 | INFO: Finished glTF 2.0 export in 0.05046725273132324 s
+
+all-detail 141757
+14:46:53 | INFO: Starting glTF 2.0 export
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_1
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_2
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_0_3
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_1_2
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_1_3
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_2_2
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | WARNING: Mesh Vegetation_all-smooth_canopy_2_3 is not valid, and may be exported wrongly
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_2_3
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_3_3
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Extracting primitive: Vegetation_all-smooth_canopy_4_3
+14:46:53 | INFO: Primitives created: 1
+14:46:53 | INFO: Finished glTF 2.0 export in 0.026096105575561523 s
+
+all-smooth 68957
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

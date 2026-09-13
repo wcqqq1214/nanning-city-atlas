@@ -1,0 +1,164 @@
+{
+  "detail": {
+    "before": {
+      "bytes": 25296836,
+      "triangles": 3469091,
+      "sha256": "98654a6a96c390df31ab4b38a58c8e6230567b91acf83a02918338109c221c17"
+    },
+    "after": {
+      "bytes": 25631028,
+      "triangles": 3485815,
+      "sha256": "2c0ed11af6b759026719994f1893ff2bb20a8e323abaed69e4b01f2cd9fd03ff"
+    },
+    "byteDelta": 334192,
+    "triangleDelta": 16724,
+    "changedMeshNodes": [
+      "Buildings_3_1",
+      "GroundRoads_0_0",
+      "GroundRoads_0_1",
+      "GroundRoads_0_2",
+      "GroundRoads_1_0",
+      "GroundRoads_1_1",
+      "GroundRoads_1_2",
+      "GroundRoads_2_0",
+      "GroundRoads_2_1",
+      "GroundRoads_2_2",
+      "GroundRoads_2_3",
+      "GroundRoads_3_0",
+      "GroundRoads_3_1",
+      "GroundRoads_3_2",
+      "GroundRoads_3_3",
+      "GroundRoads_4_0",
+      "GroundRoads_4_1",
+      "GroundRoads_4_2",
+      "GroundRoads_4_3",
+      "Landmark_confucius",
+      "Landmark_qingxiu",
+      "ParkPaths_qingxiu",
+      "Terrain_3_1",
+      "Vegetation_3_1",
+      "Vegetation_nearby_canopy_3_1",
+      "Vegetation_qingxiu_canopy_3_1",
+      "Vegetation_qingxiu_crowns_3_1",
+      "Water"
+    ],
+    "preservedP1P2Samples": true,
+    "pavingCoverageErrorPercent": 0.062490326935598715,
+    "maxPavingVertexErrorCm": 0.6826851322549738,
+    "maxTerrainVertexErrorCm": 2.6387560797366665,
+    "towerHeightMeters": 53.350019454956055,
+    "towerBaseDiameterMeters": 12.000331025640739,
+    "scaledTreesChecked": 30,
+    "localBuildingAnchors": 24,
+    "otherBuildingsUnchanged": true,
+    "confuciusAnchorShiftMeters": -0.05640983581542969,
+    "lakes": [
+      {
+        "osmId": 1393214365,
+        "sourceLevelMeters": 229.263916,
+        "maxExportErrorMeters": 0.0029087066650390625
+      },
+      {
+        "osmId": 839738465,
+        "sourceLevelMeters": 148.5,
+        "maxExportErrorMeters": 0.0012874603271484375
+      },
+      {
+        "osmId": 651997944,
+        "sourceLevelMeters": 172.02697,
+        "maxExportErrorMeters": 0.003993511199951172
+      },
+      {
+        "osmId": 4448134,
+        "sourceLevelMeters": 175.5,
+        "maxExportErrorMeters": 0.0012636184692382812
+      },
+      {
+        "osmId": 1393214362,
+        "sourceLevelMeters": 218.874502,
+        "maxExportErrorMeters": 9.5367431640625e-05
+      }
+    ]
+  },
+  "smooth": {
+    "before": {
+      "bytes": 17327676,
+      "triangles": 2357559,
+      "sha256": "0a81290f739c12b59769db671aad01aaff1067e55bd34885d749ca20512692b0"
+    },
+    "after": {
+      "bytes": 17688792,
+      "triangles": 2378524,
+      "sha256": "a1e3a4e5273b4dbeb4cf8c9495c2ce7e8637df7a77a8052cd1c31d163feeb7df"
+    },
+    "byteDelta": 361116,
+    "triangleDelta": 20965,
+    "changedMeshNodes": [
+      "Buildings_3_1",
+      "GroundRoads_0_0",
+      "GroundRoads_0_1",
+      "GroundRoads_0_2",
+      "GroundRoads_1_0",
+      "GroundRoads_1_1",
+      "GroundRoads_1_2",
+      "GroundRoads_2_0",
+      "GroundRoads_2_1",
+      "GroundRoads_2_2",
+      "GroundRoads_2_3",
+      "GroundRoads_3_0",
+      "GroundRoads_3_1",
+      "GroundRoads_3_2",
+      "GroundRoads_3_3",
+      "GroundRoads_4_0",
+      "GroundRoads_4_1",
+      "GroundRoads_4_2",
+      "GroundRoads_4_3",
+      "Landmark_confucius",
+      "Landmark_qingxiu",
+      "ParkPaths_qingxiu",
+      "Terrain_3_1",
+      "Vegetation_3_1",
+      "Vegetation_nearby_canopy_3_1",
+      "Vegetation_qingxiu_canopy_3_1",
+      "Vegetation_qingxiu_crowns_3_1",
+      "Water"
+    ],
+    "preservedP1P2Samples": true,
+    "pavingCoverageErrorPercent": 0.062490326935598715,
+    "maxPavingVertexErrorCm": 0.6922611444651202,
+    "maxTerrainVertexErrorCm": 2.632504219916879,
+    "towerHeightMeters": 53.350019454956055,
+    "towerBaseDiameterMeters": 12.000331025640739,
+    "scaledTreesChecked": 7,
+    "localBuildingAnchors": 24,
+    "otherBuildingsUnchanged": true,
+    "confuciusAnchorShiftMeters": -0.05640983581542969,
+    "lakes": [
+      {
+        "osmId": 1393214365,
+        "sourceLevelMeters": 229.263916,
+        "maxExportErrorMeters": 0.0029087066650390625
+      },
+      {
+        "osmId": 839738465,
+        "sourceLevelMeters": 148.5,
+        "maxExportErrorMeters": 0.0012874603271484375
+      },
+      {
+        "osmId": 651997944,
+        "sourceLevelMeters": 172.02697,
+        "maxExportErrorMeters": 0.003993511199951172
+      },
+      {
+        "osmId": 4448134,
+        "sourceLevelMeters": 175.5,
+        "maxExportErrorMeters": 0.0012636184692382812
+      },
+      {
+        "osmId": 1393214362,
+        "sourceLevelMeters": 218.874502,
+        "maxExportErrorMeters": 9.5367431640625e-05
+      }
+    ]
+  }
+}

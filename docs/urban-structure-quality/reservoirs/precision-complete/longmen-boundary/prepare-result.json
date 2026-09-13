@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+    "scripts/prepare_reservoir_terrain.py",
+    "--geography",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/data/geography.json",
+    "--terrain",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/public/data/terrain.json",
+    "--source",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/source.json",
+    "--raster",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/geodata/Copernicus_DSM_COG_10_N22_00_E108_00_DEM.tif",
+    "--output",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/plan.json"
+  ],
+  "exitCode": 0
+}

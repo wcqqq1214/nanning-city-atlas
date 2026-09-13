@@ -1,0 +1,13 @@
+00:00.490  blend            | Read blend: "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/detail.blend"
+00:00.755  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/detail-overview.png'
+00:00.847  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/detail-838600978.png'
+00:00.937  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/detail-dam-profile.png'
+00:01.028  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/detail-dam-plan.png'
+00:01.042  blend            | Read blend: "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-boundary/after/smooth.blend"
+00:01.123  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/smooth-overview.png'
+00:01.214  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/smooth-838600978.png'
+00:01.307  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/smooth-dam-profile.png'
+00:01.414  render           | Saved: 'work/urban-structure/p5/full-city-review/longmen-boundary/views/smooth-dam-plan.png'
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

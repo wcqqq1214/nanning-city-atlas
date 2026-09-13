@@ -1,0 +1,78 @@
+[
+  {
+    "version": "before",
+    "phase": "audit",
+    "exitCode": 0,
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-audit.json"
+    ]
+  },
+  {
+    "version": "before",
+    "phase": "render",
+    "exitCode": 0,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/render_reservoir_terrain.py",
+      "--",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/nanhu-staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--exports",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views",
+      "--no-shadows",
+      "--extra-views",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/before-views.json"
+    ]
+  },
+  {
+    "version": "after",
+    "phase": "audit",
+    "exitCode": 0,
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/plan.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after-audit.json"
+    ]
+  },
+  {
+    "version": "after",
+    "phase": "render",
+    "exitCode": 0,
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "-b",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/render_reservoir_terrain.py",
+      "--",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/plan.json",
+      "--exports",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after-views",
+      "--no-shadows",
+      "--extra-views",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/full-city-review/longmen-axis/after-views.json"
+    ]
+  }
+]

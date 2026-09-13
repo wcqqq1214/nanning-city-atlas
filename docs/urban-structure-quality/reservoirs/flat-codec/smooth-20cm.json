@@ -1,0 +1,29 @@
+{
+  "status": "bounded native candidate; production sampling, compression and city dependencies pending",
+  "originalTriangles": 316384,
+  "candidateTriangles": 267494,
+  "savedTriangles": 48890,
+  "removedVertices": 24445,
+  "protectedVertices": 34236,
+  "initialCandidates": 117035,
+  "attempts": 125675,
+  "rejections": {
+    "normal": 5096,
+    "height": 96133,
+    "material": 1
+  },
+  "heightToleranceMeters": 0.2,
+  "normalToleranceDegrees": 1.9999999999999472,
+  "maximumAcceptedHeightErrorMeters": 0.19994622270869122,
+  "maximumAcceptedNormalAngleDegrees": 1.9999778516888818,
+  "unchangedOriginalFaces": 241964,
+  "input": {
+    "path": "work/urban-structure/p5/reservoirs/integration/budget/summary-fix-staging/work/p5/final-integration/access-runtime/smooth.npz",
+    "sha256": "a4698103eabffca3dbd440c2af0a86bf25cde506dffef9f7d78dc9ba78e4c8cd"
+  },
+  "outputSha256": "9ed9cb43c0a5617932e468151fd4ca79130051459d6ce0aefff6a7fc5b4d774a",
+  "toolHashes": {
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_terrain_reduction.py": "316f4a917fa060a139389caeb3a7bd7bb7f4cb23d8b69341776392323166baca",
+    "/Users/wcqqq1214/Project/nanning-city-atlas/scripts/prepare_building_support.py": "2b662f56a4656a75f374fdfde293cf8914c4056d5755eb01548608cf23c66653"
+  }
+}

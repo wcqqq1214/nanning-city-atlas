@@ -1,0 +1,1285 @@
+{
+  "status": "same-camera production terrain/water; complete city omitted",
+  "views": [
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "southeast-connected-water-v1-overview",
+      "target": [
+        89.34453582763672,
+        -98.36465454101562,
+        0.559781014919281
+      ],
+      "location": [
+        154.44012451171875,
+        -179.73414611816406,
+        77.86079406738281
+      ],
+      "scale": 81.36948813751276,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-southeast-connected-water-v1-overview-before.png",
+      "imageSha256": "9c87b0fde7089fdd206f392d0eb8740ba9daaf016b8cd27575be926383af301c",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "southeast-connected-water-v1-changed-interior",
+      "target": [
+        54.766003926595054,
+        -74.57320149739583,
+        1.121604413025072
+      ],
+      "location": [
+        57.96600392659506,
+        -78.57320149739583,
+        4.921604413025072
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-southeast-connected-water-v1-changed-interior-before.png",
+      "imageSha256": "ce7f64854c3d0922eb64e4a51bdf2de3929f599ec8219e3adbb27f380ea6a3f3",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "longmen-reservoir-closure-v1-overview",
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.7291557788848877
+      ],
+      "location": [
+        -26.479564666748047,
+        54.709716796875,
+        35.794010162353516
+      ],
+      "scale": 35.857740535175104,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-longmen-reservoir-closure-v1-overview-before.png",
+      "imageSha256": "f50569c12a275d26faa1f4beb463c4510fce9bb0e1ae319f504200e737167668",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "longmen-reservoir-closure-v1-changed-interior",
+      "target": [
+        -66.95843505859375,
+        104.16257222493489,
+        1.9227690595481859
+      ],
+      "location": [
+        -63.75843505859375,
+        100.16257222493489,
+        5.7227690595481855
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-longmen-reservoir-closure-v1-changed-interior-before.png",
+      "imageSha256": "3bec46c4aa99afd10811719acac25385b3dda5e08550121e2f791709e11b92b8",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "west-pools-reservoir-closure-v1-overview",
+      "target": [
+        -163.0987548828125,
+        -8.996767044067383,
+        0.7009493708610535
+      ],
+      "location": [
+        -146.54470825195312,
+        -29.6893310546875,
+        20.358884811401367
+      ],
+      "scale": 20.692564655172426,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-west-pools-reservoir-closure-v1-overview-before.png",
+      "imageSha256": "0b90550b4adb2ed5c42e6fec393beb92e974de51c02d1f482b3e92bc95fddadb",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "west-pools-reservoir-closure-v1-changed-interior",
+      "target": [
+        -166.5965830485026,
+        -0.09996414184570312,
+        0.9566538622529135
+      ],
+      "location": [
+        -163.3965830485026,
+        -4.099964141845703,
+        4.7566538622529135
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-west-pools-reservoir-closure-v1-changed-interior-before.png",
+      "imageSha256": "39720fa77c7f2259285cd6472ee74acab59f72d59b4ef8d646cd2d4ff660f1cd",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "mading-reservoir-terrain-v1-overview",
+      "target": [
+        -99.5382080078125,
+        130.75302124023438,
+        3.4275317192077637
+      ],
+      "location": [
+        -75.26527404785156,
+        100.41185760498047,
+        32.25163650512695
+      ],
+      "scale": 30.341165068225074,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-mading-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "443152fc3ed2b07de453e49ef39ddeba78eccb0b4dae90eef2d58a7b20becf69",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "mading-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -95.44075266520183,
+        122.45599873860677,
+        2.582186035304539
+      ],
+      "location": [
+        -92.24075266520182,
+        118.45599873860677,
+        6.382186035304539
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-mading-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "83eb223c30d40098f8c6a0c5deb86db965c1a070a0cec9e99def1402862fd88f",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "yinling-reservoir-terrain-v1-overview",
+      "target": [
+        -167.296142578125,
+        53.38081741333008,
+        1.315377116203308
+      ],
+      "location": [
+        -146.33316040039062,
+        27.17708396911621,
+        26.20892333984375
+      ],
+      "scale": 26.203733468012576,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-yinling-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "6bfdfd703a17aa5e4a1d10f21cddf0f9208af130ccf028bdea096693742d066b",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "yinling-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -156.30297342936197,
+        63.377227783203125,
+        1.475076475904236
+      ],
+      "location": [
+        -153.10297342936198,
+        59.377227783203125,
+        5.2750764759042355
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-yinling-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "8bfdb05e1ea4cdbd278411a1d5e4eae5a432e66ee32a4ce04e4e634718af2045",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "zhicun-reservoir-terrain-v1-overview",
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894889235496521
+      ],
+      "location": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "scale": 57.92404240297515,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-zhicun-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "2727406ddb08627eb724fc303afa22f6f39d068622dfaff914cf5f0270807615",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "zhicun-reservoir-terrain-v1-changed-interior",
+      "target": [
+        10.293609619140625,
+        130.6530558268229,
+        1.2479571765268935
+      ],
+      "location": [
+        13.493609619140624,
+        126.65305582682291,
+        5.047957176526893
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-zhicun-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "6150caf5d85a309be37d2aa56ae88b4be450aa35e16e7b2c9f1802ba3ff84cdd",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "tianbao-reservoir-terrain-v1-overview",
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.6950726509094238
+      ],
+      "location": [
+        -38.24760055541992,
+        24.591167449951172,
+        41.01094436645508
+      ],
+      "scale": 41.38512931034482,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-tianbao-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "0a0f07ffcdd98ed89f1e8b13c3b2f2f90b17ab41cfbe4eccedf68b1e18496347",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "tianbao-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -76.05278778076172,
+        83.86986287434895,
+        1.8490423936610743
+      ],
+      "location": [
+        -72.85278778076172,
+        79.86986287434895,
+        5.649042393661074
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-tianbao-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "bcdbbf7c92b2555f999c3e66652d15c029ca13990df672aa165dcfdd6cfceafb",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "linglong-lake-terrain-v1-overview",
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "location": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "scale": 15.174547413793105,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-linglong-lake-terrain-v1-overview-before.png",
+      "imageSha256": "b8c91e63cb2a2413feb6f4fa2ae51763301ebe984ec16f857d64aef5feb7b807",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "before",
+      "id": "linglong-lake-terrain-v1-changed-interior",
+      "target": [
+        178.5891367594401,
+        -109.06081136067708,
+        0.48944933922865147
+      ],
+      "location": [
+        181.78913675944008,
+        -113.06081136067708,
+        4.289449339228652
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-linglong-lake-terrain-v1-changed-interior-before.png",
+      "imageSha256": "a0a4d45b18799e525cc86ee35f8e5e910fd9e455eaad27f01acbfd33dee68874",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/detail.blend",
+      "blendSha256": "1b01b5e74a9c37f1568f02301919a11ffb45c2b4199d468b7647ec0d0889cc25"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "southeast-connected-water-v1-overview",
+      "target": [
+        89.34453582763672,
+        -98.36465454101562,
+        0.559781014919281
+      ],
+      "location": [
+        154.44012451171875,
+        -179.73414611816406,
+        77.86079406738281
+      ],
+      "scale": 81.36948813751276,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-southeast-connected-water-v1-overview-after.png",
+      "imageSha256": "42ff30a3391f18b2c8fd66701addfd8be9d0bcb56313a20e003d5d7e47121fa4",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "southeast-connected-water-v1-changed-interior",
+      "target": [
+        54.766003926595054,
+        -74.57320149739583,
+        1.121604413025072
+      ],
+      "location": [
+        57.96600392659506,
+        -78.57320149739583,
+        4.921604413025072
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-southeast-connected-water-v1-changed-interior-after.png",
+      "imageSha256": "c1ec75bc9a21dd8fdfa02d7cee86682ba28cd421c811c7dd758c3210f9bf7376",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "longmen-reservoir-closure-v1-overview",
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.7291557788848877
+      ],
+      "location": [
+        -26.479564666748047,
+        54.709716796875,
+        35.794010162353516
+      ],
+      "scale": 35.857740535175104,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-longmen-reservoir-closure-v1-overview-after.png",
+      "imageSha256": "d6208b49957db620d7c074242d0603367532e926888659257c79ed3e6c9f0e81",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "longmen-reservoir-closure-v1-changed-interior",
+      "target": [
+        -66.95843505859375,
+        104.16257222493489,
+        1.9227690595481859
+      ],
+      "location": [
+        -63.75843505859375,
+        100.16257222493489,
+        5.7227690595481855
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-longmen-reservoir-closure-v1-changed-interior-after.png",
+      "imageSha256": "3d6b2943b4452b49258d2446a5b1a512142f048ca0b0a0dcba6ed11a8ace7d00",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "west-pools-reservoir-closure-v1-overview",
+      "target": [
+        -163.0987548828125,
+        -8.996767044067383,
+        0.7009493708610535
+      ],
+      "location": [
+        -146.54470825195312,
+        -29.6893310546875,
+        20.358884811401367
+      ],
+      "scale": 20.692564655172426,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-west-pools-reservoir-closure-v1-overview-after.png",
+      "imageSha256": "a74202c8d5a2e389e68640677f4d3269e58d8bfa67400015ead4693abba8e95e",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "west-pools-reservoir-closure-v1-changed-interior",
+      "target": [
+        -166.5965830485026,
+        -0.09996414184570312,
+        0.9566538622529135
+      ],
+      "location": [
+        -163.3965830485026,
+        -4.099964141845703,
+        4.7566538622529135
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-west-pools-reservoir-closure-v1-changed-interior-after.png",
+      "imageSha256": "730051c1147af48c6e7262044538ea32f15a465e6386c82cb0e31f511e69ee5b",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "mading-reservoir-terrain-v1-overview",
+      "target": [
+        -99.5382080078125,
+        130.75302124023438,
+        3.4275317192077637
+      ],
+      "location": [
+        -75.26527404785156,
+        100.41185760498047,
+        32.25163650512695
+      ],
+      "scale": 30.341165068225074,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-mading-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "226f84f7b9d0ba8144c830de58b35d8ba0ad306e5fd7aade7846773d6b302afe",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "mading-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -95.44075266520183,
+        122.45599873860677,
+        2.582186035304539
+      ],
+      "location": [
+        -92.24075266520182,
+        118.45599873860677,
+        6.382186035304539
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-mading-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "e20f4e3b77eb25431f3d6eb5b811c6186a376885b290d8c9f6d0bc285b12b914",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "yinling-reservoir-terrain-v1-overview",
+      "target": [
+        -167.296142578125,
+        53.38081741333008,
+        1.315377116203308
+      ],
+      "location": [
+        -146.33316040039062,
+        27.17708396911621,
+        26.20892333984375
+      ],
+      "scale": 26.203733468012576,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-yinling-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "bbcec7565435f1129a352b130a1f0d9c0f02ae454535602b2f77cb57aac1c5a8",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "yinling-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -156.30297342936197,
+        63.377227783203125,
+        1.475076475904236
+      ],
+      "location": [
+        -153.10297342936198,
+        59.377227783203125,
+        5.2750764759042355
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-yinling-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "12517139a9ce34b1613fab3f36baf4862f5011db2ca2966031573f2193baf6e5",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "zhicun-reservoir-terrain-v1-overview",
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894889235496521
+      ],
+      "location": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "scale": 57.92404240297515,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-zhicun-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "8e3075667d7c9ec65d9e4d95b16e65cceec5c9483c4a830090b20f74901fdeab",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "zhicun-reservoir-terrain-v1-changed-interior",
+      "target": [
+        10.293609619140625,
+        130.6530558268229,
+        1.2479571765268935
+      ],
+      "location": [
+        13.493609619140624,
+        126.65305582682291,
+        5.047957176526893
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-zhicun-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "036afc0cb84b66428137b8f441f81def6c559333f3c1886a9b3434abe426804d",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "tianbao-reservoir-terrain-v1-overview",
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.6950726509094238
+      ],
+      "location": [
+        -38.24760055541992,
+        24.591167449951172,
+        41.01094436645508
+      ],
+      "scale": 41.38512931034482,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-tianbao-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "66482a86941143556182148954f7c49908ad4105320025813ae219d3f780ab56",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "tianbao-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -76.05278778076172,
+        83.86986287434895,
+        1.8490423936610743
+      ],
+      "location": [
+        -72.85278778076172,
+        79.86986287434895,
+        5.649042393661074
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-tianbao-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "bbeb8ac103d8b1652e3bf49329c1eecf0db092795b9d8262cb1c664d11a0d1c8",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "linglong-lake-terrain-v1-overview",
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "location": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "scale": 15.174547413793105,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-linglong-lake-terrain-v1-overview-after.png",
+      "imageSha256": "91d0236ceca905caa4adc36d6c9fce80ca0af703e56df211f65007c20d09ec67",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "detail",
+      "version": "after",
+      "id": "linglong-lake-terrain-v1-changed-interior",
+      "target": [
+        178.5891367594401,
+        -109.06081136067708,
+        0.48944933922865147
+      ],
+      "location": [
+        181.78913675944008,
+        -113.06081136067708,
+        4.289449339228652
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/detail-linglong-lake-terrain-v1-changed-interior-after.png",
+      "imageSha256": "8e086af11800445a1f880c5cb92c73a420147cce358b77ea01b1f0cf15ba9c46",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/detail.blend",
+      "blendSha256": "ffaeb957843ed8f26f77cf889711c177c396361bdc56ee63b8e896c4185cbe8f"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "southeast-connected-water-v1-overview",
+      "target": [
+        89.34453582763672,
+        -98.36465454101562,
+        0.5569257736206055
+      ],
+      "location": [
+        154.44012451171875,
+        -179.73414611816406,
+        77.8579330444336
+      ],
+      "scale": 81.36948813751276,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-southeast-connected-water-v1-overview-before.png",
+      "imageSha256": "9580cef79ca6993667da40270d131c9228ea5a218680dbc678dc883b24dc01d2",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "southeast-connected-water-v1-changed-interior",
+      "target": [
+        54.16637420654297,
+        -74.57320149739583,
+        1.31972280285235
+      ],
+      "location": [
+        57.36637420654297,
+        -78.57320149739583,
+        5.119722802852349
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-southeast-connected-water-v1-changed-interior-before.png",
+      "imageSha256": "0cb132722dab24b0b1888881fdd5e8d47a9996ef246fc0ac9face688c020abcd",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "longmen-reservoir-closure-v1-overview",
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.7291557788848877
+      ],
+      "location": [
+        -26.479564666748047,
+        54.709716796875,
+        35.794010162353516
+      ],
+      "scale": 35.857740535175104,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-longmen-reservoir-closure-v1-overview-before.png",
+      "imageSha256": "6ef6b67e2b63df44f4f9294035c59db8962ac9a473571cee61aad4ac6efabe85",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "longmen-reservoir-closure-v1-changed-interior",
+      "target": [
+        -62.2613525390625,
+        104.26253763834636,
+        2.587370029573078
+      ],
+      "location": [
+        -59.0613525390625,
+        100.26253763834636,
+        6.387370029573078
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-longmen-reservoir-closure-v1-changed-interior-before.png",
+      "imageSha256": "563b2e2016322aba52892823adbabde1658a5fc49420eb3e9d195f8b5be768cd",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "west-pools-reservoir-closure-v1-overview",
+      "target": [
+        -163.0987548828125,
+        -8.996767044067383,
+        0.7009493708610535
+      ],
+      "location": [
+        -146.54470825195312,
+        -29.6893310546875,
+        20.358884811401367
+      ],
+      "scale": 20.692564655172426,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-west-pools-reservoir-closure-v1-overview-before.png",
+      "imageSha256": "2688a3c77c010d467b4610cbc379382ad490a5645aeefca8cbf6c4b08beecb89",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "west-pools-reservoir-closure-v1-changed-interior",
+      "target": [
+        -162.99881490071616,
+        -0.09996414184570312,
+        1.0530281810170217
+      ],
+      "location": [
+        -159.79881490071617,
+        -4.099964141845703,
+        4.853028181017022
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-west-pools-reservoir-closure-v1-changed-interior-before.png",
+      "imageSha256": "8951a13a35270910cd91e5254813fffb879c3441267fae4f69c1424c7ef66c5b",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "mading-reservoir-terrain-v1-overview",
+      "target": [
+        -99.5382080078125,
+        130.75302124023438,
+        3.4275310039520264
+      ],
+      "location": [
+        -75.26527404785156,
+        100.41185760498047,
+        32.25163650512695
+      ],
+      "scale": 30.341165068225074,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-mading-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "c9dfa16ba18be8418a9edfe6123a6d52eb8fe671907a3d518374242a61b4d15f",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "mading-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -104.5351079305013,
+        122.55596415201823,
+        1.9174370662123654
+      ],
+      "location": [
+        -101.3351079305013,
+        118.55596415201823,
+        5.717437066212366
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-mading-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "10165253da22ddc9e6a5276a5c92fc4f3a44dd2fbb80811426e09784c9609af4",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "yinling-reservoir-terrain-v1-overview",
+      "target": [
+        -167.296142578125,
+        53.38081741333008,
+        1.4077908992767334
+      ],
+      "location": [
+        -146.33316040039062,
+        27.17708396911621,
+        26.30133819580078
+      ],
+      "scale": 26.203733468012576,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-yinling-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "8de3b1c0bcc42ae24a9b3b1cd4d1097dc335e0e5a81bc258728aa59a01469bfe",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "yinling-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -157.0025380452474,
+        63.47719192504883,
+        1.412648643082595
+      ],
+      "location": [
+        -153.80253804524742,
+        59.47719192504883,
+        5.212648643082595
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-yinling-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "52e6540653f9ef9f8e6e21ace811f5effb9832a2df98db7acecb3fdb376719ec",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "zhicun-reservoir-terrain-v1-overview",
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894890308380127
+      ],
+      "location": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "scale": 57.92404240297515,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-zhicun-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "abee875e080890ec7cebc3e572f2ae0fb82ef70c40f20e5a214660a7dc53932d",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "zhicun-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -34.97828674316406,
+        104.56243387858073,
+        2.009924186678693
+      ],
+      "location": [
+        -31.778286743164063,
+        100.56243387858073,
+        5.809924186678693
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-zhicun-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "4159ab694a37920b53dccf3e73ecc639d4ac0c2f2194dfca77e9060cb93e6ed3",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "tianbao-reservoir-terrain-v1-overview",
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.6025561094284058
+      ],
+      "location": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.918426513671875
+      ],
+      "scale": 41.38512931034482,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-tianbao-reservoir-terrain-v1-overview-before.png",
+      "imageSha256": "db752c9aa683553e7dea93dcd26f2ed6a26cccfecba8d4386396a2c179dc5cfe",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "tianbao-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -76.55247751871745,
+        83.76990000406902,
+        1.793139897279918
+      ],
+      "location": [
+        -73.35247751871745,
+        79.76990000406902,
+        5.593139897279918
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-tianbao-reservoir-terrain-v1-changed-interior-before.png",
+      "imageSha256": "45fb50ec2c71beb1371edb4984c8570961cda56c43b6e37d75bd8f3998d693cd",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "linglong-lake-terrain-v1-overview",
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "location": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "scale": 15.174547413793105,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-linglong-lake-terrain-v1-overview-before.png",
+      "imageSha256": "32da28dfe6a22ce957912812dc94ae5ca5be2f914d65b735185cc025da7cef0d",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "before",
+      "id": "linglong-lake-terrain-v1-changed-interior",
+      "target": [
+        178.5891367594401,
+        -109.06081136067708,
+        0.48219916491165116
+      ],
+      "location": [
+        181.78913675944008,
+        -113.06081136067708,
+        4.282199164911651
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-linglong-lake-terrain-v1-changed-interior-before.png",
+      "imageSha256": "a53fe6959538ed6963ba4b1b23b9729f7bd693a67ec28f375a4a80c693e655f1",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/native/smooth.blend",
+      "blendSha256": "8e5bf46ee68e351119fceeb6f4e7b62204d49ca7a38e00c5a3f4a8a513c046e2"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "southeast-connected-water-v1-overview",
+      "target": [
+        89.34453582763672,
+        -98.36465454101562,
+        0.5569257736206055
+      ],
+      "location": [
+        154.44012451171875,
+        -179.73414611816406,
+        77.8579330444336
+      ],
+      "scale": 81.36948813751276,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-southeast-connected-water-v1-overview-after.png",
+      "imageSha256": "d477f4cecb2c0f319093773519e6a9147e6b85ba098297a6fe4c78d30abb9b5c",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "southeast-connected-water-v1-changed-interior",
+      "target": [
+        54.16637420654297,
+        -74.57320149739583,
+        1.31972280285235
+      ],
+      "location": [
+        57.36637420654297,
+        -78.57320149739583,
+        5.119722802852349
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-southeast-connected-water-v1-changed-interior-after.png",
+      "imageSha256": "c15be096a495158895a088946fc3ee294c2e788275479889bb87243ab2bc2929",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "longmen-reservoir-closure-v1-overview",
+      "target": [
+        -55.16575622558594,
+        90.56745910644531,
+        1.7291557788848877
+      ],
+      "location": [
+        -26.479564666748047,
+        54.709716796875,
+        35.794010162353516
+      ],
+      "scale": 35.857740535175104,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-longmen-reservoir-closure-v1-overview-after.png",
+      "imageSha256": "1e4316faaea40956167e4c170987d7a000eb252ed2f0c42eef06424de0133ede",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "longmen-reservoir-closure-v1-changed-interior",
+      "target": [
+        -62.2613525390625,
+        104.26253763834636,
+        2.587370029573078
+      ],
+      "location": [
+        -59.0613525390625,
+        100.26253763834636,
+        6.387370029573078
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-longmen-reservoir-closure-v1-changed-interior-after.png",
+      "imageSha256": "7057fb748006361c381d1d32c614090f0e8a18863aeea10f1667b79f902a29e3",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "west-pools-reservoir-closure-v1-overview",
+      "target": [
+        -163.0987548828125,
+        -8.996767044067383,
+        0.7009493708610535
+      ],
+      "location": [
+        -146.54470825195312,
+        -29.6893310546875,
+        20.358884811401367
+      ],
+      "scale": 20.692564655172426,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-west-pools-reservoir-closure-v1-overview-after.png",
+      "imageSha256": "4b328b4eae1dab04f4bd19cb18feba480ec8986ac52e88b96634885d91209b36",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "west-pools-reservoir-closure-v1-changed-interior",
+      "target": [
+        -162.99881490071616,
+        -0.09996414184570312,
+        1.0530281810170217
+      ],
+      "location": [
+        -159.79881490071617,
+        -4.099964141845703,
+        4.853028181017022
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-west-pools-reservoir-closure-v1-changed-interior-after.png",
+      "imageSha256": "7757afb4c7c824488be811a91a36a19007afc866914b306c8d3e0828e8362c0f",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "mading-reservoir-terrain-v1-overview",
+      "target": [
+        -99.5382080078125,
+        130.75302124023438,
+        3.4275310039520264
+      ],
+      "location": [
+        -75.26527404785156,
+        100.41185760498047,
+        32.25163650512695
+      ],
+      "scale": 30.341165068225074,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-mading-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "fef193e3ea58092fc4045c5f6c22d406c5d28e69b503f7cbd1cfc19969a62c4d",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "mading-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -104.5351079305013,
+        122.55596415201823,
+        1.9174370662123654
+      ],
+      "location": [
+        -101.3351079305013,
+        118.55596415201823,
+        5.717437066212366
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-mading-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "b6b75d707ff1dac6b48d48b405c6e9134938169cea11d7d88c76f32537b2383f",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "yinling-reservoir-terrain-v1-overview",
+      "target": [
+        -167.296142578125,
+        53.38081741333008,
+        1.4077908992767334
+      ],
+      "location": [
+        -146.33316040039062,
+        27.17708396911621,
+        26.30133819580078
+      ],
+      "scale": 26.203733468012576,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-yinling-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "e62a8e647c25ee516fe27593188cf951af8090752b1b6a4d3d63cb71237555c6",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "yinling-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -157.0025380452474,
+        63.47719192504883,
+        1.412648643082595
+      ],
+      "location": [
+        -153.80253804524742,
+        59.47719192504883,
+        5.212648643082595
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-yinling-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "111962b40d9418e8105927251a77f73e91081911160cc4150f81c4d9a58cb0ea",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "zhicun-reservoir-terrain-v1-overview",
+      "target": [
+        -11.992555618286133,
+        117.5577621459961,
+        1.894890308380127
+      ],
+      "location": [
+        34.3466796875,
+        59.63372039794922,
+        56.9227294921875
+      ],
+      "scale": 57.92404240297515,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-zhicun-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "e7d193efb5da2738a8b24f741b16e238ffbe8ec8aaeb7abb9064c9cf556ef3fb",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "zhicun-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -34.97828674316406,
+        104.56243387858073,
+        2.009924186678693
+      ],
+      "location": [
+        -31.778286743164063,
+        100.56243387858073,
+        5.809924186678693
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-zhicun-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "203e6eb11803dfdf4c00f2acbec540839b29fa70697786121c7440248af9bdc5",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "tianbao-reservoir-terrain-v1-overview",
+      "target": [
+        -71.35570526123047,
+        65.9762954711914,
+        1.6025561094284058
+      ],
+      "location": [
+        -38.24760055541992,
+        24.591167449951172,
+        40.918426513671875
+      ],
+      "scale": 41.38512931034482,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-tianbao-reservoir-terrain-v1-overview-after.png",
+      "imageSha256": "029237cda3efaeebf008b7dec9e1438317dae3d768fd2609807882458cdb256c",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "tianbao-reservoir-terrain-v1-changed-interior",
+      "target": [
+        -76.55247751871745,
+        83.76990000406902,
+        1.793139897279918
+      ],
+      "location": [
+        -73.35247751871745,
+        79.76990000406902,
+        5.593139897279918
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-tianbao-reservoir-terrain-v1-changed-interior-after.png",
+      "imageSha256": "ab759e516d2d2e3480b1c6f7fb997a5ea05ee01bf9edc28aa53ddd4e31bacc43",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "linglong-lake-terrain-v1-overview",
+      "target": [
+        179.88833618164062,
+        -102.56314849853516,
+        0.43220335245132446
+      ],
+      "location": [
+        192.02796936035156,
+        -117.7376937866211,
+        14.848023414611816
+      ],
+      "scale": 15.174547413793105,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-linglong-lake-terrain-v1-overview-after.png",
+      "imageSha256": "3518b8ed7c8c3dd98eb91073c0ec6276a6099100a6570383e9926f76d9efe804",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    },
+    {
+      "profile": "smooth",
+      "version": "after",
+      "id": "linglong-lake-terrain-v1-changed-interior",
+      "target": [
+        178.5891367594401,
+        -109.06081136067708,
+        0.48219916491165116
+      ],
+      "location": [
+        181.78913675944008,
+        -113.06081136067708,
+        4.282199164911651
+      ],
+      "scale": 4,
+      "image": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/views/smooth-linglong-lake-terrain-v1-changed-interior-after.png",
+      "imageSha256": "d78d2481c95758bdfea55f2a9a7f7384fbbf7205a228a27e3f2567cbfa29cf4e",
+      "blend": "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/native/smooth.blend",
+      "blendSha256": "859a152294b168114309dee3702b74a1506830136642f8b6863e6bf82b78e959"
+    }
+  ]
+}

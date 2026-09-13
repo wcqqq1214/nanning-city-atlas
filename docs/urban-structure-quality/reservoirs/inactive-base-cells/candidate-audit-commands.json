@@ -1,0 +1,298 @@
+[
+  {
+    "id": "southeast-connected-water-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/southeast-connected-water-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/southeast-connected-water-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/southeast-connected-water-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "southeast-connected-water-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/southeast-connected-water-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/southeast-connected-water-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/southeast-connected-water-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "longmen-reservoir-closure-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/longmen-reservoir-closure-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "longmen-reservoir-closure-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/longmen-reservoir-closure-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/longmen-reservoir-closure-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/longmen-reservoir-closure-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "west-pools-reservoir-closure-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/west-pools-reservoir-closure-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "west-pools-reservoir-closure-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/west-pools-reservoir-closure-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/west-pools-reservoir-closure-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/west-pools-reservoir-closure-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "mading-reservoir-terrain-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/mading-reservoir-terrain-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/mading-reservoir-terrain-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/mading-reservoir-terrain-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "mading-reservoir-terrain-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/mading-reservoir-terrain-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/mading-reservoir-terrain-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/mading-reservoir-terrain-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "yinling-reservoir-terrain-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "yinling-reservoir-terrain-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/yinling-reservoir-terrain-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/yinling-reservoir-terrain-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "zhicun-reservoir-terrain-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/zhicun-reservoir-terrain-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "zhicun-reservoir-terrain-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/zhicun-reservoir-terrain-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/zhicun-reservoir-terrain-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/zhicun-reservoir-terrain-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "tianbao-reservoir-terrain-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/tianbao-reservoir-terrain-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "tianbao-reservoir-terrain-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/tianbao-reservoir-terrain-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/tianbao-reservoir-terrain-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/tianbao-reservoir-terrain-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "linglong-lake-terrain-v1",
+    "step": "native",
+    "command": [
+      "/opt/homebrew/bin/blender",
+      "--background",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "blender/check_reservoir_terrain.py",
+      "--",
+      "--scene-root",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/linglong-lake-terrain-v1.json",
+      "--baseline-plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/staging/data/reservoir-plans/linglong-lake-terrain-v1.json",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/linglong-lake-terrain-v1/native"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "linglong-lake-terrain-v1",
+    "step": "exports",
+    "command": [
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/venv/bin/python",
+      "scripts/check_reservoir_exports.py",
+      "--plan",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/staging/data/reservoir-plans/linglong-lake-terrain-v1.json",
+      "--directory",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/linglong-lake-terrain-v1/native",
+      "--output",
+      "/Users/wcqqq1214/Project/nanning-city-atlas/work/urban-structure/p5/reservoirs/integration/budget/candidates/linglong-lake-terrain-v1/export-audit.json"
+    ],
+    "exitCode": 0
+  }
+]

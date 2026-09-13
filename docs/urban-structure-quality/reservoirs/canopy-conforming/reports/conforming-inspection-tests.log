@@ -1,0 +1,11 @@
+✔ saved inspection links restore every camera and display setting without precision loss (5.187375ms)
+✔ malformed or unsafe camera values fall back to a known usable viewpoint (1.382667ms)
+✔ clay and flat colors preserve geometry, restore original materials and release only inspection materials (3.248334ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 305.845083
