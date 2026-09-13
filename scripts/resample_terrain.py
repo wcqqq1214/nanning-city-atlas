@@ -110,6 +110,10 @@ def prepare(raw_only=False):
                             ['data/region.json','public/data/geography.json','data/malls-plan.json']}
     (ROOT/'data/terrain-source.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     print(f'Copernicus: {cols} x {rows}, {spacing} m mesh, raw {raw.min():.2f}–{raw.max():.2f} m; datum {water_datum}; grades {grades}',flush=True)
+    from prepare_waterfront import prepare as prepare_waterfront
+    prepare_waterfront()
+    from prepare_qingxiu_terrain import prepare as prepare_qingxiu
+    prepare_qingxiu()
 
 
 if __name__=='__main__':prepare()

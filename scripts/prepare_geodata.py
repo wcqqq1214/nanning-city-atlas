@@ -42,22 +42,24 @@ def parts(geom, kind):
             yield from parts(g, kind)
 
 
-def geom_for(element, polygon=True):
+def geom_for(element, polygon=True, *, project=None, clip=None):
+    project = project or xy
+    clip = CLIP if clip is None else clip
     if element["type"] == "way":
-        pts = [xy(p["lon"], p["lat"]) for p in element.get("geometry", [])]
+        pts = [project(p["lon"], p["lat"]) for p in element.get("geometry", [])]
         if len(pts) < (3 if polygon else 2):
             return None
         geom = Polygon(pts) if polygon else LineString(pts)
     else:
         outer, inner = [], []
         for member in element.get("members", []):
-            pts = [xy(p["lon"], p["lat"]) for p in member.get("geometry", [])]
+            pts = [project(p["lon"], p["lat"]) for p in member.get("geometry", [])]
             if len(pts) > 1:
                 (inner if member.get("role") == "inner" else outer).append(LineString(pts))
         geom = unary_union(list(polygonize(unary_union(outer))))
         if inner:
             geom = geom.difference(unary_union(list(polygonize(unary_union(inner)))))
-    return set_precision(make_valid(geom).intersection(CLIP), .001)
+    return set_precision(make_valid(geom).intersection(clip), .001)
 
 
 def coords(polygon):
@@ -71,12 +73,12 @@ def numeric(value, fallback):
         return fallback
 
 
-def triangulate_water(poly):
+def triangulate_water(poly,precision=3):
     rings = [list(ring.coords)[:-1] for ring in [poly.exterior, *poly.interiors]]
     points = np.array([point for ring in rings for point in ring], dtype=np.float64)
     ends = np.cumsum([len(ring) for ring in rings], dtype=np.uint32)
     indices = mapbox_earcut.triangulate_float64(points, ends).reshape(-1, 3)
-    return [[[round(float(points[i][0]), 3), round(float(points[i][1]), 3)] for i in tri] for tri in indices]
+    return [[[round(float(points[i][0]), precision), round(float(points[i][1]), precision)] for i in tri] for tri in indices]
 
 
 def infer_urban_blocks(roads, mapped, known):
@@ -190,7 +192,10 @@ def main():
             else:
                 # Buildings keep mapped footprints; default height is an explicit assumption.
                 height = numeric(t.get("height"), numeric(t.get("building:levels"), 5) * 3.2)
-                mapped.append({"rings": coords(poly), "height": max(3, min(450, height)), "mappedHeight": "height" in t or "building:levels" in t, "source": "osm", "name": name})
+                mapped.append({"rings": coords(poly), "height": max(3, min(450, height)), "mappedHeight": "height" in t or "building:levels" in t, "source": "osm", "name": name,
+                               "sourceRef": f"osm/{el['type']}/{el['id']}", "use": t.get('building', 'yes'),
+                               "heightSource": {"kind": 'height' if 'height' in t else 'levels' if 'building:levels' in t else 'estimate',
+                                                "value": t.get('height', t.get('building:levels')), "method": 'legacy-osm-height'}})
 
     print(f'Merging {len(waters)} water polygons, {len(parks)} parks, {len(mapped)} buildings...', flush=True)
     water = set_precision(unary_union(waters).buffer(0), .001)
@@ -245,6 +250,8 @@ def main():
               "attribution": "© OpenStreetMap contributors, ODbL 1.0", "osmTimestamp": snapshot.get("osm3s", {}).get("timestamp_osm_base"),
               "stats": {"mappedBuildings": len(mapped), "infillBuildings": len(infill), "roadSegments": len(roads), "trees": len(trees)}}
     output["waterTriangles"] = [tri for poly in parts(water, "Polygon") for tri in triangulate_water(poly)]
+    from prepare_urban_blocks import apply_blocks
+    output = apply_blocks(output)
     (DATA / "geography.json").write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")))
     (ROOT / 'data/forest-source.json').write_text(json.dumps(forest_source(snapshot),ensure_ascii=False,separators=(',',':'))+'\n')
     from resample_terrain import prepare as prepare_terrain

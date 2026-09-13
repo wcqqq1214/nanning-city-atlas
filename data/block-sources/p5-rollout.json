@@ -1,0 +1,1047 @@
+{
+  "id": "p5-block-rollout-1",
+  "status": "candidate",
+  "baseline": "baseline-p4",
+  "sites": [
+    {
+      "id": "haipo-residential",
+      "name": "海珀璞晖住宅组团",
+      "status": "candidate; estimated internal massing; not city-integrated",
+      "use": "residential",
+      "osm": {
+        "type": "way",
+        "id": 839655821,
+        "bounds": {
+          "minlat": 22.8349428,
+          "minlon": 108.3689043,
+          "maxlat": 22.8368566,
+          "maxlon": 108.3725528
+        },
+        "nodes": [
+          7835215752,
+          7835215753,
+          9286210464,
+          9286210465,
+          9286210463,
+          7835215754,
+          9286210467,
+          9286210466,
+          9286210470,
+          9286210456,
+          9286210468,
+          9286210457,
+          9286210469,
+          9286210458,
+          9286210459,
+          7835215755,
+          9286210460,
+          9286210461,
+          9286210462,
+          7835215752
+        ],
+        "geometry": [
+          {
+            "lat": 22.835093,
+            "lon": 108.3689043
+          },
+          {
+            "lat": 22.8367721,
+            "lon": 108.3689376
+          },
+          {
+            "lat": 22.8368339,
+            "lon": 108.3689559
+          },
+          {
+            "lat": 22.8368551,
+            "lon": 108.3689968
+          },
+          {
+            "lat": 22.8368566,
+            "lon": 108.3690413
+          },
+          {
+            "lat": 22.8367818,
+            "lon": 108.3721494
+          },
+          {
+            "lat": 22.836768,
+            "lon": 108.3722819
+          },
+          {
+            "lat": 22.836715,
+            "lon": 108.3723712
+          },
+          {
+            "lat": 22.8365955,
+            "lon": 108.3724625
+          },
+          {
+            "lat": 22.8364304,
+            "lon": 108.3725229
+          },
+          {
+            "lat": 22.8361923,
+            "lon": 108.3725528
+          },
+          {
+            "lat": 22.8359258,
+            "lon": 108.372519
+          },
+          {
+            "lat": 22.8356154,
+            "lon": 108.3724169
+          },
+          {
+            "lat": 22.835341,
+            "lon": 108.3723432
+          },
+          {
+            "lat": 22.8349428,
+            "lon": 108.3723176
+          },
+          {
+            "lat": 22.8350507,
+            "lon": 108.3708034
+          },
+          {
+            "lat": 22.8349847,
+            "lon": 108.3698708
+          },
+          {
+            "lat": 22.8349953,
+            "lon": 108.3690191
+          },
+          {
+            "lat": 22.8350344,
+            "lon": 108.3689334
+          },
+          {
+            "lat": 22.835093,
+            "lon": 108.3689043
+          }
+        ],
+        "tags": {
+          "landuse": "residential",
+          "name": "绿地中央广场海珀璞晖住宅",
+          "residential": "apartments"
+        },
+        "url": "https://www.openstreetmap.org/way/839655821",
+        "snapshotTimestamp": "2026-09-08T06:56:02Z",
+        "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+      },
+      "references": [
+        {
+          "url": "https://www.acctn.com/casexq.html?content=211",
+          "publisher": "筑境设计",
+          "accessed": "2026-09-12",
+          "supports": "南宁绿地中央广场的住宅、办公和商业街区构成；设计方实景图显示北侧高层住宅及南侧低中层商业办公。",
+          "doesNotEstablish": "具体塔楼位置、层数、现状总平面和建筑高度；照片拍摄时间早于当前快照。"
+        }
+      ],
+      "template": {
+        "type": "residential-court-towers",
+        "orientation": "longest-boundary-edge",
+        "columns": 3,
+        "rows": 2,
+        "columnPitchMeters": 105,
+        "rowPitchMeters": 106,
+        "towerSizeMeters": [
+          32,
+          24
+        ],
+        "podiumSizeMeters": [
+          42,
+          32
+        ],
+        "podiumHeightMeters": 4,
+        "towerHeightsMeters": [
+          84,
+          90,
+          96
+        ],
+        "minimumBuildings": 4,
+        "centralGardenWidthMeters": 55
+      },
+      "limits": {
+        "siteSetbackMeters": 6,
+        "neighbourClearanceMeters": 8,
+        "waterClearanceMeters": 25
+      },
+      "assumptions": [
+        "OSM 为志愿地图边界，不等于宗地图。",
+        "模板足印、内部位置及未有层数来源的高度为展示估计；不宣称实景复原。",
+        "保留全部既有 OSM 建筑，完整记录被替换的程序楼。"
+      ]
+    },
+    {
+      "id": "greenland-commercial",
+      "name": "绿地中央广场商业办公组团",
+      "status": "candidate; estimated internal massing; not city-integrated",
+      "use": "commercial",
+      "osm": {
+        "type": "way",
+        "id": 577000343,
+        "bounds": {
+          "minlat": 22.8331862,
+          "minlon": 108.3687862,
+          "maxlat": 22.8348853,
+          "maxlon": 108.3737242
+        },
+        "nodes": [
+          5532771853,
+          9286210451,
+          9286210452,
+          9286210450,
+          9286210453,
+          9286210454,
+          9286210455,
+          5532771858,
+          9286210472,
+          9286210475,
+          9286210476,
+          9286210477,
+          9286210478,
+          9286210479,
+          9286210480,
+          9286210481,
+          9286210482,
+          9286210483,
+          9286210484,
+          9286210487,
+          9286210489,
+          5532771854,
+          5532771853
+        ],
+        "geometry": [
+          {
+            "lat": 22.8347106,
+            "lon": 108.368948
+          },
+          {
+            "lat": 22.8346959,
+            "lon": 108.3688746
+          },
+          {
+            "lat": 22.83467,
+            "lon": 108.3688377
+          },
+          {
+            "lat": 22.8346139,
+            "lon": 108.3688148
+          },
+          {
+            "lat": 22.8339707,
+            "lon": 108.3687862
+          },
+          {
+            "lat": 22.833905,
+            "lon": 108.3688072
+          },
+          {
+            "lat": 22.8338506,
+            "lon": 108.3688551
+          },
+          {
+            "lat": 22.8338177,
+            "lon": 108.3689216
+          },
+          {
+            "lat": 22.8331862,
+            "lon": 108.3726237
+          },
+          {
+            "lat": 22.8331883,
+            "lon": 108.3729266
+          },
+          {
+            "lat": 22.8332148,
+            "lon": 108.373055
+          },
+          {
+            "lat": 22.8332562,
+            "lon": 108.3731666
+          },
+          {
+            "lat": 22.8333143,
+            "lon": 108.373207
+          },
+          {
+            "lat": 22.8334419,
+            "lon": 108.3732069
+          },
+          {
+            "lat": 22.8336861,
+            "lon": 108.3732318
+          },
+          {
+            "lat": 22.8338411,
+            "lon": 108.3732746
+          },
+          {
+            "lat": 22.8339419,
+            "lon": 108.3734192
+          },
+          {
+            "lat": 22.8340184,
+            "lon": 108.3736678
+          },
+          {
+            "lat": 22.8340464,
+            "lon": 108.3737242
+          },
+          {
+            "lat": 22.834885,
+            "lon": 108.3734205
+          },
+          {
+            "lat": 22.8348853,
+            "lon": 108.3724886
+          },
+          {
+            "lat": 22.8347364,
+            "lon": 108.3724534
+          },
+          {
+            "lat": 22.8347106,
+            "lon": 108.368948
+          }
+        ],
+        "tags": {
+          "addr:housenumber": "163",
+          "addr:street": "东葛路",
+          "landuse": "commercial",
+          "name": "绿地中央广场"
+        },
+        "url": "https://www.openstreetmap.org/way/577000343",
+        "snapshotTimestamp": "2026-09-08T06:56:02Z",
+        "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+      },
+      "references": [
+        {
+          "url": "https://www.acctn.com/casexq.html?content=211",
+          "publisher": "筑境设计",
+          "accessed": "2026-09-12",
+          "supports": "南宁绿地中央广场的住宅、办公和商业街区构成；设计方实景图显示北侧高层住宅及南侧低中层商业办公。",
+          "doesNotEstablish": "具体塔楼位置、层数、现状总平面和建筑高度；照片拍摄时间早于当前快照。"
+        }
+      ],
+      "template": {
+        "type": "commercial-promenade",
+        "orientation": "longest-boundary-edge",
+        "columnPitchMeters": 65,
+        "rowPitchMeters": 84,
+        "podiumSizeMeters": [
+          48,
+          29
+        ],
+        "towerSizeMeters": [
+          28,
+          20
+        ],
+        "podiumHeightMeters": 9,
+        "towerHeightsMeters": [
+          32,
+          38,
+          44
+        ],
+        "minimumBuildings": 3,
+        "promenadeWidthMeters": 16
+      },
+      "limits": {
+        "siteSetbackMeters": 6,
+        "neighbourClearanceMeters": 8,
+        "waterClearanceMeters": 25
+      },
+      "assumptions": [
+        "OSM 为志愿地图边界，不等于宗地图。",
+        "模板足印、内部位置及未有层数来源的高度为展示估计；不宣称实景复原。",
+        "保留全部既有 OSM 建筑，完整记录被替换的程序楼。"
+      ]
+    },
+    {
+      "id": "mingxiu-campus",
+      "name": "南宁师范大学明秀校区教学组团",
+      "status": "candidate; estimated internal massing; not city-integrated",
+      "use": "campus",
+      "osm": {
+        "type": "way",
+        "id": 553196020,
+        "bounds": {
+          "minlat": 22.841095,
+          "minlon": 108.3146261,
+          "maxlat": 22.8464497,
+          "maxlon": 108.3184135
+        },
+        "nodes": [
+          5340268456,
+          5340268457,
+          9333389167,
+          9333389166,
+          9333389165,
+          9333389164,
+          9333389163,
+          9333389162,
+          5340268458,
+          9333389160,
+          9333389161,
+          9333389159,
+          9333389158,
+          9333389155,
+          9333389157,
+          9333389156,
+          5340268459,
+          5340268456
+        ],
+        "geometry": [
+          {
+            "lat": 22.8459575,
+            "lon": 108.3149568
+          },
+          {
+            "lat": 22.8464497,
+            "lon": 108.3167137
+          },
+          {
+            "lat": 22.8449786,
+            "lon": 108.3171891
+          },
+          {
+            "lat": 22.8451185,
+            "lon": 108.3175994
+          },
+          {
+            "lat": 22.8443344,
+            "lon": 108.3180461
+          },
+          {
+            "lat": 22.8442423,
+            "lon": 108.3171912
+          },
+          {
+            "lat": 22.8435662,
+            "lon": 108.3171853
+          },
+          {
+            "lat": 22.8434406,
+            "lon": 108.3172968
+          },
+          {
+            "lat": 22.8435983,
+            "lon": 108.3181975
+          },
+          {
+            "lat": 22.8426587,
+            "lon": 108.3184135
+          },
+          {
+            "lat": 22.8423911,
+            "lon": 108.3172179
+          },
+          {
+            "lat": 22.8421926,
+            "lon": 108.3172132
+          },
+          {
+            "lat": 22.8420715,
+            "lon": 108.316037
+          },
+          {
+            "lat": 22.8411685,
+            "lon": 108.3161811
+          },
+          {
+            "lat": 22.841095,
+            "lon": 108.3146945
+          },
+          {
+            "lat": 22.8416749,
+            "lon": 108.3146261
+          },
+          {
+            "lat": 22.841816,
+            "lon": 108.3155121
+          },
+          {
+            "lat": 22.8459575,
+            "lon": 108.3149568
+          }
+        ],
+        "tags": {
+          "alt_name": "南宁师范大学",
+          "amenity": "university",
+          "name": "南宁师范大学(明秀校区)",
+          "short_name": "南宁师大"
+        },
+        "url": "https://www.openstreetmap.org/way/553196020",
+        "snapshotTimestamp": "2026-09-08T06:56:02Z",
+        "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+      },
+      "references": [
+        {
+          "url": "https://dwxzb.nnnu.edu.cn/info/1085/1152.htm",
+          "publisher": "南宁师范大学党委办公室、校长办公室",
+          "published": "2019-04-03",
+          "accessed": "2026-09-12",
+          "supports": "官方校园平面图中的教学、图书馆、办公组团、庭院与南侧运动场相对关系及标注层数。",
+          "doesNotEstablish": "2026年现状、测绘坐标系、层高或精确足印；图像描摹和配准均为估计。"
+        }
+      ],
+      "template": {
+        "type": "campus-academic-courts",
+        "orientation": "source-map-two-control-points",
+        "sourceMapUrl": "https://dwxzb.nnnu.edu.cn/__local/F/E7/8D/5E228D034FB9239BF222CC57E9E_F5FFA0F5_F263D.png?e=.png",
+        "sourceMapSha256": "077b6606756a1750d4e23e5a8ee0b18cccddb7535e85a8ecca7f2cba7a5477e7",
+        "sourceMapPixels": [
+          1054,
+          1427
+        ],
+        "controlPoints": [
+          {
+            "pixel": [
+              175,
+              174
+            ],
+            "osmBoundaryVertex": 0
+          },
+          {
+            "pixel": [
+              526,
+              77
+            ],
+            "osmBoundaryVertex": 1
+          }
+        ],
+        "registrationStatus": "Approximate similarity alignment to two northern OSM boundary corners; not surveyed georeferencing",
+        "floorHeightMeters": 3.2,
+        "minimumBuildings": 7,
+        "buildings": [
+          {
+            "id": "library-north",
+            "name": "北侧新图书馆",
+            "levels": 12,
+            "outerPixels": [
+              [
+                210,
+                196
+              ],
+              [
+                355,
+                151
+              ],
+              [
+                368,
+                190
+              ],
+              [
+                224,
+                244
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "training",
+            "name": "培训楼",
+            "levels": 16,
+            "outerPixels": [
+              [
+                403,
+                145
+              ],
+              [
+                528,
+                107
+              ],
+              [
+                555,
+                187
+              ],
+              [
+                520,
+                199
+              ],
+              [
+                508,
+                159
+              ],
+              [
+                414,
+                187
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "geography",
+            "name": "地理楼",
+            "levels": 6,
+            "outerPixels": [
+              [
+                195,
+                293
+              ],
+              [
+                259,
+                273
+              ],
+              [
+                274,
+                314
+              ],
+              [
+                249,
+                322
+              ],
+              [
+                243,
+                302
+              ],
+              [
+                217,
+                310
+              ],
+              [
+                231,
+                352
+              ],
+              [
+                205,
+                365
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "teaching",
+            "name": "教学楼",
+            "levels": 7,
+            "outerPixels": [
+              [
+                277,
+                310
+              ],
+              [
+                402,
+                273
+              ],
+              [
+                418,
+                307
+              ],
+              [
+                287,
+                344
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "chemistry",
+            "name": "化学楼",
+            "levels": 6,
+            "outerPixels": [
+              [
+                445,
+                264
+              ],
+              [
+                561,
+                229
+              ],
+              [
+                580,
+                276
+              ],
+              [
+                550,
+                285
+              ],
+              [
+                542,
+                259
+              ],
+              [
+                466,
+                285
+              ],
+              [
+                473,
+                300
+              ],
+              [
+                451,
+                306
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "physics",
+            "name": "物理楼",
+            "levels": 6,
+            "outerPixels": [
+              [
+                477,
+                400
+              ],
+              [
+                592,
+                361
+              ],
+              [
+                603,
+                392
+              ],
+              [
+                490,
+                421
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "integrated",
+            "name": "文科综合楼",
+            "levels": 12,
+            "outerPixels": [
+              [
+                331,
+                484
+              ],
+              [
+                442,
+                451
+              ],
+              [
+                466,
+                553
+              ],
+              [
+                355,
+                580
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "library-east",
+            "name": "东侧图书馆",
+            "levels": 5,
+            "outerPixels": [
+              [
+                510,
+                531
+              ],
+              [
+                609,
+                489
+              ],
+              [
+                627,
+                533
+              ],
+              [
+                614,
+                537
+              ],
+              [
+                603,
+                511
+              ],
+              [
+                536,
+                538
+              ],
+              [
+                544,
+                560
+              ],
+              [
+                602,
+                545
+              ],
+              [
+                607,
+                565
+              ],
+              [
+                527,
+                591
+              ]
+            ],
+            "innerPixels": []
+          },
+          {
+            "id": "languages",
+            "name": "外语楼",
+            "levels": 6,
+            "outerPixels": [
+              [
+                205,
+                420
+              ],
+              [
+                277,
+                400
+              ],
+              [
+                296,
+                473
+              ],
+              [
+                220,
+                495
+              ]
+            ],
+            "innerPixels": [
+              [
+                [
+                  233,
+                  425
+                ],
+                [
+                  265,
+                  416
+                ],
+                [
+                  277,
+                  456
+                ],
+                [
+                  245,
+                  465
+                ]
+              ]
+            ]
+          },
+          {
+            "id": "administration",
+            "name": "办公楼",
+            "levels": 9,
+            "outerPixels": [
+              [
+                382,
+                650
+              ],
+              [
+                481,
+                621
+              ],
+              [
+                492,
+                654
+              ],
+              [
+                387,
+                686
+              ]
+            ],
+            "innerPixels": []
+          }
+        ],
+        "protectedSpaces": [
+          {
+            "id": "academic-garden",
+            "kind": "courtyard",
+            "outerPixels": [
+              [
+                300,
+                360
+              ],
+              [
+                428,
+                325
+              ],
+              [
+                454,
+                445
+              ],
+              [
+                330,
+                479
+              ]
+            ]
+          },
+          {
+            "id": "south-sports",
+            "kind": "sports-reservation",
+            "outerPixels": [
+              [
+                130,
+                1120
+              ],
+              [
+                382,
+                1120
+              ],
+              [
+                400,
+                1240
+              ],
+              [
+                140,
+                1270
+              ]
+            ]
+          }
+        ],
+        "scope": "Only northern academic groups; southern accommodation and sports buildings remain outside this first batch",
+        "maximumRegistrationAdjustmentMeters": 12,
+        "minimumFootprintScale": 0.9
+      },
+      "limits": {
+        "siteSetbackMeters": 6,
+        "neighbourClearanceMeters": 8,
+        "waterClearanceMeters": 25
+      },
+      "assumptions": [
+        "OSM 为志愿地图边界，不等于宗地图。",
+        "模板足印、内部位置及未有层数来源的高度为展示估计；不宣称实景复原。",
+        "保留全部既有 OSM 建筑，完整记录被替换的程序楼。",
+        "校园图像与 OSM 边界存在偏差；允许整体平移最多12米、足印等比缩至0.9，以满足原有道路和用地边界。禁止裁掉翼楼和内洞，逐栋记录实际调整。"
+      ]
+    },
+    {
+      "id": "xinzhong-industrial",
+      "name": "万纬新中智慧园仓储组团",
+      "status": "candidate; estimated internal massing; not city-integrated",
+      "use": "industrial",
+      "osm": {
+        "type": "way",
+        "id": 837903835,
+        "bounds": {
+          "minlat": 22.705551,
+          "minlon": 108.3695998,
+          "maxlat": 22.7079884,
+          "maxlon": 108.372513
+        },
+        "nodes": [
+          7820540110,
+          7820540111,
+          9236949769,
+          9236949770,
+          9236949768,
+          9236949771,
+          9236949772,
+          9236949773,
+          9236949774,
+          7820540112,
+          9236949765,
+          9870517621,
+          9870517620,
+          7820540110
+        ],
+        "geometry": [
+          {
+            "lat": 22.7077953,
+            "lon": 108.3695998
+          },
+          {
+            "lat": 22.7057209,
+            "lon": 108.3700917
+          },
+          {
+            "lat": 22.7056418,
+            "lon": 108.3701488
+          },
+          {
+            "lat": 22.7055901,
+            "lon": 108.3702111
+          },
+          {
+            "lat": 22.7055682,
+            "lon": 108.3702949
+          },
+          {
+            "lat": 22.705551,
+            "lon": 108.3723391
+          },
+          {
+            "lat": 22.7055674,
+            "lon": 108.3724169
+          },
+          {
+            "lat": 22.7056183,
+            "lon": 108.3724882
+          },
+          {
+            "lat": 22.7056977,
+            "lon": 108.372513
+          },
+          {
+            "lat": 22.7057942,
+            "lon": 108.372504
+          },
+          {
+            "lat": 22.7072294,
+            "lon": 108.3721416
+          },
+          {
+            "lat": 22.7071482,
+            "lon": 108.3714921
+          },
+          {
+            "lat": 22.7079884,
+            "lon": 108.3713575
+          },
+          {
+            "lat": 22.7077953,
+            "lon": 108.3695998
+          }
+        ],
+        "tags": {
+          "industrial": "warehouse",
+          "landuse": "industrial",
+          "name": "万纬新中智慧园"
+        },
+        "url": "https://www.openstreetmap.org/way/837903835",
+        "snapshotTimestamp": "2026-09-08T06:56:02Z",
+        "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9"
+      },
+      "references": [
+        {
+          "url": "https://www.vx56.com/cn/news/details?newsId=87",
+          "publisher": "万纬物流",
+          "published": "2019-09-19",
+          "accessed": "2026-09-12",
+          "supports": "园区物流用途、冷链与高标仓储的建筑类型。",
+          "doesNotEstablish": "OSM 单个5.90公顷地块并非官方描述的整园8.3公顷；不把整园楼数、面积和设施身份直接配给本地块。"
+        }
+      ],
+      "template": {
+        "type": "warehouse-loading-court",
+        "orientation": "longest-boundary-edge",
+        "warehouseHeightMeters": 18,
+        "pitchMeters": 134,
+        "minimumBuildings": 2,
+        "loadingCourtWidthMeters": 32,
+        "warehouseSizesMeters": [
+          [
+            88,
+            92
+          ],
+          [
+            84,
+            120
+          ]
+        ]
+      },
+      "limits": {
+        "siteSetbackMeters": 6,
+        "neighbourClearanceMeters": 8,
+        "waterClearanceMeters": 25
+      },
+      "assumptions": [
+        "OSM 为志愿地图边界，不等于宗地图。",
+        "模板足印、内部位置及未有层数来源的高度为展示估计；不宣称实景复原。",
+        "保留全部既有 OSM 建筑，完整记录被替换的程序楼。",
+        "北部地块有退入边界，采用较小仓体；两仓足印分别88×92米、84×120米，均为适配地块的类型估计。"
+      ]
+    }
+  ],
+  "limitations": [
+    "首批仅包含四个来源明确的地块；未代表全城各用途覆盖完成。",
+    "来源照片和校园图只在本地参考，不打包进入公开资产。"
+  ]
+}

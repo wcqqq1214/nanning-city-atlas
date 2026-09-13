@@ -1,0 +1,392 @@
+{
+  "metersPerUnit": 100,
+  "center": [
+    108.30000000000001,
+    22.825
+  ],
+  "mesh": {
+    "subdivisions": 2,
+    "damGridMeters": 5,
+    "patchMarginMeters": 200,
+    "nativeRestoreMeters": 150,
+    "edgeBlendMeters": 35,
+    "shoreBlendMeters": 30,
+    "bankAboveWaterMeters": 0.15,
+    "nativeGaussianSigmaPixels": 0.65,
+    "nativeFullRestoreMeters": 100
+  },
+  "sourceReferences": {
+    "osmSnapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9",
+    "rasterSha256": "7670186b097b61e7fd7b6b9310783d0dfec564c2faa167f28560b1e375fc17ca"
+  },
+  "attribution": "OpenStreetMap contributors (ODbL); Copernicus DEM GLO-30; all crest dimensions and sparse-pool levels are display estimates",
+  "id": "southeast-reservoir-terrain-v1",
+  "purpose": "independent estimated reservoir geometry; full adjacent-water and runtime acceptance pending",
+  "waterBodies": [
+    {
+      "geographyWaterIndex": 182,
+      "feature": {
+        "type": "way",
+        "id": 837956827,
+        "bounds": {
+          "minlat": 22.7298018,
+          "minlon": 108.4026623,
+          "maxlat": 22.735586,
+          "maxlon": 108.4066072
+        },
+        "nodes": [
+          7820979004,
+          9218987893,
+          7820979006,
+          7820979007,
+          9218987899,
+          7820979008,
+          9218987898,
+          9218987900,
+          7820979009,
+          9218987901,
+          7820979010,
+          9218987897,
+          9218987902,
+          7820979011,
+          9218987903,
+          7820979012,
+          9218987904,
+          7820979013,
+          9218987905,
+          9218987906,
+          7820979014,
+          9218987907,
+          7820979015,
+          9218987908,
+          7820979016,
+          9218987909,
+          9218987910,
+          7820979017,
+          9218987911,
+          9218987912,
+          7820979018,
+          9218954497,
+          7820786694,
+          7820786727,
+          7820786695,
+          7820979019,
+          9218987914,
+          7820979020,
+          9218987913,
+          7820979021,
+          9218987915,
+          7820979022,
+          9218987916,
+          7820979023,
+          7820979024,
+          7820979025,
+          9218987896,
+          7820979026,
+          9218987895,
+          7820979027,
+          7820979028,
+          9218987894,
+          7820979029,
+          7820979030,
+          7820979005,
+          7820979004
+        ],
+        "geometry": [
+          {
+            "lat": 22.7298018,
+            "lon": 108.4031948
+          },
+          {
+            "lat": 22.7299719,
+            "lon": 108.4029801
+          },
+          {
+            "lat": 22.7300728,
+            "lon": 108.4028941
+          },
+          {
+            "lat": 22.7304564,
+            "lon": 108.4027517
+          },
+          {
+            "lat": 22.7306449,
+            "lon": 108.4026829
+          },
+          {
+            "lat": 22.7307939,
+            "lon": 108.4026623
+          },
+          {
+            "lat": 22.7309183,
+            "lon": 108.4026768
+          },
+          {
+            "lat": 22.7310795,
+            "lon": 108.4027726
+          },
+          {
+            "lat": 22.7311763,
+            "lon": 108.4028737
+          },
+          {
+            "lat": 22.7313327,
+            "lon": 108.4029805
+          },
+          {
+            "lat": 22.7315138,
+            "lon": 108.4030282
+          },
+          {
+            "lat": 22.7316756,
+            "lon": 108.4030605
+          },
+          {
+            "lat": 22.7319222,
+            "lon": 108.4030338
+          },
+          {
+            "lat": 22.7321392,
+            "lon": 108.4030768
+          },
+          {
+            "lat": 22.7323088,
+            "lon": 108.4031652
+          },
+          {
+            "lat": 22.7324587,
+            "lon": 108.4033127
+          },
+          {
+            "lat": 22.7326085,
+            "lon": 108.4035206
+          },
+          {
+            "lat": 22.7327137,
+            "lon": 108.403825
+          },
+          {
+            "lat": 22.7327435,
+            "lon": 108.4041912
+          },
+          {
+            "lat": 22.7327212,
+            "lon": 108.404452
+          },
+          {
+            "lat": 22.7327287,
+            "lon": 108.4046056
+          },
+          {
+            "lat": 22.7327839,
+            "lon": 108.4048062
+          },
+          {
+            "lat": 22.7329158,
+            "lon": 108.4050282
+          },
+          {
+            "lat": 22.7330373,
+            "lon": 108.4051597
+          },
+          {
+            "lat": 22.7331712,
+            "lon": 108.4052804
+          },
+          {
+            "lat": 22.7333572,
+            "lon": 108.4053613
+          },
+          {
+            "lat": 22.7336357,
+            "lon": 108.4053722
+          },
+          {
+            "lat": 22.7339291,
+            "lon": 108.4053617
+          },
+          {
+            "lat": 22.7342537,
+            "lon": 108.4053871
+          },
+          {
+            "lat": 22.7345595,
+            "lon": 108.4054829
+          },
+          {
+            "lat": 22.73489,
+            "lon": 108.4056217
+          },
+          {
+            "lat": 22.7353591,
+            "lon": 108.4059499
+          },
+          {
+            "lat": 22.735586,
+            "lon": 108.4061399
+          },
+          {
+            "lat": 22.7354313,
+            "lon": 108.40639
+          },
+          {
+            "lat": 22.7352969,
+            "lon": 108.4066072
+          },
+          {
+            "lat": 22.7349478,
+            "lon": 108.4063767
+          },
+          {
+            "lat": 22.7346621,
+            "lon": 108.4062424
+          },
+          {
+            "lat": 22.7343368,
+            "lon": 108.4061885
+          },
+          {
+            "lat": 22.733943,
+            "lon": 108.4061694
+          },
+          {
+            "lat": 22.7335986,
+            "lon": 108.4061342
+          },
+          {
+            "lat": 22.7333686,
+            "lon": 108.4060531
+          },
+          {
+            "lat": 22.733198,
+            "lon": 108.4059506
+          },
+          {
+            "lat": 22.7329835,
+            "lon": 108.4058118
+          },
+          {
+            "lat": 22.732826,
+            "lon": 108.4056356
+          },
+          {
+            "lat": 22.7326083,
+            "lon": 108.4051833
+          },
+          {
+            "lat": 22.7323639,
+            "lon": 108.4042559
+          },
+          {
+            "lat": 22.7322595,
+            "lon": 108.4040257
+          },
+          {
+            "lat": 22.7320858,
+            "lon": 108.4038169
+          },
+          {
+            "lat": 22.7319152,
+            "lon": 108.4037225
+          },
+          {
+            "lat": 22.7317422,
+            "lon": 108.403671
+          },
+          {
+            "lat": 22.7310432,
+            "lon": 108.4036497
+          },
+          {
+            "lat": 22.7307032,
+            "lon": 108.4035796
+          },
+          {
+            "lat": 22.7302543,
+            "lon": 108.4034721
+          },
+          {
+            "lat": 22.7300942,
+            "lon": 108.4034701
+          },
+          {
+            "lat": 22.7298676,
+            "lon": 108.4035104
+          },
+          {
+            "lat": 22.7298018,
+            "lon": 108.4031948
+          }
+        ],
+        "tags": {
+          "natural": "water"
+        }
+      },
+      "levelMeters": 76.97439193725586,
+      "method": "median of 38 raw DSM pixel centers inside source polygon inset 10 m",
+      "confidence": "heterogeneous sparse display estimate; not an engineering level",
+      "rawPixelStatisticsMetersByInset": {
+        "0": {
+          "count": 56,
+          "min": 74.95960235595703,
+          "p10": 75.43949508666992,
+          "p25": 75.87998580932617,
+          "median": 76.88743591308594,
+          "p75": 77.81780624389648,
+          "p90": 78.02274703979492,
+          "max": 78.26142883300781
+        },
+        "10": {
+          "count": 38,
+          "min": 75.16944885253906,
+          "p10": 75.35255508422851,
+          "p25": 75.8130989074707,
+          "median": 76.97439193725586,
+          "p75": 77.83703994750977,
+          "p90": 78.03066482543946,
+          "max": 78.26142883300781
+        },
+        "30": {
+          "count": 7,
+          "min": 75.70245361328125,
+          "p10": 75.73695526123046,
+          "p25": 75.76980590820312,
+          "median": 77.79923248291016,
+          "p75": 77.85709381103516,
+          "p90": 78.02509002685547,
+          "max": 78.26142883300781
+        }
+      },
+      "expectedPolygonSha256": "571a5ce54ed7f5e243098ac831714758634cdc8080bcdcf89c1d1d90ec205d84"
+    }
+  ],
+  "dams": [
+    {
+      "id": "osm/b17285ba7f48db26c2de",
+      "sourceRef": "osm/way/837932893",
+      "expectedFootprintSha256": "f091aab3c8977b141f96228ff7a33592d89f213c5c68aa49b68a931f661a614a",
+      "waterIndex": 182,
+      "crestMinimumAboveWaterMeters": 4.0,
+      "crestWidthMeters": 4.0,
+      "crestEndInsetMeters": 10.0,
+      "method": "display estimate: buffered long axis inside source footprint; reduced end inset for narrow Longmen footprint; abutments follow source terrain",
+      "isEngineeringDesign": false
+    }
+  ],
+  "neighboringWaterInterfacesPending": [
+    {
+      "geographyWaterIndex": 155,
+      "distanceMeters": 29.26055365163081,
+      "expectedPolygonSha256": "66f93f13db426146382ed694167ad91d0a79498e3494ccae98602c92d561433a",
+      "areaSquareMeters": 286435.94499999983,
+      "status": "retain mapped polygon; separate level/shore interface review required before activation"
+    },
+    {
+      "geographyWaterIndex": 195,
+      "distanceMeters": 18.14630198724099,
+      "expectedPolygonSha256": "368cea9c3ce64033e43646e9d1056ed99bb607468fa923e2fb63aa67584d374a",
+      "areaSquareMeters": 146424.74000000014,
+      "status": "retain mapped polygon; separate level/shore interface review required before activation"
+    }
+  ]
+}

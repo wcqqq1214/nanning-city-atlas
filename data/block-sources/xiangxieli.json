@@ -1,0 +1,166 @@
+{
+  "id": "xiangxieli-residential",
+  "status": "estimated-template-pilot",
+  "name": "香榭里花园住宅组团样板",
+  "references": [
+    {
+      "url": "http://www.metrostudio.cn/m/workInfo.aspx?id=653",
+      "publisher": "迈丘设计",
+      "type": "design-author",
+      "accessed": "2026-09-12",
+      "supports": "购物中心项目北接香榭里花园；平面图可用于核对南侧与航洋北广场的接口。",
+      "doesNotEstablish": "住宅内部楼栋位置、栋数或高度。"
+    },
+    {
+      "url": "https://www.ngzb.com.cn/news/62020.html",
+      "publisher": "南国早报",
+      "type": "original-reporting",
+      "accessed": "2026-09-12",
+      "supports": "小区南门、沿街商铺与航洋北广场相邻。记者照片显示浅色住宅立面、阳台与两栋之间的绿化空间。",
+      "doesNotEstablish": "照片上部裁切，不能据此断定完整层数；未提供内部总平面。"
+    }
+  ],
+  "unresolved": [
+    "各住宅楼真实足印与完整层数",
+    "OSM 地块与历史营销全小区范围的差异",
+    "内部组团布局、公共空地与实际出入口位置"
+  ],
+  "notes": [
+    "18 是当前程序楼与地块相交数量，不是实际小区栋数。",
+    "其中只有 15 栋中心落在边界内，替换清单需要记录跨界旧补楼的完整足印。",
+    "模板尺寸、间距与高度须分别标注估计；不采用相互矛盾的营销面积和栋数作为实测。",
+    "第三方参考图片仅在本地浏览核对，未打包进模型或网站。"
+  ],
+  "osm": {
+    "type": "way",
+    "id": 766539182,
+    "url": "https://www.openstreetmap.org/way/766539182",
+    "tags": {
+      "alt_name": "枫丹丽舍",
+      "landuse": "residential",
+      "name": "香榭里花园",
+      "residential": "apartments"
+    },
+    "snapshotTimestamp": "2026-09-08T06:56:02Z",
+    "snapshotSha256": "60e6318d898bef4398433c23242e4748319a8f3ed5f0c0636c5f80bc1b9131b9",
+    "geometry": [
+      {
+        "lat": 22.820552,
+        "lon": 108.3794711
+      },
+      {
+        "lat": 22.8191922,
+        "lon": 108.3794556
+      },
+      {
+        "lat": 22.8184543,
+        "lon": 108.3794471
+      },
+      {
+        "lat": 22.8177227,
+        "lon": 108.3794388
+      },
+      {
+        "lat": 22.8176435,
+        "lon": 108.3806312
+      },
+      {
+        "lat": 22.8176002,
+        "lon": 108.3807948
+      },
+      {
+        "lat": 22.8175978,
+        "lon": 108.3809316
+      },
+      {
+        "lat": 22.8176497,
+        "lon": 108.3811837
+      },
+      {
+        "lat": 22.8176781,
+        "lon": 108.3819294
+      },
+      {
+        "lat": 22.8178116,
+        "lon": 108.3819777
+      },
+      {
+        "lat": 22.817871,
+        "lon": 108.3820769
+      },
+      {
+        "lat": 22.8179358,
+        "lon": 108.3823828
+      },
+      {
+        "lat": 22.8195359,
+        "lon": 108.3823839
+      },
+      {
+        "lat": 22.8203988,
+        "lon": 108.3806996
+      },
+      {
+        "lat": 22.8204614,
+        "lon": 108.3801979
+      },
+      {
+        "lat": 22.820552,
+        "lon": 108.3794711
+      }
+    ]
+  },
+  "baseline": {
+    "geographySha256": "f8730cb2a3d5f54d60b2e87047e64e796211da47e81b57f29af3a03542483102",
+    "intersectingBuildingIndices": [
+      18992,
+      18993,
+      18994,
+      18995,
+      18996,
+      18997,
+      18998,
+      18999,
+      19000,
+      19001,
+      19002,
+      19003,
+      19004,
+      19005,
+      19006,
+      19007,
+      19008,
+      19009
+    ],
+    "mappedBuildings": 0,
+    "proceduralBuildings": 18,
+    "centersInside": 15,
+    "areaM2": 83245.14
+  },
+  "template": {
+    "type": "parallel-residential-slabs",
+    "rows": 5,
+    "columns": 3,
+    "slabSizeMeters": [
+      60,
+      16
+    ],
+    "firstCenterMeters": [
+      50,
+      43
+    ],
+    "columnPitchMeters": 84,
+    "rowPitchMeters": 58,
+    "levelsByRow": [
+      6,
+      6,
+      7,
+      7,
+      8
+    ],
+    "floorHeightMeters": 3.0,
+    "displayHeightScale": 1.0,
+    "assumptions": "楼栋位置、栋数、60×16米足印、6–8层及3米层高均为类型化估计；不代表实际小区总平面。板楼与开敞绿化空间的类型依据记者现场照片；朝向取OSM西界。",
+    "southInterface": "南侧预留通向航洋北广场的开敞界面，不增画未经核实的商铺足印。"
+  }
+}

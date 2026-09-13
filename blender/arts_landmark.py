@@ -91,15 +91,36 @@ def hall_outline(hall, angle, radius=1):
             cy + ry*math.copysign(abs(s)**(2/PROFILE_POWER), s)*radius)
 
 
-def build_arts(b, x, y, z, ground=None):
+def entrance_flights(display_scale=1):
+    boundary=outline()
+    c,s=math.cos(SITE_ANGLE),math.sin(SITE_ANGLE)
+    def world(p):return (display_scale*(p[0]*c-p[1]*s),display_scale*(p[0]*s+p[1]*c))
+    result=[]
+    for hall in HALLS:
+        direction=math.atan2(hall[1],hall[0])
+        point=min(boundary,key=lambda p:abs(math.atan2(math.sin(math.atan2(p[1],p[0])-direction),math.cos(math.atan2(p[1],p[0])-direction))))
+        result.append((world((point[0]*1.01,point[1]*1.01)),world((point[0]*1.27,point[1]*1.27)),.12))
+    return result
+
+
+def build_arts(b, x, y, z, ground=None, display_scale=None,
+               ground_bounds=None, terrain_grid=None, hall_segments=96, hall_rings=18):
+    # Explicit scale supports isolated calibration; the production default stays
+    # unchanged until the new footprint and terrain dependencies are accepted.
+    scale_factor = DISPLAY_SCALE if display_scale is None else display_scale
     boundary = outline()
     cos_a, sin_a = math.cos(SITE_ANGLE), math.sin(SITE_ANGLE)
 
     def point(u, v, h):
-        return (x + DISPLAY_SCALE*(u*cos_a-v*sin_a),
-                y + DISPLAY_SCALE*(u*sin_a+v*cos_a), z + DISPLAY_SCALE*h)
+        return (x + scale_factor*(u*cos_a-v*sin_a),
+                y + scale_factor*(u*sin_a+v*cos_a), z + scale_factor*h)
 
-    if ground is not None:
+    if ground_bounds is not None:
+        from landmark_sites import support_level
+        ring=[point(u*1.12,v*1.12,0)[:2] for u,v in boundary]
+        z=support_level(ring,ground_bounds,terrain_grid)
+        ground=lambda u,v:ground_bounds(u,v)[0]
+    elif ground is not None:
         # A level podium with a terrain-following foundation avoids floating
         # above the coarse display DEM without altering the river or terrain.
         z = max(z, max(ground(*point(u*1.12, v*1.12, 0)[:2])
@@ -113,7 +134,7 @@ def build_arts(b, x, y, z, ground=None):
                normals=[normal(roof_normal(p[0], p[1])) for p in vertices] if smooth else None)
 
     def beam(a, c, radius, key='arts_frame'):
-        b.beam(point(*a), point(*c), radius*DISPLAY_SCALE, key)
+        b.beam(point(*a), point(*c), radius*scale_factor, key)
 
     def prism(lower, upper, key):
         face(list(reversed(lower)), key)
@@ -130,7 +151,7 @@ def build_arts(b, x, y, z, ground=None):
         for u, v in boundary:
             h = i*.003
             if i == 0:
-                h = ((ground(*point(u*scale, v*scale, 0)[:2])-z-.025)/DISPLAY_SCALE
+                h = ((ground(*point(u*scale, v*scale, 0)[:2])-z-.025)/scale_factor
                      if ground is not None else -.070)
             lower.append((u*scale, v*scale, h))
         upper = [(u*scale, v*scale, (i+1)*.003) for u, v in boundary]
@@ -151,7 +172,7 @@ def build_arts(b, x, y, z, ground=None):
 
     # Recessed glazed foyers and the smooth weather skin below each louver shell.
     for hall in HALLS:
-        segments, rings = 96, 18
+        segments, rings = hall_segments, hall_rings
         perimeter = [hall_outline(hall, i*math.tau/segments) for i in range(segments)]
         for i, (u, v) in enumerate(perimeter):
             uu, vv = perimeter[(i+1) % segments]
@@ -241,3 +262,17 @@ def build_arts(b, x, y, z, ground=None):
             if i:
                 beam(previous, (a, c, PODIUM+.030), .0012)
             previous = (a, c, PODIUM+.030)
+
+    if ground_bounds is not None:
+        for a,c,width in entrance_flights(scale_factor):
+            a=(x+a[0],y+a[1]);c=(x+c[0],y+c[1])
+            length=math.dist(a,c);dx=(c[0]-a[0])/length;dy=(c[1]-a[1])/length
+            top=z+.036*scale_factor
+            low=max(ground_bounds(c[0]-dy*u,c[1]+dx*u)[1] for u in [-width/2,0,width/2])+.006
+            count=max(2,math.ceil(abs(top-low)/.002))
+            for i in range(count):
+                t=(i+.5)/count;px=a[0]+(c[0]-a[0])*t;py=a[1]+(c[1]-a[1])*t
+                level=top+(low-top)*i/count
+                bottom=min(ground_bounds(px-dy*u,py+dx*u)[0] for u in [-width/2,0,width/2])-.025
+                b.box(px,py,bottom,length/count+.000001,width,level-bottom,'arts_stone',angle=math.atan2(dy,dx))
+    return z

@@ -1,0 +1,29 @@
+{
+  "id": "qingxiu-longxiang",
+  "requestedBoundsSceneXY": [78, -55, 96, -30],
+  "gridSubdivisions": 2,
+  "nativeGaussianSigmaPixels": 0.65,
+  "edgeBlendMeters": 120,
+  "forestBlendMeters": 60,
+  "mountainWater": {"minimumAboveRiverDatumMeters": 25, "shoreBlendMeters": 35, "nativeRestoreMeters": 180, "bankAboveWaterMeters": 0.8, "method": "median of raw GLO-30 pixels inside each enclosed mapped mountain lake; inferred display water level, not a surveyed elevation"},
+  "tower": {
+    "id": "qingxiu",
+    "osmId": 243217636,
+    "heightMeters": 53.35,
+    "baseDiameterMeters": 12,
+    "platformRadiusMeters": 12,
+    "platformBlendMeters": 25,
+    "heightConflictMeters": [52.35, 53.35],
+    "reference": "https://www.gxnews.com.cn/staticpages/20250824/newgx68aa9784-21835953.shtml",
+    "referenceDate": "2025-08-24",
+    "evidence": "景区公司讲解员采访给出八面九层、塔高53.35米、塔基直径12米；2024报道为52.35米，保留1米来源差异。平台半径与过渡范围为显示估计。"
+  },
+  "pathWidthMeters": {"footway": 3, "path": 2.5, "steps": 3, "pedestrian": 5, "service": 6, "track": 4, "cycleway": 3},
+  "pathClearanceMeters": 0.6,
+  "canopyRiseFactor": 0.25,
+  "note": "从既有GLO-30原始栅格局部采样；细分不代表测量精度提高。园路线形来自独立OSM快照，无width标签时宽度为估计；园路不整体平整山体，平台只作用于龙象塔足下小范围。林冠高差缩放为显示估计。",
+  "references": [
+    {"url": "https://gbdsj.gxzf.gov.cn/jingcaizhuanti/pzgx/pscj/nns/t19011344.shtml", "supports": "青秀山位于邕江畔，为凤岭南路、青环路合抱；龙象塔为标志，最高处为凤凰岭，不能将龙象塔所在地解释为整个景区最高峰。"},
+    {"url": "https://v.gxnews.com.cn/a/21514231", "supports": "2024报道给出52.35米塔高、12米宽，与2025采访存在1米塔高差异。"}
+  ]
+}

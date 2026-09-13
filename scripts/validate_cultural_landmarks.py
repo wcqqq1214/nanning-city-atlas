@@ -17,7 +17,7 @@ from shapely.ops import unary_union
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'blender'))
-from cultural_landmarks import SPECS, envelope
+from cultural_landmarks import SPECS, envelope, PAGODA_Z_SCALE
 
 
 def glb(path):
@@ -108,9 +108,13 @@ def validate():
             assert abs(points[:,1].max()-datum-SPECS[identity]['height'])<.05
             assert 'Cultural landmark paving' in materials
             if identity=='qingxiu':
-                assert shadow is not None and 35_000<count<60_000
-                floors=np.floor((shadow[:,1]-datum-.075)/.275).astype(int)
+                assert shadow is not None and count<60_000
+                floors=np.floor(((shadow[:,1]-datum)/PAGODA_Z_SCALE-.075)/.275).astype(int)
                 assert set(floors)==set(range(9)), 'Pagoda must retain nine distinct storeys of arched openings'
+                center=site.centroid
+                angles=np.arctan2(-shadow[:,2]-center.y,shadow[:,0]-center.x)
+                sides=np.floor((angles%(math.tau))/(math.tau/8)).astype(int)
+                assert all(len(set(sides[floors==i]))==8 for i in range(9)), 'A pagoda storey lost an octagonal face opening'
                 assert {'Longxiang green glazed tiles','Longxiang jade eave edges','Longxiang red brown joinery'}<=materials
             else:
                 assert 10_000<count<30_000

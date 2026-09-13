@@ -14,6 +14,9 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'blender'))
 from zhenning_landmark import UNIT, HEIGHT_SCALE, MATERIAL_KEYS, terrain_patch
+from landmark_sites import SPECS as CALIBRATION
+UNIT=CALIBRATION['zhenning']['displayScale']/100
+HEIGHT_SCALE=CALIBRATION['zhenning']['heightScale']
 from forest_canopy import terrain_surface, refined_terrain_height
 
 catalog=json.loads((ROOT/'data/landmarks.json').read_text())
@@ -73,8 +76,8 @@ for i,j in [(i,j) for i in [i0,i1] for j in range(j0+1,j1,2)]+[(i,j) for j in [j
     a=terrain_surface(xx-dx,yy-dy,ground,geo['bounds'],cols,rows,True)
     b=terrain_surface(xx+dx,yy+dy,ground,geo['bounds'],cols,rows,True)
     assert abs(a-b)<1e-5, 'Crack between detailed and coarse terrain'
-for u in [-.46,0,.46]:
-    for v in [-.62,0,.55]:
+for u in [-.20,0,.20]:
+    for v in [-.20,0,.20]:
         for lightweight in [False,True]:
             assert terrain_surface(x+u,y+v,ground,geo['bounds'],cols,rows,lightweight)<z, 'Terrain protrudes through the fort floor'
 

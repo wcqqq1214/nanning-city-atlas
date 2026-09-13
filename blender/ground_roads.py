@@ -69,7 +69,8 @@ def build_ground_roads(batch,ground,bounds,columns,rows,lightweight=False, bridg
     for support in mesh['supports']:
         vertices=[]
         for x,y,col,row in support['vertices']:
-            z=(refined_terrain_height(col,row,ground,bounds,columns,rows)
+            z=(terrain_surface(x,y,ground,bounds,columns,rows,lightweight) if col in [-2,-3,-4,-5] else
+               refined_terrain_height(col,row,ground,bounds,columns,rows)
                if support['refined'] else ground(x,y))
             vertices.append((x,y,z))
         supports.append(vertices)

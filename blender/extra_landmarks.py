@@ -4,6 +4,8 @@ from arts_landmark import build_arts
 from sports_landmark import build_sports
 from tingzi_landmark import build_tingzi
 from station_landmarks import build_nanning_station, build_east_station
+from landmark_sites import SPECS as CALIBRATION
+from confucius_landmark import build_confucius
 
 
 def hip_roof(b, x, y, z, width, depth, rise, key='accent'):
@@ -24,7 +26,8 @@ def hall(b, x, y, z, width, depth, height, roof='accent'):
         b.box(x-width*.45+i*width*.15,y-depth*.6,z,.045,.045,height,'bridge')
 
 
-def build_extra_landmarks(landmark, ground=None):
+def build_extra_landmarks(landmark, ground=None, ground_bounds=None, terrain_grid=None,
+                          record_support=None):
     b,x,y,z=landmark('gxu')
     b.box(x,y,z,2.4,1.9,.12,'building','roof')
     hall(b,x,y,z+.12,1.9,1.35,.65,roof='bridge')
@@ -43,19 +46,15 @@ def build_extra_landmarks(landmark, ground=None):
     b.finish()
 
     b,x,y,z=landmark('confucius')
-    b.box(x,y,z,2.7,3.4,.10,'roof')
-    hall(b,x,y+.8,z+.10,1.9,.8,.65)
-    hall(b,x,y-.8,z+.10,1.2,.5,.40)
-    for side in [-1,1]:
-        hall(b,x+side*1.07,y,z+.10,.35,2.65,.34)
-    hall(b,x,y+1.4,z+.10,1.3,.4,.40)
-    for side in [-1,1]:
-        b.box(x+side*.44,y-1.4,z+.1,.07,.07,.66,'bridge')
-    b.box(x,y-1.4,z+.64,1.2,.09,.09,'accent')
+    result=build_confucius(b,x,y,z,ground_bounds,terrain_grid)
+    if record_support:record_support('confucius',result)
     b.finish()
 
     b,x,y,z=landmark('arts-center')
-    build_arts(b,x,y,z,ground=ground)
+    spec=CALIBRATION['arts-center']
+    z=build_arts(b,x,y,z,ground=ground,ground_bounds=ground_bounds,terrain_grid=terrain_grid,
+                 display_scale=spec['displayScale'],hall_segments=spec['hallSegments'],hall_rings=spec['hallRings'])
+    if record_support:record_support('arts-center',{'anchorLevel':z})
     b.finish()
 
     b,x,y,z=landmark('sports-center')
