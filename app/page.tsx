@@ -91,6 +91,7 @@ import region from '@/data/region.json';
 import { landmarkArea } from '@/lib/city/landmark-areas';
 
 const ORDER = landmarkCatalog.map((place) => place.id);
+const TOUR_STOP_MS = 6500;
 const LAYER_INFO: {
   key: LayerKey;
   name: string;
@@ -209,6 +210,7 @@ export default function Home() {
   const searchInput = useRef<HTMLInputElement>(null);
   const detailBack = useRef<HTMLButtonElement>(null);
   const tourEntry = useRef<HTMLButtonElement>(null);
+  const tourProgress = useRef<HTMLSpanElement>(null);
   const menuScroll = useRef(0);
   const measureViewport = useRef<() => void>(() => {});
   const pendingFocus = useRef<'menu' | 'detail' | null>(null);
@@ -418,15 +420,40 @@ export default function Home() {
   }, [reload, quality]);
 
   useEffect(() => {
+    if (tourProgress.current)
+      tourProgress.current.style.transform = 'scaleX(0)';
+  }, [selected]);
+
+  useEffect(() => {
     if (!tour || !ready) return;
-    const timer = window.setTimeout(() => {
-      const next = ORDER[(ORDER.indexOf(selected ?? '') + 1) % ORDER.length];
-      setSelected(next);
-      setDetailView('overview');
-      controller.current?.focus(next);
-    }, 6500);
-    return () => window.clearTimeout(timer);
-  }, [tour, ready, selected]);
+    // Drive both the indicator and station change from one deadline, including
+    // while the panel is folded. Updating the bar does not re-render the map.
+    const deadline = performance.now() + TOUR_STOP_MS;
+    let frame = 0;
+    const updateProgress = () => {
+      const progress = Math.min(
+        1,
+        Math.max(0, 1 - (deadline - performance.now()) / TOUR_STOP_MS),
+      );
+      if (tourProgress.current)
+        tourProgress.current.style.transform = `scaleX(${progress})`;
+      if (progress < 1) frame = requestAnimationFrame(updateProgress);
+    };
+    if (!reducedMotion) updateProgress();
+    const timer = window.setTimeout(
+      () => {
+        const next = ORDER[(ORDER.indexOf(selected ?? '') + 1) % ORDER.length];
+        setSelected(next);
+        setDetailView('overview');
+        controller.current?.focus(next);
+      },
+      Math.max(0, deadline - performance.now()),
+    );
+    return () => {
+      window.clearTimeout(timer);
+      cancelAnimationFrame(frame);
+    };
+  }, [tour, ready, selected, reducedMotion]);
 
   useEffect(() => {
     if (!dock.current || !host.current) return;
@@ -1205,6 +1232,11 @@ export default function Home() {
           )}
         </div>
         <div className={`tour-bar ${tourStarted ? 'tour-active' : ''}`}>
+          {tourStarted && (
+            <div className="tour-timer" aria-hidden="true">
+              <span ref={tourProgress} />
+            </div>
+          )}
           {tourStarted && !collapsed && (
             <div className="tour-heading">
               <span>

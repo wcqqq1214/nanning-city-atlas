@@ -1017,6 +1017,20 @@ button:active:not(:disabled) {
   background: #f1f0e8;
   border-top: 1px solid var(--line);
 }
+.tour-timer {
+  height: 3px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #d8ddcf;
+}
+.tour-timer span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+}
 .tour-controls {
   display: flex;
   align-items: center;
@@ -1856,6 +1870,9 @@ button:active:not(:disabled) {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .tour-timer {
+    display: none;
+  }
   *,
   *::before,
   *::after {
