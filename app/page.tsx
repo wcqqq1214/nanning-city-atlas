@@ -196,6 +196,7 @@ export default function Home() {
   const dockBody = useRef<HTMLDivElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
   const detailBack = useRef<HTMLButtonElement>(null);
+  const tourEntry = useRef<HTMLButtonElement>(null);
   const menuScroll = useRef(0);
   const measureViewport = useRef<() => void>(() => {});
   const pendingFocus = useRef<'menu' | 'detail' | null>(null);
@@ -1207,6 +1208,9 @@ export default function Home() {
                 onClick={() => {
                   setTour(false);
                   setTourStarted(false);
+                  requestAnimationFrame(() => {
+                    tourEntry.current?.focus({ preventScroll: true });
+                  });
                 }}
               >
                 <X size={16} />
@@ -1225,6 +1229,7 @@ export default function Home() {
               </button>
             )}
             <button
+              ref={tourEntry}
               className="tour-button"
               disabled={!ready}
               onClick={startTour}
