@@ -39,7 +39,8 @@ def terrain_surface(x, y, ground, bounds, columns, rows, lightweight=False):
     replacement=replacement_height(x,y,lightweight)
     if replacement is not None:return replacement
     ground = getattr(ground, 'unpatched', ground)
-    nanhu = nanhu_surface(x,y,ground,PLAN['center'])
+    nanhu = nanhu_surface(x,y,ground,PLAN['center'],bounds,columns,rows,
+                          lightweight,coarse_terrain_surface)
     if nanhu is not None:return nanhu
     graded=grading_surface(x,y,ground,bounds,columns,rows,lightweight,coarse_terrain_surface)
     if graded is not None:return graded

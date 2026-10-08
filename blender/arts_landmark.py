@@ -84,6 +84,33 @@ def roof_normal(u, v):
     return (-du/length, -dv/length, 1/length)
 
 
+def fin_stations(u, start, end, count, tolerance_meters=None):
+    """Retain source stations under a bound on both fin-edge height profiles.
+
+    The bound is on the existing piecewise-linear edge, in local model metres.
+    Native triangles, normals and compressed export need their separate audits.
+    None preserves the original sampling exactly.
+    """
+    values=[start+(end-start)*i/count for i in range(count+1)]
+    if tolerance_meters is None:return values
+    if not math.isfinite(tolerance_meters) or tolerance_meters<=0:
+        raise ValueError('Fin sampling tolerance must be positive and finite')
+    heights=[tuple(roof_level(u+side*FIN_WIDTH/2,v) for side in [-1,1]) for v in values]
+    selected={0,count};pending=[(0,count)]
+    while pending:
+        a,b=pending.pop()
+        if b<=a+1:continue
+        errors=[]
+        for i in range(a+1,b):
+            t=(values[i]-values[a])/(values[b]-values[a])
+            errors.append(max(abs(heights[i][side]-(heights[a][side]+t*(heights[b][side]-heights[a][side])))
+                              for side in range(2)))
+        worst=max(range(len(errors)),key=errors.__getitem__)
+        if errors[worst]>tolerance_meters/100:
+            split=a+1+worst;selected.add(split);pending.extend([(a,split),(split,b)])
+    return [values[i] for i in sorted(selected)]
+
+
 def hall_outline(hall, angle, radius=1):
     cx, cy, rx, ry, _, _ = hall
     c, s = math.cos(angle), math.sin(angle)
@@ -104,7 +131,8 @@ def entrance_flights(display_scale=1):
 
 
 def build_arts(b, x, y, z, ground=None, display_scale=None,
-               ground_bounds=None, terrain_grid=None, hall_segments=96, hall_rings=18):
+               ground_bounds=None, terrain_grid=None, hall_segments=96, hall_rings=18,
+               fin_tolerance_meters=None):
     # Explicit scale supports isolated calibration; the production default stays
     # unchanged until the new footprint and terrain dependencies are accepted.
     scale_factor = DISPLAY_SCALE if display_scale is None else display_scale
@@ -204,8 +232,10 @@ def build_arts(b, x, y, z, ground=None, display_scale=None,
         u = index*FIN_PITCH
         for start, end in intervals(boundary, u):
             count = max(2, math.ceil((end-start)/.030))
+            selected=fin_stations(u,start,end,count,None if fin_tolerance_meters is None else fin_tolerance_meters/scale_factor)
+            count=len(selected)-1
             for k in range(count):
-                v, vv = start+(end-start)*k/count, start+(end-start)*(k+1)/count
+                v, vv = selected[k:k+2]
                 footprint = [(u-FIN_WIDTH/2, v), (u+FIN_WIDTH/2, v),
                              (u+FIN_WIDTH/2, vv), (u-FIN_WIDTH/2, vv)]
                 top = [(a, c, roof_level(a, c)+FIN_DEPTH) for a, c in footprint]

@@ -53,7 +53,8 @@ def build_extra_landmarks(landmark, ground=None, ground_bounds=None, terrain_gri
     b,x,y,z=landmark('arts-center')
     spec=CALIBRATION['arts-center']
     z=build_arts(b,x,y,z,ground=ground,ground_bounds=ground_bounds,terrain_grid=terrain_grid,
-                 display_scale=spec['displayScale'],hall_segments=spec['hallSegments'],hall_rings=spec['hallRings'])
+                 display_scale=spec['displayScale'],hall_segments=spec['hallSegments'],hall_rings=spec['hallRings'],
+                 fin_tolerance_meters=.005)
     if record_support:record_support('arts-center',{'anchorLevel':z})
     b.finish()
 

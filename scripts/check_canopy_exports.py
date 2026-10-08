@@ -39,6 +39,8 @@ def main():
     parser.add_argument('--name', required=True)
     parser.add_argument('--terrain', type=Path, required=True)
     parser.add_argument('--city-source', type=Path, required=True)
+    parser.add_argument('--mountain-plan', type=Path,
+                        help='Use its variable canopy requirement (required for Qingxiu)')
     args = parser.parse_args()
     tree = ast.parse(args.city_source.read_text())
     definition = next(n.value for n in tree.body if isinstance(n, ast.Assign)
@@ -53,12 +55,22 @@ def main():
     # shared edge stations. Smooth corner normals retain their existing limit.
     geometry = match_faces(native, actual, position_meters=0, normal_degrees=.5)
     np.savez_compressed(args.directory/(args.name+'-decoded.npz'), **actual)
-    clearance = check(actual['triangles'], np.load(args.terrain)['triangles'],
-                      minimum_clearance_meters=9.5, coverage_tolerance_meters=.002)
+    if args.name.startswith('qingxiu-') and args.mountain_plan is None:
+        raise ValueError('Qingxiu requires --mountain-plan for its variable clearance')
+    if args.mountain_plan:
+        from check_variable_canopy_clearance import check as variable_check, from_plan
+        clearance = variable_check(actual['triangles'], np.load(args.terrain)['triangles'],
+                                   from_plan(json.loads(args.mountain_plan.read_text())))
+    else:
+        clearance = check(actual['triangles'], np.load(args.terrain)['triangles'],
+                          minimum_clearance_meters=9.5, coverage_tolerance_meters=.002)
     clearance['scope'] = 'actual decoded canopy against the supplied final terrain triangles'
     report = {'passed': clearance['passed'], 'geometry': geometry, 'clearance': clearance,
               'inputs': {str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest()
                          for p in [native_path, glb_path, args.terrain, args.city_source, Path(__file__)]}}
+    if args.mountain_plan:
+        for p in [args.mountain_plan, Path(__file__).with_name('check_variable_canopy_clearance.py')]:
+            report['inputs'][str(p.resolve())] = hashlib.sha256(p.read_bytes()).hexdigest()
     (args.directory/(args.name+'-audit.json')).write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'inputs'}, indent=2), flush=True)
     raise SystemExit(0 if report['passed'] else 1)

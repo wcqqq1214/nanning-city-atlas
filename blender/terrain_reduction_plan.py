@@ -11,6 +11,7 @@ from pathlib import Path
 
 import numpy as np
 from reduced_surface import ReducedSurface
+from terrain_partitions import partition_digest
 
 _ACTIVE={}
 
@@ -70,7 +71,7 @@ class TerrainReductionPlan:
         plan.source_path=path.resolve()
         return plan
 
-    def apply(self,triangles,materials,profile):
+    def apply(self,triangles,materials,profile,partition_names=None,partition_indices=None):
         if profile!=self.profile:raise ValueError('Cannot apply reduction to a different quality profile')
         if mesh_digest(triangles,materials)!=self.payload['originalMeshSha256']:
             raise ValueError('Native terrain differs from the reduction source')
@@ -83,6 +84,17 @@ class TerrainReductionPlan:
         after_materials=np.concatenate([before_materials[keep],np.asarray(self.payload['newMaterials'],dtype=int)])
         if mesh_digest(after,after_materials)!=self.payload['candidateMeshSha256']:
             raise ValueError('Replacement does not match the independently checked candidate')
+        if 'partitionNames' in self.payload:
+            if partition_names != self.payload['partitionNames'] or partition_indices is None:
+                raise ValueError('Terrain reduction requires its original object partitions')
+            if len(partition_indices) != len(before) or partition_digest(partition_names,partition_indices) != self.payload['originalPartitionSha256']:
+                raise ValueError('Native terrain partition ownership changed')
+            new_ids=np.asarray(self.payload['newPartitionIndices'])
+            if len(new_ids)!=len(self.payload['newTriangles']):
+                raise ValueError('Replacement partition count differs from geometry')
+            self.result_partitions=np.concatenate([np.asarray(partition_indices)[keep],new_ids])
+            if partition_digest(partition_names,self.result_partitions)!=self.payload['candidatePartitionSha256']:
+                raise ValueError('Replacement partition ownership changed')
         self.validated=True
         return after,after_materials
 

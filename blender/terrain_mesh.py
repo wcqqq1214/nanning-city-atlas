@@ -102,7 +102,9 @@ def _build_native(env,lightweight):
                         key='hill' if lc==1 or sum(v[2] for v in vertices)/4>2.6 else ('bank' if lc==2 else 'ground')
                         batch.face([vertices[0],vertices[2],vertices[1]],key)
                         batch.face([vertices[0],vertices[3],vertices[2]],key)
-    env['build_park_terrain'](batch,env['NANHU_X'],env['NANHU_Y'],height)
+    boundary_ground = lambda x,y: env['coarse_terrain_surface'](
+        x,y,height,geo['bounds'],cols,rows,lightweight)
+    env['build_park_terrain'](batch,env['NANHU_X'],env['NANHU_Y'],height,boundary_ground)
     env['build_local_terrain'](batch,height,geo['bounds'],cols,rows,lightweight,env['coarse_terrain_surface'])
     env['build_mountain_terrain'](batch,height,geo['bounds'],cols,rows,lightweight,env['coarse_terrain_surface'])
     if GRADING_PLAN is not None:

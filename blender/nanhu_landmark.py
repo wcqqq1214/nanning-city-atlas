@@ -79,9 +79,27 @@ def replaces_terrain_cell(i, j):
             patch['rowRange'][0] <= j < patch['rowRange'][1])
 
 
-def build_park_terrain(batch, x, y, ground):
+def terrain_vertices(mesh, origin, ground, boundary_ground=None):
+    """Match the outer patch edge to the adjacent displayed coarse triangles.
+
+    Interior and shoreline vertices still use the original park height rule.
+    The same vertices feed the native emitter and the dependent-layer sampler.
+    """
+    x, y = origin
+    # prepare_nanhu_landmark stores mesh points to five decimals; its exact
+    # grid bounds are not rounded. Compare in the stored coordinate precision.
+    west, south, east, north = (round(value, 5) for value in PLAN['terrainPatch']['bounds'])
+    vertices = []
+    for u, v in mesh['points']:
+        on_edge = min(abs(u-west), abs(u-east), abs(v-south), abs(v-north)) < 1e-8
+        sample = boundary_ground if boundary_ground is not None and on_edge else ground
+        vertices.append((x+u, y+v, sample(x+u, y+v)))
+    return vertices
+
+
+def build_park_terrain(batch, x, y, ground, boundary_ground=None):
     for mesh in PLAN['terrainPatch']['meshes']:
-        vertices = [(x+u, y+v, ground(x+u, y+v)) for u, v in mesh['points']]
+        vertices = terrain_vertices(mesh, (x, y), ground, boundary_ground)
         center = [sum(p[k] for p in mesh['points'])/len(mesh['points']) for k in [0, 1]]
         material = 'hillLight' if inside_park(*center) else 'ground'
         for tri in mesh['triangles']:

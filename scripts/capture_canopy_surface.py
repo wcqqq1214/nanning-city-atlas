@@ -1,7 +1,7 @@
 """Capture the actual canopy consumer from an explicit city candidate root.
 
-This captures woodland surfaces only. Qingxiu has a varying canopy factor and
-is excluded; crowns and compressed GLB geometry require separate checks.
+This captures woodland surfaces only. Qingxiu requires its mountain plan for
+variable-factor clearance checks; crowns require separate checks.
 """
 import argparse
 import ast
@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--access-plan', type=Path, required=True)
     parser.add_argument('--export-policy', type=Path,
                         help='Optionally export each captured group with this gltf_export.py')
-    parser.add_argument('--regions', nargs='+', choices=['nearby', 'all'], default=['nearby', 'all'])
+    parser.add_argument('--regions', nargs='+', choices=['qingxiu', 'nearby', 'all'], default=['nearby', 'all'])
     args = parser.parse_args(sys.argv[sys.argv.index('--')+1:])
     export = None
     if args.export_policy:
