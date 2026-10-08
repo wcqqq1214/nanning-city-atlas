@@ -13,3 +13,13 @@ const serverSnapshot = () => false;
 
 export const useCompactLayout = () =>
   useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+
+const subscribeMotion = (onChange: () => void) => {
+  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+  media.addEventListener('change', onChange);
+  return () => media.removeEventListener('change', onChange);
+};
+const motionSnapshot = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+export const useReducedMotion = () =>
+  useSyncExternalStore(subscribeMotion, motionSnapshot, serverSnapshot);

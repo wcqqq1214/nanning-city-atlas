@@ -3,23 +3,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ArrowDownToLine,
-  ArrowRight,
   ArrowUpRight,
   Building2,
   GraduationCap,
   Landmark as LandmarkIcon,
   Check,
   ChevronRight,
-  CircleHelp,
+  ChevronLeft,
+  ChevronDown,
+  Search,
+  Orbit,
+  Grid2X2,
   Compass,
   Expand,
+  Ellipsis,
   Eye,
   Focus,
   Info,
   Layers3,
   LoaderCircle,
   MapPin,
-  Menu,
   Minus,
   Moon,
   Mountain,
@@ -42,7 +45,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useCompactLayout } from '@/lib/city/display';
+import { useCompactLayout, useReducedMotion } from '@/lib/city/display';
+import { searchLandmarks } from '@/lib/city/navigation';
 import { assetUrl } from '@/lib/city/assets';
 import { Slider } from '@/components/ui/slider';
 import {
@@ -188,14 +192,29 @@ function MiniMap({
 
 export default function Home() {
   const host = useRef<HTMLDivElement>(null);
-  const menuButton = useRef<HTMLButtonElement>(null);
+  const dock = useRef<HTMLElement>(null);
+  const dockBody = useRef<HTMLDivElement>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
+  const detailBack = useRef<HTMLButtonElement>(null);
+  const menuScroll = useRef(0);
+  const measureViewport = useRef<() => void>(() => {});
+  const pendingFocus = useRef<'menu' | 'detail' | null>(null);
   const isMobile = useCompactLayout();
+  const reducedMotion = useReducedMotion();
   const [quality, setQuality] = useState<QualityPreference>('auto');
   const [metrics, setMetrics] = useState<SceneMetrics | null>(null);
   const showStats =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('stats');
-  const [detailExpanded, setDetailExpanded] = useState(false);
+  const [panelMode, setPanelMode] = useState<'menu' | 'detail'>('menu');
+  const [collapsed, setCollapsed] = useState(false);
+  const [panelExpanded, setPanelExpanded] = useState(false);
+  const [query, setQuery] = useState('');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [tourStarted, setTourStarted] = useState(false);
+  const [detailView, setDetailView] = useState<'overview' | 'close'>(
+    'overview',
+  );
   const controller = useRef<SceneController | null>(null);
   const [places, setPlaces] = useState<Landmark[]>([]);
   const [overview, setOverview] = useState<Overview | null>(null);
@@ -215,8 +234,8 @@ export default function Home() {
   const [autoRotate, setAutoRotate] = useState(false);
   const [topDown, setTopDown] = useState(false);
   const [tour, setTour] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [heading, setHeading] = useState(0);
   const [coordinates, setCoordinates] = useState([108.365, 22.805]);
   const [toast, setToast] = useState('');
@@ -247,23 +266,56 @@ export default function Home() {
       (place) => landmarkCategory(place) === group.id,
     ),
   })).filter((group) => group.places.length > 0);
+  const visibleGroups = groupedPlaces
+    .filter((group) => category === 'all' || category === group.id)
+    .map((group) => ({
+      ...group,
+      places: searchLandmarks(group.places, query),
+    }))
+    .filter((group) => group.places.length > 0);
+  const resultCount = visibleGroups.reduce(
+    (sum, group) => sum + group.places.length,
+    0,
+  );
   const night = hour >= 19;
+
+  const pauseMotion = useCallback(() => {
+    setTour(false);
+    setAutoRotate(false);
+  }, []);
+  const openInfo = () => {
+    pauseMotion();
+    setInfoOpen(true);
+  };
+  useEffect(() => {
+    const pauseWhenHidden = () => {
+      if (document.hidden) pauseMotion();
+    };
+    document.addEventListener('visibilitychange', pauseWhenHidden);
+    return () =>
+      document.removeEventListener('visibilitychange', pauseWhenHidden);
+  }, [pauseMotion]);
 
   const choose = useCallback((id: string | null) => {
     setSelected(id);
-    setDetailExpanded(false);
+    if (!id) setTourStarted(false);
+    setPanelMode(id ? 'detail' : 'menu');
+    setDetailView('overview');
+    setCollapsed(false);
+    setPanelExpanded(false);
+    pendingFocus.current = id ? 'detail' : null;
     setTour(false);
     setAutoRotate(false);
-    setMobileOpen(false);
-    controller.current?.focus(id);
+
+    requestAnimationFrame(() => {
+      measureViewport.current();
+      controller.current?.focus(id);
+    });
   }, []);
   useEffect(() => {
     selectRef.current = choose;
-    interactionRef.current = () => {
-      setTour(false);
-      setAutoRotate(false);
-    };
-  }, [choose]);
+    interactionRef.current = pauseMotion;
+  }, [choose, pauseMotion]);
   useEffect(() => {
     options.current = {
       layers,
@@ -354,17 +406,110 @@ export default function Home() {
 
   useEffect(() => {
     if (!tour || !ready) return;
-    const timer = window.setInterval(
-      () =>
-        setSelected((current) => {
-          const next = ORDER[(ORDER.indexOf(current ?? '') + 1) % ORDER.length];
-          controller.current?.focus(next);
-          return next;
-        }),
-      6500,
-    );
-    return () => window.clearInterval(timer);
-  }, [tour, ready]);
+    const timer = window.setTimeout(() => {
+      const next = ORDER[(ORDER.indexOf(selected ?? '') + 1) % ORDER.length];
+      setSelected(next);
+      setDetailView('overview');
+      controller.current?.focus(next);
+    }, 6500);
+    return () => window.clearTimeout(timer);
+  }, [tour, ready, selected]);
+
+  useEffect(() => {
+    if (!dock.current || !host.current) return;
+    const root = dock.current.closest<HTMLElement>('.atlas')!;
+    const measure = () => {
+      const panel = dock.current!.getBoundingClientRect();
+      const scene = host.current!.getBoundingClientRect();
+      root.style.setProperty('--dock-height', `${panel.height}px`);
+      const bottomDock = isMobile && window.innerHeight > 520;
+      const left = bottomDock ? 20 : panel.right + 24;
+      root.style.setProperty('--scene-left', `${left}px`);
+      controller.current?.setViewport({
+        left,
+        top: isMobile ? 45 : 90,
+        width: Math.max(120, scene.width - left - (isMobile ? 68 : 84)),
+        height: Math.max(
+          100,
+          (bottomDock ? panel.top - scene.top : scene.height - 32) -
+            (isMobile ? 55 : 90),
+        ),
+      });
+    };
+    measureViewport.current = measure;
+    const observer = new ResizeObserver(measure);
+    observer.observe(dock.current);
+    observer.observe(host.current);
+    measure();
+    return () => observer.disconnect();
+  }, [ready, isMobile, collapsed]);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    const update = () => {
+      // Keep the bottom panel above the software keyboard on mobile browsers.
+      dock.current
+        ?.closest<HTMLElement>('.atlas')
+        ?.style.setProperty(
+          '--app-height',
+          `${viewport?.height ?? window.innerHeight}px`,
+        );
+    };
+    update();
+    viewport?.addEventListener('resize', update);
+    return () => viewport?.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    if (collapsed || !pendingFocus.current) return;
+    const destination = pendingFocus.current;
+    pendingFocus.current = null;
+    if (destination === 'detail') {
+      if (dockBody.current) dockBody.current.scrollTop = 0;
+      detailBack.current?.focus({ preventScroll: true });
+    } else {
+      const row = Array.from(
+        dock.current?.querySelectorAll<HTMLButtonElement>('[data-place-id]') ??
+          [],
+      ).find((element) => element.dataset.placeId === selected);
+      (row ?? searchInput.current)?.focus({ preventScroll: true });
+      if (dockBody.current) dockBody.current.scrollTop = menuScroll.current;
+    }
+  }, [panelMode, collapsed, selected]);
+
+  const returnToMenu = () => {
+    setTour(false);
+    setAutoRotate(false);
+    setPanelMode('menu');
+    setTab('explore');
+    setPanelExpanded(true);
+    pendingFocus.current = 'menu';
+  };
+  const changeView = (view: 'overview' | 'top' | 'close') => {
+    setTour(false);
+    setAutoRotate(false);
+    setTopDown(view === 'top');
+    setDetailView(view === 'close' ? 'close' : 'overview');
+    requestAnimationFrame(() => {
+      measureViewport.current();
+      controller.current?.focus(selected, view === 'close');
+    });
+  };
+  const jump = (delta: number) => {
+    const id =
+      ORDER[
+        (ORDER.indexOf(selected ?? ORDER[0]) + delta + ORDER.length) %
+          ORDER.length
+      ];
+    setSelected(id);
+    setDetailView('overview');
+    setPanelMode('detail');
+    setAutoRotate(false);
+    requestAnimationFrame(() => {
+      measureViewport.current();
+      controller.current?.focus(id);
+    });
+  };
   useEffect(() => {
     if (!toast) return;
     const timer = window.setTimeout(() => setToast(''), 3500);
@@ -378,17 +523,29 @@ export default function Home() {
     }
     const id = selected ?? ORDER[0];
     setSelected(id);
-    controller.current?.focus(id);
+    requestAnimationFrame(() => {
+      measureViewport.current();
+      controller.current?.focus(id);
+    });
     setTour(true);
+    setTourStarted(true);
+    setPanelMode('detail');
+    setPanelExpanded(false);
+    setDetailView('overview');
     setAutoRotate(false);
-    setMobileOpen(false);
   };
   const reset = () => {
     setSelected(null);
+    setPanelExpanded(false);
+    setPanelMode('menu');
+    setTourStarted(false);
     setTour(false);
     setAutoRotate(false);
     setTopDown(false);
-    requestAnimationFrame(() => controller.current?.focus(null));
+    requestAnimationFrame(() => {
+      measureViewport.current();
+      controller.current?.focus(null);
+    });
   };
   const screenshot = async () => {
     if (!controller.current) return;
@@ -418,22 +575,19 @@ export default function Home() {
 
   const sidebar = (
     <>
-      <div className="sidebar-intro">
-        <span className="eyebrow">NANNING CITY MAP</span>
-        <h1>
-          探索南宁<span>01 / 广西</span>
-        </h1>
-        <p>选一个地标，看看附近。</p>
-      </div>
       <Tabs
         value={tab}
-        onValueChange={(value) => setTab(String(value))}
+        onValueChange={(value) => {
+          pauseMotion();
+          setTab(String(value));
+          if (dockBody.current) dockBody.current.scrollTop = 0;
+        }}
         className="sidebar-tabs"
       >
         <TabsList className="panel-tabs" aria-label="城市菜单">
           <TabsTrigger value="explore">
             <Compass size={15} />
-            探索
+            地点
           </TabsTrigger>
           <TabsTrigger value="layers">
             <Layers3 size={15} />
@@ -445,27 +599,66 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="explore" className="tab-body">
-          <div className="section-caption">
-            <span>城市探索点</span>
-            <span>
-              {String(landmarkCatalog.length).padStart(2, '0')} 个地标
-            </span>
+          <div className="search-wrap">
+            <Search size={17} aria-hidden="true" />
+            <input
+              ref={searchInput}
+              type="search"
+              value={query}
+              placeholder="搜索地标，如南湖、西大"
+              aria-label="搜索南宁地标"
+              onFocus={() => {
+                pauseMotion();
+                setPanelExpanded(true);
+              }}
+              onChange={(event) => {
+                setQuery(event.target.value);
+              }}
+            />
+            {query && (
+              <button
+                aria-label="清除搜索"
+                onClick={() => {
+                  setQuery('');
+                  searchInput.current?.focus();
+                }}
+              >
+                <X size={16} />
+              </button>
+            )}
           </div>
-          <button
-            className={`overview-place ${!selected ? 'active' : ''}`}
-            disabled={!ready}
-            onClick={() => choose(null)}
+          <div className="browse-actions">
+            <button
+              className="overview-shortcut"
+              disabled={!ready}
+              onClick={() => choose(null)}
+            >
+              <Navigation size={15} />
+              城市全景
+            </button>
+            <button
+              className="filter-toggle"
+              aria-expanded={filtersOpen}
+              aria-controls="place-filters"
+              onClick={() => {
+                setFiltersOpen((value) => !value);
+                if (!filtersOpen && isMobile) setPanelExpanded(true);
+              }}
+            >
+              <SlidersHorizontal size={15} />
+              {category === 'all'
+                ? '筛选'
+                : LANDMARK_CATEGORIES.find((item) => item.id === category)
+                    ?.shortName}
+              <ChevronDown size={14} />
+            </button>
+          </div>
+          <fieldset
+            id="place-filters"
+            className="place-category-filters"
+            aria-label="地标分类"
+            hidden={!filtersOpen}
           >
-            <div className="place-icon overview-icon">
-              <Navigation size={21} />
-            </div>
-            <div>
-              <strong>邕江两岸</strong>
-              <span>石埠至凤岭 · 全景鸟瞰</span>
-            </div>
-            <ArrowUpRight size={18} />
-          </button>
-          <fieldset className="place-category-filters" aria-label="地标分类">
             <button
               type="button"
               aria-pressed={category === 'all'}
@@ -486,52 +679,78 @@ export default function Home() {
               </button>
             ))}
           </fieldset>
+          <output
+            className="result-heading"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <span>
+              {query.trim()
+                ? '搜索结果'
+                : category === 'all'
+                  ? '全部地点'
+                  : '当前分类'}
+              <small>
+                {category !== 'all'
+                  ? ` · ${LANDMARK_CATEGORIES.find((item) => item.id === category)?.name}`
+                  : ''}
+              </small>
+            </span>
+            <span>{resultCount} 处</span>
+          </output>
           <div className="place-list">
-            {groupedPlaces
-              .filter((group) => category === 'all' || category === group.id)
-              .map((group) => (
-                <section
-                  key={group.id}
-                  className="place-group"
-                  aria-label={group.name}
+            {!resultCount && (
+              <div className="empty-state">
+                <Search size={24} />
+                <p>没有找到相关地标</p>
+                <span>换个名称，或清除分类和搜索条件。</span>
+                <button
+                  onClick={() => {
+                    setQuery('');
+                    setCategory('all');
+                    searchInput.current?.focus();
+                  }}
                 >
-                  <h3 className="place-group-heading">
-                    {group.name}
-                    <span>{group.places.length} 处</span>
-                  </h3>
-                  {group.places.map((place) => {
-                    const Icon = iconFor(place);
-                    return (
-                      <button
-                        key={place.id}
-                        className={`place-item ${selected === place.id ? 'active' : ''}`}
-                        disabled={!ready}
-                        onClick={() => choose(place.id)}
-                        aria-pressed={selected === place.id}
+                  查看全部地标
+                </button>
+              </div>
+            )}
+            {visibleGroups.map((group) => (
+              <section
+                key={group.id}
+                className="place-group"
+                aria-label={group.name}
+              >
+                <h3 className="place-group-heading">
+                  {group.name}
+                  <span>{group.places.length} 处</span>
+                </h3>
+                {group.places.map((place) => {
+                  const Icon = iconFor(place);
+                  return (
+                    <button
+                      key={place.id}
+                      data-place-id={place.id}
+                      className={`place-item ${selected === place.id ? 'active' : ''}`}
+                      disabled={!ready}
+                      onClick={() => choose(place.id)}
+                      aria-pressed={selected === place.id}
+                    >
+                      <span
+                        className={`place-icon place-${place.id} category-${group.id}`}
                       >
-                        <span
-                          className={`place-icon place-${place.id} category-${group.id}`}
-                        >
-                          <Icon size={19} strokeWidth={1.6} />
-                        </span>
-                        <span className="place-text">
-                          <strong>{place.name}</strong>
-                          <small>{place.category || '城市探索点'}</small>
-                        </span>
-                        <ChevronRight size={15} />
-                      </button>
-                    );
-                  })}
-                </section>
-              ))}
-          </div>
-          <div className="explore-note">
-            <Waves size={18} />
-            <p>
-              可以自己拖动地图，
-              <br />
-              <span>也可以点击下方按钮自动游览。</span>
-            </p>
+                        <Icon size={19} strokeWidth={1.6} />
+                      </span>
+                      <span className="place-text">
+                        <strong>{place.name}</strong>
+                        <small>{place.category || '城市探索点'}</small>
+                      </span>
+                      <ChevronRight size={15} />
+                    </button>
+                  );
+                })}
+              </section>
+            ))}
           </div>
         </TabsContent>
         <TabsContent value="layers" className="tab-body">
@@ -559,34 +778,39 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="data-card">
-            <span className="eyebrow">GEOGRAPHIC SNAPSHOT</span>
-            <h3>地图数据</h3>
-            <dl>
-              <div>
-                <dt>地图建筑</dt>
-                <dd>
-                  {overview?.stats.mappedBuildings.toLocaleString() ?? '—'}
-                  <small>栋</small>
-                </dd>
-              </div>
-              <div>
-                <dt>简化补充</dt>
-                <dd>
-                  {overview?.stats.infillBuildings.toLocaleString() ?? '—'}
-                  <small>栋</small>
-                </dd>
-              </div>
-              <div>
-                <dt>道路片段</dt>
-                <dd>
-                  {overview?.stats.roadSegments.toLocaleString() ?? '—'}
-                  <small>段</small>
-                </dd>
-              </div>
-            </dl>
-            <p>部分建筑由程序补充，位置和高度不代表实景。</p>
-          </div>
+          <details className="menu-disclosure data-disclosure">
+            <summary>
+              地图数据与精度 <ChevronDown size={15} />
+            </summary>
+            <div className="data-card">
+              <span className="eyebrow">GEOGRAPHIC SNAPSHOT</span>
+              <h3>地图数据</h3>
+              <dl>
+                <div>
+                  <dt>地图建筑</dt>
+                  <dd>
+                    {overview?.stats.mappedBuildings.toLocaleString() ?? '—'}
+                    <small>栋</small>
+                  </dd>
+                </div>
+                <div>
+                  <dt>简化补充</dt>
+                  <dd>
+                    {overview?.stats.infillBuildings.toLocaleString() ?? '—'}
+                    <small>栋</small>
+                  </dd>
+                </div>
+                <div>
+                  <dt>道路片段</dt>
+                  <dd>
+                    {overview?.stats.roadSegments.toLocaleString() ?? '—'}
+                    <small>段</small>
+                  </dd>
+                </div>
+              </dl>
+              <p>部分建筑由程序补充，位置和高度不代表实景。</p>
+            </div>
+          </details>
         </TabsContent>
         <TabsContent value="scene" className="tab-body">
           <div className="section-caption">
@@ -596,186 +820,208 @@ export default function Home() {
           <p className="panel-description">
             调整时间，查看晨昏光照、夜间窗灯与地标亮化。
           </p>
-          <div className="time-display">
-            <span>{timeLabel}</span>
-            <div>
-              {hour < 10
-                ? '晨光'
-                : hour < 17
-                  ? '日间'
-                  : hour < 19
-                    ? '落日'
-                    : '夜色'}
-              <small>场景模拟时间</small>
-            </div>
-          </div>
-          <Slider
-            className="time-slider"
-            value={[hour]}
-            onValueChange={(value) =>
-              setHour(Array.isArray(value) ? value[0] : value)
-            }
-            min={6}
-            max={22}
-            step={0.5}
-            aria-label="场景时间"
-          />
-          <div className="slider-ends">
-            <span>06:00</span>
-            <span>22:00</span>
-          </div>
           <div className="time-presets">
             {[
-              { hour: 8, text: '晨光', icon: Sun },
-              { hour: 14, text: '日间', icon: Sun },
-              { hour: 18, text: '日落', icon: Sunset },
-              { hour: 21, text: '夜色', icon: Moon },
-            ].map(({ hour: h, text, icon: Icon }) => (
+              { hour: 8, text: '晨光', caption: '清晨的邕江', icon: Sun },
+              { hour: 14, text: '日间', caption: '明亮的城市', icon: Sun },
+              { hour: 18, text: '日落', caption: '江岸染上暖金', icon: Sunset },
+              { hour: 21, text: '夜色', caption: '灯火沿江亮起', icon: Moon },
+            ].map(({ hour: h, text, caption, icon: Icon }) => (
               <button
                 key={h}
-                className={hour === h ? 'active' : ''}
+                className={`light-preset light-${h} ${hour === h ? 'active' : ''}`}
                 onClick={() => setHour(h)}
                 aria-pressed={hour === h}
               >
-                <Icon size={18} />
-                {text}
+                <span className="light-art" aria-hidden="true">
+                  <i />
+                  <b />
+                  <em />
+                </span>
+                <span className="light-name">
+                  <Icon size={16} />
+                  {text}
+                  {hour === h && <Check size={14} />}
+                </span>
+                <small>{caption}</small>
               </button>
             ))}
           </div>
-          <div className="setting-divider" />
-          <div className="section-caption">
-            <span id="quality-label">画质</span>
-          </div>
-          <RadioGroup
-            className="quality-options"
-            aria-labelledby="quality-label"
-            value={quality}
-            onValueChange={(value) => {
-              setTour(false);
-              setAutoRotate(false);
-              setQuality(value as QualityPreference);
-            }}
-          >
-            {(
-              [
-                ['auto', '自动'],
-                ['smooth', '流畅'],
-                ['detail', '精细'],
-              ] as const
-            ).map(([value, label]) => (
-              <label key={value} className={quality === value ? 'active' : ''}>
-                <RadioGroupItem value={value} />
-                {label}
-              </label>
-            ))}
-          </RadioGroup>
-          <p className="quality-note">
-            手机默认使用轻量模型。流畅模式减少渲染负担，精细模式保留更多树木和阴影。切换画质会重新加载地图。
-          </p>
-          <div className="setting-divider" />
-          <div className="setting-row">
-            <label htmlFor="height-scale">
-              高度比例<small>同时拉高或压低山地和建筑</small>
-            </label>
-            <strong>{heightScale.toFixed(1)}×</strong>
-          </div>
-          <Slider
-            id="height-scale"
-            value={[heightScale]}
-            onValueChange={(value) =>
-              setHeightScale(Array.isArray(value) ? value[0] : value)
-            }
-            min={0.5}
-            max={2}
-            step={0.1}
-            aria-label="高度比例"
-          />
-          <div className="slider-ends">
-            <span>平缓 0.5×</span>
-            <span>突出 2.0×</span>
-          </div>
-          <div className="setting-divider" />
-          <div className="setting-row">
-            <label htmlFor="top-down">
-              俯视地图<small>从正上方观察地理布局</small>
-            </label>
-            <Switch
-              id="top-down"
-              checked={topDown}
-              onCheckedChange={setTopDown}
+          <details className="menu-disclosure">
+            <summary>
+              <span>
+                精确时间 <strong>{timeLabel}</strong>
+              </span>
+              <ChevronDown size={15} />
+            </summary>
+            <div className="time-display">
+              <span>{timeLabel}</span>
+              <div>
+                {hour < 10
+                  ? '晨光'
+                  : hour < 17
+                    ? '日间'
+                    : hour < 19
+                      ? '落日'
+                      : '夜色'}
+                <small>场景模拟时间</small>
+              </div>
+            </div>
+            <Slider
+              className="time-slider"
+              value={[hour]}
+              onValueChange={(value) =>
+                setHour(Array.isArray(value) ? value[0] : value)
+              }
+              min={6}
+              max={22}
+              step={0.5}
+              aria-label="场景时间"
             />
-          </div>
-          <div className="setting-row">
-            <label htmlFor="auto-orbit">
-              环绕观察<small>镜头缓慢围绕当前中心旋转</small>
-            </label>
-            <Switch
-              id="auto-orbit"
-              checked={autoRotate}
-              onCheckedChange={(value) => {
-                setAutoRotate(value);
+            <div className="slider-ends">
+              <span>06:00</span>
+              <span>22:00</span>
+            </div>
+          </details>
+          <details className="menu-disclosure">
+            <summary>
+              <span id="quality-label">
+                画质{' '}
+                <strong>
+                  {{ auto: '自动', smooth: '流畅', detail: '精细' }[quality]}
+                </strong>
+              </span>
+              <ChevronDown size={15} />
+            </summary>
+            <RadioGroup
+              className="quality-options"
+              aria-labelledby="quality-label"
+              value={quality}
+              onValueChange={(value) => {
                 setTour(false);
+                setAutoRotate(false);
+                setDetailView('overview');
+                setQuality(value as QualityPreference);
               }}
+            >
+              {(
+                [
+                  ['auto', '自动'],
+                  ['smooth', '流畅'],
+                  ['detail', '精细'],
+                ] as const
+              ).map(([value, label]) => (
+                <label
+                  key={value}
+                  className={quality === value ? 'active' : ''}
+                >
+                  <RadioGroupItem value={value} />
+                  {label}
+                </label>
+              ))}
+            </RadioGroup>
+            <p className="quality-note">
+              手机默认使用轻量模型。流畅模式减少渲染负担，精细模式保留更多树木和阴影。切换画质会重新加载地图。
+            </p>
+          </details>
+          <details className="menu-disclosure">
+            <summary>
+              高度与视角 <ChevronDown size={15} />
+            </summary>
+            <div className="setting-row">
+              <label htmlFor="height-scale">
+                高度比例<small>同时拉高或压低山地和建筑</small>
+              </label>
+              <strong>{heightScale.toFixed(1)}×</strong>
+            </div>
+            <Slider
+              id="height-scale"
+              value={[heightScale]}
+              onValueChange={(value) =>
+                setHeightScale(Array.isArray(value) ? value[0] : value)
+              }
+              min={0.5}
+              max={2}
+              step={0.1}
+              aria-label="高度比例"
             />
-          </div>
-          <button
-            className="restore-settings"
-            onClick={() => {
-              setHour(14);
-              setHeightScale(1);
-              setTopDown(false);
-              setAutoRotate(false);
-            }}
-          >
-            恢复默认环境 <RotateCcw size={14} />
-          </button>
+            <div className="slider-ends">
+              <span>平缓 0.5×</span>
+              <span>突出 2.0×</span>
+            </div>
+            <div className="setting-divider" />
+            <div className="setting-row">
+              <label htmlFor="top-down">
+                俯视地图<small>从正上方观察地理布局</small>
+              </label>
+              <Switch
+                id="top-down"
+                checked={topDown}
+                onCheckedChange={setTopDown}
+              />
+            </div>
+            <div className="setting-row">
+              <label htmlFor="auto-orbit">
+                环绕观察<small>镜头缓慢围绕当前中心旋转</small>
+              </label>
+              <Switch
+                id="auto-orbit"
+                disabled={reducedMotion}
+                checked={autoRotate}
+                onCheckedChange={(value) => {
+                  setAutoRotate(value);
+                  setTour(false);
+                }}
+              />
+            </div>
+            <button
+              className="restore-settings"
+              onClick={() => {
+                setHour(14);
+                setHeightScale(1);
+                setTopDown(false);
+                setAutoRotate(false);
+              }}
+            >
+              恢复默认环境 <RotateCcw size={14} />
+            </button>
+          </details>
         </TabsContent>
       </Tabs>
-      <div className="sidebar-bottom">
-        <button
-          className={`tour-button ${tour ? 'tour-playing' : ''}`}
-          disabled={!ready}
-          onClick={startTour}
-        >
-          {tour ? (
-            <Pause size={16} fill="currentColor" />
-          ) : (
-            <Play size={16} fill="currentColor" />
-          )}
-          <span>{tour ? '暂停城市漫游' : '开始城市漫游'}</span>
-          <span className="tour-duration">
-            {tour
-              ? `${ORDER.indexOf(selected ?? '') + 1} / ${ORDER.length}`
-              : `${ORDER.length} 站`}
-          </span>
+      <div className="panel-foot">
+        <button onClick={openInfo}>
+          <Info size={14} />
+          地图说明与数据来源 <ArrowUpRight size={13} />
         </button>
-        <button
-          className="help-button"
-          onClick={() => {
-            setMobileOpen(false);
-            setInfoOpen(true);
-          }}
-        >
-          <CircleHelp size={14} />
-          操作指南与数据来源
-          <ArrowUpRight size={13} />
-        </button>
+        {active && (
+          <button
+            className="return-landmark"
+            onClick={() => {
+              setPanelMode('detail');
+              setPanelExpanded(false);
+              pendingFocus.current = 'detail';
+            }}
+          >
+            继续查看 {active.name}
+            <ChevronRight size={14} />
+          </button>
+        )}
       </div>
     </>
   );
 
   return (
     <main
-      className={`atlas ${night ? 'is-night' : ''} ${active ? 'has-selection' : ''}`}
+      className={`atlas ${night ? 'is-night' : ''} ${active ? 'has-selection' : ''} ${collapsed ? 'panel-collapsed' : ''} ${panelExpanded ? 'panel-expanded' : ''}`}
     >
       <header className="app-header">
         <div className="identity">
           <div className="brand-mark">
             <Mountain strokeWidth={1.35} />
           </div>
-          <div className="brand-word">
+          <h1 className="brand-word">
             邕城<span>NANNING ATLAS</span>
-          </div>
+          </h1>
           <span className="brand-divider" />
           <p>
             南宁三维地图<span>山 · 水 · 城</span>
@@ -786,13 +1032,7 @@ export default function Home() {
           广西壮族自治区 <span className="slash">/</span> 南宁
         </div>
         <div className="header-actions">
-          <button
-            className="text-button about-button"
-            onClick={() => {
-              setMobileOpen(false);
-              setInfoOpen(true);
-            }}
-          >
+          <button className="text-button about-button" onClick={openInfo}>
             <Info size={16} />
             项目说明
           </button>
@@ -822,42 +1062,200 @@ export default function Home() {
         </div>
       </header>
 
-      <button
-        ref={menuButton}
-        className="mobile-menu-button"
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-expanded={mobileOpen}
-        aria-controls="explorer-sidebar"
+      <aside
+        ref={dock}
+        className={`panel-dock ${collapsed ? 'collapsed' : ''} ${panelExpanded ? 'expanded' : ''} ${panelMode === 'detail' ? 'detail-mode' : ''}`}
+        aria-label="南宁浏览面板"
       >
-        {mobileOpen ? <X size={19} /> : <Menu size={19} />}城市菜单
-      </button>
-      {isMobile ? (
-        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-          <SheetContent
-            id="explorer-sidebar"
-            side="left"
-            className="mobile-explorer"
-            showCloseButton={false}
-            finalFocus={menuButton}
-          >
-            <SheetTitle className="sr-only">城市菜单</SheetTitle>
-            <SheetDescription className="sr-only">
-              选择地标、图层与画质
-            </SheetDescription>
-            <SheetClose
-              className="mobile-sheet-close"
-              aria-label="关闭城市菜单"
+        <div className="dock-heading">
+          {panelMode === 'detail' && active && !collapsed ? (
+            <button
+              ref={detailBack}
+              className="dock-back"
+              onClick={returnToMenu}
             >
-              <X size={20} />
-            </SheetClose>
-            {sidebar}
-          </SheetContent>
-        </Sheet>
-      ) : (
-        <aside id="explorer-sidebar" className="sidebar">
-          {sidebar}
-        </aside>
-      )}
+              <ChevronLeft size={16} />
+              返回列表
+            </button>
+          ) : (
+            <span className="dock-title">
+              {collapsed && active ? active.name : '探索南宁'}
+              <small>NANNING ATLAS</small>
+            </span>
+          )}
+          <div className="dock-heading-actions">
+            {!collapsed && (
+              <button
+                className="dock-expand"
+                aria-expanded={panelExpanded}
+                aria-controls="city-panel-body"
+                onClick={() => setPanelExpanded((value) => !value)}
+              >
+                {panelExpanded ? '简要' : '展开'}
+              </button>
+            )}
+            <button
+              className="dock-toggle"
+              aria-label={collapsed ? '展开浏览面板' : '收起浏览面板'}
+              aria-expanded={!collapsed}
+              aria-controls="city-panel-body"
+              onClick={() => setCollapsed((value) => !value)}
+            >
+              <ChevronDown size={18} />
+            </button>
+          </div>
+        </div>
+        <div
+          ref={dockBody}
+          id="city-panel-body"
+          className="dock-body"
+          hidden={collapsed}
+          onScroll={(event) => {
+            if (panelMode === 'menu' && tab === 'explore')
+              menuScroll.current = event.currentTarget.scrollTop;
+          }}
+        >
+          {panelMode === 'detail' && active ? (
+            <article className="place-detail" aria-label="地标详情">
+              <span className="eyebrow">{active.category}</span>
+              <h2>{active.name}</h2>
+              <div className="detail-location">
+                <MapPin size={13} />
+                {active.lon.toFixed(4)}° E · {active.lat.toFixed(4)}° N
+              </div>
+              <p>{active.description}</p>
+              {activeArea && (
+                <span className="detail-area">
+                  {activeArea.name} · 范围示意
+                </span>
+              )}
+              <fieldset
+                className="landmark-views"
+                aria-label="地标观察视角"
+                disabled={!ready}
+              >
+                <button
+                  aria-pressed={
+                    !topDown && !autoRotate && detailView === 'overview'
+                  }
+                  onClick={() => changeView('overview')}
+                >
+                  <Focus size={16} />
+                  全貌
+                </button>
+                <button
+                  aria-pressed={topDown && !autoRotate}
+                  onClick={() => changeView('top')}
+                >
+                  <Grid2X2 size={16} />
+                  俯视
+                </button>
+                <button
+                  aria-pressed={autoRotate}
+                  disabled={reducedMotion}
+                  title={
+                    reducedMotion ? '系统已启用减少动态效果' : '环绕当前地标'
+                  }
+                  onClick={() => {
+                    setTour(false);
+                    setTopDown(false);
+                    setAutoRotate((value) => !value);
+                  }}
+                >
+                  <Orbit size={16} />
+                  {autoRotate ? '暂停环绕' : '环绕'}
+                </button>
+                {active.closeDistance && (
+                  <button
+                    aria-pressed={
+                      detailView === 'close' && !topDown && !autoRotate
+                    }
+                    onClick={() => changeView('close')}
+                  >
+                    <Eye size={16} />
+                    近景
+                  </button>
+                )}
+              </fieldset>
+              <button
+                className="detail-overview"
+                onClick={reset}
+                disabled={!ready}
+              >
+                <Navigation size={15} />
+                返回城市全景
+                <ArrowUpRight size={15} />
+              </button>
+            </article>
+          ) : (
+            sidebar
+          )}
+        </div>
+        <div className={`tour-bar ${tourStarted ? 'tour-active' : ''}`}>
+          {tourStarted && !collapsed && (
+            <div className="tour-heading">
+              <span>
+                <i className={tour ? 'live-dot' : ''} />
+                {tour ? '正在漫游' : '漫游已暂停'}
+                <small>
+                  {ORDER.indexOf(selected ?? '') + 1} / {ORDER.length} ·{' '}
+                  {active?.name}
+                </small>
+              </span>
+              <button
+                aria-label="结束城市漫游"
+                onClick={() => {
+                  setTour(false);
+                  setTourStarted(false);
+                }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+          )}
+          <div className="tour-controls">
+            {tourStarted && !collapsed && (
+              <button
+                className="tour-skip"
+                aria-label="上一站"
+                disabled={!ready}
+                onClick={() => jump(-1)}
+              >
+                <ChevronLeft size={18} />
+              </button>
+            )}
+            <button
+              className="tour-button"
+              disabled={!ready}
+              onClick={startTour}
+            >
+              {tour ? (
+                <Pause size={15} fill="currentColor" />
+              ) : (
+                <Play size={15} fill="currentColor" />
+              )}
+              <span>
+                {tour ? '暂停漫游' : tourStarted ? '继续漫游' : '开始城市漫游'}
+              </span>
+              <small>
+                {tourStarted
+                  ? `${ORDER.indexOf(selected ?? '') + 1} / ${ORDER.length}`
+                  : `${ORDER.length} 站`}
+              </small>
+            </button>
+            {tourStarted && !collapsed && (
+              <button
+                className="tour-skip"
+                aria-label="下一站"
+                disabled={!ready}
+                onClick={() => jump(1)}
+              >
+                <ChevronRight size={18} />
+              </button>
+            )}
+          </div>
+        </div>
+      </aside>
 
       <section className="map-stage" aria-label="三维地理沙盘">
         <div className="scene-host" ref={host} />
@@ -884,8 +1282,11 @@ export default function Home() {
           <button
             className="view-chip time-chip"
             onClick={() => {
+              pauseMotion();
               setTab('scene');
-              setMobileOpen(true);
+              setPanelMode('menu');
+              setCollapsed(false);
+              setPanelExpanded(false);
             }}
           >
             {night ? (
@@ -929,7 +1330,7 @@ export default function Home() {
         )}
         <div className="map-toolbar">
           <button
-            className="north-button"
+            className="north-button desktop-tool"
             onClick={() => controller.current?.north()}
             disabled={!ready}
             aria-label="朝向正北"
@@ -940,7 +1341,7 @@ export default function Home() {
               style={{ transform: `rotate(${-heading}deg)` }}
             />
           </button>
-          <div className="tool-group">
+          <div className="tool-group zoom-tools">
             <button
               onClick={() => controller.current?.zoom(0.78)}
               disabled={!ready}
@@ -956,7 +1357,7 @@ export default function Home() {
               <Minus size={20} />
             </button>
           </div>
-          <div className="tool-group">
+          <div className="tool-group desktop-tool">
             <button onClick={reset} disabled={!ready} aria-label="返回全景">
               <Focus size={19} />
             </button>
@@ -973,52 +1374,23 @@ export default function Home() {
               <Expand size={18} />
             </button>
           </div>
+          <div className="tool-group mobile-tools">
+            <button onClick={reset} disabled={!ready} aria-label="返回全景">
+              <Focus size={19} />
+            </button>
+            <button
+              aria-label="更多地图工具"
+              aria-haspopup="dialog"
+              onClick={() => {
+                setTour(false);
+                setAutoRotate(false);
+                setToolsOpen(true);
+              }}
+            >
+              <Ellipsis size={20} />
+            </button>
+          </div>
         </div>
-        {active && ready && (
-          <article
-            className={`place-detail ${detailExpanded ? 'expanded' : 'collapsed'}`}
-          >
-            <div className="detail-heading">
-              <span>{active.category}</span>
-              <button onClick={() => choose(null)} aria-label="关闭地标详情">
-                <X size={16} />
-              </button>
-            </div>
-            <h3>{active.name}</h3>
-            <p id="landmark-description">{active.description}</p>
-            <div className="detail-footer">
-              <button
-                className="detail-expand"
-                aria-expanded={detailExpanded}
-                aria-controls="landmark-description"
-                onClick={() => setDetailExpanded(!detailExpanded)}
-              >
-                {detailExpanded ? '收起介绍' : '查看介绍'}
-              </button>
-              {active.closeDistance && (
-                <button
-                  onClick={() => {
-                    setTour(false);
-                    setAutoRotate(false);
-                    controller.current?.focus(active.id, true);
-                  }}
-                >
-                  <Focus size={15} />
-                  近景
-                </button>
-              )}
-
-              <button
-                onClick={() =>
-                  choose(ORDER[(ORDER.indexOf(active.id) + 1) % ORDER.length])
-                }
-              >
-                下一站
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          </article>
-        )}
         <div className="map-bottom-left">
           <div className="legend">
             <span>
@@ -1056,12 +1428,7 @@ export default function Home() {
             <span className="status-divider">/</span>{' '}
             {coordinates[1].toFixed(4)}° N
           </span>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              setInfoOpen(true);
-            }}
-          >
+          <button onClick={openInfo}>
             简化三维地图 <span className="status-divider">·</span> ©
             OpenStreetMap / Copernicus DEM
           </button>
@@ -1083,6 +1450,101 @@ export default function Home() {
           </output>
         )}
       </section>
+      <Sheet open={toolsOpen} onOpenChange={setToolsOpen}>
+        <SheetContent
+          side="bottom"
+          className="tools-sheet"
+          showCloseButton={false}
+        >
+          <SheetClose className="tools-close" aria-label="关闭地图工具">
+            <X size={18} />
+          </SheetClose>
+          <SheetHeader>
+            <SheetTitle>地图工具</SheetTitle>
+            <SheetDescription>调整视角，或查看操作说明。</SheetDescription>
+          </SheetHeader>
+          <div className="tools-grid">
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                controller.current?.zoom(0.78);
+              }}
+            >
+              <Plus size={20} />
+              放大
+            </button>
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                controller.current?.zoom(1.28);
+              }}
+            >
+              <Minus size={20} />
+              缩小
+            </button>
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                reset();
+              }}
+            >
+              <Focus size={20} />
+              返回全景
+            </button>
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                controller.current?.north();
+              }}
+            >
+              <Navigation size={20} />
+              朝向正北
+            </button>
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                setTopDown((value) => !value);
+              }}
+            >
+              <Grid2X2 size={20} />
+              {topDown ? '倾斜鸟瞰' : '俯视地图'}
+            </button>
+            <button
+              onClick={() => {
+                setToolsOpen(false);
+                void fullScreen();
+              }}
+            >
+              <Expand size={20} />
+              全屏查看
+            </button>
+            <button
+              disabled={!ready || exporting}
+              onClick={() => {
+                setToolsOpen(false);
+                void screenshot();
+              }}
+            >
+              <ArrowDownToLine size={20} />
+              导出视图
+            </button>
+            <button
+              onClick={() => {
+                setToolsOpen(false);
+                openInfo();
+              }}
+            >
+              <Info size={20} />
+              操作与数据说明
+            </button>
+          </div>
+        </SheetContent>
+      </Sheet>
       <Sheet open={infoOpen} onOpenChange={setInfoOpen}>
         <SheetContent className="info-sheet">
           <SheetHeader>
@@ -1111,8 +1573,8 @@ export default function Home() {
                 <div>
                   <strong>地标与漫游</strong>
                   <p>
-                    点击地图标记或左侧探索点，地图会定位到那里。城市漫游每 6.5
-                    秒切换一站，手动拖动会暂停。
+                    搜索地标，或点击地图标记与地点列表，地图会定位到那里。城市漫游每
+                    6.5 秒切换一站，手动拖动会暂停。
                   </p>
                 </div>
               </li>

@@ -84,6 +84,37 @@ export async function createCityScene(
   labelLayer.className = 'map-labels';
   host.appendChild(labelLayer);
   const camera = new THREE.PerspectiveCamera(40, 1, 0.12, 3000);
+  let viewport: {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+  } | null = null;
+  let framedWidth = 0;
+  let framedHeight = 0;
+  let autoFramed = true;
+  let focusedClose = false;
+  const visibleTangent = () =>
+    (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) *
+      Math.min(
+        viewport?.width ?? host.clientWidth,
+        viewport?.height ?? host.clientHeight,
+      )) /
+    host.clientHeight;
+  const composeViewport = () => {
+    if (!viewport) return;
+    const width = Math.max(1, host.clientWidth);
+    const height = Math.max(1, host.clientHeight);
+    camera.setViewOffset(
+      width,
+      height,
+      width / 2 - (viewport.left + viewport.width / 2),
+      height / 2 - (viewport.top + viewport.height / 2),
+      width,
+      height,
+    );
+    dirty = true;
+  };
   const initialPosition = new THREE.Vector3(112, 162, 177);
   const overviewPosition = () => {
     const bounds = overview?.bounds ?? [-103, -78, 103, 78];
@@ -92,7 +123,11 @@ export async function createCityScene(
       .crossVectors(new THREE.Vector3(0, 1, 0), direction)
       .normalize();
     const up = new THREE.Vector3().crossVectors(direction, right).normalize();
-    const vertical = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    const tangent = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    const vertical =
+      (tangent * (viewport?.height ?? host.clientHeight)) / host.clientHeight;
+    const horizontal =
+      (tangent * (viewport?.width ?? host.clientWidth)) / host.clientHeight;
     let distance = 0;
     for (const x of [bounds[0], bounds[2]])
       for (const z of [-bounds[3], -bounds[1]])
@@ -100,8 +135,7 @@ export async function createCityScene(
           const point = new THREE.Vector3(x, y, z);
           distance = Math.max(
             distance,
-            Math.abs(point.dot(right)) / (vertical * camera.aspect) +
-              point.dot(direction),
+            Math.abs(point.dot(right)) / horizontal + point.dot(direction),
             Math.abs(point.dot(up)) / vertical + point.dot(direction),
           );
         }
@@ -215,12 +249,13 @@ export async function createCityScene(
   const pointer = new THREE.Vector2();
   const tapGesture = new TapGesture();
   const startInteraction = () => {
+    autoFramed = false;
     flight = null;
     callbacks.interaction();
   };
   controls.addEventListener('start', startInteraction);
   let labelVisibilityDistance = 0;
-  const resize = () => {
+  const resize = (reframe = true) => {
     dirty = true;
     const width = Math.max(1, host.clientWidth);
     const height = Math.max(1, host.clientHeight);
@@ -234,21 +269,29 @@ export async function createCityScene(
     }
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    composeViewport();
     const overviewDistance = overviewPosition().length();
+    // A small visible frame requires a distant camera. Keep the same atmospheric
+    // contrast instead of letting portrait layouts disappear into the fog.
+    if (!inspection) {
+      atmosphere.density = Math.min(0.0012, 0.5 / overviewDistance);
+      camera.far = Math.max(3000, overviewDistance * 3);
+      camera.updateProjectionMatrix();
+    }
     // Leave the default overview clear; show labels once the user zooms in.
     labelVisibilityDistance = overviewDistance * 0.98;
     controls.maxDistance = Math.max(
       inspection ? 1200 : 360,
       overviewDistance * 1.15,
     );
-    if (!inspection && !option.selected && !flight)
+    if (reframe && !inspection && autoFramed && !option.selected && !flight)
       camera.position.copy(
         option.topDown
           ? new THREE.Vector3(0, overviewPosition().length(), 0.5)
           : overviewPosition(),
       );
   };
-  const observer = new ResizeObserver(resize);
+  const observer = new ResizeObserver(() => resize());
   observer.observe(host);
   resize();
 
@@ -263,6 +306,11 @@ export async function createCityScene(
     };
   };
   const focus = (id: string | null, close = false) => {
+    // Explicit navigation adopts the latest unobstructed frame. Merely opening
+    // or folding the panel keeps the current projection and camera unchanged.
+    resize(false);
+    autoFramed = true;
+    focusedClose = close;
     const place = places.find((p) => p.id === id);
     const areaBounds = areaHighlight?.select(place?.id ?? null);
     dirty = true;
@@ -283,7 +331,12 @@ export async function createCityScene(
     const distance =
       (close
         ? (place.closeDistance ?? place.cameraDistance * 0.65)
-        : place.cameraDistance) * Math.max(1, 0.72 / camera.aspect);
+        : place.cameraDistance) *
+      Math.max(
+        1,
+        (0.72 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) /
+          visibleTangent(),
+      );
     const offset = option.topDown
       ? new THREE.Vector3(0, distance * 2, 0.1)
       : new THREE.Vector3(
@@ -300,10 +353,7 @@ export async function createCityScene(
     if (areaBounds && !close) {
       const size = areaBounds.getSize(new THREE.Vector3());
       size.y *= option.heightScale;
-      const halfFov = Math.atan(
-        Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) *
-          Math.min(1, camera.aspect),
-      );
+      const halfFov = Math.atan(visibleTangent());
       const fitDistance = ((size.length() * 0.5) / Math.sin(halfFov)) * 1.08;
       offset.setLength(Math.max(offset.length(), fitDistance));
     }
@@ -336,6 +386,7 @@ export async function createCityScene(
     }
   };
   const zoom = (factor: number) => {
+    autoFramed = false;
     flight = null;
     const offset = camera.position.clone().sub(controls.target);
     offset.setLength(
@@ -533,10 +584,16 @@ export async function createCityScene(
             label.place.id === option.selected) &&
           inFront &&
           projected.z < 1 &&
-          x > label.width / 2 + 12 &&
-          x < host.clientWidth - label.width / 2 - 12 &&
-          y > 60 &&
-          y < host.clientHeight - 74 &&
+          x > (viewport?.left ?? 0) + label.width / 2 + 12 &&
+          x <
+            (viewport ? viewport.left + viewport.width : host.clientWidth) -
+              label.width / 2 -
+              12 &&
+          y > (viewport?.top ?? 60) &&
+          y <
+            (viewport
+              ? viewport.top + viewport.height
+              : host.clientHeight - 74) &&
           !collision;
         label.el.style.display = show ? 'flex' : 'none';
         if (show) {
@@ -818,6 +875,27 @@ export async function createCityScene(
     callbacks.progress('城市就绪', 100);
     callbacks.ready(places, overview);
     return {
+      setViewport: (frame) => {
+        const resized =
+          framedWidth !== host.clientWidth ||
+          framedHeight !== host.clientHeight;
+        const changed =
+          !viewport ||
+          Object.keys(frame).some(
+            (key) =>
+              frame[key as keyof typeof frame] !==
+              viewport![key as keyof typeof frame],
+          );
+        const initialized = viewport !== null;
+        viewport = frame;
+        framedWidth = host.clientWidth;
+        framedHeight = host.clientHeight;
+        if (!changed && !resized) return;
+        dirty = true;
+        if (initialized && !resized) return;
+        resize(false);
+        if (!inspection && autoFramed) focus(option.selected, focusedClose);
+      },
       apply,
       focus,
       zoom,
@@ -827,6 +905,7 @@ export async function createCityScene(
         fov: camera.fov,
       }),
       restoreView: (view) => {
+        autoFramed = false;
         if (!validCamera(view)) throw new Error('无效的检查镜头');
         if (
           overview &&

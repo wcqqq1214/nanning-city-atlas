@@ -76,7 +76,14 @@ export type InspectionProfile = {
   pixelRatio: number;
   frozenTime: number;
 };
+export type ViewportFrame = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
 export type SceneController = {
+  setViewport: (frame: ViewportFrame) => void;
   apply: (options: SceneOptions) => void;
   focus: (id: string | null, close?: boolean) => void;
   zoom: (factor: number) => void;
