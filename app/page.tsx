@@ -1,6 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ComponentProps,
+} from 'react';
 import {
   ArrowDownToLine,
   ArrowUpRight,
@@ -44,6 +50,12 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useCompactLayout, useReducedMotion } from '@/lib/city/display';
 import { searchLandmarks } from '@/lib/city/navigation';
@@ -1333,69 +1345,90 @@ export default function Home() {
             )}
           </div>
         )}
-        <div className="map-toolbar">
-          <button
-            className="north-button desktop-tool"
-            onClick={() => controller.current?.north()}
-            disabled={!ready}
-            aria-label="朝向正北"
-          >
-            <span>N</span>
-            <Navigation
-              size={21}
-              style={{ transform: `rotate(${-heading}deg)` }}
-            />
-          </button>
-          <div className="tool-group zoom-tools">
-            <button
-              onClick={() => controller.current?.zoom(0.78)}
+        <TooltipProvider delay={200}>
+          <div className="map-toolbar">
+            <MapToolButton
+              className="north-button desktop-tool"
+              onClick={() => controller.current?.north()}
               disabled={!ready}
-              aria-label="放大"
+              tooltip="朝向正北"
+              aria-label="朝向正北"
             >
-              <Plus size={20} />
-            </button>
-            <button
-              onClick={() => controller.current?.zoom(1.28)}
-              disabled={!ready}
-              aria-label="缩小"
-            >
-              <Minus size={20} />
-            </button>
+              <span>N</span>
+              <Navigation
+                size={21}
+                style={{ transform: `rotate(${-heading}deg)` }}
+              />
+            </MapToolButton>
+            <div className="tool-group zoom-tools">
+              <MapToolButton
+                onClick={() => controller.current?.zoom(0.78)}
+                disabled={!ready}
+                tooltip="放大 · +（聚焦地图）"
+                aria-label="放大"
+              >
+                <Plus size={20} />
+              </MapToolButton>
+              <MapToolButton
+                onClick={() => controller.current?.zoom(1.28)}
+                disabled={!ready}
+                tooltip="缩小 · −（聚焦地图）"
+                aria-label="缩小"
+              >
+                <Minus size={20} />
+              </MapToolButton>
+            </div>
+            <div className="tool-group desktop-tool">
+              <MapToolButton
+                onClick={reset}
+                disabled={!ready}
+                tooltip="返回全景 · Home（聚焦地图）"
+                aria-label="返回全景"
+              >
+                <Focus size={19} />
+              </MapToolButton>
+              <MapToolButton
+                className={topDown ? 'active' : ''}
+                onClick={() => setTopDown(!topDown)}
+                disabled={!ready}
+                tooltip={topDown ? '切换倾斜视角' : '切换俯视地图'}
+                aria-label={topDown ? '切换倾斜视角' : '切换俯视地图'}
+                aria-pressed={topDown}
+              >
+                <Layers3 size={18} />
+              </MapToolButton>
+              <MapToolButton
+                onClick={fullScreen}
+                tooltip="全屏查看"
+                aria-label="全屏查看"
+              >
+                <Expand size={18} />
+              </MapToolButton>
+            </div>
+            <div className="tool-group mobile-tools">
+              <MapToolButton
+                onClick={reset}
+                disabled={!ready}
+                tooltip="返回全景 · Home（聚焦地图）"
+                aria-label="返回全景"
+              >
+                <Focus size={19} />
+              </MapToolButton>
+              <MapToolButton
+                tooltip="更多地图工具"
+                aria-label="更多地图工具"
+                aria-haspopup="dialog"
+                onClick={() => {
+                  setTour(false);
+                  setAutoRotate(false);
+                  setToolsOpen(true);
+                }}
+              >
+                <Ellipsis size={20} />
+              </MapToolButton>
+            </div>
           </div>
-          <div className="tool-group desktop-tool">
-            <button onClick={reset} disabled={!ready} aria-label="返回全景">
-              <Focus size={19} />
-            </button>
-            <button
-              className={topDown ? 'active' : ''}
-              onClick={() => setTopDown(!topDown)}
-              disabled={!ready}
-              aria-label={topDown ? '切换倾斜视角' : '切换俯视地图'}
-              aria-pressed={topDown}
-            >
-              <Layers3 size={18} />
-            </button>
-            <button onClick={fullScreen} aria-label="全屏查看">
-              <Expand size={18} />
-            </button>
-          </div>
-          <div className="tool-group mobile-tools">
-            <button onClick={reset} disabled={!ready} aria-label="返回全景">
-              <Focus size={19} />
-            </button>
-            <button
-              aria-label="更多地图工具"
-              aria-haspopup="dialog"
-              onClick={() => {
-                setTour(false);
-                setAutoRotate(false);
-                setToolsOpen(true);
-              }}
-            >
-              <Ellipsis size={20} />
-            </button>
-          </div>
-        </div>
+        </TooltipProvider>
         <div className="map-bottom-left">
           <div className="legend">
             <span>
@@ -1670,5 +1703,19 @@ export default function Home() {
         </SheetContent>
       </Sheet>
     </main>
+  );
+}
+
+function MapToolButton({
+  tooltip,
+  ...props
+}: ComponentProps<'button'> & { tooltip: string }) {
+  return (
+    <Tooltip disabled={props.disabled}>
+      <TooltipTrigger render={<button {...props} />} />
+      <TooltipContent side="left" sideOffset={10}>
+        {tooltip}
+      </TooltipContent>
+    </Tooltip>
   );
 }
