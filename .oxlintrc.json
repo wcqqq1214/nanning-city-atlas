@@ -33,8 +33,7 @@
     "components/ui/**",
     "public/draco/**",
     "docs/urban-structure-quality/**",
-    "work/**",
-    "hooks/use-mobile.ts"
+    "work/**"
   ],
   "rules": {
     "no-array-constructor": "error",

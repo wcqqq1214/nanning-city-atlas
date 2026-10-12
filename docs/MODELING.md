@@ -58,8 +58,7 @@ python3 scripts/validate_assets.py
 
 ```text
 app/                        页面、响应式样式与检查视图
-components/                 界面组件
-hooks/                      React hooks
+components/                 页面使用的界面组件与桥梁图标
 lib/city/                   Three.js 场景与交互逻辑
 blender/                    场景生成、地标建模与校验；.blend 仅在本地
 scripts/                    数据处理、构建、测试与预览工具

@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "build:pages": "node scripts/build-pages.mjs",
-    "start": "wrangler dev --config dist/server/wrangler.json",
+    "start": "npm run dev",
     "lint": "oxlint",
     "format": "oxfmt",
     "typecheck": "tsc --noEmit",
@@ -23,20 +23,12 @@
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
-    "@shadcn/react": "0.3.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "cmdk": "1.1.1",
-    "date-fns": "4.1.0",
-    "embla-carousel-react": "8.5.2",
-    "input-otp": "1.4.2",
     "lucide-react": "1.31.0",
     "react": "^19.2.8",
-    "react-day-picker": "9.8.1",
     "react-dom": "^19.2.8",
-    "react-resizable-panels": "4.5.8",
     "react-server-dom-webpack": "^19.2.8",
-    "recharts": "3.8.0",
     "shadcn": "4.18.0",
     "tailwind-merge": "3.6.0",
     "three": "^0.185.1",
@@ -44,9 +36,6 @@
     "vinext": "^1.0.0-beta.9"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.54.5",
-    "@cloudflare/workers-types": "^5.20260907.1",
-    "@openai/sites-vite-plugin": "0.2.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
@@ -59,8 +48,7 @@
     "oxlint-tsgolint": "7.0.2001",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
-    "vite": "^8.2.2",
-    "wrangler": "^4.129.1"
+    "vite": "^8.2.2"
   },
   "type": "module",
   "description": "An interactive Nanning geographic atlas built with Three.js and Blender"

@@ -102,6 +102,8 @@ npm run dev
 
 打开终端输出的 Local 地址，默认是 `http://localhost:3000`。
 
+`npm start` 同样启动本地开发服务。开发与构建统一使用 vinext + Vite，无需配置 Cloudflare Workers、D1 或 R2；静态产物使用下方的预览命令查看。
+
 ### 检查与静态构建
 
 ```sh
