@@ -1,15 +1,13 @@
 """Compare shared visibility against executable pre-refactor city predicates.
 
-Only the predicate AST is executed, never the Blender scene builder. The pinned
-pre-P4 commit supplies the original exclusions; P4's polygon reservations are
+Only the predicate AST is executed, never the Blender scene builder. The frozen
+pre-P4 fixture supplies the original exclusions; P4's polygon reservations are
 checked separately. This is not a fresh road/railway dependency validation.
 """
 import ast
-import copy
 import json
 import math
 from pathlib import Path
-import subprocess
 import sys
 import unittest
 
@@ -20,19 +18,8 @@ from landmark_sites import reservation_rings
 
 
 def reference(geo, catalog, legacy):
-    source = subprocess.check_output(['git', 'show', '73edbb7:blender/build_city.py'], cwd=ROOT, text=True)
+    source = (ROOT/'scripts/fixtures/legacy-city-visibility.py').read_text()
     tree = ast.parse(source)
-    predicate = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'inside_landmark')
-    loop = next(n for n in tree.body if isinstance(n, ast.For) and
-                ast.unparse(n.target) == '(building_index, b)')
-    body = []
-    for statement in loop.body:
-        if isinstance(statement, ast.Assign) and ast.unparse(statement.targets[0]) == 'z': break
-        body.append(copy.deepcopy(statement))
-    class Reject(ast.NodeTransformer):
-        def visit_Continue(self, node): return ast.copy_location(ast.Return(ast.Constant(False)), node)
-    function = ast.parse('def old_visible(b, building_index):\n    pass').body[0]
-    function.body = [Reject().visit(n) for n in body]+[ast.Return(ast.Constant(True))]
     cx, cy = geo['center']
     def xy(lon, lat): return ((lon-cx)*1113.2*math.cos(math.radians(cy)), (lat-cy)*1113.2)
     places = {p['id']: p for p in catalog}
@@ -49,8 +36,7 @@ def reference(geo, catalog, legacy):
     env.update(CLEAR_AREAS=clear, RAILWAY_BUILDINGS={-1},
                MALL_ORIGINS={i: xy(*s['center']) for i, s in visibility.MALL_SITES.items()},
                STATION_SITES={i: (*xy(*s['center']), 0) for i, s in visibility.STATIONS.items()})
-    exec(compile(ast.fix_missing_locations(ast.Module(body=[predicate, function], type_ignores=[])),
-                 '<pinned city predicates>', 'exec'), env)
+    exec(compile(tree, '<frozen city predicates>', 'exec'), env)
     original = env['inside_landmark']
     if not legacy:
         env['inside_landmark'] = lambda x, y: original(x, y) or any(
