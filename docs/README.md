@@ -22,7 +22,7 @@
 | --- | --- |
 | 道路与桥梁 | [主要桥梁](modeling/BRIDGES.md)、[地面道路](modeling/GROUND_ROADS.md)、[高架与短桥](modeling/ELEVATED_ROADS.md)、[清厢快速路](modeling/VIADUCT.md)、[民族大道](modeling/MINZU_AVENUE.md)、[竹溪立交](modeling/ZHUXI_INTERCHANGE.md) |
 | 铁路与车站 | [城市铁路](modeling/RAILWAYS.md)、[南宁站与南宁东站](modeling/STATIONS.md) |
-| 地形与植被 | [地形重采样](modeling/TERRAIN_RESAMPLING.md)、[城市树木与郊区树林](modeling/FOREST_CANOPY.md) |
+| 地形与植被 | [地形重采样](modeling/TERRAIN_RESAMPLING.md)、[城市树木与郊区树林](modeling/FOREST_CANOPY.md)、[连续城区范围与裁切](modeling/URBAN_SCOPE.md) |
 | 地标与滨水 | [艺术中心](modeling/ARTS_REMODEL.md)、[会展中心](modeling/EXPO_REMODEL.md)、[体育中心](modeling/SPORTS_CENTER.md)、[文化地标](modeling/CULTURAL_LANDMARKS.md)、[商业地标](modeling/MALLS.md)、[镇宁炮台](modeling/ZHENNING_MODEL.md)、[畅游阁与南湖](modeling/LAKE_OLDTOWN_REMODEL.md)、[亭子码头与南宁大桥](modeling/WATERFRONT_REMODEL.md) |
 
 ## 图片与本地记录

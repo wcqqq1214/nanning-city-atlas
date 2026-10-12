@@ -17,7 +17,6 @@ sys.path.insert(0,str(ROOT/'blender'))
 from viaduct import Path as RoadPath
 from validate_ground_roads import clearance
 from prepare_elevated_roads import remaining, occupied_half_width
-from road_solids import load as resolved_roads
 
 
 def load(name):return json.loads((ROOT/name).read_text())
@@ -55,7 +54,11 @@ def validate_elevated_roads():
     heights=json.loads(gzip.decompress((ROOT/'data/elevated-roads-heights.json.gz').read_bytes()))
     assert heights['planHash']==digest
     geo=load('public/data/geography.json');assert {r['roadIndex'] for r in plan['routes']}==set(remaining(geo))
-    for p,h in plan['inputHashes'].items():assert hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h,f'Stale elevated source {p}'
+    stale_inputs=[p for p,h in plan['inputHashes'].items()
+                  if hashlib.sha256((ROOT/p).read_bytes()).hexdigest()!=h]
+    if stale_inputs:print('STALE elevated-road inputs (geometry diagnostics continue):', stale_inputs, flush=True)
+    overview=load('public/data/overview.json')
+    transition=shapely.geometry.shape(overview['urbanScope']['transition']) if overview.get('urbanScope') else None
     paths=[RoadPath(r['points']) for r in plan['routes']]
     for profile,levels in heights['profiles'].items():
         def level(i,s):
@@ -85,8 +88,16 @@ def validate_elevated_roads():
             assert not railways.intersects(disk),'Pier crosses railway'
     for profile,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
         groups,counts,h=decode(filename);assert h==digest
-        resolved,metadata=resolved_roads(profile)
+        metadata=load(f'data/road-solids-{profile}.json')
+        archive=ROOT/f'data/road-solids-{profile}.npz'
+        assert hashlib.sha256(archive.read_bytes()).hexdigest()==metadata['sha256'], 'Resolved road mesh hash mismatch'
+        stale_inputs.extend(p for p,h in metadata['inputHashes'].items()
+                            if hashlib.sha256((ROOT/p).read_bytes()).hexdigest()!=h)
+        with np.load(archive) as data:resolved={name:data[name] for name in data.files}
         source=resolved['elevated'][resolved['elevatedMaterials']==0]
+        if transition is not None:
+            from scoped_validation import retained_triangles
+            source=retained_triangles(source, transition)
         expected=len(source)
         assert abs(len(groups['top'])-expected)<expected*.02,'Elevated deck triangles lost'
         projected=groups['top'][:,:,[0,2]]
@@ -101,6 +112,7 @@ def validate_elevated_roads():
         assert gap>0,'Elevated markings buried in asphalt'
         assert collapsed/total<.02,'Elevated markings erased by compression'
         print(profile,'elevated roads:',counts,flush=True)
+    assert not stale_inputs, f'Stale elevated sources: {stale_inputs}'
     print(f'PASS: {len(paths)} elevated ways, {len(plan["joins"])} junctions, {len(plan["crossings"])} crossings; pier avoidance, shared material and decoded clearance.',flush=True)
 
 

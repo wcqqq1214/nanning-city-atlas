@@ -15,6 +15,8 @@ import type {
 } from './types';
 import { DEFAULT_LAYERS } from './types';
 import { assetUrl } from './assets';
+import { constrainToScope, overviewCenter } from './scope';
+import { createContextStyle } from './context-style';
 import { TapGesture } from './tap-gesture';
 import { COMPACT_LAYOUT } from './display';
 import { createAreaHighlight } from './area-highlight';
@@ -116,8 +118,13 @@ export async function createCityScene(
     dirty = true;
   };
   const initialPosition = new THREE.Vector3(112, 162, 177);
+  const overviewTarget = () => {
+    const [x, y] = overviewCenter(overview);
+    return new THREE.Vector3(x, 0, -y);
+  };
   const overviewPosition = () => {
     const bounds = overview?.bounds ?? [-103, -78, 103, 78];
+    const target = overviewTarget();
     const direction = initialPosition.clone().normalize();
     const right = new THREE.Vector3()
       .crossVectors(new THREE.Vector3(0, 1, 0), direction)
@@ -129,18 +136,29 @@ export async function createCityScene(
     const horizontal =
       (tangent * (viewport?.width ?? host.clientWidth)) / host.clientHeight;
     let distance = 0;
-    for (const x of [bounds[0], bounds[2]])
-      for (const z of [-bounds[3], -bounds[1]])
-        for (const y of [-3, 14]) {
-          const point = new THREE.Vector3(x, y, z);
-          distance = Math.max(
-            distance,
-            Math.abs(point.dot(right)) / horizontal + point.dot(direction),
-            Math.abs(point.dot(up)) / vertical + point.dot(direction),
-          );
-        }
-    return direction.multiplyScalar(distance * 1.08);
+    const outline = [
+      [bounds[0], bounds[1]],
+      [bounds[0], bounds[3]],
+      [bounds[2], bounds[1]],
+      [bounds[2], bounds[3]],
+    ];
+    for (const [x, north] of outline)
+      for (const y of [-3, 14]) {
+        const point = new THREE.Vector3(x, y, -north).sub(target);
+        distance = Math.max(
+          distance,
+          Math.abs(point.dot(right)) / horizontal + point.dot(direction),
+          Math.abs(point.dot(up)) / vertical + point.dot(direction),
+        );
+      }
+    return direction.multiplyScalar(distance * 1.08).add(target);
   };
+  const overviewDistance = () =>
+    overviewPosition().distanceTo(overviewTarget());
+  const overviewCamera = () =>
+    option.topDown
+      ? overviewTarget().add(new THREE.Vector3(0, overviewDistance(), 0.5))
+      : overviewPosition();
   camera.position.copy(initialPosition);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -200,6 +218,7 @@ export async function createCityScene(
   let areaHighlight: ReturnType<typeof createAreaHighlight> | null = null;
   let places: Landmark[] = [];
   let overview: Overview | null = null;
+  let contextStyle: ReturnType<typeof createContextStyle> | null = null;
   let option: SceneOptions = {
     layers: { ...DEFAULT_LAYERS },
     hour: 14,
@@ -270,26 +289,22 @@ export async function createCityScene(
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     composeViewport();
-    const overviewDistance = overviewPosition().length();
+    const distance = overviewDistance();
     // A small visible frame requires a distant camera. Keep the same atmospheric
     // contrast instead of letting portrait layouts disappear into the fog.
     if (!inspection) {
-      atmosphere.density = Math.min(0.0012, 0.5 / overviewDistance);
-      camera.far = Math.max(3000, overviewDistance * 3);
+      atmosphere.density = Math.min(0.0012, 0.5 / distance);
+      camera.far = Math.max(3000, distance * 3);
       camera.updateProjectionMatrix();
     }
     // Leave the default overview clear; show labels once the user zooms in.
-    labelVisibilityDistance = overviewDistance * 0.98;
-    controls.maxDistance = Math.max(
-      inspection ? 1200 : 360,
-      overviewDistance * 1.15,
-    );
-    if (reframe && !inspection && autoFramed && !option.selected && !flight)
-      camera.position.copy(
-        option.topDown
-          ? new THREE.Vector3(0, overviewPosition().length(), 0.5)
-          : overviewPosition(),
-      );
+    labelVisibilityDistance = distance * 0.98;
+    controls.maxDistance = Math.max(inspection ? 1200 : 360, distance * 1.15);
+    if (reframe && !inspection && autoFramed && !option.selected && !flight) {
+      controls.target.copy(overviewTarget());
+      camera.position.copy(overviewCamera());
+      controls.update();
+    }
   };
   const observer = new ResizeObserver(() => resize());
   observer.observe(host);
@@ -315,12 +330,7 @@ export async function createCityScene(
     const areaBounds = areaHighlight?.select(place?.id ?? null);
     dirty = true;
     if (!place) {
-      fly(
-        new THREE.Vector3(),
-        option.topDown
-          ? new THREE.Vector3(0, overviewPosition().length(), 0.5)
-          : overviewPosition(),
-      );
+      fly(overviewTarget(), overviewCamera());
       return;
     }
     close = close && place.closeDistance !== undefined;
@@ -468,16 +478,12 @@ export async function createCityScene(
     controls.update(delta);
     // Keep panning on this finite geographic tile.
     if (overview) {
-      const x = THREE.MathUtils.clamp(
+      const [x, north] = constrainToScope(
         controls.target.x,
-        overview.bounds[0],
-        overview.bounds[2],
+        -controls.target.z,
+        overview,
       );
-      const z = THREE.MathUtils.clamp(
-        controls.target.z,
-        -overview.bounds[3],
-        -overview.bounds[1],
-      );
+      const z = -north;
       camera.position.x += x - controls.target.x;
       camera.position.z += z - controls.target.z;
       controls.target.x = x;
@@ -642,6 +648,7 @@ export async function createCityScene(
     controls.dispose();
     inspectionMaterials?.dispose();
     areaHighlight?.dispose();
+    contextStyle?.dispose();
     renderer.domElement.removeEventListener('keydown', keyDown);
     labelLayer.removeEventListener('wheel', onLabelWheel);
     renderer.domElement.removeEventListener('pointerdown', onPointerDown);
@@ -686,6 +693,7 @@ export async function createCityScene(
       getJson<Landmark[]>(assetUrl('/data/landmarks.json')),
       getJson<Overview>(assetUrl('/data/overview.json')),
     ]);
+    if (overview.urbanScope) contextStyle = createContextStyle(overview);
     resize();
     modelBytes = overview.models[profile].bytes;
     callbacks.progress(
@@ -741,15 +749,31 @@ export async function createCityScene(
         if (m instanceof THREE.MeshStandardMaterial) {
           m.side = THREE.DoubleSide;
           materialDefaults.set(m, m.color.clone());
+          if (object.name.startsWith('Terrain'))
+            contextStyle?.apply(m, 'ground');
+          else if (
+            object.name.startsWith('Vegetation') &&
+            /_canopy|_crowns/.test(object.name)
+          )
+            contextStyle?.apply(m, 'forest');
+          else if (/^(GroundRoads|ElevatedRoads|MinzuAvenue)/.test(object.name))
+            contextStyle?.apply(m, 'road');
         }
       });
       if (object.name === 'Water' || object.name === 'Reservoir_water_custom') {
         object.castShadow = false;
         waterMaterial ??= new THREE.ShaderMaterial({
-          uniforms: { uTime: { value: 0 }, uNight: { value: 0 } },
+          uniforms: {
+            uTime: { value: 0 },
+            uNight: { value: 0 },
+            ...contextStyle?.uniforms,
+          },
           vertexShader: `varying vec3 vWorld; void main(){vec4 w=modelMatrix*vec4(position,1.0);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
           fragmentShader: `varying vec3 vWorld;uniform float uTime;uniform float uNight;
-          void main(){float r=sin(vWorld.x*2.8+vWorld.z*1.8+uTime*.9);float r2=sin(vWorld.x*.9-vWorld.z*4.0+uTime*.6);float glint=pow(max(0.0,r*r2),14.0)*.17;vec3 day=vec3(.17,.57,.52)+glint+sin(vWorld.z*.32+vWorld.x*.17)*.017;vec3 night=vec3(.012,.055,.09)+glint*vec3(.3,.52,.65);gl_FragColor=vec4(mix(day,night,uNight),1.0);
+          ${contextStyle ? 'uniform sampler2D contextMask;uniform vec4 contextBounds;' : ''}
+          void main(){float r=sin(vWorld.x*2.8+vWorld.z*1.8+uTime*.9);float r2=sin(vWorld.x*.9-vWorld.z*4.0+uTime*.6);float glint=pow(max(0.0,r*r2),14.0)*.17;vec3 day=vec3(.17,.57,.52)+glint+sin(vWorld.z*.32+vWorld.x*.17)*.017;vec3 night=vec3(.012,.055,.09)+glint*vec3(.3,.52,.65);
+          ${contextStyle ? 'float insideCity=texture2D(contextMask,(vWorld.xz*vec2(1.,-1.)-contextBounds.xy)/contextBounds.zw).r;day=mix(day,vec3(.36,.49,.46),(1.-insideCity)*.55);' : ''}
+          gl_FragColor=vec4(mix(day,night,uNight),1.0);
           #include <colorspace_fragment>
           }`,
           side: THREE.DoubleSide,

@@ -67,7 +67,7 @@ def woodland_geometry(feature, xy, clip):
     return unary_union(list(polygons(make_valid(shape).intersection(clip))))
 
 
-def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, seed,legacy_exclusions=None):
+def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, seed,legacy_exclusions=None,terrain_patch=None):
     allowed = woodland.difference(exclusions)
     # Tiny islands and narrow fragments retain their existing individual trees.
     allowed = unary_union([p for p in polygons(allowed) if p.area > .08])
@@ -169,10 +169,21 @@ def prepare_region(region_id, woodland, exclusions, geo, dem, cluster_spacing, s
         first_j = max(0,math.floor((maxy-north)/dy/step)*step)
         for j in range(first_j,min(dem['rows']-1,math.ceil((maxy-south)/dy)),step):
             for i in range(first_i,min(dem['cols']-1,math.ceil((east-minx)/dx)),step):
+                if (terrain_patch and terrain_patch['columnRange'][0] <= i < terrain_patch['columnRange'][1]
+                        and terrain_patch['rowRange'][0] <= j < terrain_patch['rowRange'][1]):
+                    continue
                 ii,jj = min(i+step,dem['cols']-1),min(j+step,dem['rows']-1)
                 v = [(minx+a*dx,maxy-b*dy) for a,b in [(i,j),(ii,j),(ii,jj),(i,jj)]]
                 for tri in [(v[0],v[2],v[1]),(v[0],v[3],v[2])]:
                     add_triangle(tri)
+        # Nanhu replaces complete grid cells, including woodland just outside
+        # the park. Reusing their removed DEM diagonals bridges the new slopes
+        # and loses clearance even though all canopy vertices are above ground.
+        if terrain_patch:
+            ox,oy = terrain_patch['origin']
+            for mesh in terrain_patch['meshes']:
+                for ids in mesh['triangles']:
+                    add_triangle([(ox+mesh['points'][k][0],oy+mesh['points'][k][1]) for k in ids])
         return {'points':points,'triangles':triangles,'colors':colors}
 
     plan = {'id':region_id,'areaKm2':round(allowed.area/100,4),
@@ -270,7 +281,8 @@ def prepare(stage='all'):
                         'sourceCount':sum(r['stage']==key and r['mappedAreaKm2']>0 for r in records)})
         if enabled:
             regions.append(prepare_region(key,shape,exclusions,geo,dem,
-                           [1.95,4.8,8.0][order],[11922560,11922618,9862173][order],legacy_exclusions))
+                           [1.95,4.8,8.0][order],[11922560,11922618,9862173][order],legacy_exclusions,
+                           {**nanhu['terrainPatch'],'origin':[nx,ny]}))
     inputs = ['public/data/geography.json','public/data/terrain.json','data/landmarks.json',
               'data/nanhu-plan.json','data/forest-source.json','data/stations-plan.json','data/railways-plan.json']
     inputs+=['data/landmark-calibration-source.json','data/landmark-calibration-plan.json','blender/landmark_sites.py','blender/arts_landmark.py']

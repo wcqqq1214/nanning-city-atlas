@@ -4,8 +4,11 @@ from pathlib import Path
 import numpy as np
 from reservoir_runtime import dedicated_dam, input_paths as reservoir_input_paths
 
+# Resolved roads depend on this capture at runtime, so keep it with the plans
+# rather than in ignored work/ scratch data that is absent in a fresh checkout.
+BUILDING_LEVELS_PATH='data/road-building-levels.json'
 BUILDING_ENVELOPE_INPUTS=('blender/build_city.py','blender/road_inputs.py',
-                         'blender/building_placement.py','work/road-repair/building-levels.json')
+                         'blender/building_placement.py',BUILDING_LEVELS_PATH)
 
 
 def building_envelopes(geography,levels):
@@ -78,7 +81,7 @@ def capture_road_inputs(env):
         (out/f'piers-{profile}.json').write_text(json.dumps(piers,separators=(',',':')))
         print('Captured native road surfaces',profile,flush=True)
     from building_placement import prepared
-    (out/'building-levels.json').write_text(json.dumps(buildings,separators=(',',':')))
+    (root/BUILDING_LEVELS_PATH).write_text(json.dumps(buildings,separators=(',',':')))
     inputs=['data/elevated-roads-plan.json.gz','data/ground-roads-plan.json.gz','data/ground-roads-context.json','data/minzu-plan.json','data/bridges-plan.json','public/data/terrain.json','public/data/geography.json','blender/elevated_roads.py','blender/ground_roads.py']
     inputs+=['blender/minzu_avenue.py','blender/road_interfaces.py','blender/terrain_height.py']
     inputs+=['data/qingxiu-terrain-plan.json','blender/mountain_terrain.py','blender/cultural_landmarks.py']

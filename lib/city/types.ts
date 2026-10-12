@@ -36,6 +36,15 @@ export type Overview = {
   previousBbox: number[];
   center: number[];
   bounds: number[];
+  urbanScope?: {
+    id: string;
+    core: { type: 'Polygon'; coordinates: number[][][] };
+    context: { type: 'Polygon'; coordinates: number[][][] };
+    coreBounds: number[];
+    contextWidthMeters: number;
+    landscapeFadeMeters: number;
+    woodland: { type: 'MultiPolygon'; coordinates: number[][][][] };
+  };
   metersPerUnit: number;
   water: number[][][][];
   minElevation: number;

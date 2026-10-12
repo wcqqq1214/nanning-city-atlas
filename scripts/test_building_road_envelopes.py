@@ -2,6 +2,7 @@
 import copy
 import hashlib
 import json
+import shutil
 from pathlib import Path
 import sys
 import tempfile
@@ -85,6 +86,14 @@ class Tests(unittest.TestCase):
             self.fixture(Path(tmp));road_solids.load.cache_clear()
             result=road_solids.building_envelopes(self.geo)
             self.assertEqual(result[0]['id'],'visible');self.assertEqual(result[0]['top'],1.187)
+
+    def test_runtime_load_survives_removal_of_ignored_build_scratch(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.object(road_solids,'ROOT',Path(tmp)):
+            root=Path(tmp);self.fixture(root)
+            shutil.rmtree(root/'work',ignore_errors=True)
+            road_solids.load.cache_clear()
+            result=road_solids.building_envelopes(self.geo)
+            self.assertEqual(result[0]['id'],'visible')
 
     def test_old_or_incomplete_profile_metadata_cannot_accept_prepared_geometry(self):
         for mutation in ['old','missing-row','wrong-id','changed-roof']:

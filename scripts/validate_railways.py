@@ -2,6 +2,7 @@
 from collections import defaultdict
 import hashlib
 import json
+import shapely
 import math
 from pathlib import Path
 import struct
@@ -69,7 +70,9 @@ def validate_railways():
     for i in plan['removedBuildings']:
         building=geo['buildings'][i]
         assert building['source']=='procedural' and len(surface_index.query(Polygon(building['rings'][0]),predicate='intersects'))
-    report=json.loads((ROOT/'public/data/overview.json').read_text())['railways']
+    overview=json.loads((ROOT/'public/data/overview.json').read_text())
+    report=overview['railways']
+    transition=shapely.geometry.shape(overview['urbanScope']['transition']) if overview.get('urbanScope') else None
     assert report['planHash']==hashlib.sha256((ROOT/'data/railways-plan.json').read_bytes()).hexdigest()
     assert report['geometry']['maxStationDatumError']<1e-7
     assert report['geometry']['maxBallastPenetration']<.001
@@ -120,6 +123,7 @@ def validate_railways():
         max_alignment_error=0.
         for i in sampled_nodes:
             point=Point(plan['nodes'][i]['xy'])
+            if transition is not None and not transition.covers(point):continue
             distance=steel_faces[int(steel_index.nearest(point))].distance(point)
             max_alignment_error=max(max_alignment_error,distance)
         assert max_alignment_error<.0115, f'Exported steel misses source track: {max_alignment_error*100:.2f} m'

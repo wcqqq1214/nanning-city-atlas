@@ -2,7 +2,6 @@
 import json
 import hashlib
 import math
-import struct
 import sys
 import argparse
 from pathlib import Path
@@ -30,13 +29,7 @@ from station_landmarks import PLAN as STATION_PLAN, STATIONS, inside_site as ins
 from viaduct import Viaduct
 from validate_viaduct import validate_viaduct
 from railways import TerrainCut
-from validate_railways import validate_railways
-from validate_minzu import validate_minzu
-from validate_ground_roads import validate_ground_roads
-from validate_elevated_roads import validate_elevated_roads
-from validate_road_solids import validate_road_solids
-from validate_zhuxi import validate_zhuxi
-from validate_bridges import validate_bridges, SPECS as RIVER_BRIDGE_SPECS
+from validate_bridges import SPECS as RIVER_BRIDGE_SPECS
 g = json.loads((ROOT/'public/data/geography.json').read_text())
 t = json.loads((ROOT/'public/data/terrain.json').read_text())
 places = json.loads((ROOT/'public/data/landmarks.json').read_text())
@@ -278,113 +271,12 @@ for region, area in zip(FOREST_REGIONS,canopy_regions):
         assert sum(p.area for p in probe.footprints)-merged.area < .005, 'Canopy triangles overlap'
         print(f'Forest {region["id"]} / {profile}: footprint and terrain clearance verified.',flush=True)
 
-def inspect_model(filename, budget):
-    raw=(ROOT/'public/models'/filename).read_bytes()
-    magic,version,length=struct.unpack_from('<III',raw)
-    assert magic==0x46546C67 and version==2 and length==len(raw)
-    json_len,json_kind=struct.unpack_from('<II',raw,12)
-    assert json_kind==0x4E4F534A
-    model=json.loads(raw[20:20+json_len])
-    assert 'KHR_draco_mesh_compression' in model['extensionsRequired']
-    names={node.get('name') for node in model['nodes']}
-    assert {'Buildings','Terrain','Water','Roads','Vegetation','Bridges','Plinth','Railways'} <= names
-    assert all('Landmark_'+p['id'] in names for p in places if p['modelled'])
-    vegetation = next(node for node in model['nodes'] if node.get('name')=='Vegetation')
-    descendants = set()
-    def collect_children(node):
-        for index in node.get('children',[]):
-            descendants.add(index)
-            collect_children(model['nodes'][index])
-    collect_children(vegetation)
-    for region in FOREST_REGIONS:
-        for suffix in ['canopy','crowns']:
-            index = next(i for i,node in enumerate(model['nodes']) if node.get('name')==f'Vegetation_{region["id"]}_{suffix}')
-            assert index in descendants, 'Forest mesh is disconnected from the vegetation layer'
-            assert model['nodes'][index].get('children'), 'Forest lost its spatial batches'
-    nanhu_index = next(i for i,node in enumerate(model['nodes']) if node.get('name')=='Vegetation_nanhu')
-    assert nanhu_index in descendants, 'Nanhu trees ignore the vegetation switch'
-    assert len(raw) < budget, f'{filename} exceeds loading budget'
-    counts={}
-    for mesh in model['meshes']:
-        counts[mesh['name']]=sum(model['accessors'][p['indices']]['count']//3 for p in mesh['primitives'])
-        if mesh['name'] == 'Landmark_sports-center':
-            track = next(p for p in mesh['primitives']
-                         if model['materials'][p['material']]['name'] == 'Sports terracotta track')
-            floor = model['accessors'][track['attributes']['POSITION']]['min'][1]
-            marker = next(p for p in places if p['id'] == 'sports-center')['position'][1]
-            assert marker < floor, 'Stadium ground anchor is above the running track'
-    return len(raw),counts
-# Fine landmarks are identical in both qualities. Allow their shared geometry
-# within bounded file sizes, while requiring substantial terrain/tree savings.
-# The 60 m terrain and newly split ground streets add 4.3 / 1.6 MB.
-# Keep the detailed model below a 25 MiB asset budget.
-full_bytes,full=inspect_model('nanning-city.glb',26_000_000)
-mobile_bytes,mobile=inspect_model('nanning-city-mobile.glb',18_000_000)
-assert 30_000 < full['Landmark_sports-center'] < 55_000, 'Detailed sports venue geometry missing or over budget'
-assert 15_000 < full['Landmark_tingzi'] < 30_000, 'Detailed Tingzi geometry missing or over budget'
-assert 15_000 < full['Landmark_bridge'] < 40_000, 'Detailed bridge geometry missing or over budget'
-assert 25_000 < full['Landmark_changyou'] < 45_000, 'Changyou detailed roof and colonnade missing or over budget'
-assert 15_000 < full['Landmark_nanhu'] < 22_000, 'Nanhu bridge and garden geometry missing or over budget'
-assert 6_000 < full['Landmark_nanning-station'] < 20_000, 'Nanning station geometry missing or over budget'
-assert 15_000 < full['Landmark_east-station'] < 45_000, 'East station geometry missing or over budget'
-assert 17_000 < full['Landmark_zhenning'] < 21_000, 'Detailed Zhenning fort missing or over budget'
-assert 45_000 < full['Landmark_qingxiang-viaduct'] < 60_000, 'Full-route structure missing or over budget'
-assert 0 < mobile['QingxiangViaduct_Details'] < full['QingxiangViaduct_Details'] < 20_000
-# Optimizing the full-detail trees also narrows the gap between profiles. Use
-# independent absolute budgets so improving detail cannot fail a ratio check.
-# The complete Qingxiang road adds 0.2 MB / 45k triangles to the mobile cap.
-assert sum(v for k,v in full.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_650_000
-# The complete fort and Minzu road structure are shared across both profiles.
-assert sum(v for k,v in mobile.items() if not k.startswith(('Railways','Railway_Details','RiverBridge_Details_','GroundRoads_','ElevatedRoads_')) and k not in {'Landmark_'+identity for identity in RIVER_BRIDGE_SPECS}) < 1_000_000
-assert sum(v for k,v in full.items() if k.startswith(('Railways','Railway_Details'))) < 650_000
-assert sum(v for k,v in mobile.items() if k.startswith(('Railways','Railway_Details'))) < 500_000
-assert mobile_bytes < full_bytes and sum(mobile.values()) < sum(full.values())
-overview = json.loads((ROOT/'public/data/overview.json').read_text())
-for counts, profile, tree_count, triangles_per_tree in [
-    (full,'detail',overview['stats']['trees'],30),(mobile,'smooth',overview['mobileTrees'],8)]:
-    singles = sum(c for name,c in counts.items() if name.startswith('Vegetation_') and name.split('_')[1].lstrip('-').isdigit())
-    assert singles == tree_count*triangles_per_tree, 'City trees lost their bounded shared geometry'
-    for region in FOREST_REGIONS:
-        surface = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_canopy_'))
-        assert surface == len(region[profile]['triangles']), 'Exported forest coverage is incomplete'
-        crowns = sum(c for name,c in counts.items() if name.startswith(f'Vegetation_{region["id"]}_crowns_'))
-        selected = region.get('smoothCrownClusters', region['crownClusters'][::2]) if profile=='smooth' else region['crownClusters']
-        assert crowns == len(selected)*20
-    assert sum(c for name,c in counts.items() if name.startswith('Vegetation_nanhu')) == 83*30+36*92
-for name, count in full.items():
-    # Resolved Minzu joins follow each profile's ground mesh. validate_minzu()
-    # independently checks the shared native structure and both resolved meshes.
-    if not name.startswith(('Terrain','Vegetation','Railway_Details','MinzuAvenue_','RiverBridge_Details_','GroundRoads','ElevatedRoads','ZhuxiInterchange')) and name != 'QingxiangViaduct_Details':
-        assert mobile[name]==count, f'Mobile lost geometry in {name}'
 # Validate measurable content west of the previous boundary, not merely a wider base.
 old_w=scene_region['previousBbox'][0]
 west_x=(old_w-g['center'][0])*1113.2*math.cos(math.radians(g['center'][1]))
 western=sum(1 for b in g['buildings'] if max(p[0] for p in b['rings'][0])<west_x)
 assert western>1000, f'Western coverage unexpectedly sparse: {western}'
 print(f'PASS: {len(g["buildings"])} building features ({western} west of the old boundary); infill stays within urban land without overlapping water, parks, roads or other buildings; water coverage {coverage:.5%}; {len(places)} geolocated points.')
-print(f'GLB: detail {full_bytes:,} bytes / {sum(full.values()):,} triangles; smooth {mobile_bytes:,} bytes / {sum(mobile.values()):,} triangles. Buildings, roads, water and landmarks preserved.')
-validate_railways()
-validate_minzu()
 
-validate_bridges()
-
-# Ground streets are terrain-conforming in each profile; budget them separately.
-# Joined approach solids retain their exposed walls and split paint at the
-# resulting boundaries; cap these complete surfaces rather than old strips.
-assert sum(v for k,v in full.items() if k.startswith('GroundRoads_')) < 530_000
-assert sum(v for k,v in mobile.items() if k.startswith('GroundRoads_')) < 350_000
-validate_ground_roads(site_access_plan=args.site_access_plan)
-assert sum(v for k,v in full.items() if k.startswith('ElevatedRoads_'))<500_000
-validate_elevated_roads()
-validate_road_solids()
-validate_zhuxi()
-
-# Mall checks decode both quality profiles and audit their prepared road masks.
-from validate_malls import validate_malls
-validate_malls()
-
-# Fine cultural landmarks retain their road reservations and terrain clearance.
-from validate_cultural_landmarks import validate as validate_cultural
-validate_cultural()
-from validate_terrain import validate as validate_terrain
-validate_terrain()
+from validate_runtime_assets import validate_runtime_assets
+validate_runtime_assets(site_access_plan=args.site_access_plan)

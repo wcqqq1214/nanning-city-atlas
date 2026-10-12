@@ -62,8 +62,8 @@ def building_limits():
 
 def building_envelopes(geography):
     """Reject old clearance results before using prepared-building geometry."""
-    from road_inputs import BUILDING_ENVELOPE_INPUTS,building_envelopes as bind_envelopes
-    expected=bind_envelopes(geography,json.loads((ROOT/'work/road-repair/building-levels.json').read_text()))
+    from road_inputs import BUILDING_ENVELOPE_INPUTS,BUILDING_LEVELS_PATH,building_envelopes as bind_envelopes
+    expected=bind_envelopes(geography,json.loads((ROOT/BUILDING_LEVELS_PATH).read_text()))
     for profile in ['detail','smooth']:
         _,metadata=load(profile)
         missing=set(BUILDING_ENVELOPE_INPUTS)-metadata['inputHashes'].keys()

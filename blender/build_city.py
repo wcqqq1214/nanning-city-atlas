@@ -15,6 +15,10 @@ from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
 ROOT = Path(__file__).resolve().parents[1]
+# Preserve the full editable city; scope_city.py publishes the approved subset.
+EXPORT_ROOT = ROOT / 'work/full-city'
+(EXPORT_ROOT/'models').mkdir(parents=True, exist_ok=True)
+(EXPORT_ROOT/'data').mkdir(parents=True, exist_ok=True)
 MINZU_CONTEXT_ONLY = '--minzu-context' in sys.argv
 TERRAIN_CONTEXT_ONLY = '--terrain-context' in sys.argv
 if '--site-access-plan' in sys.argv and any(flag in sys.argv for flag in
@@ -871,7 +875,7 @@ distance=viaduct.main.nearest(x,y)[1]
 landmarks.append({**place,'position':[round(x,3),round(viaduct.render_level('main',distance),3),round(-y,3)]})
 landmarks.sort(key=lambda place: next(i for i,p in enumerate(CATALOG) if p['id']==place['id']))
 
-(ROOT/'public/data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
+(EXPORT_ROOT/'data/landmarks.json').write_text(json.dumps(landmarks,ensure_ascii=False,indent=2))
 # Minimal overview data avoids downloading the geometry database at runtime.
 summary={k:GEO[k] for k in ['bbox','center','bounds','metersPerUnit','osmTimestamp']}
 summary['waterControls']=[{'id':r['id'],'buildingId':r['buildingId'],'node':r['node'],
@@ -909,7 +913,7 @@ summary.update({'water':GEO['water'],'minElevation':DEM['minElevation'],'maxElev
 summary['buildingScaleOverrides']=[{'blockId':b['id'],'scale':b['template'].get('displayHeightScale',1.0),
                                    'layoutSource':b['layoutSource'],'buildings':len(b['buildingIds'])}
                                   for b in GEO.get('urbanBlocks',[])]
-(ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
+(EXPORT_ROOT/'data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 
 print('Saving Blender source and glTF...', flush=True)
 bpy.ops.object.camera_add(location=(220,-290,280))
@@ -934,7 +938,7 @@ bpy.context.scene.render.resolution_y=1100
 bpy.context.scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'blender/nanning-city.blend'))
 # 18-bit positions preserve the narrow rail heads in 8 km spatial batches.
-export_city(ROOT/'public/models/nanning-city.glb')
+export_city(EXPORT_ROOT/'models/nanning-city.glb')
 print('City complete:',len(GEO['buildings']),'buildings,',len(visible_trees),'trees,',len(landmarks),'landmarks.',flush=True)
 
 # Keep the editable .blend at full detail; export a separate lightweight model.
@@ -1050,11 +1054,11 @@ mobile_ground_road_group.parent=road_group
 mobile_ground_road_group['planHash']=summary['groundRoads']['planHash']
 summary['groundRoads']['smooth']['siteAccess']=append_site_access_roads(globals(),'smooth',mobile_ground_road_group)
 del mobile_ground_roads
-export_city(ROOT/'public/models/nanning-city-mobile.glb')
+export_city(EXPORT_ROOT/'models/nanning-city-mobile.glb')
 (ROOT/'data/elevated-roads-heights.json.gz').write_bytes(gzip.compress(json.dumps({'planHash':ELEVATED_HASH,'profiles':elevated_levels,'terrainFloors':elevated_floors},separators=(',',':')).encode(),mtime=0))
 summary['mobileTrees']=mobile_tree_count
 summary['models']={}
 for key,filename in [('detail','nanning-city.glb'),('smooth','nanning-city-mobile.glb')]:
-    summary['models'][key]={'file':filename,'bytes':(ROOT/'public/models'/filename).stat().st_size}
-(ROOT/'public/data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
+    summary['models'][key]={'file':filename,'bytes':(EXPORT_ROOT/'models'/filename).stat().st_size}
+(EXPORT_ROOT/'data/overview.json').write_text(json.dumps(summary,ensure_ascii=False,separators=(',',':')))
 print('Desktop and mobile model variants complete.',flush=True)

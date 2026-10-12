@@ -55,7 +55,7 @@ def finish(profile):
     from ground_roads import SteepEdges, PLAN as GROUND
     from elevated_roads import plane, PLAN
     captured=json.loads((ROOT/'work/road-repair/input-hashes.json').read_text())
-    from road_inputs import building_envelopes,BUILDING_ENVELOPE_INPUTS
+    from road_inputs import building_envelopes,BUILDING_ENVELOPE_INPUTS,BUILDING_LEVELS_PATH
     missing=set(BUILDING_ENVELOPE_INPUTS)-captured.keys()
     if missing:raise ValueError('Recapture building envelopes before resolving roads: '+', '.join(sorted(missing)))
     for path,digest in captured.items():
@@ -197,7 +197,7 @@ def finish(profile):
     # Generic building heights are often inferred. Keep their footprint and
     # lower only conflicting blocks; very short remnants are omitted.
     geo=json.loads((ROOT/'public/data/geography.json').read_text());adjustments=[]
-    envelopes=building_envelopes(geo,json.loads((ROOT/'work/road-repair/building-levels.json').read_text()))
+    envelopes=building_envelopes(geo,json.loads((ROOT/BUILDING_LEVELS_PATH).read_text()))
     for record in envelopes:
         i,bottom,roof=record['index'],record['bottom'],record['top']
         b=geo['buildings'][i];poly=Polygon(b['rings'][0],b['rings'][1:]).buffer(.012);limit=roof

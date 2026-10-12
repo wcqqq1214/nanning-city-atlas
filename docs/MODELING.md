@@ -43,10 +43,14 @@ python3 scripts/validate_assets.py
 输出：
 
 - `blender/nanning-city.blend`：可编辑场景，包含具名地形、建筑、树木、水面、桥梁、地标、相机与灯光。
-- `public/models/nanning-city.glb`：Draco 精细模型，大小以当前文件为准。
-- `public/models/nanning-city-mobile.glb`：Draco 轻量模型，保留完整建筑、道路、水系及地标主体；大小以当前文件为准。
-- `public/data/terrain.json`、`geography.json`：高程与裁剪后的地理数据库。
-- `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据。
+- `work/full-city/`：全量建模中间导出，保留完整覆盖，供城区裁切重用。
+- `public/models/nanning-city.glb`：长方形底座、城区精细模型和简化外围环境组成的 Draco 模型，大小以当前文件为准。
+- `public/models/nanning-city-mobile.glb`：Draco 轻量模型，保留城区建筑、道路、水系及地标主体；大小以当前文件为准。
+- `public/data/terrain.json`、`geography.json`：全量源覆盖的高程与地理数据库，保持校准计划的输入散列。
+- `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据，后者使用城区展示范围。
+- `public/data/urban-scope-models.json`：城区导出审计清单。
+
+`models:build` 先保存全量场景与中间导出，再运行 `scripts/pack_city.py` 打包平面地形，最后调用 `models:scope` 验证并发布长方形城区模型。打包复用现有 `pack_flat_surfaces.py`，逐面验证顶点、三角面、材质和绕序不变；只将与面法线相差不超过 0.5° 的法线改为浏览器恢复，保留其他显式法线。原始导出留在 `work/full-city/raw-models/`，打包报告为 `work/full-city/data/packing.json`，可编辑 `.blend` 不受此步骤影响。只调整边界时可单独运行 `models:scope`；需要全量中间 GLB 和含几何依赖的 Python 环境，详见 [城区裁切](modeling/URBAN_SCOPE.md)。
 
 铁路的源数据、站场衔接、桥隧和两档细节说明见 [城市铁路](modeling/RAILWAYS.md)。修改铁路计划后要重新准备林冠计划，确保铁路通道不被树木覆盖。
 

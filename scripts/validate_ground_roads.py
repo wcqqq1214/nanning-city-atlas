@@ -30,6 +30,7 @@ def decoded_faces(filename,root=ROOT,include_access=False):
     groups={'road':[],'baseRoad':[],'paint':[],'terrain':[],'elevated':[]};counts={};materials=set();access={}
     for node in model['nodes']:
         name=node.get('name','')
+        if name == 'GroundRoads_context':continue  # Separately audited coarse surroundings.
         if 'mesh' not in node or not name.startswith(('GroundRoads_','Terrain_','ElevatedRoads_','MinzuAvenue_')):continue
         joined_road=name.startswith(('ElevatedRoads_','MinzuAvenue_'))
         for p in model['meshes'][node['mesh']]['primitives']:
@@ -76,7 +77,7 @@ def planes(faces):
     return shapely.polygons(p[:,:,:2]),coefficients,valid
 
 
-def clearance(upper,lower,label,max_vertical_separation=None):
+def clearance(upper,lower,label,max_vertical_separation=None,edge_tolerance=0):
     up,up_plane,valid=planes(upper);low,low_plane,_=planes(lower)
     index=STRtree(low);minimum=float('inf');pairs_count=0;worst=None
     for start in range(0,len(up),3000):
@@ -88,6 +89,12 @@ def clearance(upper,lower,label,max_vertical_separation=None):
             probes=shapely.get_coordinates(shapely.centroid(intersections))
             delta=up_plane[ui]-low_plane[li]
             keep=np.abs(delta[:,0]*probes[:,0]+delta[:,1]*probes[:,1]+delta[:,2])<max_vertical_separation
+            ui,li,intersections=ui[keep],li[keep],intersections[keep]
+            if len(ui)==0:continue
+        if edge_tolerance:
+            # Scoped primitives are re-encoded independently. Ignore only XY
+            # contact strips within their verified positional error envelope.
+            keep=~shapely.is_empty(shapely.buffer(intersections,-edge_tolerance))
             ui,li,intersections=ui[keep],li[keep],intersections[keep]
             if len(ui)==0:continue
         coordinates,owners=shapely.get_coordinates(intersections,return_index=True)
@@ -108,12 +115,15 @@ def clearance(upper,lower,label,max_vertical_separation=None):
 def validate_ground_roads(root=ROOT,site_access_plan=None):
     root=Path(root).resolve();plan,path=load_plan(root);geo=json.loads((root/'public/data/geography.json').read_text())
     context=json.loads((root/'data/ground-roads-context.json').read_text())
-    report=json.loads((root/'public/data/overview.json').read_text())['groundRoads']
+    overview=json.loads((root/'public/data/overview.json').read_text())
+    report=overview['groundRoads']
+    transition=shapely.geometry.shape(overview['urbanScope']['transition']) if overview.get('urbanScope') else None
     access=read_access(site_access_plan,root,report)
     payload=gzip.decompress(path.read_bytes()) if path.suffix=='.gz' else path.read_bytes()
     digest=hashlib.sha256(payload).hexdigest();assert report['planHash']==digest
-    for name,fingerprint in plan['inputHashes'].items():
-        assert hashlib.sha256((root/name).read_bytes()).hexdigest()==fingerprint,f'Stale ground-road input: {name}'
+    stale_inputs=[name for name,fingerprint in plan['inputHashes'].items()
+                  if hashlib.sha256((root/name).read_bytes()).hexdigest()!=fingerprint]
+    if stale_inputs:print('STALE ground-road inputs (geometry diagnostics continue):', stale_inputs, flush=True)
     mz=json.loads((root/'data/minzu-plan.json').read_text());q=json.loads((root/'data/viaduct-plan.json').read_text())
     excluded=set(mz['replacedRoads'])|{int(i) for i in q['roadOverrides']}
     expected={i for i,r in enumerate(geo['roads']) if i not in excluded and not r['bridge']}
@@ -163,18 +173,27 @@ def validate_ground_roads(root=ROOT,site_access_plan=None):
         assert report_counts['resolvedHash']==metadata['sha256']
         assert hashlib.sha256((root/f'data/road-solids-{profile}.npz').read_bytes()).hexdigest()==metadata['sha256']
         assert report_counts['surfaceTriangles']==metadata['counts']['ground']
-        assert abs(len(groups['road'])-sum(r['pavingTriangles'] for r in access_checks)-report_counts['surfaceTriangles'])<report_counts['surfaceTriangles']*.02
+        expected_road=report_counts['surfaceTriangles']
+        expected_paint=report_counts['markingTriangles']
+        if transition is not None:
+            from scoped_validation import retained_triangles
+            with np.load(root/f'data/road-solids-{profile}.npz') as resolved:
+                expected_road=len(retained_triangles(resolved['ground'], transition))
+                expected_paint=len(retained_triangles(resolved['groundPaint'], transition))
+        assert abs(len(groups['road'])-sum(r['pavingTriangles'] for r in access_checks)-expected_road)<expected_road*.02
         assert report_counts['markingTriangles']==metadata['counts']['groundPaint']
-        assert abs(len(groups['paint'])-report_counts['markingTriangles'])<report_counts['markingTriangles']*.02
-        minimum,collapsed,total=clearance(groups['baseRoad'],groups['terrain'],profile+' roads/terrain')
+        assert abs(len(groups['paint'])-expected_paint)<expected_paint*.02
+        minimum,collapsed,total=clearance(groups['baseRoad'],groups['terrain'],profile+' roads/terrain',edge_tolerance=.0001 if transition is not None else 0)
         assert minimum>0, f'{profile}: decoded road penetrates displayed terrain'
         assert collapsed/total<.02,'Excessive compressed surface degeneration'
-        minimum,collapsed,total=clearance(groups['paint'],groups['road'],profile+' paint/road')
+        minimum,collapsed,total=clearance(groups['paint'],groups['road'],profile+' paint/road',edge_tolerance=.0001 if transition is not None else 0)
         assert minimum>0, f'{profile}: lane marking embedded in asphalt'
         assert collapsed/total<.02,'Compression erased lane markings'
         # Exact triangulation should neither lose broad areas nor duplicate junction surfaces.
         shapes,_,_=planes(groups['road']);actual=unary_union(shapes)
-        expected_xy=shapely.transform(paved.union(access_paved),lambda xy:xy*np.array([1,-1]))
+        expected_footprint=paved.union(access_paved)
+        if transition is not None:expected_footprint=expected_footprint.intersection(transition)
+        expected_xy=shapely.transform(expected_footprint,lambda xy:xy*np.array([1,-1]))
         # Ground approaches and bridge decks share a resolved solid; the bridge
         # material owns the joined overlap, including resolved Minzu sections.
         # Count their actual asphalt triangles; omitting Minzu falsely reports
@@ -189,6 +208,7 @@ def validate_ground_roads(root=ROOT,site_access_plan=None):
         print(f'{profile} quantized edge gaps: {missing.area*10000:.3f} m² / {expected_xy.area*10000:.0f} m²; no gap wider than 6 cm',flush=True)
         assert actual.difference(expected_xy.buffer(.003)).area<.001,'Export escaped road footprint'
         print(profile,'ground streets:',counts,flush=True)
+    assert not stale_inputs, f'Stale ground-road inputs: {stale_inputs}'
     print('PASS: all ground roads, disjoint junctions, water/building/tree clearance, road layer and decoded terrain/marking clearance.',flush=True)
 
 

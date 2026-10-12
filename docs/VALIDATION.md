@@ -95,7 +95,9 @@ CITY_WATER_MODELS=/absolute/path/to/candidate/models.json node scripts/check-res
 
 工作流与 gxu 保持相同触发方式：面向 `main` 的 PR、`main` 的 push，以及手动运行；dev 推送不触发 CI。检查依次执行类型检查、lint、前端测试、可复现的数据测试和静态构建。PR 使用 `/nanning-city-atlas` 基础路径构建，不配置 Pages、不上传发布产物、不部署；主分支推送或手动运行会完成 Pages 发布。日常 dev 开发使用上方本地检查命令。
 
-- 模型综合检查：`python3 scripts/validate_assets.py`，需要对应 Python 依赖和正式资产。
+- 模型综合检查：`python3 scripts/validate_assets.py`，需要对应 Python 依赖和正式资产。城区版本保留源地理输入及各项几何检查，不因裁切提前成功退出；仅将外围数量和道路覆盖预期调整为实际保留范围，固定体积、三角面预算与来源散列检查继续执行。
+- 模型独立检查：`python3 scripts/validate_runtime_assets.py`，可在完整源检查被历史计划失配阻塞时运行；依次执行铁路、道路、桥梁、地标及地形检查，汇总失败并返回非零状态，不能代替完整源检查。
+- 裁切专项：`python3 scripts/check_urban_scope_exports.py`；加 `--baseline work/full-city` 可逐字节比较未改动的压缩块及材质。还检查主要水系原地形连续性、外围地形接缝、林冠面内净空、渐退末端贴地、外围道路净空和森林底色来源；带基准时还比较林地覆盖。详见 [城区范围](modeling/URBAN_SCOPE.md)。
 - Blender 源模型、局部导出与候选比较：按 [建模专题](README.md#建模专题) 执行，需要 `.blend` 的检查须先具备源文件。
 - 人工检查：地图加载、地标定位、漫游、图层、光照、画质切换、截图和 `inspect/` 页面。
 - 手机性能与弱网：参见 [手机体验](design/MOBILE.md)，桌面模拟不替代真机测量。

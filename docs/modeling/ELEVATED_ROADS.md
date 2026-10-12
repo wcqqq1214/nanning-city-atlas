@@ -47,7 +47,7 @@ npm run build:pages
 
 首次改变高架覆盖范围时，先按 `scripts/prepare_elevated_roads.py --capture` 的输入要求保留未替换的两档 GLB 到 `work/elevated-roads/before.glb`、`before-mobile.glb`，更新高架计划后再执行上述流程。地面计划依赖变化时先运行 `scripts/prepare_ground_roads.py`。
 
-`road-solids-*.json` 保存输入哈希、产物哈希、实际面数、高度及建筑调整记录。输入改变时构建会拒绝旧数据。捕获过程只写 `work/road-repair/`，不覆盖可编辑场景或公开模型。
+`road-solids-*.json` 保存输入哈希、产物哈希、实际面数、高度及建筑调整记录。输入改变时构建会拒绝旧数据。捕获过程将道路中间网格写入 `work/road-repair/`，将运行时依赖的建筑高度写入 `data/road-building-levels.json`，不覆盖可编辑场景或公开模型。建筑高度与两档实体成套保存，清理临时目录后仍可校验和重建；不可仅替换计划中的旧散列。
 
 ## 验证边界
 
