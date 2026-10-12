@@ -19,7 +19,8 @@
     "data:fetch": "python3 scripts/fetch_geodata.py",
     "terrain:resample": "python3 scripts/resample_terrain.py",
     "data:prepare": "python3 scripts/prepare_geodata.py",
-    "models:build": "blender --background --python-exit-code 1 --python blender/build_city.py"
+    "models:build": "blender --background --python-exit-code 1 --python blender/build_city.py",
+    "test:data:baseline": "python3 scripts/run_baseline_tests.py"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

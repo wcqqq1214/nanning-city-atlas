@@ -34,7 +34,7 @@
 ## 重建与检查
 
 ```sh
-work/venv/bin/pip install -r scripts/requirements.txt
+work/venv/bin/pip install -r scripts/requirements.txt -c scripts/constraints-geodata.txt
 work/venv/bin/python scripts/fetch_railways.py
 work/venv/bin/python scripts/prepare_railways.py
 work/venv/bin/python scripts/prepare_forest_canopy.py --stage all

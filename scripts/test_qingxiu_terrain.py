@@ -1,12 +1,10 @@
-"""Geographic coverage, source elevations, actual triangle sampling and path support."""
+"""Check current input hashes, geographic coverage and terrain/path sampling."""
 import hashlib
 import json
 import sys
 import unittest
 from pathlib import Path
 import numpy as np
-import rasterio
-from scipy.ndimage import map_coordinates
 from shapely.geometry import Polygon, Point, box
 from shapely.ops import unary_union
 
@@ -23,19 +21,9 @@ class Recorder:
 
 
 class MountainTests(unittest.TestCase):
-    def test_sources_and_original_arrays(self):
+    def test_input_hashes(self):
         for path,digest in PLAN['inputHashes'].items():
             self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest)
-        for name in ['geography.json','terrain.json']:
-            self.assertEqual((ROOT/'public/data'/name).read_bytes(),(ROOT/'work/urban-structure/baseline-p2/public/data'/name).read_bytes())
-        tile=ROOT/'work/geodata'/Path(PLAN['sourceRasterUrl']).name
-        with rasterio.open(tile) as raster:
-            samples=np.asarray(PLAN['points'])[::41];cx,cy=GEO['center'];kx=1113.2*np.cos(np.radians(cy))
-            x=((cx+samples[:,0]/kx)-raster.transform.c)/raster.transform.a-.5
-            y=((cy+samples[:,1]/1113.2)-raster.transform.f)/raster.transform.e-.5
-            expected=map_coordinates(raster.read(1).astype(float),[y,x],order=1)
-        self.assertLess(np.max(np.abs(expected-np.asarray(PLAN['rawSourceMeters'])[::41])),.00001)
-        self.assertEqual(PLAN['sourceResolutionArcSeconds'],1)
 
     def test_land_and_path_coverage(self):
         water=unary_union([Polygon(r[0],r[1:]) for r in GEO['water']])

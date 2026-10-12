@@ -28,18 +28,6 @@
 
 > 基于 2026-09-08 的 OpenStreetMap 快照。地图做了简化，程序补充的建筑不代表真实位置和高度。
 
-香榭里住宅样板将 18 栋随机补楼替换为 13 栋按组团排列的板楼；地块边界来自 OSM，内部布局与层数为明确标注的估计。
-
-畅游阁—邕江大桥北岸已加入约 641.59 m 连续护岸、步道和绿带，并校准邕江大桥与接桥道路的显示高度；岸线沿用现有 OSM 水域，断面尺寸明确标注为估计。
-
-青秀山已加入约 4.152 km² 局部山体、76 条来源园路记录与 5 个独立推定湖面，并按公开尺寸校准龙象塔及周边植被比例。原始地理与高程数据保持不变。
-
-广西文化艺术中心、镇宁炮台、地王大厦和南宁孔庙已完成比例与场地校准，包括台基落地、入口台阶和分级院落；尺寸依据公开来源，部分院落布局仍为估计。
-
-### 当前进度
-
-截至 **2026-09-13**，正式模型已完成固定视角基线、住宅街区、滨水、青秀山与代表性地标校准（P0–P4）。P5 正在推进建筑轮廓与院落、四类街区模板、水库岸线、场地接路及林冠衔接，候选模型尚未接入正式资源；资源预算与整城视觉、交互和性能验收仍待完成。
-
 ## 可以怎么用
 
 | 功能 | 可以做什么 |
@@ -54,8 +42,6 @@
 夜景采用程序化窗灯与示意亮化，不代表实地照明分布。灯光随时间渐变，跟随建筑、道路图层和高度比例；通过材质着色与批量光晕实现，无需额外下载模型或增加逐灯阴影。
 
 鼠标左键旋转、右键平移、滚轮缩放；触屏单指旋转、双指平移／缩放。手机自动选择轻量模型，也可手动切换画质。
-
-可以查看相思湖、三街两巷、南湖、青秀山、国际会展中心、会展航洋城、万象城、南宁大桥、广西文化艺术中心、两座铁路车站与清厢快速路高架等。已细化 14 座主要跨江桥梁，包含青山、五象、英华、良庆、永和等桥的塔索与拱肋结构，见 [主要桥梁](docs/modeling/BRIDGES.md)。会展航洋城与万象城的外观细节、来源和重建方式见 [商业地标](docs/modeling/MALLS.md)。龙象塔与广西民族博物馆、广西博物馆的外观细节及重建方式见 [文化地标](docs/modeling/CULTURAL_LANDMARKS.md)。完整名单见 [地标目录](data/landmarks.json)。清厢快速路已覆盖从清川大道至厢竹大道、凤岭北路的全线，按当前地图中心线约 14.25 km，包含 31 个主线连接点和 332 个桥墩，范围和近似说明见 [高架建模](docs/modeling/VIADUCT.md)。
 
 <details>
 <summary>查看更多场景预览</summary>
@@ -74,20 +60,9 @@
 
 ## 技术与资源
 
-| 技术 | 用途 |
-| --- | --- |
-| **Three.js** | 浏览器三维场景、相机交互、光照与地图标记。 |
-| **Blender** | 城市与地标建模，保留可编辑源文件。 |
-| **React + TypeScript** | 中文地图界面、响应式菜单与交互状态。 |
-| **vinext + Vite** | 本地开发、生产构建与静态导出。 |
-| **OpenStreetMap + Copernicus DEM** | 建筑轮廓、道路、水系、林地与地形的数据基础。 |
-| **GLB + Draco** | 压缩精细与轻量两档模型，解码器随站点托管。 |
+React + TypeScript 界面，Three.js 场景，vinext + Vite 构建；模型使用 Blender 制作，以 Draco 压缩 GLB 发布。
 
-- Blender 源文件：`blender/nanning-city.blend` 仅在本地保留，不纳入 Git；网页运行无需该文件，建模输入与恢复边界见 [建模说明](docs/MODELING.md)。
-- [模型资源](public/models/)：约 25.58 MB 的精细模型与 17.64 MB 的轻量模型（按文件字节数计算，1 MB = 1,000,000 字节）。
-- [场景数据](public/data/)：高程、裁剪后的地理数据库、地标与地图元数据。
-
-网页运行时只向自己的站点请求数据和模型。
+仓库包含约 25.58 MB 精细模型与 17.64 MB 轻量模型（十进制 MB）。可编辑 `.blend` 仅在本地保存，浏览网页无需安装 Blender。建模输入、历史基准及恢复限制见 [建模说明](docs/MODELING.md)。
 
 ## 本地运行
 
@@ -102,8 +77,6 @@ npm run dev
 
 打开终端输出的 Local 地址，默认是 `http://localhost:3000`。
 
-`npm start` 同样启动本地开发服务。开发与构建统一使用 vinext + Vite，无需配置 Cloudflare Workers、D1 或 R2；静态产物使用下方的预览命令查看。
-
 ### 检查与静态构建
 
 ```sh
@@ -114,19 +87,9 @@ npm run build:pages
 npm run preview
 ```
 
-静态构建产物生成于 `out/`，默认使用当前仓库的项目子路径。`npm run preview` 自动读取构建中的路径，默认访问 `http://127.0.0.1:4300/nanning-city-atlas/`；可用 `PORT=4301 npm run preview` 更换端口。按根路径构建可运行 `PAGES_BASE_PATH='' npm run build:pages`，预览命令不变。`out/` 是生成产物，不提交到源代码分支。
+静态文件生成于 `out/`，默认预览地址为 `http://127.0.0.1:4300/nanning-city-atlas/`。固定视角检查入口为同一路径下的 `inspect/`；Python 测试、浏览器检查、端口和根路径构建方式见 [检查与验证](docs/VALIDATION.md)。
 
-开发、提交和推送使用 `dev`，更新 `main` 须另行取得明确授权。经授权推送到 `main` 后，[GitHub Actions](.github/workflows/pages.yml) 自动检查、构建并部署。Fork 后需在 **Settings → Pages → Source** 选择 **GitHub Actions**。
-
-### 固定视角检查
-
-本地运行后打开 `http://localhost:3000/inspect/`，可选择预设镜头、精细／流畅模型和灰模／基础颜色／完整光照，保存可恢复的镜头链接，并导出画面与参数。例如：
-
-```text
-http://localhost:3000/inspect/?view=residential&material=clay&quality=detail
-```
-
-模型重建流程见 [建模说明](docs/MODELING.md)。
+开发提交推送至 `origin/dev`，dev 推送不触发 CI；面向 `main` 的 PR 自动检查与构建。更新 `main` 需明确授权，主分支推送或手动运行工作流会检查并发布到 GitHub Pages。Fork 后在 **Settings → Pages → Source** 选择 **GitHub Actions**。
 
 ## 数据来源与精度
 
@@ -138,16 +101,11 @@ http://localhost:3000/inspect/?view=residential&material=clay&quality=detail
 
 ## 文档导航
 
-| 文档 | 内容 |
-| --- | --- |
-| [数据来源](docs/DATA_SOURCES.md) | 地理数据、坐标来源、补充建筑与精度说明。 |
-| [设计说明](docs/DESIGN.md) | 界面、交互、视觉风格与功能设计。 |
-| [手机体验](docs/design/MOBILE.md) | 轻量模型、渲染策略、测试方法与诊断入口。 |
-| [建模说明](docs/MODELING.md) | 数据准备、Blender 重建流程与项目结构。 |
-| [城市铁路](docs/modeling/RAILWAYS.md) | 铁路来源、两站轨道衔接、桥隧结构与两档细节。 |
-| [剩余高架](docs/modeling/ELEVATED_ROADS.md) | 高架与匝道覆盖、共享材质、桥墩避让及两档地形适配。 |
-| [检查与验证](docs/VALIDATION.md) | 测试入口、模型检查与验证边界。 |
-| [完整文档导航](docs/README.md) | 分类后的界面、道路、地形与地标专题。 |
+- [数据来源与精度](docs/DATA_SOURCES.md)
+- [界面与交互](docs/DESIGN.md) · [手机体验](docs/design/MOBILE.md)
+- [模型重建与阶段记录](docs/MODELING.md) · [建模输入与恢复限制](data/README.md)
+- [测试、浏览器检查与静态预览](docs/VALIDATION.md)
+- [完整专题导航](docs/README.md)：道路、桥梁、地形、植被和地标说明
 
 ## 许可与署名
 

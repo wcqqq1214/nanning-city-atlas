@@ -30,7 +30,7 @@
 修改道路计划、地形或高度算法后，重新生成离线桥体：
 
 ```sh
-work/venv/bin/pip install -r scripts/requirements.txt
+work/venv/bin/pip install -r scripts/requirements.txt -c scripts/constraints-geodata.txt
 blender --background --python-exit-code 1 --python blender/build_city.py -- --capture-road-inputs
 work/venv/bin/python scripts/prepare_road_solids.py detail
 work/venv/bin/python scripts/prepare_road_solids.py smooth

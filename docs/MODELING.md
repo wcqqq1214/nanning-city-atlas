@@ -14,12 +14,12 @@
 
 ## Blender 重建流程
 
-使用 Blender 5.2.1 与 Python 3.9+。铁路导出器按该 Blender 版本的 Draco 编码接口适配。
+使用 Blender 5.2.1；独立数据处理与 CI 使用 Python 3.12。铁路导出器按该 Blender 版本的 Draco 编码接口适配。
 
 ```bash
-python3 -m venv work/venv
+python3.12 -m venv work/venv
 source work/venv/bin/activate
-pip install -r scripts/requirements.txt
+python -m pip install -r scripts/requirements.txt -c scripts/constraints-geodata.txt
 python3 scripts/fetch_geodata.py
 python3 scripts/prepare_geodata.py
 python3 scripts/prepare_stations.py
@@ -93,3 +93,21 @@ out/、dist/                 忽略的构建产物
 脚本与 Blender 模块本轮保留原层级，以维持 Python 同目录导入和根目录定位。新的临时输出统一放在 `work/`；正式数据、GLB、解码器及其署名继续版本化，不按“生成文件”一概忽略。`.env.example` 与 `.env.*.example` 可以提交，但只能包含示例值。
 
 长期文档可直接加入 `docs/` 的对应分类，不设少数文件白名单。完整索引见 [文档导航](README.md)，检查边界见 [检查与验证](VALIDATION.md)。
+
+## 正式模型与阶段记录
+
+以下保留原首页的建模说明与 2026-09-13 阶段记录；不代表本轮重新验收，候选资源状态须通过正式资产核对。
+
+香榭里住宅样板将 18 栋随机补楼替换为 13 栋按组团排列的板楼；地块边界来自 OSM，内部布局与层数为明确标注的估计。
+
+畅游阁—邕江大桥北岸已加入约 641.59 m 连续护岸、步道和绿带，并校准邕江大桥与接桥道路的显示高度；岸线沿用现有 OSM 水域，断面尺寸明确标注为估计。
+
+青秀山已加入约 4.152 km² 局部山体、76 条来源园路记录与 5 个独立推定湖面，并按公开尺寸校准龙象塔及周边植被比例。原始地理与高程数据保持不变。
+
+广西文化艺术中心、镇宁炮台、地王大厦和南宁孔庙已完成比例与场地校准，包括台基落地、入口台阶和分级院落；尺寸依据公开来源，部分院落布局仍为估计。
+
+### 2026-09-13 阶段状态
+
+截至 **2026-09-13**，正式模型已完成固定视角基线、住宅街区、滨水、青秀山与代表性地标校准（P0–P4）。P5 正在推进建筑轮廓与院落、四类街区模板、水库岸线、场地接路及林冠衔接，候选模型尚未接入正式资源；资源预算与整城视觉、交互和性能验收仍待完成。
+
+可以查看相思湖、三街两巷、南湖、青秀山、国际会展中心、会展航洋城、万象城、南宁大桥、广西文化艺术中心、两座铁路车站与清厢快速路高架等。已细化 14 座主要跨江桥梁，包含青山、五象、英华、良庆、永和等桥的塔索与拱肋结构，见 [主要桥梁](modeling/BRIDGES.md)。会展航洋城与万象城的外观细节、来源和重建方式见 [商业地标](modeling/MALLS.md)。龙象塔与广西民族博物馆、广西博物馆的外观细节及重建方式见 [文化地标](modeling/CULTURAL_LANDMARKS.md)。完整名单见 [地标目录](../data/landmarks.json)。清厢快速路已覆盖从清川大道至厢竹大道、凤岭北路的全线，按当前地图中心线约 14.25 km，包含 31 个主线连接点和 332 个桥墩，范围和近似说明见 [高架建模](modeling/VIADUCT.md)。

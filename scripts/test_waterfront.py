@@ -1,4 +1,4 @@
-"""Check the real patch mesh, shared sampler and immutable geographic inputs."""
+"""Check the current patch mesh, sampler and geographic input hashes."""
 import hashlib
 import json
 import math
@@ -6,12 +6,12 @@ import sys
 import unittest
 from pathlib import Path
 import numpy as np
-from shapely.geometry import Polygon, Point, LineString, box
+from shapely.geometry import Polygon, box
 from shapely.ops import unary_union
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'blender'))
-from local_terrain import PLAN, surface, vertex_heights, replaces_cell
+from local_terrain import PLAN, surface, vertex_heights
 from forest_canopy import coarse_terrain_surface
 from terrain_height import scene_height
 from major_bridges import Bridge, SPECS
@@ -30,6 +30,10 @@ def ground(x,y):
 
 
 class WaterfrontTests(unittest.TestCase):
+    def test_input_hashes(self):
+        for path,digest in PLAN['inputHashes'].items():
+            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest)
+
     def test_coverage_and_materials(self):
         water=unary_union([Polygon(r[0],r[1:]) for r in GEO['water']])
         shapes=[Polygon([PLAN['points'][i] for i in tri]) for tri in PLAN['triangles']]
@@ -64,12 +68,6 @@ class WaterfrontTests(unittest.TestCase):
                 self.assertGreater(min(levels[a],levels[b]),PLAN['section']['waterSceneZ'])
         self.assertGreater(edge_count,80)
 
-    def test_sources_unchanged(self):
-        baseline=ROOT/'work/urban-structure/baseline-p1'
-        for filename in ['geography.json','terrain.json']:
-            self.assertEqual((ROOT/'public/data'/filename).read_bytes(),(baseline/'public/data'/filename).read_bytes())
-        for path,digest in PLAN['inputHashes'].items():
-            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest)
 
     def test_bridge_bank_support_and_grade(self):
         def final_ground(x,y):

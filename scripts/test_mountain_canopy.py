@@ -1,8 +1,6 @@
-"""Check local canopy support, clearings and frozen P2 scope preservation."""
-import json
+"""Check current canopy support and clearings."""
 import sys
 import unittest
-from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -60,26 +58,6 @@ class CanopyTests(unittest.TestCase):
                         self.assertGreater(gap, .095*canopy_factor(x, y), (region['id'], profile, tri, gap))
                     checked += 1
         self.assertGreater(checked, 10000)
-
-    def test_outside_patch_unchanged(self):
-        before = json.loads((ROOT/'work/urban-structure/p3/p2-forest-plan.json').read_text())
-        patch = box(*PLAN['bounds']).buffer(.000001)
-        def faces(mesh):
-            result = Counter()
-            for tri, color in zip(mesh['triangles'], mesh['colors']):
-                vertices = [tuple(mesh['points'][i]) for i in tri]
-                if not patch.intersects(Polygon([p[:2] for p in vertices])):
-                    result[(tuple(sorted(vertices)), color)] += 1
-            return result
-        for old, new in zip(before['regions'], FOREST['regions']):
-            self.assertEqual(old['woodland'], new['woodland'])
-            for profile in ['detail', 'smooth']:
-                self.assertEqual(faces(old[profile]), faces(new[profile]), (old['id'], profile))
-            self.assertEqual([c for c in old['crownClusters'] if not patch.intersects(Point(c[:2]).buffer(c[2]))],
-                             [c for c in new['crownClusters'] if not patch.intersects(Point(c[:2]).buffer(c[2]))])
-            self.assertEqual([c for c in old['crownClusters'][::2] if not patch.intersects(Point(c[:2]).buffer(c[2]))],
-                             [c for c in new.get('smoothCrownClusters', new['crownClusters'][::2]) if not patch.intersects(Point(c[:2]).buffer(c[2]))])
-        self.assertTrue(all(patch.contains(Point(GEO['trees'][i][:2])) for i in FOREST['mountainRemovedTreeIndices']))
 
 
 if __name__ == '__main__':

@@ -16,10 +16,12 @@ class Batch:
     def face(self,points,key):self.faces.append((points,key))
 
 
+from baseline_inputs import baseline_input
+
 class Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.payload=json.loads((ROOT/'work/urban-structure/p5/grading/candidate.json').read_text())
+        cls.payload=json.loads((baseline_input('urban-structure/p5/grading/candidate.json')).read_text())
 
     def test_emission_and_sampler_share_stored_triangles(self):
         plan=SiteGrading(self.payload);site=self.payload['sites'][0]
@@ -69,6 +71,3 @@ class Tests(unittest.TestCase):
             self.assertIsNotNone(load(path,root))
             (root/'public/data/terrain.json').write_text('{"changed":true}')
             with self.assertRaisesRegex(ValueError,'terrain.json'):load(path,root)
-
-
-if __name__=='__main__':unittest.main()
