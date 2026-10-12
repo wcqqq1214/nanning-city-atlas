@@ -9,6 +9,8 @@ import bpy
 from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[1]
+OUTPUT = ROOT / 'work' / 'renders' / 'cultural'
+OUTPUT.mkdir(parents=True, exist_ok=True)
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'blender/nanning-city.blend'))
 places={p['id']:p for p in json.loads((ROOT/'public/data/landmarks.json').read_text())}
 identities=['qingxiu','ethnic-museum','gx-museum']
@@ -36,5 +38,5 @@ for identity in identities:
     for obj in scene.objects:
         if obj.type=='LIGHT':
             obj.location=center+Vector((-3,-4,7));obj.data.energy=750;obj.data.size=5
-    scene.render.filepath=str(ROOT/f'docs/{identity}-preview.png');bpy.ops.render.render(write_still=True)
+    scene.render.filepath=str(OUTPUT/f'{identity}-preview.png');bpy.ops.render.render(write_still=True)
     landmark.hide_render=True

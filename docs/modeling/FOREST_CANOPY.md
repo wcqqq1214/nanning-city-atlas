@@ -4,7 +4,7 @@
 
 ## 范围与分批推广
 
-沿用 2026-09-08 城市 OSM 快照的 192 条 natural=wood / landuse=forest 记录，其中 191 条与当前场景相交。未扩大地图边界，也没有把一般公园、草坪或绿色高地自动当成森林。原始数据保存在 [forest-source.json](../data/forest-source.json)，生成计划位于 [forest-plan.json](../data/forest-plan.json)。
+沿用 2026-09-08 城市 OSM 快照的 192 条 natural=wood / landuse=forest 记录，其中 191 条与当前场景相交。未扩大地图边界，也没有把一般公园、草坪或绿色高地自动当成森林。原始数据保存在 [forest-source.json](../../data/forest-source.json)，生成计划位于 [forest-plan.json](../../data/forest-plan.json)。
 
 | 批次 | 实际树冠覆盖 | 精细 / 流畅表面三角形 | 精细 / 流畅冠簇 |
 | --- | ---: | ---: | ---: |
@@ -26,7 +26,7 @@
 
 树冠表面分别沿两档实际地形三角面裁剪。按约 8 km 网格分组以便视野剔除，共享顶点与法线，减少导出时重复的三角面角点；林木开关与整体高度缩放继续适用。当前没有按距离动态切换的 LOD。
 
-下列单树数量、体积和对比记录对应林地扩展完成时。后续两座车站替换站场内的普通树木，当前数量与总模型预算见 [MOBILE.md](MOBILE.md)，林冠覆盖与冠簇保持不变。
+下列单树数量、体积和对比记录对应林地扩展完成时。后续两座车站替换站场内的普通树木，当前数量与总模型预算见 [MOBILE.md](../design/MOBILE.md)，林冠覆盖与冠簇保持不变。
 
 ## 相对青秀山样例版的阶段变化
 
@@ -45,15 +45,15 @@
 
 ## 预览
 
-![全市与北部外围林地](forest-city-overview.png)
+![全市与北部外围林地](../screenshots/modeling/forest-city-overview.png)
 
 | 城西树林 | 南湖园林植被 |
 | --- | --- |
-| ![城西树林](forest-west-preview.png) | ![南湖园林树木](forest-nanhu-preview.png) |
+| ![城西树林](../screenshots/modeling/forest-west-preview.png) | ![南湖园林树木](../screenshots/modeling/forest-nanhu-preview.png) |
 
 青秀山当前效果：
 
-![青秀山](forest-qingxiu-current.png)
+![青秀山](../screenshots/modeling/forest-qingxiu-current.png)
 
 ## 重新生成
 
@@ -68,7 +68,7 @@ blender --background --python-exit-code 1 --python blender/build_city.py
 work/venv/bin/python scripts/validate_assets.py
 ~~~
 
-仅调整冠形时可直接重建模型；调整林地范围、地形、道路、建筑或地标数据后须重建计划。构建时检查全部相关输入文件的指纹，防止错用旧计划。生成代码在 [prepare_forest_canopy.py](../scripts/prepare_forest_canopy.py)，共享树形在 [vegetation.py](../blender/vegetation.py)，连续树冠在 [forest_canopy.py](../blender/forest_canopy.py)。
+仅调整冠形时可直接重建模型；调整林地范围、地形、道路、建筑或地标数据后须重建计划。构建时检查全部相关输入文件的指纹，防止错用旧计划。生成代码在 [prepare_forest_canopy.py](../../scripts/prepare_forest_canopy.py)，共享树形在 [vegetation.py](../../blender/vegetation.py)，连续树冠在 [forest_canopy.py](../../blender/forest_canopy.py)。
 
 ## 最初样例留档
 
@@ -76,4 +76,4 @@ work/venv/bin/python scripts/validate_assets.py
 
 | 最初改造前 | 青秀山样例 |
 | --- | --- |
-| ![最初改造前](qingxiu-forest-before.png) | ![青秀山样例](qingxiu-forest-preview.png) |
+| ![最初改造前](../screenshots/modeling/qingxiu-forest-before.png) | ![青秀山样例](../screenshots/modeling/qingxiu-forest-preview.png) |

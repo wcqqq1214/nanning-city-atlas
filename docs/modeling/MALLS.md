@@ -58,4 +58,6 @@ work/venv/bin/python scripts/validate_assets.py
 
 | 会展航洋城 | 万象城 |
 | --- | --- |
-| ![会展航洋城](hangyang-preview.png) | ![万象城](mixc-preview.png) |
+| ![会展航洋城](../screenshots/modeling/hangyang-preview.png) | ![万象城](../screenshots/modeling/mixc-preview.png) |
+
+预览渲染输出位于 `work/renders/malls/`，不会直接覆盖文档插图；检查后选图更新 `docs/screenshots/modeling/`。

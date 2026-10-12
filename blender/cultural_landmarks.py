@@ -2,7 +2,7 @@
 
 Museums retain their established envelopes; the pagoda uses source dimensions.
 The source snapshot locates each place; photographs guide architectural details.
-See docs/CULTURAL_LANDMARKS.md for scope, sources and reproducible validation.
+See docs/modeling/CULTURAL_LANDMARKS.md for scope, sources and reproducible validation.
 """
 import math
 import json

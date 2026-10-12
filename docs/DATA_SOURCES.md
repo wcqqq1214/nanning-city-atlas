@@ -2,7 +2,7 @@
 
 ## 输入
 
-连片树冠依据当前城市 OSM 快照中的 192 条 `natural=wood` / `landuse=forest` 记录，其中 191 条与场景相交。青秀山使用 [relation 11922560](https://www.openstreetmap.org/relation/11922560)，北部外围主要使用 [relation 9862173](https://www.openstreetmap.org/relation/9862173)；其他城区与近郊林地先行处理，重叠关系去重。保留内环，并避让道路、水面、建筑、庭院与地标空地，最终覆盖约 213.55 km²。原始记录与生成计划分别位于 `data/forest-source.json`、`data/forest-plan.json`。没有把一般公园、草地或高地颜色直接解释为森林；冠形、密度和颜色为艺术化表达，详见 [城市树木与郊区树林](FOREST_CANOPY.md)。
+连片树冠依据当前城市 OSM 快照中的 192 条 `natural=wood` / `landuse=forest` 记录，其中 191 条与场景相交。青秀山使用 [relation 11922560](https://www.openstreetmap.org/relation/11922560)，北部外围主要使用 [relation 9862173](https://www.openstreetmap.org/relation/9862173)；其他城区与近郊林地先行处理，重叠关系去重。保留内环，并避让道路、水面、建筑、庭院与地标空地，最终覆盖约 213.55 km²。原始记录与生成计划分别位于 `data/forest-source.json`、`data/forest-plan.json`。没有把一般公园、草地或高地颜色直接解释为森林；冠形、密度和颜色为艺术化表达，详见 [城市树木与郊区树林](modeling/FOREST_CANOPY.md)。
 
 | 数据 | 来源 | 本项目使用方式 |
 | --- | --- | --- |
@@ -18,7 +18,7 @@
 1. 输入范围：经度 108.12–108.48，纬度 22.70–22.95；配置源为 `data/region.json`。原范围 108.265–108.465 / 22.735–22.875。
 2. 以范围中心为局部原点，采用 `x = (lon − lon₀) × 1113.2 × cos(lat₀)`、`y = (lat − lat₀) × 1113.2`；每单位约 100 m。
 3. OSM 多段外环与内环通过 polygonize 组合；用 Shapely 修复与裁剪，并在 0.1 m 精度网格上统一拓扑，避免 JSON 舍入产生无效内环。水面通过 Earcut 保留凹边界和孔洞。
-4. 普通道路按类型设置示意宽度，并按显示地形采样高度。普通桥梁抬升，隧道不在地表绘制。清厢快速路使用当前快照全部 27 个命名主线路段与 88 个匝道、引道路段，覆盖清川大道至厢竹大道、凤岭北路。主线、地面段、短桥和两层立交按原始节点及 bridge/layer 标签连接；下穿连接保留下层路面关系。桥宽、墩距及高程为展示近似，详见 [高架建模](VIADUCT.md)。
+4. 普通道路按类型设置示意宽度，并按显示地形采样高度。普通桥梁抬升，隧道不在地表绘制。清厢快速路使用当前快照全部 27 个命名主线路段与 88 个匝道、引道路段，覆盖清川大道至厢竹大道、凤岭北路。主线、地面段、短桥和两层立交按原始节点及 bridge/layer 标签连接；下穿连接保留下层路面关系。桥宽、墩距及高程为展示近似，详见 [高架建模](modeling/VIADUCT.md)。
 5. OSM 建筑优先使用 `height`，其次使用 `building:levels × 3.2 m`；缺省采用 5 层，即 16 m。高度限制为 3–450 m。
 6. 程序化建筑使用固定随机种子，布置在 OSM 建设用地和有限推断的城区街区内。推断街区必须由地面道路封闭，面积为 0.3–30 公顷，距离已知建设用地不超过 100 m，且街区及其周边 60 m 内至少存在 3 栋地图建筑；原始建设用地与推断区域分别保存在 `urban`、`inferredUrban`，不将后者视为实测用地。布置前排除水面、绿地、道路和 OSM 建筑缓冲区。街区网格随可建设地块的方向旋转，以约 62 × 74 m 的单元布置不同尺度和高度的楼群；完整建筑轮廓必须落在允许区域内，楼群之间保留间距。其个体位置、高度和外形均不是实测结果。
 7. 树木在绿地和滨水缓冲区示意分布，不代表真实树种和树位。
@@ -49,11 +49,11 @@
 
 造型按公开建筑特征自行简化：艺术中心的山体与云棚参考 [gmp 项目介绍](https://www.gmp.de/en/projects/3231/guangxi-culture-arts-center)，汇学堂的坡屋顶与柱廊参考 [广西大学校园介绍](https://tmjz.gxu.edu.cn/info/1452/5053.htm)，镇宁炮台的环形堡垒参考 [南宁市融媒体中心报道](https://silkroadonthecloud.cn/f/view-A1002001002-2054792774516322304.html)。模型不包含测量尺寸、实景贴图或原建筑设计图，比例为沙盘展示做了调整。
 
-2026-09-09 重新核对艺术中心的实景、总平面与剖面：三座场馆改为三角布局，屋盖边界使用既有 OSM 建筑轮廓，细化连续曲面格栅、玻璃门厅和台阶。模型平面放大约 1.2 倍，台座避开地图水面；参见 [重建记录](ARTS_REMODEL.md)。
+2026-09-09 重新核对艺术中心的实景、总平面与剖面：三座场馆改为三角布局，屋盖边界使用既有 OSM 建筑轮廓，细化连续曲面格栅、玻璃门厅和台阶。模型平面放大约 1.2 倍，台座避开地图水面；参见 [重建记录](modeling/ARTS_REMODEL.md)。
 
-体育中心三座场馆的水平轮廓取自既有 OSM 快照，并依据建成照片重建双叶屋顶、层叠看台和附属场馆；平面坐标控制点保存在 `data/sports-center-footprints.json`。三个场馆下方的显示地形做局部水平处理，周围使用平滑过渡；道路和基础共用这项修正，原始 DEM 不变。几何与参考资料见 [体育中心建模](SPORTS_CENTER.md)。
+体育中心三座场馆的水平轮廓取自既有 OSM 快照，并依据建成照片重建双叶屋顶、层叠看台和附属场馆；平面坐标控制点保存在 `data/sports-center-footprints.json`。三个场馆下方的显示地形做局部水平处理，周围使用平滑过渡；道路和基础共用这项修正，原始 DEM 不变。几何与参考资料见 [体育中心建模](modeling/SPORTS_CENTER.md)。
 
-2026-09-10 完成镇宁炮台精细外观：南北拱门、石砌环墙、二十间营房门面、中央高台、四座连桥、白色环廊与古炮。依据公开实景自行绘制，整体为沙盘放大 2.4 倍，环廊宽度与柱距为近似；流畅版仅在炮台脚下保留两格精细地形，详见 [镇宁炮台建模](ZHENNING_MODEL.md)。
+2026-09-10 完成镇宁炮台精细外观：南北拱门、石砌环墙、二十间营房门面、中央高台、四座连桥、白色环廊与古炮。依据公开实景自行绘制，整体为沙盘放大 2.4 倍，环廊宽度与柱距为近似；流畅版仅在炮台脚下保留两格精细地形，详见 [镇宁炮台建模](modeling/ZHENNING_MODEL.md)。
 
 ## 范围限制
 
@@ -69,7 +69,7 @@ produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defenc
 
 The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30.
 
-完整声明随站点提供于 `public/data/terrain-attribution.txt`，适用 [Copernicus WorldDEM-30 许可](https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N22_00_E108_00_DEM/INFO/eula_F.pdf)。后续再分发须保留来源、责任声明及许可第 6 条义务。重建流程与验证见 [地形重采样](TERRAIN_RESAMPLING.md)。
+完整声明随站点提供于 `public/data/terrain-attribution.txt`，适用 [Copernicus WorldDEM-30 许可](https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N22_00_E108_00_DEM/INFO/eula_F.pdf)。后续再分发须保留来源、责任声明及许可第 6 条义务。重建流程与验证见 [地形重采样](modeling/TERRAIN_RESAMPLING.md)。
 
 ## 城西扩展与近景更新
 
@@ -87,4 +87,4 @@ The organisations in charge of the Copernicus programme by law or by delegation 
 
 会展中心的花冠、入口台阶与展厅组合参考 [gmp 建筑介绍](https://www.gmp.de/de/projekte/403/internationales-messe-und-kongresszentrum-nanning)；大桥的水平弯曲桥面、双倾斜拱肋与吊杆参考原设计单位 [OPAC 项目介绍](https://www.opacengineers.com/projects/Nanning)；艺术中心格栅与三座体量继续参考 [gmp 项目介绍](https://www.gmp.de/en/projects/3231/guangxi-culture-arts-center)。模型自主简化，不使用原建筑设计图或实景贴图。
 
-两站的站房、站台及轨道使用独立公开快照 `data/stations-source.json`，时间为 2026-09-09T16:44:27Z；派生计划为 `data/stations-plan.json`。站房水平朝向来自地图，屋盖、幕墙、大钟、站名和柱廊根据公开实景近似建模，来源与显示地面修正见 [两座车站建模](STATIONS.md)。
+两站的站房、站台及轨道使用独立公开快照 `data/stations-source.json`，时间为 2026-09-09T16:44:27Z；派生计划为 `data/stations-plan.json`。站房水平朝向来自地图，屋盖、幕墙、大钟、站名和柱廊根据公开实景近似建模，来源与显示地面修正见 [两座车站建模](modeling/STATIONS.md)。

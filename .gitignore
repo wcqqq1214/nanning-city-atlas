@@ -28,6 +28,10 @@ yarn-error.log*
 
 # local environment
 .env*
+!.env.example
+!.env.*.example
+.venv/
+venv/
 
 # deployment and generated files
 .vercel
@@ -35,14 +39,21 @@ next-env.d.ts
 /dist/
 /.wrangler/
 /outputs/
+/output/
 /work/
 
-# Blender backups and local analysis
-*.blend1
-*.blend2
+# Editable Blender scenes and backups stay local; publish GLB assets instead.
+*.blend
+*.blend[0-9]*
+
+# Python and TypeScript caches
 *.tsbuildinfo
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# local urban optimization plans and validation archives
+# Legacy local archives; new reports and renders belong under /work/.
 /docs/URBAN_STRUCTURE*.md
 /docs/urban-structure*/

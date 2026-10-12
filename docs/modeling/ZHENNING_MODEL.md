@@ -42,4 +42,4 @@ npm run build:pages
 
 逐网格比较 Draco 数据：精细版仅 `Landmark_zhenning` 改变；流畅版另外改变炮台所在的一个地形批次及相邻树木批次，其余地标、路网和森林网格一致。
 
-![镇宁炮台精细模式近景](zhenning-preview.jpg)
+![镇宁炮台精细模式近景](../screenshots/modeling/zhenning-preview.jpg)

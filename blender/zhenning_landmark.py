@@ -1,7 +1,7 @@
 """Zhenning Battery: sandstone fort, open courtyard and present-day ring gallery.
 
 An independently drawn exterior interpretation of the public photographs listed
-in docs/ZHENNING_MODEL.md, not a measured survey. Dimensions below are approximate
+in docs/modeling/ZHENNING_MODEL.md, not a measured survey. Dimensions below are approximate
 metres; the small landmark is enlarged 2.4 times for the city diorama. Vertical
 proportions also follow the city's 1.55 architectural height exaggeration.
 """

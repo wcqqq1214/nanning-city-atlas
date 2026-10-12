@@ -46,6 +46,6 @@ python3 scripts/validate_assets.py
 
 类型检查、lint、5 项点触测试、Python 编译、地理与 GLB 验证、GitHub Pages 静态构建通过。检查了两站的精细/流畅近景、地标切换和东站 205° 默认镜头；浏览器无警告或错误，静态构建中的模型和地标目录与源资产一致。本次未进行手机真机性能测试。
 
-![南宁站近景](nanning-station-preview.png)
+![南宁站近景](../screenshots/readme/nanning-station-preview.png)
 
-![南宁东站近景](east-station-preview.png)
+![南宁东站近景](../screenshots/readme/east-station-preview.png)

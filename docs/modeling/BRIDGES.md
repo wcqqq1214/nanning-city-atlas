@@ -19,9 +19,9 @@
 | 良庆大桥 | 朱红色双门塔、双主缆、竖直吊索与锚碇 |
 | 青山大桥 | 壮乡头巾意象的曲线双塔、不对称塔冠与双索面 |
 
-![四座主要桥梁的实际网页预览](bridges-preview.jpg)
+![四座主要桥梁的实际网页预览](../screenshots/modeling/bridges-preview.jpg)
 
-![补齐桃源大桥后的实际网页近景](taoyuan-bridge-preview.png)
+![补齐桃源大桥后的实际网页近景](../screenshots/modeling/taoyuan-bridge-preview.png)
 
 ## 数据与精度
 
@@ -31,7 +31,7 @@
 
 资料之间存在表述差异时，以更具体的结构说明和实景为依据。例如五象大桥部分百科摘要误写为独塔，模型采用实景中的双独柱塔。没有将南宁白沙大桥与柳州白沙大桥混用。
 
-参考资料及字段来源保存在 [bridges-source.json](../data/bridges-source.json)：
+参考资料及字段来源保存在 [bridges-source.json](../../data/bridges-source.json)：
 
 - [广西档案馆：邕江大桥](https://www.gxdag.org.cn/show/142/3548)：七孔、双柱墩和主桥尺度。
 - [福州大学：钢管混凝土拱桥桥例简介](https://siberc.fzu.edu.cn/__local/6/6F/29/7C1CCAEDC24D9BB28E4EFA81912_4886B803_FCC7B.pdf?e=.pdf)：永和大桥的中承式桁拱与净跨。

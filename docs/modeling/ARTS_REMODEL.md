@@ -4,7 +4,7 @@
 
 2026-09-09：将原先一字排列的低面数山体和矩形栅板，替换为三角布局的歌剧院、音乐厅、多功能厅，以及随场馆曲面连续起伏的白色格栅屋盖。
 
-![重建后的独立模型](arts-center-preview.png)
+![重建后的独立模型](../screenshots/readme/arts-center-preview.png)
 
 *Blender 独立模型预览；网页中的基础底边会随周边显示地形衔接。*
 
@@ -20,6 +20,6 @@
 
 生成入口为 `blender/arts_landmark.py`，由 `blender/build_city.py` 集成。完整可编辑城市保存在 `blender/nanning-city.blend`；精细和流畅 GLB 使用同一份艺术中心几何。
 
-`scripts/validate_assets.py` 检查公共基座与真实地图水面、替换边界的关系，并比较两种模型的建筑与地标几何数量。当前全城模型大小见 [手机体验](MOBILE.md)，本轮验证见 [验证记录](VALIDATION.md)。
+`scripts/validate_assets.py` 检查公共基座与真实地图水面、替换边界的关系，并比较两种模型的建筑与地标几何数量。当前全城模型大小见 [手机体验](../design/MOBILE.md)，检查方法见 [检查与验证](../VALIDATION.md)，原阶段记录在本地 `work/archive/docs/VALIDATION.md`。
 
 网页中的定位圆环恢复正常深度遮挡，不再透过屋盖绘制。地名标记和探索列表继续显示选择状态。

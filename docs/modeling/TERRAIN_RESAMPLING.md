@@ -41,7 +41,7 @@ work/venv/bin/python scripts/validate_terrain.py
 
 两次中间上下文导出只写入 `work/terrain-resample/context`，地形及道路支承面均重新生成，不从旧 GLB 复制高度。地标水平轮廓快照仅适用于未改动地标平面范围的地形更新。完整数据更新的 `data:fetch` / `data:prepare` 也使用新源与相同显示处理，避免下次准备数据退回旧地形。
 
-版权和许可见 [数据来源](DATA_SOURCES.md) 与站点提供的 `public/data/terrain-attribution.txt`。
+版权和许可见 [数据来源](../DATA_SOURCES.md) 与站点提供的 `public/data/terrain-attribution.txt`。
 
 ## 导出结果
 

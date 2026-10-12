@@ -3,7 +3,7 @@
 Hangyang: silver ship-like podium, scalloped canopy and four mapped towers.
 MixC: curved retail block, pale panel cladding and bronze-framed glass portals.
 Heights and facade details are illustrative, not measured architectural plans.
-See docs/MALLS.md for sources and the boundary of this reconstruction.
+See docs/modeling/MALLS.md for sources and the boundary of this reconstruction.
 """
 import json
 import math

@@ -6,7 +6,7 @@
 
 用公开地图数据和 Blender 模型制作，可以查看城市地标、自动游览，也可以切换光照。
 
-[在线游览](https://wcqqq1214.github.io/nanning-city-atlas/) · [数据来源](docs/DATA_SOURCES.md) · [设计说明](docs/DESIGN.md) · [验收记录](docs/VALIDATION.md)
+[在线游览](https://wcqqq1214.github.io/nanning-city-atlas/) · [数据来源](docs/DATA_SOURCES.md) · [设计说明](docs/DESIGN.md) · [检查与验证](docs/VALIDATION.md)
 
 ![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white)
 ![Blender](https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white)
@@ -16,7 +16,7 @@
 
 </div>
 
-![南宁三维城市沙盘全景，实际网页截图](docs/screenshots/overview.jpg)
+![南宁三维城市沙盘全景，实际网页截图](docs/screenshots/readme/overview.jpg)
 
 ## 地图里有什么
 
@@ -55,7 +55,7 @@
 
 鼠标左键旋转、右键平移、滚轮缩放；触屏单指旋转、双指平移／缩放。手机自动选择轻量模型，也可手动切换画质。
 
-可以查看相思湖、三街两巷、南湖、青秀山、国际会展中心、会展航洋城、万象城、南宁大桥、广西文化艺术中心、两座铁路车站与清厢快速路高架等。已细化 14 座主要跨江桥梁，包含青山、五象、英华、良庆、永和等桥的塔索与拱肋结构，见 [主要桥梁](docs/BRIDGES.md)。会展航洋城与万象城的外观细节、来源和重建方式见 [商业地标](docs/MALLS.md)。龙象塔与广西民族博物馆、广西博物馆的外观细节及重建方式见 [文化地标](docs/CULTURAL_LANDMARKS.md)。完整名单见 [地标目录](data/landmarks.json)。清厢快速路已覆盖从清川大道至厢竹大道、凤岭北路的全线，按当前地图中心线约 14.25 km，包含 31 个主线连接点和 332 个桥墩，范围和近似说明见 [高架建模](docs/VIADUCT.md)。
+可以查看相思湖、三街两巷、南湖、青秀山、国际会展中心、会展航洋城、万象城、南宁大桥、广西文化艺术中心、两座铁路车站与清厢快速路高架等。已细化 14 座主要跨江桥梁，包含青山、五象、英华、良庆、永和等桥的塔索与拱肋结构，见 [主要桥梁](docs/modeling/BRIDGES.md)。会展航洋城与万象城的外观细节、来源和重建方式见 [商业地标](docs/modeling/MALLS.md)。龙象塔与广西民族博物馆、广西博物馆的外观细节及重建方式见 [文化地标](docs/modeling/CULTURAL_LANDMARKS.md)。完整名单见 [地标目录](data/landmarks.json)。清厢快速路已覆盖从清川大道至厢竹大道、凤岭北路的全线，按当前地图中心线约 14.25 km，包含 31 个主线连接点和 332 个桥墩，范围和近似说明见 [高架建模](docs/modeling/VIADUCT.md)。
 
 <details>
 <summary>查看更多场景预览</summary>
@@ -64,11 +64,11 @@
 
 | 广西文化艺术中心 | 广西体育中心 |
 | --- | --- |
-| ![广西文化艺术中心建模预览](docs/arts-center-preview.png) | ![广西体育中心建模预览](docs/sports-center-preview.png) |
+| ![广西文化艺术中心建模预览](docs/screenshots/readme/arts-center-preview.png) | ![广西体育中心建模预览](docs/screenshots/readme/sports-center-preview.png) |
 
 | 南宁站 | 南宁东站 |
 | --- | --- |
-| ![南宁站建模预览](docs/nanning-station-preview.png) | ![南宁东站建模预览](docs/east-station-preview.png) |
+| ![南宁站建模预览](docs/screenshots/readme/nanning-station-preview.png) | ![南宁东站建模预览](docs/screenshots/readme/east-station-preview.png) |
 
 </details>
 
@@ -83,7 +83,7 @@
 | **OpenStreetMap + Copernicus DEM** | 建筑轮廓、道路、水系、林地与地形的数据基础。 |
 | **GLB + Draco** | 压缩精细与轻量两档模型，解码器随站点托管。 |
 
-- [Blender 源文件](blender/nanning-city.blend)：可编辑的城市场景与地标模型。
+- Blender 源文件：`blender/nanning-city.blend` 仅在本地保留，不纳入 Git；网页运行无需该文件，建模输入与恢复边界见 [建模说明](docs/MODELING.md)。
 - [模型资源](public/models/)：约 25.58 MB 的精细模型与 17.64 MB 的轻量模型（按文件字节数计算，1 MB = 1,000,000 字节）。
 - [场景数据](public/data/)：高程、裁剪后的地理数据库、地标与地图元数据。
 
@@ -94,7 +94,7 @@
 建议使用 **Node.js 24**，与仓库 CI 保持一致。仓库已包含预生成模型，浏览项目无需安装 Blender。
 
 ```sh
-git clone https://github.com/wcqqq1214/nanning-city-atlas.git
+git clone --branch dev https://github.com/wcqqq1214/nanning-city-atlas.git
 cd nanning-city-atlas
 npm ci
 npm run dev
@@ -107,20 +107,14 @@ npm run dev
 ```sh
 npm run typecheck
 npm run lint
-node --experimental-strip-types --test scripts/test-tap-gesture.mjs scripts/test-assets.mjs
+npm test
 npm run build:pages
+npm run preview
 ```
 
-静态构建产物生成于 `out/`，默认使用当前仓库的项目子路径。本地按根目录预览：
+静态构建产物生成于 `out/`，默认使用当前仓库的项目子路径。`npm run preview` 自动读取构建中的路径，默认访问 `http://127.0.0.1:4300/nanning-city-atlas/`；可用 `PORT=4301 npm run preview` 更换端口。按根路径构建可运行 `PAGES_BASE_PATH='' npm run build:pages`，预览命令不变。`out/` 是生成产物，不提交到源代码分支。
 
-```sh
-PAGES_BASE_PATH='' npm run build:pages
-python3 -m http.server --directory out 8080
-```
-
-访问 `http://localhost:8080`。`out/` 是生成产物，不提交到源代码分支。
-
-推送到 `main` 后，[GitHub Actions](.github/workflows/pages.yml) 自动检查、构建并部署。Fork 后需在 **Settings → Pages → Source** 选择 **GitHub Actions**。
+开发、提交和推送使用 `dev`，更新 `main` 须另行取得明确授权。经授权推送到 `main` 后，[GitHub Actions](.github/workflows/pages.yml) 自动检查、构建并部署。Fork 后需在 **Settings → Pages → Source** 选择 **GitHub Actions**。
 
 ### 固定视角检查
 
@@ -146,11 +140,12 @@ http://localhost:3000/inspect/?view=residential&material=clay&quality=detail
 | --- | --- |
 | [数据来源](docs/DATA_SOURCES.md) | 地理数据、坐标来源、补充建筑与精度说明。 |
 | [设计说明](docs/DESIGN.md) | 界面、交互、视觉风格与功能设计。 |
-| [手机体验](docs/MOBILE.md) | 轻量模型、渲染策略、测试方法与诊断入口。 |
+| [手机体验](docs/design/MOBILE.md) | 轻量模型、渲染策略、测试方法与诊断入口。 |
 | [建模说明](docs/MODELING.md) | 数据准备、Blender 重建流程与项目结构。 |
-| [城市铁路](docs/RAILWAYS.md) | 铁路来源、两站轨道衔接、桥隧结构与两档细节。 |
-| [剩余高架](docs/ELEVATED_ROADS.md) | 高架与匝道覆盖、共享材质、桥墩避让及两档地形适配。 |
-| [验收记录](docs/VALIDATION.md) · [打磨建议](docs/POLISH.md) | 验证结果、已知限制与后续计划。 |
+| [城市铁路](docs/modeling/RAILWAYS.md) | 铁路来源、两站轨道衔接、桥隧结构与两档细节。 |
+| [剩余高架](docs/modeling/ELEVATED_ROADS.md) | 高架与匝道覆盖、共享材质、桥墩避让及两档地形适配。 |
+| [检查与验证](docs/VALIDATION.md) | 测试入口、模型检查与验证边界。 |
+| [完整文档导航](docs/README.md) | 分类后的界面、道路、地形与地标专题。 |
 
 ## 许可与署名
 
@@ -158,7 +153,7 @@ http://localhost:3000/inspect/?view=residential&material=clay&quality=detail
 | --- | --- |
 | 代码 | [MIT](LICENSE) |
 | 地理数据库及衍生数据库 | ODbL 1.0，**© OpenStreetMap contributors** |
-| 高程数据及衍生模型 | 保留上游归属要求，见 [第三方署名](ATTRIBUTION.md) |
+| 高程数据及衍生模型 | 保留上游归属要求，见 [第三方署名](licenses/ATTRIBUTION.md) |
 | Draco 解码器 | [Apache 2.0](public/draco/LICENSE.txt) |
 
-代码许可不覆盖第三方地理数据。重新分发模型、Blender 场景、渲染图或地理数据时，请保留 [OSM 与高程数据署名](ATTRIBUTION.md)。
+代码许可不覆盖第三方地理数据。重新分发模型、Blender 场景、渲染图或地理数据时，请保留 [OSM 与高程数据署名](licenses/ATTRIBUTION.md)。

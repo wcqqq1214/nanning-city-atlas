@@ -2,7 +2,7 @@
 
 2026-09-09：新增广西体育中心，包含主体育场、西南侧体育馆和东南侧游泳跳水馆。探索目录与城市漫游共 21 站，其中 15 个点有独立地标模型。
 
-![广西体育中心独立模型预览](sports-center-preview.png)
+![广西体育中心独立模型预览](../screenshots/readme/sports-center-preview.png)
 
 *Blender 预览。网页中三座场馆按地图坐标分布，基础与各自的场地标高衔接。*
 
@@ -26,4 +26,4 @@
 - 生成代码：`blender/sports_landmark.py`，经 `blender/build_city.py` 导出到完整城市 `.blend` 和两种 GLB。
 - 场馆群为 47,412 个三角形；检查顶点与法线有限、没有退化三角形，Blender 网格验证无需修复。
 - 资产检查验证位置投影、屋顶轮廓与替换范围、水面避让、精细和流畅版的场馆几何一致。新地标继承图层开关、点击定位、近景和漫游。
-- 当前模型大小和手机使用边界见 [手机体验](MOBILE.md)，网页验证见 [验证记录](VALIDATION.md)。
+- 当前模型大小和手机使用边界见 [手机体验](../design/MOBILE.md)，网页检查方法见 [检查与验证](../VALIDATION.md)，原阶段记录在本地 `work/archive/docs/VALIDATION.md`。

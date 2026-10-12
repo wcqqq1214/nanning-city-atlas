@@ -54,4 +54,6 @@ npm run build:pages
 
 | 龙象塔 | 广西民族博物馆 | 广西博物馆 |
 | --- | --- | --- |
-| ![龙象塔](qingxiu-preview.png) | ![广西民族博物馆](ethnic-museum-preview.png) | ![广西博物馆](gx-museum-preview.png) |
+| ![龙象塔](../screenshots/modeling/qingxiu-preview.png) | ![广西民族博物馆](../screenshots/modeling/ethnic-museum-preview.png) | ![广西博物馆](../screenshots/modeling/gx-museum-preview.png) |
+
+预览渲染输出位于 `work/renders/cultural/`，不会直接覆盖文档插图；检查后选图更新 `docs/screenshots/modeling/`。
