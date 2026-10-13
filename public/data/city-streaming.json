@@ -1,0 +1,1574 @@
+{
+  "version": 1,
+  "units": "100m",
+  "profiles": {
+    "detail": {
+      "sourceSha256": "c177b58416cffad02c182c3d1fa2ea48af85e39d5a1405eea790955f9bcfc696",
+      "sourceBytes": 24308092,
+      "base": {
+        "id": "base",
+        "url": "/models/stream/detail/base.glb",
+        "bytes": 19736616,
+        "sha256": "598c51fcf4e02dfde17f60a99df4c89bdedda63632929df4e967d13834cf4ae7",
+        "bounds": [
+          -149.76803588867188,
+          -139.1500244140625,
+          184.68572998046875,
+          109.05668640136719
+        ],
+        "geometryBytes": 122722356,
+        "triangles": 2266487,
+        "layer": "roads"
+      },
+      "details": [
+        {
+          "id": "transport--3--2",
+          "url": "/models/stream/detail/transport--3--2.glb",
+          "bytes": 47416,
+          "sha256": "31c2cea2801c4c89a73ca944ab8a410c70f7d49cb5df2df9241dbab5835606f7",
+          "bounds": [
+            -107.32150268554688,
+            -59.53072738647461,
+            -106.80908203125,
+            -59.135597229003906
+          ],
+          "geometryBytes": 1752,
+          "triangles": 28,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--4--1",
+          "url": "/models/stream/detail/transport--4--1.glb",
+          "bytes": 65232,
+          "sha256": "eeb0ed5338c7f08de26f2c4ff70f1fa12f64ead5f0d7aa755a75cdc6e472c6d8",
+          "bounds": [
+            -148.73422241210938,
+            -59.137359619140625,
+            -104.91800689697266,
+            20.82320785522461
+          ],
+          "geometryBytes": 97344,
+          "triangles": 1684,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--4-0",
+          "url": "/models/stream/detail/transport--4-0.glb",
+          "bytes": 51364,
+          "sha256": "7ab623ff9a7812d348b5b694fe67606bd44b93a2a99eff9040a8305fd7621911",
+          "bounds": [
+            -148.5032958984375,
+            20.878082275390625,
+            -134.97415161132812,
+            22.742488861083984
+          ],
+          "geometryBytes": 16260,
+          "triangles": 267,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2--2",
+          "url": "/models/stream/detail/transport--2--2.glb",
+          "bytes": 88184,
+          "sha256": "3160bea9b9a9909fc44642c7e3981d981b4cc408c1f7f75b69d0d31d0ca5e0af",
+          "bounds": [
+            -97.32015228271484,
+            -91.30781555175781,
+            -24.70945930480957,
+            -25.112829208374023
+          ],
+          "geometryBytes": 363840,
+          "triangles": 6140,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2--1",
+          "url": "/models/stream/detail/transport--2--1.glb",
+          "bytes": 439776,
+          "sha256": "e96ad524d4d77286da7296f4d06fa8191866d2b59c1180091db1c7f41c6e0e11",
+          "bounds": [
+            -104.51260375976562,
+            -59.2706184387207,
+            -24.582056045532227,
+            20.879667282104492
+          ],
+          "geometryBytes": 3564204,
+          "triangles": 59497,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2-1",
+          "url": "/models/stream/detail/transport--2-1.glb",
+          "bytes": 89296,
+          "sha256": "98e57d2f5dfea7a8f624c793292aa453e22b80fc771e607f251576ec33d3868d",
+          "bounds": [
+            -102.85442352294922,
+            20.809675216674805,
+            -24.618778228759766,
+            99.92684173583984
+          ],
+          "geometryBytes": 234540,
+          "triangles": 3877,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--3",
+          "url": "/models/stream/detail/transport-0--3.glb",
+          "bytes": 108100,
+          "sha256": "d6fbf53e0c9bf5c5e1f0d64b163e85a5beb099acc915fc28269711adf6913949",
+          "bounds": [
+            -24.571990966796875,
+            -132.15567016601562,
+            55.348541259765625,
+            -59.370094299316406
+          ],
+          "geometryBytes": 336756,
+          "triangles": 5713,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--1",
+          "url": "/models/stream/detail/transport-0--1.glb",
+          "bytes": 740004,
+          "sha256": "39a3a798c7951e4b6e102d8dc62388a065b701a085ae50487d8a26ab5a6698bb",
+          "bounds": [
+            -24.778654098510742,
+            -59.138370513916016,
+            55.49654769897461,
+            20.88360023498535
+          ],
+          "geometryBytes": 6733092,
+          "triangles": 111739,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0-1",
+          "url": "/models/stream/detail/transport-0-1.glb",
+          "bytes": 160376,
+          "sha256": "60b93791d5551168530d1a58b42a19bda5096c69d8c655c1a14096d885c0b981",
+          "bounds": [
+            -24.74576187133789,
+            20.83129119873047,
+            55.376461029052734,
+            100.86701965332031
+          ],
+          "geometryBytes": 658452,
+          "triangles": 11171,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1-2",
+          "url": "/models/stream/detail/transport--1-2.glb",
+          "bytes": 50296,
+          "sha256": "80145a2a2212f48a67233f27ee63d2fb83a77487a750dcf2e3174c7450ecae2c",
+          "bounds": [
+            -1.788011074066162,
+            100.82573699951172,
+            0.2769929766654968,
+            107.94744110107422
+          ],
+          "geometryBytes": 11208,
+          "triangles": 196,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--3",
+          "url": "/models/stream/detail/transport-2--3.glb",
+          "bytes": 160696,
+          "sha256": "994dcafdc9da1fb8c0a06bd32dcd6da6f16b26a407a87618d7cd9a7c0f033b46",
+          "bounds": [
+            55.307525634765625,
+            -138.84112548828125,
+            135.31661987304688,
+            -59.1124153137207
+          ],
+          "geometryBytes": 632112,
+          "triangles": 10752,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--1",
+          "url": "/models/stream/detail/transport-2--1.glb",
+          "bytes": 239960,
+          "sha256": "77bf3501c1f4dc27fb1b523ef66b182127be0417967fda1161dfa9283d2198c5",
+          "bounds": [
+            55.13972854614258,
+            -59.17595672607422,
+            135.65911865234375,
+            20.867307662963867
+          ],
+          "geometryBytes": 1109484,
+          "triangles": 17111,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2-1",
+          "url": "/models/stream/detail/transport-2-1.glb",
+          "bytes": 445680,
+          "sha256": "92c00e14c8bd14f7f2d1f65d8d628f354dc52947f2378e6b3cff3e1d4f1e81b2",
+          "bounds": [
+            55.246429443359375,
+            20.692535400390625,
+            135.54739379882812,
+            78.7696762084961
+          ],
+          "geometryBytes": 2627340,
+          "triangles": 45151,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-4--3",
+          "url": "/models/stream/detail/transport-4--3.glb",
+          "bytes": 57248,
+          "sha256": "9dfa854fa5c6fdf5219e29dbf1b549c1edac3b862bed4f9235804a68b526c52e",
+          "bounds": [
+            158.51109313964844,
+            -114.94642639160156,
+            180.28114318847656,
+            -72.95220947265625
+          ],
+          "geometryBytes": 56988,
+          "triangles": 1051,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3--1",
+          "url": "/models/stream/detail/transport-3--1.glb",
+          "bytes": 440868,
+          "sha256": "f664d1ac2357934758132dbf930af6dbe12dd109a66709d839ff0b50076de690",
+          "bounds": [
+            135.05857849121094,
+            -59.19131851196289,
+            184.6853790283203,
+            20.914180755615234
+          ],
+          "geometryBytes": 2490048,
+          "triangles": 41786,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3-0",
+          "url": "/models/stream/detail/transport-3-0.glb",
+          "bytes": 141284,
+          "sha256": "6e368a1cb0f3f080e4707c359d4d37352887b61544336847e71c9fff7fc69ffb",
+          "bounds": [
+            135.12059020996094,
+            20.794645309448242,
+            164.9304962158203,
+            41.4871826171875
+          ],
+          "geometryBytes": 574716,
+          "triangles": 9663,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-1--1",
+          "url": "/models/stream/detail/transport-1--1.glb",
+          "bytes": 123000,
+          "sha256": "bd328bc4f7a7b84aa442a71ffa7da9d8d8eeeabc3d02eaffebf4552563223658",
+          "bounds": [
+            36.297420501708984,
+            -37.400245666503906,
+            48.73556900024414,
+            -33.26911926269531
+          ],
+          "geometryBytes": 913920,
+          "triangles": 15232,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--2",
+          "url": "/models/stream/detail/transport-2--2.glb",
+          "bytes": 144420,
+          "sha256": "3d55485107757eae8eeb11caf98060d71088a9f5e7a326f10ab5881d80b2dc31",
+          "bounds": [
+            106.54536437988281,
+            -79.8547134399414,
+            113.08320617675781,
+            -66.73047637939453
+          ],
+          "geometryBytes": 1036440,
+          "triangles": 17274,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2-0",
+          "url": "/models/stream/detail/transport--2-0.glb",
+          "bytes": 94700,
+          "sha256": "61b44ff9a760038b1366bb7889c3358033e04aab0b2d4b78e4afebad52cf9a3e",
+          "bounds": [
+            -52.52149963378906,
+            0.7107089757919312,
+            -52.11612319946289,
+            10.319799423217773
+          ],
+          "geometryBytes": 687120,
+          "triangles": 11452,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3--2",
+          "url": "/models/stream/detail/transport-3--2.glb",
+          "bytes": 132016,
+          "sha256": "b4c8ed931e479ecf1266ab50a68ce57fa49fef201b3fc98c621c0768b1bb7b50",
+          "bounds": [
+            121.95315551757812,
+            -97.73204803466797,
+            184.51971435546875,
+            -37.77231216430664
+          ],
+          "geometryBytes": 878256,
+          "triangles": 14608,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0-0",
+          "url": "/models/stream/detail/transport-0-0.glb",
+          "bytes": 198144,
+          "sha256": "5e399a801a468f795c2de859c77ed3fba9f79df737d957519d1933271728a480",
+          "bounds": [
+            -52.75966262817383,
+            -4.3742594718933105,
+            82.0921859741211,
+            56.283302307128906
+          ],
+          "geometryBytes": 1578840,
+          "triangles": 26402,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-1--2",
+          "url": "/models/stream/detail/transport-1--2.glb",
+          "bytes": 103108,
+          "sha256": "626647deeb35f4920b435c05d06302c3f79bdcd03d63e2f85ed274cf2a79e9e2",
+          "bounds": [
+            51.96696090698242,
+            -56.62729263305664,
+            57.829627990722656,
+            -49.653934478759766
+          ],
+          "geometryBytes": 615960,
+          "triangles": 10266,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--2",
+          "url": "/models/stream/detail/transport-0--2.glb",
+          "bytes": 103752,
+          "sha256": "0fb4db65bc63222c29e2de6d77568660bbcaeaf38d4d5da9b3ddb27b1e36ac5d",
+          "bounds": [
+            21.180932998657227,
+            -55.47917556762695,
+            30.0914249420166,
+            -52.8624153137207
+          ],
+          "geometryBytes": 643800,
+          "triangles": 10730,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1--1",
+          "url": "/models/stream/detail/transport--1--1.glb",
+          "bytes": 165592,
+          "sha256": "1f9ba129a422a2e0b38cef2babc37aaad6275ba13322734f0fc811abb0721f13",
+          "bounds": [
+            -28.610443115234375,
+            -35.131080627441406,
+            -7.731685638427734,
+            -11.090083122253418
+          ],
+          "geometryBytes": 1344840,
+          "triangles": 22414,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "landmark-arts-center",
+          "url": "/models/stream/detail/landmark-arts-center.glb",
+          "bytes": 99376,
+          "sha256": "3d78980c01bbcc0be64028fd643a63b495b7498a8793dec9f01054ec4772d8e0",
+          "bounds": [
+            66.64254760742188,
+            -50.678382873535156,
+            68.43882751464844,
+            -48.89365005493164
+          ],
+          "geometryBytes": 524880,
+          "triangles": 8748,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-changyou",
+          "url": "/models/stream/detail/landmark-changyou.glb",
+          "bytes": 136300,
+          "sha256": "2d58647733d9ff9f7c6e6f6234d36719128fa04ddf44221365004f0353e7f000",
+          "bounds": [
+            14.537799835205078,
+            -10.995558738708496,
+            15.221166610717773,
+            -10.362296104431152
+          ],
+          "geometryBytes": 725160,
+          "triangles": 12086,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-east-station",
+          "url": "/models/stream/detail/landmark-east-station.glb",
+          "bytes": 123748,
+          "sha256": "7576c4c7590764e0edef6346474f9b0e9691ea269a6d6e0196645f410e5ff468",
+          "bounds": [
+            110.05907440185547,
+            19.541826248168945,
+            115.50218200683594,
+            24.463529586791992
+          ],
+          "geometryBytes": 1056240,
+          "triangles": 17604,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-ethnic-museum",
+          "url": "/models/stream/detail/landmark-ethnic-museum.glb",
+          "bytes": 55400,
+          "sha256": "db56924ef73880141d5f3a14b4ad69464eb8ff446b070488b1bd56c57c33df39",
+          "bounds": [
+            99.49581909179688,
+            -54.321617126464844,
+            100.83381652832031,
+            -54.261146545410156
+          ],
+          "geometryBytes": 67680,
+          "triangles": 1128,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-expo",
+          "url": "/models/stream/detail/landmark-expo.glb",
+          "bytes": 85648,
+          "sha256": "d58a923a6c18dfdbc8c0bd37814d8c885fe6f882f0b4946313778f7f38fadddf",
+          "bounds": [
+            75.97372436523438,
+            -16.875770568847656,
+            80.55430603027344,
+            -12.436392784118652
+          ],
+          "geometryBytes": 383280,
+          "triangles": 6388,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-gx-museum",
+          "url": "/models/stream/detail/landmark-gx-museum.glb",
+          "bytes": 54500,
+          "sha256": "2fca85136806bddf77a665c4553f1ca9942a54feaa519a54d196756b7c8a09d9",
+          "bounds": [
+            31.90675163269043,
+            -11.730231285095215,
+            32.22975158691406,
+            -10.382930755615234
+          ],
+          "geometryBytes": 88080,
+          "triangles": 1468,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-hangyang",
+          "url": "/models/stream/detail/landmark-hangyang.glb",
+          "bytes": 130888,
+          "sha256": "fa9a83a97c5cb351dac9e926a7f1f0ba2752747737f9358699fde2194b844f84",
+          "bounds": [
+            81.61909484863281,
+            -10.03061294555664,
+            84.4490966796875,
+            -8.912612915039062
+          ],
+          "geometryBytes": 1215360,
+          "triangles": 20256,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-mixc",
+          "url": "/models/stream/detail/landmark-mixc.glb",
+          "bytes": 64932,
+          "sha256": "d068fbcedd1455e0456a268cf794ba638d24d05da67150472955efbb40aecc20",
+          "bounds": [
+            90.00604248046875,
+            -13.133321762084961,
+            92.77796936035156,
+            -11.0406494140625
+          ],
+          "geometryBytes": 246600,
+          "triangles": 4110,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-nanhu",
+          "url": "/models/stream/detail/landmark-nanhu.glb",
+          "bytes": 88096,
+          "sha256": "7688f88a9830b01d696ffd41f37a4213e3d5a67326da1b7778e1fea4bb745297",
+          "bounds": [
+            45.419742584228516,
+            -19.846607208251953,
+            47.18670654296875,
+            -17.435060501098633
+          ],
+          "geometryBytes": 427872,
+          "triangles": 7240,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-nanning-station",
+          "url": "/models/stream/detail/landmark-nanning-station.glb",
+          "bytes": 104896,
+          "sha256": "8f0f8a0b124ff13155b2ca310a1f1230eb15b394c7387323efbba9fad9d76ae5",
+          "bounds": [
+            7.914364337921143,
+            3.507627010345459,
+            13.279404640197754,
+            7.270913600921631
+          ],
+          "geometryBytes": 661440,
+          "triangles": 11040,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-qingxiu",
+          "url": "/models/stream/detail/landmark-qingxiu.glb",
+          "bytes": 97824,
+          "sha256": "70616ed860c72edd3005800d800e8bb4ed70e8849c464cfd2dd7f77c6eaeb24e",
+          "bounds": [
+            87.99409484863281,
+            -46.704734802246094,
+            88.12185668945312,
+            -46.57697296142578
+          ],
+          "geometryBytes": 447408,
+          "triangles": 7452,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-sports-center",
+          "url": "/models/stream/detail/landmark-sports-center.glb",
+          "bytes": 60096,
+          "sha256": "a50b7795dbe90c32fc9d01366e7a3205f305ae96b974d8ca2edbda65329a296f",
+          "bounds": [
+            91.37959289550781,
+            -70.52539825439453,
+            92.33020782470703,
+            -67.51139831542969
+          ],
+          "geometryBytes": 170040,
+          "triangles": 2834,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-tingzi",
+          "url": "/models/stream/detail/landmark-tingzi.glb",
+          "bytes": 113140,
+          "sha256": "1718254c5ca56071a1a8dcc64d932eb0f3a2889fee5e8c4a47171c0db411da45",
+          "bounds": [
+            17.346858978271484,
+            -35.94792938232422,
+            19.994335174560547,
+            -32.748451232910156
+          ],
+          "geometryBytes": 787200,
+          "triangles": 13160,
+          "layer": "buildings"
+        },
+        {
+          "id": "transport--4--2",
+          "url": "/models/stream/detail/transport--4--2.glb",
+          "bytes": 136120,
+          "sha256": "330c74c2eb92c07f0273b0409064a37897df83ea7c5599cf0a9719a80dad07a0",
+          "bounds": [
+            -149.76803588867188,
+            -75.45340728759766,
+            -108.77250671386719,
+            -64.906494140625
+          ],
+          "geometryBytes": 543156,
+          "triangles": 9109,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport--2--3",
+          "url": "/models/stream/detail/transport--2--3.glb",
+          "bytes": 435380,
+          "sha256": "f2b3d746b42f73dc4280c4cad9c239f6dcae039aded33d0e9382c59dc106455a",
+          "bounds": [
+            -102.16511535644531,
+            -110.73085021972656,
+            -24.891990661621094,
+            -59.04228973388672
+          ],
+          "geometryBytes": 2459604,
+          "triangles": 41129,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1--3",
+          "url": "/models/stream/detail/transport--1--3.glb",
+          "bytes": 48644,
+          "sha256": "904a69f2463b471d22d500fcaa11d1cb05a7131899fc23d61fe986a2648647f6",
+          "bounds": [
+            -41.76763916015625,
+            -110.7511978149414,
+            -28.385915756225586,
+            -71.71580505371094
+          ],
+          "geometryBytes": 12960,
+          "triangles": 216,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-3--3",
+          "url": "/models/stream/detail/transport-3--3.glb",
+          "bytes": 140404,
+          "sha256": "2b54530fd32901ecef3cfc9367597537f4b2b65f6bb84403683edaf2f9c26a84",
+          "bounds": [
+            131.9261016845703,
+            -109.11068725585938,
+            156.50628662109375,
+            -59.07548141479492
+          ],
+          "geometryBytes": 755592,
+          "triangles": 12606,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-2-0",
+          "url": "/models/stream/detail/transport-2-0.glb",
+          "bytes": 128004,
+          "sha256": "fc1031b49cb38e7c6a1868cccd8f7c852af35df4fc6592e5eb596952c5f85485",
+          "bounds": [
+            55.24927520751953,
+            -19.32076644897461,
+            135.44544982910156,
+            22.839786529541016
+          ],
+          "geometryBytes": 764280,
+          "triangles": 12738,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-4--1",
+          "url": "/models/stream/detail/transport-4--1.glb",
+          "bytes": 58780,
+          "sha256": "a4966766e79250c5181d421e418a48b3a64c1672d369d54d2d3a38b9b63813ad",
+          "bounds": [
+            138.09494018554688,
+            -59.13968276977539,
+            184.55369567871094,
+            10.140018463134766
+          ],
+          "geometryBytes": 65148,
+          "triangles": 1067,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3-1",
+          "url": "/models/stream/detail/transport-3-1.glb",
+          "bytes": 54292,
+          "sha256": "78ef850a3cf8b658364c872942fe65dc781362a1633fa5f55d4a939282b0fdc5",
+          "bounds": [
+            135.33421325683594,
+            31.265670776367188,
+            157.88580322265625,
+            79.81697082519531
+          ],
+          "geometryBytes": 36648,
+          "triangles": 598,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        }
+      ]
+    },
+    "smooth": {
+      "sourceSha256": "4c48e93949e148ace0ecc01617fa6666981a8f52fddd501edf1e3f2365777311",
+      "sourceBytes": 16867248,
+      "base": {
+        "id": "base",
+        "url": "/models/stream/smooth/base.glb",
+        "bytes": 14210700,
+        "sha256": "9fa342cce458471aa03fbef0268fac6e8ff4f2eb17bb0ff005174aa9ca2d98d4",
+        "bounds": [
+          -149.76803588867188,
+          -139.1500244140625,
+          184.68572998046875,
+          109.05668640136719
+        ],
+        "geometryBytes": 93233700,
+        "triangles": 1784872,
+        "layer": "roads"
+      },
+      "details": [
+        {
+          "id": "transport--3--2",
+          "url": "/models/stream/smooth/transport--3--2.glb",
+          "bytes": 46852,
+          "sha256": "27b8e81ad2024b35b9c31a0d113c88ab537f74dfe232c3f464384e3cac80062c",
+          "bounds": [
+            -107.06098937988281,
+            -59.34623336791992,
+            -106.97779083251953,
+            -59.25564956665039
+          ],
+          "geometryBytes": 840,
+          "triangles": 20,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--4--1",
+          "url": "/models/stream/smooth/transport--4--1.glb",
+          "bytes": 58948,
+          "sha256": "bddf30a638bbe8ee7b16937c58f4992e417434af062be282427b124c04af0350",
+          "bounds": [
+            -148.62770080566406,
+            -59.135440826416016,
+            -104.91800689697266,
+            20.82320785522461
+          ],
+          "geometryBytes": 62304,
+          "triangles": 1084,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2--2",
+          "url": "/models/stream/smooth/transport--2--2.glb",
+          "bytes": 52248,
+          "sha256": "bd7302b50e774b513982a484c184da1912143b69c9c959d438f003685017f2b2",
+          "bounds": [
+            -96.53050994873047,
+            -78.94575500488281,
+            -32.48813247680664,
+            -25.112829208374023
+          ],
+          "geometryBytes": 38376,
+          "triangles": 674,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2--1",
+          "url": "/models/stream/smooth/transport--2--1.glb",
+          "bytes": 313952,
+          "sha256": "b748d3ac727bce32408e95345aafcbd815084cf6fd4f63ec4ec6223395145d62",
+          "bounds": [
+            -104.51260375976562,
+            -59.2706184387207,
+            -24.582056045532227,
+            20.927316665649414
+          ],
+          "geometryBytes": 2070792,
+          "triangles": 34666,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2-0",
+          "url": "/models/stream/smooth/transport--2-0.glb",
+          "bytes": 66012,
+          "sha256": "2f643e5b1f26d6942af8d51f394625c1f0975cd5aabc5c513e83702e9867d565",
+          "bounds": [
+            -66.1568374633789,
+            0.7107089757919312,
+            -25.287792205810547,
+            41.384639739990234
+          ],
+          "geometryBytes": 247212,
+          "triangles": 4153,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--3",
+          "url": "/models/stream/smooth/transport-0--3.glb",
+          "bytes": 89600,
+          "sha256": "f5d84d37525cd310e44389acab9bf0cce3fc0ff8bf96504cf0364b65ef7e4b08",
+          "bounds": [
+            -24.572006225585938,
+            -132.15567016601562,
+            55.397796630859375,
+            -59.370094299316406
+          ],
+          "geometryBytes": 232212,
+          "triangles": 4007,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--1",
+          "url": "/models/stream/smooth/transport-0--1.glb",
+          "bytes": 385932,
+          "sha256": "d115ea505a9cc6406ac848997aa0cdb861c0d42dd01a8fc047998cbed6f0e4f7",
+          "bounds": [
+            -24.778654098510742,
+            -59.138370513916016,
+            55.49654769897461,
+            20.88360023498535
+          ],
+          "geometryBytes": 2845176,
+          "triangles": 47134,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0-1",
+          "url": "/models/stream/smooth/transport-0-1.glb",
+          "bytes": 106168,
+          "sha256": "56b3e3f9bfef009f7370bfe4f86bc3642375099c214c9459b9c1241e25d42a42",
+          "bounds": [
+            -24.74576187133789,
+            20.83129119873047,
+            55.376461029052734,
+            100.86531829833984
+          ],
+          "geometryBytes": 329052,
+          "triangles": 5691,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1-2",
+          "url": "/models/stream/smooth/transport--1-2.glb",
+          "bytes": 49324,
+          "sha256": "54d1195d8bf13f76807038b1170d2f85a3986c4214b7b4c2ed7965ad379f336e",
+          "bounds": [
+            -1.788011074066162,
+            100.84444427490234,
+            0.11370974779129028,
+            107.94758605957031
+          ],
+          "geometryBytes": 8652,
+          "triangles": 155,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--3",
+          "url": "/models/stream/smooth/transport-2--3.glb",
+          "bytes": 107020,
+          "sha256": "c79a0a57aa6605539dd612d971eaed39925001bb47dfe37cb179316a3f0c2903",
+          "bounds": [
+            55.26792907714844,
+            -138.84112548828125,
+            135.31996154785156,
+            -59.18846130371094
+          ],
+          "geometryBytes": 327876,
+          "triangles": 5569,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--1",
+          "url": "/models/stream/smooth/transport-2--1.glb",
+          "bytes": 161784,
+          "sha256": "83f4fe8c4918a3d595e97e79a74a26320d1599f95c63bc7cb2e7cb42c20e4220",
+          "bounds": [
+            55.13972854614258,
+            -58.83364486694336,
+            135.65911865234375,
+            20.867307662963867
+          ],
+          "geometryBytes": 647664,
+          "triangles": 9592,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2-1",
+          "url": "/models/stream/smooth/transport-2-1.glb",
+          "bytes": 235900,
+          "sha256": "bb4ff6e099b4ce8d46b4a8d9969fff423a507ddc347e7d53d4087d72a16b2cbb",
+          "bounds": [
+            55.246429443359375,
+            20.692535400390625,
+            135.54739379882812,
+            78.7696762084961
+          ],
+          "geometryBytes": 1177152,
+          "triangles": 20976,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-4--3",
+          "url": "/models/stream/smooth/transport-4--3.glb",
+          "bytes": 52908,
+          "sha256": "befce599067aae00488869e941e510c24d1909d20125d7f545dd95d0c8b1bb4d",
+          "bounds": [
+            158.72430419921875,
+            -114.58547973632812,
+            179.03524780273438,
+            -72.98199462890625
+          ],
+          "geometryBytes": 34932,
+          "triangles": 677,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3--1",
+          "url": "/models/stream/smooth/transport-3--1.glb",
+          "bytes": 259892,
+          "sha256": "82ea5e2dc0e47e2370484fd2e31c41312cf616140e541b3b55f19922009722e9",
+          "bounds": [
+            135.05857849121094,
+            -59.19131851196289,
+            184.6853790283203,
+            20.914180755615234
+          ],
+          "geometryBytes": 1267764,
+          "triangles": 21407,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-1--1",
+          "url": "/models/stream/smooth/transport-1--1.glb",
+          "bytes": 72092,
+          "sha256": "1039ad588a7821da3af612cedd663c1dc6aba862dd2e13b1dfaf056fbdda32da",
+          "bounds": [
+            36.297420501708984,
+            -37.400245666503906,
+            48.735572814941406,
+            -33.26911544799805
+          ],
+          "geometryBytes": 311760,
+          "triangles": 5196,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-2--2",
+          "url": "/models/stream/smooth/transport-2--2.glb",
+          "bytes": 82692,
+          "sha256": "db15e3eb1bde155bb2aee0bf161ddb5e8362029d05191dade50202c0124f9ccf",
+          "bounds": [
+            106.54536437988281,
+            -79.8547134399414,
+            113.08321380615234,
+            -66.73047637939453
+          ],
+          "geometryBytes": 352440,
+          "triangles": 5874,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3--2",
+          "url": "/models/stream/smooth/transport-3--2.glb",
+          "bytes": 97176,
+          "sha256": "8929fb7ee71f198e01a10093bf684c06d9e648405d573cc838aab834a3b5aa0a",
+          "bounds": [
+            121.95315551757812,
+            -97.73204803466797,
+            184.51971435546875,
+            -37.77231216430664
+          ],
+          "geometryBytes": 447396,
+          "triangles": 7433,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0-0",
+          "url": "/models/stream/smooth/transport-0-0.glb",
+          "bytes": 114492,
+          "sha256": "1f92a2984a5d5462a7870a18f92591e7b05c16c1419b9b841081fd0f5e36f26e",
+          "bounds": [
+            -52.73676681518555,
+            -4.327008247375488,
+            82.0675048828125,
+            56.283302307128906
+          ],
+          "geometryBytes": 563880,
+          "triangles": 9486,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-1--2",
+          "url": "/models/stream/smooth/transport-1--2.glb",
+          "bytes": 67828,
+          "sha256": "cd5781007fad7bea0ba3a242782e387c374c41879bb17de1c185eaaf0ac56214",
+          "bounds": [
+            51.96696090698242,
+            -56.627296447753906,
+            57.82963180541992,
+            -49.653934478759766
+          ],
+          "geometryBytes": 213720,
+          "triangles": 3562,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-0--2",
+          "url": "/models/stream/smooth/transport-0--2.glb",
+          "bytes": 67288,
+          "sha256": "f43a7e4afe96365c7a0e0fdbb48286d1d2550224989671f085c2530a5ab1ec84",
+          "bounds": [
+            21.180932998657227,
+            -55.47917556762695,
+            30.091434478759766,
+            -52.86241149902344
+          ],
+          "geometryBytes": 223320,
+          "triangles": 3722,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1--1",
+          "url": "/models/stream/smooth/transport--1--1.glb",
+          "bytes": 89052,
+          "sha256": "8caf97b52bfcc2b8ceea950d4c280cfa72b05c46db8ef399f76ac13d129c2201",
+          "bounds": [
+            -28.610443115234375,
+            -35.131080627441406,
+            -7.731685638427734,
+            -11.090079307556152
+          ],
+          "geometryBytes": 465480,
+          "triangles": 7758,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "landmark-arts-center",
+          "url": "/models/stream/smooth/landmark-arts-center.glb",
+          "bytes": 99056,
+          "sha256": "8d4077c245f43640e9f4ef03f520d03c5a5b0d8bf2f06cdd00f68b9542ac9a61",
+          "bounds": [
+            66.64254760742188,
+            -50.678382873535156,
+            68.43882751464844,
+            -48.89365005493164
+          ],
+          "geometryBytes": 524880,
+          "triangles": 8748,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-changyou",
+          "url": "/models/stream/smooth/landmark-changyou.glb",
+          "bytes": 135980,
+          "sha256": "83feb33909eb1e6d5a6e3d60a68b4601c0f1e7e4134e87409324bbc38c9c68f7",
+          "bounds": [
+            14.537799835205078,
+            -10.995558738708496,
+            15.221166610717773,
+            -10.362296104431152
+          ],
+          "geometryBytes": 725160,
+          "triangles": 12086,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-east-station",
+          "url": "/models/stream/smooth/landmark-east-station.glb",
+          "bytes": 123428,
+          "sha256": "17ca1bc92e73262967a82883c67b8b45627c95ecd4eb63d2eaf11655318dcd3b",
+          "bounds": [
+            110.05907440185547,
+            19.541826248168945,
+            115.50218200683594,
+            24.463529586791992
+          ],
+          "geometryBytes": 1056240,
+          "triangles": 17604,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-ethnic-museum",
+          "url": "/models/stream/smooth/landmark-ethnic-museum.glb",
+          "bytes": 55080,
+          "sha256": "6fcd809260f5fffe157c52521e64b0df26595ae1977edd41182c9c9dcef66d79",
+          "bounds": [
+            99.49581909179688,
+            -54.321617126464844,
+            100.83381652832031,
+            -54.261146545410156
+          ],
+          "geometryBytes": 67680,
+          "triangles": 1128,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-expo",
+          "url": "/models/stream/smooth/landmark-expo.glb",
+          "bytes": 85328,
+          "sha256": "2e0ddf3939302fcec73386299c47d3280c62268f07100946a2badc181fe23549",
+          "bounds": [
+            75.97372436523438,
+            -16.875770568847656,
+            80.55430603027344,
+            -12.436392784118652
+          ],
+          "geometryBytes": 383280,
+          "triangles": 6388,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-gx-museum",
+          "url": "/models/stream/smooth/landmark-gx-museum.glb",
+          "bytes": 54180,
+          "sha256": "8a536c62f8d5841b93ac0a017cc1d4651c873cf77a0d96ae11977b740d966b91",
+          "bounds": [
+            31.90675163269043,
+            -11.730231285095215,
+            32.22975158691406,
+            -10.382930755615234
+          ],
+          "geometryBytes": 88080,
+          "triangles": 1468,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-hangyang",
+          "url": "/models/stream/smooth/landmark-hangyang.glb",
+          "bytes": 130568,
+          "sha256": "330e57128ff9875169d3a21f6ee23df4bac106969192f384d91ab6d98c2b4538",
+          "bounds": [
+            81.61909484863281,
+            -10.03061294555664,
+            84.4490966796875,
+            -8.912612915039062
+          ],
+          "geometryBytes": 1215360,
+          "triangles": 20256,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-mixc",
+          "url": "/models/stream/smooth/landmark-mixc.glb",
+          "bytes": 64612,
+          "sha256": "838d932ad16b045824490d1106c8695940c334644352e8f9081acc2d4a028205",
+          "bounds": [
+            90.00604248046875,
+            -13.133321762084961,
+            92.77796936035156,
+            -11.0406494140625
+          ],
+          "geometryBytes": 246600,
+          "triangles": 4110,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-nanhu",
+          "url": "/models/stream/smooth/landmark-nanhu.glb",
+          "bytes": 87776,
+          "sha256": "0de968677c65c3c76b4b56d6a40f4279d34cfb746e0181c50f88faf4316ec74a",
+          "bounds": [
+            45.419742584228516,
+            -19.846607208251953,
+            47.18670654296875,
+            -17.435060501098633
+          ],
+          "geometryBytes": 427872,
+          "triangles": 7240,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-nanning-station",
+          "url": "/models/stream/smooth/landmark-nanning-station.glb",
+          "bytes": 104576,
+          "sha256": "6d7a930a1d95a1b5509c30f3afe6f45e8bf8a73461829644c42a5b0fdad01285",
+          "bounds": [
+            7.914364337921143,
+            3.507627010345459,
+            13.279404640197754,
+            7.270913600921631
+          ],
+          "geometryBytes": 661440,
+          "triangles": 11040,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-qingxiu",
+          "url": "/models/stream/smooth/landmark-qingxiu.glb",
+          "bytes": 97504,
+          "sha256": "9bb9a74f37353d395da06603780c1be16082e52c3be631bdb1a868ff99c12b24",
+          "bounds": [
+            87.99409484863281,
+            -46.704734802246094,
+            88.12185668945312,
+            -46.57697296142578
+          ],
+          "geometryBytes": 447408,
+          "triangles": 7452,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-sports-center",
+          "url": "/models/stream/smooth/landmark-sports-center.glb",
+          "bytes": 59776,
+          "sha256": "4c625b01b2add27bebe41f11296359925850d68742f2b2aaf08505d1202b7564",
+          "bounds": [
+            91.37959289550781,
+            -70.52539825439453,
+            92.33020782470703,
+            -67.51139831542969
+          ],
+          "geometryBytes": 170040,
+          "triangles": 2834,
+          "layer": "buildings"
+        },
+        {
+          "id": "landmark-tingzi",
+          "url": "/models/stream/smooth/landmark-tingzi.glb",
+          "bytes": 112820,
+          "sha256": "2da95c9c4357b7bceb972bca612d8e1e06d07d93f864728452dd248a7907eadf",
+          "bounds": [
+            17.346858978271484,
+            -35.94792938232422,
+            19.994335174560547,
+            -32.748451232910156
+          ],
+          "geometryBytes": 787200,
+          "triangles": 13160,
+          "layer": "buildings"
+        },
+        {
+          "id": "transport--4--2",
+          "url": "/models/stream/smooth/transport--4--2.glb",
+          "bytes": 89128,
+          "sha256": "d4cc6e41f6be6bd7bb3a3ff6f48c2d516cde512bbfadc62792f91f8e39e6cb39",
+          "bounds": [
+            -149.76803588867188,
+            -75.42752075195312,
+            -108.77250671386719,
+            -64.906494140625
+          ],
+          "geometryBytes": 239544,
+          "triangles": 4046,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport--2--3",
+          "url": "/models/stream/smooth/transport--2--3.glb",
+          "bytes": 253704,
+          "sha256": "2eb8da357cdb92a3854d28f1e61579c9deb126fbecba20c2ac33cc5a5aaa358f",
+          "bounds": [
+            -102.16511535644531,
+            -110.73085021972656,
+            -24.891990661621094,
+            -59.04228973388672
+          ],
+          "geometryBytes": 1227852,
+          "triangles": 20619,
+          "layer": "roads",
+          "layers": [
+            "railways",
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--1--3",
+          "url": "/models/stream/smooth/transport--1--3.glb",
+          "bytes": 48324,
+          "sha256": "85a85a51c5672393061a9f1b94c031c627c04ee265315c1c098d1e0aacd4f156",
+          "bounds": [
+            -41.76763916015625,
+            -110.7511978149414,
+            -28.385915756225586,
+            -71.71580505371094
+          ],
+          "geometryBytes": 12960,
+          "triangles": 216,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-3--3",
+          "url": "/models/stream/smooth/transport-3--3.glb",
+          "bytes": 89860,
+          "sha256": "cd8dce827aaab77504a5a3714e9275d7ac257066e8ba47cae6e0c3bf9b1f7a36",
+          "bounds": [
+            131.93435668945312,
+            -109.11068725585938,
+            156.50628662109375,
+            -59.07548141479492
+          ],
+          "geometryBytes": 282048,
+          "triangles": 4712,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-2-0",
+          "url": "/models/stream/smooth/transport-2-0.glb",
+          "bytes": 90676,
+          "sha256": "f7878213eb9307174cbb87c0b2a25b89a527b50e3345526373543037cd8913c5",
+          "bounds": [
+            55.24927520751953,
+            -19.317527770996094,
+            135.44544982910156,
+            22.839786529541016
+          ],
+          "geometryBytes": 339960,
+          "triangles": 5666,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport-3-0",
+          "url": "/models/stream/smooth/transport-3-0.glb",
+          "bytes": 89040,
+          "sha256": "61c1ee0bf6343659fc5e2e417b4b79514db66759f0e08e738136e1fb34b83543",
+          "bounds": [
+            135.12059020996094,
+            20.794645309448242,
+            164.9304962158203,
+            41.4871826171875
+          ],
+          "geometryBytes": 240432,
+          "triangles": 4084,
+          "layer": "roads",
+          "layers": [
+            "railways"
+          ]
+        },
+        {
+          "id": "transport--4-0",
+          "url": "/models/stream/smooth/transport--4-0.glb",
+          "bytes": 48904,
+          "sha256": "b9d631387c66ab8f104e66132fc1b9d2a440048f38bfe6dc94c13792280e96e2",
+          "bounds": [
+            -148.5032958984375,
+            20.878082275390625,
+            -134.97415161132812,
+            22.742488861083984
+          ],
+          "geometryBytes": 10128,
+          "triangles": 168,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport--2-1",
+          "url": "/models/stream/smooth/transport--2-1.glb",
+          "bytes": 72276,
+          "sha256": "430f59ddb8fc8fb1db1f5b3a0561d9c59f0a762a43aa50d781207f9e72f0b626",
+          "bounds": [
+            -102.85442352294922,
+            20.809717178344727,
+            -24.618778228759766,
+            99.92684173583984
+          ],
+          "geometryBytes": 143952,
+          "triangles": 2352,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-4--1",
+          "url": "/models/stream/smooth/transport-4--1.glb",
+          "bytes": 55864,
+          "sha256": "ca70dc563b7dea117cf75dbe09e8c5a61e9bb6538b0ad6da4d83c55b751512e5",
+          "bounds": [
+            138.09494018554688,
+            -59.13968276977539,
+            184.55369567871094,
+            10.140018463134766
+          ],
+          "geometryBytes": 50160,
+          "triangles": 832,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        },
+        {
+          "id": "transport-3-1",
+          "url": "/models/stream/smooth/transport-3-1.glb",
+          "bytes": 52332,
+          "sha256": "d5594d6df8f3aa1a9c2095d21c434f117129c9ad3ba26b6620a17b5310627b19",
+          "bounds": [
+            135.33421325683594,
+            31.265670776367188,
+            157.88580322265625,
+            79.81697082519531
+          ],
+          "geometryBytes": 28188,
+          "triangles": 463,
+          "layer": "roads",
+          "layers": [
+            "roads"
+          ]
+        }
+      ]
+    }
+  }
+}

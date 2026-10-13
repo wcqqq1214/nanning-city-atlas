@@ -18,6 +18,7 @@ import {
   ChevronLeft,
   ChevronDown,
   Search,
+  Share2,
   Orbit,
   Grid2X2,
   Compass,
@@ -60,6 +61,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useCompactLayout, useReducedMotion } from '@/lib/city/display';
 import { searchLandmarks } from '@/lib/city/navigation';
 import { assetUrl } from '@/lib/city/assets';
+import { decodeShare, encodeShare } from '@/lib/city/share';
 import { Slider } from '@/components/ui/slider';
 import {
   Sheet,
@@ -239,6 +241,15 @@ export default function Home() {
   });
   const [ready, setReady] = useState(false);
   const [error, setError] = useState('');
+  const [detailStatus, setDetailStatus] = useState({
+    message: '',
+    retry: false,
+  });
+  const [shareLink, setShareLink] = useState('');
+  const initialShare = useRef(true);
+  const savedCamera = useRef<ReturnType<SceneController['readView']> | null>(
+    null,
+  );
   const [reload, setReload] = useState(0);
   const [tab, setTab] = useState('explore');
   const [selected, setSelected] = useState<string | null>(null);
@@ -368,8 +379,11 @@ export default function Home() {
     const container = host.current;
     setReady(false);
     setError('');
+    setDetailStatus({ message: '', retry: false });
     setMetrics(null);
     setProgress({ message: '正在加载地图', value: 0 });
+    let loadedPlaces: Landmark[] = [];
+    let loadedOverview: Overview | null = null;
     import('@/lib/city/scene')
       .then(({ createCityScene }) => {
         if (abort.signal.aborted) return null;
@@ -378,6 +392,8 @@ export default function Home() {
           {
             progress: (message, value) => setProgress({ message, value }),
             ready: (landmarks, summary) => {
+              loadedPlaces = landmarks;
+              loadedOverview = summary;
               setPlaces(landmarks);
               setOverview(summary);
               setReady(true);
@@ -385,6 +401,8 @@ export default function Home() {
             select: (id) => selectRef.current(id),
             heading: setHeading,
             metrics: setMetrics,
+            detailStatus: (message, retry) =>
+              setDetailStatus({ message, retry }),
             view: (lon, lat) => setCoordinates([lon, lat]),
             interaction: () => interactionRef.current(),
             error: (message) => {
@@ -405,6 +423,32 @@ export default function Home() {
         controller.current = scene;
         scene.apply(options.current);
         if (options.current.selected) scene.focus(options.current.selected);
+        let view = savedCamera.current;
+        if (initialShare.current && loadedOverview) {
+          initialShare.current = false;
+          const shared = decodeShare(
+            window.location.hash,
+            loadedPlaces.map((p) => p.id),
+            loadedOverview.bounds,
+          );
+          if (shared) {
+            options.current = shared.options;
+            setSelected(shared.options.selected);
+            setHour(shared.options.hour);
+            setHeightScale(shared.options.heightScale);
+            setLayers(shared.options.layers);
+            setTopDown(shared.options.topDown);
+            setPanelMode(shared.options.selected ? 'detail' : 'menu');
+            scene.apply(shared.options);
+            view = shared.camera;
+          }
+        }
+        if (view)
+          requestAnimationFrame(() => {
+            if (abort.signal.aborted) return;
+            measureViewport.current();
+            scene.restoreView(view!);
+          });
       })
       .catch((err: unknown) => {
         if (!abort.signal.aborted) {
@@ -413,6 +457,8 @@ export default function Home() {
         }
       });
     return () => {
+      savedCamera.current =
+        controller.current?.readView() ?? savedCamera.current;
       abort.abort();
       controller.current?.dispose();
       controller.current = null;
@@ -611,6 +657,19 @@ export default function Home() {
   };
   const updateLayer = (key: LayerKey, value: boolean) =>
     setLayers((current) => ({ ...current, [key]: value }));
+  const shareView = async () => {
+    if (!controller.current) return;
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.hash = encodeShare(controller.current.readView(), options.current);
+    setShareLink(url.href);
+    try {
+      await navigator.clipboard.writeText(url.href);
+      setToast('视角链接已复制');
+    } catch {
+      setToast('请选中下方链接，手动复制');
+    }
+  };
   const timeLabel = `${Math.floor(hour).toString().padStart(2, '0')}:${hour % 1 ? '30' : '00'}`;
 
   const sidebar = (
@@ -1072,6 +1131,15 @@ export default function Home() {
           广西壮族自治区 <span className="slash">/</span> 南宁
         </div>
         <div className="header-actions">
+          <button
+            className="text-button about-button"
+            onClick={shareView}
+            disabled={!ready}
+            aria-label="分享当前视角"
+          >
+            <Share2 size={16} />
+            分享视角
+          </button>
           <button className="text-button about-button" onClick={openInfo}>
             <Info size={16} />
             项目说明
@@ -1511,6 +1579,9 @@ export default function Home() {
             {(metrics.loadMs / 1000).toFixed(2)} s<br />
             {metrics.triangles.toLocaleString()} 三角形 · {metrics.calls} 次绘制
             · {metrics.pixelRatio.toFixed(2)} 像素比例
+            <br />
+            {metrics.detailAssets ?? 0} 个近景区块 ·{' '}
+            {(metrics.detailGeometryMiB ?? 0).toFixed(2)} MiB 近景几何
           </output>
         )}
         {toast && (
@@ -1519,7 +1590,39 @@ export default function Home() {
             {toast}
           </output>
         )}
+        {ready && detailStatus.message && (
+          <output className="detail-stream-status" aria-live="polite">
+            {detailStatus.message}
+            {detailStatus.retry && (
+              <button onClick={() => controller.current?.retryDetails()}>
+                重试近景
+              </button>
+            )}
+          </output>
+        )}
       </section>
+      <Sheet
+        open={Boolean(shareLink)}
+        onOpenChange={(open) => {
+          if (!open) setShareLink('');
+        }}
+      >
+        <SheetContent side="bottom" className="tools-sheet">
+          <SheetHeader>
+            <SheetTitle>分享当前视角</SheetTitle>
+            <SheetDescription>
+              复制链接，在其他设备继续查看这个地点和镜头。
+            </SheetDescription>
+          </SheetHeader>
+          <input
+            className="share-link-input"
+            aria-label="视角链接"
+            value={shareLink}
+            readOnly
+            onFocus={(event) => event.currentTarget.select()}
+          />
+        </SheetContent>
+      </Sheet>
       <Sheet open={toolsOpen} onOpenChange={setToolsOpen}>
         <SheetContent
           side="bottom"
@@ -1534,6 +1637,16 @@ export default function Home() {
             <SheetDescription>调整视角，或查看操作说明。</SheetDescription>
           </SheetHeader>
           <div className="tools-grid">
+            <button
+              disabled={!ready}
+              onClick={() => {
+                setToolsOpen(false);
+                void shareView();
+              }}
+            >
+              <Share2 size={20} />
+              分享视角
+            </button>
             <button
               disabled={!ready}
               onClick={() => {

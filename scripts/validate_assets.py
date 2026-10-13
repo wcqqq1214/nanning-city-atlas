@@ -280,3 +280,6 @@ print(f'PASS: {len(g["buildings"])} building features ({western} west of the old
 
 from validate_runtime_assets import validate_runtime_assets
 validate_runtime_assets(site_access_plan=args.site_access_plan)
+
+from check_city_streaming import validate as validate_streaming
+validate_streaming()

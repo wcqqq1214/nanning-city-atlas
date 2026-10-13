@@ -14,6 +14,7 @@ export default defineConfig(() => {
   for (const file of [
     './public/data/landmarks.json',
     './public/data/overview.json',
+    './public/data/city-streaming.json',
     './public/models/nanning-city.glb',
     './public/models/nanning-city-mobile.glb',
   ]) {

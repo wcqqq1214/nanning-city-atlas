@@ -15,7 +15,7 @@ npm run build:pages
 npm run preview
 ```
 
-`npm test` 运行 `scripts/test-*.mjs`，覆盖资源版本、选中高亮、平面法线、检查视图与点触交互。静态构建检查首页、资源路径、模型和解码器，但不能替代浏览器交互与性能验收。
+`npm test` 运行 `scripts/test-*.mjs`，覆盖资源版本、选中高亮、平面法线、检查视图、点触交互，以及请求取消/重试/正文超时、细节队列与预算、资源回收、自适应画质和分享输入。静态构建检查首页、资源路径、模型和解码器，但不能替代浏览器交互与性能验收。
 
 默认预览地址为 `http://127.0.0.1:4300/nanning-city-atlas/`，检查页为同一路径下的 `inspect/`。用 `PORT=4301 npm run preview` 更换端口；根路径构建使用 `PAGES_BASE_PATH='' npm run build:pages`，预览命令不变。Fork 的默认路径按仓库名生成，以终端输出为准。
 
@@ -103,3 +103,7 @@ CITY_WATER_MODELS=/absolute/path/to/candidate/models.json node scripts/check-res
 - 手机性能与弱网：参见 [手机体验](design/MOBILE.md)，桌面模拟不替代真机测量。
 
 新的报告与截图写入 `work/`。其他历史建模脚本仍可能依赖旧实验目录；缺少输入时应说明限制，不能用当前资源冒充历史基准。
+
+## 按需加载校验
+
+`python3 scripts/check_city_streaming.py` 证明两档基础与细节资源精确分割完整模型；综合校验也包含此项。`npm run build:pages` 对最终发布目录逐项核对分块字节数与散列。浏览器还应验证首次全景、地标近景、离开释放、图层切换、失败重试、画质切换保留镜头和不同屏幕的分享恢复；单元测试不能代替这些页面验收。

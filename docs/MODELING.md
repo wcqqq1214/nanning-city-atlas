@@ -50,7 +50,7 @@ python3 scripts/validate_assets.py
 - `public/data/landmarks.json`、`overview.json`：网页加载的轻量元数据，后者使用城区展示范围。
 - `public/data/urban-scope-models.json`：城区导出审计清单。
 
-`models:build` 先保存全量场景与中间导出，再运行 `scripts/pack_city.py` 打包平面地形，最后调用 `models:scope` 验证并发布长方形城区模型。打包复用现有 `pack_flat_surfaces.py`，逐面验证顶点、三角面、材质和绕序不变；只将与面法线相差不超过 0.5° 的法线改为浏览器恢复，保留其他显式法线。原始导出留在 `work/full-city/raw-models/`，打包报告为 `work/full-city/data/packing.json`，可编辑 `.blend` 不受此步骤影响。只调整边界时可单独运行 `models:scope`；需要全量中间 GLB 和含几何依赖的 Python 环境，详见 [城区裁切](modeling/URBAN_SCOPE.md)。
+`models:build` 先保存全量场景与中间导出，再运行 `scripts/pack_city.py` 打包平面地形，最后调用 `models:scope` 验证并发布长方形城区模型，再生成基础场景与近景分块。打包复用现有 `pack_flat_surfaces.py`，逐面验证顶点、三角面、材质和绕序不变；只将与面法线相差不超过 0.5° 的法线改为浏览器恢复，保留其他显式法线。原始导出留在 `work/full-city/raw-models/`，打包报告为 `work/full-city/data/packing.json`，可编辑 `.blend` 不受此步骤影响。只调整边界时可单独运行 `models:scope`；需要全量中间 GLB 和含几何依赖的 Python 环境，详见 [城区裁切](modeling/URBAN_SCOPE.md)。
 
 铁路的源数据、站场衔接、桥隧和两档细节说明见 [城市铁路](modeling/RAILWAYS.md)。修改铁路计划后要重新准备林冠计划，确保铁路通道不被树木覆盖。
 
@@ -115,3 +115,5 @@ out/、dist/                 忽略的构建产物
 截至 **2026-09-13**，正式模型已完成固定视角基线、住宅街区、滨水、青秀山与代表性地标校准（P0–P4）。P5 正在推进建筑轮廓与院落、四类街区模板、水库岸线、场地接路及林冠衔接，候选模型尚未接入正式资源；资源预算与整城视觉、交互和性能验收仍待完成。
 
 可以查看相思湖、三街两巷、南湖、青秀山、国际会展中心、会展航洋城、万象城、南宁大桥、广西文化艺术中心、两座铁路车站与清厢快速路高架等。已细化 14 座主要跨江桥梁，包含青山、五象、英华、良庆、永和等桥的塔索与拱肋结构，见 [主要桥梁](modeling/BRIDGES.md)。会展航洋城与万象城的外观细节、来源和重建方式见 [商业地标](modeling/MALLS.md)。龙象塔与广西民族博物馆、广西博物馆的外观细节及重建方式见 [文化地标](modeling/CULTURAL_LANDMARKS.md)。完整名单见 [地标目录](../data/landmarks.json)。清厢快速路已覆盖从清川大道至厢竹大道、凤岭北路的全线，按当前地图中心线约 14.25 km，包含 31 个主线连接点和 332 个桥墩，范围和近似说明见 [高架建模](modeling/VIADUCT.md)。
+
+基础场景与近景区块的生成、完整性约束和加载预算见 [按需加载](modeling/STREAMING.md)。

@@ -2065,3 +2065,36 @@ button:active:not(:disabled) {
     display: none;
   }
 }
+
+.detail-stream-status {
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  transform: translateX(-50%);
+  z-index: 4;
+  max-width: calc(100% - 32px);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--panel, #f4f7f1);
+  color: #315e53;
+  font-size: 12px;
+  box-shadow: 0 2px 12px #163a2414;
+}
+.detail-stream-status button {
+  margin-left: 10px;
+  text-decoration: underline;
+  min-height: 44px;
+}
+.share-link-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c5d3c9;
+  border-radius: 8px;
+  margin-top: 18px;
+}
+@media (max-width: 767px) {
+  .detail-stream-status {
+    bottom: auto;
+    top: 84px;
+  }
+}

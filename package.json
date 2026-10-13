@@ -20,8 +20,9 @@
     "terrain:resample": "python3 scripts/resample_terrain.py",
     "data:prepare": "python3 scripts/prepare_geodata.py",
     "models:build": "blender --background --python-exit-code 1 --python blender/build_city.py && python3 scripts/pack_city.py && npm run models:scope",
-    "models:scope": "python3 scripts/prepare_urban_core_boundary.py && python3 scripts/scope_city.py --publish",
-    "test:data:baseline": "python3 scripts/run_baseline_tests.py"
+    "models:scope": "python3 scripts/prepare_urban_core_boundary.py && python3 scripts/scope_city.py --publish && npm run models:stream",
+    "test:data:baseline": "python3 scripts/run_baseline_tests.py",
+    "models:stream": "python3 scripts/prepare_city_streaming.py"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

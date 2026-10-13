@@ -15,6 +15,8 @@ export type SceneMetrics = {
   triangles: number;
   calls: number;
   pixelRatio: number;
+  detailAssets?: number;
+  detailGeometryMiB?: number;
 };
 export type Landmark = {
   id: string;
@@ -80,6 +82,7 @@ export type CameraView = {
   position: [number, number, number];
   target: [number, number, number];
   fov: number;
+  span?: number;
 };
 export type InspectionProfile = {
   pixelRatio: number;
@@ -101,6 +104,7 @@ export type SceneController = {
   readView: () => CameraView;
   restoreView: (view: CameraView) => void;
   setVisualMode: (mode: VisualMode) => void;
+  retryDetails: () => void;
   dispose: () => void;
 };
 export const DEFAULT_LAYERS: Layers = {

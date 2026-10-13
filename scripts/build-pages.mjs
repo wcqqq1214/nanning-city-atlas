@@ -2,6 +2,7 @@ import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const repository =
@@ -69,11 +70,31 @@ for (const asset of [
   'models/nanning-city-mobile.glb',
   'data/landmarks.json',
   'data/overview.json',
+  'data/city-streaming.json',
   'draco/draco_wasm_wrapper.js',
   'draco/draco_decoder.wasm',
 ]) {
   await access(path.join(output, asset));
 }
 await rm(path.join(output, '.vite'), { recursive: true, force: true });
+const stream = JSON.parse(
+  await readFile(path.join(output, 'data/city-streaming.json'), 'utf8'),
+);
+for (const profile of Object.values(stream.profiles)) {
+  for (const asset of [profile.base, ...profile.details]) {
+    if (
+      !/^\/models\/stream\/(detail|smooth)\/[a-z0-9-]+\.glb$/.test(asset.url)
+    ) {
+      throw new Error(`Invalid streaming asset URL: ${asset.url}`);
+    }
+    const bytes = await readFile(path.join(output, asset.url.slice(1)));
+    if (
+      bytes.length !== asset.bytes ||
+      createHash('sha256').update(bytes).digest('hex') !== asset.sha256
+    ) {
+      throw new Error(`Streaming asset differs from manifest: ${asset.url}`);
+    }
+  }
+}
 await writeFile(path.join(output, '.nojekyll'), '');
 console.log(`GitHub Pages artifact: ${output} (base path: ${basePath || '/'})`);

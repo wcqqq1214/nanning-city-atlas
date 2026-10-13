@@ -7,6 +7,7 @@
 - [数据来源与精度](DATA_SOURCES.md)
 - [界面与交互设计](DESIGN.md)
 - [模型重建、项目结构与维护约定](MODELING.md)
+- [基础城市、近景按需加载与资源预算](modeling/STREAMING.md)
 - [检查命令与验证边界](VALIDATION.md)
 - [建模输入分类与恢复限制](../data/README.md)
 - [第三方许可与署名](../licenses/THIRD_PARTY.md)

@@ -24,6 +24,11 @@ import { landmarkArea } from './landmark-areas';
 import { createNightLighting } from './night-lighting';
 import { createInspectionMaterials } from './inspection-materials';
 import { validCamera } from './inspection';
+import { fetchJson, fetchModel } from './streaming';
+import { AdaptiveQuality, qualityProfile } from './quality';
+import { FramePacer } from './frame-pacing';
+import { disposeObject } from './resources';
+import { DetailStream, type StreamManifest } from './detail-stream';
 
 export async function createCityScene(
   host: HTMLElement,
@@ -36,6 +41,7 @@ export async function createCityScene(
     interaction: () => void;
     error: (message: string) => void;
     metrics: (value: SceneMetrics) => void;
+    detailStatus?: (message: string, retry: boolean) => void;
   },
   signal: AbortSignal,
   quality: QualityPreference = 'auto',
@@ -51,9 +57,14 @@ export async function createCityScene(
   const compactDevice = window.matchMedia(
     `${COMPACT_LAYOUT}, (pointer: coarse)`,
   ).matches;
-  const lightweight =
-    quality === 'smooth' ||
-    (quality === 'auto' && (compactDevice || Boolean(connection?.saveData)));
+  const adaptive = new AdaptiveQuality();
+  let renderProfile = qualityProfile(
+    quality,
+    compactDevice,
+    Boolean(connection?.saveData),
+    adaptive.level,
+  );
+  let lightweight = renderProfile.level === 2;
   const profile = lightweight ? 'smooth' : 'detail';
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#e1eae4');
@@ -67,9 +78,12 @@ export async function createCityScene(
   });
   renderer.setPixelRatio(
     inspection?.pixelRatio ??
-      Math.min(window.devicePixelRatio, lightweight ? 1.25 : 1.7),
+      Math.min(window.devicePixelRatio, renderProfile.pixelRatio) *
+        renderProfile.resolutionScale,
   );
-  renderer.shadowMap.enabled = !lightweight;
+  renderer.shadowMap.enabled = inspection
+    ? !lightweight
+    : renderProfile.shadows;
   renderer.shadowMap.autoUpdate = false;
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -177,7 +191,7 @@ export async function createCityScene(
   scene.add(hemi);
   const sun = new THREE.DirectionalLight('#fff3d7', 2.7);
   sun.position.set(-90, 130, 40);
-  sun.castShadow = !lightweight;
+  sun.castShadow = renderer.shadowMap.enabled;
   scene.add(sun.target);
   const sunOffset = sun.position.clone();
   Object.assign(sun.shadow.camera, {
@@ -215,6 +229,14 @@ export async function createCityScene(
   };
   controls.addEventListener('change', invalidate);
   let city: THREE.Group | null = null;
+  let details: DetailStream<THREE.Group> | null = null;
+  const detailRoots = new Set<THREE.Group>();
+  const nightLights = new Map<
+    THREE.Group,
+    ReturnType<typeof createNightLighting>
+  >();
+  let reconcileDetails = () => {};
+  let lastDetails = 0;
   let areaHighlight: ReturnType<typeof createAreaHighlight> | null = null;
   let places: Landmark[] = [];
   let overview: Overview | null = null;
@@ -258,7 +280,35 @@ export async function createCityScene(
   let loadMs = 0;
   let modelBytes = 0;
   let lastRender = 0;
-  let lastAdaptation = startedAt;
+  const framePacer = new FramePacer();
+  const updateQuality = () => {
+    renderProfile = qualityProfile(
+      quality,
+      compactDevice,
+      Boolean(connection?.saveData),
+      adaptive.level,
+    );
+    lightweight = renderProfile.level === 2;
+    if (inspection) return;
+    renderer.setPixelRatio(
+      Math.min(window.devicePixelRatio, renderProfile.pixelRatio) *
+        renderProfile.resolutionScale,
+    );
+    renderer.shadowMap.enabled = renderProfile.shadows;
+    sun.castShadow = renderProfile.shadows;
+    if (!renderProfile.shadows) {
+      sun.shadow.dispose();
+      sun.shadow.map = null;
+      sun.shadow.mapPass = null;
+    }
+    for (const mesh of meshes)
+      mesh.castShadow =
+        renderProfile.shadows &&
+        !mesh.name.startsWith('Railway_Details_') &&
+        !['Water', 'Reservoir_water_custom'].includes(mesh.name) &&
+        !ceremonialPonds.includes(mesh);
+    dirty = true;
+  };
   let lastLongitude = NaN,
     lastLatitude = NaN,
     lastHeading = NaN;
@@ -427,8 +477,10 @@ export async function createCityScene(
     );
     raycaster.setFromCamera(pointer, camera);
     // Limit raycasting to the interactive landmark meshes, keeping city interaction cheap.
-    const targets = places
-      .map((p) => city!.getObjectByName(`Landmark_${p.id}`))
+    const targets = [city, ...detailRoots]
+      .flatMap((root) =>
+        places.map((p) => root!.getObjectByName(`Landmark_${p.id}`)),
+      )
       .filter((o): o is THREE.Object3D => Boolean(o?.visible));
     const hit = raycaster.intersectObjects(targets, true)[0];
     if (hit) {
@@ -459,10 +511,12 @@ export async function createCityScene(
     frame = requestAnimationFrame(animate);
     if (document.hidden) {
       lastFrameTime = now;
+      metricStart = now;
+      renderedFrames = 0;
       return;
     }
     // Smooth mode caps animated frames at 30 fps and rests when the view is still.
-    if (lightweight && now - lastFrameTime < 1000 / 30 - 0.5) return;
+    if (!framePacer.shouldUpdate(now, lightweight)) return;
     const delta = Math.min(0.06, (now - lastFrameTime) / 1000 || 0.016);
     lastFrameTime = now;
     if (flight) {
@@ -476,6 +530,10 @@ export async function createCityScene(
       if (t >= 1) flight = null;
     }
     controls.update(delta);
+    if (now - lastDetails > 250) {
+      lastDetails = now;
+      reconcileDetails();
+    }
     // Keep panning on this finite geographic tile.
     if (overview) {
       const [x, north] = constrainToScope(
@@ -498,7 +556,7 @@ export async function createCityScene(
     if (dirty || wantsAnimation) {
       sun.target.position.copy(controls.target);
       sun.position.copy(controls.target).add(sunOffset);
-      if (!lightweight && dirty) {
+      if (renderer.shadowMap.enabled && dirty) {
         const range = THREE.MathUtils.clamp(
           camera.position.distanceTo(controls.target) * 0.65,
           10,
@@ -527,34 +585,28 @@ export async function createCityScene(
       const fps =
         now - lastRender > 300
           ? 0
-          : Math.round((renderedFrames * 1000) / (now - metricStart));
-      // Lower resolution only during sustained foreground animation, never from idle frames.
+          : (renderedFrames * 1000) / (now - metricStart);
+      // Active samples only: idle windows cannot lower or restore quality.
       if (
         !inspection &&
         quality === 'auto' &&
         document.hasFocus() &&
-        wantsAnimation &&
-        renderedFrames >= 12 &&
-        fps < 25 &&
-        now - lastAdaptation > 2500 &&
         now - startedAt > 6000
       ) {
-        const nextRatio = Math.max(0.85, renderer.getPixelRatio() - 0.15);
-        if (nextRatio < renderer.getPixelRatio()) {
-          renderer.setPixelRatio(nextRatio);
-          dirty = true;
-        }
-        lastAdaptation = now;
+        if (adaptive.sample(fps, renderedFrames, wantsAnimation))
+          updateQuality();
       }
       if (diagnostics)
         callbacks.metrics({
           profile,
           loadMs,
           modelBytes,
-          fps,
+          fps: Math.round(fps),
           triangles: renderer.info.render.triangles,
           calls: renderer.info.render.calls,
           pixelRatio: renderer.getPixelRatio(),
+          detailAssets: details?.loadedCount ?? 0,
+          detailGeometryMiB: (details?.geometryBytes ?? 0) / 1048576,
         });
       metricStart = now;
       renderedFrames = 0;
@@ -646,6 +698,7 @@ export async function createCityScene(
     controls.removeEventListener('start', startInteraction);
     controls.removeEventListener('change', invalidate);
     controls.dispose();
+    details?.dispose();
     inspectionMaterials?.dispose();
     areaHighlight?.dispose();
     contextStyle?.dispose();
@@ -656,19 +709,7 @@ export async function createCityScene(
     renderer.domElement.removeEventListener('pointercancel', cancelPointer);
     renderer.domElement.removeEventListener('pointermove', onPointerMove);
     renderer.domElement.removeEventListener('webglcontextlost', contextLost);
-    const materials = new Set<THREE.Material>();
-    const geometries = new Set<THREE.BufferGeometry>();
-    scene.traverse((object) => {
-      const mesh = object as THREE.Mesh;
-      if (mesh.geometry) geometries.add(mesh.geometry);
-      if (mesh.material)
-        (Array.isArray(mesh.material)
-          ? mesh.material
-          : [mesh.material]
-        ).forEach((m) => materials.add(m));
-    });
-    geometries.forEach((g) => g.dispose());
-    materials.forEach((m) => m.dispose());
+    disposeObject(scene);
     materialDefaults.forEach((_, m) => m.dispose());
     draco.dispose();
     renderer.dispose();
@@ -684,104 +725,114 @@ export async function createCityScene(
   }
   try {
     callbacks.progress('读取地理资料', 12);
-    const getJson = async <T>(url: string): Promise<T> => {
-      const response = await fetch(url, { signal });
-      if (!response.ok) throw new Error(`无法读取 ${url} (${response.status})`);
-      return response.json();
-    };
     [places, overview] = await Promise.all([
-      getJson<Landmark[]>(assetUrl('/data/landmarks.json')),
-      getJson<Overview>(assetUrl('/data/overview.json')),
+      fetchJson<Landmark[]>(assetUrl('/data/landmarks.json'), signal),
+      fetchJson<Overview>(assetUrl('/data/overview.json'), signal),
     ]);
     if (overview.urbanScope) contextStyle = createContextStyle(overview);
     resize();
-    modelBytes = overview.models[profile].bytes;
+    const streaming = inspection
+      ? null
+      : await fetchJson<StreamManifest>(
+          assetUrl('/data/city-streaming.json'),
+          signal,
+        );
+    if (streaming && streaming.version !== 1)
+      throw new Error('城市资源清单版本不兼容，请刷新页面');
+    const streamProfile = streaming?.profiles[profile];
+    modelBytes = streamProfile?.base.bytes ?? overview.models[profile].bytes;
     callbacks.progress(
       lightweight ? '载入轻量城市模型' : '载入精细城市模型',
       24,
     );
-    const model = await new GLTFLoader()
-      .setDRACOLoader(draco)
-      .loadAsync(
-        assetUrl(
-          lightweight
+    const buffer = await fetchModel(
+      assetUrl(
+        streamProfile
+          ? (streamProfile.base.url as `/${string}`)
+          : lightweight
             ? '/models/nanning-city-mobile.glb'
             : '/models/nanning-city.glb',
-        ),
-        (event) => {
-          if (!signal.aborted)
-            callbacks.progress(
-              '载入南宁城市模型',
-              event.total ? 24 + (event.loaded / event.total) * 65 : 48,
-            );
-        },
-      );
+      ),
+      modelBytes,
+      signal,
+      (fraction) => {
+        if (!signal.aborted)
+          callbacks.progress('载入南宁城市模型', 24 + fraction * 65);
+      },
+    );
+    signal.throwIfAborted();
+    callbacks.progress('整理城市画面', 90);
+    const model = await new GLTFLoader()
+      .setDRACOLoader(draco)
+      .parseAsync(buffer, assetUrl('/models/'));
     if (signal.aborted) {
-      model.scene.traverse((o) => {
-        const m = o as THREE.Mesh;
-        m.geometry?.dispose();
-        if (m.material)
-          (Array.isArray(m.material) ? m.material : [m.material]).forEach((v) =>
-            v.dispose(),
-          );
-      });
+      disposeObject(model.scene);
       throw new DOMException('Aborted', 'AbortError');
     }
     city = model.scene;
-    restoreFlatSurfaceNormals(city);
     scene.add(city);
-    city.traverse((object) => {
-      if (!(object instanceof THREE.Mesh)) return;
-      meshes.push(object);
-      // Repeated sleepers and thin overhead fittings add noisy, costly shadows.
-      // The railway deck, embankments and bridge structure still cast shadows.
-      object.castShadow =
-        !lightweight && !object.name.startsWith('Railway_Details_');
-      object.receiveShadow = true;
-      const mats = Array.isArray(object.material)
-        ? object.material
-        : [object.material];
-      if (mats.every((m) => m.name === 'Temple ceremonial pond')) {
-        ceremonialPonds.push(object);
-        object.castShadow = false;
-      }
-      mats.forEach((m) => {
-        if (m instanceof THREE.MeshStandardMaterial) {
-          m.side = THREE.DoubleSide;
-          materialDefaults.set(m, m.color.clone());
-          if (object.name.startsWith('Terrain'))
-            contextStyle?.apply(m, 'ground');
-          else if (
-            object.name.startsWith('Vegetation') &&
-            /_canopy|_crowns/.test(object.name)
-          )
-            contextStyle?.apply(m, 'forest');
-          else if (/^(GroundRoads|ElevatedRoads|MinzuAvenue)/.test(object.name))
-            contextStyle?.apply(m, 'road');
+    const styleRoot = (root: THREE.Group) => {
+      restoreFlatSurfaceNormals(root);
+      root.traverse((object) => {
+        if (!(object instanceof THREE.Mesh)) return;
+        meshes.push(object);
+        // Repeated sleepers and thin overhead fittings add noisy, costly shadows.
+        // The railway deck, embankments and bridge structure still cast shadows.
+        object.castShadow =
+          renderer.shadowMap.enabled &&
+          !object.name.startsWith('Railway_Details_');
+        object.receiveShadow = true;
+        const mats = Array.isArray(object.material)
+          ? object.material
+          : [object.material];
+        if (mats.every((m) => m.name === 'Temple ceremonial pond')) {
+          ceremonialPonds.push(object);
+          object.castShadow = false;
         }
-      });
-      if (object.name === 'Water' || object.name === 'Reservoir_water_custom') {
-        object.castShadow = false;
-        waterMaterial ??= new THREE.ShaderMaterial({
-          uniforms: {
-            uTime: { value: 0 },
-            uNight: { value: 0 },
-            ...contextStyle?.uniforms,
-          },
-          vertexShader: `varying vec3 vWorld; void main(){vec4 w=modelMatrix*vec4(position,1.0);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
-          fragmentShader: `varying vec3 vWorld;uniform float uTime;uniform float uNight;
+        mats.forEach((m) => {
+          if (m instanceof THREE.MeshStandardMaterial) {
+            m.side = THREE.DoubleSide;
+            materialDefaults.set(m, m.color.clone());
+            if (object.name.startsWith('Terrain'))
+              contextStyle?.apply(m, 'ground');
+            else if (
+              object.name.startsWith('Vegetation') &&
+              /_canopy|_crowns/.test(object.name)
+            )
+              contextStyle?.apply(m, 'forest');
+            else if (
+              /^(GroundRoads|ElevatedRoads|MinzuAvenue)/.test(object.name)
+            )
+              contextStyle?.apply(m, 'road');
+          }
+        });
+        if (
+          object.name === 'Water' ||
+          object.name === 'Reservoir_water_custom'
+        ) {
+          object.castShadow = false;
+          waterMaterial ??= new THREE.ShaderMaterial({
+            uniforms: {
+              uTime: { value: 0 },
+              uNight: { value: 0 },
+              ...contextStyle?.uniforms,
+            },
+            vertexShader: `varying vec3 vWorld; void main(){vec4 w=modelMatrix*vec4(position,1.0);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
+            fragmentShader: `varying vec3 vWorld;uniform float uTime;uniform float uNight;
           ${contextStyle ? 'uniform sampler2D contextMask;uniform vec4 contextBounds;' : ''}
           void main(){float r=sin(vWorld.x*2.8+vWorld.z*1.8+uTime*.9);float r2=sin(vWorld.x*.9-vWorld.z*4.0+uTime*.6);float glint=pow(max(0.0,r*r2),14.0)*.17;vec3 day=vec3(.17,.57,.52)+glint+sin(vWorld.z*.32+vWorld.x*.17)*.017;vec3 night=vec3(.012,.055,.09)+glint*vec3(.3,.52,.65);
           ${contextStyle ? 'float insideCity=texture2D(contextMask,(vWorld.xz*vec2(1.,-1.)-contextBounds.xy)/contextBounds.zw).r;day=mix(day,vec3(.36,.49,.46),(1.-insideCity)*.55);' : ''}
           gl_FragColor=vec4(mix(day,night,uNight),1.0);
           #include <colorspace_fragment>
           }`,
-          side: THREE.DoubleSide,
-        });
-        object.material = waterMaterial;
-      }
-    });
-    const nightLighting = createNightLighting(city, lightweight);
+            side: THREE.DoubleSide,
+          });
+          object.material = waterMaterial;
+        }
+      });
+      nightLights.set(root, createNightLighting(root, lightweight));
+    };
+    styleRoot(city);
     areaHighlight = createAreaHighlight(city, overview.center, landmarkArea);
     areaHighlight.resize(host.clientWidth, host.clientHeight);
     for (const place of places) {
@@ -836,7 +887,9 @@ export async function createCityScene(
         45,
       );
       renderer.toneMappingExposure = 0.96;
-      nightLighting.setNight(visualMode === 'lit' ? night : 0);
+      nightLights.forEach((lighting) =>
+        lighting.setNight(visualMode === 'lit' ? night : 0),
+      );
       if (visualMode === 'clay') {
         hemi.color.set('#ffffff');
         hemi.groundColor.set('#888888');
@@ -857,14 +910,16 @@ export async function createCityScene(
         Water: next.layers.water,
         Reservoir_water_custom: next.layers.water,
       };
-      Object.entries(names).forEach(([name, visible]) => {
-        const object = city!.getObjectByName(name);
-        if (object) object.visible = Boolean(visible);
-      });
-      places.forEach((place) => {
-        const object = city!.getObjectByName(`Landmark_${place.id}`);
-        if (object) object.visible = next.layers[place.layer ?? 'buildings'];
-      });
+      for (const root of [city, ...detailRoots]) {
+        Object.entries(names).forEach(([name, visible]) => {
+          const object = root.getObjectByName(name);
+          if (object) object.visible = Boolean(visible);
+        });
+        places.forEach((place) => {
+          const object = root.getObjectByName(`Landmark_${place.id}`);
+          if (object) object.visible = next.layers[place.layer ?? 'buildings'];
+        });
+      }
       ceremonialPonds.forEach((pond) => {
         pond.visible = next.layers.water;
       });
@@ -894,7 +949,93 @@ export async function createCityScene(
         );
       }
     };
+    if (streamProfile) {
+      let lastStatus = '';
+      details = new DetailStream(streamProfile.details, {
+        load: async (asset, requestSignal) => {
+          const buffer = await fetchModel(
+            assetUrl(asset.url as `/${string}`),
+            asset.bytes,
+            requestSignal,
+            () => {},
+          );
+          requestSignal.throwIfAborted();
+          const value = await new GLTFLoader()
+            .setDRACOLoader(draco)
+            .parseAsync(buffer, assetUrl('/models/'));
+          if (destroyed || requestSignal.aborted) {
+            disposeObject(value.scene);
+            throw new DOMException('Request cancelled', 'AbortError');
+          }
+          return value.scene;
+        },
+        attach: (root) => {
+          city!.add(root);
+          detailRoots.add(root);
+          styleRoot(root);
+          apply(option);
+          const buffers = new Set<ArrayBufferLike>();
+          root.traverse((object) => {
+            if (
+              !(object instanceof THREE.Mesh || object instanceof THREE.Points)
+            )
+              return;
+            for (const attribute of Object.values(
+              object.geometry.attributes,
+            ) as (THREE.BufferAttribute | THREE.InterleavedBufferAttribute)[])
+              buffers.add(
+                attribute instanceof THREE.InterleavedBufferAttribute
+                  ? attribute.data.array.buffer
+                  : attribute.array.buffer,
+              );
+            if (object.geometry.index)
+              buffers.add(object.geometry.index.array.buffer);
+          });
+          return [...buffers].reduce((sum, b) => sum + b.byteLength, 0);
+        },
+        release: (root, attached) => {
+          root.removeFromParent();
+          if (attached) {
+            root.traverse((object) => {
+              if (!(object instanceof THREE.Mesh)) return;
+              const index = meshes.indexOf(object);
+              if (index >= 0) meshes.splice(index, 1);
+              const pond = ceremonialPonds.indexOf(object);
+              if (pond >= 0) ceremonialPonds.splice(pond, 1);
+              for (const material of Array.isArray(object.material)
+                ? object.material
+                : [object.material])
+                if (material instanceof THREE.MeshStandardMaterial)
+                  materialDefaults.delete(material);
+            });
+            nightLights.delete(root);
+            detailRoots.delete(root);
+            dirty = true;
+          }
+          disposeObject(root, [scene]);
+        },
+        status: (message, retry) => {
+          const key = `${message}:${retry}`;
+          if (key !== lastStatus) callbacks.detailStatus?.(message, retry);
+          lastStatus = key;
+        },
+      });
+      reconcileDetails = () => {
+        const target = flight?.toTarget ?? controls.target;
+        const position = flight?.to ?? camera.position;
+        const distance = position.distanceTo(target);
+        details?.update({
+          x: target.x,
+          y: -target.z,
+          radius: distance < 70 ? Math.max(6, Math.min(40, distance)) : 0,
+          selected: option.selected,
+          budget: renderProfile.detailBudgetMiB * 1048576,
+          layers: option.layers,
+        });
+      };
+    }
     apply(option);
+    updateQuality();
     loadMs = performance.now() - startedAt;
     callbacks.progress('城市就绪', 100);
     callbacks.ready(places, overview);
@@ -921,12 +1062,14 @@ export async function createCityScene(
         if (!inspection && autoFramed) focus(option.selected, focusedClose);
       },
       apply,
+      retryDetails: () => details?.retry(),
       focus,
       zoom,
       readView: () => ({
         position: camera.position.toArray(),
         target: controls.target.toArray(),
         fov: camera.fov,
+        span: camera.position.distanceTo(controls.target) * visibleTangent(),
       }),
       restoreView: (view) => {
         autoFramed = false;
@@ -948,6 +1091,17 @@ export async function createCityScene(
         camera.updateProjectionMatrix();
         camera.position.fromArray(view.position);
         controls.target.fromArray(view.target);
+        if (view.span !== undefined) {
+          const offset = camera.position.clone().sub(controls.target);
+          offset.setLength(
+            THREE.MathUtils.clamp(
+              view.span / visibleTangent(),
+              controls.minDistance,
+              controls.maxDistance,
+            ),
+          );
+          camera.position.copy(controls.target).add(offset);
+        }
         controls.update();
         controls.enableDamping = damping;
         dirty = true;

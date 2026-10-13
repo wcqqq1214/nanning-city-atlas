@@ -36,11 +36,19 @@ export const INSPECTION_VIEWS: Record<
   },
   'waterfront-top': {
     label: '畅游阁—邕江大桥 · 岸线俯视',
-    camera: { position: [14.7, 10.5, 12.2], target: [14.7, 0.4, 11.8], fov: 40 },
+    camera: {
+      position: [14.7, 10.5, 12.2],
+      target: [14.7, 0.4, 11.8],
+      fov: 40,
+    },
   },
   'waterfront-bridgehead': {
     label: '邕江大桥 · 北岸桥头',
-    camera: { position: [19.2, 2.3, 15.1], target: [16.55, 0.45, 12.25], fov: 40 },
+    camera: {
+      position: [19.2, 2.3, 15.1],
+      target: [16.55, 0.45, 12.25],
+      fov: 40,
+    },
   },
   qingxiu: {
     label: '青秀山 · 山脊与山脚',
@@ -48,7 +56,11 @@ export const INSPECTION_VIEWS: Record<
   },
   'qingxiu-tower': {
     label: '青秀山 · 龙象塔与平台',
-    camera: { position: [90.1, 3.9, 49.3], target: [88.058, 2.48, 46.641], fov: 40 },
+    camera: {
+      position: [90.1, 3.9, 49.3],
+      target: [88.058, 2.48, 46.641],
+      fov: 40,
+    },
   },
   'qingxiu-path': {
     label: '青秀山 · 山坡园路',
@@ -60,7 +72,11 @@ export const INSPECTION_VIEWS: Record<
   },
   'qingxiu-lake': {
     label: '青秀山 · 天池湖岸',
-    camera: { position: [84, 4.5, 48], target: [87.285, 1.775, 44.157], fov: 40 },
+    camera: {
+      position: [84, 4.5, 48],
+      target: [87.285, 1.775, 44.157],
+      fov: 40,
+    },
   },
   'qingxiu-foothill': {
     label: '青秀山 · 凤岭南路山脚界面',
@@ -84,47 +100,91 @@ export const INSPECTION_VIEWS: Record<
   },
   'arts-entry': {
     label: '广西文化艺术中心 · 入口台阶',
-    camera: { position: [65.2, 2.6, 52.7], target: [67.568, 0.65, 49.799], fov: 40 },
+    camera: {
+      position: [65.2, 2.6, 52.7],
+      target: [67.568, 0.65, 49.799],
+      fov: 40,
+    },
   },
   'arts-back': {
     label: '广西文化艺术中心 · 北侧',
-    camera: { position: [70.8, 3.5, 45.2], target: [67.568, 0.75, 49.799], fov: 40 },
+    camera: {
+      position: [70.8, 3.5, 45.2],
+      target: [67.568, 0.75, 49.799],
+      fov: 40,
+    },
   },
   'zhenning-close': {
     label: '镇宁炮台 · 南门与堡垒',
-    camera: { position: [24.6, 2.2, -3.7], target: [25.063, 1.01, -6.014], fov: 20 },
+    camera: {
+      position: [24.6, 2.2, -3.7],
+      target: [25.063, 1.01, -6.014],
+      fov: 20,
+    },
   },
   'zhenning-back': {
     label: '镇宁炮台 · 北门与场地',
-    camera: { position: [25.7, 2.6, -8.0], target: [25.063, 1.01, -6.014], fov: 20 },
+    camera: {
+      position: [25.7, 2.6, -8.0],
+      target: [25.063, 1.01, -6.014],
+      fov: 20,
+    },
   },
   diwang: {
     label: '地王大厦 · 塔楼与城市',
-    camera: { position: [71.0, 5.4, 13.4], target: [67.326, 1.8, 7.086], fov: 40 },
+    camera: {
+      position: [71.0, 5.4, 13.4],
+      target: [67.326, 1.8, 7.086],
+      fov: 40,
+    },
   },
   'diwang-wide': {
     label: '地王大厦 · 高度比例对照',
-    camera: { position: [74.0, 8.0, 19.0], target: [67.326, 2.6, 7.086], fov: 40 },
+    camera: {
+      position: [74.0, 8.0, 19.0],
+      target: [67.326, 2.6, 7.086],
+      fov: 40,
+    },
   },
   'diwang-base': {
     label: '地王大厦 · 裙房与街道',
-    camera: { position: [65.0, 2.3, 10.4], target: [67.326, 0.8, 7.086], fov: 40 },
+    camera: {
+      position: [65.0, 2.3, 10.4],
+      target: [67.326, 0.8, 7.086],
+      fov: 40,
+    },
   },
   confucius: {
     label: '南宁孔庙 · 院落与山坡',
-    camera: { position: [94.4, 3.6, 53.0], target: [91.608, 0.66, 49.167], fov: 40 },
+    camera: {
+      position: [94.4, 3.6, 53.0],
+      target: [91.608, 0.66, 49.167],
+      fov: 40,
+    },
   },
   'confucius-wide': {
     label: '南宁孔庙 · 场地比例对照',
-    camera: { position: [97.0, 6.0, 57.0], target: [91.608, 0.9, 49.167], fov: 40 },
+    camera: {
+      position: [97.0, 6.0, 57.0],
+      target: [91.608, 0.9, 49.167],
+      fov: 40,
+    },
   },
   'confucius-courts': {
     label: '南宁孔庙 · 院落台阶',
-    camera: { position: [92.5, 2.2, 51.6], target: [91.608, 0.63, 49.167], fov: 30 },
+    camera: {
+      position: [92.5, 2.2, 51.6],
+      target: [91.608, 0.63, 49.167],
+      fov: 30,
+    },
   },
   'confucius-back': {
     label: '南宁孔庙 · 后院与地形',
-    camera: { position: [89.8, 2.8, 46.5], target: [91.608, 0.65, 49.167], fov: 40 },
+    camera: {
+      position: [89.8, 2.8, 46.5],
+      target: [91.608, 0.65, 49.167],
+      fov: 40,
+    },
   },
 };
 
@@ -152,11 +212,12 @@ export function validCamera(view: CameraView): boolean {
   const [x, y, z] = view.position.map((v, i) => v - view.target[i]);
   const distance = Math.hypot(x, y, z);
   const polar = Math.acos(y / distance);
+  const epsilon = 1e-8;
   return (
-    distance >= 2.4 &&
-    distance <= 1200 &&
-    polar >= 0.025 &&
-    polar <= Math.PI / 2.12
+    distance >= 2.4 - epsilon &&
+    distance <= 1200 + epsilon &&
+    polar >= 0.025 - epsilon &&
+    polar <= Math.PI / 2.12 + epsilon
   );
 }
 
